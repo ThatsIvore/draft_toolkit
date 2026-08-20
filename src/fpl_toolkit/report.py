@@ -15,18 +15,21 @@ def find_user_manager(league_details: dict[str, Any], entry_id: str) -> dict[str
     return None
 
 
-def current_gameweek(bootstrap: dict[str, Any]) -> int | None:
+def current_gameweek(bootstrap: dict[str, Any], planning_gameweeks: list[int] | None = None) -> int | None:
     events = bootstrap.get("events", [])
     for event in events:
         if isinstance(event, dict) and event.get("is_current"):
             return int(event["id"])
     for event in events:
         if isinstance(event, dict) and event.get("is_next"):
-            return max(1, int(event["id"]) - 1)
+            next_id = int(event["id"])
+            return 0 if next_id == 1 else next_id - 1
+    if planning_gameweeks and planning_gameweeks[0] == 1:
+        return 0
     return None
 
 
-def build_report(entry_id: str, league_id: str, league_details: dict[str, Any], bootstrap: dict[str, Any], ownership: list[dict[str, Any]], changes: list[dict[str, Any]], horizon: int) -> dict[str, Any]:
+def build_report(entry_id: str, league_id: str, league_details: dict[str, Any], bootstrap: dict[str, Any], ownership: list[dict[str, Any]], changes: list[dict[str, Any]], horizon: int, planning_gameweeks: list[int] | None = None) -> dict[str, Any]:
     manager = find_user_manager(league_details, entry_id)
     own_ids = {entry_id}
     if manager:
@@ -42,7 +45,7 @@ def build_report(entry_id: str, league_id: str, league_details: dict[str, Any], 
         "league_id": league_id,
         "league_name": (league_details.get("league") or {}).get("name") if isinstance(league_details.get("league"), dict) else league_details.get("name"),
         "manager": manager,
-        "current_gameweek": current_gameweek(bootstrap),
+        "current_gameweek": current_gameweek(bootstrap, planning_gameweeks),
         "planning_horizon": horizon,
         "summary": {
             "my_squad_count": len(my_squad),

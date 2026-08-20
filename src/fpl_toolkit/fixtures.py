@@ -5,33 +5,40 @@ from typing import Any
 from .normalize import team_lookup
 
 
-def planning_gameweeks(bootstrap: dict[str, Any], horizon: int) -> list[int]:
+def planning_gameweeks(bootstrap: dict[str, Any], horizon: int, fixtures: list[dict[str, Any]] | None = None) -> list[int]:
     events = [e for e in bootstrap.get("events", []) if isinstance(e, dict) and e.get("id") is not None]
     events.sort(key=lambda e: int(e["id"]))
-    if not events:
-        return []
-    start_index = None
-    for i, event in enumerate(events):
-        if event.get("is_current"):
-            start_index = i
-            break
-    if start_index is None:
+    if events:
+        start_index = None
         for i, event in enumerate(events):
-            if event.get("is_next"):
+            if event.get("is_current"):
                 start_index = i
                 break
-    if start_index is None:
-        for i, event in enumerate(events):
-            if event.get("finished") is not True:
-                start_index = i
-                break
-    if start_index is None:
-        return []
-    return [int(e["id"]) for e in events[start_index:start_index + horizon]]
+        if start_index is None:
+            for i, event in enumerate(events):
+                if event.get("is_next"):
+                    start_index = i
+                    break
+        if start_index is None:
+            for i, event in enumerate(events):
+                if event.get("finished") is not True:
+                    start_index = i
+                    break
+        if start_index is not None:
+            return [int(e["id"]) for e in events[start_index:start_index + horizon]]
+
+    fixture_gws = sorted({
+        int(fixture["event"])
+        for fixture in (fixtures or [])
+        if isinstance(fixture, dict)
+        and fixture.get("event") is not None
+        and fixture.get("finished") is not True
+    })
+    return fixture_gws[:horizon]
 
 
 def build_team_fixture_matrix(fixtures: list[dict[str, Any]], bootstrap: dict[str, Any], horizon: int) -> dict[str, list[dict[str, Any]]]:
-    gws = planning_gameweeks(bootstrap, horizon)
+    gws = planning_gameweeks(bootstrap, horizon, fixtures)
     gw_set = set(gws)
     teams = team_lookup(bootstrap)
     matrix: dict[str, list[dict[str, Any]]] = {str(team_id): [] for team_id in teams}
