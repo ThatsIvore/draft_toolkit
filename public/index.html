@@ -3,28 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FPL Draft Season Toolkit</title>
-  <style>
-    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; }
-    body { margin: 0; background: #0c1020; color: #eef1ff; }
-    main { max-width: 1100px; margin: 0 auto; padding: 28px 18px 60px; }
-    .muted { color: #9aa4c7; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 12px; margin: 24px 0; }
-    .card { background: #151b31; border: 1px solid #293353; border-radius: 14px; padding: 16px; }
-    .value { font-size: 1.8rem; font-weight: 750; margin-top: 4px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #293353; }
-    th { color: #9aa4c7; font-weight: 600; }
-    section { margin-top: 30px; }
-    .error { background: #3a1620; border: 1px solid #713042; padding: 14px; border-radius: 12px; }
-  </style>
+  <meta name="theme-color" content="#37003c">
+  <title>Draft Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main>
-  <h1>FPL Draft Season Toolkit</h1>
-  <div id="updated" class="muted">Loading latest league snapshot...</div>
-  <div id="content"></div>
-</main>
-<script src="app.js"></script>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-mark">DT</div>
+      <div>
+        <div class="eyebrow">FPL Draft</div>
+        <h1>Season Toolkit</h1>
+      </div>
+    </div>
+    <div id="updated" class="updated">Loading latest league snapshot…</div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero"></section>
+    <nav class="tabs" aria-label="Toolkit views">
+      <button class="tab active" data-view="squad">My Team</button>
+      <button class="tab" data-view="available">Available</button>
+      <button class="tab" data-view="activity">League Activity</button>
+      <button class="tab" data-view="planner">Planner</button>
+    </nav>
+
+    <section id="controls" class="controls"></section>
+    <section id="content" class="content"></section>
+  </main>
+
+  <footer>
+    Independent FPL Draft decision-support project. Not affiliated with the Premier League.
+  </footer>
+  <script src="app.js"></script>
 </body>
 </html>
