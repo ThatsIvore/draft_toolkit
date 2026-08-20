@@ -1,0 +1,60 @@
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+
+from .api import DraftApiClient, FantasyApiClient
+from .config import Settings
+from .diff import diff_ownership
+from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
+from .normalize import choose_league_id, normalize_ownership
+from .report import build_report
+from .state import compact_ownership_state, decorate_change_manager_names
+from .storage import newest_snapshot, read_json, timestamp_slug, write_json
+
+
+def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_client: FantasyApiClient | None = None) -> dict[str, Any]:
+    client = client or DraftApiClient()
+    fantasy_client = fantasy_client or FantasyApiClient()
+    root = Path(settings.output_dir)
+    raw_dir = root / "raw"
+    snapshot_dir = root / "snapshots"
+    report_dir = root / "reports"
+    state_path = root / "state" / "ownership.json"
+    stamp = timestamp_slug()
+
+    entry = client.entry_public(settings.draft_entry_id)
+    bootstrap = client.bootstrap_static()
+    fixtures = fantasy_client.fixtures()
+    league_id = choose_league_id(entry, settings.draft_league_id)
+    league = client.league_details(league_id)
+    element_status = client.element_status(league_id)
+
+    write_json(raw_dir / f"entry-{stamp}.json", entry)
+    write_json(raw_dir / f"bootstrap-{stamp}.json", bootstrap)
+    write_json(raw_dir / f"fixtures-{stamp}.json", fixtures)
+    write_json(raw_dir / f"league-{stamp}.json", league)
+    write_json(raw_dir / f"element-status-{stamp}.json", element_status)
+
+    ownership = normalize_ownership(element_status, league, bootstrap)
+    fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
+    ownership = attach_fixture_matrix(ownership, fixture_matrix)
+
+    if state_path.exists():
+        previous = read_json(state_path)
+    else:
+        previous_path = newest_snapshot(snapshot_dir)
+        previous = read_json(previous_path) if previous_path else []
+
+    changes = diff_ownership(previous, ownership) if previous else []
+    changes = decorate_change_manager_names(changes, league)
+
+    snapshot_path = snapshot_dir / f"ownership-{stamp}.json"
+    write_json(snapshot_path, ownership)
+    write_json(state_path, compact_ownership_state(ownership))
+
+    report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon)
+    report["planning_gameweeks"] = planning_gameweeks(bootstrap, settings.planning_horizon)
+    report["snapshot"] = str(snapshot_path)
+    write_json(report_dir / "latest.json", report)
+    return report
