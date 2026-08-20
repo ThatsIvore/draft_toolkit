@@ -2,9 +2,10 @@ import pytest
 
 from fpl_toolkit.config import ConfigError, Settings
 from fpl_toolkit.diff import diff_ownership
-from fpl_toolkit.fixtures import build_team_fixture_matrix
+from fpl_toolkit.fixtures import build_team_fixture_matrix, planning_gameweeks
 from fpl_toolkit.normalize import discover_league_ids, normalize_ownership
 from fpl_toolkit.privacy import sanitize_public_report
+from fpl_toolkit.report import current_gameweek
 
 
 def test_rejects_profile_uuid(monkeypatch):
@@ -32,6 +33,19 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
     assert changes[0]["from_owner_name"] == "Opponent XI"
     matrix = build_team_fixture_matrix([{"event": 1, "team_h": 1, "team_a": 2}], bootstrap, 4)
     assert matrix["1"][0]["matches"][0]["opponent"] == "CHE"
+
+
+def test_preseason_planning_uses_fixture_event_ids():
+    bootstrap = {"events": []}
+    fixtures = [
+        {"event": 1, "finished": False},
+        {"event": 2, "finished": False},
+        {"event": 3, "finished": False},
+        {"event": 4, "finished": False},
+        {"event": 5, "finished": False},
+    ]
+    assert planning_gameweeks(bootstrap, 4, fixtures) == [1, 2, 3, 4]
+    assert current_gameweek(bootstrap, [1, 2, 3, 4]) == 0
 
 
 def test_public_report_redacts_manager_identity():
