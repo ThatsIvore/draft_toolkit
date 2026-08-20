@@ -37,6 +37,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     write_json(raw_dir / f"element-status-{stamp}.json", element_status)
 
     ownership = normalize_ownership(element_status, league, bootstrap)
+    planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
     fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
     ownership = attach_fixture_matrix(ownership, fixture_matrix)
 
@@ -53,8 +54,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     write_json(snapshot_path, ownership)
     write_json(state_path, compact_ownership_state(ownership))
 
-    report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon)
-    report["planning_gameweeks"] = planning_gameweeks(bootstrap, settings.planning_horizon)
+    report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon, planning_gws)
+    report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     write_json(report_dir / "latest.json", report)
     return report
