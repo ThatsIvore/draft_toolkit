@@ -1,0 +1,439 @@
+.h2h-v10 {
+  --h2h-violet: #5b2ca0;
+  --h2h-purple: #37003c;
+  --h2h-cyan: #25b8c7;
+  --h2h-green: #16a765;
+  --h2h-amber: #d58a12;
+  --h2h-red: #cf3d5a;
+  gap: 24px;
+}
+
+.h2h-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(22px, 4vw, 38px);
+  border-radius: 26px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(0, 255, 191, .28), transparent 27%),
+    radial-gradient(circle at 10% 110%, rgba(127, 91, 255, .55), transparent 42%),
+    linear-gradient(125deg, #28002f 0%, #54178b 55%, #087f91 115%);
+  box-shadow: 0 18px 42px rgba(55, 0, 60, .18);
+}
+
+.h2h-hero::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -110px;
+  bottom: -170px;
+  border: 34px solid rgba(255, 255, 255, .08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.h2h-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.h2h-hero .eyebrow {
+  color: #90ffe1;
+}
+
+.h2h-hero h3 {
+  margin: 8px 0 12px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+
+.h2h-hero h3 span {
+  color: #b8f7ff;
+}
+
+.h2h-hero p {
+  color: rgba(255, 255, 255, .78);
+  line-height: 1.55;
+}
+
+.h2h-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.h2h-hero-tags span {
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .03em;
+  backdrop-filter: blur(6px);
+}
+
+.h2h-hero .h2h-opponent {
+  position: relative;
+  z-index: 1;
+  min-width: 240px;
+  border-color: rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12);
+  backdrop-filter: blur(10px);
+}
+
+.h2h-hero .h2h-opponent small,
+.h2h-hero .h2h-opponent span {
+  color: rgba(255, 255, 255, .72);
+}
+
+.h2h-outcome > div {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  box-shadow: 0 9px 24px rgba(35, 24, 50, .08);
+}
+
+.h2h-outcome > div::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: currentColor;
+  opacity: .8;
+}
+
+.h2h-outcome > div:nth-child(1) {
+  color: var(--h2h-violet);
+  background: linear-gradient(135deg, #f3ebff, #fff 72%);
+}
+
+.h2h-outcome > div:nth-child(2) {
+  color: #087b66;
+  background: linear-gradient(135deg, #e3fbf3, #fff 72%);
+}
+
+.h2h-outcome > div:nth-child(3) {
+  color: #08758a;
+  background: linear-gradient(135deg, #e6f9fd, #fff 72%);
+}
+
+.h2h-outcome > div small,
+.h2h-outcome > div span {
+  color: var(--muted);
+}
+
+.h2h-outcome > div strong {
+  color: currentColor;
+}
+
+.h2h-outlook-shell {
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid rgba(91, 44, 160, .13);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(37, 184, 199, .13), transparent 30%),
+    linear-gradient(145deg, rgba(91, 44, 160, .07), rgba(255, 255, 255, .94) 42%);
+}
+
+.h2h-outlook-shell .eyebrow {
+  color: var(--h2h-violet);
+}
+
+.h2h-outlook-summary > span {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-left: 4px solid var(--tile-accent, var(--h2h-violet));
+  background: var(--tile-bg, #fff);
+  box-shadow: 0 7px 18px rgba(35, 24, 50, .06);
+}
+
+.h2h-outlook-summary .tone-schedule { --tile-accent: #6d3bb1; --tile-bg: #f4effc; }
+.h2h-outlook-summary .tone-total { --tile-accent: #168d99; --tile-bg: #eaf9fa; }
+.h2h-outlook-summary .tone-tough { --tile-accent: #c5475f; --tile-bg: #fff0f3; }
+.h2h-outlook-summary .tone-best { --tile-accent: #178f58; --tile-bg: #ebfaf2; }
+.h2h-outlook-summary .tone-weakness { --tile-accent: #d58a12; --tile-bg: #fff7e8; }
+
+.h2h-outlook-card {
+  --card-accent: #6d3bb1;
+  --card-soft: #f2ebfc;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-top: 6px solid var(--card-accent);
+  background: linear-gradient(180deg, var(--card-soft), #fff 34%);
+  box-shadow: 0 12px 26px rgba(35, 24, 50, .10);
+}
+
+.h2h-outlook-card:nth-child(2) { --card-accent: #168d99; --card-soft: #e6f8fa; }
+.h2h-outlook-card:nth-child(3) { --card-accent: #426fc9; --card-soft: #eaf0fd; }
+.h2h-outlook-card:nth-child(4) { --card-accent: #c98214; --card-soft: #fff5e3; }
+.h2h-outlook-card.edge { --card-accent: var(--h2h-green); --card-soft: #e7f9f0; }
+.h2h-outlook-card.trail { --card-accent: var(--h2h-red); --card-soft: #fff0f3; }
+.h2h-outlook-card.edge,
+.h2h-outlook-card.even,
+.h2h-outlook-card.trail { border-top-color: var(--card-accent); }
+
+.h2h-outlook-card::after {
+  content: "";
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  right: -42px;
+  top: -42px;
+  border: 13px solid color-mix(in srgb, var(--card-accent) 18%, transparent);
+  border-radius: 50%;
+}
+
+.h2h-outlook-head > span,
+.h2h-outlook-card.even .h2h-outlook-head > span {
+  background: var(--card-accent);
+  color: #fff;
+}
+
+.h2h-outlook-score {
+  border: 1px solid color-mix(in srgb, var(--card-accent) 14%, white);
+  background: color-mix(in srgb, var(--card-soft) 72%, white);
+}
+
+.h2h-outlook-score strong,
+.h2h-outlook-opponent strong {
+  color: var(--card-accent);
+}
+
+.h2h-swipe-hint {
+  display: none;
+  color: var(--muted);
+}
+
+.h2h-current-decision {
+  display: grid;
+  gap: 13px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid rgba(37, 184, 199, .22);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #f0fbfc, #fff 52%, #f5effd);
+}
+
+.h2h-current-decision .eyebrow {
+  color: #087f91;
+}
+
+.h2h-current-decision .h2h-projection-balance {
+  border: 0;
+  background: #fff;
+}
+
+.h2h-current-decision .h2h-balance-centre {
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f0e7fc, #e7f9fa);
+}
+
+.h2h-current-decision .h2h-pressure {
+  border: 0;
+  box-shadow: 0 8px 20px rgba(35, 24, 50, .06);
+}
+
+.h2h-detail-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.h2h-disclosure {
+  --disclosure-accent: var(--h2h-violet);
+  --disclosure-soft: #f2ebfc;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--disclosure-accent) 18%, #dfe2e9);
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow: 0 7px 20px rgba(35, 24, 50, .05);
+}
+
+.h2h-disclosure.tone-cyan { --disclosure-accent: #118b99; --disclosure-soft: #e8f9fa; }
+.h2h-disclosure.tone-green { --disclosure-accent: #178f58; --disclosure-soft: #eaf9f1; }
+
+.h2h-disclosure > summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 13px;
+  min-height: 76px;
+  padding: 13px 48px 13px 15px;
+  background: linear-gradient(100deg, var(--disclosure-soft), #fff 62%);
+  color: inherit;
+  cursor: pointer;
+  list-style: none;
+}
+
+.h2h-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.h2h-disclosure > summary::after {
+  content: "+";
+  position: absolute;
+  right: 18px;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--disclosure-accent);
+  color: #fff;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.h2h-disclosure[open] > summary::after {
+  content: "−";
+}
+
+.h2h-disclosure > summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--disclosure-accent) 40%, transparent);
+  outline-offset: -3px;
+}
+
+.h2h-disclosure-index {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--disclosure-accent);
+  color: #fff;
+  font-weight: 900;
+}
+
+.h2h-disclosure-title {
+  display: grid;
+  gap: 3px;
+}
+
+.h2h-disclosure-title strong {
+  font-size: 16px;
+}
+
+.h2h-disclosure-title small,
+.h2h-disclosure-action {
+  color: var(--muted);
+}
+
+.h2h-disclosure-action {
+  margin-right: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.h2h-disclosure-body {
+  display: grid;
+  gap: 18px;
+  padding: clamp(16px, 3vw, 24px);
+  border-top: 1px solid var(--line);
+}
+
+.h2h-disclosure .h2h-scout-grid article,
+.h2h-disclosure .h2h-secondary-edges > span,
+.h2h-disclosure .h2h-position-card,
+.h2h-disclosure .h2h-player-list,
+.h2h-disclosure .h2h-threat-card,
+.h2h-disclosure .h2h-priority {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--disclosure-soft) 55%, white), #fff 72%);
+}
+
+@media (max-width: 760px) {
+  .h2h-hero {
+    display: grid;
+  }
+
+  .h2h-hero .h2h-opponent {
+    min-width: 0;
+    width: auto;
+  }
+
+  .h2h-outcome {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .h2h-v10 {
+    gap: 18px;
+  }
+
+  .h2h-hero {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  .h2h-hero h3 {
+    font-size: 32px;
+  }
+
+  .h2h-outlook-shell,
+  .h2h-current-decision {
+    padding: 17px 14px;
+    border-radius: 20px;
+  }
+
+  .h2h-swipe-hint {
+    display: block;
+  }
+
+  .h2h-outlook-summary,
+  .h2h-outlook-grid {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+    padding: 2px 2px 10px;
+  }
+
+  .h2h-outlook-summary {
+    grid-auto-columns: minmax(210px, 78vw);
+  }
+
+  .h2h-outlook-grid {
+    grid-auto-columns: minmax(275px, 86vw);
+  }
+
+  .h2h-outlook-summary > span,
+  .h2h-outlook-card {
+    scroll-snap-align: start;
+  }
+
+  .h2h-disclosure > summary {
+    grid-template-columns: auto 1fr;
+    min-height: 70px;
+    padding-right: 48px;
+  }
+
+  .h2h-disclosure-action {
+    display: none;
+  }
+
+  .h2h-disclosure-title small {
+    line-height: 1.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h2h-outlook-summary,
+  .h2h-outlook-grid {
+    scroll-behavior: auto;
+  }
+}
