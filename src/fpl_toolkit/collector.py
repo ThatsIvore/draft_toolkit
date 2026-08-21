@@ -13,6 +13,7 @@ from .normalize import choose_league_id, normalize_ownership
 from .report import build_report
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
+from .waivers import attach_replacement_analysis
 
 
 def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_client: FantasyApiClient | None = None) -> dict[str, Any]:
@@ -62,11 +63,14 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     write_json(state_path, compact_ownership_state(ownership))
 
     report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon, planning_gws)
+    report["available_players"] = attach_replacement_analysis(
+        report.get("available_players", []), report.get("my_squad", [])
+    )
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.3",
-        "description": "Action-oriented injury/stash model using roster value, fixture outlook, current availability, starts/minutes usage, prior health state and explicit return dates when official FPL news provides them.",
+        "version": "v0.4",
+        "description": "Action-oriented injury/stash scoring plus same-position waiver replacement deltas against the user's actual roster.",
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
