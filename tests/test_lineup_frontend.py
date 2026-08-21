@@ -12,3 +12,4 @@ def test_official_lineup_reuses_the_fpl_kit_and_card_components():
     assert 'class="pitch-shell recommended-xi-shell official-lineup-shell"' in app
     assert '<span class="shirt">' not in app
     assert '<span class="bench-shirt">' not in app
+    assert "Recommended · v0.6.3" in recommended

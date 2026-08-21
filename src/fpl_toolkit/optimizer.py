@@ -173,7 +173,7 @@ def recommend_lineup(squad: list[dict[str, Any]], gameweek: int) -> dict[str, An
     formations = _legal_formations(squad)
     if not goalkeepers or not formations:
         return {
-            "model": "v0.6.1",
+            "model": "v0.6.3",
             "gameweek": gameweek,
             "is_recommendation": True,
             "is_valid": False,
@@ -235,7 +235,7 @@ def recommend_lineup(squad: list[dict[str, Any]], gameweek: int) -> dict[str, An
     )
     defenders, midfielders, forwards = formation_counts
     return {
-        "model": "v0.6.1",
+        "model": "v0.6.3",
         "gameweek": gameweek,
         "is_recommendation": True,
         "is_valid": True,

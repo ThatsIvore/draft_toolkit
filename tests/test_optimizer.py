@@ -37,7 +37,7 @@ def _standard_squad():
 def test_optimizer_returns_legal_eleven_and_ordered_bench():
     result = recommend_lineup(_standard_squad(), 1)
     assert result["is_valid"] is True
-    assert result["model"] == "v0.6.1"
+    assert result["model"] == "v0.6.3"
     assert len(result["starters"]) == 11
     assert len(result["bench"]) == 3
     assert result["reserve_goalkeeper"]["position"] == "GKP"

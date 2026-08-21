@@ -102,8 +102,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.5.2",
-        "description": "Preseason-hardened rate model with a durable 2025/26 prior blended into new-season evidence, role evidence labels, floor/upside and conservative waiver guardrails.",
+        "version": "v0.5.3",
+        "description": "Early-season calibrated model with durable 2025/26 performance and role priors, gradual completed-match blending, live-match stabilization, floor/upside and conservative waiver guardrails.",
         "performance_baseline_players": len(performance_baseline_rows),
     }
 
