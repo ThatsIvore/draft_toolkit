@@ -171,3 +171,27 @@ def test_change_feed_starts_a_clean_baseline_when_the_gameweek_rolls_over():
     assert [item["kind"] for item in feed["items"]] == ["gameweek_rollover"]
     assert feed["summary"]["info"] == 1
     assert feed["changed_player_ids"] == []
+
+
+def test_change_feed_announces_a_final_gameweek_result_once():
+    before = _report(_player(fixture_phase="active"))
+    before["outcome_diagnostics"] = {"current": {"gameweek": 1, "phase": "LIVE"}}
+    previous = capture_decision_state(before)
+    current = _report(_player(fixture_phase="finished"))
+    current["outcome_diagnostics"] = {"current": {
+        "gameweek": 1,
+        "phase": "FINAL",
+        "forecast": {"recommended": {"projected_total": 50.5}},
+        "actual": {
+            "official_points": 48,
+            "recommended_points": 52,
+            "h2h_my_points": 48,
+            "h2h_opponent_points": 45,
+        },
+    }}
+
+    feed = build_change_feed(previous, current)
+
+    result = next(item for item in feed["items"] if item["kind"] == "gameweek_result")
+    assert result["title"] == "GW1 result captured"
+    assert "48–45" in result["detail"]

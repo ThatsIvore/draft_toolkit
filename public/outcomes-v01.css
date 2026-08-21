@@ -1,0 +1,30 @@
+.h2h-outcome {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.h2h-outcome > div {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 255, 135, .08), rgba(111, 134, 246, .08));
+  padding: 15px;
+  display: grid;
+  gap: 4px;
+}
+
+.h2h-outcome small,
+.h2h-outcome span {
+  color: var(--muted);
+}
+
+.h2h-outcome strong {
+  font-size: 24px;
+  color: var(--purple);
+}
+
+@media (max-width: 760px) {
+  .h2h-outcome {
+    grid-template-columns: 1fr;
+  }
+}

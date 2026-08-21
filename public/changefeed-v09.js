@@ -87,12 +87,12 @@ function renderWhatChanged() {
   const summary = groupedChangeSummary(rawItems);
   if (feed.baseline && !items.length) {
     return `<section class="changes-v09">
-      <div class="changes-intro"><div><div class="eyebrow">What Changed? · v0.9.2</div><h3>Decision baseline captured</h3><p>The toolkit now persists decision state. The next collection will surface only material changes in lineup, availability, role evidence, waivers, planning and H2H context.</p></div></div>
+      <div class="changes-intro"><div><div class="eyebrow">What Changed? · v0.9.3</div><h3>Decision baseline captured</h3><p>The toolkit now persists decision state. The next collection will surface only material changes in lineup, availability, role evidence, waivers, planning and H2H context.</p></div></div>
     </section>`;
   }
   return `<section class="changes-v09">
     <div class="changes-intro">
-      <div><div class="eyebrow">What Changed? · v0.9.2</div><h3>Since ${esc(changeTimeLabel(feed.since))}</h3><p>Correlated changes for the same player are grouped into one decision card. Small score movement and transient live-match data are deliberately suppressed.</p></div>
+      <div><div class="eyebrow">What Changed? · v0.9.3</div><h3>Since ${esc(changeTimeLabel(feed.since))}</h3><p>Correlated changes for the same player are grouped into one decision card. Small score movement and transient live-match data are deliberately suppressed.</p></div>
       <div class="changes-summary">
         <span><small>Action</small><strong>${esc(summary.critical || 0)}</strong></span>
         <span><small>Important</small><strong>${esc(summary.important || 0)}</strong></span>

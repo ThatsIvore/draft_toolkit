@@ -144,21 +144,25 @@ function recommendedKit(p, compact = false) {
 
 function pitchPlayer(p) {
   const gw = DATA.lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
+  const phase = DATA.outcome_diagnostics?.current?.phase;
+  const points = ['LIVE','FINAL'].includes(phase) && p.event_points != null ? `${esc(p.event_points)} GW pts · ` : '';
   return `<button class="pitch-player recommended-player official-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
     ${recommendedKit(p)}
     <span class="recommended-card-plate official-card-plate">
       <span class="player-label">${esc(p.player)}</span>
       <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
-      <span class="start-score official-pick-status">Official starter</span>
+      <span class="start-score official-pick-status">${points}Official starter</span>
     </span>
   </button>`;
 }
 
 function officialBenchCard(p, index, gameweek) {
+  const phase = DATA.outcome_diagnostics?.current?.phase;
+  const points = ['LIVE','FINAL'].includes(phase) && p.event_points != null ? ` · ${esc(p.event_points)} GW pts` : '';
   return `<button class="bench-card recommended-bench-card official-bench-card" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
     ${recommendedKit(p, true)}
     <strong>Bench ${esc(index)} · ${esc(p.player)}</strong>
-    <small>${esc(p.position)} · ${esc(fixtureLabel(p, gameweek))} · Official pick</small>
+    <small>${esc(p.position)} · ${esc(fixtureLabel(p, gameweek))}${points} · Official pick</small>
   </button>`;
 }
 
@@ -172,8 +176,12 @@ function renderPitch() {
   const pos = name => starters.filter(p => p.position === name);
   const row = (cls, players) => `<div class="line ${cls}" style="grid-template-columns:repeat(${Math.max(players.length, 1)},minmax(0,1fr))">${players.map(pitchPlayer).join('')}</div>`;
   const formation = `${pos('DEF').length}-${pos('MID').length}-${pos('FWD').length}`;
+  const outcome = DATA.outcome_diagnostics?.current;
+  const phase = outcome?.phase;
+  const total = outcome?.actual?.official_points;
+  const scoreLabel = ['LIVE','FINAL'].includes(phase) && total != null ? `${phase === 'FINAL' ? 'Final score' : 'Live score'} ${esc(total)}` : `Gameweek ${esc(lineup.gameweek)}`;
   return `<section class="pitch-shell recommended-xi-shell official-lineup-shell">
-    <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(formation)} formation</span><span class="recommended-lineup-badge official-lineup-badge">Official picks</span><span>Gameweek ${esc(lineup.gameweek)}</span></div></div>
+    <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(formation)} formation</span><span class="recommended-lineup-badge official-lineup-badge">Official picks</span><span>${scoreLabel}</span></div></div>
     <div class="pitch"><div class="halfway"></div>${row('gkp',pos('GKP'))}${row('def',pos('DEF'))}${row('mid',pos('MID'))}${row('fwd',pos('FWD'))}</div>
     <div class="bench"><h3>Official bench order</h3><div class="bench-row">${bench.map((p, index) => officialBenchCard(p, index + 1, lineup.gameweek)).join('')}</div></div>
   </section>`;

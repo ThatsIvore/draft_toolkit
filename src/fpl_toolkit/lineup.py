@@ -15,6 +15,20 @@ def _pick_rows(payload: Any) -> list[dict[str, Any]]:
     return []
 
 
+def _event_points_total(payload: Any) -> float | None:
+    if not isinstance(payload, dict):
+        return None
+    history = payload.get("entry_history")
+    candidates = [history.get("points")] if isinstance(history, dict) else []
+    candidates.extend([payload.get("event_points"), payload.get("points")])
+    for value in candidates:
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
 def normalize_lineup(payload: Any, squad: list[dict[str, Any]], gameweek: int) -> dict[str, Any] | None:
     rows = _pick_rows(payload)
     if not rows:
@@ -46,6 +60,7 @@ def normalize_lineup(payload: Any, squad: list[dict[str, Any]], gameweek: int) -
         "gameweek": int(gameweek),
         "source": "draft_entry_event",
         "is_exact": True,
+        "event_points_total": _event_points_total(payload),
         "starters": [row for row in picks if row.get("is_starter")],
         "bench": [row for row in picks if not row.get("is_starter")],
     }
