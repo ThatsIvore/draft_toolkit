@@ -9,7 +9,7 @@ from .changefeed import build_change_feed, capture_decision_state
 from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
-from .h2h import build_h2h_matchup
+from .h2h import build_h2h_matchup, build_h2h_outlook
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
@@ -132,6 +132,14 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         lineup = None
     report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), lineup_gw)
     report["outcome_diagnostics"] = build_outcome_diagnostics(previous_decision_state, report, phase, lineup_gw)
+    report["h2h_outlook"] = build_h2h_outlook(
+        league,
+        settings.draft_entry_id,
+        report.get("my_squad", []),
+        ownership,
+        planning_gws,
+        frozen_current=(report.get("outcome_diagnostics") or {}).get("current"),
+    )
     report["change_feed"] = build_change_feed(previous_decision_state, report, changes)
     write_json(decision_state_path, capture_decision_state(report))
 

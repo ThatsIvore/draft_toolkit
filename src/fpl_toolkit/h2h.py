@@ -99,6 +99,14 @@ def _find_match(league_details: dict[str, Any], own_league_entry_id: str, gamewe
     return min(future, key=lambda item: item[0])[1] if future else None
 
 
+def _find_exact_match(league_details: dict[str, Any], own_league_entry_id: str, gameweek: int) -> dict[str, Any] | None:
+    for match in _rows(league_details, "matches"):
+        first, second = _match_side_ids(match)
+        if str(own_league_entry_id) in {first, second} and _match_event(match) == int(gameweek):
+            return match
+    return None
+
+
 def _standing(league_details: dict[str, Any], league_entry_id: str) -> dict[str, Any]:
     for row in _rows(league_details, "standings"):
         candidate = row.get("league_entry", row.get("entry"))
@@ -542,4 +550,163 @@ def build_h2h_matchup(
         "my_counterweights": _threat_rows(mine, match_gameweek),
         "tactical_priorities": _tactical_priorities(position_edges, best_move),
         "note": "Projected points v1.0 converts blended points-per-90, expected minutes, availability and fixture difficulty into a conservative next-GW estimate. Ranges widen for weaker role evidence. They are decision-support estimates, not calibrated statistical intervals or win probabilities.",
+    }
+
+
+def _outlook_projection(summary: dict[str, Any]) -> dict[str, Any]:
+    projection = summary.get("projection") or {}
+    return {
+        "formation": summary.get("formation"),
+        "total": projection.get("total"),
+        "range_low": projection.get("range_low"),
+        "range_high": projection.get("range_high"),
+        "evidence": summary.get("evidence"),
+    }
+
+
+def _freeze_current_outlook(card: dict[str, Any], frozen_current: dict[str, Any] | None) -> None:
+    if not frozen_current or int(frozen_current.get("gameweek") or -1) != int(card.get("gameweek") or -2):
+        return
+    forecast = frozen_current.get("forecast") or {}
+    recommended = forecast.get("recommended") or {}
+    h2h = forecast.get("h2h") or {}
+    if recommended.get("projected_total") is not None:
+        card["my"]["total"] = recommended.get("projected_total")
+        card["my"]["range_low"] = recommended.get("range_low")
+        card["my"]["range_high"] = recommended.get("range_high")
+    if h2h.get("projected_opponent_total") is not None:
+        card["opponent_projection"]["total"] = h2h.get("projected_opponent_total")
+    edge = h2h.get("projected_edge")
+    if edge is None:
+        edge = _number(card["my"].get("total")) - _number(card["opponent_projection"].get("total"))
+    card["projected_edge"] = round(_number(edge), 1)
+    card["signal"] = _signal(_number(edge))
+    card["projection_source"] = "frozen_gameweek_forecast"
+
+
+def _outlook_summary(cards: list[dict[str, Any]]) -> dict[str, Any]:
+    available = [card for card in cards if card.get("available")]
+    counts = {signal: sum(1 for card in available if card.get("signal") == signal) for signal in ("EDGE", "EVEN", "TRAIL")}
+    projected_for = sum(_number((card.get("my") or {}).get("total")) for card in available)
+    projected_against = sum(_number((card.get("opponent_projection") or {}).get("total")) for card in available)
+    toughest = min(available, key=lambda card: _number(card.get("projected_edge"))) if available else None
+    best = max(available, key=lambda card: _number(card.get("projected_edge"))) if available else None
+    position_edges: dict[str, list[float]] = {}
+    for card in available:
+        for row in card.get("position_edges") or []:
+            position = str(row.get("position") or "")
+            if position:
+                position_edges.setdefault(position, []).append(_number(row.get("projected_points_edge")))
+    recurring_weakness = None
+    if position_edges:
+        candidates = [
+            (position, values)
+            for position, values in position_edges.items()
+            if _mean(values) < 0 and sum(1 for value in values if value < 0) >= 2
+        ]
+        if candidates:
+            position, values = min(candidates, key=lambda item: _mean(item[1]))
+            recurring_weakness = {
+                "position": position,
+                "average_projected_edge": round(_mean(values), 1),
+                "trailing_gameweeks": sum(1 for value in values if value < 0),
+            }
+
+    def highlight(card: dict[str, Any] | None) -> dict[str, Any] | None:
+        if not card:
+            return None
+        return {
+            "gameweek": card.get("gameweek"),
+            "opponent": (card.get("opponent") or {}).get("display_name"),
+            "projected_edge": card.get("projected_edge"),
+        }
+
+    return {
+        "available_gameweeks": len(available),
+        "signals": counts,
+        "projected_for": round(projected_for, 1),
+        "projected_against": round(projected_against, 1),
+        "projected_net": round(projected_for - projected_against, 1),
+        "toughest_matchup": highlight(toughest),
+        "best_opportunity": highlight(best),
+        "recurring_weakness": recurring_weakness,
+    }
+
+
+def build_h2h_outlook(
+    league_details: dict[str, Any],
+    my_entry_id: str,
+    my_squad: list[dict[str, Any]],
+    ownership: list[dict[str, Any]],
+    gameweeks: list[int],
+    frozen_current: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Project the next four exact H2H schedule matches from current rosters."""
+    my_entry = _find_entry(league_details, str(my_entry_id))
+    my_league_id = _league_entry_id(my_entry or {})
+    if not my_entry or my_league_id is None:
+        return {
+            "model": "v1.1",
+            "available": False,
+            "gameweeks": [],
+            "summary": _outlook_summary([]),
+            "reason": "Could not map the configured Draft entry to the H2H schedule.",
+        }
+
+    cards = []
+    for gameweek in gameweeks[:4]:
+        match = _find_exact_match(league_details, my_league_id, int(gameweek))
+        if not match:
+            cards.append({"gameweek": int(gameweek), "available": False, "reason": "No exact H2H schedule match was exposed."})
+            continue
+        first, second = _match_side_ids(match)
+        opponent_league_id = second if first == my_league_id else first
+        opponent_entry = _entry_by_league_id(league_details, opponent_league_id or "") or {}
+        opponent_entry_id = _entry_id(opponent_entry)
+        opponent_squad = _squad_for_entry(ownership, opponent_league_id, opponent_entry_id)
+        mine = recommend_lineup(my_squad, int(gameweek))
+        theirs = recommend_lineup(opponent_squad, int(gameweek))
+        if len(opponent_squad) < 11 or not mine.get("is_valid") or not theirs.get("is_valid"):
+            cards.append({
+                "gameweek": int(gameweek),
+                "available": False,
+                "reason": f"A legal current-roster comparison could not be built for GW{gameweek}.",
+            })
+            continue
+
+        my_summary = _lineup_summary(mine, int(gameweek))
+        opponent_summary = _lineup_summary(theirs, int(gameweek))
+        my_projection = _outlook_projection(my_summary)
+        opponent_projection = _outlook_projection(opponent_summary)
+        projected_edge = _number(my_projection.get("total")) - _number(opponent_projection.get("total"))
+        position_edges = _position_edges(mine, theirs, int(gameweek))
+        threat = (_threat_rows(theirs, int(gameweek), 1) or [None])[0]
+        card = {
+            "gameweek": int(gameweek),
+            "available": True,
+            "opponent": {
+                "display_name": opponent_entry.get("entry_name") or opponent_entry.get("short_name") or "League opponent",
+                "league_entry_id": opponent_league_id,
+                "entry_id": opponent_entry_id,
+                **_standing(league_details, opponent_league_id or ""),
+            },
+            "my": my_projection,
+            "opponent_projection": opponent_projection,
+            "projected_edge": round(projected_edge, 1),
+            "signal": _signal(projected_edge),
+            "projection_source": "current_rosters",
+            "position_edges": position_edges,
+            "weakest_position": min(position_edges, key=lambda row: _number(row.get("projected_points_edge"))) if position_edges else None,
+            "strongest_position": max(position_edges, key=lambda row: _number(row.get("projected_points_edge"))) if position_edges else None,
+            "key_threat": threat,
+        }
+        _freeze_current_outlook(card, frozen_current)
+        cards.append(card)
+
+    return {
+        "model": "v1.1",
+        "available": any(card.get("available") for card in cards),
+        "gameweeks": cards,
+        "summary": _outlook_summary(cards),
+        "note": "Future matchups use current rosters and refresh after every collection. They do not predict transfers or submitted lineups. The current Gameweek retains its frozen forecast.",
     }
