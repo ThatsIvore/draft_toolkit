@@ -70,6 +70,18 @@ def _match_event(match: dict[str, Any]) -> int | None:
         return None
 
 
+def _match_result(match: dict[str, Any], my_league_id: str, phase: str) -> dict[str, Any]:
+    first, _ = _match_side_ids(match)
+    mine_key = "league_entry_1_points" if first == str(my_league_id) else "league_entry_2_points"
+    opponent_key = "league_entry_2_points" if first == str(my_league_id) else "league_entry_1_points"
+    return {
+        "status": phase,
+        "my_points": _number(match.get(mine_key)),
+        "opponent_points": _number(match.get(opponent_key)),
+        "finished": bool(match.get("finished")) or phase == "FINAL",
+    }
+
+
 def _find_match(league_details: dict[str, Any], own_league_entry_id: str, gameweek: int) -> dict[str, Any] | None:
     involving = []
     for match in _rows(league_details, "matches"):
@@ -448,6 +460,7 @@ def build_h2h_matchup(
     available_players: list[dict[str, Any]],
     gameweek: int,
     my_lineup: dict[str, Any] | None = None,
+    phase: str = "SCHEDULED",
 ) -> dict[str, Any]:
     """Build an opponent scouting report for the next H2H Draft matchup."""
     my_entry = _find_entry(league_details, str(my_entry_id))
@@ -503,6 +516,7 @@ def build_h2h_matchup(
             **_standing(league_details, opponent_league_id),
         },
         "my_standing": _standing(league_details, my_league_id),
+        "result": _match_result(match, my_league_id, phase),
         "matchup": {
             "signal": _signal(start_edge),
             "start_score_edge": round(start_edge, 1),

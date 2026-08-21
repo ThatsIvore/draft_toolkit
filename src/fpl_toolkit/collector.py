@@ -13,6 +13,7 @@ from .h2h import build_h2h_matchup
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
+from .outcomes import build_outcome_diagnostics, gameweek_phase
 from .optimizer import recommend_lineup
 from .planner import build_schedule_planner
 from .report import build_report, current_gameweek
@@ -108,6 +109,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
+    phase = gameweek_phase(fixtures, lineup_gw)
+    report["gameweek_phase"] = phase
     report["recommended_lineup"] = recommend_lineup(report.get("my_squad", []), lineup_gw)
     report["h2h_matchup"] = build_h2h_matchup(
         league,
@@ -117,10 +120,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         report.get("available_players", []),
         lineup_gw,
         my_lineup=report["recommended_lineup"],
+        phase=phase,
     )
-
-    report["change_feed"] = build_change_feed(previous_decision_state, report, changes)
-    write_json(decision_state_path, capture_decision_state(report))
 
     lineup = None
     try:
@@ -130,6 +131,9 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     except FPLApiError:
         lineup = None
     report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), lineup_gw)
+    report["outcome_diagnostics"] = build_outcome_diagnostics(previous_decision_state, report, phase, lineup_gw)
+    report["change_feed"] = build_change_feed(previous_decision_state, report, changes)
+    write_json(decision_state_path, capture_decision_state(report))
 
     write_json(report_dir / "latest.json", report)
     return report

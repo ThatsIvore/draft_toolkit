@@ -58,6 +58,29 @@ function scoutWeakStarter(row) {
   return `${esc(row.player)} · ${esc(row.position)} · ${esc(h2hScore(row.projected_points))} proj.`;
 }
 
+function h2hOutcomePanel() {
+  const current = DATA?.outcome_diagnostics?.current;
+  if (!current || current.phase === 'UNKNOWN') return '';
+  const forecast = current.forecast || {};
+  const recommended = forecast.recommended || {};
+  const actual = current.actual || {};
+  const evaluation = current.evaluation || {};
+  const liveOrFinal = ['LIVE','FINAL'].includes(current.phase);
+  const phaseLabel = current.phase === 'FINAL' ? 'Final result' : current.phase === 'LIVE' ? 'Live score' : 'Forecast locked';
+  const eligibility = forecast.calibration_eligible ? 'Pre-GW calibration sample' : 'Mid-GW transparency sample';
+  const resultLine = liveOrFinal
+    ? `<strong>${esc(h2hScore(actual.h2h_my_points))}–${esc(h2hScore(actual.h2h_opponent_points))}</strong><span>${esc(actual.h2h_result || '-')}</span>`
+    : `<strong>${esc(h2hScore((forecast.h2h || {}).projected_my_total))}–${esc(h2hScore((forecast.h2h || {}).projected_opponent_total))}</strong><span>projected</span>`;
+  const error = current.phase === 'FINAL' && evaluation.recommended_absolute_error != null
+    ? `<span>Absolute error ${esc(h2hScore(evaluation.recommended_absolute_error))}${evaluation.calibration_eligible ? '' : ' · excluded from calibration'}</span>`
+    : `<span>${esc(eligibility)}</span>`;
+  return `<section class="h2h-outcome">
+    <div><small>${esc(phaseLabel)} · GW${esc(current.gameweek)}</small>${resultLine}</div>
+    <div><small>Toolkit Recommended XI</small><strong>${liveOrFinal ? esc(h2hScore(actual.recommended_points)) : esc(h2hScore(recommended.projected_total))}</strong><span>${esc(h2hScore(recommended.projected_total))} forecast · ${esc(h2hScore(recommended.range_low))}–${esc(h2hScore(recommended.range_high))} band</span>${error}</div>
+    <div><small>Official submitted XI</small><strong>${liveOrFinal && actual.official_points != null ? esc(h2hScore(actual.official_points)) : 'Pending'}</strong><span>${liveOrFinal ? 'current FPL Draft points' : 'available after the deadline'}</span></div>
+  </section>`;
+}
+
 function renderH2H() {
   const h2h = DATA.h2h_matchup;
   if (!h2h || !h2h.available) {
@@ -86,6 +109,8 @@ function renderH2H() {
       <div><div class="eyebrow">H2H Scout · v1.0 · GW${esc(h2h.gameweek)}</div><h3>Scout the matchup before you change the squad</h3><p>Projected points estimate the likely XI outcome from blended points-per-90, expected minutes, availability and fixture difficulty. Start Score remains the lineup-selection heuristic.</p></div>
       <div class="h2h-opponent"><small>Upcoming opponent</small><strong>${esc(opponentName)}</strong><span>${rank}${opponentMeta.h2h_points != null ? ` · ${esc(opponentMeta.h2h_points)} H2H pts` : ''}</span></div>
     </div>
+
+    ${h2hOutcomePanel()}
 
     <div class="h2h-projection-balance ${h2hSignalClass(matchup.signal)}">
       <div><small>Your projected XI</small><strong>${esc(h2hScore(myProjection.total))}</strong><span>${esc(h2hScore(myProjection.range_low))}–${esc(h2hScore(myProjection.range_high))} uncertainty band</span></div>

@@ -8,7 +8,7 @@ ROLE_RANK = {"LOW": 1, "MEDIUM": 2, "HIGH": 3}
 WAIVER_RANK = {"KEEP ROSTER": 1, "CONSIDER": 2, "STASH SWAP": 3, "SWAP NOW": 4}
 PRIORITY_RANK = {"critical": 4, "important": 3, "watch": 2, "info": 1}
 DECISION_STATE_VERSION = 2
-CHANGE_FEED_MODEL = "v0.9.2"
+CHANGE_FEED_MODEL = "v0.9.3"
 
 
 def _number(value: Any, default: float = 0.0) -> float:
@@ -108,6 +108,7 @@ def capture_decision_state(report: dict[str, Any]) -> dict[str, Any]:
         "toughest_gameweek": planner.get("weakest_gameweek"),
         "h2h_signal": ((h2h.get("matchup") or {}).get("signal") if h2h.get("available") else None),
         "h2h_start_edge": ((h2h.get("matchup") or {}).get("start_score_edge") if h2h.get("available") else None),
+        "outcome_diagnostics": report.get("outcome_diagnostics"),
     }
 
 
@@ -272,6 +273,30 @@ def build_change_feed(
                     current,
                     suppress_model_changes=live_model_data,
                 ))
+
+    previous_outcome = (previous_state.get("outcome_diagnostics") or {}).get("current") or {}
+    current_outcome = (report.get("outcome_diagnostics") or {}).get("current") or {}
+    if (
+        current_outcome.get("phase") == "FINAL"
+        and previous_outcome.get("phase") != "FINAL"
+        and current_outcome.get("gameweek") is not None
+    ):
+        actual = current_outcome.get("actual") or {}
+        forecast = current_outcome.get("forecast") or {}
+        recommended = forecast.get("recommended") or {}
+        official_points = actual.get("official_points")
+        detail = (
+            f"Official XI: {_number(official_points):.0f} points. " if official_points is not None else ""
+        )
+        detail += (
+            f"Toolkit XI: {_number(actual.get('recommended_points')):.0f} actual versus "
+            f"{_number(recommended.get('projected_total')):.1f} projected. "
+            f"H2H: {_number(actual.get('h2h_my_points')):.0f}–{_number(actual.get('h2h_opponent_points')):.0f}."
+        )
+        events.append(_item(
+            "gameweek_result", "info", f"GW{current_outcome['gameweek']} result captured",
+            detail, badge="GW FINAL",
+        ))
 
     for activity in league_activity or []:
         if not isinstance(activity, dict) or activity.get("type") != "drop":

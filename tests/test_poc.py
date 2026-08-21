@@ -27,7 +27,7 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
         "events": [{"id": 1, "is_current": True, "finished": False}],
         "teams": [{"id": 1, "name": "Arsenal", "short_name": "ARS"}, {"id": 2, "name": "Chelsea", "short_name": "CHE"}],
         "element_types": [{"id": 3, "singular_name_short": "MID"}],
-        "elements": [{"id": 11, "web_name": "Beta", "team": 1, "element_type": 3, "chance_of_playing_next_round": 50, "news": "Back in training", "total_points": 4, "minutes": 75, "starts": 1}],
+        "elements": [{"id": 11, "web_name": "Beta", "team": 1, "element_type": 3, "chance_of_playing_next_round": 50, "news": "Back in training", "event_points": 4, "total_points": 4, "minutes": 75, "starts": 1}],
     }
     league = {"league_entries": [{"id": 502, "entry_id": 23978, "entry_name": "Opponent XI"}]}
     before = normalize_ownership({"element_status": [{"element": 11, "status": "o", "owner": 502}]}, league, bootstrap)
@@ -37,6 +37,7 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
     assert changes[0]["from_owner_name"] == "Opponent XI"
     assert after[0]["minutes"] == 75
     assert after[0]["starts"] == 1
+    assert after[0]["event_points"] == 4
     matrix = build_team_fixture_matrix([{"event": 1, "team_h": 1, "team_a": 2, "team_h_difficulty": 2, "team_a_difficulty": 4}], bootstrap, 4)
     assert matrix["1"][0]["matches"][0]["opponent"] == "CHE"
     assert matrix["1"][0]["matches"][0]["difficulty"] == 2
@@ -219,10 +220,11 @@ def test_intelligence_suppresses_players_who_left_the_league():
 
 def test_normalizes_exact_draft_lineup_and_bench_order():
     squad = [{"player_id": player_id, "player": f"P{player_id}", "owner_name": "Private"} for player_id in range(1, 16)]
-    payload = {"picks": [{"element": player_id, "position": player_id} for player_id in range(1, 16)]}
+    payload = {"entry_history": {"points": 42}, "picks": [{"element": player_id, "position": player_id} for player_id in range(1, 16)]}
     lineup = normalize_lineup(payload, squad, 1)
     assert lineup is not None
     assert lineup["is_exact"] is True
+    assert lineup["event_points_total"] == 42
     assert [row["player_id"] for row in lineup["starters"]] == list(range(1, 12))
     assert [row["player_id"] for row in lineup["bench"]] == [12, 13, 14, 15]
 
