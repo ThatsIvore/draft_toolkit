@@ -37,9 +37,7 @@
   outline-offset:3px;
 }
 
-.player-card[data-player-id]:active{
-  transform:translateY(0);
-}
+.player-card[data-player-id]:active{transform:translateY(0)}
 
 .usage-panel{
   display:grid;
@@ -56,6 +54,18 @@
 .usage-panel small{display:block;color:var(--muted);font-weight:700;margin-bottom:3px}
 .usage-panel strong{font-size:1.15rem;color:var(--purple)}
 
+.decision-line{display:flex;align-items:center;gap:7px;min-width:0}
+.decision-reason{font-size:.68rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.recommendation{display:inline-flex;align-items:center;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:950;letter-spacing:.02em;white-space:nowrap}
+.action-claim{background:#00ff87;color:#173c29}
+.action-stash{background:#d8f5ff;color:#09536c}
+.action-watch{background:#fff1c7;color:#755100}
+.action-hold{background:#e6f4df;color:#356324}
+.action-drop{background:#ffe0e0;color:#9d2020}
+.action-pass{background:#ededf1;color:#666771}
+.drawer-decision{display:flex;align-items:center;gap:10px;background:#f8f7fb;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}.drawer-decision strong{font-size:.84rem;line-height:1.35}
+.return-panel{display:flex;flex-direction:column;gap:3px;border:1px solid #d8d5ef;background:linear-gradient(100deg,rgba(125,90,245,.07),rgba(116,201,234,.12));border-radius:11px;padding:12px;margin:12px 0}.return-panel small{color:var(--muted);font-weight:700}.return-panel strong{color:var(--purple)}.return-panel span{font-size:.76rem;color:var(--muted);text-transform:capitalize}
+
 .about-shell{
   max-width:900px;
   margin:0 auto;
@@ -71,6 +81,7 @@
 .about-shell ul{padding-left:1.2rem}
 .about-callout{margin-top:24px;padding:16px 18px;border-radius:12px;background:linear-gradient(100deg,rgba(125,90,245,.10),rgba(116,201,234,.18));border:1px solid #d8d5ef}
 
+@media(max-width:900px){.decision-reason{display:none}}
 @media (prefers-reduced-motion: reduce){
   .player-card[data-player-id],.player-card[data-player-id]::after{transition:none}
 }
