@@ -30,11 +30,16 @@ function playerGrade(p) {
   return `<div class="decision-line secondary-grade"><span class="decision-reason">Standalone strength: <strong>${esc(strength)}</strong> · ${esc(intel.recommendation_reason || '')}</span></div>`;
 }
 
+function replacementBadge(action) {
+  const mapped = action === 'SWAP NOW' ? 'CLAIM' : action === 'STASH SWAP' ? 'STASH' : action === 'CONSIDER' ? 'WATCH' : 'PASS';
+  return `<span class="recommendation ${recommendationClass(mapped)}">${esc(action || 'KEEP ROSTER')}</span>`;
+}
+
 intelligenceStrip = function(p) {
   const intel = p.intelligence || {};
   if (intel.roster_score == null) return '<div class="placeholder-score">Intelligence pending next collection</div>';
   const primary = p.replacement
-    ? `<div class="decision-line"><span class="recommendation ${recommendationClass(p.replacement.action === 'KEEP ROSTER' ? 'PASS' : p.replacement.action === 'CONSIDER' ? 'WATCH' : 'CLAIM')}">${esc(p.replacement.action)}</span><span class="decision-reason">${esc(`Best swap: ${p.player} for ${p.replacement.drop_player}`)}</span></div>${playerGrade(p)}`
+    ? `<div class="decision-line">${replacementBadge(p.replacement.action)}<span class="decision-reason">${esc(`Best swap: ${p.player} for ${p.replacement.drop_player}`)}</span></div>${playerGrade(p)}`
     : `<div class="decision-line">${recommendationBadge(intel)}<span class="decision-reason">${esc(intel.recommendation_reason || '')}</span></div>`;
   return `${primary}
     <div class="score-strip">
@@ -94,13 +99,24 @@ openPlayer = function(id) {
   const intel = p.intelligence || {};
   const body = document.querySelector('#player-drawer .drawer-body');
   if (!body) return;
+
   const panel = document.createElement('div');
   panel.className = 'drawer-section swap-panel';
-  panel.innerHTML = `<strong>Waiver replacement check · v0.5.2</strong>
+  panel.innerHTML = `<strong>Waiver replacement check · v0.5.3</strong>
     <div class="swap-head"><b>${esc(r.action)}</b><span>Add ${esc(p.player)} · Drop ${esc(r.drop_player)} · ${esc(r.confidence || 'LOW')} confidence</span></div>
     <div class="model-grid"><span>Combined delta <b>${signed(r.combined_delta)}</b></span><span>Immediate delta <b>${signed(r.immediate_delta)}</b></span><span>Floor delta <b>${signed(r.floor_delta)}</b></span><span>Upside delta <b>${signed(r.upside_delta)}</b></span><span>4-GW roster delta <b>${signed(r.roster_delta)}</b></span><span>Future delta <b>${signed(r.future_delta)}</b></span></div>
     <div class="model-note">The model preserves a preseason 2025/26 performance prior and gradually blends in 2026/27 evidence as minutes accumulate. Role evidence is intentionally categorical rather than a pseudo-precise next-match probability.</div>`;
   body.prepend(panel);
+
+  const drawerDecision = body.querySelector('.drawer-decision');
+  if (drawerDecision) {
+    const strength = standaloneStrength(p);
+    drawerDecision.innerHTML = `${replacementBadge(r.action)}<strong>${esc(`Best swap: ${p.player} for ${r.drop_player}`)}</strong><span class="decision-reason">Standalone strength: <strong>${esc(strength || 'Review')}</strong>${intel.recommendation_reason ? ` · ${esc(intel.recommendation_reason)}` : ''}</span>`;
+  }
+
+  body.querySelectorAll('.decision-line').forEach(line => line.remove());
+  const duplicateSummary = body.querySelector('.swap-summary');
+  if (duplicateSummary) duplicateSummary.remove();
 
   const usage = body.querySelector('.usage-panel');
   if (usage) usage.innerHTML = `<div><small>Role evidence</small><strong>${esc(intel.role_evidence ?? '-')}</strong></div><div><small>Expected minutes heuristic</small><strong>${esc(intel.expected_minutes ?? '-')}</strong></div>`;
