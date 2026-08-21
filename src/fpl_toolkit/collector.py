@@ -49,11 +49,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
     fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
     ownership = attach_fixture_matrix(ownership, fixture_matrix)
-    ownership = attach_intelligence(
-        ownership,
-        previous=previous,
-        my_entry_id=settings.draft_entry_id,
-    )
+    ownership = attach_intelligence(ownership, previous=previous, my_entry_id=settings.draft_entry_id)
 
     changes = diff_ownership(previous, ownership) if previous else []
     changes = decorate_change_manager_names(changes, league)
@@ -64,13 +60,15 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
 
     report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon, planning_gws)
     report["available_players"] = attach_replacement_analysis(
-        report.get("available_players", []), report.get("my_squad", [])
+        report.get("available_players", []),
+        report.get("my_squad", []),
+        current_gameweek=report.get("current_gameweek"),
     )
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.4",
-        "description": "Action-oriented injury/stash scoring plus same-position waiver replacement deltas against the user's actual roster.",
+        "version": "v0.5",
+        "description": "Calibrated rate-based player value with floor/upside, sample confidence and conservative pre-GW1 waiver replacement guardrails.",
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
