@@ -2925,19 +2925,6 @@
     "news_added": "2026-07-23T12:01:23.753221Z"
   },
   {
-    "player_id": 552,
-    "player": "Brobbey",
-    "club": "SUN",
-    "team_id": 20,
-    "position": "FWD",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
     "player_id": 36,
     "player": "Maatsen",
     "club": "AVL",
@@ -4181,9 +4168,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Expected back 29 Aug",
+    "news_added": "2026-08-21T15:00:07.610517Z"
   },
   {
     "player_id": 378,
@@ -6526,6 +6513,19 @@
     "news_added": null
   },
   {
+    "player_id": 271,
+    "player": "Muniz",
+    "club": "FUL",
+    "team_id": 10,
+    "position": "FWD",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 593,
     "player": "David",
     "club": "BHA",
@@ -6866,8 +6866,8 @@
   {
     "player_id": 31,
     "player": "Konsa",
-    "club": "AVL",
-    "team_id": 2,
+    "club": "ARS",
+    "team_id": 1,
     "position": "DEF",
     "status": "o",
     "owner_raw": 307364,
@@ -7293,19 +7293,6 @@
     "news_added": null
   },
   {
-    "player_id": 271,
-    "player": "Muniz",
-    "club": "FUL",
-    "team_id": 10,
-    "position": "FWD",
-    "status": "o",
-    "owner_raw": 336654,
-    "owner_entry_id": 336654,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
     "player_id": 40,
     "player": "Rogers",
     "club": "CHE",
@@ -7457,6 +7444,19 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
+    "chance_next_round": 0,
+    "news": "Lack of match fitness - Expected back 29 Aug",
+    "news_added": "2026-08-21T15:22:48.149081Z"
+  },
+  {
+    "player_id": 552,
+    "player": "Brobbey",
+    "club": "SUN",
+    "team_id": 20,
+    "position": "FWD",
+    "status": "o",
+    "owner_raw": 336654,
+    "owner_entry_id": 336654,
     "chance_next_round": null,
     "news": "",
     "news_added": null
