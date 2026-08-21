@@ -95,3 +95,12 @@ renderPlanner = function() {
   if (VIEW === 'changes') return renderWhatChanged();
   return v09RenderPlanner();
 };
+
+const v09Render = render;
+render = function() {
+  v09Render();
+  const button = document.querySelector('[data-view="changes"]');
+  if (!button || !DATA) return;
+  const count = (changeFeed().items || []).length;
+  button.innerHTML = `What Changed?${count ? `<span class="nav-change-count">${esc(count)}</span>` : ''}`;
+};
