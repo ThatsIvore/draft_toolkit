@@ -3,7 +3,7 @@ import pytest
 from fpl_toolkit.config import ConfigError, Settings
 from fpl_toolkit.diff import diff_ownership
 from fpl_toolkit.fixtures import build_team_fixture_matrix, planning_gameweeks
-from fpl_toolkit.intelligence import attach_intelligence
+from fpl_toolkit.intelligence import attach_intelligence, usage_scores
 from fpl_toolkit.lineup import fallback_lineup, normalize_lineup
 from fpl_toolkit.normalize import discover_league_ids, normalize_ownership
 from fpl_toolkit.privacy import sanitize_public_report
@@ -25,7 +25,7 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
         "events": [{"id": 1, "is_current": True, "finished": False}],
         "teams": [{"id": 1, "name": "Arsenal", "short_name": "ARS"}, {"id": 2, "name": "Chelsea", "short_name": "CHE"}],
         "element_types": [{"id": 3, "singular_name_short": "MID"}],
-        "elements": [{"id": 11, "web_name": "Beta", "team": 1, "element_type": 3, "chance_of_playing_next_round": 50, "news": "Back in training", "total_points": 4}],
+        "elements": [{"id": 11, "web_name": "Beta", "team": 1, "element_type": 3, "chance_of_playing_next_round": 50, "news": "Back in training", "total_points": 4, "minutes": 75, "starts": 1}],
     }
     league = {"league_entries": [{"id": 502, "entry_id": 23978, "entry_name": "Opponent XI"}]}
     before = normalize_ownership({"element_status": [{"element": 11, "status": "o", "owner": 502}]}, league, bootstrap)
@@ -33,6 +33,8 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
     changes = diff_ownership(before, after)
     assert changes[0]["type"] == "drop"
     assert changes[0]["from_owner_name"] == "Opponent XI"
+    assert after[0]["minutes"] == 75
+    assert after[0]["starts"] == 1
     matrix = build_team_fixture_matrix([{"event": 1, "team_h": 1, "team_a": 2, "team_h_difficulty": 2, "team_a_difficulty": 4}], bootstrap, 4)
     assert matrix["1"][0]["matches"][0]["opponent"] == "CHE"
     assert matrix["1"][0]["matches"][0]["difficulty"] == 2
@@ -52,13 +54,15 @@ def test_preseason_planning_uses_fixture_event_ids():
     assert current_gameweek(bootstrap, [1, 2, 3, 4]) == 0
 
 
-def test_intelligence_rewards_strong_baseline_and_easy_fixtures():
+def test_intelligence_rewards_strong_baseline_easy_fixtures_and_role():
     players = [
         {
             "player_id": 1,
             "position": "MID",
             "total_points": 180,
             "chance_next_round": 100,
+            "minutes": 810,
+            "starts": 9,
             "news": "",
             "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 2}]} for gw in range(1, 5)],
         },
@@ -67,6 +71,8 @@ def test_intelligence_rewards_strong_baseline_and_easy_fixtures():
             "position": "MID",
             "total_points": 60,
             "chance_next_round": 100,
+            "minutes": 360,
+            "starts": 8,
             "news": "",
             "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 4}]} for gw in range(1, 5)],
         },
@@ -74,6 +80,35 @@ def test_intelligence_rewards_strong_baseline_and_easy_fixtures():
     enriched = attach_intelligence(players)
     assert enriched[0]["intelligence"]["roster_score"] > enriched[1]["intelligence"]["roster_score"]
     assert enriched[0]["intelligence"]["fixture_score"] > enriched[1]["intelligence"]["fixture_score"]
+    assert enriched[0]["intelligence"]["start_probability"] > enriched[1]["intelligence"]["start_probability"]
+
+
+def test_usage_scores_scale_with_availability():
+    fit_start, fit_minutes = usage_scores({"starts": 10, "minutes": 800, "chance_next_round": 100})
+    doubt_start, doubt_minutes = usage_scores({"starts": 10, "minutes": 800, "chance_next_round": 50})
+    assert fit_start > doubt_start
+    assert fit_minutes > doubt_minutes
+    assert fit_minutes <= 90
+
+
+def test_preseason_usage_fallback_is_explicitly_conservative():
+    start, minutes = usage_scores({"starts": 0, "minutes": 0, "chance_next_round": 100})
+    assert start == 70
+    assert minutes == 60
+
+
+def test_intelligence_flags_return_watch():
+    enriched = attach_intelligence([{ 
+        "player_id": 1,
+        "position": "FWD",
+        "total_points": 100,
+        "chance_next_round": 50,
+        "minutes": 400,
+        "starts": 5,
+        "news": "Back in training",
+        "fixtures": [{"gameweek": 1, "matches": [{"difficulty": 2}]}],
+    }])
+    assert enriched[0]["intelligence"]["injury_return_signal"] == "return-watch"
 
 
 def test_intelligence_suppresses_players_who_left_the_league():
@@ -83,6 +118,8 @@ def test_intelligence_suppresses_players_who_left_the_league():
             "position": "DEF",
             "total_points": 200,
             "chance_next_round": 0,
+            "minutes": 900,
+            "starts": 10,
             "news": "Has joined Another Club permanently",
             "fixtures": [{"gameweek": 1, "matches": [{"difficulty": 1}]}],
         }
