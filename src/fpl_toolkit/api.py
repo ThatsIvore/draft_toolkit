@@ -38,6 +38,9 @@ class DraftApiClient:
     def entry_public(self, entry_id: str) -> dict[str, Any]:
         return self._get(f"entry/{entry_id}/public")
 
+    def entry_event(self, entry_id: str, gameweek: int) -> dict[str, Any] | list[dict[str, Any]]:
+        return self._get(f"entry/{entry_id}/event/{gameweek}")
+
     def league_details(self, league_id: str) -> dict[str, Any]:
         return self._get(f"league/{league_id}/details")
 

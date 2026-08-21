@@ -53,36 +53,28 @@ function playerCard(p, ownershipLabel) {
   </article>`;
 }
 
-function chooseStartingXI(squad) {
-  const byPos = pos => squad.filter(p => p.position === pos);
-  const starters = [
-    ...byPos('GKP').slice(0,1),
-    ...byPos('DEF').slice(0,3),
-    ...byPos('MID').slice(0,5),
-    ...byPos('FWD').slice(0,2),
-  ];
-  const starterIds = new Set(starters.map(p => p.player_id));
-  return {starters, bench:squad.filter(p => !starterIds.has(p.player_id))};
-}
-
 function pitchPlayer(p) {
-  const gw = DATA.planning_gameweeks?.[0] || 1;
+  const gw = DATA.lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
   return `<button class="pitch-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
-    <span class="shirt"></span><span class="intel-dot">i</span>
+    <span class="shirt"><span>${esc(p.club || '')}</span></span><span class="intel-dot">i</span>
     <span class="player-label">${esc(p.player)}</span>
     <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
   </button>`;
 }
 
 function renderPitch() {
-  const squad = DATA.my_squad || [];
-  const {starters, bench} = chooseStartingXI(squad);
+  const lineup = DATA.lineup || {};
+  if (!lineup.is_exact || !(lineup.starters || []).length) {
+    return `<div class="lineup-warning"><strong>Exact lineup not available from the public Draft endpoint yet.</strong><span>The toolkit will not invent a starting XI. Your owned squad is shown below until the official picks payload becomes readable.</span></div>${groupPlayers(DATA.my_squad || [], 'YOUR SQUAD')}`;
+  }
+  const starters = lineup.starters || [];
+  const bench = lineup.bench || [];
   const pos = name => starters.filter(p => p.position === name);
   const row = (cls, players) => `<div class="line ${cls}">${players.map(pitchPlayer).join('')}</div>`;
   return `<section class="pitch-shell">
-    <div class="pitch-head"><div class="pitch-head-inner">${DATA.current_gameweek === 0 ? 'Gameweek 1 lineup' : `Gameweek ${esc(DATA.current_gameweek)} lineup`} · click any player for the 4-GW view</div></div>
+    <div class="pitch-head"><div class="pitch-head-inner"><span>Gameweek ${esc(lineup.gameweek)} lineup</span><span class="verified-lineup">Official picks</span></div></div>
     <div class="pitch"><div class="halfway"></div>${row('gkp',pos('GKP'))}${row('def',pos('DEF'))}${row('mid',pos('MID'))}${row('fwd',pos('FWD'))}</div>
-    <div class="bench"><h3>Bench</h3><div class="bench-row">${bench.map(p => `<button class="bench-card" data-player-id="${esc(p.player_id)}"><strong>${esc(p.player)}</strong><small>${esc(p.position)} · ${esc(fixtureLabel(p, DATA.planning_gameweeks?.[0] || 1))}</small></button>`).join('')}</div></div>
+    <div class="bench"><h3>Bench</h3><div class="bench-row">${bench.map(p => `<button class="bench-card" data-player-id="${esc(p.player_id)}"><span class="bench-shirt">${esc(p.club || '')}</span><strong>${esc(p.player)}</strong><small>${esc(p.position)} · ${esc(fixtureLabel(p, lineup.gameweek))}</small></button>`).join('')}</div></div>
   </section>`;
 }
 

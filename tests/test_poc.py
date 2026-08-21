@@ -3,6 +3,7 @@ import pytest
 from fpl_toolkit.config import ConfigError, Settings
 from fpl_toolkit.diff import diff_ownership
 from fpl_toolkit.fixtures import build_team_fixture_matrix, planning_gameweeks
+from fpl_toolkit.lineup import fallback_lineup, normalize_lineup
 from fpl_toolkit.normalize import discover_league_ids, normalize_ownership
 from fpl_toolkit.privacy import sanitize_public_report
 from fpl_toolkit.report import current_gameweek
@@ -48,6 +49,24 @@ def test_preseason_planning_uses_fixture_event_ids():
     assert current_gameweek(bootstrap, [1, 2, 3, 4]) == 0
 
 
+def test_normalizes_exact_draft_lineup_and_bench_order():
+    squad = [{"player_id": player_id, "player": f"P{player_id}", "owner_name": "Private"} for player_id in range(1, 16)]
+    payload = {"picks": [{"element": player_id, "position": player_id} for player_id in range(1, 16)]}
+    lineup = normalize_lineup(payload, squad, 1)
+    assert lineup is not None
+    assert lineup["is_exact"] is True
+    assert [row["player_id"] for row in lineup["starters"]] == list(range(1, 12))
+    assert [row["player_id"] for row in lineup["bench"]] == [12, 13, 14, 15]
+
+
+def test_incomplete_lineup_uses_non_authoritative_fallback():
+    squad = [{"player_id": player_id} for player_id in range(1, 16)]
+    assert normalize_lineup({"picks": [{"element": 1, "position": 1}]}, squad, 1) is None
+    fallback = fallback_lineup(squad, 1)
+    assert fallback["is_exact"] is False
+    assert fallback["starters"] == []
+
+
 def test_public_report_redacts_manager_identity():
     public = sanitize_public_report({
         "entry_id": "336654",
@@ -55,9 +74,11 @@ def test_public_report_redacts_manager_identity():
         "my_squad": [{"player": "Alpha", "owner_name": "Private", "owner_entry_id": 336654}],
         "available_players": [],
         "injury_watch": [],
+        "lineup": {"starters": [{"player": "Alpha", "owner_name": "Private", "owner_entry_id": 336654}], "bench": []},
         "league_activity": [{"type": "drop", "player": "Beta", "from_owner": "12", "from_owner_name": "Opponent"}],
     })
     assert "entry_id" not in public
     assert "manager" not in public
     assert "owner_name" not in public["my_squad"][0]
+    assert "owner_name" not in public["lineup"]["starters"][0]
     assert "from_owner_name" not in public["league_activity"][0]

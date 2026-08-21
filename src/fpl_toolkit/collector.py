@@ -3,10 +3,11 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from .api import DraftApiClient, FantasyApiClient
+from .api import DraftApiClient, FPLApiError, FantasyApiClient
 from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
+from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
 from .report import build_report
 from .state import compact_ownership_state, decorate_change_manager_names
@@ -57,5 +58,16 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon, planning_gws)
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
+
+    lineup_gw = planning_gws[0] if planning_gws else 1
+    lineup = None
+    try:
+        lineup_payload = client.entry_event(settings.draft_entry_id, lineup_gw)
+        write_json(raw_dir / f"lineup-gw{lineup_gw}-{stamp}.json", lineup_payload)
+        lineup = normalize_lineup(lineup_payload, report.get("my_squad", []), lineup_gw)
+    except FPLApiError:
+        lineup = None
+    report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), lineup_gw)
+
     write_json(report_dir / "latest.json", report)
     return report
