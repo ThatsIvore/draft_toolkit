@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T16:02:26.212947+00:00",
+  "generated_at": "2026-08-21T16:27:00.699204+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 0,
@@ -33068,7 +33068,7 @@
         "injury_return_signal": "return-watch",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 51.0,
         "stash_score": 59.2,
         "recommendation": "PASS",
@@ -69265,7 +69265,7 @@
         "injury_return_signal": "return-watch",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 51.0,
         "stash_score": 59.2,
         "recommendation": "PASS",
@@ -84602,40 +84602,13 @@
   "change_feed": {
     "model": "v0.9",
     "baseline": false,
-    "since": "2026-08-21T15:31:22.127566+00:00",
-    "items": [
-      {
-        "kind": "availability",
-        "priority": "important",
-        "title": "Kudus: availability fell",
-        "detail": "Availability Score 75 → 25 (-50).",
-        "badge": "↓ FIT",
-        "player_id": 512,
-        "player": "Kudus",
-        "club": "TOT",
-        "team_code": 6,
-        "position": "MID"
-      },
-      {
-        "kind": "minutes_change",
-        "priority": "watch",
-        "title": "Kudus: expected minutes fell",
-        "detail": "Expected-minutes heuristic 61 → 20.",
-        "badge": "↓ MIN",
-        "player_id": 512,
-        "player": "Kudus",
-        "club": "TOT",
-        "team_code": 6,
-        "position": "MID"
-      }
-    ],
-    "changed_player_ids": [
-      512
-    ],
+    "since": "2026-08-21T16:02:26.212947+00:00",
+    "items": [],
+    "changed_player_ids": [],
     "summary": {
       "critical": 0,
-      "important": 1,
-      "watch": 1,
+      "important": 0,
+      "watch": 0,
       "info": 0
     },
     "note": "Only material decision changes are surfaced; small score noise is intentionally suppressed."

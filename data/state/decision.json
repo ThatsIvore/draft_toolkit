@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-08-21T16:02:26.212947+00:00",
+  "captured_at": "2026-08-21T16:27:00.699204+00:00",
   "gameweek": 0,
   "players": {
     "356": {
@@ -5684,7 +5684,7 @@
       "availability_score": 25.0,
       "expected_minutes": 20.2,
       "role_evidence": "HIGH",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 51.0,
       "stash_score": 59.2,
