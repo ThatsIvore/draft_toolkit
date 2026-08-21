@@ -1,0 +1,61 @@
+.player-card[data-player-id]{
+  position:relative;
+  cursor:pointer;
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease, background-color .16s ease;
+  padding-right:34px;
+}
+
+.player-card[data-player-id]::after{
+  content:"›";
+  position:absolute;
+  right:13px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--purple);
+  font-size:1.55rem;
+  font-weight:900;
+  opacity:.42;
+  transition:transform .16s ease, opacity .16s ease;
+  pointer-events:none;
+}
+
+.player-card[data-player-id]:hover{
+  transform:translateY(-2px);
+  border-color:#aaa0c4;
+  box-shadow:0 8px 22px rgba(55,0,60,.12);
+}
+
+.player-card[data-player-id]:hover::after{
+  transform:translate(3px,-50%);
+  opacity:1;
+}
+
+.player-card[data-player-id]:focus-visible,
+.bench-card[data-player-id]:focus-visible,
+.pitch-player[data-player-id]:focus-visible{
+  outline:3px solid #00ff87;
+  outline-offset:3px;
+}
+
+.player-card[data-player-id]:active{
+  transform:translateY(0);
+}
+
+.about-shell{
+  max-width:900px;
+  margin:0 auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:clamp(22px,4vw,42px);
+  box-shadow:0 10px 30px rgba(36,28,48,.06);
+}
+.about-shell h2{margin:0 0 8px;color:var(--purple);font-size:clamp(1.6rem,3vw,2.2rem)}
+.about-shell h3{margin:28px 0 8px;color:var(--purple)}
+.about-shell p,.about-shell li{color:#5f5b68;line-height:1.65}
+.about-shell ul{padding-left:1.2rem}
+.about-callout{margin-top:24px;padding:16px 18px;border-radius:12px;background:linear-gradient(100deg,rgba(125,90,245,.10),rgba(116,201,234,.18));border:1px solid #d8d5ef}
+
+@media (prefers-reduced-motion: reduce){
+  .player-card[data-player-id],.player-card[data-player-id]::after{transition:none}
+}
