@@ -77,12 +77,38 @@ function playerCard(p, ownershipLabel) {
   </article>`;
 }
 
+function fplKitUrl(p) {
+  const code = Number(p.team_code || 0);
+  if (!code) return '';
+  const goalkeeper = p.position === 'GKP' ? '_1' : '';
+  return `https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_${code}${goalkeeper}-66.png`;
+}
+
+function recommendedKit(p, compact = false) {
+  const url = fplKitUrl(p);
+  const cls = compact ? 'recommended-kit compact' : 'recommended-kit';
+  const fallback = `<span class="kit-fallback">${esc(p.club || '')}</span>`;
+  if (!url) return `<span class="${cls}">${fallback}</span>`;
+  return `<span class="${cls}">${fallback}<img src="${esc(url)}" alt="${esc(p.club || '')} kit" loading="lazy" onerror="this.remove()"></span>`;
+}
+
 function pitchPlayer(p) {
   const gw = DATA.lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
-  return `<button class="pitch-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
-    <span class="shirt"><span>${esc(p.club || '')}</span></span><span class="intel-dot">i</span>
-    <span class="player-label">${esc(p.player)}</span>
-    <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
+  return `<button class="pitch-player recommended-player official-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
+    ${recommendedKit(p)}
+    <span class="recommended-card-plate official-card-plate">
+      <span class="player-label">${esc(p.player)}</span>
+      <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
+      <span class="start-score official-pick-status">Official starter</span>
+    </span>
+  </button>`;
+}
+
+function officialBenchCard(p, index, gameweek) {
+  return `<button class="bench-card recommended-bench-card official-bench-card" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
+    ${recommendedKit(p, true)}
+    <strong>Bench ${esc(index)} · ${esc(p.player)}</strong>
+    <small>${esc(p.position)} · ${esc(fixtureLabel(p, gameweek))} · Official pick</small>
   </button>`;
 }
 
@@ -94,11 +120,12 @@ function renderPitch() {
   const starters = lineup.starters || [];
   const bench = lineup.bench || [];
   const pos = name => starters.filter(p => p.position === name);
-  const row = (cls, players) => `<div class="line ${cls}">${players.map(pitchPlayer).join('')}</div>`;
-  return `<section class="pitch-shell">
-    <div class="pitch-head"><div class="pitch-head-inner"><span>Gameweek ${esc(lineup.gameweek)} lineup</span><span class="verified-lineup">Official picks</span></div></div>
+  const row = (cls, players) => `<div class="line ${cls}" style="grid-template-columns:repeat(${Math.max(players.length, 1)},minmax(0,1fr))">${players.map(pitchPlayer).join('')}</div>`;
+  const formation = `${pos('DEF').length}-${pos('MID').length}-${pos('FWD').length}`;
+  return `<section class="pitch-shell recommended-xi-shell official-lineup-shell">
+    <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(formation)} formation</span><span class="recommended-lineup-badge official-lineup-badge">Official picks</span><span>Gameweek ${esc(lineup.gameweek)}</span></div></div>
     <div class="pitch"><div class="halfway"></div>${row('gkp',pos('GKP'))}${row('def',pos('DEF'))}${row('mid',pos('MID'))}${row('fwd',pos('FWD'))}</div>
-    <div class="bench"><h3>Bench</h3><div class="bench-row">${bench.map(p => `<button class="bench-card" data-player-id="${esc(p.player_id)}"><span class="bench-shirt">${esc(p.club || '')}</span><strong>${esc(p.player)}</strong><small>${esc(p.position)} · ${esc(fixtureLabel(p, lineup.gameweek))}</small></button>`).join('')}</div></div>
+    <div class="bench"><h3>Official bench order</h3><div class="bench-row">${bench.map((p, index) => officialBenchCard(p, index + 1, lineup.gameweek)).join('')}</div></div>
   </section>`;
 }
 

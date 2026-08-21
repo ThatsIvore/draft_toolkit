@@ -1,18 +1,3 @@
-function fplKitUrl(p) {
-  const code = Number(p.team_code || 0);
-  if (!code) return '';
-  const goalkeeper = p.position === 'GKP' ? '_1' : '';
-  return `https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_${code}${goalkeeper}-66.png`;
-}
-
-function recommendedKit(p, compact = false) {
-  const url = fplKitUrl(p);
-  const cls = compact ? 'recommended-kit compact' : 'recommended-kit';
-  const fallback = `<span class="kit-fallback">${esc(p.club || '')}</span>`;
-  if (!url) return `<span class="${cls}">${fallback}</span>`;
-  return `<span class="${cls}">${fallback}<img src="${esc(url)}" alt="${esc(p.club || '')} kit" loading="lazy" onerror="this.remove()"></span>`;
-}
-
 function recommendedPitchPlayer(p) {
   const selection = p.selection || {};
   const gw = DATA.recommended_lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
