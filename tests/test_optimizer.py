@@ -106,8 +106,8 @@ def test_low_sample_player_needs_clear_advantage_to_displace_established_option(
 
 def test_optimizer_flags_narrow_same_position_selection_as_close_call():
     squad = _standard_squad()
-    starter = next(player for player in squad if player["player_id"] == 14)
-    alternative = next(player for player in squad if player["player_id"] == 15)
+    starter = next(player for player in squad if player["player_id"] == 13)
+    alternative = next(player for player in squad if player["player_id"] == 14)
     starter["intelligence"].update({
         "floor_score": 70,
         "upside_score": 70,
@@ -124,8 +124,8 @@ def test_optimizer_flags_narrow_same_position_selection_as_close_call():
     })
     result = recommend_lineup(squad, 1)
     pairs = {(call["starter_player_id"], call["alternative_player_id"]) for call in result["close_calls"]}
-    assert (14, 15) in pairs
-    call = next(call for call in result["close_calls"] if call["starter_player_id"] == 14 and call["alternative_player_id"] == 15)
+    assert (13, 14) in pairs
+    call = next(call for call in result["close_calls"] if call["starter_player_id"] == 13 and call["alternative_player_id"] == 14)
     assert call["margin"] <= 2.0
 
 
