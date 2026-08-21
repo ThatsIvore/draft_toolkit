@@ -59,7 +59,6 @@ def _inactive_factor(player: dict[str, Any]) -> float:
 
 
 def _match_desirability(match: dict[str, Any]) -> float:
-    # Official FPL fixture difficulty is 1 (easiest) to 5 (hardest).
     difficulty = int(_clamp(_number(match.get("difficulty"), 3.0), 1.0, 5.0))
     return float((6 - difficulty) * 20)
 
@@ -89,6 +88,48 @@ def fixture_score(player: dict[str, Any], skip_first: bool = False) -> float:
     return _clamp(total / weight_total if weight_total else 0.0)
 
 
+def usage_scores(player: dict[str, Any]) -> tuple[float, float]:
+    """Return (start_probability, expected_minutes) as transparent proxies.
+
+    Public FPL data exposes season starts and minutes, but not an official next-match
+    start probability. We convert historical average minutes per start into a role
+    signal, then scale it by current chance-of-playing. Before meaningful season data
+    exists, the model falls back to availability rather than inventing a role history.
+    """
+    availability = availability_score(player) / 100.0
+    starts = _number(player.get("starts"))
+    minutes = _number(player.get("minutes"))
+
+    if starts <= 0 or minutes <= 0:
+        base_start = 0.70 if availability > 0 else 0.0
+        base_minutes = 60.0 if availability > 0 else 0.0
+    else:
+        avg_minutes_per_start = _clamp(minutes / starts, 0.0, 90.0)
+        # 90 mins/start maps near certainty, while ~45 mins/start is treated as
+        # rotation territory. This is a proxy, not an official probability.
+        base_start = _clamp((avg_minutes_per_start - 25.0) / 65.0, 0.05, 1.0)
+        base_minutes = avg_minutes_per_start
+
+    start_probability = _clamp(base_start * availability * 100.0)
+    expected_minutes = _clamp(base_minutes * availability, 0.0, 90.0)
+    return start_probability, expected_minutes
+
+
+def injury_return_signal(player: dict[str, Any]) -> str:
+    chance = player.get("chance_next_round")
+    news = str(player.get("news") or "").strip()
+    if chance is None:
+        return "fit"
+    value = _number(chance)
+    if value <= 0:
+        return "out"
+    if value < 75:
+        return "return-watch"
+    if value < 100:
+        return "near-return"
+    return "fit"
+
+
 def attach_intelligence(players: list[dict[str, Any]]) -> list[dict[str, Any]]:
     baseline_by_id = _position_percentiles(players)
     enriched: list[dict[str, Any]] = []
@@ -99,19 +140,33 @@ def attach_intelligence(players: list[dict[str, Any]]) -> list[dict[str, Any]]:
         fixtures = fixture_score(row)
         future_fixtures = fixture_score(row, skip_first=True)
         availability = availability_score(row)
+        start_probability, expected_minutes = usage_scores(row)
         active_factor = _inactive_factor(row)
 
-        roster = (0.45 * baseline + 0.35 * fixtures + 0.20 * availability) * active_factor
-        # Stash value deliberately weights GWs after the immediate week and only lightly
-        # penalizes current availability. Return-date parsing will improve this later.
-        stash = (0.55 * baseline + 0.40 * future_fixtures + 0.05 * availability) * active_factor
+        usage = 0.55 * start_probability + 0.45 * (expected_minutes / 90.0 * 100.0)
+        roster = (
+            0.35 * baseline
+            + 0.28 * fixtures
+            + 0.17 * availability
+            + 0.20 * usage
+        ) * active_factor
+        stash = (
+            0.45 * baseline
+            + 0.34 * future_fixtures
+            + 0.06 * availability
+            + 0.15 * usage
+        ) * active_factor
 
         row["intelligence"] = {
-            "model": "v0.1",
+            "model": "v0.2",
             "baseline_score": round(_clamp(baseline), 1),
             "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1),
             "availability_score": round(_clamp(availability), 1),
+            "start_probability": round(_clamp(start_probability), 1),
+            "expected_minutes": round(_clamp(expected_minutes, 0.0, 90.0), 1),
+            "usage_score": round(_clamp(usage), 1),
+            "injury_return_signal": injury_return_signal(row),
             "roster_score": round(_clamp(roster), 1),
             "stash_score": round(_clamp(stash), 1),
         }

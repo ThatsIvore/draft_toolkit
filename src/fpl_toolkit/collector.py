@@ -61,8 +61,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.1",
-        "description": "Transparent first-pass score using position-relative historical points, official FPL fixture difficulty and current availability.",
+        "version": "v0.2",
+        "description": "Transparent score using position-relative historical points, official FPL fixture difficulty, current availability, and public starts/minutes usage proxies for start probability and expected minutes.",
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1

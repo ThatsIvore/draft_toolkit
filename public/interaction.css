@@ -41,6 +41,21 @@
   transform:translateY(0);
 }
 
+.usage-panel{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin:14px 0;
+}
+.usage-panel>div{
+  background:#f6f4f8;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px 12px;
+}
+.usage-panel small{display:block;color:var(--muted);font-weight:700;margin-bottom:3px}
+.usage-panel strong{font-size:1.15rem;color:var(--purple)}
+
 .about-shell{
   max-width:900px;
   margin:0 auto;
