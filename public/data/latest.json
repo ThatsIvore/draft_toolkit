@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T23:47:44.126857+00:00",
+  "generated_at": "2026-08-21T23:58:32.931831+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 1,
@@ -88758,7 +88758,7 @@
   "change_feed": {
     "model": "v0.9.3",
     "baseline": false,
-    "since": "2026-08-21T23:25:48.232808+00:00",
+    "since": "2026-08-21T23:47:44.126857+00:00",
     "items": [],
     "changed_player_ids": [],
     "summary": {
