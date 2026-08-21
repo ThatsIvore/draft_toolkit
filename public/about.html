@@ -42,7 +42,19 @@
 
       <h3>Current decision model</h3>
       <p>The v0.3 model is designed to produce an action as well as a score. Roster and stash value still combine position-relative historical FPL points, the next four Gameweeks of official FPL fixture difficulty, current availability and a starts/minutes usage proxy. The toolkit now also compares health information with the previous snapshot and parses an expected-return date only when official FPL news states one explicitly.</p>
-      <p>Those inputs become ownership-aware recommendations: <strong>CLAIM</strong> for high-value usable free agents, <strong>STASH</strong> for strong future-value players whose injury cost is temporary, <strong>WATCH</strong> for interesting but not yet actionable players, <strong>HOLD</strong> for rostered players worth retaining, <strong>REVIEW DROP</strong> for weak unavailable roster spots, and <strong>PASS</strong> when the current model sees insufficient value.</p>
+      <p>Those inputs become ownership-aware recommendations. The labels are guidance rather than automatic transactions; they are intended to tell you what kind of decision the current data supports.</p>
+
+      <h3>What the recommendation labels mean</h3>
+      <ul>
+        <li><strong>CLAIM:</strong> a free agent the model considers strong enough to add now. This generally means good roster value, usable short-term availability and/or a favorable upcoming fixture run.</li>
+        <li><strong>STASH:</strong> a free agent who may not help immediately but looks worth occupying a bench spot before other managers react. This is most useful for injured or temporarily unavailable players with strong underlying value and attractive fixtures around their expected return.</li>
+        <li><strong>WATCH:</strong> an interesting free agent who is not yet strong enough to claim. Monitor the player for improving fitness, more minutes, a clearer role, better fixtures or other evidence that could turn the recommendation into CLAIM or STASH.</li>
+        <li><strong>HOLD:</strong> a player already on your roster whose current and future value is high enough that the model does not recommend using that roster slot elsewhere.</li>
+        <li><strong>REVIEW DROP:</strong> a player on your roster whose injury, role, fixtures or overall value make the roster spot questionable. It is a prompt to compare that player with available replacements, not an instruction to drop automatically.</li>
+        <li><strong>PASS:</strong> an available player who does not currently offer enough value to justify a claim or stash relative to the rest of the free-agent pool.</li>
+      </ul>
+      <p><strong>Stash vs. Claim:</strong> CLAIM prioritizes usefulness now; STASH accepts short-term bench cost because the model sees enough future value to justify acting early. <strong>Hold vs. Review Drop:</strong> these are the same decision viewed from your existing roster—keep the slot as-is, or actively compare it with the best alternatives.</p>
+
       <p>Start probability, expected minutes and recovery timing are toolkit estimates. The model does not invent a medical return date: if official FPL news does not contain an explicit date, the dashboard says so.</p>
 
       <h3>What the main views are for</h3>
