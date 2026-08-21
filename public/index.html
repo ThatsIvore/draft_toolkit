@@ -3,38 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#37003c">
+  <meta name="theme-color" content="#6f86f6">
   <title>Draft Toolkit</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand-wrap">
-      <div class="brand-mark">DT</div>
-      <div>
-        <div class="eyebrow">FPL Draft</div>
-        <h1>Season Toolkit</h1>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand-wrap">
+        <div class="brand-mark">DT</div>
+        <div>
+          <div class="eyebrow">Fantasy Draft</div>
+          <h1>Season Toolkit</h1>
+        </div>
       </div>
+      <div id="updated" class="updated">Loading latest league snapshot…</div>
     </div>
-    <div id="updated" class="updated">Loading latest league snapshot…</div>
+    <nav class="primary-nav" aria-label="Toolkit navigation">
+      <div class="primary-nav-inner">
+        <button class="primary-link active" data-view="squad">My Team</button>
+        <button class="primary-link" data-view="available">Available</button>
+        <button class="primary-link" data-view="activity">League Activity</button>
+        <button class="primary-link" data-view="planner">Planner</button>
+      </div>
+    </nav>
   </header>
 
   <main>
     <section id="hero" class="hero"></section>
-    <nav class="tabs" aria-label="Toolkit views">
-      <button class="tab active" data-view="squad">My Team</button>
-      <button class="tab" data-view="available">Available</button>
-      <button class="tab" data-view="activity">League Activity</button>
-      <button class="tab" data-view="planner">Planner</button>
-    </nav>
-
     <section id="controls" class="controls"></section>
     <section id="content" class="content"></section>
   </main>
 
-  <footer>
-    Independent FPL Draft decision-support project. Not affiliated with the Premier League.
-  </footer>
+  <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+  <aside id="player-drawer" class="player-drawer" aria-hidden="true"></aside>
+
+  <footer>Independent FPL Draft decision-support project. Not affiliated with the Premier League.</footer>
   <script src="app.js"></script>
 </body>
 </html>
