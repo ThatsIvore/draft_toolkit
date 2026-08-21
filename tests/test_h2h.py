@@ -94,7 +94,7 @@ def test_builds_scouting_h2h_matchup_from_league_match_and_ownership():
     assert result["available"] is True
     assert result["model"] == "v1.0"
     assert result["gameweek"] == 1
-    assert result["result"] == {"status": "SCHEDULED", "my_points": 0.0, "opponent_points": 0.0, "finished": False}
+    assert result["result"] == {"status": "SCHEDULED", "source": "league_details", "my_points": 0.0, "opponent_points": 0.0, "finished": False}
     assert result["opponent"]["display_name"] == "Opponent XI"
     assert result["opponent"]["league_entry_id"] == "502"
     assert len(result["opponent_squad"]) == 15

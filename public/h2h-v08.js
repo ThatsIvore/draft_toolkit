@@ -66,10 +66,12 @@ function h2hOutcomePanel() {
   const actual = current.actual || {};
   const evaluation = current.evaluation || {};
   const liveOrFinal = ['LIVE','FINAL'].includes(current.phase);
-  const phaseLabel = current.phase === 'FINAL' ? 'Final result' : current.phase === 'LIVE' ? 'Live score' : 'Forecast locked';
+  const estimatedScore = actual.h2h_score_source === 'estimated_lineups';
+  const phaseLabel = current.phase === 'FINAL' ? (estimatedScore ? 'Final score pending' : 'Final result') : current.phase === 'LIVE' ? (estimatedScore ? 'Estimated live score' : 'Live score') : 'Forecast locked';
   const eligibility = forecast.calibration_eligible ? 'Pre-GW calibration sample' : 'Mid-GW transparency sample';
+  const sourceLabel = estimatedScore ? 'official XI vs opponent likely XI' : 'Draft league score';
   const resultLine = liveOrFinal
-    ? `<strong>${esc(h2hScore(actual.h2h_my_points))}–${esc(h2hScore(actual.h2h_opponent_points))}</strong><span>${esc(actual.h2h_result || '-')}</span>`
+    ? `<strong>${esc(h2hScore(actual.h2h_my_points))}–${esc(h2hScore(actual.h2h_opponent_points))}</strong><span>${esc(actual.h2h_result || '-')} · ${esc(sourceLabel)}</span>`
     : `<strong>${esc(h2hScore((forecast.h2h || {}).projected_my_total))}–${esc(h2hScore((forecast.h2h || {}).projected_opponent_total))}</strong><span>projected</span>`;
   const error = current.phase === 'FINAL' && evaluation.recommended_absolute_error != null
     ? `<span>Absolute error ${esc(h2hScore(evaluation.recommended_absolute_error))}${evaluation.calibration_eligible ? '' : ' · excluded from calibration'}</span>`
