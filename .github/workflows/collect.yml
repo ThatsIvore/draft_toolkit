@@ -31,13 +31,13 @@ jobs:
         run: fpl-toolkit --publish
       - name: Commit generated public report
         run: |
-          if git diff --quiet -- public/data/latest.json data/state/ownership.json data/state/performance-baseline.json; then
+          if git diff --quiet -- public/data/latest.json data/state/ownership.json data/state/decision.json data/state/performance-baseline.json; then
             echo "No public report change"
             exit 0
           fi
           git config user.name "fpl-toolkit-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- public/data/latest.json data/state/ownership.json data/state/performance-baseline.json
+          git add -- public/data/latest.json data/state/ownership.json data/state/decision.json data/state/performance-baseline.json
           git commit -m "Update FPL Draft snapshot"
           git push
 
