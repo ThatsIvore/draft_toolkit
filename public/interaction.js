@@ -1,3 +1,6 @@
+const requestedView = location.hash.replace('#', '');
+if (['squad','available','activity','planner'].includes(requestedView)) VIEW = requestedView;
+
 function enhancePlayerCards(root = document) {
   root.querySelectorAll?.('.player-card[data-player-id]').forEach(card => {
     if (card.dataset.interactionEnhanced === 'true') return;
@@ -15,6 +18,10 @@ function enhancePlayerCards(root = document) {
     });
   });
 }
+
+document.querySelectorAll('.primary-link[data-view]').forEach(link => {
+  link.addEventListener('click', () => history.replaceState(null, '', `#${link.dataset.view}`));
+});
 
 enhancePlayerCards();
 
