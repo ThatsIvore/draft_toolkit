@@ -124,6 +124,12 @@ def normalize_ownership(element_status_payload: Any, league_details: dict[str, A
             "owner_name": manager.get("entry_name") or manager.get("player_name") or manager.get("name"),
             "chance_next_round": player.get("chance_of_playing_next_round"),
             "news": player.get("news") or "",
+            "news_added": player.get("news_added"),
             "total_points": player.get("total_points"),
+            "minutes": player.get("minutes"),
+            "starts": player.get("starts"),
+            "form": player.get("form"),
+            "points_per_game": player.get("points_per_game"),
+            "expected_points_next": player.get("ep_next"),
         })
     return normalized
