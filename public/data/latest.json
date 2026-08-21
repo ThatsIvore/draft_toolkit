@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T14:13:43.723303+00:00",
+  "generated_at": "2026-08-21T14:33:53.845502+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 0,
@@ -9,7 +9,7 @@
     "available_count": 502,
     "tracked_players": 600,
     "ownership_changes": 0,
-    "injured_or_doubtful_count": 112
+    "injured_or_doubtful_count": 113
   },
   "my_squad": [
     {
@@ -30395,7 +30395,7 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Unspecified injury - Unknown return date",
+      "news": "Groin injury - Unknown return date",
       "news_added": "2026-08-15T15:30:06.416627Z",
       "total_points": 113,
       "minutes": 2761,
@@ -30485,7 +30485,7 @@
         "injury_return_signal": "out",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 40.9,
         "stash_score": 52.0,
         "recommendation": "PASS",
@@ -38143,9 +38143,9 @@
       "team_code": 6,
       "position": "MID",
       "status": "a",
-      "chance_next_round": null,
-      "news": "",
-      "news_added": null,
+      "chance_next_round": 0,
+      "news": "Hamstring injury - Unknown return date",
+      "news_added": "2026-08-21T14:30:08.419690Z",
       "total_points": 71,
       "minutes": 1388,
       "starts": 13,
@@ -38220,25 +38220,25 @@
         "baseline_score": 67.2,
         "fixture_score": 65.4,
         "future_fixture_score": 68.0,
-        "availability_score": 100.0,
-        "start_probability": 100.0,
-        "expected_minutes": 90.0,
-        "usage_score": 100.0,
+        "availability_score": 0.0,
+        "start_probability": 0.0,
+        "expected_minutes": 0.0,
+        "usage_score": 0.0,
         "sample_confidence": 77.1,
         "role_evidence": "HIGH",
-        "floor_score": 85.6,
-        "upside_score": 76.2,
+        "floor_score": 40.6,
+        "upside_score": 61.2,
         "points_per_90": 4.6,
         "attack_returns_per_90": 0.32,
         "historical_prior_active": false,
-        "injury_return_signal": "fit",
+        "injury_return_signal": "out",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 80.2,
-        "stash_score": 75.8,
-        "recommendation": "CLAIM",
-        "recommendation_reason": "High immediate roster value and usable availability."
+        "health_trend": "news-changed",
+        "roster_score": 41.0,
+        "stash_score": 52.8,
+        "recommendation": "PASS",
+        "recommendation_reason": "Current value does not justify using a roster spot."
       },
       "replacement": {
         "model": "v0.5.1",
@@ -38246,16 +38246,16 @@
         "drop_player": "Bruno G.",
         "drop_club": "ARS",
         "position": "MID",
-        "roster_delta": 3.0,
-        "immediate_delta": 14.7,
-        "future_delta": 4.3,
-        "floor_delta": 0.1,
-        "upside_delta": 0.7,
-        "combined_delta": 5.5,
-        "confidence": "MEDIUM",
+        "roster_delta": -36.2,
+        "immediate_delta": -46.6,
+        "future_delta": -18.7,
+        "floor_delta": -44.9,
+        "upside_delta": -14.3,
+        "combined_delta": -34.8,
+        "confidence": "HIGH",
         "preseason_guardrail": true,
-        "true_stash_candidate": false,
-        "action": "CONSIDER"
+        "true_stash_candidate": true,
+        "action": "KEEP ROSTER"
       }
     },
     {
@@ -68344,7 +68344,7 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Unspecified injury - Unknown return date",
+      "news": "Groin injury - Unknown return date",
       "news_added": "2026-08-15T15:30:06.416627Z",
       "total_points": 113,
       "minutes": 2761,
@@ -68434,7 +68434,7 @@
         "injury_return_signal": "out",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 40.9,
         "stash_score": 52.0,
         "recommendation": "PASS",
@@ -70027,6 +70027,112 @@
         "health_trend": "stable",
         "roster_score": 1.0,
         "stash_score": 1.2,
+        "recommendation": "PASS",
+        "recommendation_reason": "Current value does not justify using a roster spot."
+      }
+    },
+    {
+      "player_id": 518,
+      "player": "P.M.Sarr",
+      "club": "TOT",
+      "team_id": 19,
+      "team_code": 6,
+      "position": "MID",
+      "status": "a",
+      "chance_next_round": 0,
+      "news": "Hamstring injury - Unknown return date",
+      "news_added": "2026-08-21T14:30:08.419690Z",
+      "total_points": 71,
+      "minutes": 1388,
+      "starts": 13,
+      "goals_scored": 2,
+      "assists": 4,
+      "clean_sheets": 3,
+      "bonus": 2,
+      "expected_goal_involvements": "2.74",
+      "form": "0.0",
+      "points_per_game": "2.7",
+      "expected_points_next": null,
+      "fixtures": [
+        {
+          "gameweek": 1,
+          "matches": [
+            {
+              "opponent_id": 4,
+              "opponent": "BRE",
+              "venue": "A",
+              "difficulty": 3,
+              "kickoff_time": "2026-08-22T16:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 2,
+          "matches": [
+            {
+              "opponent_id": 17,
+              "opponent": "NEW",
+              "venue": "H",
+              "difficulty": 2,
+              "kickoff_time": "2026-08-29T16:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 3,
+          "matches": [
+            {
+              "opponent_id": 18,
+              "opponent": "NFO",
+              "venue": "A",
+              "difficulty": 3,
+              "kickoff_time": "2026-09-05T14:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 4,
+          "matches": [
+            {
+              "opponent_id": 9,
+              "opponent": "EVE",
+              "venue": "H",
+              "difficulty": 3,
+              "kickoff_time": "2026-09-12T16:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        }
+      ],
+      "intelligence": {
+        "model": "v0.5.2",
+        "baseline_score": 67.2,
+        "fixture_score": 65.4,
+        "future_fixture_score": 68.0,
+        "availability_score": 0.0,
+        "start_probability": 0.0,
+        "expected_minutes": 0.0,
+        "usage_score": 0.0,
+        "sample_confidence": 77.1,
+        "role_evidence": "HIGH",
+        "floor_score": 40.6,
+        "upside_score": 61.2,
+        "points_per_90": 4.6,
+        "attack_returns_per_90": 0.32,
+        "historical_prior_active": false,
+        "injury_return_signal": "out",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "health_trend": "news-changed",
+        "roster_score": 41.0,
+        "stash_score": 52.8,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       }
@@ -84024,6 +84130,72 @@
       }
     ],
     "note": "Opponent XI is a toolkit estimate built with the same legal-lineup Start Score model as your Recommended XI. EDGE / EVEN / TRAIL is a relative heuristic, not a win probability or projected FPL score."
+  },
+  "change_feed": {
+    "model": "v0.9",
+    "baseline": false,
+    "since": "2026-08-21T14:13:43.723303+00:00",
+    "items": [
+      {
+        "kind": "availability",
+        "priority": "important",
+        "title": "P.M.Sarr: availability fell",
+        "detail": "Availability Score 100 → 0 (-100).",
+        "badge": "↓ FIT",
+        "player_id": 518,
+        "player": "P.M.Sarr",
+        "club": "TOT",
+        "team_code": 6,
+        "position": "MID"
+      },
+      {
+        "kind": "player_news",
+        "priority": "watch",
+        "title": "Van den Berg: player news changed",
+        "detail": "Groin injury - Unknown return date",
+        "badge": "NEWS",
+        "player_id": 85,
+        "player": "Van den Berg",
+        "club": "BRE",
+        "team_code": 94,
+        "position": "DEF"
+      },
+      {
+        "kind": "minutes_change",
+        "priority": "watch",
+        "title": "P.M.Sarr: expected minutes fell",
+        "detail": "Expected-minutes heuristic 90 → 0.",
+        "badge": "↓ MIN",
+        "player_id": 518,
+        "player": "P.M.Sarr",
+        "club": "TOT",
+        "team_code": 6,
+        "position": "MID"
+      },
+      {
+        "kind": "waiver_change",
+        "priority": "watch",
+        "title": "P.M.Sarr: CONSIDER → KEEP ROSTER",
+        "detail": "Waiver recommendation changed since the previous collection. Best comparison: drop Bruno G.. Combined delta -34.8.",
+        "badge": "WAIVER ↓",
+        "player_id": 518,
+        "player": "P.M.Sarr",
+        "club": "TOT",
+        "team_code": 6,
+        "position": "MID"
+      }
+    ],
+    "changed_player_ids": [
+      85,
+      518
+    ],
+    "summary": {
+      "critical": 0,
+      "important": 1,
+      "watch": 3,
+      "info": 0
+    },
+    "note": "Only material decision changes are surfaced; small score noise is intentionally suppressed."
   },
   "lineup": {
     "gameweek": 1,
