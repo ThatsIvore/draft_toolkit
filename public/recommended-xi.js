@@ -50,7 +50,7 @@ function renderRecommendedPitch() {
   }
   const starters = rec.starters || [];
   const pos = name => starters.filter(p => p.position === name);
-  const row = (cls, players) => `<div class="line ${cls}">${players.map(recommendedPitchPlayer).join('')}</div>`;
+  const row = (cls, players) => `<div class="line ${cls}" style="grid-template-columns:repeat(${Math.max(players.length, 1)},minmax(0,1fr))">${players.map(recommendedPitchPlayer).join('')}</div>`;
   const reserve = rec.reserve_goalkeeper;
   const bench = rec.bench || [];
   const benchCards = [

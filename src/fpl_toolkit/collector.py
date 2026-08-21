@@ -12,6 +12,7 @@ from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
 from .optimizer import recommend_lineup
+from .planner import build_schedule_planner
 from .report import build_report, current_gameweek
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
@@ -84,6 +85,11 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         current_gameweek=report.get("current_gameweek"),
     )
     report["planning_gameweeks"] = planning_gws
+    report["schedule_planner"] = build_schedule_planner(
+        report.get("my_squad", []),
+        report.get("available_players", []),
+        planning_gws,
+    )
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
         "version": "v0.5.2",
