@@ -632,8 +632,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 25,
-    "news": "Unspecified injury - 25% chance of playing",
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Unknown return date",
     "news_added": "2026-08-15T20:00:06.779594Z"
   },
   {
@@ -1652,7 +1652,7 @@
   },
   {
     "player_id": 488,
-    "player": "Sangaré",
+    "player": "I.Sangaré",
     "club": "NFO",
     "team_id": 18,
     "position": "MID",
@@ -1958,9 +1958,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Stoke City permanently",
+    "news_added": "2026-08-21T13:06:08.606019Z"
   },
   {
     "player_id": 70,
@@ -2556,8 +2556,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Calf injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Calf injury - Expected back 5 Sep",
     "news_added": "2026-08-18T17:00:08.385597Z"
   },
   {
@@ -4117,7 +4117,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Groin injury - Unknown return date",
+    "news": "Thigh injury - Unknown return date",
     "news_added": "2026-08-15T20:00:06.878792Z"
   },
   {
@@ -4746,7 +4746,7 @@
   },
   {
     "player_id": 556,
-    "player": "Sangaré",
+    "player": "M.Sangaré",
     "club": "BRE",
     "team_id": 4,
     "position": "MID",
@@ -7574,8 +7574,8 @@
     "status": "o",
     "owner_raw": 334397,
     "owner_entry_id": 334397,
-    "chance_next_round": 75,
-    "news": "Knock - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-16T18:30:07.457097Z"
   },
   {
