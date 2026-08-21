@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T23:38:54.570507+00:00",
+  "generated_at": "2026-08-21T00:42:01.619269+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 0,
@@ -40977,5 +40977,989 @@
     2,
     3,
     4
-  ]
+  ],
+  "lineup": {
+    "gameweek": 1,
+    "source": "ownership_fallback",
+    "is_exact": false,
+    "starters": [],
+    "bench": [],
+    "squad": [
+      {
+        "player_id": 356,
+        "player": "Virgil",
+        "club": "LIV",
+        "team_id": 14,
+        "position": "DEF",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 175,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 17,
+                "opponent": "NEW",
+                "venue": "A",
+                "kickoff_time": "2026-08-23T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 18,
+                "opponent": "NFO",
+                "venue": "H",
+                "kickoff_time": "2026-08-29T11:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 12,
+                "opponent": "IPS",
+                "venue": "A",
+                "kickoff_time": "2026-09-04T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 10,
+                "opponent": "FUL",
+                "venue": "H",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 82,
+        "player": "Kelleher",
+        "club": "BRE",
+        "team_id": 4,
+        "position": "GKP",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 143,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 19,
+                "opponent": "TOT",
+                "venue": "H",
+                "kickoff_time": "2026-08-22T16:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 13,
+                "opponent": "LEE",
+                "venue": "A",
+                "kickoff_time": "2026-08-30T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "H",
+                "kickoff_time": "2026-09-05T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 3,
+                "opponent": "BOU",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 452,
+        "player": "Bruno G.",
+        "club": "ARS",
+        "team_id": 1,
+        "position": "MID",
+        "status": "o",
+        "chance_next_round": 75,
+        "news": "Thigh injury - 75% chance of playing",
+        "total_points": 154,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 7,
+                "opponent": "COV",
+                "venue": "H",
+                "kickoff_time": "2026-08-21T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "kickoff_time": "2026-08-31T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 492,
+        "player": "Awoniyi",
+        "club": "COV",
+        "team_id": 7,
+        "position": "FWD",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 43,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 1,
+                "opponent": "ARS",
+                "venue": "A",
+                "kickoff_time": "2026-08-21T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 11,
+                "opponent": "HUL",
+                "venue": "H",
+                "kickoff_time": "2026-08-29T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 15,
+                "opponent": "MCI",
+                "venue": "A",
+                "kickoff_time": "2026-09-05T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 5,
+                "opponent": "BHA",
+                "venue": "H",
+                "kickoff_time": "2026-09-13T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 12,
+        "player": "Saka",
+        "club": "ARS",
+        "team_id": 1,
+        "position": "MID",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 157,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 7,
+                "opponent": "COV",
+                "venue": "H",
+                "kickoff_time": "2026-08-21T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "kickoff_time": "2026-08-31T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 25,
+        "player": "Gyökeres",
+        "club": "ARS",
+        "team_id": 1,
+        "position": "FWD",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 128,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 7,
+                "opponent": "COV",
+                "venue": "H",
+                "kickoff_time": "2026-08-21T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "kickoff_time": "2026-08-31T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 4,
+        "player": "Gabriel",
+        "club": "ARS",
+        "team_id": 1,
+        "position": "DEF",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 209,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 7,
+                "opponent": "COV",
+                "venue": "H",
+                "kickoff_time": "2026-08-21T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "kickoff_time": "2026-08-31T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 471,
+        "player": "Milenković",
+        "club": "NFO",
+        "team_id": 18,
+        "position": "DEF",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 119,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 13,
+                "opponent": "LEE",
+                "venue": "H",
+                "kickoff_time": "2026-08-22T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 14,
+                "opponent": "LIV",
+                "venue": "A",
+                "kickoff_time": "2026-08-29T11:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 19,
+                "opponent": "TOT",
+                "venue": "H",
+                "kickoff_time": "2026-09-05T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 14,
+        "player": "Eze",
+        "club": "ARS",
+        "team_id": 1,
+        "position": "MID",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 113,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 7,
+                "opponent": "COV",
+                "venue": "H",
+                "kickoff_time": "2026-08-21T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "kickoff_time": "2026-08-31T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 271,
+        "player": "Muniz",
+        "club": "FUL",
+        "team_id": 10,
+        "position": "FWD",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 36,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "kickoff_time": "2026-08-24T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "kickoff_time": "2026-08-30T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 8,
+                "opponent": "CRY",
+                "venue": "H",
+                "kickoff_time": "2026-09-05T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 14,
+                "opponent": "LIV",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 40,
+        "player": "Rogers",
+        "club": "CHE",
+        "team_id": 6,
+        "position": "MID",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 169,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 10,
+                "opponent": "FUL",
+                "venue": "A",
+                "kickoff_time": "2026-08-24T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 5,
+                "opponent": "BHA",
+                "venue": "H",
+                "kickoff_time": "2026-08-30T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 1,
+                "opponent": "ARS",
+                "venue": "A",
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 11,
+                "opponent": "HUL",
+                "venue": "H",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 84,
+        "player": "Collins",
+        "club": "BRE",
+        "team_id": 4,
+        "position": "DEF",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 129,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 19,
+                "opponent": "TOT",
+                "venue": "H",
+                "kickoff_time": "2026-08-22T16:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 13,
+                "opponent": "LEE",
+                "venue": "A",
+                "kickoff_time": "2026-08-30T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "H",
+                "kickoff_time": "2026-09-05T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 3,
+                "opponent": "BOU",
+                "venue": "A",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 529,
+        "player": "Roefs",
+        "club": "SUN",
+        "team_id": 20,
+        "position": "GKP",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 136,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 12,
+                "opponent": "IPS",
+                "venue": "A",
+                "kickoff_time": "2026-08-22T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 10,
+                "opponent": "FUL",
+                "venue": "H",
+                "kickoff_time": "2026-08-30T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 4,
+                "opponent": "BRE",
+                "venue": "A",
+                "kickoff_time": "2026-09-05T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 1,
+                "opponent": "ARS",
+                "venue": "H",
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 67,
+        "player": "Rayan",
+        "club": "BOU",
+        "team_id": 3,
+        "position": "MID",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 67,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 15,
+                "opponent": "MCI",
+                "venue": "A",
+                "kickoff_time": "2026-08-23T13:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 9,
+                "opponent": "EVE",
+                "venue": "H",
+                "kickoff_time": "2026-08-29T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 17,
+                "opponent": "NEW",
+                "venue": "A",
+                "kickoff_time": "2026-09-05T11:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 4,
+                "opponent": "BRE",
+                "venue": "H",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player_id": 358,
+        "player": "Kerkez",
+        "club": "LIV",
+        "team_id": 14,
+        "position": "DEF",
+        "status": "o",
+        "chance_next_round": null,
+        "news": "",
+        "total_points": 85,
+        "fixtures": [
+          {
+            "gameweek": 1,
+            "matches": [
+              {
+                "opponent_id": 17,
+                "opponent": "NEW",
+                "venue": "A",
+                "kickoff_time": "2026-08-23T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 18,
+                "opponent": "NFO",
+                "venue": "H",
+                "kickoff_time": "2026-08-29T11:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 12,
+                "opponent": "IPS",
+                "venue": "A",
+                "kickoff_time": "2026-09-04T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 10,
+                "opponent": "FUL",
+                "venue": "H",
+                "kickoff_time": "2026-09-12T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
