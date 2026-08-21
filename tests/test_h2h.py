@@ -111,6 +111,38 @@ def test_builds_scouting_h2h_matchup_from_league_match_and_ownership():
     assert result["tactical_priorities"][0]["action"] == "HOLD SHAPE"
 
 
+def test_scout_simulates_supported_free_agent_move_when_trailing():
+    mine = _squad(1, 501, 336654, 62, 4)
+    opponent = _squad(101, 502, 888888, 86, 2)
+    candidate = _player(999, "FWD", None, None, 96, 1)
+    candidate["replacement"] = {
+        "action": "CONSIDER",
+        "drop_player_id": 13,
+        "drop_player": "P13",
+        "combined_delta": 20.0,
+    }
+
+    result = build_h2h_matchup(
+        _league(),
+        "336654",
+        mine,
+        mine + opponent + [candidate],
+        [candidate],
+        1,
+    )
+
+    move = result["scouting"]["best_matchup_move"]
+    assert result["available"] is True
+    assert result["matchup"]["projected_points_edge"] < 0
+    assert result["matchup"]["pressure"]["level"] in {"HIGH", "VERY HIGH"}
+    assert move is not None
+    assert move["add_player_id"] == 999
+    assert move["drop_player_id"] == 13
+    assert move["projected_points_delta"] > 0
+    assert move["roster_value_delta"] > 0
+    assert any(priority.get("counter") for priority in result["tactical_priorities"])
+
+
 def test_h2h_refuses_incomplete_opponent_ownership():
     mine = _squad(1, 501, 336654, 85, 2)
     opponent = _squad(101, 502, 888888, 70, 4)[:10]
