@@ -17,6 +17,10 @@ def _number(value: Any, default: float = 0.0) -> float:
         return default
 
 
+def _clamp(value: float, low: float, high: float) -> float:
+    return max(low, min(high, value))
+
+
 def _rows(payload: dict[str, Any], key: str) -> list[dict[str, Any]]:
     value = payload.get(key) or []
     return [row for row in value if isinstance(row, dict)] if isinstance(value, list) else []
@@ -67,16 +71,14 @@ def _match_event(match: dict[str, Any]) -> int | None:
 
 
 def _find_match(league_details: dict[str, Any], own_league_entry_id: str, gameweek: int) -> dict[str, Any] | None:
-    matches = _rows(league_details, "matches")
     involving = []
-    for match in matches:
+    for match in _rows(league_details, "matches"):
         first, second = _match_side_ids(match)
         if str(own_league_entry_id) not in {first, second}:
             continue
         event = _match_event(match)
-        if event is None:
-            continue
-        involving.append((event, match))
+        if event is not None:
+            involving.append((event, match))
     exact = [match for event, match in involving if event == int(gameweek)]
     if exact:
         return exact[0]
@@ -145,7 +147,70 @@ def _signal(edge: float) -> str:
     return "EVEN"
 
 
-def _lineup_summary(lineup: dict[str, Any]) -> dict[str, Any]:
+def player_projected_points(player: dict[str, Any], gameweek: int) -> dict[str, Any]:
+    """Estimate next-GW FPL points from the toolkit's existing evidence.
+
+    This is intentionally a conservative first-generation projection, not a
+    calibrated probability model. It converts blended historical/live points
+    per 90 into expected playing-time points, then applies a bounded fixture
+    modifier and current availability. The displayed range widens when role
+    evidence is thin. It must not be interpreted as a statistical confidence
+    interval or win probability.
+    """
+    score = player_start_score(player, gameweek)
+    points_per_90 = max(0.0, _intel(player, "points_per_90"))
+    expected_minutes = _clamp(_number(score.get("expected_minutes")), 0.0, 90.0)
+    availability = _clamp(_number(score.get("availability"), 100.0), 0.0, 100.0)
+    fixture_score = _clamp(_number(score.get("next_fixture"), 60.0), 0.0, 100.0)
+    confidence = _clamp(_number(score.get("sample_confidence"), 0.0), 0.0, 100.0)
+
+    fixture_multiplier = _clamp(1.0 + (fixture_score - 60.0) / 250.0, 0.78, 1.16)
+    availability_factor = 0.25 + 0.75 * availability / 100.0
+    central = points_per_90 * expected_minutes / 90.0 * fixture_multiplier * availability_factor
+    if _fixture_label(player, gameweek) == "Blank":
+        central = 0.0
+
+    uncertainty = 0.32 + 0.38 * (1.0 - confidence / 100.0)
+    half_width = max(1.2, central * uncertainty)
+    low = max(0.0, central - half_width)
+    high = central + half_width
+    return {
+        "projected_points": round(central, 1),
+        "range_low": round(low, 1),
+        "range_high": round(high, 1),
+        "points_per_90": round(points_per_90, 2),
+        "expected_minutes": round(expected_minutes, 1),
+        "fixture_multiplier": round(fixture_multiplier, 3),
+        "availability": round(availability, 1),
+        "sample_confidence": round(confidence, 1),
+        "role_evidence": score.get("role_evidence"),
+    }
+
+
+def _lineup_projection(lineup: dict[str, Any], gameweek: int) -> dict[str, Any]:
+    starters = [row for row in lineup.get("starters") or [] if isinstance(row, dict)]
+    rows = []
+    for player in starters:
+        projection = player_projected_points(player, gameweek)
+        rows.append({
+            "player_id": player.get("player_id"),
+            "player": player.get("player"),
+            "position": player.get("position"),
+            **projection,
+        })
+    central = sum(_number(row.get("projected_points")) for row in rows)
+    low = sum(_number(row.get("range_low")) for row in rows)
+    high = sum(_number(row.get("range_high")) for row in rows)
+    return {
+        "total": round(central, 1),
+        "range_low": round(low, 1),
+        "range_high": round(high, 1),
+        "players": rows,
+        "note": "Point range is an uncertainty band from player-level role evidence; it is not a calibrated statistical interval.",
+    }
+
+
+def _lineup_summary(lineup: dict[str, Any], gameweek: int) -> dict[str, Any]:
     if not lineup.get("is_valid"):
         return {
             "formation": None,
@@ -154,6 +219,7 @@ def _lineup_summary(lineup: dict[str, Any]) -> dict[str, Any]:
             "average_fixture_score": 0.0,
             "bench_start_score": 0.0,
             "evidence": "LOW",
+            "projection": {"total": 0.0, "range_low": 0.0, "range_high": 0.0, "players": []},
         }
     starters = [row for row in lineup.get("starters") or [] if isinstance(row, dict)]
     bench = [row for row in lineup.get("bench") or [] if isinstance(row, dict)]
@@ -170,10 +236,11 @@ def _lineup_summary(lineup: dict[str, Any]) -> dict[str, Any]:
         "bench_start_score": round(_mean([_selection(player, "start_score") for player in bench]), 1),
         "average_sample_confidence": round(confidence, 1),
         "evidence": evidence,
+        "projection": _lineup_projection(lineup, gameweek),
     }
 
 
-def _position_edges(my_lineup: dict[str, Any], opponent_lineup: dict[str, Any]) -> list[dict[str, Any]]:
+def _position_edges(my_lineup: dict[str, Any], opponent_lineup: dict[str, Any], gameweek: int) -> list[dict[str, Any]]:
     my_starters = [row for row in my_lineup.get("starters") or [] if isinstance(row, dict)]
     opp_starters = [row for row in opponent_lineup.get("starters") or [] if isinstance(row, dict)]
     output = []
@@ -186,6 +253,8 @@ def _position_edges(my_lineup: dict[str, Any], opponent_lineup: dict[str, Any]) 
         opp_start = _mean([_selection(player, "start_score") for player in theirs])
         my_fixture = _mean([_selection(player, "next_fixture") for player in mine])
         opp_fixture = _mean([_selection(player, "next_fixture") for player in theirs])
+        my_points = sum(_number(player_projected_points(player, gameweek).get("projected_points")) for player in mine)
+        opp_points = sum(_number(player_projected_points(player, gameweek).get("projected_points")) for player in theirs)
         edge = my_start - opp_start
         output.append({
             "position": position,
@@ -195,6 +264,9 @@ def _position_edges(my_lineup: dict[str, Any], opponent_lineup: dict[str, Any]) 
             "opponent_start_score": round(opp_start, 1),
             "start_score_edge": round(edge, 1),
             "fixture_edge": round(my_fixture - opp_fixture, 1),
+            "projected_points_edge": round(my_points - opp_points, 1),
+            "my_projected_points": round(my_points, 1),
+            "opponent_projected_points": round(opp_points, 1),
             "signal": _signal(edge),
         })
     output.sort(key=lambda row: POSITION_ORDER.get(str(row.get("position")), 99))
@@ -217,6 +289,7 @@ def _threat_rows(lineup: dict[str, Any], gameweek: int, limit: int = 3) -> list[
             "team_code": player.get("team_code"),
             "start_score": round(_selection(player, "start_score"), 1),
             "roster_value": round(_intel(player, "roster_score"), 1),
+            "projected_points": player_projected_points(player, gameweek)["projected_points"],
             "fixture": _fixture_label(player, gameweek),
             "role_evidence": (player.get("selection") or {}).get("role_evidence"),
         }
@@ -224,83 +297,144 @@ def _threat_rows(lineup: dict[str, Any], gameweek: int, limit: int = 3) -> list[
     ]
 
 
-def _best_available_counter(
+def _scouting_report(squad: list[dict[str, Any]], lineup: dict[str, Any], gameweek: int) -> dict[str, Any]:
+    starters = [row for row in lineup.get("starters") or [] if isinstance(row, dict)]
+    bench = [row for row in lineup.get("bench") or [] if isinstance(row, dict)]
+    reserve = lineup.get("reserve_goalkeeper")
+    if isinstance(reserve, dict):
+        bench.append(reserve)
+    position_strength = []
+    for position in ("GKP", "DEF", "MID", "FWD"):
+        rows = [player for player in starters if player.get("position") == position]
+        if rows:
+            position_strength.append((position, _mean([_selection(player, "start_score") for player in rows])))
+    strongest = max(position_strength, key=lambda row: row[1])[0] if position_strength else None
+    weakest = min(position_strength, key=lambda row: row[1])[0] if position_strength else None
+    weakest_starter = min(starters, key=_player_strength) if starters else None
+    low_evidence = sum(1 for player in starters if str((player.get("selection") or {}).get("role_evidence") or "LOW") != "HIGH")
+    unavailable = sum(1 for player in squad if _intel(player, "availability_score", 100.0) < 75.0)
+    bench_avg = _mean([_selection(player, "start_score") for player in bench])
+    depth = "STRONG" if bench_avg >= 78 else "AVERAGE" if bench_avg >= 65 else "THIN"
+    return {
+        "strongest_group": strongest,
+        "weakest_group": weakest,
+        "bench_depth": depth,
+        "bench_start_score": round(bench_avg, 1),
+        "non_high_evidence_starters": low_evidence,
+        "availability_concerns": unavailable,
+        "weakest_starter": ({
+            "player_id": weakest_starter.get("player_id"),
+            "player": weakest_starter.get("player"),
+            "position": weakest_starter.get("position"),
+            "club": weakest_starter.get("club"),
+            "start_score": round(_selection(weakest_starter, "start_score"), 1),
+            "projected_points": player_projected_points(weakest_starter, gameweek)["projected_points"],
+        } if weakest_starter else None),
+    }
+
+
+def _simulate_best_move(
     available_players: list[dict[str, Any]],
     my_squad: list[dict[str, Any]],
-    position: str,
     gameweek: int,
+    baseline_lineup: dict[str, Any],
 ) -> dict[str, Any] | None:
-    owned = [player for player in my_squad if player.get("position") == position]
-    available = [player for player in available_players if player.get("position") == position]
-    if not owned or not available:
-        return None
-    ranked = []
-    owned_by_id = {str(player.get("player_id")): player for player in owned}
-    for player in available:
-        score = player_start_score(player, gameweek)
-        evidence = str(score.get("role_evidence") or "LOW").upper()
-        replacement = player.get("replacement") or {}
-        if evidence == "LOW" or _number(score.get("availability")) < 75 or replacement.get("action") == "KEEP ROSTER":
+    baseline_projection = _lineup_projection(baseline_lineup, gameweek)["total"]
+    by_id = {str(player.get("player_id")): player for player in my_squad}
+    candidates = []
+    for candidate in available_players:
+        replacement = candidate.get("replacement") or {}
+        action = str(replacement.get("action") or "")
+        if action == "KEEP ROSTER" or not action:
             continue
-        drop = owned_by_id.get(str(replacement.get("drop_player_id")))
-        if drop is None:
-            drop = min(owned, key=lambda item: _number(player_start_score(item, gameweek).get("start_score")))
-        drop_score = _number(player_start_score(drop, gameweek).get("start_score"))
-        delta = _number(score.get("start_score")) - drop_score
-        ranked.append((delta, _number(score.get("start_score")), player, score, drop, replacement))
-    if not ranked:
+        score = player_start_score(candidate, gameweek)
+        if str(score.get("role_evidence") or "LOW") == "LOW" or _number(score.get("availability")) < 75:
+            continue
+        drop = by_id.get(str(replacement.get("drop_player_id")))
+        if not drop or drop.get("position") != candidate.get("position"):
+            continue
+        swapped = [candidate if str(player.get("player_id")) == str(drop.get("player_id")) else player for player in my_squad]
+        lineup = recommend_lineup(swapped, gameweek)
+        if not lineup.get("is_valid"):
+            continue
+        projected_total = _lineup_projection(lineup, gameweek)["total"]
+        points_delta = projected_total - baseline_projection
+        roster_delta = _intel(candidate, "roster_score") - _intel(drop, "roster_score")
+        if points_delta <= 0:
+            continue
+        candidates.append({
+            "add_player_id": candidate.get("player_id"),
+            "add_player": candidate.get("player"),
+            "add_club": candidate.get("club"),
+            "team_code": candidate.get("team_code"),
+            "drop_player_id": drop.get("player_id"),
+            "drop_player": drop.get("player"),
+            "position": candidate.get("position"),
+            "projected_points_delta": round(points_delta, 1),
+            "roster_value_delta": round(roster_delta, 1),
+            "projected_xi_after": round(projected_total, 1),
+            "replacement_action": action,
+            "role_evidence": score.get("role_evidence"),
+        })
+    if not candidates:
         return None
-    delta, candidate_score, candidate, score, drop, replacement = max(ranked, key=lambda item: (item[0], item[1]))
-    if delta < TACTICAL_WATCH_THRESHOLD:
-        return None
-    return {
-        "add_player_id": candidate.get("player_id"),
-        "add_player": candidate.get("player"),
-        "add_club": candidate.get("club"),
-        "team_code": candidate.get("team_code"),
-        "drop_player_id": drop.get("player_id"),
-        "drop_player": drop.get("player"),
-        "position": position,
-        "start_score_delta": round(delta, 1),
-        "candidate_start_score": round(candidate_score, 1),
-        "role_evidence": score.get("role_evidence"),
-        "replacement_action": replacement.get("action"),
-    }
+    candidates.sort(key=lambda row: (_number(row["projected_points_delta"]), _number(row["roster_value_delta"])), reverse=True)
+    return candidates[0]
+
+
+def _matchup_pressure(projected_edge: float, best_move: dict[str, Any] | None) -> dict[str, str]:
+    if projected_edge >= 2.0:
+        level = "LOW"
+        headline = "Hold the stronger position"
+        detail = "Your projected XI currently has the edge. Do not manufacture a short-term transaction just to react to the opponent."
+    elif projected_edge >= -2.0:
+        level = "MEDIUM" if best_move and _number(best_move.get("projected_points_delta")) >= 1.5 else "LOW"
+        headline = "Fine margins"
+        detail = "The matchup projects close. Review legitimate upgrades and lineup close calls, but protect season-long roster value."
+    elif projected_edge >= -5.0:
+        level = "MEDIUM"
+        headline = "Review one targeted improvement"
+        detail = "You project slightly behind. One evidence-backed move could matter, but avoid paying a large long-term roster cost."
+    elif projected_edge >= -9.0:
+        level = "HIGH"
+        headline = "Act if the upgrade is real"
+        detail = "The projected deficit is meaningful. Prioritise a move that improves this Gameweek and does not materially weaken Roster Value."
+    else:
+        level = "VERY HIGH"
+        headline = "Active intervention warranted"
+        detail = "The projected gap is large enough to justify active waiver and lineup review, while still rejecting destructive short-term punts."
+    if best_move and _number(best_move.get("roster_value_delta")) < -8.0:
+        detail += " The best short-term move currently carries a large Roster Value cost, so treat it as a watch rather than an automatic swap."
+    return {"level": level, "headline": headline, "detail": detail}
 
 
 def _tactical_priorities(
     position_edges: list[dict[str, Any]],
-    available_players: list[dict[str, Any]],
-    my_squad: list[dict[str, Any]],
-    gameweek: int,
+    best_move: dict[str, Any] | None,
 ) -> list[dict[str, Any]]:
-    trailing = sorted(
-        [row for row in position_edges if _number(row.get("start_score_edge")) <= -EDGE_THRESHOLD],
-        key=lambda row: _number(row.get("start_score_edge")),
-    )
     priorities = []
+    trailing = sorted(position_edges, key=lambda row: _number(row.get("projected_points_edge")))
     for edge in trailing:
-        position = str(edge.get("position") or "")
-        counter = _best_available_counter(available_players, my_squad, position, gameweek)
-        if counter:
-            priorities.append({
-                "action": "H2H WAIVER WATCH",
-                "position": position,
-                "reason": f"Opponent leads {position} by {abs(_number(edge.get('start_score_edge'))):.1f} Start Score; a fit, established free agent can improve your weakest {position} slot for this Gameweek.",
-                "counter": counter,
-            })
-        else:
-            priorities.append({
-                "action": "LINEUP FOCUS",
-                "position": position,
-                "reason": f"Opponent leads {position} by {abs(_number(edge.get('start_score_edge'))):.1f} Start Score, but no evidence-backed free agent clears the tactical watch threshold.",
-                "counter": None,
-            })
+        if _number(edge.get("projected_points_edge")) >= -1.5:
+            continue
+        priorities.append({
+            "action": "POSITION FOCUS",
+            "position": edge.get("position"),
+            "reason": f"Opponent projects {abs(_number(edge.get('projected_points_edge'))):.1f} points better at {edge.get('position')} in the likely XIs.",
+            "counter": best_move if best_move and best_move.get("position") == edge.get("position") else None,
+        })
+    if best_move and not any(priority.get("counter") for priority in priorities):
+        priorities.insert(0, {
+            "action": "MATCHUP UPGRADE",
+            "position": best_move.get("position"),
+            "reason": f"The strongest evidence-backed move adds about {_number(best_move.get('projected_points_delta')):.1f} projected XI points this Gameweek.",
+            "counter": best_move,
+        })
     if not priorities:
         priorities.append({
             "action": "HOLD SHAPE",
             "position": None,
-            "reason": "No position group trails the opponent by 3.0 Start Score or more. Avoid forcing a matchup-specific move without a clear roster upgrade.",
+            "reason": "No meaningful projected position deficit or evidence-backed tactical upgrade is present. Avoid forcing a matchup-specific move.",
             "counter": None,
         })
     return priorities[:3]
@@ -315,85 +449,51 @@ def build_h2h_matchup(
     gameweek: int,
     my_lineup: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Build opponent-aware next-Gameweek intelligence for an H2H Draft league.
-
-    The comparison uses the same legal-XI Start Score heuristic for both teams.
-    It deliberately does not output a win probability because Start Score is a
-    normalized decision signal rather than a calibrated expected-points model.
-    """
+    """Build an opponent scouting report for the next H2H Draft matchup."""
     my_entry = _find_entry(league_details, str(my_entry_id))
     if not my_entry:
-        return {
-            "model": "v0.8",
-            "available": False,
-            "gameweek": int(gameweek),
-            "reason": "Could not map the configured Draft entry to a league entry.",
-        }
+        return {"model": "v1.0", "available": False, "gameweek": int(gameweek), "reason": "Could not map the configured Draft entry to a league entry."}
     my_league_id = _league_entry_id(my_entry)
     if my_league_id is None:
-        return {
-            "model": "v0.8",
-            "available": False,
-            "gameweek": int(gameweek),
-            "reason": "The league entry does not expose an internal H2H identifier.",
-        }
+        return {"model": "v1.0", "available": False, "gameweek": int(gameweek), "reason": "The league entry does not expose an internal H2H identifier."}
     match = _find_match(league_details, my_league_id, int(gameweek))
     if not match:
-        return {
-            "model": "v0.8",
-            "available": False,
-            "gameweek": int(gameweek),
-            "reason": "No upcoming H2H match was exposed by the league details payload.",
-        }
+        return {"model": "v1.0", "available": False, "gameweek": int(gameweek), "reason": "No upcoming H2H match was exposed by the league details payload."}
     match_gameweek = _match_event(match) or int(gameweek)
     first, second = _match_side_ids(match)
     opponent_league_id = second if first == my_league_id else first
     if opponent_league_id is None:
-        return {
-            "model": "v0.8",
-            "available": False,
-            "gameweek": match_gameweek,
-            "reason": "The upcoming H2H match did not expose an opponent league entry.",
-        }
+        return {"model": "v1.0", "available": False, "gameweek": match_gameweek, "reason": "The upcoming H2H match did not expose an opponent league entry."}
+
     opponent_entry = _entry_by_league_id(league_details, opponent_league_id) or {}
     opponent_entry_id = _entry_id(opponent_entry)
     opponent_squad = _squad_for_entry(ownership, opponent_league_id, opponent_entry_id)
     if len(opponent_squad) < 11:
         return {
-            "model": "v0.8",
-            "available": False,
-            "gameweek": match_gameweek,
-            "opponent": {
-                "display_name": opponent_entry.get("entry_name") or opponent_entry.get("short_name") or "League opponent",
-                "league_entry_id": opponent_league_id,
-                "entry_id": opponent_entry_id,
-                **_standing(league_details, opponent_league_id),
-            },
+            "model": "v1.0", "available": False, "gameweek": match_gameweek,
+            "opponent": {"display_name": opponent_entry.get("entry_name") or opponent_entry.get("short_name") or "League opponent", "league_entry_id": opponent_league_id, "entry_id": opponent_entry_id, **_standing(league_details, opponent_league_id)},
             "reason": f"Opponent ownership resolved to only {len(opponent_squad)} players; a legal comparison would be unreliable.",
         }
 
     mine = my_lineup or recommend_lineup(my_squad, match_gameweek)
     theirs = recommend_lineup(opponent_squad, match_gameweek)
     if not mine.get("is_valid") or not theirs.get("is_valid"):
-        return {
-            "model": "v0.8",
-            "available": False,
-            "gameweek": match_gameweek,
-            "reason": "A legal toolkit XI could not be generated for both sides.",
-        }
+        return {"model": "v1.0", "available": False, "gameweek": match_gameweek, "reason": "A legal toolkit XI could not be generated for both sides."}
 
-    my_summary = _lineup_summary(mine)
-    opponent_summary = _lineup_summary(theirs)
+    my_summary = _lineup_summary(mine, match_gameweek)
+    opponent_summary = _lineup_summary(theirs, match_gameweek)
     start_edge = _number(my_summary.get("average_start_score")) - _number(opponent_summary.get("average_start_score"))
     roster_edge = _number(my_summary.get("average_roster_value")) - _number(opponent_summary.get("average_roster_value"))
     fixture_edge = _number(my_summary.get("average_fixture_score")) - _number(opponent_summary.get("average_fixture_score"))
-    position_edges = _position_edges(mine, theirs)
-    evidence_values = [my_summary.get("average_sample_confidence"), opponent_summary.get("average_sample_confidence")]
-    evidence_floor = min(_number(value) for value in evidence_values)
+    projected_edge = _number((my_summary.get("projection") or {}).get("total")) - _number((opponent_summary.get("projection") or {}).get("total"))
+    position_edges = _position_edges(mine, theirs, match_gameweek)
+    evidence_floor = min(_number(my_summary.get("average_sample_confidence")), _number(opponent_summary.get("average_sample_confidence")))
     matchup_evidence = "HIGH" if evidence_floor >= 70 else "MEDIUM" if evidence_floor >= 40 else "LOW"
+    best_move = _simulate_best_move(available_players, my_squad, match_gameweek, mine)
+    pressure = _matchup_pressure(projected_edge, best_move)
 
     return {
-        "model": "v0.8",
+        "model": "v1.0",
         "available": True,
         "gameweek": match_gameweek,
         "opponent": {
@@ -408,16 +508,23 @@ def build_h2h_matchup(
             "start_score_edge": round(start_edge, 1),
             "roster_value_edge": round(roster_edge, 1),
             "fixture_edge": round(fixture_edge, 1),
+            "projected_points_edge": round(projected_edge, 1),
             "evidence": matchup_evidence,
+            "pressure": pressure,
             "my": my_summary,
             "opponent": opponent_summary,
             "position_edges": position_edges,
+        },
+        "scouting": {
+            "opponent": _scouting_report(opponent_squad, theirs, match_gameweek),
+            "mine": _scouting_report(my_squad, mine, match_gameweek),
+            "best_matchup_move": best_move,
         },
         "my_lineup": mine,
         "opponent_lineup": theirs,
         "opponent_squad": opponent_squad,
         "opponent_threats": _threat_rows(theirs, match_gameweek),
         "my_counterweights": _threat_rows(mine, match_gameweek),
-        "tactical_priorities": _tactical_priorities(position_edges, available_players, my_squad, match_gameweek),
-        "note": "Opponent XI is a toolkit estimate built with the same legal-lineup Start Score model as your Recommended XI. EDGE / EVEN / TRAIL is a relative heuristic, not a win probability or projected FPL score.",
+        "tactical_priorities": _tactical_priorities(position_edges, best_move),
+        "note": "Projected points v1.0 converts blended points-per-90, expected minutes, availability and fixture difficulty into a conservative next-GW estimate. Ranges widen for weaker role evidence. They are decision-support estimates, not calibrated statistical intervals or win probabilities.",
     }
