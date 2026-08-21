@@ -1,22 +1,29 @@
 function recommendedPitchPlayer(p) {
   const selection = p.selection || {};
   const gw = DATA.recommended_lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
+  const evidence = selection.role_evidence ? ` · ${esc(selection.role_evidence)} evidence` : '';
   return `<button class="pitch-player recommended-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
     <span class="shirt"><span>${esc(p.club || '')}</span></span>
     <span class="player-label">${esc(p.player)}</span>
     <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
-    <span class="start-score" title="Toolkit Start Score; not projected FPL points">Start ${esc(selection.start_score ?? '-')}</span>
+    <span class="start-score" title="Toolkit Start Score; not projected FPL points">Start ${esc(selection.start_score ?? '-')}${evidence}</span>
   </button>`;
 }
 
 function recommendedBenchCard(p, label) {
   const selection = p.selection || {};
   const gw = DATA.recommended_lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
+  const evidence = selection.role_evidence ? ` · ${esc(selection.role_evidence)} evidence` : '';
   return `<button class="bench-card recommended-bench-card" data-player-id="${esc(p.player_id)}">
     <span class="bench-shirt">${esc(p.club || '')}</span>
     <strong>${esc(label)} · ${esc(p.player)}</strong>
-    <small>${esc(p.position)} · ${esc(fixtureLabel(p, gw))} · Start ${esc(selection.start_score ?? '-')}</small>
+    <small>${esc(p.position)} · ${esc(fixtureLabel(p, gw))} · Start ${esc(selection.start_score ?? '-')}${evidence}</small>
   </button>`;
+}
+
+function closeCallBanner(call) {
+  if (!call) return '';
+  return `<div class="close-call-banner"><strong>Close selection call</strong><span>${esc(call.starter)} starts over ${esc(call.alternative)} by only ${esc(call.margin)} Start Score. Treat this as marginal, not decisive.</span></div>`;
 }
 
 function renderRecommendedPitch() {
@@ -33,9 +40,11 @@ function renderRecommendedPitch() {
     reserve ? recommendedBenchCard(reserve, 'Reserve GKP') : '',
     ...bench.map((player, index) => recommendedBenchCard(player, `Bench ${index + 1}`)),
   ].join('');
+  const primaryCloseCall = (rec.close_calls || [])[0];
   return `<div class="recommendation-banner"><strong>Toolkit Recommended XI · GW${esc(rec.gameweek)}</strong><span>This is decision support only—not your submitted Draft lineup and not a projected-points model.</span></div>
+    ${closeCallBanner(primaryCloseCall)}
     <section class="pitch-shell recommended-xi-shell">
-      <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(rec.formation)} formation</span><span class="recommended-lineup-badge">Recommended · v0.6</span><span>Avg Start Score ${esc(rec.average_start_score ?? '-')}</span></div></div>
+      <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(rec.formation)} formation</span><span class="recommended-lineup-badge">Recommended · v0.6.1</span><span>Avg Start Score ${esc(rec.average_start_score ?? '-')}</span></div></div>
       <div class="pitch"><div class="halfway"></div>${row('gkp',pos('GKP'))}${row('def',pos('DEF'))}${row('mid',pos('MID'))}${row('fwd',pos('FWD'))}</div>
       <div class="bench"><h3>Recommended bench order</h3><div class="bench-row">${benchCards}</div></div>
     </section>`;
