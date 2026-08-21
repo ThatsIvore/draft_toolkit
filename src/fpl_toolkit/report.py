@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
+from .fixtures import bootstrap_events
+
 
 def find_user_manager(league_details: dict[str, Any], entry_id: str) -> dict[str, Any] | None:
     entries = league_details.get("league_entries") or league_details.get("entries") or []
@@ -16,7 +18,7 @@ def find_user_manager(league_details: dict[str, Any], entry_id: str) -> dict[str
 
 
 def current_gameweek(bootstrap: dict[str, Any], planning_gameweeks: list[int] | None = None) -> int | None:
-    events = bootstrap.get("events", [])
+    events = bootstrap_events(bootstrap)
     for event in events:
         if isinstance(event, dict) and event.get("is_current"):
             return int(event["id"])
