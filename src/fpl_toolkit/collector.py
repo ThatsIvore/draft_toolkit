@@ -11,6 +11,7 @@ from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
+from .optimizer import recommend_lineup
 from .report import build_report, current_gameweek
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
@@ -91,6 +92,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
+    report["recommended_lineup"] = recommend_lineup(report.get("my_squad", []), lineup_gw)
+
     lineup = None
     try:
         lineup_payload = client.entry_event(settings.draft_entry_id, lineup_gw)
