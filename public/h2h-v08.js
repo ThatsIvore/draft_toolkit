@@ -120,7 +120,7 @@ function renderH2H() {
     <div class="h2h-position-grid">${positions.map(row => `<article class="h2h-position-card ${h2hSignalClass(row.signal)}"><div><strong>${esc(row.position)}</strong><span>${esc(row.signal)}</span></div><div class="h2h-position-main"><small>Projected edge</small><b>${esc(h2hSigned(row.projected_points_edge))}</b></div><div class="h2h-position-sub"><span>You ${esc(h2hScore(row.my_projected_points))}</span><span>Opp ${esc(h2hScore(row.opponent_projected_points))}</span><span>Start ${esc(h2hSigned(row.start_score_edge))}</span></div></article>`).join('')}</div>
 
     <div class="h2h-lineups">
-      <section><div class="h2h-section-head"><div><h3>Your likely XI</h3><p>${esc(my.formation || '-')} · ${esc(h2hScore(myProjection.total))} projected points.</p></div></div><div class="h2h-player-list">${myLineup.map(player => h2hPlayerRow(player, mine)).join('')}</div></section>
+      <section><div class="h2h-section-head"><div><h3>Your likely XI</h3><p>${esc(mine.formation || '-')} · ${esc(h2hScore(myProjection.total))} projected points.</p></div></div><div class="h2h-player-list">${myLineup.map(player => h2hPlayerRow(player, mine)).join('')}</div></section>
       <section><div class="h2h-section-head"><div><h3>Opponent likely XI</h3><p>${esc(opponent.formation || '-')} · ${esc(h2hScore(opponentProjection.total))} projected points. Estimated from their owned 15.</p></div></div><div class="h2h-player-list">${opponentLineup.map(player => h2hPlayerRow(player, opponent)).join('')}</div></section>
     </div>
 
