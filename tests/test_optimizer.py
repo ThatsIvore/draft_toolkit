@@ -108,6 +108,7 @@ def test_optimizer_flags_narrow_same_position_selection_as_close_call():
     squad = _standard_squad()
     starter = next(player for player in squad if player["player_id"] == 13)
     alternative = next(player for player in squad if player["player_id"] == 14)
+    third_forward = next(player for player in squad if player["player_id"] == 15)
     starter["intelligence"].update({
         "floor_score": 70,
         "upside_score": 70,
@@ -121,6 +122,13 @@ def test_optimizer_flags_narrow_same_position_selection_as_close_call():
         "roster_score": 69,
         "sample_confidence": 55,
         "role_evidence": "MEDIUM",
+    })
+    # Keep the third forward well below the decision boundary so this fixture
+    # deterministically tests P13 starting versus P14 on the bench.
+    third_forward["intelligence"].update({
+        "floor_score": 20,
+        "upside_score": 20,
+        "roster_score": 20,
     })
     result = recommend_lineup(squad, 1)
     pairs = {(call["starter_player_id"], call["alternative_player_id"]) for call in result["close_calls"]}
