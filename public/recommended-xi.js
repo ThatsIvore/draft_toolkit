@@ -1,12 +1,29 @@
+function fplKitUrl(p) {
+  const code = Number(p.team_code || 0);
+  if (!code) return '';
+  const goalkeeper = p.position === 'GKP' ? '_1' : '';
+  return `https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_${code}${goalkeeper}-66.png`;
+}
+
+function recommendedKit(p, compact = false) {
+  const url = fplKitUrl(p);
+  const cls = compact ? 'recommended-kit compact' : 'recommended-kit';
+  const fallback = `<span class="kit-fallback">${esc(p.club || '')}</span>`;
+  if (!url) return `<span class="${cls}">${fallback}</span>`;
+  return `<span class="${cls}">${fallback}<img src="${esc(url)}" alt="${esc(p.club || '')} kit" loading="lazy" onerror="this.remove()"></span>`;
+}
+
 function recommendedPitchPlayer(p) {
   const selection = p.selection || {};
   const gw = DATA.recommended_lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
-  const evidence = selection.role_evidence ? ` · ${esc(selection.role_evidence)} evidence` : '';
-  return `<button class="pitch-player recommended-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence">
-    <span class="shirt"><span>${esc(p.club || '')}</span></span>
-    <span class="player-label">${esc(p.player)}</span>
-    <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
-    <span class="start-score" title="Toolkit Start Score; not projected FPL points">Start ${esc(selection.start_score ?? '-')}${evidence}</span>
+  const evidence = selection.role_evidence ? `${esc(selection.role_evidence)} evidence` : '';
+  return `<button class="pitch-player recommended-player ${availabilityClass(p)}" data-player-id="${esc(p.player_id)}" title="Open ${esc(p.player)} intelligence${evidence ? ` · ${evidence}` : ''}">
+    ${recommendedKit(p)}
+    <span class="recommended-card-plate">
+      <span class="player-label">${esc(p.player)}</span>
+      <span class="next-fixture">${esc(fixtureLabel(p, gw))}</span>
+      <span class="start-score" title="Toolkit Start Score; not projected FPL points">Start ${esc(selection.start_score ?? '-')}</span>
+    </span>
   </button>`;
 }
 
@@ -15,7 +32,7 @@ function recommendedBenchCard(p, label) {
   const gw = DATA.recommended_lineup?.gameweek || DATA.planning_gameweeks?.[0] || 1;
   const evidence = selection.role_evidence ? ` · ${esc(selection.role_evidence)} evidence` : '';
   return `<button class="bench-card recommended-bench-card" data-player-id="${esc(p.player_id)}">
-    <span class="bench-shirt">${esc(p.club || '')}</span>
+    ${recommendedKit(p, true)}
     <strong>${esc(label)} · ${esc(p.player)}</strong>
     <small>${esc(p.position)} · ${esc(fixtureLabel(p, gw))} · Start ${esc(selection.start_score ?? '-')}${evidence}</small>
   </button>`;
@@ -44,7 +61,7 @@ function renderRecommendedPitch() {
   return `<div class="recommendation-banner"><strong>Toolkit Recommended XI · GW${esc(rec.gameweek)}</strong><span>This is decision support only—not your submitted Draft lineup and not a projected-points model.</span></div>
     ${closeCallBanner(primaryCloseCall)}
     <section class="pitch-shell recommended-xi-shell">
-      <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(rec.formation)} formation</span><span class="recommended-lineup-badge">Recommended · v0.6.1</span><span>Avg Start Score ${esc(rec.average_start_score ?? '-')}</span></div></div>
+      <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(rec.formation)} formation</span><span class="recommended-lineup-badge">Recommended · v0.6.2</span><span>Avg Start Score ${esc(rec.average_start_score ?? '-')}</span></div></div>
       <div class="pitch"><div class="halfway"></div>${row('gkp',pos('GKP'))}${row('def',pos('DEF'))}${row('mid',pos('MID'))}${row('fwd',pos('FWD'))}</div>
       <div class="bench"><h3>Recommended bench order</h3><div class="bench-row">${benchCards}</div></div>
     </section>`;
