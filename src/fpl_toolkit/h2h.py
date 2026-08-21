@@ -76,6 +76,7 @@ def _match_result(match: dict[str, Any], my_league_id: str, phase: str) -> dict[
     opponent_key = "league_entry_2_points" if first == str(my_league_id) else "league_entry_1_points"
     return {
         "status": phase,
+        "source": "league_details",
         "my_points": _number(match.get(mine_key)),
         "opponent_points": _number(match.get(opponent_key)),
         "finished": bool(match.get("finished")) or phase == "FINAL",

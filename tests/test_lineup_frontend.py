@@ -16,3 +16,4 @@ def test_official_lineup_reuses_the_fpl_kit_and_card_components():
     assert "event_points" in app
     assert "Live score" in app
     assert "h2hOutcomePanel" in Path("public/h2h-v08.js").read_text(encoding="utf-8")
+    assert "Estimated live score" in Path("public/h2h-v08.js").read_text(encoding="utf-8")

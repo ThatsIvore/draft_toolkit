@@ -70,7 +70,7 @@ def _capture_forecast(report: dict[str, Any], gameweek: int, phase: str) -> dict
     }
 
 
-def _actuals(report: dict[str, Any], forecast: dict[str, Any]) -> dict[str, Any]:
+def _actuals(report: dict[str, Any], forecast: dict[str, Any], phase: str) -> dict[str, Any]:
     squad = {
         int(player["player_id"]): player
         for player in report.get("my_squad") or []
@@ -92,6 +92,19 @@ def _actuals(report: dict[str, Any], forecast: dict[str, Any]) -> dict[str, Any]
     h2h_result = (report.get("h2h_matchup") or {}).get("result") or {}
     my_points = _number(h2h_result.get("my_points"))
     opponent_points = _number(h2h_result.get("opponent_points"))
+    h2h_score_source = h2h_result.get("source") or "league_details"
+    if phase in {"LIVE", "FINAL"} and my_points == 0 and opponent_points == 0:
+        opponent_lineup = (report.get("h2h_matchup") or {}).get("opponent_lineup") or {}
+        estimated_opponent = sum(
+            _number(player.get("event_points"))
+            for player in opponent_lineup.get("starters") or []
+            if isinstance(player, dict)
+        )
+        estimated_mine = _number(official_points, recommended_points)
+        if estimated_mine != 0 or estimated_opponent != 0:
+            my_points = estimated_mine
+            opponent_points = estimated_opponent
+            h2h_score_source = "estimated_lineups"
     result = "DRAW" if my_points == opponent_points else "WIN" if my_points > opponent_points else "LOSS"
     return {
         "recommended_points": round(recommended_points, 1),
@@ -101,6 +114,7 @@ def _actuals(report: dict[str, Any], forecast: dict[str, Any]) -> dict[str, Any]
         "h2h_opponent_points": round(opponent_points, 1),
         "h2h_edge": round(my_points - opponent_points, 1),
         "h2h_result": result,
+        "h2h_score_source": h2h_score_source,
     }
 
 
@@ -134,7 +148,7 @@ def build_outcome_diagnostics(
     else:
         forecast = _capture_forecast(report, gameweek, phase)
 
-    actual = _actuals(report, forecast)
+    actual = _actuals(report, forecast, phase)
     current = {
         "gameweek": gameweek,
         "phase": phase,

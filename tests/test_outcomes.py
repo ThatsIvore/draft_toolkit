@@ -79,3 +79,18 @@ def test_mid_gameweek_first_capture_is_not_a_calibration_sample():
 
     assert diagnostics["current"]["forecast"]["calibration_eligible"] is False
     assert "excluded" in diagnostics["note"]
+
+
+def test_zero_zero_live_league_score_uses_a_labelled_lineup_estimate():
+    report = _report("LIVE", points=7, h2h_points=(0, 0))
+    report["h2h_matchup"]["opponent_lineup"] = {
+        "starters": [{"player_id": 99, "event_points": 4}]
+    }
+
+    diagnostics = build_outcome_diagnostics(None, report, "LIVE")
+    actual = diagnostics["current"]["actual"]
+
+    assert actual["h2h_my_points"] == 7.0
+    assert actual["h2h_opponent_points"] == 4.0
+    assert actual["h2h_result"] == "WIN"
+    assert actual["h2h_score_source"] == "estimated_lineups"
