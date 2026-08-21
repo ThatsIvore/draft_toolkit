@@ -5,8 +5,34 @@ from typing import Any
 from .normalize import team_lookup
 
 
+def bootstrap_events(bootstrap: dict[str, Any]) -> list[dict[str, Any]]:
+    """Normalize the event shapes exposed by the FPL and FPL Draft APIs."""
+    raw_events = bootstrap.get("events", [])
+    if isinstance(raw_events, list):
+        return [dict(event) for event in raw_events if isinstance(event, dict)]
+    if not isinstance(raw_events, dict):
+        return []
+
+    rows = raw_events.get("data") or raw_events.get("events") or []
+    if not isinstance(rows, list):
+        return []
+    current_id = raw_events.get("current")
+    next_id = raw_events.get("next")
+    events = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        event = dict(row)
+        if current_id is not None:
+            event["is_current"] = str(event.get("id")) == str(current_id)
+        if next_id is not None:
+            event["is_next"] = str(event.get("id")) == str(next_id)
+        events.append(event)
+    return events
+
+
 def planning_gameweeks(bootstrap: dict[str, Any], horizon: int, fixtures: list[dict[str, Any]] | None = None) -> list[int]:
-    events = [e for e in bootstrap.get("events", []) if isinstance(e, dict) and e.get("id") is not None]
+    events = [e for e in bootstrap_events(bootstrap) if e.get("id") is not None]
     events.sort(key=lambda e: int(e["id"]))
     if events:
         start_index = None
