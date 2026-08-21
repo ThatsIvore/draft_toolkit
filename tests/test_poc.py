@@ -3,6 +3,7 @@ import pytest
 from fpl_toolkit.config import ConfigError, Settings
 from fpl_toolkit.diff import diff_ownership
 from fpl_toolkit.fixtures import build_team_fixture_matrix, planning_gameweeks
+from fpl_toolkit.intelligence import attach_intelligence
 from fpl_toolkit.lineup import fallback_lineup, normalize_lineup
 from fpl_toolkit.normalize import discover_league_ids, normalize_ownership
 from fpl_toolkit.privacy import sanitize_public_report
@@ -32,8 +33,10 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
     changes = diff_ownership(before, after)
     assert changes[0]["type"] == "drop"
     assert changes[0]["from_owner_name"] == "Opponent XI"
-    matrix = build_team_fixture_matrix([{"event": 1, "team_h": 1, "team_a": 2}], bootstrap, 4)
+    matrix = build_team_fixture_matrix([{"event": 1, "team_h": 1, "team_a": 2, "team_h_difficulty": 2, "team_a_difficulty": 4}], bootstrap, 4)
     assert matrix["1"][0]["matches"][0]["opponent"] == "CHE"
+    assert matrix["1"][0]["matches"][0]["difficulty"] == 2
+    assert matrix["2"][0]["matches"][0]["difficulty"] == 4
 
 
 def test_preseason_planning_uses_fixture_event_ids():
@@ -47,6 +50,46 @@ def test_preseason_planning_uses_fixture_event_ids():
     ]
     assert planning_gameweeks(bootstrap, 4, fixtures) == [1, 2, 3, 4]
     assert current_gameweek(bootstrap, [1, 2, 3, 4]) == 0
+
+
+def test_intelligence_rewards_strong_baseline_and_easy_fixtures():
+    players = [
+        {
+            "player_id": 1,
+            "position": "MID",
+            "total_points": 180,
+            "chance_next_round": 100,
+            "news": "",
+            "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 2}]} for gw in range(1, 5)],
+        },
+        {
+            "player_id": 2,
+            "position": "MID",
+            "total_points": 60,
+            "chance_next_round": 100,
+            "news": "",
+            "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 4}]} for gw in range(1, 5)],
+        },
+    ]
+    enriched = attach_intelligence(players)
+    assert enriched[0]["intelligence"]["roster_score"] > enriched[1]["intelligence"]["roster_score"]
+    assert enriched[0]["intelligence"]["fixture_score"] > enriched[1]["intelligence"]["fixture_score"]
+
+
+def test_intelligence_suppresses_players_who_left_the_league():
+    players = [
+        {
+            "player_id": 1,
+            "position": "DEF",
+            "total_points": 200,
+            "chance_next_round": 0,
+            "news": "Has joined Another Club permanently",
+            "fixtures": [{"gameweek": 1, "matches": [{"difficulty": 1}]}],
+        }
+    ]
+    enriched = attach_intelligence(players)
+    assert enriched[0]["intelligence"]["roster_score"] < 10
+    assert enriched[0]["intelligence"]["stash_score"] < 10
 
 
 def test_normalizes_exact_draft_lineup_and_bench_order():
