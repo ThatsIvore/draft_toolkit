@@ -152,8 +152,11 @@ renderPlanner = function() {
 const v09Render = render;
 render = function() {
   v09Render();
-  const button = document.querySelector('[data-view="changes"]');
-  if (!button || !DATA) return;
+  if (!DATA) return;
   const count = groupedChangeItems(changeFeed().items || []).length;
-  button.innerHTML = `What Changed?${count ? `<span class="nav-change-count">${esc(count)}</span>` : ''}`;
+  const button = document.querySelector('[data-view="changes"]');
+  if (button) button.innerHTML = `What Changed?${count ? `<span class="nav-change-count">${esc(count)}</span>` : ''}`;
+  const heroStats = document.querySelectorAll('#hero .stat');
+  const heroChangeValue = heroStats[2]?.querySelector('strong');
+  if (heroChangeValue) heroChangeValue.textContent = String(count);
 };
