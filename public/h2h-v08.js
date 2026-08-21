@@ -53,6 +53,13 @@ function h2hPriorityCard(priority) {
   </article>`;
 }
 
+function h2hDisclosure(index, title, detail, content, tone) {
+  return `<details class="h2h-disclosure tone-${esc(tone)}">
+    <summary><span class="h2h-disclosure-index">${esc(index)}</span><span class="h2h-disclosure-title"><strong>${esc(title)}</strong><small>${esc(detail)}</small></span><span class="h2h-disclosure-action">Explore</span></summary>
+    <div class="h2h-disclosure-body">${content}</div>
+  </details>`;
+}
+
 function scoutWeakStarter(row) {
   if (!row) return 'None identified';
   return `${esc(row.player)} · ${esc(row.position)} · ${esc(h2hScore(row.projected_points))} proj.`;
@@ -114,12 +121,13 @@ function renderH2HOutlook() {
   return `<section class="h2h-outlook-shell">
     <div class="h2h-section-head"><div><div class="eyebrow">Four-Gameweek H2H Outlook · v1.1</div><h3>See the schedule before it becomes urgent</h3><p>Every card uses current rosters. The active Gameweek keeps its frozen forecast; future cards refresh after transfers, availability news and each collection.</p></div></div>
     <div class="h2h-outlook-summary">
-      <span><small>Schedule shape</small><strong>${esc(signals.EDGE || 0)} edge · ${esc(signals.EVEN || 0)} even · ${esc(signals.TRAIL || 0)} trail</strong></span>
-      <span><small>Projected four-GW total</small><strong>${esc(h2hScore(summary.projected_for))}–${esc(h2hScore(summary.projected_against))}</strong></span>
-      <span><small>Toughest matchup</small><strong>${toughest.gameweek ? `GW${esc(toughest.gameweek)} · ${esc(h2hSigned(toughest.projected_edge))}` : '-'}</strong></span>
-      <span><small>Best opportunity</small><strong>${best.gameweek ? `GW${esc(best.gameweek)} · ${esc(h2hSigned(best.projected_edge))}` : '-'}</strong></span>
-      <span><small>Recurring weakness</small><strong>${weakness.position ? `${esc(weakness.position)} · ${esc(h2hSigned(weakness.average_projected_edge))}` : 'None identified'}</strong></span>
+      <span class="tone-schedule"><small>Schedule shape</small><strong>${esc(signals.EDGE || 0)} edge · ${esc(signals.EVEN || 0)} even · ${esc(signals.TRAIL || 0)} trail</strong></span>
+      <span class="tone-total"><small>Projected four-GW total</small><strong>${esc(h2hScore(summary.projected_for))}–${esc(h2hScore(summary.projected_against))}</strong></span>
+      <span class="tone-tough"><small>Toughest matchup</small><strong>${toughest.gameweek ? `GW${esc(toughest.gameweek)} · ${esc(h2hSigned(toughest.projected_edge))}` : '-'}</strong></span>
+      <span class="tone-best"><small>Best opportunity</small><strong>${best.gameweek ? `GW${esc(best.gameweek)} · ${esc(h2hSigned(best.projected_edge))}` : '-'}</strong></span>
+      <span class="tone-weakness"><small>Recurring weakness</small><strong>${weakness.position ? `${esc(weakness.position)} · ${esc(h2hSigned(weakness.average_projected_edge))}` : 'None identified'}</strong></span>
     </div>
+    <small class="h2h-swipe-hint">Swipe to explore every Gameweek →</small>
     <div class="h2h-outlook-grid">${outlook.gameweeks.map(h2hOutlookCard).join('')}</div>
     <div class="h2h-note">${esc(outlook.note || '')}</div>
   </section>`;
@@ -128,7 +136,7 @@ function renderH2HOutlook() {
 function renderH2H() {
   const h2h = DATA.h2h_matchup;
   if (!h2h || !h2h.available) {
-    return `<section class="h2h-v08"><div class="h2h-empty"><div class="eyebrow">H2H Scout · v1.1</div><h3>Opponent comparison unavailable</h3><p>${esc(h2h?.reason || 'The current league payload did not expose enough H2H matchup data yet.')}</p></div>${renderH2HOutlook()}</section>`;
+    return `<section class="h2h-v08"><div class="h2h-empty"><div class="eyebrow">H2H Scout · v1.2</div><h3>Opponent comparison unavailable</h3><p>${esc(h2h?.reason || 'The current league payload did not expose enough H2H matchup data yet.')}</p></div>${renderH2HOutlook()}</section>`;
   }
   const matchup = h2h.matchup || {};
   const mine = matchup.my || {};
@@ -148,29 +156,7 @@ function renderH2H() {
   const threats = h2h.opponent_threats || [];
   const counters = h2h.my_counterweights || [];
   const priorities = h2h.tactical_priorities || [];
-  return `<section class="h2h-v08 h2h-v10">
-    <div class="h2h-intro">
-      <div><div class="eyebrow">H2H Scout · v1.1 · GW${esc(h2h.gameweek)}</div><h3>Scout the matchup before you change the squad</h3><p>Projected points estimate the likely XI outcome from blended points-per-90, expected minutes, availability and fixture difficulty. Start Score remains the lineup-selection heuristic.</p></div>
-      <div class="h2h-opponent"><small>Upcoming opponent</small><strong>${esc(opponentName)}</strong><span>${rank}${opponentMeta.h2h_points != null ? ` · ${esc(opponentMeta.h2h_points)} H2H pts` : ''}</span></div>
-    </div>
-
-    ${h2hOutcomePanel()}
-
-    ${renderH2HOutlook()}
-
-    <div class="h2h-projection-balance ${h2hSignalClass(matchup.signal)}">
-      <div><small>Your projected XI</small><strong>${esc(h2hScore(myProjection.total))}</strong><span>${esc(h2hScore(myProjection.range_low))}–${esc(h2hScore(myProjection.range_high))} uncertainty band</span></div>
-      <div class="h2h-balance-centre"><span class="h2h-signal">${esc(matchup.signal || 'EVEN')}</span><strong>${esc(h2hSigned(matchup.projected_points_edge))}</strong><small>projected-point edge</small></div>
-      <div><small>Opponent projected XI</small><strong>${esc(h2hScore(opponentProjection.total))}</strong><span>${esc(h2hScore(opponentProjection.range_low))}–${esc(h2hScore(opponentProjection.range_high))} uncertainty band</span></div>
-    </div>
-
-    <div class="h2h-pressure pressure-${pressureClass(pressure.level)}">
-      <div><small>Change urgency</small><strong>${esc(pressure.level || 'LOW')}</strong></div>
-      <div><h4>${esc(pressure.headline || 'Review matchup')}</h4><p>${esc(pressure.detail || '')}</p></div>
-      ${bestMove ? `<button class="h2h-best-move" data-player-id="${esc(bestMove.add_player_id)}"><small>Best evidence-backed move</small><strong>Add ${esc(bestMove.add_player)} · Drop ${esc(bestMove.drop_player)}</strong><span>${esc(h2hSigned(bestMove.projected_points_delta))} projected pts · ${esc(h2hSigned(bestMove.roster_value_delta))} Roster Value</span></button>` : `<div class="h2h-best-move muted"><small>Best evidence-backed move</small><strong>No tactical swap clears the guardrails</strong></div>`}
-    </div>
-
-    <div class="h2h-scout-grid">
+  const scoutDetails = `<div class="h2h-scout-grid">
       <article><small>Opponent formation</small><strong>${esc(opponent.formation || '-')}</strong><span>Estimated legal XI</span></article>
       <article><small>Strongest group</small><strong>${esc(oppScout.strongest_group || '-')}</strong><span>By average Start Score</span></article>
       <article><small>Weakest group</small><strong>${esc(oppScout.weakest_group || '-')}</strong><span>Potential attack point</span></article>
@@ -179,28 +165,52 @@ function renderH2H() {
       <article><small>Availability concerns</small><strong>${esc(oppScout.availability_concerns ?? '-')}</strong><span>Squad players below 75 availability</span></article>
       <article class="wide"><small>Weakest likely starter</small><strong>${scoutWeakStarter(oppScout.weakest_starter)}</strong></article>
     </div>
-
     <div class="h2h-secondary-edges">
       <span><small>Start Score edge</small><strong>${esc(h2hSigned(matchup.start_score_edge))}</strong></span>
       <span><small>Roster-value edge</small><strong>${esc(h2hSigned(matchup.roster_value_edge))}</strong></span>
       <span><small>Fixture edge</small><strong>${esc(h2hSigned(matchup.fixture_edge))}</strong></span>
       <span><small>Model evidence</small><strong>${esc(matchup.evidence || 'LOW')}</strong></span>
     </div>
-
     <div class="h2h-section-head"><div><h3>Where the matchup is won</h3><p>Projected-point differences show the estimated GW contribution by position; Start Score remains useful for lineup confidence.</p></div></div>
-    <div class="h2h-position-grid">${positions.map(row => `<article class="h2h-position-card ${h2hSignalClass(row.signal)}"><div><strong>${esc(row.position)}</strong><span>${esc(row.signal)}</span></div><div class="h2h-position-main"><small>Projected edge</small><b>${esc(h2hSigned(row.projected_points_edge))}</b></div><div class="h2h-position-sub"><span>You ${esc(h2hScore(row.my_projected_points))}</span><span>Opp ${esc(h2hScore(row.opponent_projected_points))}</span><span>Start ${esc(h2hSigned(row.start_score_edge))}</span></div></article>`).join('')}</div>
-
-    <div class="h2h-lineups">
+    <div class="h2h-position-grid">${positions.map(row => `<article class="h2h-position-card ${h2hSignalClass(row.signal)}"><div><strong>${esc(row.position)}</strong><span>${esc(row.signal)}</span></div><div class="h2h-position-main"><small>Projected edge</small><b>${esc(h2hSigned(row.projected_points_edge))}</b></div><div class="h2h-position-sub"><span>You ${esc(h2hScore(row.my_projected_points))}</span><span>Opp ${esc(h2hScore(row.opponent_projected_points))}</span><span>Start ${esc(h2hSigned(row.start_score_edge))}</span></div></article>`).join('')}</div>`;
+  const lineupDetails = `<div class="h2h-lineups">
       <section><div class="h2h-section-head"><div><h3>Your likely XI</h3><p>${esc(mine.formation || '-')} · ${esc(h2hScore(myProjection.total))} projected points.</p></div></div><div class="h2h-player-list">${myLineup.map(player => h2hPlayerRow(player, mine)).join('')}</div></section>
       <section><div class="h2h-section-head"><div><h3>Opponent likely XI</h3><p>${esc(opponent.formation || '-')} · ${esc(h2hScore(opponentProjection.total))} projected points. Estimated from their owned 15.</p></div></div><div class="h2h-player-list">${opponentLineup.map(player => h2hPlayerRow(player, opponent)).join('')}</div></section>
-    </div>
-
-    <div class="h2h-section-head"><div><h3>Threats and counterweights</h3><p>The assets most likely to shape the round, combining next-GW projection and longer-term roster quality.</p></div></div>
+    </div>`;
+  const tacticalDetails = `<div class="h2h-section-head"><div><h3>Threats and counterweights</h3><p>The assets most likely to shape the round, combining next-GW projection and longer-term roster quality.</p></div></div>
     <div class="h2h-threat-columns"><div><h4>Opponent threats</h4><div class="h2h-threat-grid">${threats.map(player => h2hThreatCard(player, 'THREAT')).join('')}</div></div><div><h4>Your counterweights</h4><div class="h2h-threat-grid">${counters.map(player => h2hThreatCard(player, 'EDGE ASSET')).join('')}</div></div></div>
-
     <div class="h2h-section-head"><div><h3>Tactical priorities</h3><p>Matchup-specific advice is constrained by the normal waiver engine and season-long Roster Value. A projected deficit alone cannot justify a destructive swap.</p></div></div>
     <div class="h2h-priority-grid">${priorities.map(h2hPriorityCard).join('')}</div>
-    <div class="h2h-note">${esc(h2h.note || '')} Opponent manager identity is redacted from the public Pages dataset.</div>
+    <div class="h2h-note">${esc(h2h.note || '')} Opponent manager identity is redacted from the public Pages dataset.</div>`;
+  return `<section class="h2h-v08 h2h-v10">
+    <div class="h2h-intro h2h-hero">
+      <div class="h2h-hero-copy"><div class="eyebrow">H2H Scout · v1.2 · GW${esc(h2h.gameweek)}</div><h3>Scout the matchup.<br><span>Keep the decision simple.</span></h3><p>Start with the four-Gameweek outlook and current decision. Open the deeper scouting sections only when you need the evidence behind them.</p><div class="h2h-hero-tags"><span>${esc(matchup.signal || 'EVEN')} matchup</span><span>${esc(matchup.evidence || 'LOW')} evidence</span></div></div>
+      <div class="h2h-opponent"><small>Upcoming opponent</small><strong>${esc(opponentName)}</strong><span>${rank}${opponentMeta.h2h_points != null ? ` · ${esc(opponentMeta.h2h_points)} H2H pts` : ''}</span></div>
+    </div>
+
+    ${h2hOutcomePanel()}
+
+    ${renderH2HOutlook()}
+
+    <section class="h2h-current-decision">
+      <div class="h2h-section-head"><div><div class="eyebrow">Current Gameweek decision</div><h3>The one matchup call that matters now</h3></div></div>
+      <div class="h2h-projection-balance ${h2hSignalClass(matchup.signal)}">
+        <div><small>Your projected XI</small><strong>${esc(h2hScore(myProjection.total))}</strong><span>${esc(h2hScore(myProjection.range_low))}–${esc(h2hScore(myProjection.range_high))} uncertainty band</span></div>
+        <div class="h2h-balance-centre"><span class="h2h-signal">${esc(matchup.signal || 'EVEN')}</span><strong>${esc(h2hSigned(matchup.projected_points_edge))}</strong><small>projected-point edge</small></div>
+        <div><small>Opponent projected XI</small><strong>${esc(h2hScore(opponentProjection.total))}</strong><span>${esc(h2hScore(opponentProjection.range_low))}–${esc(h2hScore(opponentProjection.range_high))} uncertainty band</span></div>
+      </div>
+      <div class="h2h-pressure pressure-${pressureClass(pressure.level)}">
+        <div><small>Change urgency</small><strong>${esc(pressure.level || 'LOW')}</strong></div>
+        <div><h4>${esc(pressure.headline || 'Review matchup')}</h4><p>${esc(pressure.detail || '')}</p></div>
+        ${bestMove ? `<button class="h2h-best-move" data-player-id="${esc(bestMove.add_player_id)}"><small>Best evidence-backed move</small><strong>Add ${esc(bestMove.add_player)} · Drop ${esc(bestMove.drop_player)}</strong><span>${esc(h2hSigned(bestMove.projected_points_delta))} projected pts · ${esc(h2hSigned(bestMove.roster_value_delta))} Roster Value</span></button>` : `<div class="h2h-best-move muted"><small>Best evidence-backed move</small><strong>No tactical swap clears the guardrails</strong></div>`}
+      </div>
+    </section>
+
+    <div class="h2h-detail-stack">
+      ${h2hDisclosure('01', 'Opponent scout & position matchups', 'Formation, squad profile and where the projected edge sits.', scoutDetails, 'violet')}
+      ${h2hDisclosure('02', 'Likely starting lineups', 'Compare both projected XIs player by player.', lineupDetails, 'cyan')}
+      ${h2hDisclosure('03', 'Threats & tactical priorities', 'Key assets, counterweights and guarded actions.', tacticalDetails, 'green')}
+    </div>
   </section>`;
 }
 
