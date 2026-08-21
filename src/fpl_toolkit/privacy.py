@@ -19,12 +19,16 @@ def sanitize_public_report(report: dict[str, Any]) -> dict[str, Any]:
         rows = public.get(key, [])
         if isinstance(rows, list):
             public[key] = [_strip_owner_fields(row) for row in rows if isinstance(row, dict)]
-    lineup = public.get("lineup")
-    if isinstance(lineup, dict):
-        for key in ("starters", "bench", "squad"):
-            rows = lineup.get(key, [])
-            if isinstance(rows, list):
-                lineup[key] = [_strip_owner_fields(row) for row in rows if isinstance(row, dict)]
+    for lineup_key in ("lineup", "recommended_lineup"):
+        lineup = public.get(lineup_key)
+        if isinstance(lineup, dict):
+            for key in ("starters", "bench", "squad"):
+                rows = lineup.get(key, [])
+                if isinstance(rows, list):
+                    lineup[key] = [_strip_owner_fields(row) for row in rows if isinstance(row, dict)]
+            reserve = lineup.get("reserve_goalkeeper")
+            if isinstance(reserve, dict):
+                lineup["reserve_goalkeeper"] = _strip_owner_fields(reserve)
     activity = []
     for change in public.get("league_activity", []) or []:
         if not isinstance(change, dict):
