@@ -9,16 +9,25 @@ function replacementSummary(p) {
   const r = p.replacement;
   if (!r) return '';
   return `<div class="swap-summary ${r.combined_delta > 0 ? 'positive' : ''}">
-    <strong>${esc(r.action)}</strong>
-    <span>Best swap: ${esc(p.player)} for ${esc(r.drop_player)}</span>
-    <small>Overall ${signed(r.combined_delta)} · Floor ${signed(r.floor_delta)} · Upside ${signed(r.upside_delta)} · Confidence ${esc(r.confidence || 'LOW')}</small>
+    <span>Overall ${signed(r.combined_delta)} · Floor ${signed(r.floor_delta)} · Upside ${signed(r.upside_delta)} · Evidence ${esc(r.confidence || 'LOW')}</span>
   </div>`;
+}
+
+function standaloneStrength(p) {
+  const action = p.intelligence?.recommendation;
+  if (!action) return '';
+  if (action === 'CLAIM') return 'Strong';
+  if (action === 'STASH') return 'Future value';
+  if (action === 'WATCH') return 'Watch';
+  if (action === 'PASS') return 'Depth';
+  return action === 'HOLD' ? 'Strong' : 'Review';
 }
 
 function playerGrade(p) {
   const intel = p.intelligence || {};
-  if (!intel.recommendation) return '';
-  return `<div class="decision-line secondary-grade"><span class="decision-reason">Player grade: <strong>${esc(intel.recommendation)}</strong> · ${esc(intel.recommendation_reason || '')}</span></div>`;
+  const strength = standaloneStrength(p);
+  if (!strength) return '';
+  return `<div class="decision-line secondary-grade"><span class="decision-reason">Standalone strength: <strong>${esc(strength)}</strong> · ${esc(intel.recommendation_reason || '')}</span></div>`;
 }
 
 intelligenceStrip = function(p) {
@@ -33,7 +42,7 @@ intelligenceStrip = function(p) {
       <span class="score ${scoreClass(intel.floor_score)}"><small>Floor</small><strong>${esc(intel.floor_score ?? '-')}</strong></span>
       <span class="score ${scoreClass(intel.upside_score)}"><small>Upside</small><strong>${esc(intel.upside_score ?? '-')}</strong></span>
       <span class="score ${scoreClass(intel.fixture_score)}"><small>Fixtures</small><strong>${esc(intel.fixture_score)}</strong></span>
-      ${intel.usage_score == null ? '' : `<span class="score ${scoreClass(intel.usage_score)}"><small>Role / usage</small><strong>${esc(intel.usage_score)}</strong></span>`}
+      ${intel.role_evidence == null ? '' : `<span class="score"><small>Role evidence</small><strong>${esc(intel.role_evidence)}</strong></span>`}
     </div>${replacementSummary(p)}`;
 };
 
@@ -87,13 +96,13 @@ openPlayer = function(id) {
   if (!body) return;
   const panel = document.createElement('div');
   panel.className = 'drawer-section swap-panel';
-  panel.innerHTML = `<strong>Waiver replacement check · v0.5.1</strong>
+  panel.innerHTML = `<strong>Waiver replacement check · v0.5.2</strong>
     <div class="swap-head"><b>${esc(r.action)}</b><span>Add ${esc(p.player)} · Drop ${esc(r.drop_player)} · ${esc(r.confidence || 'LOW')} confidence</span></div>
     <div class="model-grid"><span>Combined delta <b>${signed(r.combined_delta)}</b></span><span>Immediate delta <b>${signed(r.immediate_delta)}</b></span><span>Floor delta <b>${signed(r.floor_delta)}</b></span><span>Upside delta <b>${signed(r.upside_delta)}</b></span><span>4-GW roster delta <b>${signed(r.roster_delta)}</b></span><span>Future delta <b>${signed(r.future_delta)}</b></span></div>
-    <div class="model-note">STASH SWAP is now reserved for players carrying a genuine short-term availability cost. Fit players with future-led value remain CONSIDER unless they clear the stronger SWAP NOW threshold. Role / usage is a heuristic strength signal, not a literal next-match start probability.</div>`;
+    <div class="model-note">The model preserves a preseason 2025/26 performance prior and gradually blends in 2026/27 evidence as minutes accumulate. Role evidence is intentionally categorical rather than a pseudo-precise next-match probability.</div>`;
   body.prepend(panel);
 
   const usage = body.querySelector('.usage-panel');
-  if (usage) usage.innerHTML = `<div><small>Role / usage</small><strong>${esc(intel.usage_score ?? '-')}</strong></div><div><small>Expected minutes heuristic</small><strong>${esc(intel.expected_minutes ?? '-')}</strong></div>`;
+  if (usage) usage.innerHTML = `<div><small>Role evidence</small><strong>${esc(intel.role_evidence ?? '-')}</strong></div><div><small>Expected minutes heuristic</small><strong>${esc(intel.expected_minutes ?? '-')}</strong></div>`;
   if (usage) usage.insertAdjacentHTML('afterend', `<div class="usage-panel"><div><small>Floor</small><strong>${esc(intel.floor_score ?? '-')}</strong></div><div><small>Upside</small><strong>${esc(intel.upside_score ?? '-')}</strong></div><div><small>Sample confidence</small><strong>${esc(intel.sample_confidence ?? '-')}%</strong></div><div><small>Pts / 90</small><strong>${esc(intel.points_per_90 ?? '-')}</strong></div></div>`);
 };
