@@ -1,4 +1,5 @@
 from fpl_toolkit.optimizer import recommend_lineup
+from fpl_toolkit.privacy import sanitize_public_report
 
 
 def _player(player_id, position, score, chance=100, fixture=3):
@@ -80,3 +81,21 @@ def test_optimizer_returns_invalid_for_incomplete_squad_shape():
     result = recommend_lineup([_player(1, "GKP", 80), _player(2, "DEF", 80)], 1)
     assert result["is_valid"] is False
     assert result["starters"] == []
+
+
+def test_recommended_lineup_is_redacted_for_public_report():
+    squad = _standard_squad()
+    for player in squad:
+        player["owner_name"] = "Private"
+        player["owner_entry_id"] = 336654
+    recommended = recommend_lineup(squad, 1)
+    public = sanitize_public_report({
+        "my_squad": [],
+        "available_players": [],
+        "injury_watch": [],
+        "league_activity": [],
+        "recommended_lineup": recommended,
+    })
+    assert "owner_name" not in public["recommended_lineup"]["starters"][0]
+    assert "owner_entry_id" not in public["recommended_lineup"]["bench"][0]
+    assert "owner_name" not in public["recommended_lineup"]["reserve_goalkeeper"]
