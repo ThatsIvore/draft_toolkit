@@ -67,4 +67,20 @@ def sanitize_public_report(report: dict[str, Any]) -> dict[str, Any]:
             ]
         _sanitize_lineup(h2h.get("my_lineup"))
         _sanitize_lineup(h2h.get("opponent_lineup"))
+    outlook = public.get("h2h_outlook")
+    if isinstance(outlook, dict):
+        for card in outlook.get("gameweeks") or []:
+            if not isinstance(card, dict):
+                continue
+            opponent = card.get("opponent")
+            if not isinstance(opponent, dict):
+                continue
+            for key in H2H_IDENTITY_FIELDS:
+                opponent.pop(key, None)
+            opponent["display_name"] = "League opponent"
+        summary = outlook.get("summary") or {}
+        for key in ("toughest_matchup", "best_opportunity"):
+            highlight = summary.get(key)
+            if isinstance(highlight, dict) and highlight.get("opponent") is not None:
+                highlight["opponent"] = "League opponent"
     return public

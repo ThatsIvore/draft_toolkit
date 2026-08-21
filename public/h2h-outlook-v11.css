@@ -1,0 +1,102 @@
+.h2h-outlook-shell {
+  display: grid;
+  gap: 14px;
+}
+
+.h2h-outlook-summary {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.h2h-outlook-summary > span {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--panel);
+  display: grid;
+  gap: 3px;
+}
+
+.h2h-outlook-summary small,
+.h2h-outlook-card small,
+.h2h-outlook-card p,
+.h2h-outlook-opponent span {
+  color: var(--muted);
+}
+
+.h2h-outlook-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.h2h-outlook-card {
+  border: 1px solid var(--line);
+  border-top: 5px solid #8b90a0;
+  border-radius: 17px;
+  background: var(--panel);
+  padding: 14px;
+  display: grid;
+  gap: 13px;
+  box-shadow: 0 7px 20px rgba(35, 24, 50, .06);
+}
+
+.h2h-outlook-card.edge { border-top-color: #1b9a58; }
+.h2h-outlook-card.trail { border-top-color: #d6355b; }
+.h2h-outlook-card.even { border-top-color: #8b90a0; }
+.h2h-outlook-card.unavailable { border-style: dashed; box-shadow: none; }
+
+.h2h-outlook-head,
+.h2h-outlook-score,
+.h2h-outlook-ranges,
+.h2h-outlook-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.h2h-outlook-head > span {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eef0f5;
+  color: #565d6b;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.h2h-outlook-card.edge .h2h-outlook-head > span { background: #dff7e9; color: #12673b; }
+.h2h-outlook-card.trail .h2h-outlook-head > span { background: #fde7e7; color: #a42b2b; }
+
+.h2h-outlook-opponent,
+.h2h-outlook-score > span,
+.h2h-outlook-detail > span {
+  display: grid;
+  gap: 2px;
+}
+
+.h2h-outlook-score {
+  padding: 12px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(0, 255, 135, .08), rgba(111, 134, 246, .08));
+  text-align: center;
+}
+
+.h2h-outlook-score strong { font-size: 24px; color: var(--purple); }
+.h2h-outlook-score > b { color: var(--muted); }
+.h2h-outlook-score > span:last-child { text-align: right; }
+.h2h-outlook-ranges { font-size: 11px; }
+.h2h-outlook-detail { align-items: start; }
+.h2h-outlook-detail > span:last-child { text-align: right; }
+.h2h-outlook-source { padding-top: 10px; border-top: 1px solid var(--line); }
+
+@media (max-width: 1050px) {
+  .h2h-outlook-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .h2h-outlook-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .h2h-outlook-summary,
+  .h2h-outlook-grid { grid-template-columns: 1fr; }
+}

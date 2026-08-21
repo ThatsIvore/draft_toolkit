@@ -1,4 +1,4 @@
-from fpl_toolkit.h2h import build_h2h_matchup, player_projected_points
+from fpl_toolkit.h2h import build_h2h_matchup, build_h2h_outlook, player_projected_points
 
 
 POSITIONS = ["GKP", "GKP"] + ["DEF"] * 5 + ["MID"] * 5 + ["FWD"] * 3
@@ -16,7 +16,7 @@ def _player(player_id, position, owner_raw, owner_entry_id, base, difficulty):
         "chance_next_round": 100,
         "fixtures": [
             {
-                "gameweek": 1,
+                "gameweek": gameweek,
                 "matches": [
                     {
                         "opponent": "OPP",
@@ -25,6 +25,7 @@ def _player(player_id, position, owner_raw, owner_entry_id, base, difficulty):
                     }
                 ],
             }
+            for gameweek in range(1, 5)
         ],
         "intelligence": {
             "availability_score": 100,
@@ -159,3 +160,79 @@ def test_h2h_refuses_incomplete_opponent_ownership():
     assert result["available"] is False
     assert result["model"] == "v1.0"
     assert "ownership resolved to only 10 players" in result["reason"]
+
+
+def test_builds_four_gameweek_outlook_and_preserves_frozen_current_forecast():
+    league = _league()
+    league["league_entries"].extend([
+        {"id": 503, "entry_id": 777777, "entry_name": "GW2 Opponent"},
+        {"id": 504, "entry_id": 666666, "entry_name": "GW3 Opponent"},
+        {"id": 505, "entry_id": 555555, "entry_name": "GW4 Opponent"},
+    ])
+    league["matches"].extend([
+        {"event": 2, "league_entry_1": 503, "league_entry_2": 501, "finished": False},
+        {"event": 3, "league_entry_1": 501, "league_entry_2": 504, "finished": False},
+        {"event": 4, "league_entry_1": 505, "league_entry_2": 501, "finished": False},
+    ])
+    league["standings"].extend([
+        {"league_entry": 503, "rank": 3, "total": 0, "points_for": 0},
+        {"league_entry": 504, "rank": 1, "total": 0, "points_for": 0},
+        {"league_entry": 505, "rank": 5, "total": 0, "points_for": 0},
+    ])
+    mine = _squad(1, 501, 336654, 85, 2)
+    opponents = (
+        _squad(101, 502, 888888, 70, 4)
+        + _squad(201, 503, 777777, 92, 2)
+        + _squad(301, 504, 666666, 82, 3)
+        + _squad(401, 505, 555555, 62, 5)
+    )
+    frozen = {
+        "gameweek": 1,
+        "forecast": {
+            "recommended": {"projected_total": 44.0, "range_low": 30.0, "range_high": 58.0},
+            "h2h": {"projected_opponent_total": 41.0, "projected_edge": 3.0},
+        },
+    }
+
+    outlook = build_h2h_outlook(league, "336654", mine, mine + opponents, [1, 2, 3, 4], frozen)
+
+    assert outlook["model"] == "v1.1"
+    assert outlook["available"] is True
+    assert len(outlook["gameweeks"]) == 4
+    assert all(card["available"] for card in outlook["gameweeks"])
+    assert outlook["gameweeks"][0]["my"]["total"] == 44.0
+    assert outlook["gameweeks"][0]["opponent_projection"]["total"] == 41.0
+    assert outlook["gameweeks"][0]["projection_source"] == "frozen_gameweek_forecast"
+    assert outlook["gameweeks"][1]["opponent"]["display_name"] == "GW2 Opponent"
+    assert outlook["gameweeks"][1]["projection_source"] == "current_rosters"
+    assert sum(outlook["summary"]["signals"].values()) == 4
+    assert outlook["summary"]["toughest_matchup"]["gameweek"] in {1, 2, 3, 4}
+    assert outlook["summary"]["recurring_weakness"] is None
+
+
+def test_four_gameweek_outlook_only_labels_a_repeated_negative_position():
+    league = _league()
+    league["league_entries"].extend([
+        {"id": 503, "entry_id": 777777, "entry_name": "GW2 Opponent"},
+        {"id": 504, "entry_id": 666666, "entry_name": "GW3 Opponent"},
+        {"id": 505, "entry_id": 555555, "entry_name": "GW4 Opponent"},
+    ])
+    league["matches"].extend([
+        {"event": 2, "league_entry_1": 503, "league_entry_2": 501},
+        {"event": 3, "league_entry_1": 501, "league_entry_2": 504},
+        {"event": 4, "league_entry_1": 505, "league_entry_2": 501},
+    ])
+    mine = _squad(1, 501, 336654, 65, 3)
+    opponents = (
+        _squad(101, 502, 888888, 90, 3)
+        + _squad(201, 503, 777777, 90, 3)
+        + _squad(301, 504, 666666, 90, 3)
+        + _squad(401, 505, 555555, 90, 3)
+    )
+
+    outlook = build_h2h_outlook(league, "336654", mine, mine + opponents, [1, 2, 3, 4])
+
+    weakness = outlook["summary"]["recurring_weakness"]
+    assert weakness["position"] in {"GKP", "DEF", "MID", "FWD"}
+    assert weakness["average_projected_edge"] < 0
+    assert weakness["trailing_gameweeks"] == 4
