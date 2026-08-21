@@ -67,8 +67,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.5",
-        "description": "Calibrated rate-based player value with floor/upside, sample confidence and conservative pre-GW1 waiver replacement guardrails.",
+        "version": "v0.5.1",
+        "description": "Calibrated rate-based player value with floor/upside, conservative waiver guardrails, stash-specific swap semantics and role/usage presented as a heuristic rather than a literal start probability.",
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
