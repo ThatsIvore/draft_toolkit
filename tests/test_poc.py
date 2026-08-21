@@ -56,6 +56,26 @@ def test_preseason_planning_uses_fixture_event_ids():
     assert current_gameweek(bootstrap, [1, 2, 3, 4]) == 0
 
 
+def test_draft_event_container_resolves_current_gameweek_and_planning_window():
+    bootstrap = {
+        "events": {
+            "current": 1,
+            "data": [
+                {"id": 1, "name": "Gameweek 1", "finished": False},
+                {"id": 2, "name": "Gameweek 2", "finished": False},
+                {"id": 3, "name": "Gameweek 3", "finished": False},
+                {"id": 4, "name": "Gameweek 4", "finished": False},
+                {"id": 5, "name": "Gameweek 5", "finished": False},
+            ],
+        }
+    }
+
+    gameweeks = planning_gameweeks(bootstrap, 4)
+
+    assert gameweeks == [1, 2, 3, 4]
+    assert current_gameweek(bootstrap, gameweeks) == 1
+
+
 def test_intelligence_rewards_strong_baseline_easy_fixtures_and_role():
     players = [
         {
