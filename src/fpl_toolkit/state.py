@@ -4,7 +4,10 @@ from typing import Any
 
 from .normalize import manager_lookup
 
-STATE_FIELDS = ("player_id", "player", "club", "team_id", "position", "status", "owner_raw", "owner_entry_id")
+STATE_FIELDS = (
+    "player_id", "player", "club", "team_id", "position", "status",
+    "owner_raw", "owner_entry_id", "chance_next_round", "news", "news_added",
+)
 
 
 def compact_ownership_state(ownership: list[dict[str, Any]]) -> list[dict[str, Any]]:
