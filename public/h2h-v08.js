@@ -49,7 +49,7 @@ function h2hPriorityCard(priority) {
   return `<article class="h2h-priority">
     <div><span class="h2h-priority-label">${esc(priority.action)}</span>${priority.position ? `<strong>${esc(priority.position)}</strong>` : ''}</div>
     <p>${esc(priority.reason || '')}</p>
-    ${counter ? `<button class="h2h-counter" data-player-id="${esc(counter.add_player_id)}"><span>${esc(counter.add_player)} for ${esc(counter.drop_player)}</span><strong>${esc(h2hSigned(counter.projected_points_delta))} projected pts</strong><small>${esc(counter.replacement_action || 'CONSIDER')} · Roster ${esc(h2hSigned(counter.roster_value_delta))} · ${esc(counter.role_evidence || 'LOW')} evidence</small></button>` : ''}
+    ${counter ? `<button class="h2h-counter" data-player-id="${esc(counter.add_player_id)}"><span>Add ${esc(counter.add_player)} · Drop ${esc(counter.drop_player)}</span><strong>${esc(h2hSigned(counter.projected_points_delta))} projected pts</strong><small>${esc(counter.replacement_action || 'CONSIDER')} · Roster ${esc(h2hSigned(counter.roster_value_delta))} · ${esc(counter.role_evidence || 'LOW')} evidence</small></button>` : ''}
   </article>`;
 }
 
@@ -96,7 +96,7 @@ function renderH2H() {
     <div class="h2h-pressure pressure-${pressureClass(pressure.level)}">
       <div><small>Change urgency</small><strong>${esc(pressure.level || 'LOW')}</strong></div>
       <div><h4>${esc(pressure.headline || 'Review matchup')}</h4><p>${esc(pressure.detail || '')}</p></div>
-      ${bestMove ? `<button class="h2h-best-move" data-player-id="${esc(bestMove.add_player_id)}"><small>Best evidence-backed move</small><strong>${esc(bestMove.add_player)} → for ${esc(bestMove.drop_player)}</strong><span>${esc(h2hSigned(bestMove.projected_points_delta))} projected pts · ${esc(h2hSigned(bestMove.roster_value_delta))} Roster Value</span></button>` : `<div class="h2h-best-move muted"><small>Best evidence-backed move</small><strong>No tactical swap clears the guardrails</strong></div>`}
+      ${bestMove ? `<button class="h2h-best-move" data-player-id="${esc(bestMove.add_player_id)}"><small>Best evidence-backed move</small><strong>Add ${esc(bestMove.add_player)} · Drop ${esc(bestMove.drop_player)}</strong><span>${esc(h2hSigned(bestMove.projected_points_delta))} projected pts · ${esc(h2hSigned(bestMove.roster_value_delta))} Roster Value</span></button>` : `<div class="h2h-best-move muted"><small>Best evidence-backed move</small><strong>No tactical swap clears the guardrails</strong></div>`}
     </div>
 
     <div class="h2h-scout-grid">
