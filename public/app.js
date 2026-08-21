@@ -7,6 +7,56 @@ let QUERY = '';
 let POS = 'ALL';
 let SORT = 'roster';
 
+const STALE_AFTER_MS = 6 * 60 * 60 * 1000;
+const CRITICAL_AFTER_MS = 12 * 60 * 60 * 1000;
+const REPORT_POLL_MS = 15 * 60 * 1000;
+
+function snapshotHealth(generatedAt, now = Date.now()) {
+  const generated = Date.parse(generatedAt);
+  if (!Number.isFinite(generated)) return {state: 'unknown', ageMs: null};
+  const ageMs = Math.max(0, Number(now) - generated);
+  if (ageMs >= CRITICAL_AFTER_MS) return {state: 'critical', ageMs};
+  if (ageMs >= STALE_AFTER_MS) return {state: 'stale', ageMs};
+  return {state: 'fresh', ageMs};
+}
+
+function snapshotAgeLabel(ageMs) {
+  if (!Number.isFinite(ageMs)) return 'an unknown time ago';
+  const minutes = Math.max(0, Math.floor(ageMs / 60000));
+  if (minutes < 2) return 'just now';
+  if (minutes < 60) return `${minutes} minutes ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 48) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+  const days = Math.floor(hours / 24);
+  return `${days} day${days === 1 ? '' : 's'} ago`;
+}
+
+function snapshotStatusMarkup(data) {
+  const health = snapshotHealth(data.generated_at);
+  const updated = Number.isFinite(Date.parse(data.generated_at))
+    ? new Date(data.generated_at).toLocaleString()
+    : 'unknown';
+  const label = health.state === 'fresh' ? 'Data current' : snapshotAgeLabel(health.ageMs);
+  return `<span class="freshness-status ${health.state}"><span class="freshness-dot"></span><span>Updated ${esc(updated)} · ${esc(label)}</span></span>`;
+}
+
+function snapshotWarningMarkup(data) {
+  const health = snapshotHealth(data.generated_at);
+  if (health.state === 'fresh') return '';
+  const title = health.state === 'critical' ? 'Data is out of date' : health.state === 'stale' ? 'Data refresh delayed' : 'Data freshness unavailable';
+  const detail = health.state === 'unknown'
+    ? 'The latest snapshot has no readable collection time.'
+    : `The last successful collection was ${snapshotAgeLabel(health.ageMs)}.`;
+  return `<div class="freshness-warning ${health.state}" role="status"><strong>${esc(title)}</strong><span>${esc(detail)} Treat recommendations as provisional until the next collection completes.</span></div>`;
+}
+
+function refreshSnapshotHealth() {
+  if (!DATA) return;
+  document.getElementById('updated').innerHTML = snapshotStatusMarkup(DATA);
+  const slot = document.getElementById('freshness-warning-slot');
+  if (slot) slot.innerHTML = snapshotWarningMarkup(DATA);
+}
+
 function fixtureLabel(player, gameweek) {
   const gw = (player.fixtures || []).find(x => x.gameweek === gameweek) || (player.fixtures || [])[0];
   if (!gw?.matches?.length) return '-';
@@ -205,7 +255,9 @@ function closePlayer(){const d=document.getElementById('player-drawer');d.classL
 function render() {
   const s = DATA.summary || {};
   document.getElementById('hero').innerHTML = `<div class="hero-top"><div><div class="eyebrow">${esc(DATA.league_name || 'Draft league')}</div><h2>Your Gameweek decision centre</h2><p>Familiar Draft views with squad, free-agent and future-Gameweek intelligence layered on top.</p></div><div class="gw-pill">${DATA.current_gameweek === 0 ? 'Pre-GW1' : `GW${esc(DATA.current_gameweek)}`}</div></div>
+    <div id="freshness-warning-slot">${snapshotWarningMarkup(DATA)}</div>
     <div class="stats"><div class="stat"><small>My squad</small><strong>${esc(s.my_squad_count)}</strong></div><div class="stat"><small>Available</small><strong>${esc(s.available_count)}</strong></div><div class="stat"><small>Changes</small><strong>${esc(s.ownership_changes)}</strong></div><div class="stat"><small>Injury watch</small><strong>${esc(s.injured_or_doubtful_count)}</strong></div></div>`;
+  refreshSnapshotHealth();
   document.getElementById('controls').innerHTML = controls();
   document.querySelectorAll('.primary-link').forEach(btn => btn.classList.toggle('active', btn.dataset.view === VIEW));
   document.getElementById('content').innerHTML = VIEW === 'squad' ? renderSquad() : VIEW === 'available' ? renderAvailable() : VIEW === 'activity' ? renderActivity() : renderPlanner();
@@ -224,7 +276,15 @@ document.querySelectorAll('.primary-link').forEach(btn => btn.addEventListener('
 document.getElementById('drawer-backdrop').addEventListener('click', closePlayer);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePlayer(); });
 
-fetch(`data/latest.json?v=${Date.now()}`, {cache:'no-store'})
-  .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-  .then(data => { DATA = data; document.getElementById('updated').textContent = `Updated ${new Date(data.generated_at).toLocaleString()} · League ${data.league_id}`; render(); })
-  .catch(err => { document.getElementById('content').innerHTML = `<div class="error"><strong>No live report yet.</strong><br>${esc(err.message)}</div>`; });
+function loadReport() {
+  return fetch(`data/latest.json?v=${Date.now()}`, {cache:'no-store'})
+    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+    .then(data => { DATA = data; render(); })
+    .catch(err => {
+      if (!DATA) document.getElementById('content').innerHTML = `<div class="error"><strong>No live report yet.</strong><br>${esc(err.message)}</div>`;
+    });
+}
+
+loadReport();
+setInterval(refreshSnapshotHealth, 60 * 1000);
+setInterval(loadReport, REPORT_POLL_MS);

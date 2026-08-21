@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import time
 from typing import Any
 import requests
 
@@ -9,17 +10,37 @@ class FPLApiError(RuntimeError):
     pass
 
 
-def _get_json(url: str, timeout_seconds: int, user_agent: str) -> Any:
-    try:
-        response = requests.get(
-            url,
-            headers={"User-Agent": user_agent, "Accept": "application/json"},
-            timeout=timeout_seconds,
-        )
-        response.raise_for_status()
-        return response.json()
-    except (requests.RequestException, ValueError) as exc:
-        raise FPLApiError(f"GET {url} failed: {exc}") from exc
+def _get_json(
+    url: str,
+    timeout_seconds: int,
+    user_agent: str,
+    max_attempts: int = 3,
+    retry_backoff_seconds: float = 1.0,
+) -> Any:
+    attempts = max(1, int(max_attempts))
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            response = requests.get(
+                url,
+                headers={"User-Agent": user_agent, "Accept": "application/json"},
+                timeout=timeout_seconds,
+            )
+            response.raise_for_status()
+            return response.json()
+        except (requests.Timeout, requests.ConnectionError) as exc:
+            last_error = exc
+            retryable = True
+        except requests.HTTPError as exc:
+            last_error = exc
+            status = exc.response.status_code if exc.response is not None else None
+            retryable = status == 429 or bool(status and status >= 500)
+        except (requests.RequestException, ValueError) as exc:
+            raise FPLApiError(f"GET {url} failed: {exc}") from exc
+        if not retryable or attempt == attempts - 1:
+            raise FPLApiError(f"GET {url} failed after {attempt + 1} attempt(s): {last_error}") from last_error
+        time.sleep(max(0.0, retry_backoff_seconds) * (2 ** attempt))
+    raise FPLApiError(f"GET {url} failed without a response.")
 
 
 @dataclass
@@ -27,10 +48,18 @@ class DraftApiClient:
     base_url: str = "https://draft.premierleague.com/api"
     timeout_seconds: int = 25
     user_agent: str = "fpl-season-toolkit/0.1"
+    max_attempts: int = 3
+    retry_backoff_seconds: float = 1.0
 
     def _get(self, path: str) -> Any:
         url = f"{self.base_url.rstrip('/')}/{path.lstrip('/')}"
-        return _get_json(url, self.timeout_seconds, self.user_agent)
+        return _get_json(
+            url,
+            self.timeout_seconds,
+            self.user_agent,
+            self.max_attempts,
+            self.retry_backoff_seconds,
+        )
 
     def bootstrap_static(self) -> dict[str, Any]:
         return self._get("bootstrap-static")
@@ -56,12 +85,16 @@ class FantasyApiClient:
     base_url: str = "https://fantasy.premierleague.com/api"
     timeout_seconds: int = 25
     user_agent: str = "fpl-season-toolkit/0.1"
+    max_attempts: int = 3
+    retry_backoff_seconds: float = 1.0
 
     def fixtures(self) -> list[dict[str, Any]]:
         payload = _get_json(
             f"{self.base_url.rstrip('/')}/fixtures/",
             self.timeout_seconds,
             self.user_agent,
+            self.max_attempts,
+            self.retry_backoff_seconds,
         )
         if not isinstance(payload, list):
             raise FPLApiError("FPL fixtures endpoint returned an unexpected payload.")
