@@ -20,7 +20,7 @@ function plannerWeekSummary(week, weakestGameweek) {
   return `<div class="planner-week-summary ${weak ? 'weakest' : ''}">
     <div><small>GW${esc(week.gameweek)}</small><strong>${plannerScore(week.average_schedule_score)}</strong></div>
     <span>${esc(week.formation || '-')} · ${esc(week.low_schedule_starters || 0)} weak-slot${Number(week.low_schedule_starters) === 1 ? '' : 's'}</span>
-    ${weak ? '<b>Weakest upcoming GW</b>' : ''}
+    ${weak ? '<b>Toughest upcoming GW</b>' : ''}
   </div>`;
 }
 
