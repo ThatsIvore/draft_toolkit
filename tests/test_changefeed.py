@@ -1,7 +1,12 @@
 from fpl_toolkit.changefeed import build_change_feed, capture_decision_state
 
 
-def _player(player_id=1, name="Player", position="MID", *, role="MEDIUM", availability=100, minutes=70, recommendation="HOLD", waiver=None):
+def _player(player_id=1, name="Player", position="MID", *, role="MEDIUM", availability=100, minutes=70, recommendation="HOLD", waiver=None, fixture_phase="scheduled"):
+    phase = {
+        "scheduled": {"started": False, "finished": False},
+        "active": {"started": True, "finished": False},
+        "finished": {"started": True, "finished": True},
+    }[fixture_phase]
     row = {
         "player_id": player_id,
         "player": name,
@@ -11,6 +16,7 @@ def _player(player_id=1, name="Player", position="MID", *, role="MEDIUM", availa
         "status": "a",
         "chance_next_round": availability,
         "news": "",
+        "fixtures": [{"gameweek": 1, "matches": [phase]}],
         "intelligence": {
             "availability_score": availability,
             "expected_minutes": minutes,
@@ -107,3 +113,61 @@ def test_change_feed_suppresses_small_score_noise_and_tracks_planner_or_h2h_shif
     assert kinds.count("planning_change") == 1
     assert kinds.count("h2h_change") == 1
     assert not any(kind in {"minutes_change", "availability", "role_change"} for kind in kinds)
+
+
+def test_change_feed_refreshes_an_older_decision_state_schema_without_noise():
+    previous = capture_decision_state(_report())
+    previous.pop("schema_version")
+
+    feed = build_change_feed(previous, _report(_player(minutes=45, fixture_phase="active")))
+
+    assert feed["baseline"] is True
+    assert feed["items"] == []
+    assert "refreshed" in feed["note"]
+
+
+def test_change_feed_suppresses_live_match_model_churn_but_keeps_availability_changes():
+    old_player = _player(
+        minutes=60,
+        waiver={"action": "CONSIDER", "drop_player": "Owned Def", "combined_delta": 5.0},
+    )
+    new_player = _player(
+        role="HIGH",
+        availability=50,
+        minutes=45,
+        waiver={"action": "KEEP ROSTER", "drop_player": "Owned Def", "combined_delta": -2.0},
+        fixture_phase="active",
+    )
+    previous = capture_decision_state(_report(old_player, lineup_role="BENCH"))
+    current = _report(new_player, lineup_role="START")
+    current["schedule_planner"]["weakest_gameweek"] = 4
+    current["h2h_matchup"]["matchup"]["signal"] = "TRAIL"
+
+    feed = build_change_feed(previous, current)
+    kinds = [item["kind"] for item in feed["items"]]
+
+    assert kinds == ["availability"]
+
+
+def test_change_feed_keeps_opponent_drops_during_a_schema_refresh():
+    previous = capture_decision_state(_report())
+    previous.pop("schema_version")
+    activity = [{"type": "drop", "player_id": 2, "player": "Free Agent", "club": "AAA"}]
+
+    feed = build_change_feed(previous, _report(available=[_player(2, "Free Agent")]), activity)
+
+    assert feed["baseline"] is True
+    assert [item["kind"] for item in feed["items"]] == ["opponent_drop"]
+
+
+def test_change_feed_starts_a_clean_baseline_when_the_gameweek_rolls_over():
+    previous_report = _report(_player(minutes=70), toughest=2, h2h="EDGE")
+    previous = capture_decision_state(previous_report)
+    current = _report(_player(role="HIGH", minutes=40), toughest=4, h2h="TRAIL")
+    current["current_gameweek"] = 2
+
+    feed = build_change_feed(previous, current)
+
+    assert [item["kind"] for item in feed["items"]] == ["gameweek_rollover"]
+    assert feed["summary"]["info"] == 1
+    assert feed["changed_player_ids"] == []
