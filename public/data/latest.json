@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T21:28:07.949493+00:00",
+  "generated_at": "2026-08-21T21:56:23.039193+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 1,
@@ -49120,7 +49120,7 @@
       "position": "MID",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Ankle injury - Expected back 23 Aug",
+      "news": "Ankle injury - Unknown return date",
       "news_added": "2026-08-06T16:00:10.997714Z",
       "event_points": 0,
       "total_points": 0,
@@ -49209,9 +49209,9 @@
         "attack_returns_per_90": 0.03,
         "historical_prior_active": true,
         "injury_return_signal": "out",
-        "expected_return": "2026-08-23",
-        "expected_return_gameweek": 1,
-        "health_trend": "stable",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "health_trend": "news-changed",
         "roster_score": 32.4,
         "stash_score": 41.0,
         "recommendation": "PASS",
@@ -73645,7 +73645,7 @@
       "position": "MID",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Ankle injury - Expected back 23 Aug",
+      "news": "Ankle injury - Unknown return date",
       "news_added": "2026-08-06T16:00:10.997714Z",
       "event_points": 0,
       "total_points": 0,
@@ -73734,9 +73734,9 @@
         "attack_returns_per_90": 0.03,
         "historical_prior_active": true,
         "injury_return_signal": "out",
-        "expected_return": "2026-08-23",
-        "expected_return_gameweek": 1,
-        "health_trend": "stable",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "health_trend": "news-changed",
         "roster_score": 32.4,
         "stash_score": 41.0,
         "recommendation": "PASS",
@@ -80286,8 +80286,9 @@
     },
     "result": {
       "status": "LIVE",
-      "my_points": 0.0,
-      "opponent_points": 0.0,
+      "source": "league_details",
+      "my_points": 15.0,
+      "opponent_points": 12.0,
       "finished": false
     },
     "matchup": {
@@ -88231,10 +88232,11 @@
           }
         ],
         "official_points": 15.0,
-        "h2h_my_points": 0.0,
-        "h2h_opponent_points": 0.0,
-        "h2h_edge": 0.0,
-        "h2h_result": "DRAW"
+        "h2h_my_points": 15.0,
+        "h2h_opponent_points": 12.0,
+        "h2h_edge": 3.0,
+        "h2h_result": "WIN",
+        "h2h_score_source": "league_details"
       },
       "evaluation": {
         "complete": false,
@@ -88247,13 +88249,28 @@
   "change_feed": {
     "model": "v0.9.3",
     "baseline": false,
-    "since": "2026-08-21T20:43:14.310090+00:00",
-    "items": [],
-    "changed_player_ids": [],
+    "since": "2026-08-21T21:28:07.949493+00:00",
+    "items": [
+      {
+        "kind": "player_news",
+        "priority": "watch",
+        "title": "Baleba: player news changed",
+        "detail": "Ankle injury - Unknown return date",
+        "badge": "NEWS",
+        "player_id": 131,
+        "player": "Baleba",
+        "club": "BHA",
+        "team_code": 36,
+        "position": "MID"
+      }
+    ],
+    "changed_player_ids": [
+      131
+    ],
     "summary": {
       "critical": 0,
       "important": 0,
-      "watch": 0,
+      "watch": 1,
       "info": 0
     },
     "note": "Only material decision changes are surfaced; small score noise is intentionally suppressed."
