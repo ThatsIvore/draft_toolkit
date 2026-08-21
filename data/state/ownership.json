@@ -2725,8 +2725,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Hamstring injury - Expected back 29 Aug",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-08T19:00:05.613036Z"
   },
   {
