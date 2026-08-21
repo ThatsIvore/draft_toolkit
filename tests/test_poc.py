@@ -153,7 +153,7 @@ def test_free_injured_high_value_player_becomes_stash_candidate():
 
 
 def test_owned_low_value_unavailable_player_can_trigger_review_drop():
-    player = {
+    weak = {
         "player_id": 1,
         "position": "DEF",
         "owner_entry_id": 336654,
@@ -164,8 +164,19 @@ def test_owned_low_value_unavailable_player_can_trigger_review_drop():
         "news": "Injured",
         "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 5}]} for gw in range(1, 5)],
     }
-    intel = attach_intelligence([player], my_entry_id="336654")[0]["intelligence"]
-    assert intel["recommendation"] == "REVIEW DROP"
+    strong = {
+        "player_id": 2,
+        "position": "DEF",
+        "owner_entry_id": None,
+        "total_points": 200,
+        "chance_next_round": 100,
+        "minutes": 900,
+        "starts": 10,
+        "news": "",
+        "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 2}]} for gw in range(1, 5)],
+    }
+    enriched = attach_intelligence([weak, strong], my_entry_id="336654")
+    assert enriched[0]["intelligence"]["recommendation"] == "REVIEW DROP"
 
 
 def test_intelligence_suppresses_players_who_left_the_league():
