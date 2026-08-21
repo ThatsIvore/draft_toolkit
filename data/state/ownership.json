@@ -2296,8 +2296,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Groin injury - Unknown return date",
+    "chance_next_round": 25,
+    "news": "Groin injury - 25% chance of playing",
     "news_added": "2026-07-25T14:30:10.455878Z"
   },
   {
@@ -6609,6 +6609,19 @@
     "club": "LEE",
     "team_id": 13,
     "position": "DEF",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 600,
+    "player": "Osman",
+    "club": "BHA",
+    "team_id": 5,
+    "position": "MID",
     "status": "l",
     "owner_raw": null,
     "owner_entry_id": null,
