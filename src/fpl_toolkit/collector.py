@@ -7,6 +7,7 @@ from .api import DraftApiClient, FPLApiError, FantasyApiClient
 from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
+from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
 from .report import build_report
@@ -41,6 +42,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
     fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
     ownership = attach_fixture_matrix(ownership, fixture_matrix)
+    ownership = attach_intelligence(ownership)
 
     if state_path.exists():
         previous = read_json(state_path)
@@ -58,6 +60,10 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report = build_report(settings.draft_entry_id, league_id, league, bootstrap, ownership, changes, settings.planning_horizon, planning_gws)
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
+    report["intelligence_model"] = {
+        "version": "v0.1",
+        "description": "Transparent first-pass score using position-relative historical points, official FPL fixture difficulty and current availability.",
+    }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
     lineup = None

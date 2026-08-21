@@ -50,8 +50,20 @@ def build_team_fixture_matrix(fixtures: list[dict[str, Any]], bootstrap: dict[st
         home_id, away_id, gw_id = int(home), int(away), int(gw)
         common = {"kickoff_time": fixture.get("kickoff_time"), "started": fixture.get("started"), "finished": fixture.get("finished")}
         home_opp, away_opp = teams.get(away_id, {}), teams.get(home_id, {})
-        by_team_gw.setdefault((home_id, gw_id), []).append({"opponent_id": away_id, "opponent": home_opp.get("short_name") or home_opp.get("name") or str(away_id), "venue": "H", **common})
-        by_team_gw.setdefault((away_id, gw_id), []).append({"opponent_id": home_id, "opponent": away_opp.get("short_name") or away_opp.get("name") or str(home_id), "venue": "A", **common})
+        by_team_gw.setdefault((home_id, gw_id), []).append({
+            "opponent_id": away_id,
+            "opponent": home_opp.get("short_name") or home_opp.get("name") or str(away_id),
+            "venue": "H",
+            "difficulty": fixture.get("team_h_difficulty"),
+            **common,
+        })
+        by_team_gw.setdefault((away_id, gw_id), []).append({
+            "opponent_id": home_id,
+            "opponent": away_opp.get("short_name") or away_opp.get("name") or str(home_id),
+            "venue": "A",
+            "difficulty": fixture.get("team_a_difficulty"),
+            **common,
+        })
     for team_id in teams:
         matrix[str(team_id)] = [{"gameweek": gw, "matches": by_team_gw.get((team_id, gw), [])} for gw in gws]
     return matrix
