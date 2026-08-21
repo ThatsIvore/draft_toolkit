@@ -30,6 +30,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report_dir = root / "reports"
     state_path = root / "state" / "ownership.json"
     decision_state_path = root / "state" / "decision.json"
+    public_report_path = Path("public/data/latest.json")
     baseline_path = root / "state" / "performance-baseline.json"
     stamp = timestamp_slug()
 
@@ -51,7 +52,12 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     else:
         previous_path = newest_snapshot(snapshot_dir)
         previous = read_json(previous_path) if previous_path else []
-    previous_decision_state = read_json(decision_state_path) if decision_state_path.exists() else None
+    if decision_state_path.exists():
+        previous_decision_state = read_json(decision_state_path)
+    elif public_report_path.exists():
+        previous_decision_state = capture_decision_state(read_json(public_report_path))
+    else:
+        previous_decision_state = None
 
     ownership = normalize_ownership(element_status, league, bootstrap)
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
