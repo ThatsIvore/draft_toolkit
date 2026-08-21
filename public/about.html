@@ -10,68 +10,30 @@
   <link rel="stylesheet" href="interaction.css">
 </head>
 <body>
-  <header class="masthead">
-    <div class="masthead-inner">
-      <div class="brand-wrap">
-        <div class="brand-mark">DT</div>
-        <div>
-          <div class="eyebrow">Fantasy Draft</div>
-          <h1>Season Toolkit</h1>
-        </div>
-      </div>
-    </div>
-    <nav class="primary-nav" aria-label="Toolkit navigation">
-      <div class="primary-nav-inner">
-        <a class="primary-link" href="index.html">My Team</a>
-        <a class="primary-link" href="index.html#available">Available</a>
-        <a class="primary-link" href="index.html#activity">League Activity</a>
-        <a class="primary-link" href="index.html#planner">Planner</a>
-        <a class="primary-link active" href="about.html" aria-current="page">About</a>
-      </div>
-    </nav>
-  </header>
+  <header class="masthead"><div class="masthead-inner"><div class="brand-wrap"><div class="brand-mark">DT</div><div><div class="eyebrow">Fantasy Draft</div><h1>Season Toolkit</h1></div></div></div><nav class="primary-nav" aria-label="Toolkit navigation"><div class="primary-nav-inner"><a class="primary-link" href="index.html">My Team</a><a class="primary-link" href="index.html#available">Available</a><a class="primary-link" href="index.html#activity">League Activity</a><a class="primary-link" href="index.html#planner">Planner</a><a class="primary-link active" href="about.html" aria-current="page">About</a></div></nav></header>
 
-  <main>
-    <section class="about-shell">
-      <div class="eyebrow">About the toolkit</div>
-      <h2>Decision support for an FPL Draft season</h2>
-      <p>This site turns public FPL and FPL Draft data for this league into a season-long decision-support view. It is designed to answer practical questions such as who is available, which players have the best upcoming fixtures, who may be worth stashing, and what has changed around the league.</p>
+  <main><section class="about-shell">
+    <div class="eyebrow">About the toolkit</div><h2>Decision support for an FPL Draft season</h2>
+    <p>This site turns public FPL and FPL Draft data for this league into a season-long decision-support view. It is designed to answer practical questions such as who is available, which players have the best upcoming fixtures, who may be worth stashing, and whether an available player is actually better than the roster spot required to add him.</p>
 
-      <h3>How it works</h3>
-      <p>A scheduled GitHub Actions job collects the latest Draft league ownership, player status and Premier League fixture data. It keeps a small ownership and health snapshot so changes can be detected between runs, calculates player-level intelligence, and publishes the processed results to this GitHub Pages site.</p>
+    <h3>How it works</h3><p>A scheduled GitHub Actions job collects the latest Draft league ownership, player status and Premier League fixture data. It keeps a small ownership and health snapshot so changes can be detected between runs, calculates player-level intelligence, compares free agents with your roster, and publishes the processed results to this GitHub Pages site.</p>
 
-      <h3>Current decision model</h3>
-      <p>The v0.3 model is designed to produce an action as well as a score. Roster and stash value still combine position-relative historical FPL points, the next four Gameweeks of official FPL fixture difficulty, current availability and a starts/minutes usage proxy. The toolkit now also compares health information with the previous snapshot and parses an expected-return date only when official FPL news states one explicitly.</p>
-      <p>Those inputs become ownership-aware recommendations. The labels are guidance rather than automatic transactions; they are intended to tell you what kind of decision the current data supports.</p>
+    <h3>Current decision model</h3><p>v0.4 keeps the transparent roster, stash, fixture, availability and usage signals from earlier versions and adds a waiver replacement check. Every free agent is compared with players of the same position on your roster. The model identifies the roster player that produces the strongest potential upgrade and calculates separate immediate, four-Gameweek roster and future-value deltas.</p><p>The replacement deltas are toolkit value scores, not projected FPL points. Same-position comparison is used because Draft roster construction makes it the safest first-pass way to model a legal replacement.</p>
 
-      <h3>What the recommendation labels mean</h3>
-      <ul>
-        <li><strong>CLAIM:</strong> a free agent the model considers strong enough to add now. This generally means good roster value, usable short-term availability and/or a favorable upcoming fixture run.</li>
-        <li><strong>STASH:</strong> a free agent who may not help immediately but looks worth occupying a bench spot before other managers react. This is most useful for injured or temporarily unavailable players with strong underlying value and attractive fixtures around their expected return.</li>
-        <li><strong>WATCH:</strong> an interesting free agent who is not yet strong enough to claim. Monitor the player for improving fitness, more minutes, a clearer role, better fixtures or other evidence that could turn the recommendation into CLAIM or STASH.</li>
-        <li><strong>HOLD:</strong> a player already on your roster whose current and future value is high enough that the model does not recommend using that roster slot elsewhere.</li>
-        <li><strong>REVIEW DROP:</strong> a player on your roster whose injury, role, fixtures or overall value make the roster spot questionable. It is a prompt to compare that player with available replacements, not an instruction to drop automatically.</li>
-        <li><strong>PASS:</strong> an available player who does not currently offer enough value to justify a claim or stash relative to the rest of the free-agent pool.</li>
-      </ul>
-      <p><strong>Stash vs. Claim:</strong> CLAIM prioritizes usefulness now; STASH accepts short-term bench cost because the model sees enough future value to justify acting early. <strong>Hold vs. Review Drop:</strong> these are the same decision viewed from your existing roster—keep the slot as-is, or actively compare it with the best alternatives.</p>
+    <h3>What the recommendation labels mean</h3><ul>
+      <li><strong>CLAIM:</strong> a free agent the model considers strong enough to add now.</li><li><strong>STASH:</strong> a free agent worth occupying a bench spot for future value before other managers react.</li><li><strong>WATCH:</strong> interesting, but not yet strong enough to justify a transaction.</li><li><strong>HOLD:</strong> a rostered player worth retaining.</li><li><strong>REVIEW DROP:</strong> a roster spot worth comparing actively with replacements, not an automatic drop instruction.</li><li><strong>PASS:</strong> insufficient current value to justify a roster spot.</li>
+    </ul>
 
-      <p>Start probability, expected minutes and recovery timing are toolkit estimates. The model does not invent a medical return date: if official FPL news does not contain an explicit date, the dashboard says so.</p>
+    <h3>What the waiver labels mean</h3><ul>
+      <li><strong>SWAP NOW:</strong> the available player grades as a clear overall improvement and does not sacrifice immediate value.</li><li><strong>STASH SWAP:</strong> the replacement is driven mainly by future value rather than this Gameweek.</li><li><strong>CONSIDER:</strong> the model sees a positive upgrade, but not enough separation for a strong recommendation.</li><li><strong>KEEP ROSTER:</strong> the best same-position comparison still favors your current roster.</li>
+    </ul>
 
-      <h3>What the main views are for</h3>
-      <ul>
-        <li><strong>My Team:</strong> your 15 owned players, upcoming fixtures and ownership-aware HOLD / REVIEW DROP guidance.</li>
-        <li><strong>Available:</strong> the free-agent pool, now sortable by recommended action so CLAIM and STASH candidates can be surfaced first.</li>
-        <li><strong>League Activity:</strong> ownership changes detected between snapshots, intended to become an opponent add/drop radar.</li>
-        <li><strong>Planner:</strong> a multi-Gameweek view of your squad and upcoming fixtures.</li>
-      </ul>
+    <p>Start probability, expected minutes and recovery timing are toolkit estimates. The model does not invent a medical return date: if official FPL news does not contain an explicit date, the dashboard says so.</p>
 
-      <h3>Current limitations</h3>
-      <p>Before a Gameweek locks, the public Draft endpoints may not expose the exact editable starting XI. When that happens, the toolkit deliberately shows the owned squad instead of inventing a lineup. The model also does not yet ingest manager press-conference comments, tactical role changes, set-piece duties or specialist medical reporting; those richer signals can be added later as external enrichment.</p>
+    <h3>What the main views are for</h3><ul><li><strong>My Team:</strong> your 15 owned players, upcoming fixtures and HOLD / REVIEW DROP guidance.</li><li><strong>Available:</strong> the free-agent pool, sortable by best roster upgrade, recommended action, roster value and other signals.</li><li><strong>League Activity:</strong> ownership changes detected between snapshots.</li><li><strong>Planner:</strong> a multi-Gameweek view of your squad and upcoming fixtures.</li></ul>
 
-      <div class="about-callout"><strong>Independent project.</strong> This toolkit is not affiliated with, endorsed by or operated by the Premier League.</div>
-    </section>
-  </main>
-
+    <h3>Current limitations</h3><p>Before a Gameweek locks, the public Draft endpoints may not expose the exact editable starting XI. When that happens, the toolkit deliberately shows the owned squad instead of inventing a lineup. The model also does not yet ingest manager press-conference comments, tactical role changes, set-piece duties or specialist medical reporting.</p>
+    <div class="about-callout"><strong>Independent project.</strong> This toolkit is not affiliated with, endorsed by or operated by the Premier League.</div>
+  </section></main>
   <footer>Independent FPL Draft decision-support project. Not affiliated with the Premier League.</footer>
-</body>
-</html>
+</body></html>
