@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from datetime import datetime, timezone
+import re
 from typing import Any
 
 
@@ -89,13 +91,7 @@ def fixture_score(player: dict[str, Any], skip_first: bool = False) -> float:
 
 
 def usage_scores(player: dict[str, Any]) -> tuple[float, float]:
-    """Return (start_probability, expected_minutes) as transparent proxies.
-
-    Public FPL data exposes season starts and minutes, but not an official next-match
-    start probability. We convert historical average minutes per start into a role
-    signal, then scale it by current chance-of-playing. Before meaningful season data
-    exists, the model falls back to availability rather than inventing a role history.
-    """
+    """Return transparent start-probability and expected-minutes proxies."""
     availability = availability_score(player) / 100.0
     starts = _number(player.get("starts"))
     minutes = _number(player.get("minutes"))
@@ -105,8 +101,6 @@ def usage_scores(player: dict[str, Any]) -> tuple[float, float]:
         base_minutes = 60.0 if availability > 0 else 0.0
     else:
         avg_minutes_per_start = _clamp(minutes / starts, 0.0, 90.0)
-        # 90 mins/start maps near certainty, while ~45 mins/start is treated as
-        # rotation territory. This is a proxy, not an official probability.
         base_start = _clamp((avg_minutes_per_start - 25.0) / 65.0, 0.05, 1.0)
         base_minutes = avg_minutes_per_start
 
@@ -117,7 +111,6 @@ def usage_scores(player: dict[str, Any]) -> tuple[float, float]:
 
 def injury_return_signal(player: dict[str, Any]) -> str:
     chance = player.get("chance_next_round")
-    news = str(player.get("news") or "").strip()
     if chance is None:
         return "fit"
     value = _number(chance)
@@ -130,8 +123,135 @@ def injury_return_signal(player: dict[str, Any]) -> str:
     return "fit"
 
 
-def attach_intelligence(players: list[dict[str, Any]]) -> list[dict[str, Any]]:
+_MONTHS = {
+    "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
+    "apr": 4, "april": 4, "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,
+    "aug": 8, "august": 8, "sep": 9, "sept": 9, "september": 9, "oct": 10,
+    "october": 10, "nov": 11, "november": 11, "dec": 12, "december": 12,
+}
+
+
+def parse_expected_return(news: str, now: datetime | None = None) -> str | None:
+    """Parse a conservative expected-return date from official FPL news text.
+
+    Only explicit phrases such as 'expected back 30 Aug' or 'return 30 August'
+    are accepted. The function deliberately does not infer a date from vague injury text.
+    """
+    text = str(news or "")
+    if not text:
+        return None
+    match = re.search(
+        r"(?:expected\s+(?:back|return)|return(?:ing)?(?:\s+date)?|back)\s+(?:on\s+|by\s+)?(\d{1,2})\s+([A-Za-z]{3,9})(?:\s+(\d{4}))?",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return None
+    day = int(match.group(1))
+    month = _MONTHS.get(match.group(2).lower())
+    if not month:
+        return None
+    now = now or datetime.now(timezone.utc)
+    year = int(match.group(3)) if match.group(3) else now.year
+    try:
+        candidate = datetime(year, month, day, tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    if not match.group(3) and candidate < now.replace(hour=0, minute=0, second=0, microsecond=0):
+        candidate = candidate.replace(year=year + 1)
+    return candidate.date().isoformat()
+
+
+def return_gameweek(player: dict[str, Any], expected_return: str | None) -> int | None:
+    if not expected_return:
+        return None
+    try:
+        return_date = datetime.fromisoformat(expected_return).date()
+    except ValueError:
+        return None
+    for gw in player.get("fixtures") or []:
+        kickoff_dates = []
+        for match in gw.get("matches") or []:
+            raw = match.get("kickoff_time")
+            if not raw:
+                continue
+            try:
+                kickoff_dates.append(datetime.fromisoformat(str(raw).replace("Z", "+00:00")).date())
+            except ValueError:
+                continue
+        if kickoff_dates and return_date <= max(kickoff_dates):
+            return int(gw.get("gameweek"))
+    return None
+
+
+def health_trend(player: dict[str, Any], previous: dict[str, Any] | None) -> str:
+    if not previous:
+        return "new-baseline"
+    current_chance = player.get("chance_next_round")
+    previous_chance = previous.get("chance_next_round")
+    if current_chance is not None and previous_chance is not None:
+        delta = _number(current_chance) - _number(previous_chance)
+        if delta >= 25:
+            return "improving"
+        if delta <= -25:
+            return "worsening"
+    current_news = str(player.get("news") or "").strip()
+    previous_news = str(previous.get("news") or "").strip()
+    if current_news != previous_news:
+        return "news-changed"
+    return "stable"
+
+
+def _recommendation(
+    player: dict[str, Any],
+    roster: float,
+    stash: float,
+    availability: float,
+    return_signal: str,
+    trend: str,
+    my_entry_id: str | None,
+) -> tuple[str, str]:
+    owner = player.get("owner_entry_id")
+    is_mine = my_entry_id is not None and str(owner) == str(my_entry_id)
+    is_free = owner is None
+
+    if is_mine:
+        if roster < 35 and availability <= 25:
+            return "REVIEW DROP", "Low near-term roster value while unavailable."
+        if stash >= 70 or roster >= 68:
+            return "HOLD", "Strong medium-term value relative to the current pool."
+        if return_signal in {"out", "return-watch"} and stash >= 55:
+            return "HOLD", "Injury cost is offset by future value and fixture outlook."
+        return "HOLD", "No strong drop signal from the current model."
+
+    if is_free:
+        if availability >= 75 and roster >= 78:
+            return "CLAIM", "High immediate roster value and usable availability."
+        if stash >= 75 and return_signal in {"out", "return-watch", "near-return"}:
+            return "STASH", "High future value despite current availability risk."
+        if trend == "improving" and stash >= 65:
+            return "STASH", "Health outlook improved while future value remains strong."
+        if stash >= 62 or roster >= 65:
+            return "WATCH", "Interesting value, but not yet a clear claim signal."
+        return "PASS", "Current value does not justify using a roster spot."
+
+    if trend == "improving" and stash >= 70:
+        return "WATCH", "Owned elsewhere, but improving health makes this a drop-watch target."
+    return "WATCH", "Owned by another manager; monitor for a future drop or status change."
+
+
+def attach_intelligence(
+    players: list[dict[str, Any]],
+    previous: list[dict[str, Any]] | None = None,
+    my_entry_id: str | None = None,
+    now: datetime | None = None,
+) -> list[dict[str, Any]]:
     baseline_by_id = _position_percentiles(players)
+    previous_by_id = {
+        int(row["player_id"]): row
+        for row in (previous or [])
+        if isinstance(row, dict) and row.get("player_id") is not None
+    }
     enriched: list[dict[str, Any]] = []
     for player in players:
         row = dict(player)
@@ -142,6 +262,10 @@ def attach_intelligence(players: list[dict[str, Any]]) -> list[dict[str, Any]]:
         availability = availability_score(row)
         start_probability, expected_minutes = usage_scores(row)
         active_factor = _inactive_factor(row)
+        return_signal = injury_return_signal(row)
+        expected_return = parse_expected_return(str(row.get("news") or ""), now)
+        expected_return_gw = return_gameweek(row, expected_return)
+        trend = health_trend(row, previous_by_id.get(player_id))
 
         usage = 0.55 * start_probability + 0.45 * (expected_minutes / 90.0 * 100.0)
         roster = (
@@ -156,9 +280,12 @@ def attach_intelligence(players: list[dict[str, Any]]) -> list[dict[str, Any]]:
             + 0.06 * availability
             + 0.15 * usage
         ) * active_factor
+        action, reason = _recommendation(
+            row, roster, stash, availability, return_signal, trend, my_entry_id
+        )
 
         row["intelligence"] = {
-            "model": "v0.2",
+            "model": "v0.3",
             "baseline_score": round(_clamp(baseline), 1),
             "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1),
@@ -166,9 +293,14 @@ def attach_intelligence(players: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "start_probability": round(_clamp(start_probability), 1),
             "expected_minutes": round(_clamp(expected_minutes, 0.0, 90.0), 1),
             "usage_score": round(_clamp(usage), 1),
-            "injury_return_signal": injury_return_signal(row),
+            "injury_return_signal": return_signal,
+            "expected_return": expected_return,
+            "expected_return_gameweek": expected_return_gw,
+            "health_trend": trend,
             "roster_score": round(_clamp(roster), 1),
             "stash_score": round(_clamp(stash), 1),
+            "recommendation": action,
+            "recommendation_reason": reason,
         }
         enriched.append(row)
     return enriched

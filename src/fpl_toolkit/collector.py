@@ -38,17 +38,21 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     write_json(raw_dir / f"league-{stamp}.json", league)
     write_json(raw_dir / f"element-status-{stamp}.json", element_status)
 
-    ownership = normalize_ownership(element_status, league, bootstrap)
-    planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
-    fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
-    ownership = attach_fixture_matrix(ownership, fixture_matrix)
-    ownership = attach_intelligence(ownership)
-
     if state_path.exists():
         previous = read_json(state_path)
     else:
         previous_path = newest_snapshot(snapshot_dir)
         previous = read_json(previous_path) if previous_path else []
+
+    ownership = normalize_ownership(element_status, league, bootstrap)
+    planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
+    fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
+    ownership = attach_fixture_matrix(ownership, fixture_matrix)
+    ownership = attach_intelligence(
+        ownership,
+        previous=previous,
+        my_entry_id=settings.draft_entry_id,
+    )
 
     changes = diff_ownership(previous, ownership) if previous else []
     changes = decorate_change_manager_names(changes, league)
@@ -61,8 +65,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.2",
-        "description": "Transparent score using position-relative historical points, official FPL fixture difficulty, current availability, and public starts/minutes usage proxies for start probability and expected minutes.",
+        "version": "v0.3",
+        "description": "Action-oriented injury/stash model using roster value, fixture outlook, current availability, starts/minutes usage, prior health state and explicit return dates when official FPL news provides them.",
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1

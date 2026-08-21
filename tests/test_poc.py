@@ -1,9 +1,11 @@
+from datetime import datetime, timezone
+
 import pytest
 
 from fpl_toolkit.config import ConfigError, Settings
 from fpl_toolkit.diff import diff_ownership
 from fpl_toolkit.fixtures import build_team_fixture_matrix, planning_gameweeks
-from fpl_toolkit.intelligence import attach_intelligence, usage_scores
+from fpl_toolkit.intelligence import attach_intelligence, parse_expected_return, usage_scores
 from fpl_toolkit.lineup import fallback_lineup, normalize_lineup
 from fpl_toolkit.normalize import discover_league_ids, normalize_ownership
 from fpl_toolkit.privacy import sanitize_public_report
@@ -98,7 +100,7 @@ def test_preseason_usage_fallback_is_explicitly_conservative():
 
 
 def test_intelligence_flags_return_watch():
-    enriched = attach_intelligence([{ 
+    enriched = attach_intelligence([{
         "player_id": 1,
         "position": "FWD",
         "total_points": 100,
@@ -109,6 +111,72 @@ def test_intelligence_flags_return_watch():
         "fixtures": [{"gameweek": 1, "matches": [{"difficulty": 2}]}],
     }])
     assert enriched[0]["intelligence"]["injury_return_signal"] == "return-watch"
+
+
+def test_parses_explicit_return_date_and_maps_to_gameweek():
+    now = datetime(2026, 8, 21, tzinfo=timezone.utc)
+    player = {
+        "player_id": 1,
+        "position": "MID",
+        "total_points": 150,
+        "chance_next_round": 0,
+        "minutes": 700,
+        "starts": 8,
+        "news": "Hamstring injury - expected back 30 Aug",
+        "fixtures": [
+            {"gameweek": 1, "matches": [{"difficulty": 3, "kickoff_time": "2026-08-21T17:30:00Z"}]},
+            {"gameweek": 2, "matches": [{"difficulty": 2, "kickoff_time": "2026-08-29T14:00:00Z"}]},
+            {"gameweek": 3, "matches": [{"difficulty": 2, "kickoff_time": "2026-09-12T14:00:00Z"}]},
+        ],
+    }
+    assert parse_expected_return(player["news"], now) == "2026-08-30"
+    enriched = attach_intelligence([player], now=now)
+    assert enriched[0]["intelligence"]["expected_return_gameweek"] == 3
+
+
+def test_free_injured_high_value_player_becomes_stash_candidate():
+    player = {
+        "player_id": 1,
+        "position": "FWD",
+        "owner_entry_id": None,
+        "total_points": 200,
+        "chance_next_round": 50,
+        "minutes": 800,
+        "starts": 10,
+        "news": "Expected back 30 Aug",
+        "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 1}]} for gw in range(1, 5)],
+    }
+    previous = [{**player, "chance_next_round": 0, "news": "Expected back 30 Aug"}]
+    intel = attach_intelligence([player], previous=previous, my_entry_id="336654")[0]["intelligence"]
+    assert intel["health_trend"] == "improving"
+    assert intel["recommendation"] == "STASH"
+
+
+def test_owned_low_value_unavailable_player_can_trigger_review_drop():
+    weak = {
+        "player_id": 1,
+        "position": "DEF",
+        "owner_entry_id": 336654,
+        "total_points": 1,
+        "chance_next_round": 0,
+        "minutes": 0,
+        "starts": 0,
+        "news": "Injured",
+        "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 5}]} for gw in range(1, 5)],
+    }
+    strong = {
+        "player_id": 2,
+        "position": "DEF",
+        "owner_entry_id": None,
+        "total_points": 200,
+        "chance_next_round": 100,
+        "minutes": 900,
+        "starts": 10,
+        "news": "",
+        "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 2}]} for gw in range(1, 5)],
+    }
+    enriched = attach_intelligence([weak, strong], my_entry_id="336654")
+    assert enriched[0]["intelligence"]["recommendation"] == "REVIEW DROP"
 
 
 def test_intelligence_suppresses_players_who_left_the_league():
