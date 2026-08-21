@@ -4,13 +4,14 @@ from pathlib import Path
 from typing import Any
 
 from .api import DraftApiClient, FPLApiError, FantasyApiClient
+from .baseline import baseline_lookup, capture_performance_baseline
 from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
-from .report import build_report
+from .report import build_report, current_gameweek
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
 from .waivers import attach_replacement_analysis
@@ -24,6 +25,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     snapshot_dir = root / "snapshots"
     report_dir = root / "reports"
     state_path = root / "state" / "ownership.json"
+    baseline_path = root / "state" / "performance-baseline.json"
     stamp = timestamp_slug()
 
     entry = client.entry_public(settings.draft_entry_id)
@@ -47,9 +49,25 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
 
     ownership = normalize_ownership(element_status, league, bootstrap)
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
+    season_gw = current_gameweek(bootstrap, planning_gws)
     fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
     ownership = attach_fixture_matrix(ownership, fixture_matrix)
-    ownership = attach_intelligence(ownership, previous=previous, my_entry_id=settings.draft_entry_id)
+
+    if baseline_path.exists():
+        performance_baseline_rows = read_json(baseline_path)
+    elif season_gw in (None, 0):
+        performance_baseline_rows = capture_performance_baseline(ownership)
+        write_json(baseline_path, performance_baseline_rows)
+    else:
+        performance_baseline_rows = []
+
+    ownership = attach_intelligence(
+        ownership,
+        previous=previous,
+        my_entry_id=settings.draft_entry_id,
+        performance_baseline=baseline_lookup(performance_baseline_rows),
+        current_gameweek=season_gw,
+    )
 
     changes = diff_ownership(previous, ownership) if previous else []
     changes = decorate_change_manager_names(changes, league)
@@ -67,8 +85,9 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["planning_gameweeks"] = planning_gws
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.5.1",
-        "description": "Calibrated rate-based player value with floor/upside, conservative waiver guardrails, stash-specific swap semantics and role/usage presented as a heuristic rather than a literal start probability.",
+        "version": "v0.5.2",
+        "description": "Preseason-hardened rate model with a durable 2025/26 prior blended into new-season evidence, role evidence labels, floor/upside and conservative waiver guardrails.",
+        "performance_baseline_players": len(performance_baseline_rows),
     }
 
     lineup_gw = planning_gws[0] if planning_gws else 1
