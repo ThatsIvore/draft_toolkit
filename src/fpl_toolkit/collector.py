@@ -8,6 +8,7 @@ from .baseline import baseline_lookup, capture_performance_baseline
 from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
+from .h2h import build_h2h_matchup
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
@@ -99,6 +100,15 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
 
     lineup_gw = planning_gws[0] if planning_gws else 1
     report["recommended_lineup"] = recommend_lineup(report.get("my_squad", []), lineup_gw)
+    report["h2h_matchup"] = build_h2h_matchup(
+        league,
+        settings.draft_entry_id,
+        report.get("my_squad", []),
+        ownership,
+        report.get("available_players", []),
+        lineup_gw,
+        my_lineup=report["recommended_lineup"],
+    )
 
     lineup = None
     try:
