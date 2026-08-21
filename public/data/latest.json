@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T23:25:48.232808+00:00",
+  "generated_at": "2026-08-21T23:47:44.126857+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 1,
@@ -33631,8 +33631,8 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.03",
-      "form": "1.0",
-      "points_per_game": "1.0",
+      "form": "3.0",
+      "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
         {
@@ -88758,7 +88758,7 @@
   "change_feed": {
     "model": "v0.9.3",
     "baseline": false,
-    "since": "2026-08-21T21:56:23.039193+00:00",
+    "since": "2026-08-21T23:25:48.232808+00:00",
     "items": [],
     "changed_player_ids": [],
     "summary": {
