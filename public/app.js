@@ -5,12 +5,18 @@ let VIEW = 'squad';
 let SQUAD_MODE = 'pitch';
 let QUERY = '';
 let POS = 'ALL';
-let SORT = 'points';
+let SORT = 'roster';
 
 function fixtureLabel(player, gameweek) {
   const gw = (player.fixtures || []).find(x => x.gameweek === gameweek) || (player.fixtures || [])[0];
   if (!gw?.matches?.length) return '-';
   return gw.matches.map(m => `${m.opponent} (${m.venue})`).join(' + ');
+}
+
+function gwDifficulty(gw) {
+  const values = (gw?.matches || []).map(m => Number(m.difficulty)).filter(n => n >= 1 && n <= 5);
+  if (!values.length) return null;
+  return Math.round(values.reduce((a,b) => a + b, 0) / values.length);
 }
 
 function fixtureCells(player) {
@@ -19,8 +25,9 @@ function fixtureCells(player) {
   return fixtures.map(gw => {
     if (!gw.matches?.length) return `<div class="fixture blank"><strong>GW${gw.gameweek}</strong><span>-</span></div>`;
     const text = gw.matches.map(m => `${esc(m.opponent)} ${m.venue}`).join(' + ');
-    const cls = gw.matches.length === 1 && gw.matches[0].venue === 'H' ? 'home' : 'away';
-    return `<div class="fixture ${cls}"><strong>GW${gw.gameweek}</strong><span>${text}</span></div>`;
+    const difficulty = gwDifficulty(gw);
+    const cls = difficulty ? `fdr-${difficulty}` : 'fdr-3';
+    return `<div class="fixture ${cls}" title="FPL fixture difficulty ${difficulty ?? 3}/5"><strong>GW${gw.gameweek}</strong><span>${text}</span></div>`;
   }).join('');
 }
 
@@ -38,6 +45,23 @@ function availabilityBadge(p) {
   return `<span class="badge bad">${esc(chance)}% fit</span>`;
 }
 
+function scoreClass(score) {
+  const value = Number(score || 0);
+  if (value >= 70) return 'high';
+  if (value >= 45) return 'mid';
+  return 'low';
+}
+
+function intelligenceStrip(p) {
+  const intel = p.intelligence || {};
+  if (intel.roster_score == null) return '<div class="placeholder-score">Intelligence pending next collection</div>';
+  return `<div class="score-strip">
+    <span class="score ${scoreClass(intel.roster_score)}"><small>Roster</small><strong>${esc(intel.roster_score)}</strong></span>
+    <span class="score ${scoreClass(intel.stash_score)}"><small>Stash</small><strong>${esc(intel.stash_score)}</strong></span>
+    <span class="score ${scoreClass(intel.fixture_score)}"><small>Fixtures</small><strong>${esc(intel.fixture_score)}</strong></span>
+  </div>`;
+}
+
 function playerCard(p, ownershipLabel) {
   return `<article class="player-card" data-player-id="${esc(p.player_id)}">
     <div class="player-main">
@@ -47,8 +71,8 @@ function playerCard(p, ownershipLabel) {
     <div class="fixture-strip">${fixtureCells(p)}</div>
     <div class="intel">
       <div class="badges"><span class="badge purple">${esc(ownershipLabel)}</span>${availabilityBadge(p)}</div>
+      ${intelligenceStrip(p)}
       ${p.news ? `<div class="news">${esc(p.news)}</div>` : '<div class="news">No current player news</div>'}
-      <div class="placeholder-score">Roster / stash scoring: next phase</div>
     </div>
   </article>`;
 }
@@ -83,7 +107,14 @@ function controls() {
   if (VIEW === 'squad') return `<div class="view-toggle"><button data-squad-mode="pitch" class="${SQUAD_MODE==='pitch'?'active':''}">Pitch View</button><button data-squad-mode="list" class="${SQUAD_MODE==='list'?'active':''}">List View</button></div>`;
   return `<input id="search" class="search" type="search" placeholder="Search player or club" value="${esc(QUERY)}">
     <select id="position"><option value="ALL">All positions</option>${['GKP','DEF','MID','FWD'].map(p => `<option value="${p}" ${POS===p?'selected':''}>${p}</option>`).join('')}</select>
-    ${VIEW === 'available' ? `<select id="sort"><option value="points" ${SORT==='points'?'selected':''}>Sort: points</option><option value="availability" ${SORT==='availability'?'selected':''}>Sort: fitness</option><option value="name" ${SORT==='name'?'selected':''}>Sort: name</option></select>` : ''}`;
+    ${VIEW === 'available' ? `<select id="sort">
+      <option value="roster" ${SORT==='roster'?'selected':''}>Sort: roster score</option>
+      <option value="stash" ${SORT==='stash'?'selected':''}>Sort: stash score</option>
+      <option value="fixtures" ${SORT==='fixtures'?'selected':''}>Sort: fixtures</option>
+      <option value="points" ${SORT==='points'?'selected':''}>Sort: points</option>
+      <option value="availability" ${SORT==='availability'?'selected':''}>Sort: fitness</option>
+      <option value="name" ${SORT==='name'?'selected':''}>Sort: name</option>
+    </select>` : ''}`;
 }
 
 function filtered(items) {
@@ -105,6 +136,10 @@ function renderSquad() {
 
 function renderAvailable() {
   let list = filtered(DATA.available_players || []);
+  const score = (p,key) => Number(p.intelligence?.[key] || 0);
+  if (SORT === 'roster') list.sort((a,b) => score(b,'roster_score') - score(a,'roster_score'));
+  if (SORT === 'stash') list.sort((a,b) => score(b,'stash_score') - score(a,'stash_score'));
+  if (SORT === 'fixtures') list.sort((a,b) => score(b,'fixture_score') - score(a,'fixture_score'));
   if (SORT === 'points') list.sort((a,b) => (b.total_points || 0) - (a.total_points || 0));
   if (SORT === 'availability') list.sort((a,b) => (b.chance_next_round ?? 100) - (a.chance_next_round ?? 100));
   if (SORT === 'name') list.sort((a,b) => String(a.player).localeCompare(String(b.player)));
@@ -128,12 +163,13 @@ function allPlayers() { return [...(DATA.my_squad || []), ...(DATA.available_pla
 function openPlayer(id) {
   const p = allPlayers().find(x => String(x.player_id) === String(id));
   if (!p) return;
+  const intel = p.intelligence || {};
   const drawer = document.getElementById('player-drawer');
   const backdrop = document.getElementById('drawer-backdrop');
   drawer.innerHTML = `<div class="drawer-head"><button id="drawer-close" aria-label="Close">×</button><div class="eyebrow">${esc(p.position)} · ${esc(p.club || '-')}</div><h2>${esc(p.player)}</h2><div>${esc(p.total_points ?? 0)} points</div></div>
-    <div class="drawer-body"><div class="badges">${availabilityBadge(p)}</div><div class="drawer-fixtures">${(p.fixtures || []).map(g => `<div class="drawer-fixture"><strong>GW${g.gameweek}</strong><div>${esc(fixtureLabel(p,g.gameweek))}</div></div>`).join('')}</div>
+    <div class="drawer-body"><div class="badges">${availabilityBadge(p)}</div>${intelligenceStrip(p)}<div class="drawer-fixtures">${(p.fixtures || []).map(g => `<div class="drawer-fixture fdr-${gwDifficulty(g) || 3}"><strong>GW${g.gameweek}</strong><div>${esc(fixtureLabel(p,g.gameweek))}</div><small>Difficulty ${esc(gwDifficulty(g) || 3)}/5</small></div>`).join('')}</div>
     <div class="drawer-section"><strong>Latest status</strong><div class="news">${esc(p.news || 'No current player news')}</div></div>
-    <div class="drawer-section"><strong>Decision intelligence</strong><div class="placeholder-score">Expected starts, roster value, stash value and action recommendation will appear here in the next phase.</div></div></div>`;
+    <div class="drawer-section"><strong>How v0.1 scores this player</strong><div class="model-grid"><span>Position baseline <b>${esc(intel.baseline_score ?? '-')}</b></span><span>4-GW fixtures <b>${esc(intel.fixture_score ?? '-')}</b></span><span>Future fixtures <b>${esc(intel.future_fixture_score ?? '-')}</b></span><span>Availability <b>${esc(intel.availability_score ?? '-')}</b></span></div><div class="model-note">Roster = 45% position-relative historical points + 35% fixture outlook + 20% availability. Stash shifts weight toward future fixtures and only lightly penalizes current availability. This is an intentionally transparent first-pass model.</div></div></div>`;
   backdrop.hidden = false; drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false');
   document.getElementById('drawer-close').addEventListener('click', closePlayer);
 }
@@ -161,7 +197,7 @@ document.querySelectorAll('.primary-link').forEach(btn => btn.addEventListener('
 document.getElementById('drawer-backdrop').addEventListener('click', closePlayer);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePlayer(); });
 
-fetch('data/latest.json', {cache:'no-store'})
+fetch(`data/latest.json?v=${Date.now()}`, {cache:'no-store'})
   .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
   .then(data => { DATA = data; document.getElementById('updated').textContent = `Updated ${new Date(data.generated_at).toLocaleString()} · League ${data.league_id}`; render(); })
   .catch(err => { document.getElementById('content').innerHTML = `<div class="error"><strong>No live report yet.</strong><br>${esc(err.message)}</div>`; });
