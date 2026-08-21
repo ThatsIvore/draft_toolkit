@@ -6092,8 +6092,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Knee injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Knee injury - Unknown return date",
     "news_added": "2026-07-23T12:01:23.432796Z"
   },
   {
