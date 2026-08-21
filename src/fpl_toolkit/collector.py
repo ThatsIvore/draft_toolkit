@@ -5,6 +5,7 @@ from typing import Any
 
 from .api import DraftApiClient, FPLApiError, FantasyApiClient
 from .baseline import baseline_lookup, capture_performance_baseline
+from .changefeed import build_change_feed, capture_decision_state
 from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
@@ -28,6 +29,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     snapshot_dir = root / "snapshots"
     report_dir = root / "reports"
     state_path = root / "state" / "ownership.json"
+    decision_state_path = root / "state" / "decision.json"
+    public_report_path = Path("public/data/latest.json")
     baseline_path = root / "state" / "performance-baseline.json"
     stamp = timestamp_slug()
 
@@ -49,6 +52,12 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     else:
         previous_path = newest_snapshot(snapshot_dir)
         previous = read_json(previous_path) if previous_path else []
+    if decision_state_path.exists():
+        previous_decision_state = read_json(decision_state_path)
+    elif public_report_path.exists():
+        previous_decision_state = capture_decision_state(read_json(public_report_path))
+    else:
+        previous_decision_state = None
 
     ownership = normalize_ownership(element_status, league, bootstrap)
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
@@ -109,6 +118,9 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         lineup_gw,
         my_lineup=report["recommended_lineup"],
     )
+
+    report["change_feed"] = build_change_feed(previous_decision_state, report, changes)
+    write_json(decision_state_path, capture_decision_state(report))
 
     lineup = None
     try:
