@@ -46,7 +46,7 @@ function renderRecommendedPitch() {
   return `<div class="recommendation-banner"><strong>Toolkit Recommended XI · GW${esc(rec.gameweek)}</strong><span>This is decision support only—not your submitted Draft lineup and not a projected-points model.</span></div>
     ${closeCallBanner(primaryCloseCall)}
     <section class="pitch-shell recommended-xi-shell">
-      <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(rec.formation)} formation</span><span class="recommended-lineup-badge">Recommended · v0.6.2</span><span>Avg Start Score ${esc(rec.average_start_score ?? '-')}</span></div></div>
+      <div class="pitch-head"><div class="pitch-head-inner"><span>${esc(rec.formation)} formation</span><span class="recommended-lineup-badge">Recommended · v0.6.3</span><span>Avg Start Score ${esc(rec.average_start_score ?? '-')}</span></div></div>
       <div class="pitch"><div class="halfway"></div>${row('gkp',pos('GKP'))}${row('def',pos('DEF'))}${row('mid',pos('MID'))}${row('fwd',pos('FWD'))}</div>
       <div class="bench"><h3>Recommended bench order</h3><div class="bench-row">${benchCards}</div></div>
     </section>`;

@@ -1,5 +1,5 @@
 from fpl_toolkit.baseline import baseline_lookup, capture_performance_baseline
-from fpl_toolkit.intelligence import attach_intelligence
+from fpl_toolkit.intelligence import attach_intelligence, usage_scores
 
 
 def _fixtures():
@@ -85,3 +85,46 @@ def test_preseason_uses_current_previous_season_payload_directly():
     )[0]["intelligence"]
     assert intel["historical_prior_active"] is False
     assert intel["points_per_90"] == 9.0
+
+
+def test_usage_prior_shrinks_a_small_sample_toward_the_fallback():
+    current = {"starts": 0, "minutes": 0, "chance_next_round": 100, "fixtures": _fixtures()}
+    prior = {"starts": 3, "minutes": 270}
+
+    start_probability, expected_minutes = usage_scores(current, prior, current_gameweek=1)
+
+    assert 70 < start_probability < 85
+    assert 60 < expected_minutes < 75
+
+
+def test_active_partial_match_does_not_change_usage_estimate():
+    prior = {"starts": 10, "minutes": 900}
+    scheduled = {
+        "starts": 0,
+        "minutes": 0,
+        "chance_next_round": 100,
+        "fixtures": [{"gameweek": 1, "matches": [{"started": False, "finished": False}]}],
+    }
+    active = {
+        **scheduled,
+        "starts": 1,
+        "minutes": 45,
+        "fixtures": [{"gameweek": 1, "matches": [{"started": True, "finished": False}]}],
+    }
+
+    assert usage_scores(active, prior, current_gameweek=1) == usage_scores(scheduled, prior, current_gameweek=1)
+
+
+def test_finished_first_match_blends_usage_gradually():
+    prior = {"starts": 10, "minutes": 900}
+    finished = {
+        "starts": 1,
+        "minutes": 45,
+        "chance_next_round": 100,
+        "fixtures": [{"gameweek": 1, "matches": [{"started": True, "finished": True}]}],
+    }
+
+    start_probability, expected_minutes = usage_scores(finished, prior, current_gameweek=1)
+
+    assert 80 < start_probability < 100
+    assert 80 < expected_minutes < 90

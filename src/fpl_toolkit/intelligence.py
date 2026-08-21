@@ -170,18 +170,55 @@ def fixture_score(player: dict[str, Any], skip_first: bool = False) -> float:
     return _clamp(total / weight_total if weight_total else 0.0)
 
 
-def usage_scores(player: dict[str, Any]) -> tuple[float, float]:
-    availability = availability_score(player) / 100.0
+def _raw_usage_scores(player: dict[str, Any], shrink_small_sample: bool = False) -> tuple[float, float]:
     starts = _number(player.get("starts"))
     minutes = _number(player.get("minutes"))
     if starts <= 0 or minutes <= 0:
-        base_start = 0.70 if availability > 0 else 0.0
-        base_minutes = 60.0 if availability > 0 else 0.0
+        return 70.0, 60.0
+
+    expected_minutes = _clamp(minutes / starts, 0.0, 90.0)
+    start_probability = _clamp((expected_minutes - 25.0) / 65.0, 0.05, 1.0) * 100.0
+    if shrink_small_sample:
+        reliability = _clamp(starts / 10.0, 0.0, 1.0)
+        start_probability = _blend_rate(start_probability, 70.0, reliability, True)
+        expected_minutes = _blend_rate(expected_minutes, 60.0, reliability, True)
+    return _clamp(start_probability), _clamp(expected_minutes, 0.0, 90.0)
+
+
+def _fixture_is_active(player: dict[str, Any], current_gameweek: int | None) -> bool:
+    if current_gameweek in (None, 0):
+        return False
+    for fixture in player.get("fixtures") or []:
+        if int(_number(fixture.get("gameweek"), -1)) != int(current_gameweek):
+            continue
+        return any(
+            bool(match.get("started")) and not bool(match.get("finished"))
+            for match in (fixture.get("matches") or [])
+            if isinstance(match, dict)
+        )
+    return False
+
+
+def usage_scores(
+    player: dict[str, Any],
+    prior: dict[str, Any] | None = None,
+    current_gameweek: int | None = None,
+) -> tuple[float, float]:
+    availability = availability_score(player) / 100.0
+    current_start, current_minutes = _raw_usage_scores(player)
+    prior_has_usage = bool(prior and _number(prior.get("starts")) > 0 and _number(prior.get("minutes")) > 0)
+
+    if prior_has_usage and current_gameweek not in (None, 0):
+        prior_start, prior_minutes = _raw_usage_scores(prior, shrink_small_sample=True)
+        live_weight = 0.0 if _fixture_is_active(player, current_gameweek) else _live_evidence_weight(player, current_gameweek)
+        base_start = _blend_rate(current_start, prior_start, live_weight, True)
+        base_minutes = _blend_rate(current_minutes, prior_minutes, live_weight, True)
+    elif _fixture_is_active(player, current_gameweek):
+        base_start, base_minutes = 70.0, 60.0
     else:
-        avg_minutes_per_start = _clamp(minutes / starts, 0.0, 90.0)
-        base_start = _clamp((avg_minutes_per_start - 25.0) / 65.0, 0.05, 1.0)
-        base_minutes = avg_minutes_per_start
-    return _clamp(base_start * availability * 100.0), _clamp(base_minutes * availability, 0.0, 90.0)
+        base_start, base_minutes = current_start, current_minutes
+
+    return _clamp(base_start * availability), _clamp(base_minutes * availability, 0.0, 90.0)
 
 
 def role_evidence(sample_confidence: float) -> str:
@@ -299,7 +336,7 @@ def attach_intelligence(
         prior = performance_baseline.get(player_id)
         baseline = baseline_by_id.get(player_id, 0.0); floor = floor_by_id.get(player_id, 0.0); upside = upside_by_id.get(player_id, 0.0)
         fixtures = fixture_score(row); future_fixtures = fixture_score(row, skip_first=True); availability = availability_score(row)
-        start_probability, expected_minutes = usage_scores(row); active_factor = _inactive_factor(row)
+        start_probability, expected_minutes = usage_scores(row, prior, current_gameweek); active_factor = _inactive_factor(row)
         return_signal = injury_return_signal(row); expected_return = parse_expected_return(str(row.get("news") or ""), now)
         expected_return_gw = return_gameweek(row, expected_return); trend = health_trend(row, previous_by_id.get(player_id))
         usage = 0.55 * start_probability + 0.45 * (expected_minutes / 90.0 * 100.0)
@@ -310,7 +347,7 @@ def attach_intelligence(
         stash = (0.30 * baseline + 0.30 * future_fixtures + 0.08 * availability + 0.12 * usage + 0.20 * upside) * active_factor
         action, reason = _recommendation(row, roster, stash, availability, return_signal, trend, my_entry_id)
         row["intelligence"] = {
-            "model": "v0.5.2", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
+            "model": "v0.5.3", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1), "availability_score": round(_clamp(availability), 1),
             "start_probability": round(_clamp(start_probability), 1), "expected_minutes": round(_clamp(expected_minutes, 0.0, 90.0), 1),
             "usage_score": round(_clamp(usage), 1), "sample_confidence": round(sample_confidence, 1), "role_evidence": role_evidence(sample_confidence),
