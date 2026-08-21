@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-08-21T15:31:22.127566+00:00",
+  "captured_at": "2026-08-21T16:02:26.212947+00:00",
   "gameweek": 0,
   "players": {
     "356": {
@@ -5679,18 +5679,18 @@
       "team_code": 6,
       "position": "MID",
       "status": "a",
-      "chance_next_round": 75,
-      "news": "Thigh injury - 75% chance of playing",
-      "availability_score": 75.0,
-      "expected_minutes": 60.6,
+      "chance_next_round": 25,
+      "news": "Thigh injury - 25% chance of playing",
+      "availability_score": 25.0,
+      "expected_minutes": 20.2,
       "role_evidence": "HIGH",
-      "health_trend": "stable",
-      "recommendation": "WATCH",
-      "roster_score": 69.4,
-      "stash_score": 70.0,
+      "health_trend": "worsening",
+      "recommendation": "PASS",
+      "roster_score": 51.0,
+      "stash_score": 59.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -5.8,
+      "waiver_delta": -24.6,
       "lineup_role": null
     },
     "173": {
@@ -7049,7 +7049,7 @@
       "availability_score": 0.0,
       "expected_minutes": 0.0,
       "role_evidence": "HIGH",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 40.2,
       "stash_score": 51.5,

@@ -3323,8 +3323,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Thigh injury - 75% chance of playing",
+    "chance_next_round": 25,
+    "news": "Thigh injury - 25% chance of playing",
     "news_added": "2026-07-23T12:01:23.848657Z"
   },
   {
