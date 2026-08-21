@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "captured_at": "2026-08-21T20:43:14.310090+00:00",
+  "captured_at": "2026-08-21T21:28:07.949493+00:00",
   "gameweek": 1,
   "players": {
     "356": {
@@ -83,7 +83,7 @@
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "HOLD",
-      "roster_score": 70.2,
+      "roster_score": 70.1,
       "stash_score": 70.7,
       "waiver_action": null,
       "waiver_drop_player": null,
@@ -150,7 +150,7 @@
       "health_trend": "stable",
       "recommendation": "HOLD",
       "roster_score": 88.8,
-      "stash_score": 79.2,
+      "stash_score": 79.1,
       "waiver_action": null,
       "waiver_drop_player": null,
       "waiver_delta": null,
@@ -193,7 +193,7 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "HOLD",
-      "roster_score": 84.0,
+      "roster_score": 83.9,
       "stash_score": 74.5,
       "waiver_action": null,
       "waiver_drop_player": null,
@@ -593,7 +593,7 @@
       "stash_score": 43.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -25.0,
+      "waiver_delta": -24.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -745,7 +745,7 @@
       "recommendation": "CLAIM",
       "roster_score": 79.3,
       "stash_score": 70.5,
-      "waiver_action": "CONSIDER",
+      "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": 3.0,
       "lineup_role": null,
@@ -920,10 +920,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 48.1,
-      "stash_score": 44.1,
+      "stash_score": 44.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -27.2,
+      "waiver_delta": -27.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -1052,7 +1052,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 67.3,
-      "stash_score": 59.7,
+      "stash_score": 59.6,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -7.8,
@@ -1118,7 +1118,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 71.5,
-      "stash_score": 65.1,
+      "stash_score": 65.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
       "waiver_delta": -2.2,
@@ -1404,10 +1404,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 33.4,
-      "stash_score": 41.8,
+      "stash_score": 41.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -42.0,
+      "waiver_delta": -42.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -1426,7 +1426,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 77.2,
-      "stash_score": 71.7,
+      "stash_score": 71.6,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Milenković",
       "waiver_delta": 3.1,
@@ -1646,10 +1646,10 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 67.6,
-      "stash_score": 64.0,
+      "stash_score": 63.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -6.1,
+      "waiver_delta": -6.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -1733,8 +1733,8 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 76.0,
-      "stash_score": 65.5,
+      "roster_score": 75.9,
+      "stash_score": 65.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
       "waiver_delta": 1.2,
@@ -1891,7 +1891,7 @@
       "stash_score": 1.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -69.4,
+      "waiver_delta": -69.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -1913,7 +1913,7 @@
       "stash_score": 49.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -21.4,
+      "waiver_delta": -21.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -1998,7 +1998,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 48.0,
-      "stash_score": 44.0,
+      "stash_score": 43.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -27.3,
@@ -2551,7 +2551,7 @@
       "stash_score": 50.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -21.9,
+      "waiver_delta": -22.0,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -2790,10 +2790,10 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 77.2,
-      "stash_score": 71.9,
+      "stash_score": 71.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": 1.2,
+      "waiver_delta": 1.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -2834,7 +2834,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 52.3,
-      "stash_score": 42.5,
+      "stash_score": 42.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -24.5,
@@ -2881,7 +2881,7 @@
       "stash_score": 42.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -27.9,
+      "waiver_delta": -27.8,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -2947,7 +2947,7 @@
       "stash_score": 60.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -7.2,
+      "waiver_delta": -7.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -3142,7 +3142,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 70.6,
-      "stash_score": 62.6,
+      "stash_score": 62.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -4.6,
@@ -3167,7 +3167,7 @@
       "stash_score": 62.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -2.9,
+      "waiver_delta": -3.0,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -3318,7 +3318,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 52.4,
-      "stash_score": 42.4,
+      "stash_score": 42.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -24.4,
@@ -3471,11 +3471,11 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "CLAIM",
-      "roster_score": 79.3,
-      "stash_score": 75.0,
+      "roster_score": 79.4,
+      "stash_score": 75.1,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": 5.7,
+      "waiver_delta": 5.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -3783,7 +3783,7 @@
       "stash_score": 47.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -21.2,
+      "waiver_delta": -21.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -3890,10 +3890,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 49.7,
-      "stash_score": 47.1,
+      "stash_score": 48.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -24.9,
+      "waiver_delta": -23.8,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -4003,7 +4003,7 @@
       "stash_score": 63.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -7.1,
+      "waiver_delta": -7.0,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4022,7 +4022,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 16.6,
-      "stash_score": 19.9,
+      "stash_score": 19.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -60.6,
@@ -4088,10 +4088,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 50.2,
-      "stash_score": 39.9,
+      "stash_score": 39.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -26.7,
+      "waiver_delta": -26.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4154,7 +4154,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 69.2,
-      "stash_score": 63.9,
+      "stash_score": 63.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -5.4,
@@ -4220,10 +4220,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 47.9,
-      "stash_score": 43.9,
+      "stash_score": 43.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -27.4,
+      "waiver_delta": -27.5,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4267,7 +4267,7 @@
       "stash_score": 1.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -68.4,
+      "waiver_delta": -68.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4418,7 +4418,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 71.1,
-      "stash_score": 62.3,
+      "stash_score": 62.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -3.9,
@@ -4531,7 +4531,7 @@
       "stash_score": 60.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -4.7,
+      "waiver_delta": -4.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4597,7 +4597,7 @@
       "stash_score": 40.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -28.4,
+      "waiver_delta": -28.5,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4638,7 +4638,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 68.8,
-      "stash_score": 62.7,
+      "stash_score": 62.6,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
       "waiver_delta": -4.5,
@@ -4681,11 +4681,11 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 77.3,
-      "stash_score": 68.5,
+      "roster_score": 77.2,
+      "stash_score": 68.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": 0.5,
+      "waiver_delta": 0.4,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -4747,11 +4747,11 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 65.7,
-      "stash_score": 56.4,
+      "roster_score": 65.8,
+      "stash_score": 56.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -10.9,
+      "waiver_delta": -10.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4858,10 +4858,10 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 71.6,
-      "stash_score": 65.9,
+      "stash_score": 65.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -3.7,
+      "waiver_delta": -3.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -4879,11 +4879,11 @@
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 68.1,
-      "stash_score": 60.3,
+      "roster_score": 68.2,
+      "stash_score": 60.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -7.3,
+      "waiver_delta": -7.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5037,7 +5037,7 @@
       "stash_score": 80.7,
       "waiver_action": "SWAP NOW",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": 11.1,
+      "waiver_delta": 11.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5103,7 +5103,7 @@
       "stash_score": 21.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -62.6,
+      "waiver_delta": -62.5,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5232,7 +5232,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 48.2,
-      "stash_score": 41.5,
+      "stash_score": 41.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -28.0,
@@ -5499,7 +5499,7 @@
       "stash_score": 45.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -38.4,
+      "waiver_delta": -38.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5584,10 +5584,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 20.6,
-      "stash_score": 30.3,
+      "stash_score": 30.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -55.1,
+      "waiver_delta": -55.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5631,7 +5631,7 @@
       "stash_score": 42.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -41.9,
+      "waiver_delta": -42.0,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5697,7 +5697,7 @@
       "stash_score": 39.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -25.5,
+      "waiver_delta": -25.4,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5719,7 +5719,7 @@
       "stash_score": 61.8,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -6.1,
+      "waiver_delta": -6.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5738,7 +5738,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 36.6,
-      "stash_score": 44.8,
+      "stash_score": 44.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -40.1,
@@ -5763,7 +5763,7 @@
       "stash_score": 41.6,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -27.8,
+      "waiver_delta": -27.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5895,7 +5895,7 @@
       "stash_score": 39.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -25.7,
+      "waiver_delta": -25.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -5917,7 +5917,7 @@
       "stash_score": 59.1,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -6.2,
+      "waiver_delta": -6.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6024,10 +6024,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 50.1,
-      "stash_score": 49.0,
+      "stash_score": 49.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -22.3,
+      "waiver_delta": -22.0,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -6049,7 +6049,7 @@
       "stash_score": 55.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -13.7,
+      "waiver_delta": -13.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6068,10 +6068,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 50.1,
-      "stash_score": 39.8,
+      "stash_score": 39.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -26.8,
+      "waiver_delta": -26.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6137,7 +6137,7 @@
       "stash_score": 27.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -58.3,
+      "waiver_delta": -58.4,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6200,10 +6200,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 51.1,
-      "stash_score": 46.2,
+      "stash_score": 46.1,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -24.0,
+      "waiver_delta": -24.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6288,10 +6288,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 15.4,
-      "stash_score": 25.1,
+      "stash_score": 25.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -60.1,
+      "waiver_delta": -60.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6313,7 +6313,7 @@
       "stash_score": 74.6,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": 5.8,
+      "waiver_delta": 5.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6401,7 +6401,7 @@
       "stash_score": 48.1,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -22.1,
+      "waiver_delta": -22.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -6838,10 +6838,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 49.5,
-      "stash_score": 46.9,
+      "stash_score": 49.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -25.1,
+      "waiver_delta": -23.5,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -6881,11 +6881,11 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 77.4,
-      "stash_score": 65.4,
+      "roster_score": 77.3,
+      "stash_score": 65.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": 0.3,
+      "waiver_delta": 0.2,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -7039,7 +7039,7 @@
       "stash_score": 73.8,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": 7.9,
+      "waiver_delta": 8.0,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -7171,7 +7171,7 @@
       "stash_score": 68.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": 0.5,
+      "waiver_delta": 0.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -7325,7 +7325,7 @@
       "stash_score": 55.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -14.2,
+      "waiver_delta": -14.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -7369,7 +7369,7 @@
       "stash_score": 47.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -22.4,
+      "waiver_delta": -22.5,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -7457,7 +7457,7 @@
       "stash_score": 42.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -29.5,
+      "waiver_delta": -29.6,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -7739,11 +7739,11 @@
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "PASS",
-      "roster_score": 64.1,
-      "stash_score": 53.1,
+      "roster_score": 64.0,
+      "stash_score": 52.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -12.2,
+      "waiver_delta": -12.4,
       "lineup_role": null,
       "fixture_phase": "ACTIVE"
     },
@@ -7762,7 +7762,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 62.3,
-      "stash_score": 53.4,
+      "stash_score": 53.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -14.0,
@@ -7960,7 +7960,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 49.2,
-      "stash_score": 38.8,
+      "stash_score": 38.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -27.8,
@@ -8356,7 +8356,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 70.9,
-      "stash_score": 64.5,
+      "stash_score": 64.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -3.9,
@@ -8425,7 +8425,7 @@
       "stash_score": 55.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -14.0,
+      "waiver_delta": -14.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -8488,7 +8488,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 68.4,
-      "stash_score": 60.0,
+      "stash_score": 59.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -6.7,
@@ -8532,7 +8532,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 78.0,
-      "stash_score": 69.4,
+      "stash_score": 69.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": 1.9,
@@ -8557,7 +8557,7 @@
       "stash_score": 42.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -25.4,
+      "waiver_delta": -25.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -8818,10 +8818,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 20.2,
-      "stash_score": 30.5,
+      "stash_score": 30.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -55.5,
+      "waiver_delta": -55.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -8840,7 +8840,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 62.4,
-      "stash_score": 55.6,
+      "stash_score": 55.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -13.3,
@@ -8862,10 +8862,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 48.1,
-      "stash_score": 41.4,
+      "stash_score": 41.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -28.0,
+      "waiver_delta": -28.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -9016,7 +9016,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 22.9,
-      "stash_score": 32.6,
+      "stash_score": 32.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -52.7,
@@ -9371,7 +9371,7 @@
       "stash_score": 56.1,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -13.2,
+      "waiver_delta": -13.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -9393,7 +9393,7 @@
       "stash_score": 46.5,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -40.0,
+      "waiver_delta": -40.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -9547,7 +9547,7 @@
       "stash_score": 48.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -22.8,
+      "waiver_delta": -22.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -9723,7 +9723,7 @@
       "stash_score": 36.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -36.8,
+      "waiver_delta": -36.7,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -9987,7 +9987,7 @@
       "stash_score": 64.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -0.4,
+      "waiver_delta": -0.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10075,7 +10075,7 @@
       "stash_score": 71.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": 2.0,
+      "waiver_delta": 2.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10097,7 +10097,7 @@
       "stash_score": 49.0,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -21.0,
+      "waiver_delta": -21.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10383,7 +10383,7 @@
       "stash_score": 51.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -16.9,
+      "waiver_delta": -16.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10493,7 +10493,7 @@
       "stash_score": 51.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -17.2,
+      "waiver_delta": -17.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10581,7 +10581,7 @@
       "stash_score": 49.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -20.5,
+      "waiver_delta": -20.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10603,7 +10603,7 @@
       "stash_score": 50.1,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -20.4,
+      "waiver_delta": -20.3,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10647,7 +10647,7 @@
       "stash_score": 49.6,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -34.6,
+      "waiver_delta": -34.5,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10688,7 +10688,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 63.1,
-      "stash_score": 55.4,
+      "stash_score": 55.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -12.2,
@@ -10713,7 +10713,7 @@
       "stash_score": 48.6,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -21.1,
+      "waiver_delta": -21.0,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10732,10 +10732,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 50.5,
-      "stash_score": 46.4,
+      "stash_score": 46.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -24.6,
+      "waiver_delta": -24.7,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10798,10 +10798,10 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 63.5,
-      "stash_score": 62.8,
+      "stash_score": 62.7,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -10.1,
+      "waiver_delta": -10.2,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10867,7 +10867,7 @@
       "stash_score": 46.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -22.2,
+      "waiver_delta": -22.1,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -10999,7 +10999,7 @@
       "stash_score": 49.3,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -18.8,
+      "waiver_delta": -18.7,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -11150,10 +11150,10 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 51.9,
-      "stash_score": 46.5,
+      "stash_score": 46.4,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
-      "waiver_delta": -23.8,
+      "waiver_delta": -23.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -11282,7 +11282,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 54.7,
-      "stash_score": 48.0,
+      "stash_score": 47.9,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Bruno G.",
       "waiver_delta": -21.6,
@@ -11329,7 +11329,7 @@
       "stash_score": 29.6,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -52.0,
+      "waiver_delta": -51.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -11395,7 +11395,7 @@
       "stash_score": 51.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Awoniyi",
-      "waiver_delta": -17.5,
+      "waiver_delta": -17.4,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -11461,7 +11461,7 @@
       "stash_score": 49.2,
       "waiver_action": "KEEP ROSTER",
       "waiver_drop_player": "Milenković",
-      "waiver_delta": -19.7,
+      "waiver_delta": -19.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED"
     },
@@ -11557,5 +11557,190 @@
   "recommended_formation": "5-3-2",
   "toughest_gameweek": 3,
   "h2h_signal": "EVEN",
-  "h2h_start_edge": 0.2
+  "h2h_start_edge": 0.2,
+  "outcome_diagnostics": {
+    "model": "v0.1",
+    "current": {
+      "gameweek": 1,
+      "phase": "LIVE",
+      "forecast": {
+        "captured_at": "2026-08-21T21:28:07.949493+00:00",
+        "captured_phase": "LIVE",
+        "calibration_eligible": false,
+        "recommended": {
+          "formation": "5-3-2",
+          "projected_total": 53.4,
+          "range_low": 35.8,
+          "range_high": 71.2,
+          "starters": [
+            {
+              "player_id": 529,
+              "player": "Roefs",
+              "position": "GKP",
+              "projected_points": 4.2,
+              "range_low": 2.9,
+              "range_high": 5.5
+            },
+            {
+              "player_id": 4,
+              "player": "Gabriel",
+              "position": "DEF",
+              "projected_points": 7.3,
+              "range_low": 4.8,
+              "range_high": 9.8
+            },
+            {
+              "player_id": 356,
+              "player": "Virgil",
+              "position": "DEF",
+              "projected_points": 4.6,
+              "range_low": 3.1,
+              "range_high": 6.1
+            },
+            {
+              "player_id": 471,
+              "player": "Milenković",
+              "position": "DEF",
+              "projected_points": 3.4,
+              "range_low": 2.2,
+              "range_high": 4.6
+            },
+            {
+              "player_id": 84,
+              "player": "Collins",
+              "position": "DEF",
+              "projected_points": 3.9,
+              "range_low": 2.7,
+              "range_high": 5.2
+            },
+            {
+              "player_id": 358,
+              "player": "Kerkez",
+              "position": "DEF",
+              "projected_points": 3.2,
+              "range_low": 2.0,
+              "range_high": 4.4
+            },
+            {
+              "player_id": 12,
+              "player": "Saka",
+              "position": "MID",
+              "projected_points": 6.9,
+              "range_low": 4.6,
+              "range_high": 9.3
+            },
+            {
+              "player_id": 14,
+              "player": "Eze",
+              "position": "MID",
+              "projected_points": 5.5,
+              "range_low": 3.7,
+              "range_high": 7.3
+            },
+            {
+              "player_id": 40,
+              "player": "Rogers",
+              "position": "MID",
+              "projected_points": 4.6,
+              "range_low": 3.1,
+              "range_high": 6.0
+            },
+            {
+              "player_id": 25,
+              "player": "Gyökeres",
+              "position": "FWD",
+              "projected_points": 5.3,
+              "range_low": 3.6,
+              "range_high": 7.0
+            },
+            {
+              "player_id": 552,
+              "player": "Brobbey",
+              "position": "FWD",
+              "projected_points": 4.5,
+              "range_low": 3.1,
+              "range_high": 6.0
+            }
+          ]
+        },
+        "h2h": {
+          "projected_my_total": 53.4,
+          "projected_opponent_total": 55.6,
+          "projected_edge": -2.2,
+          "signal": "EVEN"
+        }
+      },
+      "actual": {
+        "recommended_points": 15.0,
+        "recommended_players": [
+          {
+            "player_id": 529,
+            "player": "Roefs",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 4,
+            "player": "Gabriel",
+            "event_points": 5.0
+          },
+          {
+            "player_id": 356,
+            "player": "Virgil",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 471,
+            "player": "Milenković",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 84,
+            "player": "Collins",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 358,
+            "player": "Kerkez",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 12,
+            "player": "Saka",
+            "event_points": 9.0
+          },
+          {
+            "player_id": 14,
+            "player": "Eze",
+            "event_points": 1.0
+          },
+          {
+            "player_id": 40,
+            "player": "Rogers",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 25,
+            "player": "Gyökeres",
+            "event_points": 0.0
+          },
+          {
+            "player_id": 552,
+            "player": "Brobbey",
+            "event_points": 0.0
+          }
+        ],
+        "official_points": 15.0,
+        "h2h_my_points": 0.0,
+        "h2h_opponent_points": 0.0,
+        "h2h_edge": 0.0,
+        "h2h_result": "DRAW"
+      },
+      "evaluation": {
+        "complete": false,
+        "calibration_eligible": false
+      }
+    },
+    "history": [],
+    "note": "Tracking began after the Gameweek started, so the result is shown for transparency but excluded from formal calibration."
+  }
 }
