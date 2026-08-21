@@ -15,16 +15,25 @@ function replacementSummary(p) {
   </div>`;
 }
 
+function playerGrade(p) {
+  const intel = p.intelligence || {};
+  if (!intel.recommendation) return '';
+  return `<div class="decision-line secondary-grade"><span class="decision-reason">Player grade: <strong>${esc(intel.recommendation)}</strong> · ${esc(intel.recommendation_reason || '')}</span></div>`;
+}
+
 intelligenceStrip = function(p) {
   const intel = p.intelligence || {};
   if (intel.roster_score == null) return '<div class="placeholder-score">Intelligence pending next collection</div>';
-  return `<div class="decision-line">${recommendationBadge(intel)}<span class="decision-reason">${esc(intel.recommendation_reason || '')}</span></div>
+  const primary = p.replacement
+    ? `<div class="decision-line"><span class="recommendation ${recommendationClass(p.replacement.action === 'KEEP ROSTER' ? 'PASS' : p.replacement.action === 'CONSIDER' ? 'WATCH' : 'CLAIM')}">${esc(p.replacement.action)}</span><span class="decision-reason">${esc(`Best swap: ${p.player} for ${p.replacement.drop_player}`)}</span></div>${playerGrade(p)}`
+    : `<div class="decision-line">${recommendationBadge(intel)}<span class="decision-reason">${esc(intel.recommendation_reason || '')}</span></div>`;
+  return `${primary}
     <div class="score-strip">
       <span class="score ${scoreClass(intel.roster_score)}"><small>Roster</small><strong>${esc(intel.roster_score)}</strong></span>
       <span class="score ${scoreClass(intel.floor_score)}"><small>Floor</small><strong>${esc(intel.floor_score ?? '-')}</strong></span>
       <span class="score ${scoreClass(intel.upside_score)}"><small>Upside</small><strong>${esc(intel.upside_score ?? '-')}</strong></span>
       <span class="score ${scoreClass(intel.fixture_score)}"><small>Fixtures</small><strong>${esc(intel.fixture_score)}</strong></span>
-      ${intel.start_probability == null ? '' : `<span class="score ${scoreClass(intel.start_probability)}"><small>Start est.</small><strong>${esc(intel.start_probability)}%</strong></span>`}
+      ${intel.usage_score == null ? '' : `<span class="score ${scoreClass(intel.usage_score)}"><small>Role / usage</small><strong>${esc(intel.usage_score)}</strong></span>`}
     </div>${replacementSummary(p)}`;
 };
 
@@ -52,7 +61,7 @@ renderAvailable = function() {
   const score = (p,key) => Number(p.intelligence?.[key] || 0);
   if (SORT === 'swap') list.sort((a,b) => Number(b.replacement?.combined_delta ?? -999) - Number(a.replacement?.combined_delta ?? -999));
   if (SORT === 'action') list.sort((a,b) => {
-    const actionDelta = (actionPriority[b.intelligence?.recommendation] || 0) - (actionPriority[a.intelligence?.recommendation] || 0);
+    const actionDelta = (replacementPriority[b.replacement?.action] || 0) - (replacementPriority[a.replacement?.action] || 0);
     return actionDelta || Number(b.replacement?.combined_delta || 0) - Number(a.replacement?.combined_delta || 0) || score(b,'stash_score') - score(a,'stash_score');
   });
   if (SORT === 'roster') list.sort((a,b) => score(b,'roster_score') - score(a,'roster_score'));
@@ -78,12 +87,13 @@ openPlayer = function(id) {
   if (!body) return;
   const panel = document.createElement('div');
   panel.className = 'drawer-section swap-panel';
-  panel.innerHTML = `<strong>Waiver replacement check · v0.5</strong>
+  panel.innerHTML = `<strong>Waiver replacement check · v0.5.1</strong>
     <div class="swap-head"><b>${esc(r.action)}</b><span>Add ${esc(p.player)} · Drop ${esc(r.drop_player)} · ${esc(r.confidence || 'LOW')} confidence</span></div>
     <div class="model-grid"><span>Combined delta <b>${signed(r.combined_delta)}</b></span><span>Immediate delta <b>${signed(r.immediate_delta)}</b></span><span>Floor delta <b>${signed(r.floor_delta)}</b></span><span>Upside delta <b>${signed(r.upside_delta)}</b></span><span>4-GW roster delta <b>${signed(r.roster_delta)}</b></span><span>Future delta <b>${signed(r.future_delta)}</b></span></div>
-    <div class="model-note">Historical production is normalized for playing time so partial-season players are not automatically punished for lower raw totals. Floor rewards reliable usage and production; Upside gives more weight to attacking output and future fixtures. ${r.preseason_guardrail ? 'Pre-GW1 guardrails are active, so SWAP NOW requires stronger evidence.' : ''}</div>`;
+    <div class="model-note">STASH SWAP is now reserved for players carrying a genuine short-term availability cost. Fit players with future-led value remain CONSIDER unless they clear the stronger SWAP NOW threshold. Role / usage is a heuristic strength signal, not a literal next-match start probability.</div>`;
   body.prepend(panel);
 
   const usage = body.querySelector('.usage-panel');
+  if (usage) usage.innerHTML = `<div><small>Role / usage</small><strong>${esc(intel.usage_score ?? '-')}</strong></div><div><small>Expected minutes heuristic</small><strong>${esc(intel.expected_minutes ?? '-')}</strong></div>`;
   if (usage) usage.insertAdjacentHTML('afterend', `<div class="usage-panel"><div><small>Floor</small><strong>${esc(intel.floor_score ?? '-')}</strong></div><div><small>Upside</small><strong>${esc(intel.upside_score ?? '-')}</strong></div><div><small>Sample confidence</small><strong>${esc(intel.sample_confidence ?? '-')}%</strong></div><div><small>Pts / 90</small><strong>${esc(intel.points_per_90 ?? '-')}</strong></div></div>`);
 };
