@@ -117,6 +117,7 @@ def normalize_ownership(element_status_payload: Any, league_details: dict[str, A
             "player": player.get("web_name") or player.get("second_name") or f"Player {player_id}",
             "club": team.get("short_name") or team.get("name"),
             "team_id": player.get("team"),
+            "team_code": team.get("code"),
             "position": position.get("singular_name_short") or position.get("singular_name"),
             "status": row.get("status"),
             "owner_raw": owner_raw,
