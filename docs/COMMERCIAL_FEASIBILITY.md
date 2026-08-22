@@ -88,7 +88,11 @@ Draft entry and league IDs should be treated as identifiers rather than password
 
 The Premier League sign-in subject identifier is distinct from a Draft entry identifier. The current frontend represents the authenticated account with an OpenID-style profile subject while its Draft entries use numeric entry IDs. Supplying an account UUID to the public Draft entry endpoint does not resolve a team. Onboarding must therefore never ask a user to copy this account identifier from storage or authentication data.
 
-For personal Classic discovery, obtain the numeric Draft entry through the normal signed-in entry list or an ordinary team link where available. A future automated onboarding flow should use a sanctioned authenticated account-to-entry association and present the user's Draft entries for selection, without exposing tokens or requiring developer tools.
+The Draft single-page application also keeps the useful entry identifier out of its ordinary visible URL. Asking a user to copy a team-page URL is therefore not a reliable discovery method.
+
+A private-league invite code is a join credential, not an existing entry identifier. The current frontend submits it to a mutating private-join endpoint together with new entry details. The toolkit must not call that endpoint merely to discover an existing team, and invite codes must not be committed or displayed publicly.
+
+For personal Classic discovery, obtain the numeric Draft entry from the normal signed-in account entry list using a read-only, session-bound flow. A future automated onboarding flow should use a sanctioned authenticated account-to-entry association and present the user's Draft entries for selection, without exposing tokens, UUIDs or requiring developer tools.
 
 ## Draft-history integration
 
@@ -273,7 +277,7 @@ Every unsupported combination must be detected before payment or trial activatio
 
 The next concept and discovery work should answer these questions:
 
-1. Resolve the owner's numeric Classic Draft entry through the normal signed-in entry list or team navigation without publishing account identifiers.
+1. Resolve the owner's numeric Classic Draft entry through a read-only signed-in account entry list without submitting the private-league join form or publishing account identifiers and invite codes.
 2. Obtain sanitized Classic league-details, standings and event payloads to validate the discovery assumptions.
 3. Specify and implement a bounded Classic League Race proof of concept and its acceptance criteria.
 4. Audit the authenticated live **Create League** and **League Admin** screens to confirm every setup field, exact timer choices and odd-manager H2H behaviour.
