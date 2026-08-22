@@ -19,6 +19,25 @@ function pressureClass(level) {
   return String(level || 'LOW').toLowerCase().replaceAll(' ', '-');
 }
 
+function h2hDecisionProfile(profile, compact = false) {
+  const threat = profile?.decision_threat || {};
+  const draft = profile?.draft || {};
+  const management = profile?.management || {};
+  if (!profile || !threat.level) return '';
+  if (compact) {
+    return `<span class="h2h-decision-chip threat-${pressureClass(threat.level)}">${esc(threat.level)} decision threat · ${esc(threat.evidence || 'LOW')} evidence</span>`;
+  }
+  const transferValue = management.average_transfer_value == null ? 'Pending' : h2hSigned(management.average_transfer_value);
+  const lineupEfficiency = management.average_lineup_efficiency == null ? 'Pending' : `${h2hScore(management.average_lineup_efficiency)}%`;
+  return `<section class="h2h-manager-profile threat-${pressureClass(threat.level)}">
+    <div><small>Opponent decision profile</small><strong>${esc(threat.level)} threat</strong><span>${esc(threat.evidence || 'LOW')} live-decision evidence</span></div>
+    <div><small>Draft prior</small><strong>${draft.score == null ? 'Unmapped' : h2hScore(draft.score)}</strong><span>${draft.resolved_picks == null ? 'No draft data' : `${esc(draft.resolved_picks)}/${esc(draft.total_picks)} picks resolved`}</span></div>
+    <div><small>Transfer value</small><strong>${esc(transferValue)}</strong><span>${esc(management.transaction_windows || 0)} observed decision windows</span></div>
+    <div><small>Lineup efficiency</small><strong>${esc(lineupEfficiency)}</strong><span>${esc(management.lineup_gameweeks || 0)} completed Gameweeks</span></div>
+    <p>Future-GW adjustment ${esc(h2hSigned(threat.projected_points_adjustment || 0))} pts. Draft quality is a small early prior; actual transfers and submitted lineups gradually replace it.</p>
+  </section>`;
+}
+
 function h2hPlayerProjection(playerId, side) {
   const rows = side?.projection?.players || [];
   return rows.find(row => String(row.player_id) === String(playerId)) || {};
@@ -99,10 +118,15 @@ function h2hOutlookCard(card) {
   const opponentMeta = card.opponent || {};
   const weakness = card.weakest_position || {};
   const threat = card.key_threat || {};
-  const source = card.projection_source === 'frozen_gameweek_forecast' ? 'Frozen current-GW forecast' : 'Current-roster projection';
+  const profile = card.opponent_profile || {};
+  const source = card.projection_source === 'frozen_gameweek_forecast'
+    ? 'Frozen current-GW forecast'
+    : card.projection_source === 'current_roster_plus_decision_profile'
+      ? `Current roster · ${h2hSigned(card.decision_adjustment)} decision adjustment`
+      : 'Current-roster projection';
   return `<article class="h2h-outlook-card ${h2hSignalClass(card.signal)}">
     <div class="h2h-outlook-head"><strong>GW${esc(card.gameweek)}</strong><span>${esc(card.signal || 'EVEN')}</span></div>
-    <div class="h2h-outlook-opponent"><small>Opponent</small><strong>${esc(opponentMeta.display_name || 'League opponent')}</strong><span>${opponentMeta.rank != null ? `Rank #${esc(opponentMeta.rank)}` : 'Rank pending'}</span></div>
+    <div class="h2h-outlook-opponent"><small>Opponent</small><strong>${esc(opponentMeta.display_name || 'League opponent')}</strong><span>${opponentMeta.rank != null ? `Rank #${esc(opponentMeta.rank)}` : 'Rank pending'}</span>${h2hDecisionProfile(profile, true)}</div>
     <div class="h2h-outlook-score"><span><small>You</small><strong>${esc(h2hScore(mine.total))}</strong></span><b>${esc(h2hSigned(card.projected_edge))}</b><span><small>Opponent</small><strong>${esc(h2hScore(opponent.total))}</strong></span></div>
     <div class="h2h-outlook-ranges"><span>${esc(h2hScore(mine.range_low))}–${esc(h2hScore(mine.range_high))}</span><small>uncertainty bands</small><span>${esc(h2hScore(opponent.range_low))}–${esc(h2hScore(opponent.range_high))}</span></div>
     <div class="h2h-outlook-detail"><span><small>Pressure point</small><strong>${esc(weakness.position || '-')} ${weakness.projected_points_edge != null ? h2hSigned(weakness.projected_points_edge) : ''}</strong></span><span><small>Key threat</small><strong>${esc(threat.player || '-')}</strong></span></div>
@@ -148,6 +172,7 @@ function renderH2H() {
   const oppScout = scouting.opponent || {};
   const bestMove = scouting.best_matchup_move || null;
   const opponentMeta = h2h.opponent || {};
+  const opponentProfile = h2h.opponent_profile || {};
   const opponentName = opponentMeta.display_name || 'League opponent';
   const rank = opponentMeta.rank != null ? `Rank #${esc(opponentMeta.rank)}` : 'Preseason rank pending';
   const myLineup = h2h.my_lineup?.starters || [];
@@ -156,7 +181,7 @@ function renderH2H() {
   const threats = h2h.opponent_threats || [];
   const counters = h2h.my_counterweights || [];
   const priorities = h2h.tactical_priorities || [];
-  const scoutDetails = `<div class="h2h-scout-grid">
+  const scoutDetails = `${h2hDecisionProfile(opponentProfile)}<div class="h2h-scout-grid">
       <article><small>Opponent formation</small><strong>${esc(opponent.formation || '-')}</strong><span>Estimated legal XI</span></article>
       <article><small>Strongest group</small><strong>${esc(oppScout.strongest_group || '-')}</strong><span>By average Start Score</span></article>
       <article><small>Weakest group</small><strong>${esc(oppScout.weakest_group || '-')}</strong><span>Potential attack point</span></article>
@@ -181,11 +206,11 @@ function renderH2H() {
     <div class="h2h-threat-columns"><div><h4>Opponent threats</h4><div class="h2h-threat-grid">${threats.map(player => h2hThreatCard(player, 'THREAT')).join('')}</div></div><div><h4>Your counterweights</h4><div class="h2h-threat-grid">${counters.map(player => h2hThreatCard(player, 'EDGE ASSET')).join('')}</div></div></div>
     <div class="h2h-section-head"><div><h3>Tactical priorities</h3><p>Matchup-specific advice is constrained by the normal waiver engine and season-long Roster Value. A projected deficit alone cannot justify a destructive swap.</p></div></div>
     <div class="h2h-priority-grid">${priorities.map(h2hPriorityCard).join('')}</div>
-    <div class="h2h-note">${esc(h2h.note || '')} Opponent manager identity is redacted from the public Pages dataset.</div>`;
+    <div class="h2h-note">${esc(h2h.note || '')} The public dashboard shows the manager's chosen team name while keeping real names and internal identifiers private.</div>`;
   return `<section class="h2h-v08 h2h-v10">
     <div class="h2h-intro h2h-hero">
-      <div class="h2h-hero-copy"><div class="eyebrow">H2H Scout · v1.2 · GW${esc(h2h.gameweek)}</div><h3>Scout the matchup.<br><span>Keep the decision simple.</span></h3><p>Start with the four-Gameweek outlook and current decision. Open the deeper scouting sections only when you need the evidence behind them.</p><div class="h2h-hero-tags"><span>${esc(matchup.signal || 'EVEN')} matchup</span><span>${esc(matchup.evidence || 'LOW')} evidence</span></div></div>
-      <div class="h2h-opponent"><small>Upcoming opponent</small><strong>${esc(opponentName)}</strong><span>${rank}${opponentMeta.h2h_points != null ? ` · ${esc(opponentMeta.h2h_points)} H2H pts` : ''}</span></div>
+      <div class="h2h-hero-copy"><div class="eyebrow">H2H Scout · v1.3 · GW${esc(h2h.gameweek)}</div><h3>Scout the matchup.<br><span>Keep the decision simple.</span></h3><p>Start with the four-Gameweek outlook and current decision. Open the deeper scouting sections only when you need the evidence behind them.</p><div class="h2h-hero-tags"><span>${esc(matchup.signal || 'EVEN')} matchup</span><span>${esc(matchup.evidence || 'LOW')} evidence</span>${opponentProfile?.decision_threat?.level ? `<span>${esc(opponentProfile.decision_threat.level)} decision threat</span>` : ''}</div></div>
+      <div class="h2h-opponent"><small>Upcoming opponent</small><strong>${esc(opponentName)}</strong><span>${rank}${opponentMeta.h2h_points != null ? ` · ${esc(opponentMeta.h2h_points)} H2H pts` : ''}</span>${h2hDecisionProfile(opponentProfile, true)}</div>
     </div>
 
     ${h2hOutcomePanel()}

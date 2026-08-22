@@ -113,6 +113,28 @@ def test_builds_scouting_h2h_matchup_from_league_match_and_ownership():
     assert result["tactical_priorities"][0]["action"] == "HOLD SHAPE"
 
 
+def test_h2h_embeds_the_opponent_decision_profile_without_changing_current_projection():
+    mine = _squad(1, 501, 336654, 85, 2)
+    opponent = _squad(101, 502, 888888, 70, 4)
+    profile = {
+        "team_name": "Opponent XI",
+        "decision_threat": {"level": "HIGH", "projected_points_adjustment": 1.2, "evidence": "LOW"},
+    }
+
+    result = build_h2h_matchup(
+        _league(),
+        "336654",
+        mine,
+        mine + opponent,
+        [],
+        1,
+        manager_profiles={"888888": profile},
+    )
+
+    assert result["opponent_profile"] == profile
+    assert result["matchup"]["opponent"]["projection"].get("decision_adjustment") is None
+
+
 def test_scout_simulates_supported_free_agent_move_when_trailing():
     mine = _squad(1, 501, 336654, 62, 4)
     opponent = _squad(101, 502, 888888, 86, 2)
@@ -208,6 +230,34 @@ def test_builds_four_gameweek_outlook_and_preserves_frozen_current_forecast():
     assert sum(outlook["summary"]["signals"].values()) == 4
     assert outlook["summary"]["toughest_matchup"]["gameweek"] in {1, 2, 3, 4}
     assert outlook["summary"]["recurring_weakness"] is None
+
+
+def test_future_outlook_applies_a_bounded_transparent_manager_adjustment_only_after_current_gw():
+    league = _league()
+    league["league_entries"].append({"id": 503, "entry_id": 777777, "entry_name": "GW2 Opponent"})
+    league["matches"].append({"event": 2, "league_entry_1": 503, "league_entry_2": 501, "finished": False})
+    mine = _squad(1, 501, 336654, 80, 3)
+    opponents = _squad(101, 502, 888888, 75, 3) + _squad(201, 503, 777777, 75, 3)
+    profiles = {
+        "888888": {"decision_threat": {"level": "HIGH", "projected_points_adjustment": 1.5}},
+        "777777": {"decision_threat": {"level": "HIGH", "projected_points_adjustment": 1.5}},
+    }
+
+    outlook = build_h2h_outlook(
+        league,
+        "336654",
+        mine,
+        mine + opponents,
+        [1, 2],
+        manager_profiles=profiles,
+    )
+
+    current, future = outlook["gameweeks"]
+    assert current["decision_adjustment"] == 0.0
+    assert current["opponent_projection"].get("roster_total") is None
+    assert future["decision_adjustment"] == 1.5
+    assert future["opponent_projection"]["total"] == future["opponent_projection"]["roster_total"] + 1.5
+    assert future["projection_source"] == "current_roster_plus_decision_profile"
 
 
 def test_four_gameweek_outlook_only_labels_a_repeated_negative_position():
