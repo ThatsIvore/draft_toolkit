@@ -61,7 +61,9 @@ Public picks can be stale for the next deadline after the manager makes a transf
 
 The source-independent [private snapshot contract](docs/STANDARD_FPL_PRIVATE_SNAPSHOT.md) is also implemented. When a trusted future connector produces `standard-fpl-private-snapshot-v1`, set `FPL_STANDARD_PRIVATE_SNAPSHOT` to that JSON file under `data/private/`. The toolkit will then validate and use the exact decision-Gameweek squad, purchase/selling prices, bank, free transfers and chip state. The exporter is not yet implemented, and credentials or raw browser storage must not be used to create this file.
 
-The private report now validates the squad against the season-versioned 2026/27 rules. A separate [single-transfer legality evaluator](docs/STANDARD_FPL_TRANSFER_LEGALITY.md) checks same-position replacement, selling-price affordability, club quota, free-transfer use and incremental point-hit cost. It is a rules foundation rather than a transfer recommendation engine and remains advisory only.
+The private report now validates the squad against the season-versioned 2026/27 rules. The isolated [single-transfer legality and ranking layer](docs/STANDARD_FPL_TRANSFER_LEGALITY.md) checks same-position replacement, selling-price affordability, club quota, free-transfer use and incremental point-hit cost, then ranks legal candidates with transparent heuristics. Point hits remain a separate `HIT REVIEW` warning, not a fake net-points projection. Without exact private team state, transfer ranking is explicitly unavailable.
+
+The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as separate modes in a shared shell. That selector is intentionally not exposed on the public Draft dashboard until secure private Standard report delivery exists; switching modes must never mix their report objects.
 
 ## GitHub Actions
 

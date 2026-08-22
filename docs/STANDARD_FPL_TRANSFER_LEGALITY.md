@@ -4,9 +4,9 @@ Last reviewed: 22 August 2026
 
 ## Implemented boundary
 
-The toolkit now contains a season-versioned 2026/27 Standard FPL ruleset and a read-only evaluator for one proposed transfer. This layer answers **whether a move is legal, affordable and subject to an incremental points deduction**. It does not decide whether the move is strategically good.
+The toolkit now contains a season-versioned 2026/27 Standard FPL ruleset, a read-only evaluator for one proposed transfer and an isolated candidate-ranking layer. The rules layer answers **whether a move is legal, affordable and subject to an incremental points deduction**. The ranking layer considers only moves that pass those rules and compares their football heuristics; it does not turn those heuristics into projected FPL points.
 
-The implementation is in `src/fpl_toolkit/standard_fpl_rules.py`. It remains separate from player projections so a high model score can never bypass an FPL rule.
+The implementations are in `src/fpl_toolkit/standard_fpl_rules.py` and `src/fpl_toolkit/standard_fpl_transfers.py`. Both remain outside the Draft/H2H engines, and the legality check remains separate from player scoring so a high model score can never bypass an FPL rule.
 
 ## Verified 2026/27 rules
 
@@ -62,15 +62,40 @@ The hit calculation is incremental. For example:
 
 In the private snapshot contract, `free_transfers` means the total free-transfer allowance for the decision Gameweek and `transfers_made` means transfers already confirmed in that Gameweek. The remaining allowance is derived from both values.
 
+## Single-transfer candidate ranking
+
+When an exact private snapshot is available, `rank_single_transfers` evaluates every unowned same-position replacement and retains only legal moves. The private Standard FPL report exposes up to ten candidates under `single_transfer_candidates`.
+
+The ranking score is a weighted delta between the incoming and outgoing player:
+
+| Component | Weight |
+|---|---:|
+| Shared roster heuristic | 30% |
+| Next-Gameweek Start Score | 25% |
+| Future fixture score | 20% |
+| Floor score | 15% |
+| Upside score | 10% |
+
+The score is a comparison of normalized model signals, not an estimate of FPL points. Candidate confidence is the lower sample confidence of the two players: `HIGH` at 70 or above, `MEDIUM` from 40 to 69.9 and `LOW` below 40.
+
+Action labels are deliberately conservative:
+
+- `CONSIDER` requires a score improvement of at least 5.0, at least medium confidence and no incremental points deduction;
+- `LOW PRIORITY` covers smaller improvements, declines and low-evidence candidates; and
+- `HIT REVIEW` is mandatory whenever the move incurs a points deduction, regardless of its heuristic rank.
+
+The four-point deduction is reported alongside the candidate but is never subtracted from the heuristic score. These are unlike units, and presenting their subtraction as a net points forecast would be misleading. Wildcard and Free Hit state continues to follow the legality evaluator.
+
+Without exact current selling prices, bank, free-transfer balance and chip state, the report returns an explicit unavailable object and no candidates. Public locked picks therefore cannot produce apparently legal current transfer advice.
+
 ## Deliberate non-goals
 
 This slice does not:
 
-- rank transfer candidates;
-- estimate whether projected gains repay a points deduction;
+- estimate whether a heuristic improvement repays a points deduction;
 - optimize two or more coordinated transfers;
 - model the temporary squad reversion after a Free Hit;
 - recommend when to activate a chip; or
 - submit, stage or confirm an FPL transfer.
 
-The next analytical layer may combine this legality result with shared player and fixture scores. It must report gross projected improvement separately from the four-point deduction and preserve `advisory_only: true`.
+Every ranking result preserves `advisory_only: true`. The next analytical layer should add hold explanations and decision-outcome evaluation before attempting coordinated multi-transfer optimization.

@@ -34,6 +34,7 @@ Commercialization is no longer the near-term project driver. The current priorit
 9. **FPL Draft Classic scoring** — Classic-scoring Draft leagues are unsupported until a deliberate Draft Classic mode is implemented. Onboarding must detect and reject them clearly rather than running H2H assumptions.
 10. **Roadmap motivation** — Personal value and enjoyment take priority over monetary return or adding users. A separate standard FPL mode is the next major product direction; commercial account and payment work is deferred unless that motivation changes.
 11. **Terminology** — Standard FPL at `fantasy.premierleague.com` is not "Classic Draft." It is distinct from the Classic scoring option within FPL Draft and requires budget, transfer, captaincy and chip models.
+12. **Future mode navigation** — Once secure private Standard FPL reports exist, the shared toolkit page will use a `Draft H2H` / `Standard FPL` selector (segmented on desktop and compact on mobile). Until then, the public page remains Draft-only; unsupported Draft Classic remains hidden.
 
 ## Commercial data permission
 
@@ -101,7 +102,7 @@ The completed [Standard FPL authentication discovery](STANDARD_FPL_AUTH_DISCOVER
 
 The internal [Standard FPL private snapshot contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md) is implemented. It gives the analysis pipeline a strict, versioned and identifier-free representation of current squad, price, transfer and chip state. This reduces connector coupling but does not remove the external authentication or commercial-permission gates.
 
-The [2026/27 Standard FPL squad and single-transfer legality layer](STANDARD_FPL_TRANSFER_LEGALITY.md) is also implemented. It separates hard game rules and point-hit cost from model projections and fails closed when the live season is newer than the verified ruleset. Transfer candidate ranking is not yet implemented.
+The [2026/27 Standard FPL squad, single-transfer legality and advisory ranking layer](STANDARD_FPL_TRANSFER_LEGALITY.md) is also implemented. It separates hard game rules and point-hit cost from model heuristics, fails closed when the live season is newer than the verified ruleset and refuses to rank transfers from stale public state.
 
 The original Draft/H2H product remains protected by a permanent mode-isolation regression: Standard-only modules cannot enter the Draft collector or H2H decision engines, the default CLI and scheduled public collection remain Draft, and Standard FPL reports cannot use the public publish path. This boundary is documented in [Standard FPL Mode Analysis](STANDARD_FPL_MODE_ANALYSIS.md#h2h-protection-boundary).
 
@@ -290,7 +291,7 @@ The next concept and discovery work should answer these questions:
 
 1. Validate the implemented private Standard FPL snapshot contract against sanitized field names from a real session-only response; revise the versioned adapter if the official shape differs.
 2. Prove or reject the bounded browser-local Standard FPL snapshot described in `STANDARD_FPL_AUTH_DISCOVERY.md`, without extracting or replaying credentials; treat a hosted connection as blocked pending Premier League approval and client registration.
-3. Implement a bounded standard FPL proof of concept: current squad, legal XI, ordered bench, captain, vice-captain and four-Gameweek outlook while preserving the existing Draft report.
+3. Extend the bounded Standard FPL proof of concept with hold explanations and transfer outcome evaluation while preserving the existing Draft report.
 4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
 5. Audit the authenticated live **Create League** and **League Admin** screens to confirm every Draft setup field, exact timer choices and odd-manager H2H behaviour.
 6. Record which Draft league settings and draft-history fields are available from current official responses without browser developer tools.

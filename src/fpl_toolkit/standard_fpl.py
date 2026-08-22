@@ -19,6 +19,10 @@ from .standard_fpl_rules import (
     season_from_bootstrap,
     validate_squad_legality,
 )
+from .standard_fpl_transfers import (
+    rank_single_transfers,
+    unavailable_single_transfer_ranking,
+)
 
 
 class StandardFplDataError(RuntimeError):
@@ -350,6 +354,24 @@ def collect_standard_fpl(
     squad_is_current_for_decision = private_snapshot is not None or source_gameweek == decision_gameweek
     if private_snapshot is not None:
         transfer_state = private_snapshot["transfers"]
+        active_chip = next(
+            (
+                str(chip.get("name"))
+                for chip in private_snapshot["chips"]
+                if chip.get("status") == "active" and chip.get("name")
+            ),
+            None,
+        )
+        single_transfer_candidates = rank_single_transfers(
+            players,
+            squad,
+            decision_gameweek,
+            bank_tenths=transfer_state["bank_tenths"],
+            free_transfers=transfer_state["free_transfers"],
+            transfers_made=transfer_state["transfers_made"],
+            active_chip=active_chip,
+            rules=rules,
+        )
         financial_snapshot = {
             "gameweek": decision_gameweek,
             "bank": _money(transfer_state["bank_tenths"]),
@@ -377,6 +399,7 @@ def collect_standard_fpl(
             "Start Score and Captain Score are heuristics, not projected FPL points.",
         ]
     else:
+        single_transfer_candidates = unavailable_single_transfer_ranking()
         financial_snapshot = {
             "gameweek": source_gameweek,
             "bank": _money(event_history.get("bank")),
@@ -408,7 +431,7 @@ def collect_standard_fpl(
 
     return {
         "mode": "standard_fpl",
-        "poc_version": "phase-1-v0.2",
+        "poc_version": "phase-1-v0.3",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "entry_context": {
             "team_name": entry.get("name"),
@@ -431,5 +454,6 @@ def collect_standard_fpl(
         "confirmed_lineup": official,
         "recommended_lineup": recommended,
         "captaincy": captaincy,
+        "single_transfer_candidates": single_transfer_candidates,
         "limitations": limitations,
     }
