@@ -26,7 +26,7 @@ The first isolated technical path is now implemented behind `fpl-toolkit --mode 
 
 The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result.
 
-This is intentionally not full Phase 1 completion. The public locked squad can become stale after a transfer, and the report does not claim access to current pre-deadline picks, purchase/selling prices, free-transfer balance or chip state. A sanctioned user-authorized current-team connection remains the next discovery gate.
+This is intentionally not full Phase 1 completion. The public locked squad can become stale after a transfer, and the report does not claim access to current pre-deadline picks, purchase/selling prices, free-transfer balance or chip state. Authentication discovery has now confirmed that the toolkit cannot reuse FPL's OAuth client on GitHub Pages: the callback is rejected and the private team API does not permit the toolkit origin through CORS. The evidence, design boundary and next personal experiment are recorded in [Standard FPL Current-Team Authentication Discovery](STANDARD_FPL_AUTH_DISCOVERY.md).
 
 ## Terminology and product boundary
 
@@ -66,7 +66,7 @@ The public standard FPL responses already expose much of the data needed for a r
 
 The standard player response includes fields that map directly to the current normalized player model, including minutes, starts, goals, assists, clean sheets, bonus, expected goal involvement, form, points per game, expected next points, status, playing chance and news. It also adds standard-FPL-specific fields such as current cost, price movement, selection percentage and transfer volume.
 
-The major discovery risk is **the manager's current pre-deadline state**. Completed-Gameweek public picks are suitable for historical evaluation, but the current editable squad endpoint rejected an unauthenticated request during this discovery. A genuinely useful personal assistant needs the latest squad, bank, purchase/selling prices, free-transfer balance and chip availability before the deadline. That requires a sanctioned signed-in, read-only connection or another reliable user-authorized import. It must not depend on users opening developer tools or handing over session tokens in chat.
+The major implementation gate is **the manager's current pre-deadline state**. Completed-Gameweek public picks are suitable for historical evaluation, but the current editable squad endpoint rejects unauthenticated access. The official FPL web application uses OpenID Connect authorization-code flow with PKCE, yet its registered client rejects the toolkit's callback URL and the protected API does not allow the GitHub Pages origin through CORS. A genuinely useful personal assistant still needs the latest squad, bank, purchase/selling prices, free-transfer balance and chip availability before the deadline, but it cannot obtain them by imitating the official login. See [the authentication discovery](STANDARD_FPL_AUTH_DISCOVERY.md) for the supported hosted architecture, prohibited credential workarounds and bounded browser-local experiment.
 
 Public endpoints and identifiers are not proof that commercial reuse is permitted. The data-rights gate recorded in `COMMERCIAL_FEASIBILITY.md` still applies before selling access.
 
@@ -159,7 +159,8 @@ The report should carry a validated mode such as `draft_h2h`, `draft_classic` or
 ### Phase 0 — private data contract
 
 - Define the standard player, squad, entry-history, price and chip schemas.
-- Prove a user-authorized, read-only way to obtain the current pre-deadline squad and transfer state.
+- For a personal experiment, prove or reject a user-initiated same-origin snapshot that does not extract or replay browser credentials.
+- For any hosted product, obtain Premier League approval and a registered client before implementing account connection.
 - Keep entry identifiers and account details out of committed fixtures and public reports.
 - Add season-versioned rule fixtures and failure states for unavailable authentication.
 
@@ -198,7 +199,7 @@ This phase provides personal value without attempting to solve the harder transf
 | Capability | Relative difficulty | Main uncertainty |
 |---|---|---|
 | Historical/public standard FPL import | Low | Schema drift and season rule changes |
-| Current personal squad connection | Medium–high | Sanctioned authentication and pre-deadline data access |
+| Current personal squad connection | High / externally gated | Registered hosted integration, or a constrained personal same-origin snapshot that never exports credentials |
 | Existing player intelligence on an FPL squad | Low | Mode-specific labels and thresholds |
 | Recommended XI and bench | Low–medium | Autosub ordering and special chip context |
 | Captain and vice-captain | Medium | Upside, minutes risk and effective-ownership trade-offs |
@@ -209,6 +210,6 @@ This phase provides personal value without attempting to solve the harder transf
 
 ## Recommendation
 
-Proceed with a bounded Standard FPL proof of concept, beginning with Phase 0 and Phase 1. Do not begin by porting the H2H screen or building a full chip optimizer. The first success criterion should be that the owner's current squad can be imported privately and the existing player/fixture models can produce a legal XI, ordered bench, captain, vice-captain and useful four-Gameweek outlook without changing the working Draft report.
+Proceed with the bounded Standard FPL proof of concept, but treat authenticated current-team access as an explicit external gate. Do not implement a hosted FPL login by reusing the official client, and do not ask for credentials or browser tokens. The next success criterion is narrower: prove or reject a browser-local, same-origin, read-only snapshot that exports only sanitized team state. If that requires helper access to a bearer token, stop and retain public locked picks plus manual private state until a sanctioned integration exists.
 
 Only after that proof is reliable should the project turn the current waiver comparison into a budget-aware transfer engine. This sequence maximizes reuse, produces early personal value and isolates the genuinely new risks.
