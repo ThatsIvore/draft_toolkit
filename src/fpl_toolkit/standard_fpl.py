@@ -13,6 +13,12 @@ from .optimizer import recommend_lineup
 from .report import current_gameweek
 from .storage import read_json
 from .standard_fpl_snapshot import load_private_snapshot, snapshot_to_picks_payload
+from .standard_fpl_rules import (
+    rules_for_season,
+    rules_summary,
+    season_from_bootstrap,
+    validate_squad_legality,
+)
 
 
 class StandardFplDataError(RuntimeError):
@@ -260,6 +266,13 @@ def collect_standard_fpl(
     """Build a private, read-only Standard FPL Phase 1 proof-of-concept report."""
     client = client or FantasyApiClient()
     bootstrap = client.bootstrap_static()
+    rules = rules_for_season()
+    detected_season = season_from_bootstrap(bootstrap)
+    if detected_season is not None and detected_season != rules.season:
+        raise StandardFplDataError(
+            f"FPL bootstrap appears to be for {detected_season}, but the newest verified "
+            f"Standard FPL ruleset is {rules.season}. Verify and add the new season before continuing."
+        )
     fixtures = client.fixtures()
     entry = client.entry(settings.entry_id)
     history = client.entry_history(settings.entry_id)
@@ -311,6 +324,7 @@ def collect_standard_fpl(
     )
     squad = [player for player in players if player.get("is_owned")]
     validate_standard_squad(squad)
+    squad_legality = validate_squad_legality(squad, rules)
 
     official = confirmed_lineup(
         squad,
@@ -402,6 +416,8 @@ def collect_standard_fpl(
         "current_gameweek": scoring_gameweek,
         "decision_gameweek": decision_gameweek,
         "planning_gameweeks": planning_gws,
+        "rules": rules_summary(rules),
+        "squad_legality": squad_legality,
         "squad_source": squad_source,
         "financial_snapshot": financial_snapshot,
         "summary": {
