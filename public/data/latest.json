@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T01:07:38.885196+00:00",
+  "generated_at": "2026-08-22T01:52:27.152581+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 1,
@@ -86168,8 +86168,8 @@
   },
   "change_feed": {
     "model": "v0.9.3",
-    "baseline": true,
-    "since": "2026-08-21T23:58:32.931831+00:00",
+    "baseline": false,
+    "since": "2026-08-22T01:07:38.885196+00:00",
     "items": [],
     "changed_player_ids": [],
     "summary": {
@@ -86178,6 +86178,6 @@
       "watch": 0,
       "info": 0
     },
-    "note": "Decision baseline refreshed to suppress transient live-match changes."
+    "note": "Only material decision changes are surfaced; small score noise is intentionally suppressed."
   }
 }
