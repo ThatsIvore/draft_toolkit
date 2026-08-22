@@ -27,6 +27,25 @@ The most credible first market is an individual FPL Draft manager who wants an a
 4. **Draft history** — Draft-history input should be incorporated by merging suitable parts of the earlier Draft Assistant into this repository or recreating that workflow here.
 5. **Visual assets** — Original, generic team shirts may use user-selected solid colours or simple stripe patterns. They should omit sponsors, crests and official marks.
 6. **Privacy** — Real manager names and internal Draft entry identifiers must remain outside public reports. Chosen league team names can be used where the existing privacy boundary permits them.
+7. **Commercial data permission** — Written permission or a suitable licence is a hard launch gate before accepting payment.
+8. **League-size coverage** — The paid H2H product must support every permitted private-league size from 2 through 16 managers, including odd-numbered leagues where the official schedule allows them.
+9. **Classic scoring** — Classic leagues are unsupported until a deliberate Classic mode is implemented. Onboarding must detect and reject them clearly rather than running H2H assumptions.
+
+## Commercial data permission
+
+The [Premier League Terms of Use](https://www.premierleague.com/en/terms-and-conditions) reserve copyright, database and related rights and prohibit commercial use, reuse, redistribution or creation of a database from website/app material without prior written approval. Public technical access to FPL or FPL Draft responses is therefore not sufficient evidence that a paid derived service is permitted.
+
+The Premier League directs business and data proposals to `partnerships@premierleague.com`. It directs permission requests for match data, including fixture feeds, to Football DataCo. See the [official business, trademark and data guidance](https://www.premierleague.com/en/news/102426).
+
+Before accepting payment, the project must:
+
+- inventory every external field and endpoint it consumes;
+- distinguish FPL Draft game data, match/fixture data, branding and independently derived analytics;
+- obtain written permission or appropriate licences for the intended subscription use;
+- retain the permission scope and any operational conditions as a project record; and
+- obtain appropriate legal advice rather than treating this concept document as a legal opinion.
+
+A free, limited discovery or closed beta may continue while permission is investigated, but it must not be presented as evidence that later commercial use is authorised.
 
 ## Access model
 
@@ -170,7 +189,43 @@ This context should be discovered automatically and included in model inputs. It
 
 The current product is built around Head-to-Head play. In a Classic league, weekly opponent scouting and H2H matchup projections do not have the same meaning. Supporting Classic properly would require a table/rank-oriented replacement for those views, not merely hiding the opponent's name.
 
-The paid application should either implement that separate experience or detect Classic scoring during onboarding and clearly state that it is unsupported.
+Classic leagues are currently an explicitly unsupported configuration. The paid application must detect Classic scoring during onboarding and stop before collection or payment activation with a clear explanation.
+
+#### Short Classic-mode discovery
+
+**Conclusion:** Classic support is a moderate product extension, not a collector or modelling rewrite. No architectural blocker was found, and the potential value is high because it adds an entire official league mode.
+
+The current league-details response includes an explicit scoring field, so mode detection should be low complexity. The present collector does not preserve or branch on that setting and unconditionally builds the current matchup, scoring-round matchup and four-Gameweek H2H outlook. Without an explicit mode gate, a Classic league would therefore receive missing-match errors rather than a purposeful experience.
+
+Most of the product remains reusable in Classic mode:
+
+- official player and ownership collection;
+- fixture and intelligence models;
+- free-agent and waiver comparisons;
+- injuries, stashes and roster value;
+- Recommended XI and the multi-Gameweek planner;
+- league activity and aggregate manager-decision evidence; and
+- the customer's own forecast-versus-actual lineup diagnostics.
+
+The mode-specific replacement should be a **League Race** view rather than an H2H view. A useful first version would provide:
+
+- current rank, total points and gaps to nearby managers and the leader;
+- projected legal XI totals for every manager over the planning window;
+- expected rank pressure or movement without presenting it as a probability;
+- league-wide strongest and weakest position groups;
+- the managers and rosters most relevant to catching or defending a position; and
+- Classic-specific Decision Updates for rank, gap or projected-race changes.
+
+| Work area | Relative difficulty | Discovery finding |
+|---|---|---|
+| Detect and reject Classic safely | Low | Add normalized league mode to report context and onboarding validation |
+| Preserve the shared toolkit views | Low | Core collection, player models and Recommended XI are mode-neutral |
+| Basic Classic League Race | Medium | Normalize Classic standings and project every manager's legal XI |
+| Classic outcome diagnostics | Medium | Reuse the existing own-lineup evaluation and omit H2H result fields |
+| Full value comparable to H2H Scout | Medium–high | Requires a new league-wide model, explanations, change signals and responsive UI |
+| API validation | Medium uncertainty | Capture sanitized real Classic payloads and test standings, scoring and odd league sizes |
+
+The clean implementation boundary is a normalized `league_context.scoring_mode`, followed by separate `h2h` and `classic` report builders. Shared projection helpers should move out of the H2H-specific module rather than being duplicated. The dashboard should select either **H2H** or **League Race** navigation from the report mode.
 
 ### Redrafts
 
@@ -182,19 +237,19 @@ A redraft changes league ownership without resetting the season standings. The c
 - associate the new draft history with the new epoch; and
 - prevent mass ownership changes from appearing as ordinary waiver activity.
 
-## Proposed first commercial scope
+## Decided first commercial scope
 
-A practical paid beta would support private **4-, 6- and 8-manager Head-to-Head leagues**. Six-manager behaviour is the existing baseline; four and eight should be explicitly calibrated and tested before accepting payment. Larger H2H leagues can follow after scarcity and opponent-sample behaviour have been validated. Classic scoring should be a separate milestone.
+The paid H2H product must support every private-league size from **2 through 16 managers inclusive**. Six-manager behaviour is only the existing baseline; all other sizes require league-relative scarcity, replacement-level and opponent-sample validation before the product can claim that coverage. Tests must include odd-numbered leagues and any official no-opponent/bye representation discovered in their schedules.
 
-An even narrower invitation beta limited to six-manager H2H leagues would reduce initial model risk, but it would measure a smaller market. This is still an open product choice.
+Classic scoring remains unsupported until the separate League Race experience is implemented and validated. It is a high-value follow-on milestone rather than part of the first supported mode.
 
-Every unsupported combination must be detected before payment or trial activation where possible. The toolkit should never silently run six-manager assumptions against another league size.
+Every unsupported combination must be detected before payment or trial activation where possible. The toolkit must never silently run six-manager or H2H assumptions against a different configuration.
 
 ## Remaining commercial hurdles
 
 | Hurdle | Why it matters | Proposed response |
 |---|---|---|
-| Official data rights and terms | Public technical accessibility does not establish permission to resell a derived service | Review current Premier League/FPL terms and obtain legal advice before launch |
+| Official data rights and terms | Current terms restrict commercial reuse without prior written approval | Hard gate: obtain written permission or licences and appropriate legal advice before accepting payment |
 | Authentication and entitlements | Static URLs cannot protect a paid dashboard | Add server-side identity, subscription state and authorization checks |
 | Multi-tenant isolation | League data from one customer must never be returned to another | Namespace storage per account/league and test object-level authorization |
 | API stability and uptime | An unofficial or changing endpoint can break onboarding and reports | Contract tests, health monitoring, cached last-known-good data and visible freshness states |
@@ -213,12 +268,13 @@ The next concept and discovery work should answer these questions:
 
 1. Audit the authenticated live **Create League** and **League Admin** screens to confirm every setup field, exact timer choices and odd-manager H2H behaviour.
 2. Record which league settings and draft-history fields are available from current official responses without browser developer tools.
-3. Verify the current Premier League/FPL terms and commercial data-use position.
-4. Define the recalibration and acceptance tests for 4-, 6- and 8-manager leagues.
-5. Decide whether the first beta supports only six-manager H2H or all public-size equivalents: 4, 6 and 8.
-6. Select a protected hosting, identity, database and payment architecture.
-7. Define subscription boundaries: number of connected leagues, trial length, seasonality and cancellation behaviour.
-8. Specify customer-facing data deletion, league switching and redraft recovery.
+3. Complete the data-source inventory and seek written commercial-use clarification from the Premier League and Football DataCo where applicable.
+4. Define recalibration and acceptance tests for every H2H league size from 2 through 16, including odd-size schedule fixtures.
+5. Obtain sanitized Classic league-details, standings and event payloads to validate the discovery assumptions.
+6. Specify a bounded Classic League Race proof of concept and its acceptance criteria.
+7. Select a protected hosting, identity, database and payment architecture.
+8. Define subscription boundaries: number of connected leagues, trial length, seasonality and cancellation behaviour.
+9. Specify customer-facing data deletion, league switching and redraft recovery.
 
 ## Paid-beta release gates
 
@@ -229,11 +285,11 @@ Do not accept general paid sign-ups until all of the following are true:
 - object-level tenant-isolation tests pass;
 - the application detects league size, scoring mode and redrafts;
 - unsupported configurations are blocked with clear explanations;
-- supported league sizes have regression and calibration evidence;
+- every H2H league size from 2 through 16 has regression and calibration evidence, including odd-numbered schedule behaviour;
 - no raw manager identities or internal entry identifiers enter public output;
 - data freshness and collection failures are visible to the customer;
 - payment cancellation and failed-payment access transitions are tested; and
-- data-use terms and original visual assets have received appropriate review.
+- written data-use permission or suitable licences are recorded, and original visual assets have received appropriate review.
 
 ## Continuation notes for a future maintainer
 
