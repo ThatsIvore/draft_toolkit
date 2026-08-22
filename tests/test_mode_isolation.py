@@ -20,6 +20,7 @@ STANDARD_ONLY_MODULES = {
     "standard_fpl",
     "standard_fpl_rules",
     "standard_fpl_snapshot",
+    "standard_fpl_transfers",
 }
 
 
