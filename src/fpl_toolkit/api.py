@@ -88,14 +88,47 @@ class FantasyApiClient:
     max_attempts: int = 3
     retry_backoff_seconds: float = 1.0
 
-    def fixtures(self) -> list[dict[str, Any]]:
-        payload = _get_json(
-            f"{self.base_url.rstrip('/')}/fixtures/",
+    def _get(self, path: str) -> Any:
+        return _get_json(
+            f"{self.base_url.rstrip('/')}/{path.lstrip('/')}",
             self.timeout_seconds,
             self.user_agent,
             self.max_attempts,
             self.retry_backoff_seconds,
         )
+
+    def bootstrap_static(self) -> dict[str, Any]:
+        payload = self._get("bootstrap-static/")
+        if not isinstance(payload, dict):
+            raise FPLApiError("FPL bootstrap endpoint returned an unexpected payload.")
+        return payload
+
+    def fixtures(self) -> list[dict[str, Any]]:
+        payload = self._get("fixtures/")
         if not isinstance(payload, list):
             raise FPLApiError("FPL fixtures endpoint returned an unexpected payload.")
+        return [row for row in payload if isinstance(row, dict)]
+
+    def entry(self, entry_id: str) -> dict[str, Any]:
+        payload = self._get(f"entry/{entry_id}/")
+        if not isinstance(payload, dict):
+            raise FPLApiError("FPL entry endpoint returned an unexpected payload.")
+        return payload
+
+    def entry_picks(self, entry_id: str, gameweek: int) -> dict[str, Any]:
+        payload = self._get(f"entry/{entry_id}/event/{int(gameweek)}/picks/")
+        if not isinstance(payload, dict):
+            raise FPLApiError("FPL entry picks endpoint returned an unexpected payload.")
+        return payload
+
+    def entry_history(self, entry_id: str) -> dict[str, Any]:
+        payload = self._get(f"entry/{entry_id}/history/")
+        if not isinstance(payload, dict):
+            raise FPLApiError("FPL entry history endpoint returned an unexpected payload.")
+        return payload
+
+    def entry_transfers(self, entry_id: str) -> list[dict[str, Any]]:
+        payload = self._get(f"entry/{entry_id}/transfers/")
+        if not isinstance(payload, list):
+            raise FPLApiError("FPL entry transfers endpoint returned an unexpected payload.")
         return [row for row in payload if isinstance(row, dict)]

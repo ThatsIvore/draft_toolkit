@@ -3,7 +3,10 @@ __pycache__/
 .pytest_cache/
 .venv/
 .env
+*.egg-info/
 # Raw responses and snapshots can contain league manager names.
 data/raw/*.json
 data/snapshots/*.json
+# Standard FPL POC reports contain private squad and recommendation state.
+data/private/
 # Generated report is public-facing by design.

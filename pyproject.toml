@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fpl-season-toolkit"
 version = "0.1.0"
-description = "FPL Draft season toolkit proof of concept"
+description = "FPL and FPL Draft decision-support toolkit"
 requires-python = ">=3.11"
 dependencies = [
   "requests>=2.32,<3",
