@@ -26,7 +26,7 @@ The first isolated technical path is now implemented behind `fpl-toolkit --mode 
 
 The source-independent `standard-fpl-private-snapshot-v1` contract is also implemented and documented in [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). When a trusted future connector produces that file, the same command validates and uses the exact decision-Gameweek squad, purchase/selling prices, bank, free-transfer balance and chip state. It fails closed on stale Gameweeks, unknown players, malformed squad/captaincy state and unexpected fields that could contain identity or credentials. The connector itself is still gated by the authentication discovery.
 
-The 2026/27 squad rules and single-transfer legality layer are also implemented, as documented in [Standard FPL Squad and Single-Transfer Legality](STANDARD_FPL_TRANSFER_LEGALITY.md). Private reports now include the active rules version and structural squad validation. The evaluator can reject an illegal or unaffordable one-for-one move and calculate its incremental points deduction, but candidate ranking and projected net benefit remain future work.
+The 2026/27 squad rules, single-transfer legality layer and first advisory candidate ranker are also implemented, as documented in [Standard FPL Squad and Single-Transfer Legality](STANDARD_FPL_TRANSFER_LEGALITY.md). Private reports include the active rules version, structural squad validation and up to ten legal one-for-one candidates. The point-hit cost remains separate from the football heuristic, and public locked squads return an explicit unavailable state instead of transfer advice.
 
 The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result.
 
@@ -169,6 +169,19 @@ Standard FPL development must not change the established Draft/H2H behavior by d
 
 Shared football primitives may still be reused deliberately, but a future change to shared scoring, fixtures, intelligence or lineup code must pass both Standard FPL tests and the complete Draft/H2H regression suite. Standard-specific rules, prices, transfers, chips and private snapshot handling belong in `standard_fpl*` modules and the private report only.
 
+### Approved future game-mode selector
+
+The toolkit page is intended to use a visible mode selector once both report paths can be delivered safely:
+
+| Surface | Control | Initial options |
+|---|---|---|
+| Desktop | Segmented selector in the shared page shell | `Draft H2H` and `Standard FPL` |
+| Mobile | Compact select/dropdown | `Draft H2H` and `Standard FPL` |
+
+The shell, responsive layout and common player views may be shared, but switching modes must replace the complete report source and mode-specific navigation. It must never merge Standard transfer, budget or chip state into a Draft/H2H report object. Authentication data and internal entry identifiers must not be placed in the URL.
+
+The current public GitHub Pages dashboard remains `Draft H2H` only. The Standard FPL option must remain hidden or disabled until an authorized, secure private report source exists; a visible selector that opens a non-working or privacy-unsafe mode would misrepresent readiness. FPL Draft Classic/League Race should likewise remain absent until that separate mode is supported and validated.
+
 ## Suggested delivery sequence
 
 ### Phase 0 — private data contract
@@ -191,7 +204,7 @@ This phase provides personal value without attempting to solve the harder transf
 ### Phase 2 — legal transfer assistant
 
 - **Foundation implemented:** model bank, current prices, purchase/selling prices, squad shape, club quotas, free-transfer use and incremental hit cost for a specified single transfer.
-- Rank legal one-transfer moves using the existing add/drop comparison as a primitive.
+- **Initial ranker implemented:** compare legal one-transfer moves using shared football primitives, conservative action labels and a separate point-hit warning.
 - Add hold recommendations and explicit reasons for rejected candidates.
 - Attribute actual results to transfer decisions after the Gameweek.
 
