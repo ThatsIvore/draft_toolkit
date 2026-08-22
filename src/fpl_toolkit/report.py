@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from .fixtures import bootstrap_events
+from .intelligence import is_hard_inactive
 
 
 def find_user_manager(league_details: dict[str, Any], entry_id: str) -> dict[str, Any] | None:
@@ -40,7 +41,12 @@ def build_report(entry_id: str, league_id: str, league_details: dict[str, Any], 
                 own_ids.add(str(manager[key]))
     my_squad = [row for row in ownership if (row.get("owner_entry_id") is not None and str(row.get("owner_entry_id")) in own_ids) or (row.get("owner_raw") is not None and str(row.get("owner_raw")) in own_ids)]
     available = [row for row in ownership if str(row.get("status", "")).lower() == "a"]
-    injured_or_doubtful = [row for row in ownership if row.get("chance_next_round") is not None and int(row.get("chance_next_round") or 0) < 100]
+    injured_or_doubtful = [
+        row for row in ownership
+        if row.get("chance_next_round") is not None
+        and int(row.get("chance_next_round") or 0) < 100
+        and not is_hard_inactive(row)
+    ]
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "entry_id": entry_id,
@@ -60,5 +66,5 @@ def build_report(entry_id: str, league_id: str, league_details: dict[str, Any], 
         "available_players": available,
         "league_activity": changes,
         "injury_watch": injured_or_doubtful,
-        "notes": ["This POC proves roster/availability collection and state diffing.", "Projection and stash scoring are deferred until the live payload is validated."],
+        "notes": ["Recommendations combine roster value, availability, role evidence and fixture timing.", "Explicit return dates come only from official FPL news and are never invented."],
     }
