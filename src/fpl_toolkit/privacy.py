@@ -59,7 +59,7 @@ def sanitize_public_report(report: dict[str, Any]) -> dict[str, Any]:
         if isinstance(opponent, dict):
             for key in H2H_IDENTITY_FIELDS:
                 opponent.pop(key, None)
-            opponent["display_name"] = "League opponent"
+            opponent["display_name"] = str(opponent.get("display_name") or "League opponent")
         opponent_squad = h2h.get("opponent_squad", [])
         if isinstance(opponent_squad, list):
             h2h["opponent_squad"] = [
@@ -77,10 +77,5 @@ def sanitize_public_report(report: dict[str, Any]) -> dict[str, Any]:
                 continue
             for key in H2H_IDENTITY_FIELDS:
                 opponent.pop(key, None)
-            opponent["display_name"] = "League opponent"
-        summary = outlook.get("summary") or {}
-        for key in ("toughest_matchup", "best_opportunity"):
-            highlight = summary.get(key)
-            if isinstance(highlight, dict) and highlight.get("opponent") is not None:
-                highlight["opponent"] = "League opponent"
+            opponent["display_name"] = str(opponent.get("display_name") or "League opponent")
     return public

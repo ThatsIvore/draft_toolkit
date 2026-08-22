@@ -94,6 +94,68 @@
   color: rgba(255, 255, 255, .72);
 }
 
+.h2h-decision-chip {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 5px;
+  padding: 4px 7px;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 9%, white);
+  color: #5b2ca0;
+  font-size: 9px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.h2h-hero .h2h-decision-chip {
+  border-color: rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .13);
+  color: #fff;
+}
+
+.h2h-decision-chip.threat-high { color: #b72c4d; }
+.h2h-decision-chip.threat-low { color: #15754a; }
+.h2h-hero .h2h-decision-chip.threat-high,
+.h2h-hero .h2h-decision-chip.threat-low { color: #fff; }
+
+.h2h-manager-profile {
+  --profile-accent: var(--h2h-violet);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--profile-accent) 22%, #dfe2e9);
+  border-left: 5px solid var(--profile-accent);
+  border-radius: 16px;
+  background: #e7e9ef;
+}
+
+.h2h-manager-profile.threat-high { --profile-accent: var(--h2h-red); }
+.h2h-manager-profile.threat-low { --profile-accent: var(--h2h-green); }
+
+.h2h-manager-profile > div {
+  display: grid;
+  gap: 3px;
+  padding: 13px;
+  background: #fff;
+}
+
+.h2h-manager-profile small,
+.h2h-manager-profile span,
+.h2h-manager-profile p { color: var(--muted); }
+
+.h2h-manager-profile > div strong { color: var(--profile-accent); }
+
+.h2h-manager-profile > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px 13px;
+  background: color-mix(in srgb, var(--profile-accent) 7%, white);
+  font-size: 11px;
+}
+
 .h2h-outcome > div {
   position: relative;
   overflow: hidden;
@@ -191,6 +253,11 @@
   top: -42px;
   border: 13px solid color-mix(in srgb, var(--card-accent) 18%, transparent);
   border-radius: 50%;
+}
+
+.h2h-outlook-card .h2h-decision-chip {
+  color: var(--card-accent);
+  background: color-mix(in srgb, var(--card-soft) 75%, white);
 }
 
 .h2h-outlook-head > span,
@@ -365,6 +432,10 @@
   .h2h-outcome {
     grid-template-columns: 1fr;
   }
+
+  .h2h-manager-profile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 620px) {
@@ -428,6 +499,10 @@
 
   .h2h-disclosure-title small {
     line-height: 1.35;
+  }
+
+  .h2h-manager-profile {
+    grid-template-columns: 1fr;
   }
 }
 

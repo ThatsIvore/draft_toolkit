@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "league_id": "58312",
+  "format": "six-team snake, 15 rounds",
+  "source": "Manually transcribed from the official FPL Draft room screenshot supplied by the league manager.",
+  "teams": [
+    {"draft_slot": 1, "draft_code": "DG", "team_name": "My own Wirtz enemy"},
+    {"draft_slot": 2, "draft_code": "HL", "team_name": "Vængir Júpíters"},
+    {"draft_slot": 3, "draft_code": "IR", "team_name": "FC FC"},
+    {"draft_slot": 4, "draft_code": "MF", "team_name": "Gooseboys"},
+    {"draft_slot": 5, "draft_code": "BP", "team_name": "No Salad"},
+    {"draft_slot": 6, "draft_code": "ÞH", "team_name": "Weapon X"}
+  ],
+  "rounds": [
+    ["Haaland", "B.Fernandes", "Saka", "Semenyo", "João Pedro", "Isak"],
+    ["Watkins", "Mbeumo", "Palmer", "Gabriel", "Thiago", "Wirtz"],
+    ["Cunha", "Gibbs-White", "Gyökeres", "O'Reilly", "Calafiori", "Rice"],
+    ["Nørgaard", "Szoboszlai", "Šeško", "Virgil", "Calvert-Lewin", "Guéhi"],
+    ["Raya", "Pedro Porro", "Rogers", "Muñoz", "Solanke", "Tarkowski"],
+    ["Cherki", "Mateta", "Welbeck", "Bruno G.", "Lacroix", "Murillo"],
+    ["Enzo", "Igor Jesus", "Kerkez", "Evanilson", "Anderson", "Pickford"],
+    ["Strand Larsen", "Sarr", "Mosquera", "Collins", "Gvardiol", "Mukiele"],
+    ["Wissa", "Dewsbury-Hall", "Eze", "Foden", "Araujo", "Hincapie"],
+    ["Aït-Nouri", "Lammens", "Wilson", "Muniz", "A.Becker", "Matheus N."],
+    ["Truffert", "Trossard", "Milenković", "Donnarumma", "Justin", "Neto"],
+    ["Buendía", "Khusanov", "Tielemans", "Rayan", "Konaté", "Gravenberch"],
+    ["Ampadu", "N.Williams", "Kelleher", "Hill", "F.Kadıoğlu", "James"],
+    ["Frimpong", "Gakpo", "Dalot", "Roefs", "Tavernier", "Richarlison"],
+    ["Henderson", "Sels", "Awoniyi", "Sánchez", "Kinsky", "Martinez"]
+  ],
+  "player_ids": [
+    [411, 426, 12, 397, 165, 379],
+    [55, 427, 154, 4, 106, 366],
+    [428, 480, 25, 387, 8, 13],
+    [21, 368, 439, 356, 346, 388],
+    [1, 499, 40, 201, 526, 229],
+    [399, 223, 136, 452, 200, 472],
+    [155, 491, 358, 79, 481, 226],
+    [222, 208, 11, 84, 391, 533],
+    [464, 236, 14, 398, 580, 9],
+    [392, 412, 260, 271, 350, 389],
+    [61, null, 471, 384, 332, 156],
+    [41, 393, 43, 67, null, 371],
+    [338, 469, 82, 60, 113, 142],
+    [357, 367, 417, 529, 68, 527],
+    [198, 467, 492, 140, 496, 28]
+  ]
+}

@@ -168,6 +168,34 @@ def _signal(edge: float) -> str:
     return "EVEN"
 
 
+def _manager_profile(
+    profiles: dict[str, dict[str, Any]] | None,
+    league_entry_id: str | None,
+    entry_id: str | None,
+) -> dict[str, Any] | None:
+    if not profiles:
+        return None
+    for candidate in (entry_id, league_entry_id):
+        if candidate is not None and isinstance(profiles.get(str(candidate)), dict):
+            return profiles[str(candidate)]
+    return None
+
+
+def _apply_decision_adjustment(projection: dict[str, Any], profile: dict[str, Any] | None) -> float:
+    threat = (profile or {}).get("decision_threat") or {}
+    adjustment = _clamp(_number(threat.get("projected_points_adjustment")), -2.0, 2.0)
+    if not adjustment:
+        return 0.0
+    projection["roster_total"] = projection.get("total")
+    projection["decision_adjustment"] = round(adjustment, 1)
+    projection["total"] = round(_number(projection.get("total")) + adjustment, 1)
+    if projection.get("range_low") is not None:
+        projection["range_low"] = round(max(0.0, _number(projection.get("range_low")) + adjustment), 1)
+    if projection.get("range_high") is not None:
+        projection["range_high"] = round(max(0.0, _number(projection.get("range_high")) + adjustment), 1)
+    return round(adjustment, 1)
+
+
 def player_projected_points(player: dict[str, Any], gameweek: int) -> dict[str, Any]:
     """Estimate next-GW FPL points from the toolkit's existing evidence.
 
@@ -470,6 +498,7 @@ def build_h2h_matchup(
     gameweek: int,
     my_lineup: dict[str, Any] | None = None,
     phase: str = "SCHEDULED",
+    manager_profiles: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Build an opponent scouting report for the next H2H Draft matchup."""
     my_entry = _find_entry(league_details, str(my_entry_id))
@@ -489,6 +518,7 @@ def build_h2h_matchup(
 
     opponent_entry = _entry_by_league_id(league_details, opponent_league_id) or {}
     opponent_entry_id = _entry_id(opponent_entry)
+    opponent_profile = _manager_profile(manager_profiles, opponent_league_id, opponent_entry_id)
     opponent_squad = _squad_for_entry(ownership, opponent_league_id, opponent_entry_id)
     if len(opponent_squad) < 11:
         return {
@@ -524,6 +554,7 @@ def build_h2h_matchup(
             "entry_id": opponent_entry_id,
             **_standing(league_details, opponent_league_id),
         },
+        "opponent_profile": opponent_profile,
         "my_standing": _standing(league_details, my_league_id),
         "result": _match_result(match, my_league_id, phase),
         "matchup": {
@@ -640,6 +671,7 @@ def build_h2h_outlook(
     ownership: list[dict[str, Any]],
     gameweeks: list[int],
     frozen_current: dict[str, Any] | None = None,
+    manager_profiles: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Project the next four exact H2H schedule matches from current rosters."""
     my_entry = _find_entry(league_details, str(my_entry_id))
@@ -654,6 +686,7 @@ def build_h2h_outlook(
         }
 
     cards = []
+    active_gameweek = min(gameweeks) if gameweeks else None
     for gameweek in gameweeks[:4]:
         match = _find_exact_match(league_details, my_league_id, int(gameweek))
         if not match:
@@ -663,6 +696,7 @@ def build_h2h_outlook(
         opponent_league_id = second if first == my_league_id else first
         opponent_entry = _entry_by_league_id(league_details, opponent_league_id or "") or {}
         opponent_entry_id = _entry_id(opponent_entry)
+        opponent_profile = _manager_profile(manager_profiles, opponent_league_id, opponent_entry_id)
         opponent_squad = _squad_for_entry(ownership, opponent_league_id, opponent_entry_id)
         mine = recommend_lineup(my_squad, int(gameweek))
         theirs = recommend_lineup(opponent_squad, int(gameweek))
@@ -678,6 +712,9 @@ def build_h2h_outlook(
         opponent_summary = _lineup_summary(theirs, int(gameweek))
         my_projection = _outlook_projection(my_summary)
         opponent_projection = _outlook_projection(opponent_summary)
+        decision_adjustment = 0.0
+        if active_gameweek is not None and int(gameweek) > int(active_gameweek):
+            decision_adjustment = _apply_decision_adjustment(opponent_projection, opponent_profile)
         projected_edge = _number(my_projection.get("total")) - _number(opponent_projection.get("total"))
         position_edges = _position_edges(mine, theirs, int(gameweek))
         threat = (_threat_rows(theirs, int(gameweek), 1) or [None])[0]
@@ -692,9 +729,11 @@ def build_h2h_outlook(
             },
             "my": my_projection,
             "opponent_projection": opponent_projection,
+            "opponent_profile": opponent_profile,
+            "decision_adjustment": decision_adjustment,
             "projected_edge": round(projected_edge, 1),
             "signal": _signal(projected_edge),
-            "projection_source": "current_rosters",
+            "projection_source": "current_roster_plus_decision_profile" if decision_adjustment else "current_rosters",
             "position_edges": position_edges,
             "weakest_position": min(position_edges, key=lambda row: _number(row.get("projected_points_edge"))) if position_edges else None,
             "strongest_position": max(position_edges, key=lambda row: _number(row.get("projected_points_edge"))) if position_edges else None,
@@ -708,5 +747,5 @@ def build_h2h_outlook(
         "available": any(card.get("available") for card in cards),
         "gameweeks": cards,
         "summary": _outlook_summary(cards),
-        "note": "Future matchups use current rosters and refresh after every collection. They do not predict transfers or submitted lineups. The current Gameweek retains its frozen forecast.",
+        "note": "Future matchups use current rosters plus an explicitly labelled, capped opponent-decision adjustment. The model cannot see unsubmitted waivers or future lineups. The current Gameweek retains its frozen forecast.",
     }

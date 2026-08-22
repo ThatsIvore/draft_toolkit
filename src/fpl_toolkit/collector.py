@@ -14,6 +14,7 @@ from .injury_stash import build_injury_stash_dashboard
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
+from .opponent_profile import build_manager_profiles, lineup_decision, update_manager_history
 from .outcomes import build_outcome_diagnostics, gameweek_phase
 from .optimizer import recommend_lineup
 from .planner import build_schedule_planner
@@ -21,6 +22,33 @@ from .report import build_report, current_gameweek
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
 from .waivers import attach_replacement_analysis
+
+
+def _final_lineup_decisions(
+    client: DraftApiClient,
+    league: dict[str, Any],
+    ownership: list[dict[str, Any]],
+    gameweek: int,
+    phase: str,
+) -> dict[str, dict[str, Any]]:
+    if phase != "FINAL":
+        return {}
+    decisions: dict[str, dict[str, Any]] = {}
+    entries = league.get("league_entries") or league.get("entries") or []
+    for entry in entries if isinstance(entries, list) else []:
+        if not isinstance(entry, dict):
+            continue
+        entry_id = entry.get("entry_id", entry.get("entry"))
+        if entry_id is None:
+            continue
+        try:
+            payload = client.entry_event(str(entry_id), gameweek)
+            decision = lineup_decision(normalize_lineup(payload, ownership, gameweek))
+        except FPLApiError:
+            decision = None
+        if decision:
+            decisions[str(entry_id)] = decision
+    return decisions
 
 
 def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_client: FantasyApiClient | None = None) -> dict[str, Any]:
@@ -32,8 +60,10 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report_dir = root / "reports"
     state_path = root / "state" / "ownership.json"
     decision_state_path = root / "state" / "decision.json"
+    manager_history_path = root / "state" / "manager-decisions.json"
     public_report_path = Path("public/data/latest.json")
     baseline_path = root / "state" / "performance-baseline.json"
+    draft_path = root / "draft" / "league-draft.json"
     stamp = timestamp_slug()
 
     entry = client.entry_public(settings.draft_entry_id)
@@ -60,6 +90,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         previous_decision_state = capture_decision_state(read_json(public_report_path))
     else:
         previous_decision_state = None
+    manager_history = read_json(manager_history_path) if manager_history_path.exists() else None
+    draft = read_json(draft_path) if draft_path.exists() else None
 
     ownership = normalize_ownership(element_status, league, bootstrap)
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
@@ -115,6 +147,18 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
 
     lineup_gw = planning_gws[0] if planning_gws else 1
     phase = gameweek_phase(fixtures, lineup_gw)
+    lineup_decisions = _final_lineup_decisions(client, league, ownership, lineup_gw, phase)
+    manager_history = update_manager_history(
+        manager_history,
+        league,
+        ownership,
+        changes,
+        captured_at=report.get("generated_at"),
+        gameweek=lineup_gw,
+        lineup_decisions=lineup_decisions,
+    )
+    write_json(manager_history_path, manager_history)
+    manager_profiles = build_manager_profiles(league, ownership, draft, manager_history)
     report["gameweek_phase"] = phase
     report["recommended_lineup"] = recommend_lineup(report.get("my_squad", []), lineup_gw)
     report["h2h_matchup"] = build_h2h_matchup(
@@ -126,6 +170,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         lineup_gw,
         my_lineup=report["recommended_lineup"],
         phase=phase,
+        manager_profiles=manager_profiles,
     )
 
     lineup = None
@@ -144,6 +189,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         ownership,
         planning_gws,
         frozen_current=(report.get("outcome_diagnostics") or {}).get("current"),
+        manager_profiles=manager_profiles,
     )
     report["change_feed"] = build_change_feed(previous_decision_state, report, changes)
     write_json(decision_state_path, capture_decision_state(report))
