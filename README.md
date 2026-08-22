@@ -55,3 +55,5 @@ The toolkit now includes projections, recommendation scoring, injury-return timi
 ## Commercial-access concept
 
 The current feasibility findings, agreed product directions, league-configuration research, model-generalization risks and paid-beta release gates are maintained in [Commercial Access Feasibility and Onboarding Concept](docs/COMMERCIAL_FEASIBILITY.md). It is the handover record for future work on selling access to the toolkit; it does not describe features that are already implemented unless explicitly marked as confirmed.
+
+The separate [Standard FPL Mode Analysis](docs/STANDARD_FPL_MODE_ANALYSIS.md) records the feasibility, reusable modules, new calculations, data risks and phased design for supporting the budget-and-transfer game at `fantasy.premierleague.com`. It deliberately distinguishes standard FPL from Classic scoring inside FPL Draft.
