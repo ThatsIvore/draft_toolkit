@@ -13,7 +13,7 @@ This project turns public FPL and FPL Draft data into an in-season decision tool
 9. project and audit H2H matchups across a four-Gameweek window;
 10. retain aggregate opponent transfer and completed-lineup decisions;
 11. use a verified 90-pick draft history as a small, decaying opponent prior;
-12. surface only material changes and decision-relevant injury/stash cases;
+12. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant injury/stash cases;
 13. produce a redacted machine-readable report for a GitHub Pages dashboard.
 
 ## Identifier
@@ -50,4 +50,4 @@ League payloads can contain manager names. Raw API responses and full historical
 
 ## Current boundary
 
-The toolkit now includes projections, recommendation scoring, injury-return timing, stash/roster value, opponent-drop monitoring, personalised add/drop comparisons, Recommended XI, H2H scouting and evidence-weighted opponent decision profiles. Once a Gameweek locks, live scoring and outcome diagnostics remain attached to that round while every actionable recommendation advances to the next open Gameweek. It remains decision support rather than an automated transaction system. Opponent profiles observe outcomes rather than intent: unsubmitted waiver requests are invisible, draft influence is deliberately small, and early samples are pulled toward neutral. Return dates come only from readable official FPL news, expected minutes and projected points remain transparent heuristics, and the model does not ingest press conferences or specialist medical reporting.
+The toolkit now includes projections, recommendation scoring, injury-return timing, stash/roster value, opponent-drop monitoring, personalised add/drop comparisons, Recommended XI, H2H scouting and evidence-weighted opponent decision profiles. Material Decision Updates persist through the current actionable Gameweek, while the previous two completed decision cycles remain available as a compact archive. Once a Gameweek locks, live scoring and outcome diagnostics remain attached to that round while every actionable recommendation advances to the next open Gameweek. It remains decision support rather than an automated transaction system. Opponent profiles observe outcomes rather than intent: unsubmitted waiver requests are invisible, draft influence is deliberately small, and early samples are pulled toward neutral. Return dates come only from readable official FPL news, expected minutes and projected points remain transparent heuristics, and the model does not ingest press conferences or specialist medical reporting.

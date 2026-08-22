@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 from datetime import datetime, timezone
 from typing import Any
 
@@ -8,7 +9,10 @@ ROLE_RANK = {"LOW": 1, "MEDIUM": 2, "HIGH": 3}
 WAIVER_RANK = {"KEEP ROSTER": 1, "CONSIDER": 2, "STASH SWAP": 3, "SWAP NOW": 4}
 PRIORITY_RANK = {"critical": 4, "important": 3, "watch": 2, "info": 1}
 DECISION_STATE_VERSION = 4
-CHANGE_FEED_MODEL = "v0.9.3"
+CHANGE_FEED_MODEL = "v1.0.0"
+MAX_CYCLE_ITEMS = 60
+MAX_ARCHIVED_CYCLES = 2
+RECENT_EVENT_KINDS = {"gameweek_result", "gameweek_rollover", "opponent_add"}
 
 
 def _number(value: Any, default: float = 0.0) -> float:
@@ -96,7 +100,7 @@ def capture_decision_state(report: dict[str, Any]) -> dict[str, Any]:
     h2h = report.get("h2h_matchup") or {}
     planner = report.get("schedule_planner") or {}
     gameweek = report.get("decision_gameweek", report.get("current_gameweek"))
-    return {
+    state = {
         "schema_version": DECISION_STATE_VERSION,
         "captured_at": report.get("generated_at") or datetime.now(timezone.utc).isoformat(),
         "gameweek": gameweek,
@@ -112,6 +116,9 @@ def capture_decision_state(report: dict[str, Any]) -> dict[str, Any]:
         "h2h_start_edge": ((h2h.get("matchup") or {}).get("start_score_edge") if h2h.get("available") else None),
         "outcome_diagnostics": report.get("outcome_diagnostics"),
     }
+    if isinstance(report.get("change_feed"), dict):
+        state["change_feed"] = report["change_feed"]
+    return state
 
 
 def _item(
@@ -134,6 +141,143 @@ def _item(
         "club": player.get("club") if player else None,
         "team_code": player.get("team_code") if player else None,
         "position": player.get("position") if player else None,
+    }
+
+
+def _event_stream(event: dict[str, Any]) -> str:
+    kind = str(event.get("kind") or "change")
+    player_id = event.get("player_id")
+    group = {
+        "availability": "availability",
+        "player_news": "availability",
+        "role_change": "role",
+        "minutes_change": "role",
+        "waiver_change": "waiver",
+        "recommendation_change": "waiver",
+        "opponent_drop": "free_pool",
+        "opponent_add": "free_pool",
+    }.get(kind, kind)
+    if player_id is not None:
+        return f"{group}:player:{player_id}"
+    if kind == "gameweek_result":
+        return f"{group}:{event.get('title') or 'result'}"
+    return group
+
+
+def _event_id(event: dict[str, Any], gameweek: Any, suffix: str = "") -> str:
+    value = "|".join((
+        str(gameweek or ""),
+        _event_stream(event),
+        str(event.get("title") or ""),
+        str(event.get("detail") or ""),
+        suffix,
+    ))
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()[:16]
+
+
+def _summary(items: list[dict[str, Any]], *, active_only: bool = False) -> dict[str, int]:
+    summary = {key: 0 for key in ("critical", "important", "watch", "info")}
+    for event in items:
+        if active_only and event.get("status") != "active":
+            continue
+        priority = str(event.get("priority") or "info")
+        summary[priority] = summary.get(priority, 0) + 1
+    return summary
+
+
+def _persist_change_feed(
+    previous_state: dict[str, Any] | None,
+    current_state: dict[str, Any],
+    events: list[dict[str, Any]],
+    *,
+    baseline: bool,
+    note: str,
+) -> dict[str, Any]:
+    previous_state = previous_state or {}
+    previous_feed = previous_state.get("change_feed")
+    previous_feed = previous_feed if isinstance(previous_feed, dict) else {}
+    captured_at = str(current_state.get("captured_at") or datetime.now(timezone.utc).isoformat())
+    gameweek = current_state.get("gameweek")
+    previous_cycle = previous_feed.get("cycle_gameweek")
+    same_cycle = bool(previous_feed) and str(previous_cycle) == str(gameweek)
+
+    archive = [dict(cycle) for cycle in previous_feed.get("archive") or [] if isinstance(cycle, dict)]
+    if previous_feed and not same_cycle and previous_feed.get("items"):
+        archive.append({
+            "gameweek": previous_cycle,
+            "started_at": previous_feed.get("cycle_started_at") or previous_feed.get("since"),
+            "ended_at": captured_at,
+            "summary": previous_feed.get("summary") or {},
+            "items": previous_feed.get("items") or [],
+        })
+    archive = archive[-MAX_ARCHIVED_CYCLES:]
+
+    items = [dict(event) for event in previous_feed.get("items") or [] if isinstance(event, dict)] if same_cycle else []
+    cycle_started_at = (
+        previous_feed.get("cycle_started_at") or previous_feed.get("since")
+        if same_cycle
+        else captured_at
+    )
+    new_item_ids: list[str] = []
+
+    for raw_event in events:
+        event = dict(raw_event)
+        stream = _event_stream(event)
+        event_id = _event_id(event, gameweek)
+        existing = next((item for item in items if item.get("event_id") == event_id), None)
+        if existing and existing.get("status") != "resolved":
+            existing["last_seen"] = captured_at
+            existing["occurrences"] = int(existing.get("occurrences") or 1) + 1
+            continue
+        if existing:
+            event_id = _event_id(event, gameweek, captured_at)
+
+        for item in items:
+            if item.get("status") == "active" and item.get("stream") == stream:
+                item["status"] = "resolved"
+                item["resolved_at"] = captured_at
+
+        event.update({
+            "event_id": event_id,
+            "stream": stream,
+            "decision_gameweek": gameweek,
+            "first_seen": captured_at,
+            "last_seen": captured_at,
+            "occurrences": 1,
+            "status": "resolved" if event.get("kind") in RECENT_EVENT_KINDS else "active",
+        })
+        if event["status"] == "resolved":
+            event["resolved_at"] = captured_at
+        items.append(event)
+        new_item_ids.append(event_id)
+
+    items.sort(
+        key=lambda event: (
+            event.get("status") == "active",
+            PRIORITY_RANK.get(str(event.get("priority")), 0),
+            str(event.get("last_seen") or ""),
+        ),
+        reverse=True,
+    )
+    items = items[:MAX_CYCLE_ITEMS]
+    active_player_ids = sorted({
+        int(event["player_id"])
+        for event in items
+        if event.get("status") == "active" and event.get("player_id") is not None
+    })
+    return {
+        "model": CHANGE_FEED_MODEL,
+        "baseline": baseline,
+        "cycle_gameweek": gameweek,
+        "cycle_started_at": cycle_started_at,
+        "since": cycle_started_at,
+        "items": items,
+        "archive": archive,
+        "new_item_ids": new_item_ids,
+        "changed_player_ids": active_player_ids,
+        "summary": _summary(items),
+        "active_summary": _summary(items, active_only=True),
+        "note": note,
     }
 
 
@@ -231,15 +375,13 @@ def build_change_feed(
 ) -> dict[str, Any]:
     current_state = capture_decision_state(report)
     if not previous_state or not isinstance(previous_state.get("players"), dict):
-        return {
-            "model": CHANGE_FEED_MODEL,
-            "baseline": True,
-            "since": None,
-            "items": [],
-            "changed_player_ids": [],
-            "summary": {"critical": 0, "important": 0, "watch": 0, "info": 0},
-            "note": "Decision-change baseline captured. Future collections will compare against this snapshot.",
-        }
+        return _persist_change_feed(
+            previous_state,
+            current_state,
+            [],
+            baseline=True,
+            note="Decision-cycle baseline captured. Material updates will remain visible throughout this decision Gameweek.",
+        )
     events: list[dict[str, Any]] = []
     baseline_refresh = previous_state.get("schema_version") != DECISION_STATE_VERSION
     old_gameweek = previous_state.get("gameweek")
@@ -304,7 +446,7 @@ def build_change_feed(
         ))
 
     for activity in league_activity or []:
-        if not isinstance(activity, dict) or activity.get("type") != "drop":
+        if not isinstance(activity, dict) or activity.get("type") not in {"drop", "add"}:
             continue
         player_id = activity.get("player_id")
         current = current_players.get(str(player_id)) or {
@@ -312,6 +454,13 @@ def build_change_feed(
             "player": activity.get("player"),
             "club": activity.get("club"),
         }
+        if activity.get("type") == "add":
+            events.append(_item(
+                "opponent_add", "info", f"{current.get('player') or 'Player'} left the free pool",
+                "A league roster claimed this player, closing the earlier free-agent opportunity.",
+                player=current, badge="CLAIMED",
+            ))
+            continue
         action = current.get("waiver_action")
         decision = f" Current waiver action: {action}." if action else ""
         events.append(_item(
@@ -349,20 +498,14 @@ def build_change_feed(
         key=lambda event: (PRIORITY_RANK.get(str(event.get("priority")), 0), event.get("player_id") is not None),
         reverse=True,
     )
-    summary = {key: 0 for key in ("critical", "important", "watch", "info")}
-    for event in deduped:
-        priority = str(event.get("priority") or "info")
-        summary[priority] = summary.get(priority, 0) + 1
-    return {
-        "model": CHANGE_FEED_MODEL,
-        "baseline": baseline_refresh,
-        "since": previous_state.get("captured_at"),
-        "items": deduped[:40],
-        "changed_player_ids": sorted({int(event["player_id"]) for event in deduped if event.get("player_id") is not None}),
-        "summary": summary,
-        "note": (
+    return _persist_change_feed(
+        previous_state,
+        current_state,
+        deduped,
+        baseline=baseline_refresh,
+        note=(
             "Decision baseline refreshed to suppress transient live-match changes."
             if baseline_refresh
-            else "Only material decision changes are surfaced; small score noise is intentionally suppressed."
+            else "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
         ),
-    }
+    )
