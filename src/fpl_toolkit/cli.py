@@ -11,6 +11,7 @@ from .config import ConfigError, Settings, StandardFplSettings
 from .normalize import LeagueDiscoveryError
 from .privacy import sanitize_public_report
 from .standard_fpl import StandardFplDataError, collect_standard_fpl
+from .standard_fpl_snapshot import StandardFplSnapshotError
 from .storage import write_json
 
 
@@ -47,7 +48,13 @@ def main() -> int:
             write_json(Path("public/data/latest.json"), sanitize_public_report(report))
         print(json.dumps(report["summary"], indent=2))
         return 0
-    except (ConfigError, FPLApiError, LeagueDiscoveryError, StandardFplDataError) as exc:
+    except (
+        ConfigError,
+        FPLApiError,
+        LeagueDiscoveryError,
+        StandardFplDataError,
+        StandardFplSnapshotError,
+    ) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 
