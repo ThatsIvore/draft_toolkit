@@ -19,7 +19,7 @@ A commercial version needs an authenticated application around the toolkit, serv
 
 The most credible first market is an individual FPL Draft manager who wants an analytical edge over the other managers in their league. The product should not depend on a league administrator inviting every participant, because those participants are the customer's competitors.
 
-Commercialization is no longer the near-term project driver. The current priority is the owner's personal enjoyment and decision advantage, with Classic-mode support as the next major product direction. Multi-user infrastructure, payments and user acquisition should remain documented as optional future work rather than displacing personally valuable features.
+Commercialization is no longer the near-term project driver. The current priority is the owner's personal enjoyment and decision advantage, with support for the standard Fantasy Premier League game as the next major product direction. Multi-user infrastructure, payments and user acquisition should remain documented as optional future work rather than displacing personally valuable features.
 
 ## Decisions already made
 
@@ -31,8 +31,9 @@ Commercialization is no longer the near-term project driver. The current priorit
 6. **Privacy** — Real manager names and internal Draft entry identifiers must remain outside public reports. Chosen league team names can be used where the existing privacy boundary permits them.
 7. **Commercial data permission** — Written permission or a suitable licence is a hard launch gate before accepting payment.
 8. **League-size coverage** — The paid H2H product must support every permitted private-league size from 2 through 16 managers, including odd-numbered leagues where the official schedule allows them.
-9. **Classic scoring** — Classic leagues are unsupported until a deliberate Classic mode is implemented. Onboarding must detect and reject them clearly rather than running H2H assumptions.
-10. **Roadmap motivation** — Personal value and enjoyment take priority over monetary return or adding users. Classic League Race support is the next major product direction; commercial account and payment work is deferred unless that motivation changes.
+9. **FPL Draft Classic scoring** — Classic-scoring Draft leagues are unsupported until a deliberate Draft Classic mode is implemented. Onboarding must detect and reject them clearly rather than running H2H assumptions.
+10. **Roadmap motivation** — Personal value and enjoyment take priority over monetary return or adding users. A separate standard FPL mode is the next major product direction; commercial account and payment work is deferred unless that motivation changes.
+11. **Terminology** — Standard FPL at `fantasy.premierleague.com` is not "Classic Draft." It is distinct from the Classic scoring option within FPL Draft and requires budget, transfer, captaincy and chip models.
 
 ## Commercial data permission
 
@@ -92,7 +93,9 @@ The Draft single-page application also keeps the useful entry identifier out of 
 
 A private-league invite code is a join credential, not an existing entry identifier. The current frontend submits it to a mutating private-join endpoint together with new entry details. The toolkit must not call that endpoint merely to discover an existing team, and invite codes must not be committed or displayed publicly.
 
-For personal Classic discovery, obtain the numeric Draft entry from the normal signed-in account entry list using a read-only, session-bound flow. A future automated onboarding flow should use a sanctioned authenticated account-to-entry association and present the user's Draft entries for selection, without exposing tokens, UUIDs or requiring developer tools.
+For personal Draft discovery, obtain the numeric Draft entry from the normal signed-in account entry list using a read-only, session-bound flow. A future automated onboarding flow should use a sanctioned authenticated account-to-entry association and present the user's Draft entries for selection, without exposing tokens, UUIDs or requiring developer tools.
+
+Standard FPL has a different entry URL and data model. Its public entry pages expose a numeric entry identifier, but public completed-Gameweek picks do not by themselves solve private, pre-deadline onboarding. The separate [Standard FPL Mode Analysis](STANDARD_FPL_MODE_ANALYSIS.md) records the current data finding and proposed user-authorized connection.
 
 ## Draft-history integration
 
@@ -202,7 +205,7 @@ The current product is built around Head-to-Head play. In a Classic league, week
 
 Classic leagues are currently an explicitly unsupported configuration. The paid application must detect Classic scoring during onboarding and stop before collection or payment activation with a clear explanation.
 
-#### Short Classic-mode discovery
+#### Short FPL Draft Classic-mode discovery
 
 **Conclusion:** Classic support is a moderate product extension, not a collector or modelling rewrite. No architectural blocker was found, and the potential value is high because it adds an entire official league mode.
 
@@ -252,7 +255,7 @@ A redraft changes league ownership without resetting the season standings. The c
 
 The paid H2H product must support every private-league size from **2 through 16 managers inclusive**. Six-manager behaviour is only the existing baseline; all other sizes require league-relative scarcity, replacement-level and opponent-sample validation before the product can claim that coverage. Tests must include odd-numbered leagues and any official no-opponent/bye representation discovered in their schedules.
 
-Classic scoring remains unsupported until the separate League Race experience is implemented and validated. It is now the next personal development priority, even though it is not yet part of the supported mode.
+FPL Draft Classic scoring remains unsupported until the separate League Race experience is implemented and validated. It is not the current personal development priority. The current priority is the distinct standard FPL game described in [Standard FPL Mode Analysis](STANDARD_FPL_MODE_ANALYSIS.md).
 
 Every unsupported combination must be detected before payment or trial activation where possible. The toolkit must never silently run six-manager or H2H assumptions against a different configuration.
 
@@ -277,15 +280,16 @@ Every unsupported combination must be detected before payment or trial activatio
 
 The next concept and discovery work should answer these questions:
 
-1. Resolve the owner's numeric Classic Draft entry through a read-only signed-in account entry list without submitting the private-league join form or publishing account identifiers and invite codes.
-2. Obtain sanitized Classic league-details, standings and event payloads to validate the discovery assumptions.
-3. Specify and implement a bounded Classic League Race proof of concept and its acceptance criteria.
-4. Audit the authenticated live **Create League** and **League Admin** screens to confirm every setup field, exact timer choices and odd-manager H2H behaviour.
-5. Record which league settings and draft-history fields are available from current official responses without browser developer tools.
-6. Define recalibration and acceptance tests for every H2H league size from 2 through 16, including odd-size schedule fixtures.
-7. Complete the data-source inventory and seek written commercial-use clarification from the Premier League and Football DataCo if commercialization resumes.
-8. Select protected hosting, identity, database and payment architecture only when multi-user commercialization becomes an active goal.
-9. If commercialization resumes, define subscription boundaries, data deletion, league switching and redraft recovery.
+1. Define and validate the private standard FPL data contract, especially current squad, bank, purchase/selling prices, free-transfer balance and chips.
+2. Prove a sanctioned, user-authorized read-only connection for the owner's current pre-deadline standard FPL team without developer tools or shared session tokens.
+3. Implement a bounded standard FPL proof of concept: current squad, legal XI, ordered bench, captain, vice-captain and four-Gameweek outlook while preserving the existing Draft report.
+4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
+5. Audit the authenticated live **Create League** and **League Admin** screens to confirm every Draft setup field, exact timer choices and odd-manager H2H behaviour.
+6. Record which Draft league settings and draft-history fields are available from current official responses without browser developer tools.
+7. Define recalibration and acceptance tests for every Draft H2H league size from 2 through 16, including odd-size schedule fixtures.
+8. Complete the data-source inventory and seek written commercial-use clarification from the Premier League and Football DataCo if commercialization resumes.
+9. Select protected hosting, identity, database and payment architecture only when multi-user commercialization becomes an active goal.
+10. If commercialization resumes, define subscription boundaries, data deletion, league switching and redraft recovery.
 
 ## Paid-beta release gates
 
