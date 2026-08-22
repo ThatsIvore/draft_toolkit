@@ -206,7 +206,11 @@ def _raw_usage_scores(player: dict[str, Any], shrink_small_sample: bool = False)
 def _fixture_is_active(player: dict[str, Any], current_gameweek: int | None) -> bool:
     if current_gameweek in (None, 0):
         return False
-    for fixture in player.get("fixtures") or []:
+    fixtures = [
+        *(player.get("fixtures") or []),
+        *(player.get("_scoring_fixtures") or []),
+    ]
+    for fixture in fixtures:
         if int(_number(fixture.get("gameweek"), -1)) != int(current_gameweek):
             continue
         return any(

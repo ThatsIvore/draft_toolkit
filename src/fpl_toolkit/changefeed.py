@@ -7,7 +7,7 @@ from typing import Any
 ROLE_RANK = {"LOW": 1, "MEDIUM": 2, "HIGH": 3}
 WAIVER_RANK = {"KEEP ROSTER": 1, "CONSIDER": 2, "STASH SWAP": 3, "SWAP NOW": 4}
 PRIORITY_RANK = {"critical": 4, "important": 3, "watch": 2, "info": 1}
-DECISION_STATE_VERSION = 3
+DECISION_STATE_VERSION = 4
 CHANGE_FEED_MODEL = "v0.9.3"
 
 
@@ -95,11 +95,13 @@ def capture_decision_state(report: dict[str, Any]) -> dict[str, Any]:
     players = _players(report)
     h2h = report.get("h2h_matchup") or {}
     planner = report.get("schedule_planner") or {}
-    gameweek = report.get("current_gameweek")
+    gameweek = report.get("decision_gameweek", report.get("current_gameweek"))
     return {
         "schema_version": DECISION_STATE_VERSION,
         "captured_at": report.get("generated_at") or datetime.now(timezone.utc).isoformat(),
         "gameweek": gameweek,
+        "scoring_gameweek": report.get("current_gameweek"),
+        "scoring_phase": report.get("gameweek_phase"),
         "players": {
             str(player_id): _player_state(player, roles.get(player_id), gameweek)
             for player_id, player in players.items()
@@ -255,7 +257,10 @@ def build_change_feed(
         str(player.get("fixture_phase") or "") == "ACTIVE"
         for player in [*previous_players.values(), *current_players.values()]
         if isinstance(player, dict)
-    )
+    ) or "LIVE" in {
+        str(previous_state.get("scoring_phase") or ""),
+        str(current_state.get("scoring_phase") or ""),
+    }
     if baseline_refresh:
         pass
     elif gameweek_changed:

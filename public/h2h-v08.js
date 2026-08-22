@@ -143,7 +143,7 @@ function renderH2HOutlook() {
   const best = summary.best_opportunity || {};
   const weakness = summary.recurring_weakness || {};
   return `<section class="h2h-outlook-shell">
-    <div class="h2h-section-head"><div><div class="eyebrow">Four-Gameweek H2H Outlook · v1.1</div><h3>See the schedule before it becomes urgent</h3><p>Every card uses current rosters. The active Gameweek keeps its frozen forecast; future cards refresh after transfers, availability news and each collection.</p></div></div>
+    <div class="h2h-section-head"><div><div class="eyebrow">Four-Gameweek H2H Outlook · v1.1</div><h3>See the schedule before it becomes urgent</h3><p>Every card starts with the next actionable Gameweek and uses current rosters. The locked live round remains above in outcome tracking.</p></div></div>
     <div class="h2h-outlook-summary">
       <span class="tone-schedule"><small>Schedule shape</small><strong>${esc(signals.EDGE || 0)} edge · ${esc(signals.EVEN || 0)} even · ${esc(signals.TRAIL || 0)} trail</strong></span>
       <span class="tone-total"><small>Projected four-GW total</small><strong>${esc(h2hScore(summary.projected_for))}–${esc(h2hScore(summary.projected_against))}</strong></span>
@@ -209,7 +209,7 @@ function renderH2H() {
     <div class="h2h-note">${esc(h2h.note || '')} The public dashboard shows the manager's chosen team name while keeping real names and internal identifiers private.</div>`;
   return `<section class="h2h-v08 h2h-v10">
     <div class="h2h-intro h2h-hero">
-      <div class="h2h-hero-copy"><div class="eyebrow">H2H Scout · v1.3 · GW${esc(h2h.gameweek)}</div><h3>Scout the matchup.<br><span>Keep the decision simple.</span></h3><p>Start with the four-Gameweek outlook and current decision. Open the deeper scouting sections only when you need the evidence behind them.</p><div class="h2h-hero-tags"><span>${esc(matchup.signal || 'EVEN')} matchup</span><span>${esc(matchup.evidence || 'LOW')} evidence</span>${opponentProfile?.decision_threat?.level ? `<span>${esc(opponentProfile.decision_threat.level)} decision threat</span>` : ''}</div></div>
+      <div class="h2h-hero-copy"><div class="eyebrow">H2H Scout · v1.3 · GW${esc(h2h.gameweek)}</div><h3>Scout the next matchup.<br><span>Keep the decision simple.</span></h3><p>Advice is centred on GW${esc(h2h.gameweek)}, the first matchup you can still influence. Open the deeper sections only when you need the evidence behind it.</p><div class="h2h-hero-tags"><span>${esc(matchup.signal || 'EVEN')} matchup</span><span>${esc(matchup.evidence || 'LOW')} evidence</span>${opponentProfile?.decision_threat?.level ? `<span>${esc(opponentProfile.decision_threat.level)} decision threat</span>` : ''}</div></div>
       <div class="h2h-opponent"><small>Upcoming opponent</small><strong>${esc(opponentName)}</strong><span>${rank}${opponentMeta.h2h_points != null ? ` · ${esc(opponentMeta.h2h_points)} H2H pts` : ''}</span>${h2hDecisionProfile(opponentProfile, true)}</div>
     </div>
 
@@ -218,7 +218,7 @@ function renderH2H() {
     ${renderH2HOutlook()}
 
     <section class="h2h-current-decision">
-      <div class="h2h-section-head"><div><div class="eyebrow">Current Gameweek decision</div><h3>The one matchup call that matters now</h3></div></div>
+      <div class="h2h-section-head"><div><div class="eyebrow">Next actionable Gameweek · GW${esc(h2h.gameweek)}</div><h3>The one matchup call that matters now</h3></div></div>
       <div class="h2h-projection-balance ${h2hSignalClass(matchup.signal)}">
         <div><small>Your projected XI</small><strong>${esc(h2hScore(myProjection.total))}</strong><span>${esc(h2hScore(myProjection.range_low))}–${esc(h2hScore(myProjection.range_high))} uncertainty band</span></div>
         <div class="h2h-balance-centre"><span class="h2h-signal">${esc(matchup.signal || 'EVEN')}</span><strong>${esc(h2hSigned(matchup.projected_points_edge))}</strong><small>projected-point edge</small></div>

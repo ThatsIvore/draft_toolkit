@@ -672,6 +672,7 @@ def build_h2h_outlook(
     gameweeks: list[int],
     frozen_current: dict[str, Any] | None = None,
     manager_profiles: dict[str, dict[str, Any]] | None = None,
+    scoring_gameweek: int | None = None,
 ) -> dict[str, Any]:
     """Project the next four exact H2H schedule matches from current rosters."""
     my_entry = _find_entry(league_details, str(my_entry_id))
@@ -686,7 +687,7 @@ def build_h2h_outlook(
         }
 
     cards = []
-    active_gameweek = min(gameweeks) if gameweeks else None
+    active_gameweek = int(scoring_gameweek) if scoring_gameweek is not None else min(gameweeks) if gameweeks else None
     for gameweek in gameweeks[:4]:
         match = _find_exact_match(league_details, my_league_id, int(gameweek))
         if not match:
@@ -747,5 +748,5 @@ def build_h2h_outlook(
         "available": any(card.get("available") for card in cards),
         "gameweeks": cards,
         "summary": _outlook_summary(cards),
-        "note": "Future matchups use current rosters plus an explicitly labelled, capped opponent-decision adjustment. The model cannot see unsubmitted waivers or future lineups. The current Gameweek retains its frozen forecast.",
+        "note": "The outlook begins with the next actionable Gameweek. Future matchups use current rosters plus an explicitly labelled, capped opponent-decision adjustment. The model cannot see unsubmitted waivers or future lineups; the locked scoring Gameweek remains in outcome diagnostics.",
     }
