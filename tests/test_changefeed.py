@@ -209,3 +209,77 @@ def test_change_feed_announces_a_final_gameweek_result_once():
     result = next(item for item in feed["items"] if item["kind"] == "gameweek_result")
     assert result["title"] == "GW1 result captured"
     assert "48–45" in result["detail"]
+
+
+def test_change_feed_keeps_material_updates_after_an_unchanged_collection():
+    before = _report(_player(availability=100))
+    current = _report(_player(availability=50))
+    first_feed = build_change_feed(capture_decision_state(before), current)
+    current["change_feed"] = first_feed
+    persisted_state = capture_decision_state(current)
+
+    stable = _report(_player(availability=50))
+    stable["generated_at"] = "2026-08-21T16:00:00+00:00"
+    second_feed = build_change_feed(persisted_state, stable)
+
+    assert [item["event_id"] for item in second_feed["items"]] == [
+        item["event_id"] for item in first_feed["items"]
+    ]
+    assert second_feed["new_item_ids"] == []
+    assert second_feed["items"][0]["status"] == "active"
+    assert second_feed["cycle_started_at"] == first_feed["cycle_started_at"]
+
+
+def test_change_feed_resolves_an_older_update_when_the_same_signal_changes_again():
+    before = _report(_player(availability=100))
+    current = _report(_player(availability=50))
+    first_feed = build_change_feed(capture_decision_state(before), current)
+    current["change_feed"] = first_feed
+    persisted_state = capture_decision_state(current)
+
+    improved = _report(_player(availability=100))
+    improved["generated_at"] = "2026-08-21T16:00:00+00:00"
+    second_feed = build_change_feed(persisted_state, improved)
+    availability = [item for item in second_feed["items"] if item["kind"] == "availability"]
+
+    assert len(availability) == 2
+    assert {item["status"] for item in availability} == {"active", "resolved"}
+    assert next(item for item in availability if item["status"] == "active")["title"].endswith("improved")
+
+
+def test_change_feed_archives_the_completed_decision_cycle_on_rollover():
+    before = _report(_player(availability=100))
+    current = _report(_player(availability=50))
+    first_feed = build_change_feed(capture_decision_state(before), current)
+    current["change_feed"] = first_feed
+    persisted_state = capture_decision_state(current)
+
+    next_cycle = _report(_player(availability=50))
+    next_cycle["generated_at"] = "2026-08-22T12:00:00+00:00"
+    next_cycle["decision_gameweek"] = 2
+    rolled = build_change_feed(persisted_state, next_cycle)
+
+    assert rolled["cycle_gameweek"] == 2
+    assert rolled["archive"][0]["gameweek"] == 1
+    assert rolled["archive"][0]["items"][0]["kind"] == "availability"
+    assert [item["kind"] for item in rolled["items"]] == ["gameweek_rollover"]
+
+
+def test_change_feed_marks_a_claimed_free_agent_as_recent_and_resolves_the_drop():
+    free_agent = _player(2, "Free Agent")
+    previous = capture_decision_state(_report(available=[free_agent]))
+    dropped = build_change_feed(previous, _report(available=[free_agent]), [{
+        "type": "drop", "player_id": 2, "player": "Free Agent", "club": "AAA",
+    }])
+    dropped_report = _report(available=[free_agent])
+    dropped_report["change_feed"] = dropped
+    dropped_state = capture_decision_state(dropped_report)
+
+    claimed = build_change_feed(dropped_state, _report(), [{
+        "type": "add", "player_id": 2, "player": "Free Agent", "club": "AAA",
+    }])
+    free_pool_events = [item for item in claimed["items"] if item["stream"] == "free_pool:player:2"]
+
+    assert len(free_pool_events) == 2
+    assert all(item["status"] == "resolved" for item in free_pool_events)
+    assert any(item["kind"] == "opponent_add" for item in free_pool_events)
