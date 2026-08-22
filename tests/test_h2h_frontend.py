@@ -19,7 +19,7 @@ def test_h2h_renderer_exposes_four_gameweek_outlook():
     assert "Current-roster projection" in source
     assert ".h2h-outlook-grid" in styles
     assert "h2h-outlook-v11.css?v=20260821.1" in index
-    assert "h2h-v08.js?v=20260822.2" in index
+    assert "h2h-v08.js?v=20260822.3" in index
 
 
 def test_h2h_visual_hierarchy_uses_progressive_disclosure_and_mobile_scrolling():

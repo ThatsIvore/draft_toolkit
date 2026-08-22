@@ -38,7 +38,12 @@ def test_detects_opponent_drop_and_builds_fixture_matrix():
     assert after[0]["minutes"] == 75
     assert after[0]["starts"] == 1
     assert after[0]["event_points"] == 4
-    matrix = build_team_fixture_matrix([{"event": 1, "team_h": 1, "team_a": 2, "team_h_difficulty": 2, "team_a_difficulty": 4}], bootstrap, 4)
+    matrix = build_team_fixture_matrix(
+        [{"event": 1, "team_h": 1, "team_a": 2, "team_h_difficulty": 2, "team_a_difficulty": 4}],
+        bootstrap,
+        4,
+        gameweeks=[1],
+    )
     assert matrix["1"][0]["matches"][0]["opponent"] == "CHE"
     assert matrix["1"][0]["matches"][0]["difficulty"] == 2
     assert matrix["2"][0]["matches"][0]["difficulty"] == 4
@@ -73,8 +78,36 @@ def test_draft_event_container_resolves_current_gameweek_and_planning_window():
 
     gameweeks = planning_gameweeks(bootstrap, 4)
 
-    assert gameweeks == [1, 2, 3, 4]
+    assert gameweeks == [2, 3, 4, 5]
     assert current_gameweek(bootstrap, gameweeks) == 1
+
+
+def test_live_scoring_gameweek_is_excluded_from_actionable_planning_window():
+    bootstrap = {
+        "events": {
+            "current": 1,
+            "next": 2,
+            "data": [
+                {"id": gameweek, "finished": False}
+                for gameweek in range(1, 7)
+            ],
+        }
+    }
+
+    assert current_gameweek(bootstrap) == 1
+    assert planning_gameweeks(bootstrap, 4) == [2, 3, 4, 5]
+
+
+def test_fixture_fallback_skips_a_gameweek_once_any_match_has_started():
+    bootstrap = {"events": []}
+    fixtures = [
+        {"event": 1, "started": True, "finished": False},
+        {"event": 1, "started": False, "finished": False},
+        {"event": 2, "started": False, "finished": False},
+        {"event": 3, "started": False, "finished": False},
+    ]
+
+    assert planning_gameweeks(bootstrap, 2, fixtures) == [2, 3]
 
 
 def test_intelligence_rewards_strong_baseline_easy_fixtures_and_role():

@@ -32,19 +32,25 @@ def bootstrap_events(bootstrap: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def planning_gameweeks(bootstrap: dict[str, Any], horizon: int, fixtures: list[dict[str, Any]] | None = None) -> list[int]:
+    """Return the next Gameweeks in which a manager can still act.
+
+    Draft marks the locked/scoring round as ``is_current`` and the next open
+    round as ``is_next``.  Once a round is current, recommendations must move
+    past it even while its matches and outcome tracking remain live.
+    """
     events = [e for e in bootstrap_events(bootstrap) if e.get("id") is not None]
     events.sort(key=lambda e: int(e["id"]))
     if events:
         start_index = None
-        for i, event in enumerate(events):
-            if event.get("is_current"):
-                start_index = i
-                break
-        if start_index is None:
-            for i, event in enumerate(events):
-                if event.get("is_next"):
-                    start_index = i
-                    break
+        current_index = next((i for i, event in enumerate(events) if event.get("is_current")), None)
+        next_index = next((i for i, event in enumerate(events) if event.get("is_next")), None)
+        if current_index is not None:
+            if next_index is not None and next_index > current_index:
+                start_index = next_index
+            elif current_index + 1 < len(events):
+                start_index = current_index + 1
+        elif next_index is not None:
+            start_index = next_index
         if start_index is None:
             for i, event in enumerate(events):
                 if event.get("finished") is not True:
@@ -53,18 +59,31 @@ def planning_gameweeks(bootstrap: dict[str, Any], horizon: int, fixtures: list[d
         if start_index is not None:
             return [int(e["id"]) for e in events[start_index:start_index + horizon]]
 
+    fixture_rows = [
+        fixture for fixture in (fixtures or [])
+        if isinstance(fixture, dict) and fixture.get("event") is not None
+    ]
+    started_gws = {
+        int(fixture["event"])
+        for fixture in fixture_rows
+        if fixture.get("started") is True
+    }
     fixture_gws = sorted({
         int(fixture["event"])
-        for fixture in (fixtures or [])
-        if isinstance(fixture, dict)
-        and fixture.get("event") is not None
-        and fixture.get("finished") is not True
+        for fixture in fixture_rows
+        if fixture.get("finished") is not True
+        and int(fixture["event"]) not in started_gws
     })
     return fixture_gws[:horizon]
 
 
-def build_team_fixture_matrix(fixtures: list[dict[str, Any]], bootstrap: dict[str, Any], horizon: int) -> dict[str, list[dict[str, Any]]]:
-    gws = planning_gameweeks(bootstrap, horizon, fixtures)
+def build_team_fixture_matrix(
+    fixtures: list[dict[str, Any]],
+    bootstrap: dict[str, Any],
+    horizon: int,
+    gameweeks: list[int] | None = None,
+) -> dict[str, list[dict[str, Any]]]:
+    gws = [int(gameweek) for gameweek in gameweeks] if gameweeks is not None else planning_gameweeks(bootstrap, horizon, fixtures)
     gw_set = set(gws)
     teams = team_lookup(bootstrap)
     matrix: dict[str, list[dict[str, Any]]] = {str(team_id): [] for team_id in teams}
@@ -95,10 +114,14 @@ def build_team_fixture_matrix(fixtures: list[dict[str, Any]], bootstrap: dict[st
     return matrix
 
 
-def attach_fixture_matrix(ownership: list[dict[str, Any]], matrix: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+def attach_fixture_matrix(
+    ownership: list[dict[str, Any]],
+    matrix: dict[str, list[dict[str, Any]]],
+    field: str = "fixtures",
+) -> list[dict[str, Any]]:
     output = []
     for row in ownership:
         enriched = dict(row)
-        enriched["fixtures"] = matrix.get(str(row.get("team_id")), [])
+        enriched[field] = matrix.get(str(row.get("team_id")), [])
         output.append(enriched)
     return output

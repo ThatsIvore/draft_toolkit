@@ -262,7 +262,14 @@ function closePlayer(){const d=document.getElementById('player-drawer');d.classL
 
 function render() {
   const s = DATA.summary || {};
-  document.getElementById('hero').innerHTML = `<div class="hero-top"><div><div class="eyebrow">${esc(DATA.league_name || 'Draft league')}</div><h2>Your Gameweek decision centre</h2><p>Familiar Draft views with squad, free-agent and future-Gameweek intelligence layered on top.</p></div><div class="gw-pill">${DATA.current_gameweek === 0 ? 'Pre-GW1' : `GW${esc(DATA.current_gameweek)}`}</div></div>
+  const scoringGw = DATA.current_gameweek;
+  const decisionGw = DATA.decision_gameweek ?? DATA.planning_gameweeks?.[0] ?? scoringGw;
+  const gwLabel = scoringGw === 0
+    ? `Planning GW${esc(decisionGw || 1)}`
+    : Number(scoringGw) === Number(decisionGw)
+      ? `Decisions · GW${esc(decisionGw)}`
+      : `Live GW${esc(scoringGw)} · Plan GW${esc(decisionGw)}`;
+  document.getElementById('hero').innerHTML = `<div class="hero-top"><div><div class="eyebrow">${esc(DATA.league_name || 'Draft league')}</div><h2>Your Gameweek decision centre</h2><p>Advice starts with GW${esc(decisionGw || 1)}, the first round your next lineup and waiver decisions can still affect.</p></div><div class="gw-pill">${gwLabel}</div></div>
     <div id="freshness-warning-slot">${snapshotWarningMarkup(DATA)}</div>
     <div class="stats"><div class="stat"><small>My squad</small><strong>${esc(s.my_squad_count)}</strong></div><div class="stat"><small>Available</small><strong>${esc(s.available_count)}</strong></div><div class="stat"><small>Changes</small><strong>${esc(s.ownership_changes)}</strong></div><button class="stat stat-button" data-view-link="injury"><small>Health decisions</small><strong>${esc(DATA.injury_stash?.summary?.decision_count ?? s.injured_or_doubtful_count)}</strong><span>Open dashboard →</span></button></div>`;
   refreshSnapshotHealth();

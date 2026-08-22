@@ -44,12 +44,25 @@ def _report(my_player=None, available=None, lineup_role="START", toughest=3, h2h
     return {
         "generated_at": "2026-08-21T12:00:00+00:00",
         "current_gameweek": 1,
+        "decision_gameweek": 1,
         "my_squad": [my_player],
         "available_players": available,
         "recommended_lineup": lineup,
         "schedule_planner": {"weakest_gameweek": toughest},
         "h2h_matchup": {"available": True, "matchup": {"signal": h2h, "start_score_edge": 0.0}},
     }
+
+
+def test_decision_state_tracks_actionable_and_scoring_gameweeks_separately():
+    report = _report()
+    report["decision_gameweek"] = 2
+    report["gameweek_phase"] = "LIVE"
+
+    state = capture_decision_state(report)
+
+    assert state["gameweek"] == 2
+    assert state["scoring_gameweek"] == 1
+    assert state["scoring_phase"] == "LIVE"
 
 
 def test_change_feed_surfaces_material_role_availability_and_lineup_changes():
@@ -165,6 +178,7 @@ def test_change_feed_starts_a_clean_baseline_when_the_gameweek_rolls_over():
     previous = capture_decision_state(previous_report)
     current = _report(_player(role="HIGH", minutes=40), toughest=4, h2h="TRAIL")
     current["current_gameweek"] = 2
+    current["decision_gameweek"] = 2
 
     feed = build_change_feed(previous, current)
 

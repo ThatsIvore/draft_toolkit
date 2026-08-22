@@ -96,8 +96,22 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     ownership = normalize_ownership(element_status, league, bootstrap)
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
     season_gw = current_gameweek(bootstrap, planning_gws)
-    fixture_matrix = build_team_fixture_matrix(fixtures, bootstrap, settings.planning_horizon)
+    decision_gw = planning_gws[0] if planning_gws else (1 if season_gw in (None, 0) else int(season_gw) + 1)
+    scoring_gw = decision_gw if season_gw in (None, 0) else int(season_gw)
+    fixture_matrix = build_team_fixture_matrix(
+        fixtures,
+        bootstrap,
+        settings.planning_horizon,
+        gameweeks=planning_gws,
+    )
     ownership = attach_fixture_matrix(ownership, fixture_matrix)
+    scoring_fixture_matrix = build_team_fixture_matrix(
+        fixtures,
+        bootstrap,
+        1,
+        gameweeks=[scoring_gw],
+    )
+    ownership = attach_fixture_matrix(ownership, scoring_fixture_matrix, field="_scoring_fixtures")
 
     if baseline_path.exists():
         performance_baseline_rows = read_json(baseline_path)
@@ -114,6 +128,10 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         performance_baseline=baseline_lookup(performance_baseline_rows),
         current_gameweek=season_gw,
     )
+    ownership = [
+        {key: value for key, value in player.items() if key != "_scoring_fixtures"}
+        for player in ownership
+    ]
 
     changes = diff_ownership(previous, ownership) if previous else []
     changes = decorate_change_manager_names(changes, league)
@@ -126,13 +144,14 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["available_players"] = attach_replacement_analysis(
         report.get("available_players", []),
         report.get("my_squad", []),
-        current_gameweek=report.get("current_gameweek"),
+        current_gameweek=decision_gw,
     )
     report["injury_stash"] = build_injury_stash_dashboard(
         report.get("my_squad", []),
         report.get("available_players", []),
     )
     report["planning_gameweeks"] = planning_gws
+    report["decision_gameweek"] = decision_gw
     report["schedule_planner"] = build_schedule_planner(
         report.get("my_squad", []),
         report.get("available_players", []),
@@ -145,43 +164,65 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         "performance_baseline_players": len(performance_baseline_rows),
     }
 
-    lineup_gw = planning_gws[0] if planning_gws else 1
-    phase = gameweek_phase(fixtures, lineup_gw)
-    lineup_decisions = _final_lineup_decisions(client, league, ownership, lineup_gw, phase)
+    scoring_phase = gameweek_phase(fixtures, scoring_gw)
+    decision_phase = gameweek_phase(fixtures, decision_gw)
+    lineup_decisions = _final_lineup_decisions(client, league, ownership, scoring_gw, scoring_phase)
     manager_history = update_manager_history(
         manager_history,
         league,
         ownership,
         changes,
         captured_at=report.get("generated_at"),
-        gameweek=lineup_gw,
+        gameweek=decision_gw,
         lineup_decisions=lineup_decisions,
     )
     write_json(manager_history_path, manager_history)
     manager_profiles = build_manager_profiles(league, ownership, draft, manager_history)
-    report["gameweek_phase"] = phase
-    report["recommended_lineup"] = recommend_lineup(report.get("my_squad", []), lineup_gw)
+    report["gameweek_phase"] = scoring_phase
+    report["decision_gameweek_phase"] = decision_phase
+    report["recommended_lineup"] = recommend_lineup(report.get("my_squad", []), decision_gw)
     report["h2h_matchup"] = build_h2h_matchup(
         league,
         settings.draft_entry_id,
         report.get("my_squad", []),
         ownership,
         report.get("available_players", []),
-        lineup_gw,
+        decision_gw,
         my_lineup=report["recommended_lineup"],
-        phase=phase,
+        phase=decision_phase,
         manager_profiles=manager_profiles,
     )
 
     lineup = None
     try:
-        lineup_payload = client.entry_event(settings.draft_entry_id, lineup_gw)
-        write_json(raw_dir / f"lineup-gw{lineup_gw}-{stamp}.json", lineup_payload)
-        lineup = normalize_lineup(lineup_payload, report.get("my_squad", []), lineup_gw)
+        lineup_payload = client.entry_event(settings.draft_entry_id, scoring_gw)
+        write_json(raw_dir / f"lineup-gw{scoring_gw}-{stamp}.json", lineup_payload)
+        lineup = normalize_lineup(lineup_payload, report.get("my_squad", []), scoring_gw)
     except FPLApiError:
         lineup = None
-    report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), lineup_gw)
-    report["outcome_diagnostics"] = build_outcome_diagnostics(previous_decision_state, report, phase, lineup_gw)
+    report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), scoring_gw)
+
+    outcome_report = dict(report)
+    if scoring_gw != decision_gw:
+        scoring_recommendation = recommend_lineup(report.get("my_squad", []), scoring_gw)
+        outcome_report["recommended_lineup"] = scoring_recommendation
+        outcome_report["h2h_matchup"] = build_h2h_matchup(
+            league,
+            settings.draft_entry_id,
+            report.get("my_squad", []),
+            ownership,
+            report.get("available_players", []),
+            scoring_gw,
+            my_lineup=scoring_recommendation,
+            phase=scoring_phase,
+            manager_profiles=manager_profiles,
+        )
+    report["outcome_diagnostics"] = build_outcome_diagnostics(
+        previous_decision_state,
+        outcome_report,
+        scoring_phase,
+        scoring_gw,
+    )
     report["h2h_outlook"] = build_h2h_outlook(
         league,
         settings.draft_entry_id,
@@ -190,6 +231,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         planning_gws,
         frozen_current=(report.get("outcome_diagnostics") or {}).get("current"),
         manager_profiles=manager_profiles,
+        scoring_gameweek=scoring_gw,
     )
     report["change_feed"] = build_change_feed(previous_decision_state, report, changes)
     write_json(decision_state_path, capture_decision_state(report))

@@ -260,6 +260,32 @@ def test_future_outlook_applies_a_bounded_transparent_manager_adjustment_only_af
     assert future["projection_source"] == "current_roster_plus_decision_profile"
 
 
+def test_actionable_outlook_applies_decision_profile_to_first_unlocked_gameweek():
+    league = _league()
+    league["league_entries"].append({"id": 503, "entry_id": 777777, "entry_name": "GW2 Opponent"})
+    league["matches"].append({"event": 2, "league_entry_1": 503, "league_entry_2": 501, "finished": False})
+    mine = _squad(1, 501, 336654, 80, 3)
+    opponents = _squad(201, 503, 777777, 75, 3)
+    profiles = {
+        "777777": {"decision_threat": {"level": "HIGH", "projected_points_adjustment": 1.5}},
+    }
+
+    outlook = build_h2h_outlook(
+        league,
+        "336654",
+        mine,
+        mine + opponents,
+        [2],
+        manager_profiles=profiles,
+        scoring_gameweek=1,
+    )
+
+    first_actionable = outlook["gameweeks"][0]
+    assert first_actionable["gameweek"] == 2
+    assert first_actionable["decision_adjustment"] == 1.5
+    assert first_actionable["projection_source"] == "current_roster_plus_decision_profile"
+
+
 def test_four_gameweek_outlook_only_labels_a_repeated_negative_position():
     league = _league()
     league["league_entries"].extend([
