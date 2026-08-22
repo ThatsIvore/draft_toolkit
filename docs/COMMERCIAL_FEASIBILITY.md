@@ -101,6 +101,8 @@ The completed [Standard FPL authentication discovery](STANDARD_FPL_AUTH_DISCOVER
 
 The internal [Standard FPL private snapshot contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md) is implemented. It gives the analysis pipeline a strict, versioned and identifier-free representation of current squad, price, transfer and chip state. This reduces connector coupling but does not remove the external authentication or commercial-permission gates.
 
+The [2026/27 Standard FPL squad and single-transfer legality layer](STANDARD_FPL_TRANSFER_LEGALITY.md) is also implemented. It separates hard game rules and point-hit cost from model projections and fails closed when the live season is newer than the verified ruleset. Transfer candidate ranking is not yet implemented.
+
 ## Draft-history integration
 
 The current repository contains a verified six-manager, 90-pick draft history. That is useful for the present league, but it must not become a universal product assumption.

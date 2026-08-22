@@ -28,7 +28,7 @@ The exporter is not implemented yet. Do not obtain the file by copying credentia
 |---|---|---|
 | Snapshot | `schema_version`, `captured_at`, `decision_gameweek` | Exact version string; timezone-aware capture time; Gameweek 1–38 |
 | Squad | 15 rows containing `player_id`, `lineup_position`, `multiplier`, captain flags and purchase/selling prices in tenths | Unique current-season players; every lineup position 1–15; exactly one captain and vice-captain |
-| Transfers | `bank_tenths`, `squad_value_tenths`, `free_transfers`, `transfers_made` | Integer source units preserve exact FPL money; free transfers are constrained to the current 0–5 range |
+| Transfers | `bank_tenths`, `squad_value_tenths`, `free_transfers`, `transfers_made` | Integer source units preserve exact FPL money; `free_transfers` is the Gameweek allowance and `transfers_made` is the number already confirmed; the allowance is constrained to 0–5 |
 | Chips | `name`, `number`, `status`, `played_gameweek` | Status is `available`, `played`, `active` or `unavailable`; at most one active chip |
 
 An abbreviated example shows the field shape; a valid file must contain all 15 squad rows:
@@ -88,3 +88,5 @@ After validation, the private Standard FPL report:
 - still refuses `--publish` and never submits an FPL action.
 
 The connector remains a separate trust boundary. A valid contract does not make credential extraction acceptable and does not resolve the Premier League permission gate documented in [Standard FPL Current-Team Authentication Discovery](STANDARD_FPL_AUTH_DISCOVERY.md).
+
+The implemented [Standard FPL squad and single-transfer legality layer](STANDARD_FPL_TRANSFER_LEGALITY.md) consumes this financial state. It derives remaining free transfers and incremental hit cost rather than treating `free_transfers` and `transfers_made` as interchangeable values.

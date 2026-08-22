@@ -26,6 +26,8 @@ The first isolated technical path is now implemented behind `fpl-toolkit --mode 
 
 The source-independent `standard-fpl-private-snapshot-v1` contract is also implemented and documented in [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). When a trusted future connector produces that file, the same command validates and uses the exact decision-Gameweek squad, purchase/selling prices, bank, free-transfer balance and chip state. It fails closed on stale Gameweeks, unknown players, malformed squad/captaincy state and unexpected fields that could contain identity or credentials. The connector itself is still gated by the authentication discovery.
 
+The 2026/27 squad rules and single-transfer legality layer are also implemented, as documented in [Standard FPL Squad and Single-Transfer Legality](STANDARD_FPL_TRANSFER_LEGALITY.md). Private reports now include the active rules version and structural squad validation. The evaluator can reject an illegal or unaffordable one-for-one move and calculate its incremental points deduction, but candidate ranking and projected net benefit remain future work.
+
 The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result.
 
 This is intentionally not full Phase 1 completion. The public locked squad can become stale after a transfer, and the report does not claim access to current pre-deadline picks, purchase/selling prices, free-transfer balance or chip state. Authentication discovery has now confirmed that the toolkit cannot reuse FPL's OAuth client on GitHub Pages: the callback is rejected and the private team API does not permit the toolkit origin through CORS. The evidence, design boundary and next personal experiment are recorded in [Standard FPL Current-Team Authentication Discovery](STANDARD_FPL_AUTH_DISCOVERY.md).
@@ -177,7 +179,7 @@ This phase provides personal value without attempting to solve the harder transf
 
 ### Phase 2 — legal transfer assistant
 
-- Model bank, current prices, purchase/selling prices and club quotas.
+- **Foundation implemented:** model bank, current prices, purchase/selling prices, squad shape, club quotas, free-transfer use and incremental hit cost for a specified single transfer.
 - Rank legal one-transfer moves using the existing add/drop comparison as a primitive.
 - Add hold recommendations and explicit reasons for rejected candidates.
 - Attribute actual results to transfer decisions after the Gameweek.
