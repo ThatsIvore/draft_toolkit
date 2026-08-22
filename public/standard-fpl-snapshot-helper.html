@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6f86f6">
+  <title>Standard FPL Private Snapshot Helper</title>
+  <link rel="stylesheet" href="standard-fpl-snapshot-helper.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <p class="eyebrow">Draft Toolkit · Personal experiment</p>
+      <h1>Standard FPL Private Snapshot Helper</h1>
+      <p class="lede">Capture the minimum current squad state needed by the private Standard FPL analysis, without giving the toolkit your login or exporting account identity.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="install-title">
+      <span class="tag">Laptop browser</span>
+      <h2 id="install-title">1. Install the bookmark</h2>
+      <p>Show your browser's bookmarks bar, then drag this button onto it:</p>
+      <a id="bookmarklet-link" class="bookmarklet disabled" aria-disabled="true">Capture FPL snapshot</a>
+      <p id="installer-status" role="status">Preparing the bookmark…</p>
+    </section>
+
+    <section class="card" aria-labelledby="capture-title">
+      <h2 id="capture-title">2. Capture in two clicks</h2>
+      <ol>
+        <li>Sign in manually at <a href="https://fantasy.premierleague.com/en/my-team">the official FPL site</a>. The helper never handles the sign-in.</li>
+        <li>Open <strong>Pick Team</strong>, select <strong>List</strong> view and <strong>Selling Price</strong>, and make sure there are no unsaved lineup changes.</li>
+        <li>Click <strong>Capture FPL snapshot</strong>. It validates 15 players, lineup order, captaincy, exact prices and chip state, then opens Transfers.</li>
+        <li>On <strong>Transfers</strong>, make sure there are no pending transfers and click the bookmark again. A small read-only Transfer History window opens briefly, closes itself, and a private JSON file downloads to your computer.</li>
+        <li>Move that file to <code>data/private/current-team.json</code> before running the Standard FPL command.</li>
+      </ol>
+    </section>
+
+    <section class="card privacy" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Privacy boundary</h2>
+      <p>The helper reads only rendered squad, price, transfer, finance and chip fields. It never reads a password, token, cookie, account profile, existing browser-storage key or private API response. Its only programmatic data request is the public player list with credentials explicitly omitted; the second pass briefly opens your visible public Transfer History page to read its summary.</p>
+      <p>Between the two clicks it keeps one helper-owned, sanitized session value containing player IDs and allowed team state. It deletes that value after success or any error. The downloaded JSON excludes account and entry identifiers, names and clubs, and it never leaves your browser unless you move it yourself.</p>
+    </section>
+
+    <section class="card warning" aria-labelledby="limits-title">
+      <h2 id="limits-title">Experimental limitations</h2>
+      <p>This personal helper depends on the current official FPL page labels and markup and may stop safely after a site update. It needs permission to open its small same-site Transfer History window. It supports the 2026/27 two-chip-set rule, assigns set 1 through Gameweek 19 and set 2 thereafter, and refuses incomplete or ambiguous state. It never presses Save Team, Make Transfers or a chip control.</p>
+      <p>This is not the future paid onboarding flow. A hosted Connect FPL experience still requires Premier League permission and a registered integration.</p>
+    </section>
+  </main>
+
+  <footer>Independent read-only decision support. Not affiliated with the Premier League.</footer>
+  <script src="standard-fpl-snapshot-helper.js"></script>
+</body>
+</html>

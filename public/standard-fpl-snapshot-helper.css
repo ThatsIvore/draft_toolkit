@@ -1,0 +1,40 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #201128;
+  background: #f5f6fb;
+  --purple: #37003c;
+  --purple-soft: #5b3ca8;
+  --green: #00ff87;
+  --line: #dedfe8;
+  --muted: #696675;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #f5f6fb; }
+.masthead { color: white; background: linear-gradient(105deg, #7043d8, #6f86f6 55%, #72d6e8); }
+.masthead-inner, main, footer { width: min(820px, calc(100% - 32px)); margin: auto; }
+.masthead-inner { padding: 34px 0 38px; }
+.eyebrow { margin: 0 0 6px; text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 900; opacity: .85; }
+h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.06; }
+.lede { max-width: 660px; margin: 12px 0 0; color: rgba(255, 255, 255, .88); line-height: 1.55; }
+main { padding: 28px 0 54px; display: grid; gap: 18px; }
+.card { padding: 22px; background: white; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 10px 30px rgba(38, 25, 55, .06); }
+.card h2 { margin: 0 0 10px; color: var(--purple); font-size: 1.25rem; }
+.card p { color: var(--muted); line-height: 1.55; }
+.bookmarklet { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin: 8px 0 4px; padding: 11px 18px; color: var(--purple); background: var(--green); border: 2px solid var(--purple); border-radius: 999px; font-weight: 950; text-decoration: none; box-shadow: 0 5px 0 var(--purple); }
+.bookmarklet:focus-visible { outline: 3px solid #6f86f6; outline-offset: 3px; }
+.bookmarklet.disabled { opacity: .55; cursor: wait; }
+#installer-status { margin: 10px 0 0; font-size: .88rem; }
+.error-text { color: #a61b1b !important; }
+ol { margin: 12px 0 0; padding-left: 1.3rem; }
+li { margin: 0 0 12px; padding-left: 4px; line-height: 1.5; }
+code { padding: 2px 5px; color: var(--purple); background: #f1edf5; border-radius: 5px; }
+.privacy { border-left: 5px solid var(--green); }
+.warning { border-left: 5px solid #f2b23b; }
+.tag { display: inline-block; margin-bottom: 8px; padding: 5px 8px; color: var(--purple); background: #eee8f5; border-radius: 999px; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; }
+footer { padding-bottom: 30px; color: #85828d; font-size: .76rem; }
+
+@media (max-width: 560px) {
+  .masthead-inner { padding-top: 26px; }
+  .card { padding: 18px; border-radius: 15px; }
+}

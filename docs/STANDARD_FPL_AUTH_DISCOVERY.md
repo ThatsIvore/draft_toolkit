@@ -50,7 +50,7 @@ The live probe validated 15 player rows, the exact 2/5/5/3 position shape, compl
 
 This finding changes the personal experiment from **authentication feasibility** to **UI adapter implementation**. The helper does not need to reproduce the private API call or discover how the official app stores its bearer credential. It can extract only the rendered allowlist and use the public bootstrap response to resolve current-season player IDs.
 
-The trade-off is fragility: the required fields are split between Pick Team and Transfers, and Premier League markup can change without notice. A minimal personal helper should therefore use a two-stage user-initiated capture, store only its own temporary sanitized partial state, fail closed when any expected row or field is missing, and download the final identifier-free snapshot locally. It must never automate a transfer, chip or lineup submission.
+The trade-off is fragility: the required fields are split between Pick Team and Transfers, and Premier League markup can change without notice. The implemented [browser-local snapshot helper](STANDARD_FPL_SNAPSHOT_HELPER.md) therefore uses a two-stage user-initiated capture, stores only its own temporary sanitized partial state, fails closed when any expected row or field is missing, and downloads the final identifier-free snapshot locally. It never automates a transfer, chip or lineup submission.
 
 The identity provider's public discovery document is available at [the official OpenID configuration endpoint](https://account.premierleague.com/as/.well-known/openid-configuration). Its existence documents the provider's capabilities; it is not evidence of an open third-party developer programme or authorization to use FPL data.
 
@@ -86,7 +86,7 @@ The proposed boundary is:
 - no password, authorization code, access/refresh token, cookie, email or profile data is read into the export or sent to the toolkit; and
 - the resulting snapshot is accepted only by the local/private Standard FPL command and remains gitignored.
 
-The strict, source-independent receiving contract is now implemented as [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). It accepts only allowlisted team state and rejects extra identity or credential fields. The browser-local DOM route has now been proved against the live interface without extracting or replaying a bearer token. The exporter itself is still to be implemented and must preserve the same boundary.
+The strict, source-independent receiving contract is implemented as [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). It accepts only allowlisted team state and rejects extra identity or credential fields. The browser-local DOM route has been proved against the live interface without extracting or replaying a bearer token, and the first two-stage exporter now preserves that same boundary.
 
 Even if technically successful, a browser extension or local helper adds installation and trust friction. It may be reasonable for the owner's personal use but is not a satisfactory paid onboarding path without Premier League approval and a clear distribution/security review.
 
@@ -96,7 +96,7 @@ The next proof requires the owner to sign in manually in the controlled browser 
 
 | Result | Next action |
 |---|---|
-| Rendered session-only capture succeeds | **Observed:** build a minimal two-stage local exporter, map player names through the public bootstrap feed and validate the downloaded allowlist against the existing Standard FPL POC. |
+| Rendered session-only capture succeeds | **Observed and implemented:** the minimal two-stage local exporter maps player names through the public bootstrap feed and emits the existing strict snapshot contract. Maintain live DOM and end-to-end validation as the official UI changes. |
 | The read requires helper access to a bearer token | Stop the connector experiment; retain public locked picks plus manual private inputs until a sanctioned integration exists. |
 | The response lacks required finance/transfer/chip fields | Keep Phase 1 lineup advice, but do not build legal transfer recommendations from incomplete state. |
 | Premier League offers an approved integration path | Replace the local experiment with the registered backend-for-frontend architecture. |
