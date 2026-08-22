@@ -15,6 +15,8 @@ The login technology itself is conventional OpenID Connect authorization-code fl
 
 The toolkit must not collect a Premier League email or password, proxy the official login form, ask a user to paste a session token, copy browser cookies, or reuse FPL's public client identifier with an unregistered redirect.
 
+For the owner's personal use, the bounded browser-local snapshot has now passed its first live feasibility test. An already signed-in official FPL page exposes every required private snapshot field through its normal rendered interface. A helper can therefore read allowlisted DOM state without reading or replaying a password, token, cookie or browser-storage credential. This is a viable personal connector direction, but it remains too installation- and UI-dependent to qualify as paid onboarding.
+
 ## What was observed
 
 The following findings were reproduced against the live official services on 22 August 2026. No account credentials or authenticated response bodies were collected.
@@ -27,6 +29,28 @@ The following findings were reproduced against the live official services on 22 
 | Does the current-team endpoint work anonymously? | An unauthenticated request returned HTTP 403 with `Authentication credentials were not provided.` | The existing public-entry URL cannot reveal current pre-deadline state. |
 | Can GitHub Pages call the endpoint directly? | A preflight from the toolkit origin was rejected and did not receive an allowed CORS origin. | A token in frontend code would not solve the browser-origin restriction, and placing one there would be unsafe anyway. |
 | Is credential sharing an acceptable workaround? | The [Premier League account-security guidance](https://www.premierleague.com/en/about/faq/account-security) warns that sharing FPL login credentials with third-party sites or apps puts the team at risk and says such team-management services are not endorsed. | Password collection, login proxying and copied sessions are explicitly outside the design boundary. |
+
+## Live browser-local snapshot result
+
+The owner manually signed in on the official site in a controlled browser on 22 August 2026. The inspection used only normal page navigation and rendered DOM state. It did not inspect network authorization headers, browser storage, cookies, passwords, OAuth codes or raw authenticated responses, and it did not press any transfer, chip or team-save control.
+
+| Required contract area | Rendered source | Result |
+|---|---|---|
+| Decision Gameweek | Pick Team and Transfers headings | Exact current actionable Gameweek available |
+| Current 15-player squad | Pick Team list or Transfers list | Exact 2/5/5/3 squad available |
+| Lineup order | Pick Team pitch/list order | Eleven starters plus four ordered substitutes available |
+| Captain and vice-captain | Accessible labels in Pick Team | Exactly one of each available |
+| Purchase and selling prices | Pick Team/Transfers list with Selling Price selected | Exact current, purchase and selling prices available for all 15 players |
+| Bank and squad value | Finance summary and Transfers budget status | Exact values available |
+| Free transfers and transfers already made | Transfers status and account summary | Exact values available |
+| Chip availability | Pick Team chip controls | Bench Boost, Triple Captain, Wildcard and Free Hit state available |
+| Stable player ID | Not embedded in the rendered player rows | Join the visible name/club/position tuple against the unauthenticated public bootstrap feed |
+
+The live probe validated 15 player rows, the exact 2/5/5/3 position shape, complete prices, 11 starters, four substitutes, one captain and one vice-captain. Exact team values are deliberately not recorded in this repository.
+
+This finding changes the personal experiment from **authentication feasibility** to **UI adapter implementation**. The helper does not need to reproduce the private API call or discover how the official app stores its bearer credential. It can extract only the rendered allowlist and use the public bootstrap response to resolve current-season player IDs.
+
+The trade-off is fragility: the required fields are split between Pick Team and Transfers, and Premier League markup can change without notice. A minimal personal helper should therefore use a two-stage user-initiated capture, store only its own temporary sanitized partial state, fail closed when any expected row or field is missing, and download the final identifier-free snapshot locally. It must never automate a transfer, chip or lineup submission.
 
 The identity provider's public discovery document is available at [the official OpenID configuration endpoint](https://account.premierleague.com/as/.well-known/openid-configuration). Its existence documents the provider's capabilities; it is not evidence of an open third-party developer programme or authorization to use FPL data.
 
@@ -62,7 +86,7 @@ The proposed boundary is:
 - no password, authorization code, access/refresh token, cookie, email or profile data is read into the export or sent to the toolkit; and
 - the resulting snapshot is accepted only by the local/private Standard FPL command and remains gitignored.
 
-The strict, source-independent receiving contract is now implemented as [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). It accepts only allowlisted team state and rejects extra identity or credential fields. The browser-local exporter remains a discovery candidate, not yet an approved implementation. It must first be proved that an already signed-in FPL page can produce the read-only response using its normal same-origin session without the helper extracting or replaying a bearer token. If that test fails, the browser-local connector stops; it must not escalate to copying local-storage credentials.
+The strict, source-independent receiving contract is now implemented as [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). It accepts only allowlisted team state and rejects extra identity or credential fields. The browser-local DOM route has now been proved against the live interface without extracting or replaying a bearer token. The exporter itself is still to be implemented and must preserve the same boundary.
 
 Even if technically successful, a browser extension or local helper adds installation and trust friction. It may be reasonable for the owner's personal use but is not a satisfactory paid onboarding path without Premier League approval and a clear distribution/security review.
 
@@ -72,7 +96,7 @@ The next proof requires the owner to sign in manually in the controlled browser 
 
 | Result | Next action |
 |---|---|
-| Same-origin session-only read succeeds | Map the sanitized response into the implemented versioned allowlist, build a minimal local exporter and validate it against the existing Standard FPL POC. |
+| Rendered session-only capture succeeds | **Observed:** build a minimal two-stage local exporter, map player names through the public bootstrap feed and validate the downloaded allowlist against the existing Standard FPL POC. |
 | The read requires helper access to a bearer token | Stop the connector experiment; retain public locked picks plus manual private inputs until a sanctioned integration exists. |
 | The response lacks required finance/transfer/chip fields | Keep Phase 1 lineup advice, but do not build legal transfer recommendations from incomplete state. |
 | Premier League offers an approved integration path | Replace the local experiment with the registered backend-for-frontend architecture. |
