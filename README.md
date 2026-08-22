@@ -59,6 +59,8 @@ The command writes `data/private/standard-fpl-poc.json`, which is gitignored bec
 
 Public picks can be stale for the next deadline after the manager makes a transfer. The POC labels that limitation and does not claim to know current purchase/selling prices, banked free transfers or chip availability. It does not submit any FPL action, and `--publish` is deliberately rejected in Standard FPL mode.
 
+The source-independent [private snapshot contract](docs/STANDARD_FPL_PRIVATE_SNAPSHOT.md) is also implemented. When a trusted future connector produces `standard-fpl-private-snapshot-v1`, set `FPL_STANDARD_PRIVATE_SNAPSHOT` to that JSON file under `data/private/`. The toolkit will then validate and use the exact decision-Gameweek squad, purchase/selling prices, bank, free transfers and chip state. The exporter is not yet implemented, and credentials or raw browser storage must not be used to create this file.
+
 ## GitHub Actions
 
 The workflow runs every four hours at minute 17 and can also be run manually. `FPL_DRAFT_ENTRY_ID` is configured as `336654` in the workflow. `FPL_DRAFT_LEAGUE_ID` is optional unless live API validation shows it is needed.
@@ -77,4 +79,4 @@ The toolkit now includes projections, recommendation scoring, injury-return timi
 
 The current feasibility findings, agreed product directions, league-configuration research, model-generalization risks and paid-beta release gates are maintained in [Commercial Access Feasibility and Onboarding Concept](docs/COMMERCIAL_FEASIBILITY.md). It is the handover record for future work on selling access to the toolkit; it does not describe features that are already implemented unless explicitly marked as confirmed.
 
-The separate [Standard FPL Mode Analysis](docs/STANDARD_FPL_MODE_ANALYSIS.md) records the feasibility, reusable modules, new calculations, data risks and phased design for supporting the budget-and-transfer game at `fantasy.premierleague.com`. It deliberately distinguishes standard FPL from Classic scoring inside FPL Draft. The [current-team authentication discovery](docs/STANDARD_FPL_AUTH_DISCOVERY.md) documents why FPL's login client cannot be reused by the GitHub Pages app, the no-credentials boundary and the next bounded personal experiment.
+The separate [Standard FPL Mode Analysis](docs/STANDARD_FPL_MODE_ANALYSIS.md) records the feasibility, reusable modules, new calculations, data risks and phased design for supporting the budget-and-transfer game at `fantasy.premierleague.com`. It deliberately distinguishes standard FPL from Classic scoring inside FPL Draft. The [current-team authentication discovery](docs/STANDARD_FPL_AUTH_DISCOVERY.md) documents why FPL's login client cannot be reused by the GitHub Pages app, the no-credentials boundary and the next bounded personal experiment. The [private snapshot contract](docs/STANDARD_FPL_PRIVATE_SNAPSHOT.md) defines the strict source-independent handoff into the current analysis pipeline.
