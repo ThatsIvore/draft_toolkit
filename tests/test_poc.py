@@ -165,12 +165,72 @@ def test_free_injured_high_value_player_becomes_stash_candidate():
         "minutes": 800,
         "starts": 10,
         "news": "Expected back 30 Aug",
-        "fixtures": [{"gameweek": gw, "matches": [{"difficulty": 1}]} for gw in range(1, 5)],
+        "fixtures": [
+            {"gameweek": 1, "matches": [{"difficulty": 1, "kickoff_time": "2026-08-22T14:00:00Z"}]},
+            {"gameweek": 2, "matches": [{"difficulty": 1, "kickoff_time": "2026-08-29T14:00:00Z"}]},
+            {"gameweek": 3, "matches": [{"difficulty": 1, "kickoff_time": "2026-09-12T14:00:00Z"}]},
+            {"gameweek": 4, "matches": [{"difficulty": 1, "kickoff_time": "2026-09-19T14:00:00Z"}]},
+        ],
     }
     previous = [{**player, "chance_next_round": 0, "news": "Expected back 30 Aug"}]
     intel = attach_intelligence([player], previous=previous, my_entry_id="336654")[0]["intelligence"]
     assert intel["health_trend"] == "improving"
     assert intel["recommendation"] == "STASH"
+
+
+def test_stash_score_uses_fixtures_after_the_expected_return():
+    fixtures = [
+        {"gameweek": 1, "matches": [{"difficulty": 3, "kickoff_time": "2026-08-22T14:00:00Z"}]},
+        {"gameweek": 2, "matches": [{"difficulty": 1, "kickoff_time": "2026-08-29T14:00:00Z"}]},
+        {"gameweek": 3, "matches": [{"difficulty": 1, "kickoff_time": "2026-09-12T14:00:00Z"}]},
+        {"gameweek": 4, "matches": [{"difficulty": 1, "kickoff_time": "2026-09-19T14:00:00Z"}]},
+    ]
+    good_return = {
+        "player_id": 1, "position": "MID", "owner_entry_id": None, "total_points": 160,
+        "chance_next_round": 0, "minutes": 900, "starts": 10,
+        "news": "Hamstring injury - Expected back 30 Aug", "fixtures": fixtures,
+    }
+    poor_return = {
+        **good_return,
+        "player_id": 2,
+        "fixtures": [
+            fixture if fixture["gameweek"] < 3 else {
+                **fixture,
+                "matches": [{**fixture["matches"][0], "difficulty": 5}],
+            }
+            for fixture in fixtures
+        ],
+    }
+    [good] = attach_intelligence(
+        [good_return], my_entry_id="336654", now=datetime(2026, 8, 22, tzinfo=timezone.utc)
+    )
+    [poor] = attach_intelligence(
+        [poor_return], my_entry_id="336654", now=datetime(2026, 8, 22, tzinfo=timezone.utc)
+    )
+    assert good["intelligence"]["expected_return_gameweek"] == 3
+    assert good["intelligence"]["post_return_fixture_score"] == 100.0
+    assert poor["intelligence"]["post_return_fixture_score"] == 20.0
+    assert good["intelligence"]["stash_score"] > poor["intelligence"]["stash_score"]
+
+
+def test_explicit_return_outside_fixture_window_has_no_stash_fixture_credit():
+    player = {
+        "player_id": 1, "position": "FWD", "owner_entry_id": None, "total_points": 180,
+        "chance_next_round": 0, "minutes": 900, "starts": 10,
+        "news": "Knee injury - Expected back 10 Oct",
+        "fixtures": [
+            {"gameweek": 1, "matches": [{"difficulty": 1, "kickoff_time": "2026-08-22T14:00:00Z"}]},
+            {"gameweek": 2, "matches": [{"difficulty": 1, "kickoff_time": "2026-08-29T14:00:00Z"}]},
+        ],
+    }
+    intel = attach_intelligence(
+        [player],
+        my_entry_id="336654",
+        now=datetime(2026, 8, 22, tzinfo=timezone.utc),
+    )[0]["intelligence"]
+    assert intel["expected_return_gameweek"] is None
+    assert intel["post_return_fixture_score"] is None
+    assert intel["stash_fixture_score"] == 0.0
 
 
 def test_owned_low_value_unavailable_player_can_trigger_review_drop():

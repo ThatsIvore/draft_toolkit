@@ -10,6 +10,7 @@ from .config import Settings
 from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
 from .h2h import build_h2h_matchup, build_h2h_outlook
+from .injury_stash import build_injury_stash_dashboard
 from .intelligence import attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
@@ -95,6 +96,10 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         report.get("my_squad", []),
         current_gameweek=report.get("current_gameweek"),
     )
+    report["injury_stash"] = build_injury_stash_dashboard(
+        report.get("my_squad", []),
+        report.get("available_players", []),
+    )
     report["planning_gameweeks"] = planning_gws
     report["schedule_planner"] = build_schedule_planner(
         report.get("my_squad", []),
@@ -103,8 +108,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.5.3",
-        "description": "Early-season calibrated model with durable 2025/26 performance and role priors, gradual completed-match blending, live-match stabilization, floor/upside and conservative waiver guardrails.",
+        "version": "v0.5.4",
+        "description": "Early-season calibrated model with return-aligned stash fixtures, durable 2025/26 performance and role priors, gradual completed-match blending, live-match stabilization, floor/upside and conservative waiver guardrails.",
         "performance_baseline_players": len(performance_baseline_rows),
     }
 

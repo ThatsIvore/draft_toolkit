@@ -139,10 +139,14 @@ def availability_score(player: dict[str, Any]) -> float:
     return _clamp(_number(chance))
 
 
-def _inactive_factor(player: dict[str, Any]) -> float:
+def is_hard_inactive(player: dict[str, Any]) -> bool:
     news = str(player.get("news") or "").lower()
     hard_inactive_phrases = ("joined ", "permanently", "on loan for the rest of the season", "out for the season", "season-ending")
-    return 0.05 if any(phrase in news for phrase in hard_inactive_phrases) else 1.0
+    return any(phrase in news for phrase in hard_inactive_phrases)
+
+
+def _inactive_factor(player: dict[str, Any]) -> float:
+    return 0.05 if is_hard_inactive(player) else 1.0
 
 
 def _match_desirability(match: dict[str, Any]) -> float:
@@ -150,10 +154,7 @@ def _match_desirability(match: dict[str, Any]) -> float:
     return float((6 - difficulty) * 20)
 
 
-def fixture_score(player: dict[str, Any], skip_first: bool = False) -> float:
-    gameweeks = list(player.get("fixtures") or [])
-    if skip_first and gameweeks:
-        gameweeks = gameweeks[1:]
+def _fixture_window_score(gameweeks: list[dict[str, Any]]) -> float:
     if not gameweeks:
         return 0.0
     weights = [1.0, 0.82, 0.67, 0.55]
@@ -168,6 +169,23 @@ def fixture_score(player: dict[str, Any], skip_first: bool = False) -> float:
         total += gw_score * weight
         weight_total += weight
     return _clamp(total / weight_total if weight_total else 0.0)
+
+
+def fixture_score(player: dict[str, Any], skip_first: bool = False) -> float:
+    gameweeks = list(player.get("fixtures") or [])
+    if skip_first and gameweeks:
+        gameweeks = gameweeks[1:]
+    return _fixture_window_score(gameweeks)
+
+
+def post_return_fixture_score(player: dict[str, Any], expected_return_gameweek: int | None) -> float | None:
+    if expected_return_gameweek is None:
+        return None
+    return _fixture_window_score([
+        gameweek
+        for gameweek in (player.get("fixtures") or [])
+        if int(_number(gameweek.get("gameweek"), -1)) >= int(expected_return_gameweek)
+    ])
 
 
 def _raw_usage_scores(player: dict[str, Any], shrink_small_sample: bool = False) -> tuple[float, float]:
@@ -339,16 +357,27 @@ def attach_intelligence(
         start_probability, expected_minutes = usage_scores(row, prior, current_gameweek); active_factor = _inactive_factor(row)
         return_signal = injury_return_signal(row); expected_return = parse_expected_return(str(row.get("news") or ""), now)
         expected_return_gw = return_gameweek(row, expected_return); trend = health_trend(row, previous_by_id.get(player_id))
+        post_return_fixtures = post_return_fixture_score(row, expected_return_gw)
+        if return_signal == "fit":
+            stash_fixtures = future_fixtures
+        elif post_return_fixtures is not None:
+            stash_fixtures = post_return_fixtures
+        elif expected_return:
+            stash_fixtures = 0.0
+        else:
+            stash_fixtures = future_fixtures * 0.65
         usage = 0.55 * start_probability + 0.45 * (expected_minutes / 90.0 * 100.0)
         sample_confidence = _sample_confidence(row, prior, current_gameweek)
         floor = (0.55 * floor + 0.25 * usage + 0.20 * availability) * active_factor
-        upside = (0.55 * upside + 0.30 * future_fixtures + 0.15 * availability) * active_factor
+        upside = (0.55 * upside + 0.30 * stash_fixtures + 0.15 * availability) * active_factor
         roster = (0.28 * baseline + 0.24 * fixtures + 0.16 * availability + 0.16 * usage + 0.16 * floor) * active_factor
-        stash = (0.30 * baseline + 0.30 * future_fixtures + 0.08 * availability + 0.12 * usage + 0.20 * upside) * active_factor
+        stash = (0.30 * baseline + 0.30 * stash_fixtures + 0.08 * availability + 0.12 * usage + 0.20 * upside) * active_factor
         action, reason = _recommendation(row, roster, stash, availability, return_signal, trend, my_entry_id)
         row["intelligence"] = {
-            "model": "v0.5.3", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
+            "model": "v0.5.4", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1), "availability_score": round(_clamp(availability), 1),
+            "post_return_fixture_score": None if post_return_fixtures is None else round(_clamp(post_return_fixtures), 1),
+            "stash_fixture_score": round(_clamp(stash_fixtures), 1),
             "start_probability": round(_clamp(start_probability), 1), "expected_minutes": round(_clamp(expected_minutes, 0.0, 90.0), 1),
             "usage_score": round(_clamp(usage), 1), "sample_confidence": round(sample_confidence, 1), "role_evidence": role_evidence(sample_confidence),
             "floor_score": round(_clamp(floor), 1), "upside_score": round(_clamp(upside), 1),

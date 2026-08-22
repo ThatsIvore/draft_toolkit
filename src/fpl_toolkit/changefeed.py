@@ -7,7 +7,7 @@ from typing import Any
 ROLE_RANK = {"LOW": 1, "MEDIUM": 2, "HIGH": 3}
 WAIVER_RANK = {"KEEP ROSTER": 1, "CONSIDER": 2, "STASH SWAP": 3, "SWAP NOW": 4}
 PRIORITY_RANK = {"critical": 4, "important": 3, "watch": 2, "info": 1}
-DECISION_STATE_VERSION = 2
+DECISION_STATE_VERSION = 3
 CHANGE_FEED_MODEL = "v0.9.3"
 
 

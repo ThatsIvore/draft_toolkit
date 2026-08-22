@@ -264,7 +264,7 @@ function render() {
   const s = DATA.summary || {};
   document.getElementById('hero').innerHTML = `<div class="hero-top"><div><div class="eyebrow">${esc(DATA.league_name || 'Draft league')}</div><h2>Your Gameweek decision centre</h2><p>Familiar Draft views with squad, free-agent and future-Gameweek intelligence layered on top.</p></div><div class="gw-pill">${DATA.current_gameweek === 0 ? 'Pre-GW1' : `GW${esc(DATA.current_gameweek)}`}</div></div>
     <div id="freshness-warning-slot">${snapshotWarningMarkup(DATA)}</div>
-    <div class="stats"><div class="stat"><small>My squad</small><strong>${esc(s.my_squad_count)}</strong></div><div class="stat"><small>Available</small><strong>${esc(s.available_count)}</strong></div><div class="stat"><small>Changes</small><strong>${esc(s.ownership_changes)}</strong></div><div class="stat"><small>Injury watch</small><strong>${esc(s.injured_or_doubtful_count)}</strong></div></div>`;
+    <div class="stats"><div class="stat"><small>My squad</small><strong>${esc(s.my_squad_count)}</strong></div><div class="stat"><small>Available</small><strong>${esc(s.available_count)}</strong></div><div class="stat"><small>Changes</small><strong>${esc(s.ownership_changes)}</strong></div><button class="stat stat-button" data-view-link="injury"><small>Health decisions</small><strong>${esc(DATA.injury_stash?.summary?.decision_count ?? s.injured_or_doubtful_count)}</strong><span>Open dashboard →</span></button></div>`;
   refreshSnapshotHealth();
   document.getElementById('controls').innerHTML = controls();
   document.querySelectorAll('.primary-link').forEach(btn => btn.classList.toggle('active', btn.dataset.view === VIEW));
@@ -277,6 +277,13 @@ function bindControls() {
   document.getElementById('search')?.addEventListener('input', e => { QUERY = e.target.value; render(); document.getElementById('search')?.focus(); });
   document.getElementById('position')?.addEventListener('change', e => { POS = e.target.value; render(); });
   document.getElementById('sort')?.addEventListener('change', e => { SORT = e.target.value; render(); });
+  document.querySelectorAll('[data-view-link]').forEach(btn => btn.addEventListener('click', () => {
+    VIEW = btn.dataset.viewLink;
+    QUERY = '';
+    POS = 'ALL';
+    history.replaceState(null, '', `#${VIEW}`);
+    render();
+  }));
 }
 function bindPlayers(){document.querySelectorAll('[data-player-id]').forEach(el => el.addEventListener('click',()=>openPlayer(el.dataset.playerId)));}
 
