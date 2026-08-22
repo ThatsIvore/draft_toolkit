@@ -12,6 +12,22 @@ The acquisition and strategy layer is not portable unchanged. Draft asks which u
 
 A sensible first release is a read-only personal standard FPL assistant: import the squad, show the Recommended XI, order the bench, recommend captain and vice-captain, surface injury/fixture risks and provide a short planning horizon. Legal transfer recommendations should follow once authenticated current-team discovery and the price model are reliable. Chip planning belongs later.
 
+## Technical POC status
+
+The first isolated technical path is now implemented behind `fpl-toolkit --mode standard-fpl`. It:
+
+- accepts an ordinary manager-facing standard FPL entry URL;
+- reads public bootstrap, fixture, entry-history and locked-picks responses;
+- maps the complete standard player pool onto the shared player contract;
+- reuses the fixture horizon, performance baseline, player intelligence and legal-XI optimizer;
+- orders the outfield bench and adds captain/vice-captain heuristics;
+- writes a private, gitignored JSON report without retaining the configured entry identifier; and
+- prevents this private report from being sent through the existing `--publish` path.
+
+The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result.
+
+This is intentionally not full Phase 1 completion. The public locked squad can become stale after a transfer, and the report does not claim access to current pre-deadline picks, purchase/selling prices, free-transfer balance or chip state. A sanctioned user-authorized current-team connection remains the next discovery gate.
+
 ## Terminology and product boundary
 
 | Mode | Host | Player ownership | Main decisions | Current status |

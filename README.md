@@ -38,6 +38,27 @@ fpl-toolkit --publish
 
 Open `public/index.html` through a local web server after collection.
 
+## Private Standard FPL Phase 1 POC
+
+The repository also contains an isolated, read-only proof of concept for the budget-and-transfer game at `fantasy.premierleague.com`. It does not alter or publish to the existing Draft dashboard.
+
+Supply an ordinary standard FPL entry URL; developer tools and authentication data are not required for the public locked-squad prototype:
+
+```bash
+export FPL_STANDARD_ENTRY_URL='https://fantasy.premierleague.com/en/entry/123456/event/1'
+fpl-toolkit --mode standard-fpl
+```
+
+The command writes `data/private/standard-fpl-poc.json`, which is gitignored because it contains squad and recommendation state. The configured entry identifier is used only during collection and is omitted from the saved report. The report:
+
+- imports the newest publicly locked 15-player squad;
+- reuses the shared player, availability, fixture and role intelligence;
+- recommends a legal XI and orders the three outfield substitutes;
+- recommends a captain and vice-captain using a transparent heuristic; and
+- preserves the scoring-Gameweek versus next-actionable-Gameweek distinction.
+
+Public picks can be stale for the next deadline after the manager makes a transfer. The POC labels that limitation and does not claim to know current purchase/selling prices, banked free transfers or chip availability. It does not submit any FPL action, and `--publish` is deliberately rejected in Standard FPL mode.
+
 ## GitHub Actions
 
 The workflow runs every four hours at minute 17 and can also be run manually. `FPL_DRAFT_ENTRY_ID` is configured as `336654` in the workflow. `FPL_DRAFT_LEAGUE_ID` is optional unless live API validation shows it is needed.

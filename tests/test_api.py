@@ -1,6 +1,6 @@
 import requests
 
-from fpl_toolkit.api import DraftApiClient, FPLApiError
+from fpl_toolkit.api import DraftApiClient, FPLApiError, FantasyApiClient
 
 
 class _Response:
@@ -67,3 +67,39 @@ def test_api_exhausts_retries_with_exponential_backoff(monkeypatch):
     else:
         raise AssertionError("Repeated server failures should fail the collection")
     assert calls == [0.5, 1.0]
+
+
+def test_standard_fpl_client_uses_public_read_only_endpoints(monkeypatch):
+    calls = []
+
+    def fake_get(url, **kwargs):
+        calls.append(url)
+        if url.endswith("/bootstrap-static/"):
+            return _Response({"events": [], "elements": []})
+        if url.endswith("/fixtures/"):
+            return _Response([])
+        if url.endswith("/entry/123/event/1/picks/"):
+            return _Response({"picks": []})
+        if url.endswith("/entry/123/history/"):
+            return _Response({"current": []})
+        if url.endswith("/entry/123/transfers/"):
+            return _Response([])
+        return _Response({"id": 123})
+
+    monkeypatch.setattr("fpl_toolkit.api.requests.get", fake_get)
+    client = FantasyApiClient(max_attempts=1)
+
+    assert client.bootstrap_static()["events"] == []
+    assert client.fixtures() == []
+    assert client.entry("123")["id"] == 123
+    assert client.entry_picks("123", 1) == {"picks": []}
+    assert client.entry_history("123") == {"current": []}
+    assert client.entry_transfers("123") == []
+    assert calls == [
+        "https://fantasy.premierleague.com/api/bootstrap-static/",
+        "https://fantasy.premierleague.com/api/fixtures/",
+        "https://fantasy.premierleague.com/api/entry/123/",
+        "https://fantasy.premierleague.com/api/entry/123/event/1/picks/",
+        "https://fantasy.premierleague.com/api/entry/123/history/",
+        "https://fantasy.premierleague.com/api/entry/123/transfers/",
+    ]
