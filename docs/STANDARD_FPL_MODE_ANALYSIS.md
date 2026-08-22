@@ -158,6 +158,17 @@ Standard FPL mode
 
 The report should carry a validated mode such as `draft_h2h`, `draft_classic` or `standard_fpl`. Shared code should calculate football value; mode builders should turn that value into legal decisions and user-facing recommendations. This separation protects the current Draft dashboard while allowing both products to improve from shared model work.
 
+### H2H protection boundary
+
+Standard FPL development must not change the established Draft/H2H behavior by default. The permanent regression guard in `tests/test_mode_isolation.py` enforces that:
+
+- the Draft collector, H2H, waivers, planner, outcomes, Decision Updates, opponent profiles and public privacy modules do not import Standard-only modules;
+- running `fpl-toolkit` without a mode continues to select Draft;
+- Standard FPL mode continues to reject `--publish`; and
+- the scheduled public collection workflow remains on the Draft publish path.
+
+Shared football primitives may still be reused deliberately, but a future change to shared scoring, fixtures, intelligence or lineup code must pass both Standard FPL tests and the complete Draft/H2H regression suite. Standard-specific rules, prices, transfers, chips and private snapshot handling belong in `standard_fpl*` modules and the private report only.
+
 ## Suggested delivery sequence
 
 ### Phase 0 — private data contract
