@@ -86,6 +86,34 @@ def _bootstrap():
                 "cost_change_start": player_id % 3,
             }
             for player_id, position in POSITIONS.items()
+        ] + [
+            {
+                "id": 16,
+                "web_name": "Available MID",
+                "team": 6,
+                "element_type": type_id["MID"],
+                "status": "a",
+                "chance_of_playing_next_round": 100,
+                "news": "",
+                "event_points": 10,
+                "total_points": 180,
+                "minutes": 900,
+                "starts": 10,
+                "goals_scored": 8,
+                "assists": 8,
+                "clean_sheets": 5,
+                "bonus": 20,
+                "expected_goal_involvements": "10.0",
+                "form": "10.0",
+                "points_per_game": "8.0",
+                "ep_next": "8.0",
+                "now_cost": 55,
+                "selected_by_percent": "20.0",
+                "transfers_in_event": 1000,
+                "transfers_out_event": 10,
+                "cost_change_event": 0,
+                "cost_change_start": 0,
+            }
         ],
     }
 
@@ -359,6 +387,8 @@ def test_collect_standard_fpl_reuses_intelligence_lineup_and_captaincy(tmp_path)
     assert report["captaincy"]["captain"]["player_id"] != report["captaincy"]["vice_captain"]["player_id"]
     assert report["financial_snapshot"]["bank"] == 0.5
     assert report["financial_snapshot"]["has_current_selling_prices"] is False
+    assert report["single_transfer_candidates"]["is_available"] is False
+    assert report["single_transfer_candidates"]["candidates"] == []
     serialized = json.dumps(report)
     assert "player_first_name" not in serialized
     assert "owner_entry_id" not in serialized
@@ -379,7 +409,7 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     )
     report = collect_standard_fpl(settings, client=_Client())
 
-    assert report["poc_version"] == "phase-1-v0.2"
+    assert report["poc_version"] == "phase-1-v0.3"
     assert report["squad_source"]["type"] == "private_current_team_snapshot"
     assert report["squad_source"]["gameweek"] == 2
     assert report["squad_source"]["is_exact_for_decision_gameweek"] is True
@@ -389,6 +419,9 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     assert report["financial_snapshot"]["squad_value"] == 100.7
     assert report["financial_snapshot"]["free_transfers"] == 2
     assert report["financial_snapshot"]["has_current_selling_prices"] is True
+    assert report["single_transfer_candidates"]["is_available"] is True
+    assert report["single_transfer_candidates"]["advisory_only"] is True
+    assert report["single_transfer_candidates"]["candidates"]
     captain = next(row for row in report["squad"] if row["submitted_captain"])
     assert captain["purchase_price"] == 5.5
     assert captain["selling_price"] == 5.5
