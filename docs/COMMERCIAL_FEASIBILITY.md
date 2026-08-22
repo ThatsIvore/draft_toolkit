@@ -97,6 +97,8 @@ For personal Draft discovery, obtain the numeric Draft entry from the normal sig
 
 Standard FPL has a different entry URL and data model. Its public entry pages expose a numeric entry identifier, but public completed-Gameweek picks do not by themselves solve private, pre-deadline onboarding. The separate [Standard FPL Mode Analysis](STANDARD_FPL_MODE_ANALYSIS.md) records the current data finding and proposed user-authorized connection.
 
+The completed [Standard FPL authentication discovery](STANDARD_FPL_AUTH_DISCOVERY.md) confirms that FPL's own OAuth client cannot be reused by the toolkit: the GitHub Pages redirect URI is rejected, and the protected current-team endpoint does not grant that origin cross-origin access. A commercial **Connect FPL** flow therefore depends on Premier League approval, a toolkit-specific registered client and permitted data use. Capturing passwords, copied sessions or bearer tokens is not an acceptable shortcut.
+
 ## Draft-history integration
 
 The current repository contains a verified six-manager, 90-pick draft history. That is useful for the present league, but it must not become a universal product assumption.
@@ -281,7 +283,7 @@ Every unsupported combination must be detected before payment or trial activatio
 The next concept and discovery work should answer these questions:
 
 1. Define and validate the private standard FPL data contract, especially current squad, bank, purchase/selling prices, free-transfer balance and chips.
-2. Prove a sanctioned, user-authorized read-only connection for the owner's current pre-deadline standard FPL team without developer tools or shared session tokens.
+2. Prove or reject the bounded browser-local Standard FPL snapshot described in `STANDARD_FPL_AUTH_DISCOVERY.md`, without extracting or replaying credentials; treat a hosted connection as blocked pending Premier League approval and client registration.
 3. Implement a bounded standard FPL proof of concept: current squad, legal XI, ordered bench, captain, vice-captain and four-Gameweek outlook while preserving the existing Draft report.
 4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
 5. Audit the authenticated live **Create League** and **League Admin** screens to confirm every Draft setup field, exact timer choices and odd-manager H2H behaviour.
