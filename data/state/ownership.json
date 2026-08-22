@@ -671,9 +671,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Hamstring injury - 75% chance of playing",
+    "news_added": "2026-08-22T17:30:07.668197Z"
   },
   {
     "player_id": 320,
@@ -1269,9 +1269,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Ankle injury - 75% chance of playing",
+    "news_added": "2026-08-22T17:30:07.685683Z"
   },
   {
     "player_id": 89,
@@ -3765,9 +3765,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Muscular injury - 75% chance of playing",
+    "news_added": "2026-08-22T18:00:07.551930Z"
   },
   {
     "player_id": 485,
@@ -4831,9 +4831,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 50,
+    "news": "Knee injury - 50% chance of playing",
+    "news_added": "2026-08-22T18:00:07.352049Z"
   },
   {
     "player_id": 432,
@@ -6066,9 +6066,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Thigh injury - 75% chance of playing",
+    "news_added": "2026-08-22T17:30:08.045208Z"
   },
   {
     "player_id": 88,
@@ -6621,6 +6621,45 @@
     "player": "Osman",
     "club": "BHA",
     "team_id": 5,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 601,
+    "player": "Humphreys",
+    "club": "IPS",
+    "team_id": 12,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 602,
+    "player": "Lienou",
+    "club": "LEE",
+    "team_id": 13,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 603,
+    "player": "Cresswell",
+    "club": "LEE",
+    "team_id": 13,
     "position": "MID",
     "status": "a",
     "owner_raw": null,
@@ -7249,9 +7288,9 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Groin injury - 75% chance of playing",
+    "news_added": "2026-08-22T18:00:07.363165Z"
   },
   {
     "player_id": 14,
