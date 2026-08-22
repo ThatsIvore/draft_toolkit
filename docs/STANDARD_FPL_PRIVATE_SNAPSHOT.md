@@ -20,7 +20,7 @@ fpl-toolkit --mode standard-fpl
 
 The ordinary entry URL still identifies which public entry and player data to analyse. It is not treated as authentication. The snapshot itself deliberately contains no entry or account identifier.
 
-The exporter is not implemented yet. Do not obtain the file by copying credentials or raw browser storage. Until the safe same-origin experiment is proved, the existing public locked-squad mode remains the usable input path.
+The exporter is not implemented yet. Do not obtain the file by copying credentials or raw browser storage. The live browser discovery has now confirmed that the complete allowlist can be assembled from normal Pick Team and Transfers views plus the unauthenticated public player bootstrap, without reading a bearer token. Until the minimal two-stage helper is implemented and validated, the existing public locked-squad mode remains the usable input path.
 
 ## Version 1 fields
 
@@ -88,5 +88,7 @@ After validation, the private Standard FPL report:
 - still refuses `--publish` and never submits an FPL action.
 
 The connector remains a separate trust boundary. A valid contract does not make credential extraction acceptable and does not resolve the Premier League permission gate documented in [Standard FPL Current-Team Authentication Discovery](STANDARD_FPL_AUTH_DISCOVERY.md).
+
+The approved personal-helper direction is DOM-only and fail-closed: capture lineup/captaincy/prices from Pick Team, capture bank/free-transfer/finance state from Transfers, resolve player IDs against public bootstrap data, remove names and club labels from the final payload, validate locally and download only this schema. Temporary browser state may contain only the helper's own sanitized partial capture and must be removed after success or failure.
 
 The implemented [Standard FPL squad and single-transfer legality layer](STANDARD_FPL_TRANSFER_LEGALITY.md) consumes this financial state. It derives remaining free transfers and incremental hit cost rather than treating `free_transfers` and `transfers_made` as interchangeable values.
