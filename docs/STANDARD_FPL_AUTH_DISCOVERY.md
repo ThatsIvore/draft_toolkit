@@ -62,7 +62,7 @@ The proposed boundary is:
 - no password, authorization code, access/refresh token, cookie, email or profile data is read into the export or sent to the toolkit; and
 - the resulting snapshot is accepted only by the local/private Standard FPL command and remains gitignored.
 
-This is a discovery candidate, not yet an approved implementation. It must first be proved that an already signed-in FPL page can produce the read-only response using its normal same-origin session without the helper extracting or replaying a bearer token. If that test fails, the browser-local connector stops; it must not escalate to copying local-storage credentials.
+The strict, source-independent receiving contract is now implemented as [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). It accepts only allowlisted team state and rejects extra identity or credential fields. The browser-local exporter remains a discovery candidate, not yet an approved implementation. It must first be proved that an already signed-in FPL page can produce the read-only response using its normal same-origin session without the helper extracting or replaying a bearer token. If that test fails, the browser-local connector stops; it must not escalate to copying local-storage credentials.
 
 Even if technically successful, a browser extension or local helper adds installation and trust friction. It may be reasonable for the owner's personal use but is not a satisfactory paid onboarding path without Premier League approval and a clear distribution/security review.
 
@@ -72,7 +72,7 @@ The next proof requires the owner to sign in manually in the controlled browser 
 
 | Result | Next action |
 |---|---|
-| Same-origin session-only read succeeds | Define a versioned allowlist, build a minimal local exporter and validate a private snapshot against the existing Standard FPL POC. |
+| Same-origin session-only read succeeds | Map the sanitized response into the implemented versioned allowlist, build a minimal local exporter and validate it against the existing Standard FPL POC. |
 | The read requires helper access to a bearer token | Stop the connector experiment; retain public locked picks plus manual private inputs until a sanctioned integration exists. |
 | The response lacks required finance/transfer/chip fields | Keep Phase 1 lineup advice, but do not build legal transfer recommendations from incomplete state. |
 | Premier League offers an approved integration path | Replace the local experiment with the registered backend-for-frontend architecture. |

@@ -24,6 +24,8 @@ The first isolated technical path is now implemented behind `fpl-toolkit --mode 
 - writes a private, gitignored JSON report without retaining the configured entry identifier; and
 - prevents this private report from being sent through the existing `--publish` path.
 
+The source-independent `standard-fpl-private-snapshot-v1` contract is also implemented and documented in [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). When a trusted future connector produces that file, the same command validates and uses the exact decision-Gameweek squad, purchase/selling prices, bank, free-transfer balance and chip state. It fails closed on stale Gameweeks, unknown players, malformed squad/captaincy state and unexpected fields that could contain identity or credentials. The connector itself is still gated by the authentication discovery.
+
 The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result.
 
 This is intentionally not full Phase 1 completion. The public locked squad can become stale after a transfer, and the report does not claim access to current pre-deadline picks, purchase/selling prices, free-transfer balance or chip state. Authentication discovery has now confirmed that the toolkit cannot reuse FPL's OAuth client on GitHub Pages: the callback is rejected and the private team API does not permit the toolkit origin through CORS. The evidence, design boundary and next personal experiment are recorded in [Standard FPL Current-Team Authentication Discovery](STANDARD_FPL_AUTH_DISCOVERY.md).
@@ -158,7 +160,7 @@ The report should carry a validated mode such as `draft_h2h`, `draft_classic` or
 
 ### Phase 0 — private data contract
 
-- Define the standard player, squad, entry-history, price and chip schemas.
+- **Implemented:** define and validate the source-independent current squad, price, transfer and chip snapshot schema.
 - For a personal experiment, prove or reject a user-initiated same-origin snapshot that does not extract or replay browser credentials.
 - For any hosted product, obtain Premier League approval and a registered client before implementing account connection.
 - Keep entry identifiers and account details out of committed fixtures and public reports.

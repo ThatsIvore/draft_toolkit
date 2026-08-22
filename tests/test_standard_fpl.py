@@ -9,6 +9,13 @@ from fpl_toolkit.standard_fpl import (
     confirmed_squad_gameweek,
     normalize_standard_player_pool,
 )
+from fpl_toolkit.standard_fpl_snapshot import (
+    SCHEMA_VERSION,
+    StandardFplSnapshotError,
+    load_private_snapshot,
+    snapshot_to_picks_payload,
+    validate_private_snapshot,
+)
 
 
 POSITIONS = {
@@ -134,6 +141,36 @@ def _fixtures():
     return rows
 
 
+def _private_snapshot():
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "captured_at": "2026-08-22T20:00:00+00:00",
+        "decision_gameweek": 2,
+        "squad": [
+            {
+                "player_id": player_id,
+                "lineup_position": player_id,
+                "multiplier": 2 if player_id == 10 else 1 if player_id <= 11 else 0,
+                "is_captain": player_id == 10,
+                "is_vice_captain": player_id == 9,
+                "purchase_price_tenths": 45 + player_id,
+                "selling_price_tenths": 45 + player_id,
+            }
+            for player_id in POSITIONS
+        ],
+        "transfers": {
+            "bank_tenths": 7,
+            "squad_value_tenths": 1007,
+            "free_transfers": 2,
+            "transfers_made": 0,
+        },
+        "chips": [
+            {"name": "wildcard", "number": 1, "status": "available", "played_gameweek": None},
+            {"name": "freehit", "number": 1, "status": "available", "played_gameweek": None},
+        ],
+    }
+
+
 class _Client:
     def bootstrap_static(self):
         return _bootstrap()
@@ -186,6 +223,22 @@ def test_standard_settings_reject_output_in_public_directory(monkeypatch):
         StandardFplSettings.from_env()
 
 
+def test_standard_settings_accept_private_snapshot_path(monkeypatch):
+    monkeypatch.delenv("FPL_STANDARD_ENTRY_URL", raising=False)
+    monkeypatch.setenv("FPL_STANDARD_ENTRY_ID", "123456")
+    monkeypatch.setenv("FPL_STANDARD_PRIVATE_SNAPSHOT", "data/private/current-team.json")
+    settings = StandardFplSettings.from_env()
+    assert settings.private_snapshot_path == "data/private/current-team.json"
+
+
+def test_standard_settings_reject_snapshot_outside_private_directory(monkeypatch):
+    monkeypatch.delenv("FPL_STANDARD_ENTRY_URL", raising=False)
+    monkeypatch.setenv("FPL_STANDARD_ENTRY_ID", "123456")
+    monkeypatch.setenv("FPL_STANDARD_PRIVATE_SNAPSHOT", "public/data/current-team.json")
+    with pytest.raises(ConfigError, match="data/private"):
+        StandardFplSettings.from_env()
+
+
 def test_normalizer_maps_prices_pick_flags_and_shared_player_contract():
     players = normalize_standard_player_pool(_bootstrap(), _picks(), "123456")
     player = next(row for row in players if row["player_id"] == 13)
@@ -201,6 +254,63 @@ def test_locked_current_gameweek_is_used_as_latest_public_squad():
     assert confirmed_squad_gameweek(_bootstrap()) == 1
     with pytest.raises(StandardFplDataError, match="not present"):
         confirmed_squad_gameweek(_bootstrap(), 38)
+
+
+def test_private_snapshot_contract_is_strict_and_identifier_free():
+    snapshot = validate_private_snapshot(
+        _private_snapshot(),
+        known_player_ids=set(POSITIONS),
+    )
+    assert snapshot["schema_version"] == SCHEMA_VERSION
+    assert snapshot["transfers"]["free_transfers"] == 2
+    picks = snapshot_to_picks_payload(snapshot)
+    assert len(picks["picks"]) == 15
+    assert picks["picks"][9]["purchase_price"] == 55
+    assert picks["picks"][9]["is_captain"] is True
+    assert "entry_id" not in json.dumps(snapshot)
+
+
+def test_private_snapshot_rejects_extra_identity_or_credential_fields():
+    snapshot = _private_snapshot()
+    snapshot["entry_id"] = 123456
+    with pytest.raises(StandardFplSnapshotError, match="unsupported fields: entry_id"):
+        validate_private_snapshot(snapshot)
+
+    snapshot = _private_snapshot()
+    snapshot["squad"][0]["access_token"] = "do-not-store"
+    with pytest.raises(StandardFplSnapshotError, match="unsupported fields: access_token"):
+        validate_private_snapshot(snapshot)
+
+
+def test_private_snapshot_rejects_stale_or_malformed_team_state():
+    duplicate = _private_snapshot()
+    duplicate["squad"][1]["player_id"] = duplicate["squad"][0]["player_id"]
+    with pytest.raises(StandardFplSnapshotError, match="player_id values must be unique"):
+        validate_private_snapshot(duplicate)
+
+    missing_captain = _private_snapshot()
+    missing_captain["squad"][9]["is_captain"] = False
+    missing_captain["squad"][9]["multiplier"] = 1
+    with pytest.raises(StandardFplSnapshotError, match="exactly one captain"):
+        validate_private_snapshot(missing_captain)
+
+    stale_player = _private_snapshot()
+    stale_player["squad"][0]["player_id"] = 999
+    with pytest.raises(StandardFplSnapshotError, match="unknown player IDs"):
+        validate_private_snapshot(stale_player, known_player_ids=set(POSITIONS))
+
+    bench_captain = _private_snapshot()
+    bench_captain["squad"][9]["is_captain"] = False
+    bench_captain["squad"][9]["multiplier"] = 1
+    bench_captain["squad"][12]["is_captain"] = True
+    bench_captain["squad"][12]["multiplier"] = 2
+    with pytest.raises(StandardFplSnapshotError, match="must be starters"):
+        validate_private_snapshot(bench_captain)
+
+
+def test_private_snapshot_file_errors_are_actionable(tmp_path):
+    with pytest.raises(StandardFplSnapshotError, match="Could not read private snapshot"):
+        load_private_snapshot(tmp_path / "missing.json")
 
 
 def test_collect_standard_fpl_reuses_intelligence_lineup_and_captaincy(tmp_path):
@@ -237,3 +347,48 @@ def test_collect_standard_fpl_reuses_intelligence_lineup_and_captaincy(tmp_path)
     assert "owner_raw" not in serialized
     assert "123456" not in serialized
     assert report["limitations"]
+
+
+def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_path):
+    snapshot_path = tmp_path / "current-team.json"
+    snapshot_path.write_text(json.dumps(_private_snapshot()), encoding="utf-8")
+    settings = StandardFplSettings(
+        entry_id="123456",
+        planning_horizon=4,
+        output_path=str(tmp_path / "report.json"),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+        private_snapshot_path=str(snapshot_path),
+    )
+    report = collect_standard_fpl(settings, client=_Client())
+
+    assert report["poc_version"] == "phase-1-v0.2"
+    assert report["squad_source"]["type"] == "private_current_team_snapshot"
+    assert report["squad_source"]["gameweek"] == 2
+    assert report["squad_source"]["is_exact_for_decision_gameweek"] is True
+    assert report["squad_source"]["warning"] is None
+    assert report["confirmed_lineup"]["source"] == "standard_fpl_private_snapshot"
+    assert report["financial_snapshot"]["bank"] == 0.7
+    assert report["financial_snapshot"]["squad_value"] == 100.7
+    assert report["financial_snapshot"]["free_transfers"] == 2
+    assert report["financial_snapshot"]["has_current_selling_prices"] is True
+    captain = next(row for row in report["squad"] if row["submitted_captain"])
+    assert captain["purchase_price"] == 5.5
+    assert captain["selling_price"] == 5.5
+    serialized = json.dumps(report)
+    assert "123456" not in serialized
+    assert "access_token" not in serialized
+
+
+def test_collect_standard_fpl_rejects_snapshot_for_wrong_decision_gameweek(tmp_path):
+    snapshot = _private_snapshot()
+    snapshot["decision_gameweek"] = 3
+    snapshot_path = tmp_path / "stale-team.json"
+    snapshot_path.write_text(json.dumps(snapshot), encoding="utf-8")
+    settings = StandardFplSettings(
+        entry_id="123456",
+        output_path=str(tmp_path / "report.json"),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+        private_snapshot_path=str(snapshot_path),
+    )
+    with pytest.raises(StandardFplDataError, match="Capture a fresh snapshot"):
+        collect_standard_fpl(settings, client=_Client())

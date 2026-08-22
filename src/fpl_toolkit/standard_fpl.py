@@ -12,6 +12,7 @@ from .intelligence import attach_intelligence
 from .optimizer import recommend_lineup
 from .report import current_gameweek
 from .storage import read_json
+from .standard_fpl_snapshot import load_private_snapshot, snapshot_to_picks_payload
 
 
 class StandardFplDataError(RuntimeError):
@@ -108,6 +109,8 @@ def normalize_standard_player_pool(
             "owner_raw": entry_id if pick is not None else None,
             "is_owned": pick is not None,
             "pick_position": pick.get("position") if pick else None,
+            "purchase_price": _money(pick.get("purchase_price")) if pick else None,
+            "selling_price": _money(pick.get("selling_price")) if pick else None,
             "submitted_multiplier": pick.get("multiplier") if pick else None,
             "submitted_captain": bool(pick and pick.get("is_captain")),
             "submitted_vice_captain": bool(pick and pick.get("is_vice_captain")),
@@ -147,13 +150,18 @@ def validate_standard_squad(squad: list[dict[str, Any]]) -> None:
         raise StandardFplDataError(f"Unexpected standard FPL squad shape: {counts}.")
 
 
-def confirmed_lineup(squad: list[dict[str, Any]], gameweek: int, picks_payload: dict[str, Any]) -> dict[str, Any]:
+def confirmed_lineup(
+    squad: list[dict[str, Any]],
+    gameweek: int,
+    picks_payload: dict[str, Any],
+    source: str = "standard_fpl_locked_picks",
+) -> dict[str, Any]:
     ordered = sorted(squad, key=lambda player: int(player.get("pick_position") or 99))
     starters = [dict(player) for player in ordered if int(player.get("pick_position") or 99) <= 11]
     bench = [dict(player) for player in ordered if int(player.get("pick_position") or 99) > 11]
     return {
         "gameweek": int(gameweek),
-        "source": "standard_fpl_locked_picks",
+        "source": source,
         "is_exact": True,
         "active_chip": picks_payload.get("active_chip"),
         "automatic_subs": picks_payload.get("automatic_subs") or [],
@@ -256,13 +264,34 @@ def collect_standard_fpl(
     entry = client.entry(settings.entry_id)
     history = client.entry_history(settings.entry_id)
 
-    source_gameweek = confirmed_squad_gameweek(bootstrap, settings.squad_gameweek)
-    picks_payload = client.entry_picks(settings.entry_id, source_gameweek)
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
     scoring_gameweek = current_gameweek(bootstrap, planning_gws)
     if not planning_gws:
         raise StandardFplDataError("No actionable standard FPL planning Gameweek is currently available.")
     decision_gameweek = int(planning_gws[0])
+
+    private_snapshot = None
+    if settings.private_snapshot_path:
+        known_player_ids = {
+            int(row["id"])
+            for row in bootstrap.get("elements", [])
+            if isinstance(row, dict) and row.get("id") is not None
+        }
+        private_snapshot = load_private_snapshot(
+            settings.private_snapshot_path,
+            known_player_ids=known_player_ids,
+        )
+        if private_snapshot["decision_gameweek"] != decision_gameweek:
+            raise StandardFplDataError(
+                "The private snapshot is for Gameweek "
+                f"{private_snapshot['decision_gameweek']}, but the next actionable Gameweek is "
+                f"{decision_gameweek}. Capture a fresh snapshot."
+            )
+        source_gameweek = decision_gameweek
+        picks_payload = snapshot_to_picks_payload(private_snapshot)
+    else:
+        source_gameweek = confirmed_squad_gameweek(bootstrap, settings.squad_gameweek)
+        picks_payload = client.entry_picks(settings.entry_id, source_gameweek)
 
     players = normalize_standard_player_pool(bootstrap, picks_payload, settings.entry_id)
     fixture_matrix = build_team_fixture_matrix(
@@ -283,7 +312,16 @@ def collect_standard_fpl(
     squad = [player for player in players if player.get("is_owned")]
     validate_standard_squad(squad)
 
-    official = confirmed_lineup(squad, source_gameweek, picks_payload)
+    official = confirmed_lineup(
+        squad,
+        source_gameweek,
+        picks_payload,
+        source=(
+            "standard_fpl_private_snapshot"
+            if private_snapshot is not None
+            else "standard_fpl_locked_picks"
+        ),
+    )
     recommended = recommend_lineup(squad, decision_gameweek)
     recommended["mode"] = "standard_fpl"
     recommended["note"] = (
@@ -295,19 +333,49 @@ def collect_standard_fpl(
     official = _strip_lineup_ownership(official)
     recommended = _strip_lineup_ownership(recommended)
     event_history = _entry_history(picks_payload, history, source_gameweek)
-    squad_is_current_for_decision = source_gameweek == decision_gameweek
-
-    return {
-        "mode": "standard_fpl",
-        "poc_version": "phase-1-v0.1",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "entry_context": {
-            "team_name": entry.get("name"),
-        },
-        "current_gameweek": scoring_gameweek,
-        "decision_gameweek": decision_gameweek,
-        "planning_gameweeks": planning_gws,
-        "squad_source": {
+    squad_is_current_for_decision = private_snapshot is not None or source_gameweek == decision_gameweek
+    if private_snapshot is not None:
+        transfer_state = private_snapshot["transfers"]
+        financial_snapshot = {
+            "gameweek": decision_gameweek,
+            "bank": _money(transfer_state["bank_tenths"]),
+            "squad_value": _money(transfer_state["squad_value_tenths"]),
+            "event_transfers": transfer_state["transfers_made"],
+            "event_transfer_cost": None,
+            "free_transfers": transfer_state["free_transfers"],
+            "chips": private_snapshot["chips"],
+            "has_current_selling_prices": True,
+            "has_current_free_transfer_balance": True,
+            "has_current_chip_state": True,
+        }
+        squad_source = {
+            "gameweek": decision_gameweek,
+            "type": "private_current_team_snapshot",
+            "captured_at": private_snapshot["captured_at"],
+            "schema_version": private_snapshot["schema_version"],
+            "is_exact_for_source_gameweek": True,
+            "is_exact_for_decision_gameweek": True,
+            "warning": None,
+        }
+        limitations = [
+            "The private snapshot is read-only and must be refreshed after FPL team changes.",
+            "No transfer, captain, chip or lineup action is submitted to FPL.",
+            "Start Score and Captain Score are heuristics, not projected FPL points.",
+        ]
+    else:
+        financial_snapshot = {
+            "gameweek": source_gameweek,
+            "bank": _money(event_history.get("bank")),
+            "squad_value": _money(event_history.get("value")),
+            "event_transfers": event_history.get("event_transfers"),
+            "event_transfer_cost": event_history.get("event_transfers_cost"),
+            "free_transfers": None,
+            "chips": [],
+            "has_current_selling_prices": False,
+            "has_current_free_transfer_balance": False,
+            "has_current_chip_state": False,
+        }
+        squad_source = {
             "gameweek": source_gameweek,
             "type": "public_locked_picks",
             "is_exact_for_source_gameweek": True,
@@ -316,17 +384,26 @@ def collect_standard_fpl(
                 "This is the latest publicly confirmed squad. Transfers made after its deadline are hidden, "
                 "so it may differ from the squad available for the decision Gameweek."
             ),
+        }
+        limitations = [
+            "The public locked squad can become stale when the manager makes transfers for the next deadline.",
+            "The POC does not know current purchase prices, selling prices, banked free transfers or chip availability.",
+            "No transfer, captain, chip or lineup action is submitted to FPL.",
+            "Start Score and Captain Score are heuristics, not projected FPL points.",
+        ]
+
+    return {
+        "mode": "standard_fpl",
+        "poc_version": "phase-1-v0.2",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "entry_context": {
+            "team_name": entry.get("name"),
         },
-        "financial_snapshot": {
-            "gameweek": source_gameweek,
-            "bank": _money(event_history.get("bank")),
-            "squad_value": _money(event_history.get("value")),
-            "event_transfers": event_history.get("event_transfers"),
-            "event_transfer_cost": event_history.get("event_transfers_cost"),
-            "has_current_selling_prices": False,
-            "has_current_free_transfer_balance": False,
-            "has_current_chip_state": False,
-        },
+        "current_gameweek": scoring_gameweek,
+        "decision_gameweek": decision_gameweek,
+        "planning_gameweeks": planning_gws,
+        "squad_source": squad_source,
+        "financial_snapshot": financial_snapshot,
         "summary": {
             "squad_count": len(squad),
             "recommended_formation": recommended.get("formation"),
@@ -338,10 +415,5 @@ def collect_standard_fpl(
         "confirmed_lineup": official,
         "recommended_lineup": recommended,
         "captaincy": captaincy,
-        "limitations": [
-            "The public locked squad can become stale when the manager makes transfers for the next deadline.",
-            "The POC does not know current purchase prices, selling prices, banked free transfers or chip availability.",
-            "No transfer, captain, chip or lineup action is submitted to FPL.",
-            "Start Score and Captain Score are heuristics, not projected FPL points.",
-        ],
+        "limitations": limitations,
     }
