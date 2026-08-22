@@ -71,6 +71,7 @@ class StandardFplSettings:
     output_path: str = "data/private/standard-fpl-poc.json"
     squad_gameweek: int | None = None
     performance_baseline_path: str = "data/state/performance-baseline.json"
+    private_snapshot_path: str | None = None
 
     @classmethod
     def from_env(cls) -> "StandardFplSettings":
@@ -97,6 +98,7 @@ class StandardFplSettings:
             "FPL_PERFORMANCE_BASELINE_PATH", "data/state/performance-baseline.json"
         ).strip()
         squad_gameweek_raw = os.getenv("FPL_STANDARD_SQUAD_GAMEWEEK", "").strip()
+        private_snapshot_path = os.getenv("FPL_STANDARD_PRIVATE_SNAPSHOT", "").strip() or None
         try:
             horizon = int(horizon_raw)
         except ValueError as exc:
@@ -115,6 +117,14 @@ class StandardFplSettings:
         resolved_output = Path(output_path).resolve()
         if resolved_output != private_root and private_root not in resolved_output.parents:
             raise ConfigError("FPL_STANDARD_OUTPUT must remain inside the gitignored data/private directory.")
+        if private_snapshot_path is not None:
+            resolved_snapshot = Path(private_snapshot_path).resolve()
+            if resolved_snapshot != private_root and private_root not in resolved_snapshot.parents:
+                raise ConfigError(
+                    "FPL_STANDARD_PRIVATE_SNAPSHOT must remain inside the gitignored data/private directory."
+                )
+            if resolved_snapshot.suffix.lower() != ".json":
+                raise ConfigError("FPL_STANDARD_PRIVATE_SNAPSHOT must be a JSON file.")
 
         return cls(
             entry_id=entry_id,
@@ -122,4 +132,5 @@ class StandardFplSettings:
             output_path=output_path,
             squad_gameweek=squad_gameweek,
             performance_baseline_path=baseline_path,
+            private_snapshot_path=private_snapshot_path,
         )
