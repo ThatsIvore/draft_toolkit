@@ -1,5 +1,36 @@
 {
   "schema_version": 1,
-  "updated_at": null,
-  "managers": {}
+  "updated_at": "2026-08-22T02:54:24.974186+00:00",
+  "managers": {
+    "307364": {
+      "transactions": [],
+      "lineups": {},
+      "team_name": "Vængir Júpíters"
+    },
+    "334397": {
+      "transactions": [],
+      "lineups": {},
+      "team_name": "My own Wirtz enemy"
+    },
+    "336654": {
+      "transactions": [],
+      "lineups": {},
+      "team_name": "FC FC"
+    },
+    "338272": {
+      "transactions": [],
+      "lineups": {},
+      "team_name": "No Salad"
+    },
+    "338553": {
+      "transactions": [],
+      "lineups": {},
+      "team_name": "Weapon X"
+    },
+    "339421": {
+      "transactions": [],
+      "lineups": {},
+      "team_name": "Gooseboys"
+    }
+  }
 }

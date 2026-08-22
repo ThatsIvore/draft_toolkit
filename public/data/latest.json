@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T01:52:27.152581+00:00",
+  "generated_at": "2026-08-22T02:54:24.974186+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 1,
@@ -77565,10 +77565,45 @@
     "available": true,
     "gameweek": 1,
     "opponent": {
-      "display_name": "League opponent",
+      "display_name": "My own Wirtz enemy",
       "rank": null,
       "h2h_points": 0,
       "points_for": 0
+    },
+    "opponent_profile": {
+      "model": "v0.1",
+      "team_name": "My own Wirtz enemy",
+      "draft": {
+        "draft_code": "DG",
+        "draft_slot": 1,
+        "team_name": "My own Wirtz enemy",
+        "score": 60.6,
+        "roster_strength_score": 65.0,
+        "pick_value_score": 54.5,
+        "resolved_picks": 15,
+        "total_picks": 15,
+        "projected_points_adjustment": 0.4,
+        "evidence": "LOW"
+      },
+      "management": {
+        "transaction_windows": 0,
+        "adds": 0,
+        "drops": 0,
+        "average_transfer_value": null,
+        "lineup_gameweeks": 0,
+        "average_lineup_efficiency": null,
+        "transfer_score": 50.0,
+        "lineup_score": 50.0,
+        "projected_points_adjustment": 0.0,
+        "evidence": "LOW"
+      },
+      "decision_threat": {
+        "level": "MEDIUM",
+        "score": 55.0,
+        "projected_points_adjustment": 0.4,
+        "evidence": "LOW",
+        "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
+      }
     },
     "my_standing": {
       "rank": null,
@@ -85665,7 +85700,7 @@
         "gameweek": 1,
         "available": true,
         "opponent": {
-          "display_name": "League opponent",
+          "display_name": "My own Wirtz enemy",
           "rank": null,
           "h2h_points": 0,
           "points_for": 0
@@ -85684,6 +85719,42 @@
           "range_high": 73.5,
           "evidence": "HIGH"
         },
+        "opponent_profile": {
+          "model": "v0.1",
+          "team_name": "My own Wirtz enemy",
+          "draft": {
+            "draft_code": "DG",
+            "draft_slot": 1,
+            "team_name": "My own Wirtz enemy",
+            "score": 60.6,
+            "roster_strength_score": 65.0,
+            "pick_value_score": 54.5,
+            "resolved_picks": 15,
+            "total_picks": 15,
+            "projected_points_adjustment": 0.4,
+            "evidence": "LOW"
+          },
+          "management": {
+            "transaction_windows": 0,
+            "adds": 0,
+            "drops": 0,
+            "average_transfer_value": null,
+            "lineup_gameweeks": 0,
+            "average_lineup_efficiency": null,
+            "transfer_score": 50.0,
+            "lineup_score": 50.0,
+            "projected_points_adjustment": 0.0,
+            "evidence": "LOW"
+          },
+          "decision_threat": {
+            "level": "MEDIUM",
+            "score": 55.0,
+            "projected_points_adjustment": 0.4,
+            "evidence": "LOW",
+            "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
+          }
+        },
+        "decision_adjustment": 0.0,
         "projected_edge": -2.2,
         "signal": "EVEN",
         "projection_source": "frozen_gameweek_forecast",
@@ -85784,7 +85855,7 @@
         "gameweek": 2,
         "available": true,
         "opponent": {
-          "display_name": "League opponent",
+          "display_name": "Gooseboys",
           "rank": null,
           "h2h_points": 0,
           "points_for": 0
@@ -85798,14 +85869,52 @@
         },
         "opponent_projection": {
           "formation": "5-4-1",
-          "total": 53.3,
-          "range_low": 34.4,
-          "range_high": 72.1,
-          "evidence": "HIGH"
+          "total": 53.8,
+          "range_low": 34.9,
+          "range_high": 72.6,
+          "evidence": "HIGH",
+          "roster_total": 53.3,
+          "decision_adjustment": 0.5
         },
-        "projected_edge": -1.5,
+        "opponent_profile": {
+          "model": "v0.1",
+          "team_name": "Gooseboys",
+          "draft": {
+            "draft_code": "MF",
+            "draft_slot": 4,
+            "team_name": "Gooseboys",
+            "score": 63.4,
+            "roster_strength_score": 62.3,
+            "pick_value_score": 65.0,
+            "resolved_picks": 15,
+            "total_picks": 15,
+            "projected_points_adjustment": 0.5,
+            "evidence": "LOW"
+          },
+          "management": {
+            "transaction_windows": 0,
+            "adds": 0,
+            "drops": 0,
+            "average_transfer_value": null,
+            "lineup_gameweeks": 0,
+            "average_lineup_efficiency": null,
+            "transfer_score": 50.0,
+            "lineup_score": 50.0,
+            "projected_points_adjustment": 0.0,
+            "evidence": "LOW"
+          },
+          "decision_threat": {
+            "level": "MEDIUM",
+            "score": 56.2,
+            "projected_points_adjustment": 0.5,
+            "evidence": "LOW",
+            "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
+          }
+        },
+        "decision_adjustment": 0.5,
+        "projected_edge": -2.0,
         "signal": "EVEN",
-        "projection_source": "current_rosters",
+        "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
           {
             "position": "GKP",
@@ -85903,7 +86012,7 @@
         "gameweek": 3,
         "available": true,
         "opponent": {
-          "display_name": "League opponent",
+          "display_name": "No Salad",
           "rank": null,
           "h2h_points": 0,
           "points_for": 0
@@ -85917,14 +86026,52 @@
         },
         "opponent_projection": {
           "formation": "4-5-1",
-          "total": 49.5,
-          "range_low": 33.0,
-          "range_high": 65.8,
-          "evidence": "HIGH"
+          "total": 48.9,
+          "range_low": 32.4,
+          "range_high": 65.2,
+          "evidence": "HIGH",
+          "roster_total": 49.5,
+          "decision_adjustment": -0.6
         },
-        "projected_edge": 1.2,
+        "opponent_profile": {
+          "model": "v0.1",
+          "team_name": "No Salad",
+          "draft": {
+            "draft_code": "BP",
+            "draft_slot": 5,
+            "team_name": "No Salad",
+            "score": 35.0,
+            "roster_strength_score": 35.0,
+            "pick_value_score": 35.0,
+            "resolved_picks": 15,
+            "total_picks": 15,
+            "projected_points_adjustment": -0.6,
+            "evidence": "LOW"
+          },
+          "management": {
+            "transaction_windows": 0,
+            "adds": 0,
+            "drops": 0,
+            "average_transfer_value": null,
+            "lineup_gameweeks": 0,
+            "average_lineup_efficiency": null,
+            "transfer_score": 50.0,
+            "lineup_score": 50.0,
+            "projected_points_adjustment": 0.0,
+            "evidence": "LOW"
+          },
+          "decision_threat": {
+            "level": "LOW",
+            "score": 42.5,
+            "projected_points_adjustment": -0.6,
+            "evidence": "LOW",
+            "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
+          }
+        },
+        "decision_adjustment": -0.6,
+        "projected_edge": 1.8,
         "signal": "EVEN",
-        "projection_source": "current_rosters",
+        "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
           {
             "position": "GKP",
@@ -86022,7 +86169,7 @@
         "gameweek": 4,
         "available": true,
         "opponent": {
-          "display_name": "League opponent",
+          "display_name": "Vængir Júpíters",
           "rank": null,
           "h2h_points": 0,
           "points_for": 0
@@ -86036,14 +86183,52 @@
         },
         "opponent_projection": {
           "formation": "4-4-2",
-          "total": 49.4,
-          "range_low": 32.9,
-          "range_high": 66.1,
-          "evidence": "HIGH"
+          "total": 49.6,
+          "range_low": 33.1,
+          "range_high": 66.3,
+          "evidence": "HIGH",
+          "roster_total": 49.4,
+          "decision_adjustment": 0.2
         },
-        "projected_edge": 2.9,
+        "opponent_profile": {
+          "model": "v0.1",
+          "team_name": "Vængir Júpíters",
+          "draft": {
+            "draft_code": "HL",
+            "draft_slot": 2,
+            "team_name": "Vængir Júpíters",
+            "score": 56.2,
+            "roster_strength_score": 62.5,
+            "pick_value_score": 49.7,
+            "resolved_picks": 13,
+            "total_picks": 15,
+            "projected_points_adjustment": 0.2,
+            "evidence": "LOW"
+          },
+          "management": {
+            "transaction_windows": 0,
+            "adds": 0,
+            "drops": 0,
+            "average_transfer_value": null,
+            "lineup_gameweeks": 0,
+            "average_lineup_efficiency": null,
+            "transfer_score": 50.0,
+            "lineup_score": 50.0,
+            "projected_points_adjustment": 0.0,
+            "evidence": "LOW"
+          },
+          "decision_threat": {
+            "level": "MEDIUM",
+            "score": 52.5,
+            "projected_points_adjustment": 0.2,
+            "evidence": "LOW",
+            "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
+          }
+        },
+        "decision_adjustment": 0.2,
+        "projected_edge": 2.7,
         "signal": "EVEN",
-        "projection_source": "current_rosters",
+        "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
           {
             "position": "GKP",
@@ -86146,17 +86331,17 @@
         "TRAIL": 0
       },
       "projected_for": 208.2,
-      "projected_against": 207.8,
-      "projected_net": 0.4,
+      "projected_against": 207.9,
+      "projected_net": 0.3,
       "toughest_matchup": {
         "gameweek": 1,
-        "opponent": "League opponent",
+        "opponent": "My own Wirtz enemy",
         "projected_edge": -2.2
       },
       "best_opportunity": {
         "gameweek": 4,
-        "opponent": "League opponent",
-        "projected_edge": 2.9
+        "opponent": "Vængir Júpíters",
+        "projected_edge": 2.7
       },
       "recurring_weakness": {
         "position": "MID",
@@ -86164,12 +86349,12 @@
         "trailing_gameweeks": 2
       }
     },
-    "note": "Future matchups use current rosters and refresh after every collection. They do not predict transfers or submitted lineups. The current Gameweek retains its frozen forecast."
+    "note": "Future matchups use current rosters plus an explicitly labelled, capped opponent-decision adjustment. The model cannot see unsubmitted waivers or future lineups. The current Gameweek retains its frozen forecast."
   },
   "change_feed": {
     "model": "v0.9.3",
     "baseline": false,
-    "since": "2026-08-22T01:07:38.885196+00:00",
+    "since": "2026-08-22T01:52:27.152581+00:00",
     "items": [],
     "changed_player_ids": [],
     "summary": {
