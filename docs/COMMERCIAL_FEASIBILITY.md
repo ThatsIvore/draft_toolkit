@@ -103,6 +103,8 @@ The internal [Standard FPL private snapshot contract](STANDARD_FPL_PRIVATE_SNAPS
 
 The [2026/27 Standard FPL squad and single-transfer legality layer](STANDARD_FPL_TRANSFER_LEGALITY.md) is also implemented. It separates hard game rules and point-hit cost from model projections and fails closed when the live season is newer than the verified ruleset. Transfer candidate ranking is not yet implemented.
 
+The original Draft/H2H product remains protected by a permanent mode-isolation regression: Standard-only modules cannot enter the Draft collector or H2H decision engines, the default CLI and scheduled public collection remain Draft, and Standard FPL reports cannot use the public publish path. This boundary is documented in [Standard FPL Mode Analysis](STANDARD_FPL_MODE_ANALYSIS.md#h2h-protection-boundary).
+
 ## Draft-history integration
 
 The current repository contains a verified six-manager, 90-pick draft history. That is useful for the present league, but it must not become a universal product assumption.
