@@ -49,7 +49,7 @@ def _bootstrap():
         ],
         "teams": [
             {"id": team_id, "name": f"Team {team_id}", "short_name": f"T{team_id}", "code": 100 + team_id}
-            for team_id in range(1, 5)
+            for team_id in range(1, 7)
         ],
         "element_types": [
             {"id": 1, "singular_name_short": "GKP"},
@@ -61,7 +61,7 @@ def _bootstrap():
             {
                 "id": player_id,
                 "web_name": f"P{player_id}",
-                "team": (player_id % 4) + 1,
+                "team": (player_id % 5) + 1,
                 "element_type": type_id[position],
                 "status": "a",
                 "chance_of_playing_next_round": 100,
@@ -137,6 +137,15 @@ def _fixtures():
                 "started": False,
                 "finished": False,
             },
+            {
+                "event": gameweek,
+                "team_h": 5,
+                "team_a": 6,
+                "team_h_difficulty": 3,
+                "team_a_difficulty": 3,
+                "started": False,
+                "finished": False,
+            },
         ])
     return rows
 
@@ -188,6 +197,13 @@ class _Client:
     def entry_picks(self, entry_id, gameweek):
         assert gameweek == 1
         return _picks()
+
+
+class _FutureSeasonClient(_Client):
+    def bootstrap_static(self):
+        payload = _bootstrap()
+        payload["events"][0]["deadline_time"] = "2027-08-13T17:30:00Z"
+        return payload
 
 
 def test_extracts_entry_id_from_normal_standard_fpl_url():
@@ -326,6 +342,8 @@ def test_collect_standard_fpl_reuses_intelligence_lineup_and_captaincy(tmp_path)
     assert report["current_gameweek"] == 1
     assert report["decision_gameweek"] == 2
     assert report["planning_gameweeks"] == [2, 3, 4, 5]
+    assert report["rules"]["season"] == "2026-27"
+    assert report["squad_legality"]["is_legal"] is True
     assert report["squad_source"]["gameweek"] == 1
     assert report["squad_source"]["is_exact_for_decision_gameweek"] is False
     assert "hidden" in report["squad_source"]["warning"]
@@ -392,3 +410,13 @@ def test_collect_standard_fpl_rejects_snapshot_for_wrong_decision_gameweek(tmp_p
     )
     with pytest.raises(StandardFplDataError, match="Capture a fresh snapshot"):
         collect_standard_fpl(settings, client=_Client())
+
+
+def test_collect_standard_fpl_fails_closed_for_unverified_future_rules(tmp_path):
+    settings = StandardFplSettings(
+        entry_id="123456",
+        output_path=str(tmp_path / "report.json"),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+    )
+    with pytest.raises(StandardFplDataError, match="newest verified Standard FPL ruleset"):
+        collect_standard_fpl(settings, client=_FutureSeasonClient())
