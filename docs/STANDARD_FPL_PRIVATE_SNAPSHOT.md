@@ -20,7 +20,7 @@ fpl-toolkit --mode standard-fpl
 
 The ordinary entry URL still identifies which public entry and player data to analyse. It is not treated as authentication. The snapshot itself deliberately contains no entry or account identifier.
 
-The exporter is not implemented yet. Do not obtain the file by copying credentials or raw browser storage. The live browser discovery has now confirmed that the complete allowlist can be assembled from normal Pick Team and Transfers views plus the unauthenticated public player bootstrap, without reading a bearer token. Until the minimal two-stage helper is implemented and validated, the existing public locked-squad mode remains the usable input path.
+The experimental [browser-local personal exporter](STANDARD_FPL_SNAPSHOT_HELPER.md) is now implemented. It assembles the complete allowlist from normal Pick Team and Transfers views plus the unauthenticated public player bootstrap, without reading a bearer token, credential or existing browser-storage value. The public locked-squad mode remains the lower-friction fallback when the official UI changes or a private current-state capture is not needed.
 
 ## Version 1 fields
 

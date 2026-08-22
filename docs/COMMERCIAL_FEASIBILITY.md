@@ -290,7 +290,7 @@ Every unsupported combination must be detected before payment or trial activatio
 The next concept and discovery work should answer these questions:
 
 1. **Completed:** validate the implemented private Standard FPL snapshot contract against the allowlisted fields visible in a live signed-in session; no contract revision was required.
-2. **Discovery completed:** the bounded DOM-only Standard FPL snapshot is feasible without extracting or replaying credentials. Build the minimal two-stage personal exporter while keeping a hosted connection blocked pending Premier League approval and client registration.
+2. **Personal exporter implemented:** the bounded DOM-only Standard FPL snapshot works without extracting or replaying credentials. Maintain the isolated two-stage helper and its live validation while keeping a hosted connection blocked pending Premier League approval and client registration.
 3. Extend the bounded Standard FPL proof of concept with hold explanations and transfer outcome evaluation while preserving the existing Draft report.
 4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
 5. Audit the authenticated live **Create League** and **League Admin** screens to confirm every Draft setup field, exact timer choices and odd-manager H2H behaviour.
