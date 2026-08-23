@@ -63,6 +63,8 @@ The source-independent [private snapshot contract](docs/STANDARD_FPL_PRIVATE_SNA
 
 The private report now validates the squad against the season-versioned 2026/27 rules. The isolated [single-transfer legality and ranking layer](docs/STANDARD_FPL_TRANSFER_LEGALITY.md) checks same-position replacement, selling-price affordability, club quota, free-transfer use and incremental point-hit cost, then ranks legal candidates with transparent heuristics. Point hits remain a separate `HIT REVIEW` warning, not a fake net-points projection. Without exact private team state, transfer ranking is explicitly unavailable.
 
+With an exact private snapshot, the report now turns that shortlist into one conservative `CONSIDER` or `HOLD` decision with plain-language reasons. It can explain an insufficient heuristic gain, low evidence, a point hit, weak fixture or Start Score improvement, selling-value risk and the option to bank a transfer. The first pre-deadline decision is frozen in the private report and compared with the same Gameweek's player points afterward. This is a bounded counterfactual, not proof that the manager followed the advice or a claim about total-team causality.
+
 The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as separate modes in a shared shell. That selector is intentionally not exposed on the public Draft dashboard until secure private Standard report delivery exists; switching modes must never mix their report objects.
 
 ## GitHub Actions

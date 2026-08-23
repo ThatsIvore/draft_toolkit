@@ -293,7 +293,7 @@ The next concept and discovery work should answer these questions:
 
 1. **Completed:** validate the implemented private Standard FPL snapshot contract against the allowlisted fields visible in a live signed-in session; no contract revision was required.
 2. **Personal exporter implemented:** the bounded DOM-only Standard FPL snapshot works without extracting or replaying credentials. Maintain the isolated two-stage helper and its live validation while keeping a hosted connection blocked pending Premier League approval and client registration.
-3. Extend the bounded Standard FPL proof of concept with hold explanations and transfer outcome evaluation while preserving the existing Draft report.
+3. **Completed:** the bounded Standard FPL proof of concept now adds explained hold-versus-transfer decisions and frozen, same-Gameweek player-point outcome evaluation while preserving the existing Draft report.
 4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
 5. **Mostly completed:** the authenticated Create League, Join Public League, Transactions and current Help/Rules screens confirmed setup fields, exact 30/60/90/120-second timer choices, trade/redraft rules and the odd-manager average-team behaviour. Direct League Admin form structure and the odd-fixture API shape remain to be captured.
 6. Record which Draft league settings and draft-history fields are available from current official responses without browser developer tools.

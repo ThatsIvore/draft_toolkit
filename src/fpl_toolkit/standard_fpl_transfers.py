@@ -12,6 +12,8 @@ from .standard_fpl_rules import (
 
 
 MODEL_VERSION = "standard-fpl-single-transfer-ranking-v0.1"
+DECISION_MODEL_VERSION = "standard-fpl-hold-transfer-decision-v0.1"
+CONSIDER_THRESHOLD = 5.0
 WEIGHTS = {
     "roster": 0.30,
     "start": 0.25,
@@ -41,7 +43,7 @@ def _confidence_label(value: float) -> str:
 
 def _player_summary(player: dict[str, Any], *, outgoing: bool) -> dict[str, Any]:
     price_field = "selling_price" if outgoing else "now_cost"
-    return {
+    summary = {
         "player_id": player.get("player_id"),
         "player": player.get("player"),
         "club": player.get("club"),
@@ -49,6 +51,9 @@ def _player_summary(player: dict[str, Any], *, outgoing: bool) -> dict[str, Any]
         "position": player.get("position"),
         price_field: player.get(price_field),
     }
+    if outgoing:
+        summary["now_cost"] = player.get("now_cost")
+    return summary
 
 
 def unavailable_single_transfer_ranking(reason: str = UNAVAILABLE_REASON) -> dict[str, Any]:
@@ -157,7 +162,7 @@ def rank_single_transfers(
             incremental_cost = int(allowance["incremental_cost_points"] or 0)
             if incremental_cost > 0:
                 action = "HIT REVIEW"
-            elif ranking_score >= 5.0 and confidence != "LOW":
+            elif ranking_score >= CONSIDER_THRESHOLD and confidence != "LOW":
                 action = "CONSIDER"
             else:
                 action = "LOW PRIORITY"
@@ -209,5 +214,133 @@ def rank_single_transfers(
         "note": (
             "Ranking scores compare transparent football heuristics and are not projected FPL "
             "points. Any point-hit cost is reported separately and requires manager review."
+        ),
+    }
+
+
+def _reason(code: str, message: str) -> dict[str, str]:
+    return {"code": code, "message": message}
+
+
+def build_transfer_decision(
+    ranking: dict[str, Any],
+    *,
+    free_transfers: int,
+    transfers_made: int,
+    max_banked_free_transfers: int = RULES_2026_27.max_banked_free_transfers,
+) -> dict[str, Any]:
+    """Turn legal candidate rankings into one conservative, explained decision.
+
+    The decision does not convert heuristic scores into points. A candidate must
+    already be labelled CONSIDER by the ranker to displace HOLD.
+    """
+    if not ranking.get("is_available"):
+        return {
+            "model": DECISION_MODEL_VERSION,
+            "is_available": False,
+            "advisory_only": True,
+            "recommendation": "UNAVAILABLE",
+            "summary": "Hold-versus-transfer advice requires an exact private team snapshot.",
+            "reasons": [_reason("private_state_required", str(ranking.get("reason") or UNAVAILABLE_REASON))],
+            "candidate": None,
+            "banking": None,
+            "note": "No transfer, lineup or chip action is submitted to FPL.",
+        }
+
+    candidates = [row for row in ranking.get("candidates") or [] if isinstance(row, dict)]
+    consider = next((row for row in candidates if row.get("action") == "CONSIDER"), None)
+    candidate = consider or (candidates[0] if candidates else None)
+    recommendation = "CONSIDER" if consider is not None else "HOLD"
+    reasons: list[dict[str, str]] = []
+
+    remaining_before = max(0, int(free_transfers) - int(transfers_made))
+    can_bank = remaining_before < int(max_banked_free_transfers)
+    banking = {
+        "free_transfers_remaining_before": remaining_before,
+        "maximum_banked_free_transfers": int(max_banked_free_transfers),
+        "can_bank_if_unused": can_bank,
+    }
+
+    if candidate is None:
+        reasons.append(_reason("no_legal_candidate", "No legal single-transfer candidate was found."))
+    else:
+        heuristic = candidate.get("heuristic") or {}
+        deltas = heuristic.get("deltas") or {}
+        score = _number(heuristic.get("score"))
+        confidence = str(candidate.get("confidence") or "LOW")
+        allowance = candidate.get("transfer_allowance") or {}
+        cost = int(allowance.get("incremental_cost_points") or 0)
+        incoming_name = str((candidate.get("incoming") or {}).get("player") or "the incoming player")
+        outgoing_name = str((candidate.get("outgoing") or {}).get("player") or "the outgoing player")
+
+        if recommendation == "CONSIDER":
+            reasons.extend([
+                _reason(
+                    "clear_heuristic_upgrade",
+                    f"{incoming_name} over {outgoing_name} improves the combined heuristic by {score:.1f}, "
+                    f"above the {CONSIDER_THRESHOLD:.1f} review threshold.",
+                ),
+                _reason("sufficient_evidence", f"The comparison has {confidence.lower()} evidence confidence."),
+                _reason("no_incremental_hit", "The move uses no additional point deduction."),
+            ])
+        else:
+            if cost > 0:
+                reasons.append(
+                    _reason(
+                        "point_hit_review",
+                        f"The best shortlisted move costs {cost} points, while its heuristic score is not a points forecast.",
+                    )
+                )
+            if score < CONSIDER_THRESHOLD:
+                reasons.append(
+                    _reason(
+                        "below_upgrade_threshold",
+                        f"The best legal move improves the combined heuristic by only {score:.1f}; "
+                        f"the review threshold is {CONSIDER_THRESHOLD:.1f}.",
+                    )
+                )
+            if confidence == "LOW":
+                reasons.append(_reason("low_evidence", "The best comparison has low evidence confidence."))
+            if _number(deltas.get("future_fixture")) <= 0:
+                reasons.append(_reason("no_fixture_gain", "The alternative does not improve the future-fixture signal."))
+            if _number(deltas.get("start")) <= 0:
+                reasons.append(_reason("no_start_gain", "The alternative does not improve the next-Gameweek Start Score."))
+
+        outgoing = candidate.get("outgoing") or {}
+        selling_price = _number(outgoing.get("selling_price"), -1.0)
+        current_price = _number(outgoing.get("now_cost"), -1.0)
+        if selling_price >= 0 and current_price > selling_price:
+            reasons.append(
+                _reason(
+                    "selling_value_at_risk",
+                    f"Selling {outgoing_name} returns £{selling_price:.1f}m while the current market price is "
+                    f"£{current_price:.1f}m, so buying the player back may cost more.",
+                )
+            )
+
+    if recommendation == "HOLD" and can_bank:
+        reasons.append(_reason("bank_transfer", "Leaving the transfer unused can add it to the next Gameweek allowance."))
+
+    if recommendation == "CONSIDER" and candidate is not None:
+        incoming = (candidate.get("incoming") or {}).get("player") or "incoming player"
+        outgoing = (candidate.get("outgoing") or {}).get("player") or "outgoing player"
+        summary = f"Consider {outgoing} to {incoming}; it is the strongest legal no-hit single transfer."
+    elif candidate is not None:
+        summary = "Hold: no legal, adequately evidenced, no-hit move clears the upgrade threshold."
+    else:
+        summary = "Hold: no legal single-transfer alternative was found."
+
+    return {
+        "model": DECISION_MODEL_VERSION,
+        "is_available": True,
+        "advisory_only": True,
+        "recommendation": recommendation,
+        "summary": summary,
+        "reasons": reasons,
+        "candidate": candidate,
+        "banking": banking,
+        "note": (
+            "Heuristic improvements are not projected FPL points. The manager must review news, "
+            "captaincy and wider plans before acting; no action is submitted."
         ),
     }

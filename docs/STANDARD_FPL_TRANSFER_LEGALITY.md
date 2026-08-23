@@ -1,6 +1,6 @@
 # Standard FPL Squad and Single-Transfer Legality
 
-Last reviewed: 22 August 2026
+Last reviewed: 23 August 2026
 
 ## Implemented boundary
 
@@ -88,14 +88,43 @@ The four-point deduction is reported alongside the candidate but is never subtra
 
 Without exact current selling prices, bank, free-transfer balance and chip state, the report returns an explicit unavailable object and no candidates. Public locked picks therefore cannot produce apparently legal current transfer advice.
 
+## Hold-versus-transfer decision
+
+The private report now exposes one `transfer_decision` above the candidate list. A move is labelled `CONSIDER` only when the existing ranker has found a legal, no-hit improvement of at least 5.0 heuristic points with medium or high evidence. Otherwise the recommendation is `HOLD`.
+
+The decision includes coded, plain-language reasons where applicable:
+
+- the best move does not clear the heuristic threshold;
+- the comparison has low evidence;
+- the move incurs an incremental four-point deduction;
+- future-fixture or next-Gameweek Start Score signals do not improve;
+- the outgoing player's selling price is below the current market price; and
+- an unused free transfer can still be banked.
+
+These reasons are advisory. A heuristic difference is never converted into FPL points, and a hit candidate remains a manager review rather than an automatic move. If exact private state is unavailable, the decision also fails closed instead of offering a generic hold.
+
+## Frozen decision outcomes
+
+`standard_fpl_outcomes.py` preserves the first decision captured while its target Gameweek is still scheduled. Once that Gameweek is live or final, the private report compares the recorded incoming and outgoing players using only that same Gameweek's `event_points`, including the recorded incremental hit in the counterfactual.
+
+The evaluator:
+
+- never replaces a frozen pre-deadline forecast with a later recommendation;
+- marks first captures made after play starts as ineligible for calibration;
+- refuses to substitute a later Gameweek's player points when the correct snapshot was missed;
+- retains at most eight prior decision evaluations; and
+- describes the result as a player-points counterfactual, not evidence that the recommendation was followed or a measure of total-team causality.
+
+The prior private report at `FPL_STANDARD_OUTPUT` is the local persistence boundary. It remains gitignored and is validated as a Standard FPL report before its frozen state is reused. If the current and previous private team names differ, prior outcomes are reset rather than carried between teams; a team rename therefore also starts a fresh local outcome history.
+
 ## Deliberate non-goals
 
-This slice does not:
+This slice still does not:
 
-- estimate whether a heuristic improvement repays a points deduction;
+- predict whether a heuristic improvement will repay a points deduction before the event;
 - optimize two or more coordinated transfers;
 - model the temporary squad reversion after a Free Hit;
 - recommend when to activate a chip; or
 - submit, stage or confirm an FPL transfer.
 
-Every ranking result preserves `advisory_only: true`. The next analytical layer should add hold explanations and decision-outcome evaluation before attempting coordinated multi-transfer optimization.
+Every ranking and decision result preserves `advisory_only: true`. Coordinated multi-transfer optimization should remain later work until the single-transfer decisions and their frozen outcomes have enough real samples to evaluate.

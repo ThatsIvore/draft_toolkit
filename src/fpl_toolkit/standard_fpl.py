@@ -13,6 +13,7 @@ from .optimizer import recommend_lineup
 from .report import current_gameweek
 from .storage import read_json
 from .standard_fpl_snapshot import load_private_snapshot, snapshot_to_picks_payload
+from .standard_fpl_outcomes import build_transfer_outcomes
 from .standard_fpl_rules import (
     rules_for_season,
     rules_summary,
@@ -20,6 +21,7 @@ from .standard_fpl_rules import (
     validate_squad_legality,
 )
 from .standard_fpl_transfers import (
+    build_transfer_decision,
     rank_single_transfers,
     unavailable_single_transfer_ranking,
 )
@@ -266,9 +268,24 @@ def _entry_history(picks_payload: dict[str, Any], history: dict[str, Any], gamew
 def collect_standard_fpl(
     settings: StandardFplSettings,
     client: FantasyApiClient | None = None,
+    previous_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a private, read-only Standard FPL Phase 1 proof-of-concept report."""
     client = client or FantasyApiClient()
+    if previous_report is None:
+        previous_path = Path(settings.output_path)
+        if previous_path.exists():
+            try:
+                loaded_previous = read_json(previous_path)
+            except (OSError, ValueError) as exc:
+                raise StandardFplDataError(
+                    f"Could not read the previous private Standard FPL report at {previous_path}."
+                ) from exc
+            if not isinstance(loaded_previous, dict) or loaded_previous.get("mode") != "standard_fpl":
+                raise StandardFplDataError(
+                    f"The previous private report at {previous_path} is not a Standard FPL report."
+                )
+            previous_report = loaded_previous
     bootstrap = client.bootstrap_static()
     rules = rules_for_season()
     detected_season = season_from_bootstrap(bootstrap)
@@ -280,6 +297,10 @@ def collect_standard_fpl(
     fixtures = client.fixtures()
     entry = client.entry(settings.entry_id)
     history = client.entry_history(settings.entry_id)
+    if previous_report is not None:
+        previous_team_name = (previous_report.get("entry_context") or {}).get("team_name")
+        if previous_team_name != entry.get("name"):
+            previous_report = None
 
     planning_gws = planning_gameweeks(bootstrap, settings.planning_horizon, fixtures)
     scoring_gameweek = current_gameweek(bootstrap, planning_gws)
@@ -372,6 +393,12 @@ def collect_standard_fpl(
             active_chip=active_chip,
             rules=rules,
         )
+        transfer_decision = build_transfer_decision(
+            single_transfer_candidates,
+            free_transfers=transfer_state["free_transfers"],
+            transfers_made=transfer_state["transfers_made"],
+            max_banked_free_transfers=rules.max_banked_free_transfers,
+        )
         financial_snapshot = {
             "gameweek": decision_gameweek,
             "bank": _money(transfer_state["bank_tenths"]),
@@ -400,6 +427,12 @@ def collect_standard_fpl(
         ]
     else:
         single_transfer_candidates = unavailable_single_transfer_ranking()
+        transfer_decision = build_transfer_decision(
+            single_transfer_candidates,
+            free_transfers=0,
+            transfers_made=0,
+            max_banked_free_transfers=rules.max_banked_free_transfers,
+        )
         financial_snapshot = {
             "gameweek": source_gameweek,
             "bank": _money(event_history.get("bank")),
@@ -429,10 +462,21 @@ def collect_standard_fpl(
             "Start Score and Captain Score are heuristics, not projected FPL points.",
         ]
 
+    generated_at = datetime.now(timezone.utc).isoformat()
+    transfer_outcomes = build_transfer_outcomes(
+        previous_report,
+        transfer_decision,
+        players,
+        fixtures,
+        scoring_gameweek=scoring_gameweek,
+        decision_gameweek=decision_gameweek,
+        generated_at=generated_at,
+    )
+
     return {
         "mode": "standard_fpl",
-        "poc_version": "phase-1-v0.3",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "poc_version": "phase-1-v0.4",
+        "generated_at": generated_at,
         "entry_context": {
             "team_name": entry.get("name"),
         },
@@ -455,5 +499,7 @@ def collect_standard_fpl(
         "recommended_lineup": recommended,
         "captaincy": captaincy,
         "single_transfer_candidates": single_transfer_candidates,
+        "transfer_decision": transfer_decision,
+        "transfer_outcomes": transfer_outcomes,
         "limitations": limitations,
     }
