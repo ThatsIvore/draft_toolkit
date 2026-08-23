@@ -409,7 +409,7 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     )
     report = collect_standard_fpl(settings, client=_Client())
 
-    assert report["poc_version"] == "phase-1-v0.5"
+    assert report["poc_version"] == "phase-1-v0.6"
     assert report["squad_source"]["type"] == "private_current_team_snapshot"
     assert report["squad_source"]["gameweek"] == 2
     assert report["squad_source"]["is_exact_for_decision_gameweek"] is True

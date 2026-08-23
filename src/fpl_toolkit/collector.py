@@ -19,6 +19,7 @@ from .outcomes import build_outcome_diagnostics, gameweek_phase
 from .optimizer import recommend_lineup
 from .planner import build_schedule_planner
 from .report import build_report, current_gameweek
+from .recent_match_evidence import build_recent_match_evidence, fetch_completed_event_live
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
 from .waivers import attach_replacement_analysis
@@ -113,6 +114,9 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     ownership = attach_fixture_matrix(ownership, scoring_fixture_matrix, field="_scoring_fixtures")
 
+    recent_payloads, recent_status = fetch_completed_event_live(fantasy_client, bootstrap)
+    recent_evidence = build_recent_match_evidence(ownership, recent_payloads)
+
     if baseline_path.exists():
         performance_baseline_rows = read_json(baseline_path)
     elif season_gw in (None, 0):
@@ -127,6 +131,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         my_entry_id=settings.draft_entry_id,
         performance_baseline=baseline_lookup(performance_baseline_rows),
         current_gameweek=season_gw,
+        recent_match_evidence=recent_evidence,
     )
     ownership = [
         {key: value for key, value in player.items() if key != "_scoring_fixtures"}
@@ -159,9 +164,14 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.5.4",
-        "description": "Early-season calibrated model with return-aligned stash fixtures, durable 2025/26 performance and role priors, gradual completed-match blending, live-match stabilization, floor/upside and conservative waiver guardrails.",
+        "version": "v0.6.0",
+        "description": "Early-season calibrated model with durable performance and role priors, capped position-relative grades from final official Gameweeks, live-match stabilization, floor/upside and conservative waiver guardrails.",
         "performance_baseline_players": len(performance_baseline_rows),
+        "recent_match_evidence": {
+            "version": "v1",
+            "status": recent_status,
+            "completed_gameweeks": [gameweek for gameweek, _ in recent_payloads],
+        },
     }
 
     scoring_phase = gameweek_phase(fixtures, scoring_gw)

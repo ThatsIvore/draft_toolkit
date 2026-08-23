@@ -102,7 +102,7 @@ openPlayer = function(id) {
 
   const panel = document.createElement('div');
   panel.className = 'drawer-section swap-panel';
-  panel.innerHTML = `<strong>Waiver replacement check · v0.5.4</strong>
+  panel.innerHTML = `<strong>Waiver replacement check · v0.6.0</strong>
     <div class="swap-head"><b>${esc(r.action)}</b><span>Add ${esc(p.player)} · Drop ${esc(r.drop_player)} · ${esc(r.confidence || 'LOW')} confidence</span></div>
     <div class="model-grid"><span>Combined delta <b>${signed(r.combined_delta)}</b></span><span>Immediate delta <b>${signed(r.immediate_delta)}</b></span><span>Floor delta <b>${signed(r.floor_delta)}</b></span><span>Upside delta <b>${signed(r.upside_delta)}</b></span><span>4-GW roster delta <b>${signed(r.roster_delta)}</b></span><span>Future delta <b>${signed(r.future_delta)}</b></span></div>
     <div class="model-note">The model preserves a preseason 2025/26 performance prior and gradually blends in 2026/27 evidence as minutes accumulate. Role evidence is intentionally categorical rather than a pseudo-precise next-match probability.</div>`;

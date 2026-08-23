@@ -348,8 +348,10 @@ def attach_intelligence(
     now: datetime | None = None,
     performance_baseline: dict[int, dict[str, Any]] | None = None,
     current_gameweek: int | None = None,
+    recent_match_evidence: dict[int, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     performance_baseline = performance_baseline or {}
+    recent_match_evidence = recent_match_evidence or {}
     baseline_by_id, floor_by_id, upside_by_id = _normalized_baselines(players, performance_baseline, current_gameweek)
     previous_by_id = {int(row["player_id"]): row for row in (previous or []) if isinstance(row, dict) and row.get("player_id") is not None}
     enriched = []
@@ -357,6 +359,15 @@ def attach_intelligence(
         row = dict(player); player_id = int(row.get("player_id") or 0)
         prior = performance_baseline.get(player_id)
         baseline = baseline_by_id.get(player_id, 0.0); floor = floor_by_id.get(player_id, 0.0); upside = upside_by_id.get(player_id, 0.0)
+        recent = recent_match_evidence.get(player_id) or {
+            "version": "v1", "status": "unavailable", "score": 50.0, "grade": None,
+            "adjustment": 0.0, "confidence": 0.0, "completed_gameweeks": 0,
+            "appearances": 0, "minutes": 0, "starts": 0, "gameweeks": [],
+        }
+        recent_adjustment = _clamp(_number(recent.get("adjustment")), -5.0, 5.0)
+        baseline = _clamp(baseline + recent_adjustment)
+        floor = _clamp(floor + 0.6 * recent_adjustment)
+        upside = _clamp(upside + recent_adjustment)
         fixtures = fixture_score(row); future_fixtures = fixture_score(row, skip_first=True); availability = availability_score(row)
         start_probability, expected_minutes = usage_scores(row, prior, current_gameweek); active_factor = _inactive_factor(row)
         return_signal = injury_return_signal(row); expected_return = parse_expected_return(str(row.get("news") or ""), now)
@@ -378,7 +389,7 @@ def attach_intelligence(
         stash = (0.30 * baseline + 0.30 * stash_fixtures + 0.08 * availability + 0.12 * usage + 0.20 * upside) * active_factor
         action, reason = _recommendation(row, roster, stash, availability, return_signal, trend, my_entry_id)
         row["intelligence"] = {
-            "model": "v0.5.4", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
+            "model": "v0.6.0", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1), "availability_score": round(_clamp(availability), 1),
             "post_return_fixture_score": None if post_return_fixtures is None else round(_clamp(post_return_fixtures), 1),
             "stash_fixture_score": round(_clamp(stash_fixtures), 1),
@@ -387,6 +398,7 @@ def attach_intelligence(
             "floor_score": round(_clamp(floor), 1), "upside_score": round(_clamp(upside), 1),
             "points_per_90": round(_points_rate(row, prior, current_gameweek), 2), "attack_returns_per_90": round(_attacking_rate(row, prior, current_gameweek), 2),
             "historical_prior_active": bool(prior and current_gameweek not in (None, 0)),
+            "recent_match_evidence": recent,
             "injury_return_signal": return_signal, "expected_return": expected_return, "expected_return_gameweek": expected_return_gw,
             "health_trend": trend, "roster_score": round(_clamp(roster), 1), "stash_score": round(_clamp(stash), 1),
             "recommendation": action, "recommendation_reason": reason,
