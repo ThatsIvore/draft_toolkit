@@ -135,7 +135,7 @@ For a paid release, the designs should also avoid deliberately reproducing a clu
 
 ## Confirmed FPL Draft league configuration
 
-Official FPL Draft guidance confirms that private leagues allow **2–16 managers**. Public leagues are offered in **4-, 6- and 8-manager** formats, and the official guide describes leagues of up to eight as the practical optimum. Every manager still drafts 15 players: two goalkeepers, five defenders, five midfielders and three forwards. See the [official FPL Draft guide](https://www.premierleague.com/en/news/1245444/fpl-draft-what-you-need-to-know).
+Official FPL Draft guidance and the authenticated 2026/27 setup screens confirm that private leagues allow **2–16 managers**. Public leagues are offered in **4-, 6- and 8-manager** formats, and the official guide describes leagues of up to eight as the practical optimum. Every manager still drafts 15 players: two goalkeepers, five defenders, five midfielders and three forwards. See the [official FPL Draft guide](https://www.premierleague.com/en/news/1245444/fpl-draft-what-you-need-to-know) and the [authenticated setup audit](FPL_DRAFT_LIVE_SETUP_AUDIT.md).
 
 ### League-manager choices
 
@@ -145,12 +145,14 @@ Official FPL Draft guidance confirms that private leagues allow **2–16 manager
 | Scoring mode | Classic or Head-to-Head | Changes or removes opponent-specific features |
 | Initial draft schedule | Administrator selects date and time for a private league | Draft Assistant scheduling |
 | Draft order | Random; renewed/redraft leagues can use reversed prior standings | Draft-history interpretation |
-| Pick clock | Official guidance describes a 30–120 second range | Draft Assistant responsiveness; exact live choices still require UI verification |
+| Pick clock | 30, 60, 90 or 120 seconds; default 90 | Draft Assistant responsiveness and live countdown handling |
 | Trade policy | No trades, all trades, administrator approval or manager approval | Controls whether trade analysis is applicable |
 | Redrafts | Up to three additional drafts during the season | Requires a new roster-history epoch |
-| Redraft schedule | Target Gameweek, date and time | Collection and model lifecycle |
+| Redraft schedule | Target Gameweek, date and time; locks when the preceding Gameweek starts | Collection and model lifecycle |
 
 The four trade modes and their processing rules are documented in the [official trade guide](https://www.premierleague.com/en/news/1245445). Additional drafts and their scheduling are confirmed in the [2026/27 FPL Draft announcement](https://www.premierleague.com/en/news/4683615/fpl-draft-is-live-for-202627-register-now).
+
+The live setup audit also confirmed that an initial private draft must be scheduled in the future and more than three hours before its target Gameweek deadline; initial order is random; a redraft order can instead be random or descending current league rank; and trade settings become immutable once the draft begins. Manager-veto mode requires at least 50% of managers to object, and approval-based trade deadlines occur 24 hours before the waiver deadline.
 
 ### Fixed rules relevant to the product
 
@@ -262,7 +264,7 @@ A redraft changes league ownership without resetting the season standings. The c
 
 ## Decided first commercial scope
 
-The paid H2H product must support every private-league size from **2 through 16 managers inclusive**. Six-manager behaviour is only the existing baseline; all other sizes require league-relative scarcity, replacement-level and opponent-sample validation before the product can claim that coverage. Tests must include odd-numbered leagues and any official no-opponent/bye representation discovered in their schedules.
+The paid H2H product must support every private-league size from **2 through 16 managers inclusive**. Six-manager behaviour is only the existing baseline; all other sizes require league-relative scarcity, replacement-level and opponent-sample validation before the product can claim that coverage. The live rules audit confirmed that odd-sized H2H leagues use a synthetic **average team**, scoring the league's average Gameweek score, rather than a bye. That opponent has no manager roster to scout: use official average points for live/final scoring, project the future league mean, label it clearly and suppress roster-specific threat/profile analysis. The exact API representation still requires a sanitized odd-league payload.
 
 FPL Draft Classic scoring remains unsupported until the separate League Race experience is implemented and validated. It is not the current personal development priority. The current priority is the distinct standard FPL game described in [Standard FPL Mode Analysis](STANDARD_FPL_MODE_ANALYSIS.md).
 
@@ -293,7 +295,7 @@ The next concept and discovery work should answer these questions:
 2. **Personal exporter implemented:** the bounded DOM-only Standard FPL snapshot works without extracting or replaying credentials. Maintain the isolated two-stage helper and its live validation while keeping a hosted connection blocked pending Premier League approval and client registration.
 3. Extend the bounded Standard FPL proof of concept with hold explanations and transfer outcome evaluation while preserving the existing Draft report.
 4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
-5. Audit the authenticated live **Create League** and **League Admin** screens to confirm every Draft setup field, exact timer choices and odd-manager H2H behaviour.
+5. **Mostly completed:** the authenticated Create League, Join Public League, Transactions and current Help/Rules screens confirmed setup fields, exact 30/60/90/120-second timer choices, trade/redraft rules and the odd-manager average-team behaviour. Direct League Admin form structure and the odd-fixture API shape remain to be captured.
 6. Record which Draft league settings and draft-history fields are available from current official responses without browser developer tools.
 7. Define recalibration and acceptance tests for every Draft H2H league size from 2 through 16, including odd-size schedule fixtures.
 8. Complete the data-source inventory and seek written commercial-use clarification from the Premier League and Football DataCo if commercialization resumes.
