@@ -409,7 +409,7 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     )
     report = collect_standard_fpl(settings, client=_Client())
 
-    assert report["poc_version"] == "phase-1-v0.4"
+    assert report["poc_version"] == "phase-1-v0.5"
     assert report["squad_source"]["type"] == "private_current_team_snapshot"
     assert report["squad_source"]["gameweek"] == 2
     assert report["squad_source"]["is_exact_for_decision_gameweek"] is True
@@ -427,6 +427,10 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     assert report["transfer_decision"]["reasons"]
     assert report["transfer_outcomes"]["current"]["forecast"]["gameweek"] == 2
     assert report["transfer_outcomes"]["current"]["forecast"]["calibration_eligible"] is True
+    assert report["squad_outlook"]["is_valid"] is True
+    assert report["squad_outlook"]["gameweeks"] == [2, 3, 4, 5]
+    assert len(report["squad_outlook"]["rounds"]) == 4
+    assert all(len(row["starters"]) == 11 for row in report["squad_outlook"]["rounds"])
     captain = next(row for row in report["squad"] if row["submitted_captain"])
     assert captain["purchase_price"] == 5.5
     assert captain["selling_price"] == 5.5

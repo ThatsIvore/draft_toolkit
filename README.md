@@ -65,6 +65,8 @@ The private report now validates the squad against the season-versioned 2026/27 
 
 With an exact private snapshot, the report now turns that shortlist into one conservative `CONSIDER` or `HOLD` decision with plain-language reasons. It can explain an insufficient heuristic gain, low evidence, a point hit, weak fixture or Start Score improvement, selling-value risk and the option to bank a transfer. The first pre-deadline decision is frozen in the private report and compared with the same Gameweek's player points afterward. This is a bounded counterfactual, not proof that the manager followed the advice or a claim about total-team causality.
 
+The [four-Gameweek squad outlook](docs/STANDARD_FPL_SQUAD_OUTLOOK.md) now adds a legal XI, ordered bench, captaincy, availability pressure, bench-cover count, core starters and rotation players for every actionable round. It stays inside the private Standard report and uses Start Score and Captain Score only as transparent selection heuristics.
+
 The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as separate modes in a shared shell. That selector is intentionally not exposed on the public Draft dashboard until secure private Standard report delivery exists; switching modes must never mix their report objects.
 
 ## GitHub Actions
