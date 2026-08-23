@@ -304,17 +304,7 @@ async function handleFile(file) {
   }
 }
 
-fileInput.addEventListener("change", () => handleFile(fileInput.files && fileInput.files[0]));
-["dragenter", "dragover"].forEach((type) => dropZone.addEventListener(type, (event) => {
-  event.preventDefault();
-  dropZone.classList.add("dragging");
-}));
-["dragleave", "drop"].forEach((type) => dropZone.addEventListener(type, (event) => {
-  event.preventDefault();
-  dropZone.classList.remove("dragging");
-}));
-dropZone.addEventListener("drop", (event) => handleFile(event.dataTransfer && event.dataTransfer.files[0]));
-clearButton.addEventListener("click", () => {
+function clearReport() {
   dashboard.hidden = true;
   [
     "#team-name",
@@ -334,7 +324,23 @@ clearButton.addEventListener("click", () => {
     "#transfer-candidates",
     "#outcome-content",
   ].forEach((selector) => document.querySelector(selector).replaceChildren());
-  fileInput.value = "";
+  if (fileInput) fileInput.value = "";
   setStatus("Private report cleared from this tab.");
   document.querySelector("#loader-card").scrollIntoView({ behavior: "smooth", block: "start" });
-});
+}
+
+window.standardFplReportViewer = Object.freeze({ validateReport, renderReport, clearReport, setStatus });
+
+if (fileInput && dropZone) {
+  fileInput.addEventListener("change", () => handleFile(fileInput.files && fileInput.files[0]));
+  ["dragenter", "dragover"].forEach((type) => dropZone.addEventListener(type, (event) => {
+    event.preventDefault();
+    dropZone.classList.add("dragging");
+  }));
+  ["dragleave", "drop"].forEach((type) => dropZone.addEventListener(type, (event) => {
+    event.preventDefault();
+    dropZone.classList.remove("dragging");
+  }));
+  dropZone.addEventListener("drop", (event) => handleFile(event.dataTransfer && event.dataTransfer.files[0]));
+}
+if (clearButton) clearButton.addEventListener("click", clearReport);

@@ -35,6 +35,11 @@ main { max-width: 1180px; margin: auto; padding: 24px 16px 64px; }
 .drop-zone.dragging { border-color: var(--green); background: #effff6; }
 .drop-zone span { color: var(--muted); font-size: .82rem; }
 .drop-zone input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
+.runner-form { display: grid; gap: 9px; }
+.runner-form > input { width: 100%; border: 1px solid #bbb3c0; border-radius: 10px; padding: 10px 11px; color: var(--ink); }
+.runner-form > input:focus { outline: 3px solid rgba(115, 95, 243, .2); border-color: var(--violet); }
+.primary-button { border: 0; border-radius: 10px; padding: 11px 14px; color: #fff; background: var(--purple); font-weight: 900; cursor: pointer; }
+.primary-button:disabled { opacity: .55; cursor: wait; }
 .status { grid-column: 1 / -1; margin: 0; padding: 11px 13px; border-radius: 11px; background: #f0f1f6; color: #5e5968; }
 .status.good { background: #e7f9ee; color: var(--good); }
 .status.error { background: #fff0f1; color: var(--bad); }

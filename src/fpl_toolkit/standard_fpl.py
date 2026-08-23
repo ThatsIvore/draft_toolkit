@@ -8,12 +8,16 @@ from .api import FantasyApiClient
 from .baseline import baseline_lookup
 from .config import StandardFplSettings
 from .fixtures import attach_fixture_matrix, bootstrap_events, build_team_fixture_matrix, planning_gameweeks
-from .intelligence import attach_intelligence
+from .intelligence import MODEL_VERSION, attach_intelligence
 from .optimizer import recommend_lineup
 from .report import current_gameweek
 from .recent_match_evidence import build_recent_match_evidence, fetch_completed_event_live
 from .storage import read_json
-from .standard_fpl_snapshot import load_private_snapshot, snapshot_to_picks_payload
+from .standard_fpl_snapshot import (
+    load_private_snapshot,
+    snapshot_to_picks_payload,
+    validate_private_snapshot,
+)
 from .standard_fpl_outcomes import build_transfer_outcomes
 from .standard_fpl_lineup import build_squad_outlook, recommend_captaincy
 from .standard_fpl_rules import (
@@ -215,6 +219,7 @@ def collect_standard_fpl(
     settings: StandardFplSettings,
     client: FantasyApiClient | None = None,
     previous_report: dict[str, Any] | None = None,
+    private_snapshot: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a private, read-only Standard FPL Phase 1 proof-of-concept report."""
     client = client or FantasyApiClient()
@@ -254,25 +259,35 @@ def collect_standard_fpl(
         raise StandardFplDataError("No actionable standard FPL planning Gameweek is currently available.")
     decision_gameweek = int(planning_gws[0])
 
-    private_snapshot = None
-    if settings.private_snapshot_path:
+    if private_snapshot is not None and settings.private_snapshot_path:
+        raise StandardFplDataError(
+            "Provide private Standard FPL state in memory or by private file, not both."
+        )
+    normalized_private_snapshot = None
+    if private_snapshot is not None or settings.private_snapshot_path:
         known_player_ids = {
             int(row["id"])
             for row in bootstrap.get("elements", [])
             if isinstance(row, dict) and row.get("id") is not None
         }
-        private_snapshot = load_private_snapshot(
-            settings.private_snapshot_path,
-            known_player_ids=known_player_ids,
-        )
-        if private_snapshot["decision_gameweek"] != decision_gameweek:
+        if private_snapshot is not None:
+            normalized_private_snapshot = validate_private_snapshot(
+                private_snapshot,
+                known_player_ids=known_player_ids,
+            )
+        else:
+            normalized_private_snapshot = load_private_snapshot(
+                settings.private_snapshot_path,
+                known_player_ids=known_player_ids,
+            )
+        if normalized_private_snapshot["decision_gameweek"] != decision_gameweek:
             raise StandardFplDataError(
                 "The private snapshot is for Gameweek "
-                f"{private_snapshot['decision_gameweek']}, but the next actionable Gameweek is "
+                f"{normalized_private_snapshot['decision_gameweek']}, but the next actionable Gameweek is "
                 f"{decision_gameweek}. Capture a fresh snapshot."
             )
         source_gameweek = decision_gameweek
-        picks_payload = snapshot_to_picks_payload(private_snapshot)
+        picks_payload = snapshot_to_picks_payload(normalized_private_snapshot)
     else:
         source_gameweek = confirmed_squad_gameweek(bootstrap, settings.squad_gameweek)
         picks_payload = client.entry_picks(settings.entry_id, source_gameweek)
@@ -306,7 +321,7 @@ def collect_standard_fpl(
         picks_payload,
         source=(
             "standard_fpl_private_snapshot"
-            if private_snapshot is not None
+            if normalized_private_snapshot is not None
             else "standard_fpl_locked_picks"
         ),
     )
@@ -322,13 +337,13 @@ def collect_standard_fpl(
     official = _strip_lineup_ownership(official)
     recommended = _strip_lineup_ownership(recommended)
     event_history = _entry_history(picks_payload, history, source_gameweek)
-    squad_is_current_for_decision = private_snapshot is not None or source_gameweek == decision_gameweek
-    if private_snapshot is not None:
-        transfer_state = private_snapshot["transfers"]
+    squad_is_current_for_decision = normalized_private_snapshot is not None or source_gameweek == decision_gameweek
+    if normalized_private_snapshot is not None:
+        transfer_state = normalized_private_snapshot["transfers"]
         active_chip = next(
             (
                 str(chip.get("name"))
-                for chip in private_snapshot["chips"]
+                for chip in normalized_private_snapshot["chips"]
                 if chip.get("status") == "active" and chip.get("name")
             ),
             None,
@@ -356,7 +371,7 @@ def collect_standard_fpl(
             "event_transfers": transfer_state["transfers_made"],
             "event_transfer_cost": None,
             "free_transfers": transfer_state["free_transfers"],
-            "chips": private_snapshot["chips"],
+            "chips": normalized_private_snapshot["chips"],
             "has_current_selling_prices": True,
             "has_current_free_transfer_balance": True,
             "has_current_chip_state": True,
@@ -364,8 +379,8 @@ def collect_standard_fpl(
         squad_source = {
             "gameweek": decision_gameweek,
             "type": "private_current_team_snapshot",
-            "captured_at": private_snapshot["captured_at"],
-            "schema_version": private_snapshot["schema_version"],
+            "captured_at": normalized_private_snapshot["captured_at"],
+            "schema_version": normalized_private_snapshot["schema_version"],
             "is_exact_for_source_gameweek": True,
             "is_exact_for_decision_gameweek": True,
             "warning": None,
@@ -434,7 +449,7 @@ def collect_standard_fpl(
         "decision_gameweek": decision_gameweek,
         "planning_gameweeks": planning_gws,
         "intelligence_model": {
-            "version": "v0.6.0",
+            "version": MODEL_VERSION,
             "recent_match_evidence": {
                 "version": "v1",
                 "status": recent_status,
