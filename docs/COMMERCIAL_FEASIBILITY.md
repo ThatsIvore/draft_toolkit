@@ -295,13 +295,14 @@ The next concept and discovery work should answer these questions:
 2. **Personal exporter implemented:** the bounded DOM-only Standard FPL snapshot works without extracting or replaying credentials. Maintain the isolated two-stage helper and its live validation while keeping a hosted connection blocked pending Premier League approval and client registration.
 3. **Completed:** the bounded Standard FPL proof of concept now adds a four-Gameweek squad outlook, explained hold-versus-transfer decisions and frozen, same-Gameweek player-point outcome evaluation while preserving the existing Draft report.
    A standalone browser-local viewer can render the generated private report from a file for personal testing without uploading it; this is not hosted private delivery or paid-user onboarding.
-4. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
-5. **Mostly completed:** the authenticated Create League, Join Public League, Transactions and current Help/Rules screens confirmed setup fields, exact 30/60/90/120-second timer choices, trade/redraft rules and the odd-manager average-team behaviour. Direct League Admin form structure and the odd-fixture API shape remain to be captured.
-6. Record which Draft league settings and draft-history fields are available from current official responses without browser developer tools.
-7. Define recalibration and acceptance tests for every Draft H2H league size from 2 through 16, including odd-size schedule fixtures.
-8. Complete the data-source inventory and seek written commercial-use clarification from the Premier League and Football DataCo if commercialization resumes.
-9. Select protected hosting, identity, database and payment architecture only when multi-user commercialization becomes an active goal.
-10. If commercialization resumes, define subscription boundaries, data deletion, league switching and redraft recovery.
+4. **Personal delivery discovery completed:** a separate ephemeral [self-hosted Standard FPL runner](STANDARD_FPL_SELF_HOSTED_RUNNER.md) on the owner's Unraid server is the recommended way to remove the laptop Python requirement. Implement its LAN-only contract POC before considering remote access or persistence.
+5. Obtain sanitized FPL Draft Classic league-details, standings and event payloads before revisiting the separate Draft League Race idea.
+6. **Mostly completed:** the authenticated Create League, Join Public League, Transactions and current Help/Rules screens confirmed setup fields, exact 30/60/90/120-second timer choices, trade/redraft rules and the odd-manager average-team behaviour. Direct League Admin form structure and the odd-fixture API shape remain to be captured.
+7. Record which Draft league settings and draft-history fields are available from current official responses without browser developer tools.
+8. Define recalibration and acceptance tests for every Draft H2H league size from 2 through 16, including odd-size schedule fixtures.
+9. Complete the data-source inventory and seek written commercial-use clarification from the Premier League and Football DataCo if commercialization resumes.
+10. Select protected hosting, identity, database and payment architecture only when multi-user commercialization becomes an active goal.
+11. If commercialization resumes, define subscription boundaries, data deletion, league switching and redraft recovery.
 
 ## Paid-beta release gates
 
