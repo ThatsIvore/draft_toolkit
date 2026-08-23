@@ -30,6 +30,8 @@ The 2026/27 squad rules, single-transfer legality layer and first advisory candi
 
 The next personal layer is also implemented: exact private reports now produce one explained `CONSIDER` or `HOLD` decision and preserve the first scheduled recommendation for bounded post-Gameweek evaluation. The evaluation compares only the recorded incoming/outgoing player points and hit cost; it does not imply that the advice was followed or attribute the whole team's result to one move.
 
+The private report also contains the implemented [four-Gameweek squad outlook](STANDARD_FPL_SQUAD_OUTLOOK.md): a legal XI, bench order, captaincy, availability pressure and core/rotation summary for every actionable round. It deliberately assesses the current squad before attempting multi-transfer optimization.
+
 The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result. A controlled signed-in browser probe confirmed that normal Pick Team and Transfers views expose the complete private snapshot allowlist without reading browser credentials or storage. The first fail-closed [two-stage DOM exporter](STANDARD_FPL_SNAPSHOT_HELPER.md) is now implemented; further authentication reverse engineering is neither necessary nor acceptable for this personal path.
 
 This is intentionally not full Phase 1 completion. The public locked squad can become stale after a transfer, and the report does not claim access to current pre-deadline picks, purchase/selling prices, free-transfer balance or chip state. Authentication discovery has now confirmed that the toolkit cannot reuse FPL's OAuth client on GitHub Pages: the callback is rejected and the private team API does not permit the toolkit origin through CORS. The evidence, design boundary and next personal experiment are recorded in [Standard FPL Current-Team Authentication Discovery](STANDARD_FPL_AUTH_DISCOVERY.md).
@@ -190,17 +192,17 @@ The current public GitHub Pages dashboard remains `Draft H2H` only. The Standard
 
 - **Implemented:** define and validate the source-independent current squad, price, transfer and chip snapshot schema.
 - **Discovery proved:** normal signed-in Pick Team and Transfers views expose the complete allowlisted state without extracting or replaying browser credentials.
-- Build and validate the minimal two-stage DOM exporter; fail closed on missing markup and remove its temporary sanitized state after export.
+- **Implemented:** build and validate the minimal two-stage DOM exporter; fail closed on missing markup and remove its temporary sanitized state after export.
 - For any hosted product, obtain Premier League approval and a registered client before implementing account connection.
 - Keep entry identifiers and account details out of committed fixtures and public reports.
 - Add season-versioned rule fixtures and failure states for unavailable authentication.
 
 ### Phase 1 — personal read-only assistant
 
-- Import the 15-player squad.
-- Reuse player intelligence, fixtures, injury analysis and Recommended XI.
-- Add legal bench ordering, captain and vice-captain recommendations.
-- Show the next actionable Gameweek and a four-Gameweek squad outlook.
+- **Implemented:** import the 15-player squad.
+- **Implemented:** reuse player intelligence, fixtures, injury analysis and Recommended XI.
+- **Implemented:** add legal bench ordering, captain and vice-captain recommendations.
+- **Implemented:** show the next actionable Gameweek and a four-Gameweek squad outlook.
 
 This phase provides personal value without attempting to solve the harder transfer-combination problem.
 
@@ -208,8 +210,8 @@ This phase provides personal value without attempting to solve the harder transf
 
 - **Foundation implemented:** model bank, current prices, purchase/selling prices, squad shape, club quotas, free-transfer use and incremental hit cost for a specified single transfer.
 - **Initial ranker implemented:** compare legal one-transfer moves using shared football primitives, conservative action labels and a separate point-hit warning.
-- Add hold recommendations and explicit reasons for rejected candidates.
-- Attribute actual results to transfer decisions after the Gameweek.
+- **Implemented:** add hold recommendations and explicit reasons for the selected decision.
+- **Implemented:** attribute bounded player-point results to frozen transfer decisions after the Gameweek.
 
 ### Phase 3 — transfer sequences and hits
 

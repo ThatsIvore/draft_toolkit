@@ -14,6 +14,7 @@ from .report import current_gameweek
 from .storage import read_json
 from .standard_fpl_snapshot import load_private_snapshot, snapshot_to_picks_payload
 from .standard_fpl_outcomes import build_transfer_outcomes
+from .standard_fpl_lineup import build_squad_outlook, recommend_captaincy
 from .standard_fpl_rules import (
     rules_for_season,
     rules_summary,
@@ -199,62 +200,6 @@ def _strip_lineup_ownership(lineup: dict[str, Any]) -> dict[str, Any]:
     return cleaned
 
 
-def _captain_score(player: dict[str, Any]) -> dict[str, Any]:
-    selection = player.get("selection") or {}
-    availability = _number(selection.get("availability"), 100.0)
-    minutes_score = min(100.0, _number(selection.get("expected_minutes")) / 90.0 * 100.0)
-    upside = _number(selection.get("upside"))
-    floor = _number(selection.get("floor"))
-    fixture = _number(selection.get("next_fixture"))
-    start_score = _number(selection.get("start_score"))
-    raw = 0.30 * upside + 0.25 * fixture + 0.20 * minutes_score + 0.15 * floor + 0.10 * start_score
-    availability_factor = 0.25 + 0.75 * max(0.0, min(100.0, availability)) / 100.0
-    return {
-        "captain_score": round(raw * availability_factor, 1),
-        "availability": round(availability, 1),
-        "expected_minutes": round(_number(selection.get("expected_minutes")), 1),
-        "fixture_score": round(fixture, 1),
-        "floor": round(floor, 1),
-        "upside": round(upside, 1),
-    }
-
-
-def recommend_captaincy(recommended_lineup: dict[str, Any]) -> dict[str, Any]:
-    if not recommended_lineup.get("is_valid"):
-        return {
-            "model": "standard-fpl-captain-v0.1",
-            "is_valid": False,
-            "captain": None,
-            "vice_captain": None,
-            "shortlist": [],
-            "note": "Captaincy could not be evaluated without a legal Recommended XI.",
-        }
-    candidates = []
-    for player in recommended_lineup.get("starters") or []:
-        score = _captain_score(player)
-        candidates.append({
-            "player_id": player.get("player_id"),
-            "player": player.get("player"),
-            "club": player.get("club"),
-            "position": player.get("position"),
-            **score,
-        })
-    candidates.sort(
-        key=lambda row: (row["captain_score"], row["upside"], row["expected_minutes"]),
-        reverse=True,
-    )
-    captain = dict(candidates[0]) if candidates else None
-    vice = dict(candidates[1]) if len(candidates) > 1 else None
-    return {
-        "model": "standard-fpl-captain-v0.1",
-        "is_valid": bool(captain and vice),
-        "captain": captain,
-        "vice_captain": vice,
-        "shortlist": candidates[:5],
-        "note": "Captain Score is a transparent selection heuristic, not projected FPL points. No lineup is submitted.",
-    }
-
-
 def _entry_history(picks_payload: dict[str, Any], history: dict[str, Any], gameweek: int) -> dict[str, Any]:
     pick_history = picks_payload.get("entry_history")
     if isinstance(pick_history, dict):
@@ -368,6 +313,7 @@ def collect_standard_fpl(
         "and Start Score is not projected FPL points."
     )
     captaincy = recommend_captaincy(recommended)
+    squad_outlook = build_squad_outlook(squad, planning_gws)
     output_squad = [_strip_internal_ownership(player) for player in squad]
     official = _strip_lineup_ownership(official)
     recommended = _strip_lineup_ownership(recommended)
@@ -475,7 +421,7 @@ def collect_standard_fpl(
 
     return {
         "mode": "standard_fpl",
-        "poc_version": "phase-1-v0.4",
+        "poc_version": "phase-1-v0.5",
         "generated_at": generated_at,
         "entry_context": {
             "team_name": entry.get("name"),
@@ -498,6 +444,7 @@ def collect_standard_fpl(
         "confirmed_lineup": official,
         "recommended_lineup": recommended,
         "captaincy": captaincy,
+        "squad_outlook": squad_outlook,
         "single_transfer_candidates": single_transfer_candidates,
         "transfer_decision": transfer_decision,
         "transfer_outcomes": transfer_outcomes,
