@@ -78,6 +78,8 @@ def test_standard_fpl_client_uses_public_read_only_endpoints(monkeypatch):
             return _Response({"events": [], "elements": []})
         if url.endswith("/fixtures/"):
             return _Response([])
+        if url.endswith("/event/1/live/"):
+            return _Response({"elements": []})
         if url.endswith("/entry/123/event/1/picks/"):
             return _Response({"picks": []})
         if url.endswith("/entry/123/history/"):
@@ -91,6 +93,7 @@ def test_standard_fpl_client_uses_public_read_only_endpoints(monkeypatch):
 
     assert client.bootstrap_static()["events"] == []
     assert client.fixtures() == []
+    assert client.event_live(1) == {"elements": []}
     assert client.entry("123")["id"] == 123
     assert client.entry_picks("123", 1) == {"picks": []}
     assert client.entry_history("123") == {"current": []}
@@ -98,6 +101,7 @@ def test_standard_fpl_client_uses_public_read_only_endpoints(monkeypatch):
     assert calls == [
         "https://fantasy.premierleague.com/api/bootstrap-static/",
         "https://fantasy.premierleague.com/api/fixtures/",
+        "https://fantasy.premierleague.com/api/event/1/live/",
         "https://fantasy.premierleague.com/api/entry/123/",
         "https://fantasy.premierleague.com/api/entry/123/event/1/picks/",
         "https://fantasy.premierleague.com/api/entry/123/history/",

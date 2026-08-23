@@ -11,6 +11,7 @@ from .fixtures import attach_fixture_matrix, bootstrap_events, build_team_fixtur
 from .intelligence import attach_intelligence
 from .optimizer import recommend_lineup
 from .report import current_gameweek
+from .recent_match_evidence import build_recent_match_evidence, fetch_completed_event_live
 from .storage import read_json
 from .standard_fpl_snapshot import load_private_snapshot, snapshot_to_picks_payload
 from .standard_fpl_outcomes import build_transfer_outcomes
@@ -286,11 +287,14 @@ def collect_standard_fpl(
     players = attach_fixture_matrix(players, fixture_matrix)
     baseline_path = Path(settings.performance_baseline_path)
     baseline_rows = read_json(baseline_path) if baseline_path.exists() else []
+    recent_payloads, recent_status = fetch_completed_event_live(client, bootstrap)
+    recent_evidence = build_recent_match_evidence(players, recent_payloads)
     players = attach_intelligence(
         players,
         my_entry_id=settings.entry_id,
         performance_baseline=baseline_lookup(baseline_rows),
         current_gameweek=scoring_gameweek,
+        recent_match_evidence=recent_evidence,
     )
     squad = [player for player in players if player.get("is_owned")]
     validate_standard_squad(squad)
@@ -421,7 +425,7 @@ def collect_standard_fpl(
 
     return {
         "mode": "standard_fpl",
-        "poc_version": "phase-1-v0.5",
+        "poc_version": "phase-1-v0.6",
         "generated_at": generated_at,
         "entry_context": {
             "team_name": entry.get("name"),
@@ -429,6 +433,14 @@ def collect_standard_fpl(
         "current_gameweek": scoring_gameweek,
         "decision_gameweek": decision_gameweek,
         "planning_gameweeks": planning_gws,
+        "intelligence_model": {
+            "version": "v0.6.0",
+            "recent_match_evidence": {
+                "version": "v1",
+                "status": recent_status,
+                "completed_gameweeks": [gameweek for gameweek, _ in recent_payloads],
+            },
+        },
         "rules": rules_summary(rules),
         "squad_legality": squad_legality,
         "squad_source": squad_source,

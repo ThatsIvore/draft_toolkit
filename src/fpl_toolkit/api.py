@@ -109,6 +109,12 @@ class FantasyApiClient:
             raise FPLApiError("FPL fixtures endpoint returned an unexpected payload.")
         return [row for row in payload if isinstance(row, dict)]
 
+    def event_live(self, gameweek: int) -> dict[str, Any]:
+        payload = self._get(f"event/{int(gameweek)}/live/")
+        if not isinstance(payload, dict) or not isinstance(payload.get("elements"), list):
+            raise FPLApiError("FPL event-live endpoint returned an unexpected payload.")
+        return payload
+
     def entry(self, entry_id: str) -> dict[str, Any]:
         payload = self._get(f"entry/{entry_id}/")
         if not isinstance(payload, dict):
