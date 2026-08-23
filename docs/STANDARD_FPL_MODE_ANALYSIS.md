@@ -1,6 +1,6 @@
 # Standard FPL Mode: Feasibility and Module Reuse
 
-Last reviewed: 22 August 2026
+Last reviewed: 23 August 2026
 
 This document evaluates adding the **standard Fantasy Premier League game** at `fantasy.premierleague.com` to the FPL Draft Toolkit. It is not an analysis of the **Classic scoring mode inside FPL Draft**. The two products have different squad-acquisition rules and must remain separate modes in the code and interface.
 
@@ -27,6 +27,8 @@ The first isolated technical path is now implemented behind `fpl-toolkit --mode 
 The source-independent `standard-fpl-private-snapshot-v1` contract is also implemented and documented in [Standard FPL Private Snapshot Contract](STANDARD_FPL_PRIVATE_SNAPSHOT.md). When a trusted future connector produces that file, the same command validates and uses the exact decision-Gameweek squad, purchase/selling prices, bank, free-transfer balance and chip state. It fails closed on stale Gameweeks, unknown players, malformed squad/captaincy state and unexpected fields that could contain identity or credentials. The connector itself is still gated by the authentication discovery.
 
 The 2026/27 squad rules, single-transfer legality layer and first advisory candidate ranker are also implemented, as documented in [Standard FPL Squad and Single-Transfer Legality](STANDARD_FPL_TRANSFER_LEGALITY.md). Private reports include the active rules version, structural squad validation and up to ten legal one-for-one candidates. The point-hit cost remains separate from the football heuristic, and public locked squads return an explicit unavailable state instead of transfer advice.
+
+The next personal layer is also implemented: exact private reports now produce one explained `CONSIDER` or `HOLD` decision and preserve the first scheduled recommendation for bounded post-Gameweek evaluation. The evaluation compares only the recorded incoming/outgoing player points and hit cost; it does not imply that the advice was followed or attribute the whole team's result to one move.
 
 The POC has also been exercised against a live 2026/27 entry without committing its identifier or report. It correctly separated live GW1 facts from GW2–GW5 advice and generated a legal 15-player/11-starter result. A controlled signed-in browser probe confirmed that normal Pick Team and Transfers views expose the complete private snapshot allowlist without reading browser credentials or storage. The first fail-closed [two-stage DOM exporter](STANDARD_FPL_SNAPSHOT_HELPER.md) is now implemented; further authentication reverse engineering is neither necessary nor acceptable for this personal path.
 

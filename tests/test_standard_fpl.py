@@ -409,7 +409,7 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     )
     report = collect_standard_fpl(settings, client=_Client())
 
-    assert report["poc_version"] == "phase-1-v0.3"
+    assert report["poc_version"] == "phase-1-v0.4"
     assert report["squad_source"]["type"] == "private_current_team_snapshot"
     assert report["squad_source"]["gameweek"] == 2
     assert report["squad_source"]["is_exact_for_decision_gameweek"] is True
@@ -422,12 +422,69 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     assert report["single_transfer_candidates"]["is_available"] is True
     assert report["single_transfer_candidates"]["advisory_only"] is True
     assert report["single_transfer_candidates"]["candidates"]
+    assert report["transfer_decision"]["is_available"] is True
+    assert report["transfer_decision"]["recommendation"] in {"HOLD", "CONSIDER"}
+    assert report["transfer_decision"]["reasons"]
+    assert report["transfer_outcomes"]["current"]["forecast"]["gameweek"] == 2
+    assert report["transfer_outcomes"]["current"]["forecast"]["calibration_eligible"] is True
     captain = next(row for row in report["squad"] if row["submitted_captain"])
     assert captain["purchase_price"] == 5.5
     assert captain["selling_price"] == 5.5
     serialized = json.dumps(report)
     assert "123456" not in serialized
     assert "access_token" not in serialized
+
+
+def test_collect_standard_fpl_reuses_same_team_frozen_decision(tmp_path):
+    snapshot_path = tmp_path / "current-team.json"
+    snapshot_path.write_text(json.dumps(_private_snapshot()), encoding="utf-8")
+    settings = StandardFplSettings(
+        entry_id="123456",
+        output_path=str(tmp_path / "report.json"),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+        private_snapshot_path=str(snapshot_path),
+    )
+    first = collect_standard_fpl(settings, client=_Client())
+    second = collect_standard_fpl(settings, client=_Client(), previous_report=first)
+
+    assert (
+        second["transfer_outcomes"]["current"]["forecast"]["captured_at"]
+        == first["transfer_outcomes"]["current"]["forecast"]["captured_at"]
+    )
+
+
+def test_collect_standard_fpl_does_not_carry_outcomes_between_team_names(tmp_path):
+    snapshot_path = tmp_path / "current-team.json"
+    snapshot_path.write_text(json.dumps(_private_snapshot()), encoding="utf-8")
+    settings = StandardFplSettings(
+        entry_id="123456",
+        output_path=str(tmp_path / "report.json"),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+        private_snapshot_path=str(snapshot_path),
+    )
+    previous = {
+        "mode": "standard_fpl",
+        "entry_context": {"team_name": "Different Team"},
+        "transfer_outcomes": {
+            "current": {
+                "forecast": {
+                    "gameweek": 2,
+                    "captured_at": "2000-01-01T00:00:00+00:00",
+                    "captured_phase": "SCHEDULED",
+                    "calibration_eligible": True,
+                    "recommendation": "HOLD",
+                    "summary": "Wrong team forecast",
+                    "candidate": None,
+                }
+            },
+            "history": [],
+        },
+    }
+
+    report = collect_standard_fpl(settings, client=_Client(), previous_report=previous)
+
+    assert report["transfer_outcomes"]["current"]["forecast"]["captured_at"] != "2000-01-01T00:00:00+00:00"
+    assert report["transfer_outcomes"]["current"]["forecast"]["summary"] != "Wrong team forecast"
 
 
 def test_collect_standard_fpl_rejects_snapshot_for_wrong_decision_gameweek(tmp_path):
