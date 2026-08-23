@@ -18,6 +18,7 @@ This is a personal technical proof, not paid onboarding. It depends on the offic
 ## User flow
 
 1. Open `standard-fpl-snapshot-helper.html` and drag **Capture FPL snapshot** to the browser's bookmarks bar.
+   Wait for the installer to say it is ready. The installer URL-encodes the long helper source so Chrome preserves its line and comment boundaries. Delete and reinstall an older bookmark if clicking it produces no message.
 2. Sign in manually on `fantasy.premierleague.com`; the helper never participates in sign-in.
 3. On **Pick Team**, select **List** and **Selling Price**, ensure there are no unsaved lineup changes, and click the bookmark.
 4. The first pass validates and captures the squad, lineup order, captaincy, prices and chip state, then navigates to **Transfers**.

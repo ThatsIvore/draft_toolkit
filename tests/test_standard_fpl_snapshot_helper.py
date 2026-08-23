@@ -100,7 +100,9 @@ def test_installer_builds_bookmarklet_without_request_credentials():
 
     assert 'fetch("standard-fpl-snapshot-bookmarklet.js"' in source
     assert 'credentials: "omit"' in source
-    assert "javascript:${source}" in source
+    assert "encodeURIComponent(source)" in source
+    assert "javascript:${encodeURIComponent(source)}" in source
+    assert "javascript:${source}" not in source
 
 
 def test_helper_page_explains_two_stage_capture_and_private_destination():
