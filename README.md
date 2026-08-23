@@ -9,12 +9,13 @@ This project turns public FPL and FPL Draft data into an in-season decision tool
 5. infer opponent adds/drops by diffing state snapshots;
 6. attach a four-Gameweek fixture matrix;
 7. score roster value, floor, upside, role evidence and return-aligned stash value;
-8. compare same-position waiver replacements and recommend a legal starting XI;
-9. project and audit H2H matchups across a four-Gameweek window;
-10. retain aggregate opponent transfer and completed-lineup decisions;
-11. use a verified 90-pick draft history as a small, decaying opponent prior;
-12. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant injury/stash cases;
-13. produce a redacted machine-readable report for a GitHub Pages dashboard.
+8. grade recent finalized performances from the official Standard FPL event feed, mapping them safely to Draft players through the shared stable player code;
+9. compare same-position waiver replacements and recommend a legal starting XI;
+10. project and audit H2H matchups across a four-Gameweek window;
+11. retain aggregate opponent transfer and completed-lineup decisions;
+12. use a verified 90-pick draft history as a small, decaying opponent prior;
+13. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant injury/stash cases;
+14. produce a redacted machine-readable report for a GitHub Pages dashboard.
 
 ## Identifier
 
