@@ -11,7 +11,10 @@
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const source = (await response.text()).trim();
     if (!source.startsWith("(async () =>")) throw new Error("unexpected helper source");
-    installLink.href = `javascript:${source}`;
+    // Keep line endings and comment boundaries intact when Chrome stores the
+    // long bookmark URL. A raw multiline javascript: URL can be normalized by
+    // the bookmark UI and fail before the helper can show an error message.
+    installLink.href = `javascript:${encodeURIComponent(source)}`;
     installLink.classList.remove("disabled");
     installLink.setAttribute("aria-disabled", "false");
     status.textContent = "Ready to drag to your bookmarks bar.";
