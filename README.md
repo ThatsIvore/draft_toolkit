@@ -69,6 +69,8 @@ The [four-Gameweek squad outlook](docs/STANDARD_FPL_SQUAD_OUTLOOK.md) now adds a
 
 For hands-on visual testing, the [browser-local private report viewer](docs/STANDARD_FPL_PRIVATE_VIEWER.md) is published as a standalone Pages asset. It asks the manager to choose the locally generated `standard-fpl-poc.json`, renders it only in the current tab's memory and performs no report upload or browser persistence. It remains unlinked from the public Draft dashboard because it is not secure hosted report delivery.
 
+The [self-hosted runner discovery](docs/STANDARD_FPL_SELF_HOSTED_RUNNER.md) recommends a separate, ephemeral Standard FPL container on the manager's own Unraid server as the next personal-use step. It would remove the laptop Python requirement without publishing private state or entering the Draft/H2H pipeline; it is documented but not yet implemented.
+
 The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as separate modes in a shared shell. That selector is intentionally not exposed on the public Draft dashboard until secure private Standard report delivery exists; switching modes must never mix their report objects.
 
 ## GitHub Actions
