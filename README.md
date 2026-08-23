@@ -67,6 +67,8 @@ With an exact private snapshot, the report now turns that shortlist into one con
 
 The [four-Gameweek squad outlook](docs/STANDARD_FPL_SQUAD_OUTLOOK.md) now adds a legal XI, ordered bench, captaincy, availability pressure, bench-cover count, core starters and rotation players for every actionable round. It stays inside the private Standard report and uses Start Score and Captain Score only as transparent selection heuristics.
 
+For hands-on visual testing, the [browser-local private report viewer](docs/STANDARD_FPL_PRIVATE_VIEWER.md) is published as a standalone Pages asset. It asks the manager to choose the locally generated `standard-fpl-poc.json`, renders it only in the current tab's memory and performs no report upload or browser persistence. It remains unlinked from the public Draft dashboard because it is not secure hosted report delivery.
+
 The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as separate modes in a shared shell. That selector is intentionally not exposed on the public Draft dashboard until secure private Standard report delivery exists; switching modes must never mix their report objects.
 
 ## GitHub Actions

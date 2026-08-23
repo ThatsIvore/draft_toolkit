@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#735ff3">
+  <title>Standard FPL Private Report Viewer</title>
+  <link rel="stylesheet" href="standard-fpl-viewer.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div>
+        <p class="eyebrow">FPL Toolkit · Browser-local testing</p>
+        <h1>Standard FPL Private Report Viewer</h1>
+        <p class="lede">Open your generated report without publishing your squad, finances or transfer plan.</p>
+      </div>
+      <span class="private-pill">Private file · local memory</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="loader-card" class="card loader-card" aria-labelledby="loader-title">
+      <div>
+        <span class="tag">Hands-on test</span>
+        <h2 id="loader-title">Choose your private report</h2>
+        <p>Select the <code>data/private/standard-fpl-poc.json</code> file produced by <code>fpl-toolkit --mode standard-fpl</code>.</p>
+      </div>
+      <label id="drop-zone" class="drop-zone" for="report-file">
+        <strong>Choose or drop JSON report</strong>
+        <span>Nothing is uploaded. Maximum file size: 5 MB.</span>
+        <input id="report-file" type="file" accept="application/json,.json">
+      </label>
+      <p id="loader-status" class="status" role="status">Waiting for a private Standard FPL report.</p>
+      <details>
+        <summary>How do I create the report?</summary>
+        <ol>
+          <li>Use the <a href="standard-fpl-snapshot-helper.html">private snapshot helper</a> while signed in to FPL.</li>
+          <li>Move its downloaded JSON to <code>data/private/current-team.json</code>.</li>
+          <li>Run the documented Standard FPL command with <code>FPL_STANDARD_PRIVATE_SNAPSHOT</code> set.</li>
+          <li>Choose the resulting <code>standard-fpl-poc.json</code> here.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section class="card privacy-card" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Privacy boundary</h2>
+      <p>This page has no report endpoint, account connection, analytics or browser storage. It reads the file you select into this tab’s memory, validates its private-report shape and renders it locally. Refreshing or pressing Clear removes it.</p>
+      <p>The shared Draft dashboard remains separate. This testing page is not the future hosted Standard FPL mode or a commercial onboarding flow.</p>
+    </section>
+
+    <div id="dashboard" hidden>
+      <section class="hero card">
+        <div>
+          <p class="eyebrow dark">Private Standard FPL report</p>
+          <h2 id="team-name">Private team</h2>
+          <p id="report-meta"></p>
+        </div>
+        <div class="hero-actions">
+          <span id="gw-pill" class="gw-pill"></span>
+          <button id="clear-report" class="secondary-button" type="button">Clear private report</button>
+        </div>
+      </section>
+
+      <section id="summary-stats" class="stats" aria-label="Report summary"></section>
+
+      <section class="card decision-card" aria-labelledby="decision-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">Transfer decision</p>
+            <h2 id="decision-title">Hold or transfer</h2>
+          </div>
+          <span id="decision-badge" class="decision-badge"></span>
+        </div>
+        <p id="decision-summary" class="decision-summary"></p>
+        <div id="decision-candidate"></div>
+        <ul id="decision-reasons" class="reason-list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="lineup-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">Next actionable Gameweek</p>
+            <h2 id="lineup-title">Recommended XI</h2>
+          </div>
+          <span id="formation-pill" class="soft-pill"></span>
+        </div>
+        <div id="captaincy" class="captaincy"></div>
+        <div id="lineup-groups" class="lineup-groups"></div>
+        <div>
+          <h3>Bench order</h3>
+          <div id="bench-row" class="player-row"></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="outlook-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">Planning horizon</p>
+            <h2 id="outlook-title">Four-Gameweek squad outlook</h2>
+          </div>
+        </div>
+        <div id="outlook-grid" class="outlook-grid"></div>
+        <div id="usage-grid" class="usage-grid"></div>
+      </section>
+
+      <section class="card" aria-labelledby="candidates-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">Legal shortlist</p>
+            <h2 id="candidates-title">Top single transfers</h2>
+          </div>
+        </div>
+        <div id="transfer-candidates" class="candidate-list"></div>
+      </section>
+
+      <section class="card" aria-labelledby="outcomes-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">Frozen decisions</p>
+            <h2 id="outcomes-title">Outcome tracking</h2>
+          </div>
+        </div>
+        <div id="outcome-content"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>Independent read-only decision support. Not affiliated with the Premier League.</footer>
+  <script src="standard-fpl-viewer.js"></script>
+</body>
+</html>
