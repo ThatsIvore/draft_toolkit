@@ -1035,9 +1035,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Shoulder injury - 75% chance of playing",
+    "news_added": "2026-08-25T14:30:07.623508Z"
   },
   {
     "player_id": 176,
@@ -2387,9 +2387,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Napoli on loan for the rest of the season",
+    "news_added": "2026-08-25T14:03:47.079414Z"
   },
   {
     "player_id": 62,
@@ -4181,8 +4181,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 50,
-    "news": "Unspecified injury - 50% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-21T15:00:07.610517Z"
   },
   {
@@ -4656,8 +4656,8 @@
   {
     "player_id": 403,
     "player": "Savinho",
-    "club": "MCI",
-    "team_id": 15,
+    "club": "TOT",
+    "team_id": 19,
     "position": "MID",
     "status": "a",
     "owner_raw": null,
@@ -5169,9 +5169,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Valencia on loan for the rest of the season",
+    "news_added": "2026-08-25T14:04:09.529320Z"
   },
   {
     "player_id": 543,
@@ -6760,6 +6760,32 @@
     "news_added": null
   },
   {
+    "player_id": 611,
+    "player": "Wan-Bissaka",
+    "club": "AVL",
+    "team_id": 2,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 612,
+    "player": "Methalie",
+    "club": "SUN",
+    "team_id": 20,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
@@ -7561,8 +7587,8 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
-    "chance_next_round": 75,
-    "news": "Lack of match fitness - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-21T15:22:48.149081Z"
   },
   {
