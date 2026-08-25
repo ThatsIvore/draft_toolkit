@@ -1763,9 +1763,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Calf injury - 75% chance of playing",
+    "news_added": "2026-08-25T11:30:07.678802Z"
   },
   {
     "player_id": 304,
@@ -3089,8 +3089,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 50,
-    "news": "Calf injury - 50% chance of playing",
+    "chance_next_round": 75,
+    "news": "Calf injury - 75% chance of playing",
     "news_added": "2026-08-15T16:00:07.961518Z"
   },
   {
@@ -3765,8 +3765,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Muscular injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-22T18:00:07.551930Z"
   },
   {
@@ -3856,9 +3856,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Ankle injury - Unknown return date",
+    "news_added": "2026-08-25T11:30:07.532993Z"
   },
   {
     "player_id": 19,
