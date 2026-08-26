@@ -4064,9 +4064,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined St Mirren on loan for the rest of the season",
+    "news_added": "2026-08-26T14:05:26.748768Z"
   },
   {
     "player_id": 109,
@@ -4655,7 +4655,7 @@
   },
   {
     "player_id": 403,
-    "player": "Savinho",
+    "player": "Sávio",
     "club": "TOT",
     "team_id": 19,
     "position": "MID",
@@ -4981,8 +4981,8 @@
   {
     "player_id": 131,
     "player": "Baleba",
-    "club": "BHA",
-    "team_id": 5,
+    "club": "MUN",
+    "team_id": 16,
     "position": "MID",
     "status": "a",
     "owner_raw": null,
@@ -6778,6 +6778,32 @@
     "club": "SUN",
     "team_id": 20,
     "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 613,
+    "player": "Hadjam",
+    "club": "BHA",
+    "team_id": 5,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 614,
+    "player": "Ahoka",
+    "club": "SUN",
+    "team_id": 20,
+    "position": "MID",
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
