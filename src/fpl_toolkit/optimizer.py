@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from .transfer_intel import transfer_blocks_selection
+
 
 FORMATION_LIMITS = {
     "DEF": (3, 5),
@@ -45,7 +47,7 @@ def next_fixture_score(player: dict[str, Any], gameweek: int) -> float:
     return _clamp(score)
 
 
-def player_start_score(player: dict[str, Any], gameweek: int) -> dict[str, float | str]:
+def player_start_score(player: dict[str, Any], gameweek: int) -> dict[str, float | str | bool]:
     """Return transparent next-GW selection components and a heuristic Start Score.
 
     Start Score is not expected FPL points. Availability is intentionally applied
@@ -55,6 +57,23 @@ def player_start_score(player: dict[str, Any], gameweek: int) -> dict[str, float
     advantage before displacing established options.
     """
     intel = player.get("intelligence") or {}
+    sample_confidence = _clamp(_number(intel.get("sample_confidence"), 100.0))
+    role_evidence = str(intel.get("role_evidence") or "").upper() or (
+        "HIGH" if sample_confidence >= 70 else "MEDIUM" if sample_confidence >= 40 else "LOW"
+    )
+    if transfer_blocks_selection(player):
+        return {
+            "start_score": 0.0,
+            "availability": 0.0,
+            "expected_minutes": 0.0,
+            "next_fixture": round(next_fixture_score(player, gameweek), 1),
+            "floor": 0.0,
+            "upside": 0.0,
+            "sample_confidence": round(sample_confidence, 1),
+            "role_evidence": role_evidence,
+            "evidence_factor": 0.0,
+            "selection_blocked": True,
+        }
     chance = player.get("chance_next_round")
     availability = _number(intel.get("availability_score"), 100.0 if chance is None else _number(chance))
     availability = _clamp(availability)
@@ -63,10 +82,6 @@ def player_start_score(player: dict[str, Any], gameweek: int) -> dict[str, float
     fixture = next_fixture_score(player, gameweek)
     floor = _clamp(_number(intel.get("floor_score"), intel.get("roster_score", 0.0)))
     upside = _clamp(_number(intel.get("upside_score"), intel.get("roster_score", 0.0)))
-    sample_confidence = _clamp(_number(intel.get("sample_confidence"), 100.0))
-    role_evidence = str(intel.get("role_evidence") or "").upper() or (
-        "HIGH" if sample_confidence >= 70 else "MEDIUM" if sample_confidence >= 40 else "LOW"
-    )
 
     raw = (
         0.30 * availability
@@ -89,6 +104,7 @@ def player_start_score(player: dict[str, Any], gameweek: int) -> dict[str, float
         "sample_confidence": round(sample_confidence, 1),
         "role_evidence": role_evidence,
         "evidence_factor": round(evidence_factor, 3),
+        "selection_blocked": False,
     }
 
 

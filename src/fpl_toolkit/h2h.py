@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from .optimizer import player_start_score, recommend_lineup
+from .transfer_intel import transfer_blocks_selection
 
 
 POSITION_ORDER = {"GKP": 0, "DEF": 1, "MID": 2, "FWD": 3}
@@ -143,6 +144,10 @@ def _intel(player: dict[str, Any], key: str, default: float = 0.0) -> float:
     return _number((player.get("intelligence") or {}).get(key), default)
 
 
+def _effective_roster_value(player: dict[str, Any]) -> float:
+    return 0.0 if transfer_blocks_selection(player) else _intel(player, "roster_score")
+
+
 def _selection(player: dict[str, Any], key: str, default: float = 0.0) -> float:
     return _number((player.get("selection") or {}).get(key), default)
 
@@ -208,6 +213,19 @@ def player_projected_points(player: dict[str, Any], gameweek: int) -> dict[str, 
     """
     score = player_start_score(player, gameweek)
     points_per_90 = max(0.0, _intel(player, "points_per_90"))
+    if transfer_blocks_selection(player):
+        return {
+            "projected_points": 0.0,
+            "range_low": 0.0,
+            "range_high": 0.0,
+            "points_per_90": round(points_per_90, 2),
+            "expected_minutes": 0.0,
+            "fixture_multiplier": 1.0,
+            "availability": 0.0,
+            "sample_confidence": round(_number(score.get("sample_confidence")), 1),
+            "role_evidence": score.get("role_evidence"),
+            "selection_blocked": True,
+        }
     expected_minutes = _clamp(_number(score.get("expected_minutes")), 0.0, 90.0)
     availability = _clamp(_number(score.get("availability"), 100.0), 0.0, 100.0)
     fixture_score = _clamp(_number(score.get("next_fixture"), 60.0), 0.0, 100.0)
@@ -233,6 +251,7 @@ def player_projected_points(player: dict[str, Any], gameweek: int) -> dict[str, 
         "availability": round(availability, 1),
         "sample_confidence": round(confidence, 1),
         "role_evidence": score.get("role_evidence"),
+        "selection_blocked": False,
     }
 
 
@@ -280,7 +299,7 @@ def _lineup_summary(lineup: dict[str, Any], gameweek: int) -> dict[str, Any]:
     return {
         "formation": lineup.get("formation"),
         "average_start_score": round(_mean([_selection(player, "start_score") for player in starters]), 1),
-        "average_roster_value": round(_mean([_intel(player, "roster_score") for player in starters]), 1),
+        "average_roster_value": round(_mean([_effective_roster_value(player) for player in starters]), 1),
         "average_fixture_score": round(_mean([_selection(player, "next_fixture") for player in starters]), 1),
         "bench_start_score": round(_mean([_selection(player, "start_score") for player in bench]), 1),
         "average_sample_confidence": round(confidence, 1),
@@ -323,11 +342,16 @@ def _position_edges(my_lineup: dict[str, Any], opponent_lineup: dict[str, Any], 
 
 
 def _player_strength(player: dict[str, Any]) -> float:
-    return 0.65 * _selection(player, "start_score") + 0.35 * _intel(player, "roster_score")
+    if transfer_blocks_selection(player):
+        return 0.0
+    return 0.65 * _selection(player, "start_score") + 0.35 * _effective_roster_value(player)
 
 
 def _threat_rows(lineup: dict[str, Any], gameweek: int, limit: int = 3) -> list[dict[str, Any]]:
-    starters = [row for row in lineup.get("starters") or [] if isinstance(row, dict)]
+    starters = [
+        row for row in lineup.get("starters") or []
+        if isinstance(row, dict) and not transfer_blocks_selection(row)
+    ]
     ranked = sorted(starters, key=_player_strength, reverse=True)[:limit]
     return [
         {
@@ -337,7 +361,7 @@ def _threat_rows(lineup: dict[str, Any], gameweek: int, limit: int = 3) -> list[
             "club": player.get("club"),
             "team_code": player.get("team_code"),
             "start_score": round(_selection(player, "start_score"), 1),
-            "roster_value": round(_intel(player, "roster_score"), 1),
+            "roster_value": round(_effective_roster_value(player), 1),
             "projected_points": player_projected_points(player, gameweek)["projected_points"],
             "fixture": _fixture_label(player, gameweek),
             "role_evidence": (player.get("selection") or {}).get("role_evidence"),

@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 import re
 from typing import Any
 
+from .transfer_intel import transfer_blocks_acquisition, transfer_blocks_selection
+
 
 def _clamp(value: float, low: float = 0.0, high: float = 100.0) -> float:
     return max(low, min(high, value))
@@ -133,7 +135,7 @@ def _normalized_baselines(
 
 
 def availability_score(player: dict[str, Any]) -> float:
-    if bool((player.get("transfer_intel") or {}).get("blocks_selection")):
+    if transfer_blocks_selection(player):
         return 0.0
     chance = player.get("chance_next_round")
     if chance is None:
@@ -142,7 +144,7 @@ def availability_score(player: dict[str, Any]) -> float:
 
 
 def is_hard_inactive(player: dict[str, Any]) -> bool:
-    if bool((player.get("transfer_intel") or {}).get("blocks_acquisition")):
+    if transfer_blocks_acquisition(player):
         return True
     news = str(player.get("news") or "").lower()
     hard_inactive_phrases = ("joined ", "permanently", "on loan for the rest of the season", "out for the season", "season-ending")

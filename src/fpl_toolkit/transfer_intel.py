@@ -28,6 +28,16 @@ class TransferIntelError(ValueError):
     pass
 
 
+def transfer_blocks_selection(player: dict[str, Any]) -> bool:
+    """Return whether reliable transfer evidence makes a player unusable."""
+    return bool((player.get("transfer_intel") or {}).get("blocks_selection"))
+
+
+def transfer_blocks_acquisition(player: dict[str, Any]) -> bool:
+    """Return whether reliable transfer evidence removes a player from claims."""
+    return bool((player.get("transfer_intel") or {}).get("blocks_acquisition"))
+
+
 def _number(value: Any, default: float = 0.0) -> float:
     try:
         return float(value)

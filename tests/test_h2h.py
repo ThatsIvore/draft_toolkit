@@ -113,6 +113,45 @@ def test_builds_scouting_h2h_matchup_from_league_match_and_ownership():
     assert result["tactical_priorities"][0]["action"] == "HOLD SHAPE"
 
 
+def test_transfer_block_cannot_leak_into_opponent_lineup_projection_or_threats():
+    mine = _squad(1, 501, 336654, 85, 2)
+    opponent = _squad(101, 502, 888888, 70, 4)
+    watkins = next(player for player in opponent if player["player_id"] == 113)
+    watkins["player"] = "Watkins"
+    watkins["transfer_intel"] = {
+        "action": "EXIT AGREED",
+        "blocks_selection": True,
+        "blocks_acquisition": True,
+    }
+    # Deliberately retain stale pre-transfer intelligence. Every H2H consumer
+    # must independently honour the shared hard block rather than trusting a
+    # prior score to have been recalculated in the expected order.
+    watkins["intelligence"].update({
+        "availability_score": 100,
+        "expected_minutes": 90,
+        "floor_score": 100,
+        "upside_score": 100,
+        "roster_score": 100,
+        "points_per_90": 8.0,
+    })
+
+    result = build_h2h_matchup(
+        _league(),
+        "336654",
+        mine,
+        mine + opponent,
+        [],
+        1,
+    )
+    outlook = build_h2h_outlook(_league(), "336654", mine, mine + opponent, [1])
+
+    assert any(row["player"] == "Watkins" for row in result["opponent_squad"])
+    assert all(row["player"] != "Watkins" for row in result["opponent_lineup"]["starters"])
+    assert all(row["player"] != "Watkins" for row in result["opponent_threats"])
+    assert all(row["player"] != "Watkins" for row in result["matchup"]["opponent"]["projection"]["players"])
+    assert outlook["gameweeks"][0]["key_threat"]["player"] != "Watkins"
+
+
 def test_h2h_embeds_the_opponent_decision_profile_without_changing_current_projection():
     mine = _squad(1, 501, 336654, 85, 2)
     opponent = _squad(101, 502, 888888, 70, 4)

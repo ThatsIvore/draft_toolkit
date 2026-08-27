@@ -67,6 +67,32 @@ def test_optimizer_penalizes_unavailable_player():
     assert 8 not in starter_ids
 
 
+def test_optimizer_hard_blocks_transfer_exit_even_with_stale_high_scores():
+    squad = _standard_squad()
+    target = next(player for player in squad if player["player_id"] == 13)
+    target["player"] = "Watkins"
+    target["transfer_intel"] = {
+        "action": "EXIT AGREED",
+        "blocks_selection": True,
+        "blocks_acquisition": True,
+    }
+    target["intelligence"].update({
+        "availability_score": 100,
+        "expected_minutes": 90,
+        "floor_score": 100,
+        "upside_score": 100,
+        "roster_score": 100,
+    })
+
+    result = recommend_lineup(squad, 1)
+    target_score = result["player_scores"]["13"]
+
+    assert target_score["selection_blocked"] is True
+    assert target_score["start_score"] == 0.0
+    assert target_score["expected_minutes"] == 0.0
+    assert 13 not in {row["player_id"] for row in result["starters"]}
+
+
 def test_optimizer_uses_next_gameweek_fixture_not_four_week_average():
     squad = _standard_squad()
     easy = next(player for player in squad if player["player_id"] == 6)

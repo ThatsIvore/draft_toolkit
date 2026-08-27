@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 
+from fpl_toolkit.h2h import player_projected_points
 from fpl_toolkit.injury_stash import build_injury_stash_dashboard
 from fpl_toolkit.intelligence import attach_intelligence, is_hard_inactive
 from fpl_toolkit.optimizer import player_start_score
@@ -81,7 +82,16 @@ def test_agreed_exit_blocks_selection_and_acquisition():
     assert enriched["transfer_intel"]["blocks_acquisition"] is True
     assert is_hard_inactive(enriched) is True
     assert scored["intelligence"]["availability_score"] == 0.0
-    assert player_start_score(scored, 2)["start_score"] < 10
+    start = player_start_score(scored, 2)
+    projection = player_projected_points(scored, 2)
+
+    assert start["selection_blocked"] is True
+    assert start["start_score"] == 0.0
+    assert start["expected_minutes"] == 0.0
+    assert projection["selection_blocked"] is True
+    assert projection["projected_points"] == 0.0
+    assert projection["range_low"] == 0.0
+    assert projection["range_high"] == 0.0
 
 
 def test_agreed_exit_is_removed_from_the_claimable_pool():
