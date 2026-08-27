@@ -1,5 +1,5 @@
 const requestedView = location.hash.replace('#', '');
-if (['squad','changes','available','injury','h2h','activity','planner'].includes(requestedView)) VIEW = requestedView;
+if (['overview','squad','changes','available','injury','h2h','activity','planner'].includes(requestedView)) VIEW = requestedView;
 
 function enhancePlayerCards(root = document) {
   root.querySelectorAll?.('.player-card[data-player-id]').forEach(card => {

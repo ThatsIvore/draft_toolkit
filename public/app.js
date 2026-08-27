@@ -1,7 +1,7 @@
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 let DATA = null;
-let VIEW = 'squad';
+let VIEW = 'overview';
 let SQUAD_MODE = 'pitch';
 let QUERY = '';
 let POS = 'ALL';
