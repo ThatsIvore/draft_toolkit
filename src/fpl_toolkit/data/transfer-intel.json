@@ -1,0 +1,69 @@
+{
+  "model": "v1.0",
+  "records": [
+    {
+      "id": "watkins-al-hilal-20260827",
+      "player": "Watkins",
+      "player_ids": [55],
+      "status": "deal_agreed",
+      "move_kind": "exit_league",
+      "source_tier": "reliable_report",
+      "reported_at": "2026-08-27T10:46:00Z",
+      "expires_at": "2026-09-03T00:00:00Z",
+      "destination": {"club": "Al-Hilal", "league": "Saudi Pro League", "team_id": null},
+      "role_outlook": "projected_starter",
+      "summary": "Aston Villa have accepted Al-Hilal's offer; treat Watkins as an imminent Premier League exit until the official FPL feed catches up.",
+      "sources": [
+        {"label": "Sky Sports", "url": "https://www.skysports.com/football/news/11095/13577081/nicolas-jackson-transfer-aston-villa-agree-deal-worth-up-to-65m-to-sign-chelsea-striker"}
+      ]
+    },
+    {
+      "id": "delap-nottingham-forest-20260827",
+      "player": "Delap",
+      "player_ids": [167],
+      "status": "confirmed",
+      "move_kind": "within_league",
+      "source_tier": "official_club",
+      "reported_at": "2026-08-27T09:56:00Z",
+      "expires_at": "2026-09-10T00:00:00Z",
+      "destination": {"club": "Nottingham Forest", "league": "Premier League", "team_id": 18},
+      "role_outlook": "strong_rotation",
+      "summary": "Nottingham Forest have confirmed Delap's signing; use Forest's fixture run while the FPL club assignment is still stale.",
+      "sources": [
+        {"label": "Nottingham Forest", "url": "https://www.nottinghamforest.co.uk/news/2026/august/27/forest-complete-signing-of-liam-delap/"}
+      ]
+    },
+    {
+      "id": "jackson-aston-villa-20260827",
+      "player": "N.Jackson",
+      "player_ids": [166],
+      "status": "deal_agreed",
+      "move_kind": "within_league",
+      "source_tier": "reliable_report",
+      "reported_at": "2026-08-27T10:46:00Z",
+      "expires_at": "2026-09-03T00:00:00Z",
+      "destination": {"club": "Aston Villa", "league": "Premier League", "team_id": 2},
+      "role_outlook": "projected_starter",
+      "summary": "Villa have agreed a deal for Jackson as Watkins' replacement; monitor the move but wait for registration before trusting a start.",
+      "sources": [
+        {"label": "Sky Sports", "url": "https://www.skysports.com/football/news/11095/13577081/nicolas-jackson-transfer-aston-villa-agree-deal-worth-up-to-65m-to-sign-chelsea-striker"}
+      ]
+    },
+    {
+      "id": "grealish-sunderland-20260826",
+      "player": "Grealish",
+      "player_ids": [238],
+      "status": "talks",
+      "move_kind": "within_league",
+      "source_tier": "rumour",
+      "reported_at": "2026-08-26T19:22:00Z",
+      "expires_at": "2026-09-03T00:00:00Z",
+      "destination": {"club": "Sunderland", "league": "Premier League", "team_id": 20},
+      "role_outlook": "uncertain",
+      "summary": "Sunderland are considering Grealish, but no formal talks had begun; show a warning without changing his score.",
+      "sources": [
+        {"label": "The Guardian", "url": "https://www.theguardian.com/football/2026/aug/26/forest-in-talks-with-celta-vigo-over-javi-rueda-as-axel-disasi-joins-palace-on-loan"}
+      ]
+    }
+  ]
+}

@@ -43,6 +43,22 @@ def sanitize_public_report(report: dict[str, Any]) -> dict[str, Any]:
             public[key] = [_strip_owner_fields(row) for row in rows if isinstance(row, dict)]
     for lineup_key in ("lineup", "recommended_lineup"):
         _sanitize_lineup(public.get(lineup_key))
+    availability = public.get("injury_stash")
+    if isinstance(availability, dict):
+        for key in (
+            "squad_health",
+            "stash_candidates",
+            "return_calendar",
+            "transfer_watch",
+            "early_pickups",
+        ):
+            rows = availability.get(key, [])
+            if isinstance(rows, list):
+                availability[key] = [
+                    _strip_owner_fields(row)
+                    for row in rows
+                    if isinstance(row, dict)
+                ]
     activity = []
     for change in public.get("league_activity", []) or []:
         if not isinstance(change, dict):

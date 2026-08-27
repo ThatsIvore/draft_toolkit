@@ -22,6 +22,7 @@ from .report import build_report, current_gameweek
 from .recent_match_evidence import build_recent_match_evidence, fetch_completed_event_live
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
+from .transfer_intel import attach_transfer_intel
 from .waivers import attach_replacement_analysis
 
 
@@ -106,6 +107,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         gameweeks=planning_gws,
     )
     ownership = attach_fixture_matrix(ownership, fixture_matrix)
+    ownership = attach_transfer_intel(ownership, fixture_matrix)
     scoring_fixture_matrix = build_team_fixture_matrix(
         fixtures,
         bootstrap,
@@ -154,6 +156,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["injury_stash"] = build_injury_stash_dashboard(
         report.get("my_squad", []),
         report.get("available_players", []),
+        tracked_players=ownership,
     )
     report["planning_gameweeks"] = planning_gws
     report["decision_gameweek"] = decision_gw

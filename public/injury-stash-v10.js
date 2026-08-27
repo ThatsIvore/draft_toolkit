@@ -12,11 +12,31 @@ function injurySigned(value) {
 }
 
 function injuryActionClass(action) {
-  if (['SWAP NOW', 'STASH SWAP', 'STASH'].includes(action)) return 'act';
-  if (action === 'REVIEW DROP') return 'review';
-  if (action === 'HOLD') return 'hold';
+  if (['SWAP NOW', 'STASH SWAP', 'STASH', 'EARLY PICKUP'].includes(action)) return 'act';
+  if (['REVIEW DROP', 'EXIT AGREED', 'EXIT CONFIRMED'].includes(action)) return 'review';
+  if (['HOLD', 'MOVE CONFIRMED'].includes(action)) return 'hold';
   if (action === 'NO MOVE') return 'quiet';
   return 'monitor';
+}
+
+function transferLabel(value) {
+  return String(value || '').replaceAll('_', ' ').replace(/\b\w/g, char => char.toUpperCase());
+}
+
+function transferDecisionCard(row) {
+  const action = row.dashboard_action || 'MOVE WATCH';
+  const destination = row.destination || {};
+  const sourceLabels = (row.sources || []).map(source => source.label).filter(Boolean).join(' · ');
+  const fixture = row.destination_fixture_score == null
+    ? 'Outside Premier League'
+    : `${injuryScore(row.destination_fixture_score)} (${injurySigned(row.fixture_delta)})`;
+  return `<article class="injury-decision-card transfer-card ${injuryActionClass(action)}" data-player-id="${esc(row.player_id)}">
+    <div class="injury-card-top">${injuryKit(row)}<div><span class="injury-action">${esc(action)}</span><h4>${esc(row.player)}</h4><small>${esc(row.position)} · ${esc(row.club || '-')} → ${esc(destination.club || 'destination pending')}</small></div></div>
+    <p>${esc(row.transfer_summary || 'Transfer evidence is being monitored.')}</p>
+    <div class="transfer-route"><span><small>Evidence</small><b>${esc(transferLabel(row.transfer_status))}</b></span><span><small>Destination fixtures</small><b>${esc(fixture)}</b></span><span><small>Expected role</small><b>${esc(transferLabel(row.role_outlook))}</b></span></div>
+    <div class="transfer-source"><span>${esc(row.context || 'TRANSFER WATCH')}</span><span>${esc(sourceLabels || 'Curated source')}</span></div>
+    <span class="injury-open">Open player evidence →</span>
+  </article>`;
 }
 
 function injuryReturnLabel(row) {
@@ -71,9 +91,10 @@ function renderInjuryStash() {
   const squad = dashboard.squad_health || [];
   const candidates = dashboard.stash_candidates || [];
   const returns = dashboard.return_calendar || [];
+  const transfers = dashboard.transfer_watch || [];
   return `<section class="injury-dashboard">
     <header class="injury-hero">
-      <div><div class="eyebrow">Injuries &amp; Stashes · ${esc(dashboard.model || 'v1.0')}</div><h3>Turn return timing into a decision</h3><p>Only the health updates that can affect your roster are surfaced here. Confirmed dates are matched to fixtures from the return Gameweek onward.</p></div>
+      <div><div class="eyebrow">Availability &amp; Transfers · ${esc(dashboard.model || 'v1.1')}</div><h3>Turn player availability into a decision</h3><p>Health updates and transfer evidence are surfaced only when they can affect a lineup, roster move or early pickup.</p></div>
       <span class="injury-hero-pill">${esc(summary.decision_count || 0)} decision${Number(summary.decision_count) === 1 ? '' : 's'}</span>
     </header>
     <div class="injury-summary">
@@ -81,6 +102,7 @@ function renderInjuryStash() {
       <span class="act"><small>Act now</small><strong>${esc(summary.act_now || 0)} candidate${Number(summary.act_now) === 1 ? '' : 's'}</strong></span>
       <span class="monitor"><small>Monitor</small><strong>${esc(summary.monitor || 0)} candidate${Number(summary.monitor) === 1 ? '' : 's'}</strong></span>
       <span class="return"><small>Dated returns</small><strong>${esc(summary.dated_returns || 0)} in window</strong></span>
+      <span class="transfer"><small>Transfer intel</small><strong>${esc(summary.transfer_alerts || 0)} alert${Number(summary.transfer_alerts) === 1 ? '' : 's'}</strong></span>
     </div>
 
     <section class="injury-section">
@@ -96,6 +118,10 @@ function renderInjuryStash() {
     <section class="injury-section return-section">
       <div class="injury-section-head"><div><span>03</span><h3>Return window</h3></div><p>Dated returns are shown only when they fall inside the current planning horizon and retain enough value to matter.</p></div>
       ${returns.length ? `<div class="return-timeline">${returns.map(returnTimelineCard).join('')}</div>` : injuryEmpty('No relevant dated return in GW window', 'Official news has not supplied a decision-relevant return date inside the current four-Gameweek horizon.')}
+    </section>
+    <section class="injury-section transfer-section">
+      <div class="injury-section-head"><div><span>04</span><h3>Transfer window</h3></div><p>Agreed exits are removed from decisions. Same-league moves become early-pickup candidates only when destination fixtures and role evidence both clear the guardrails.</p></div>
+      ${transfers.length ? `<div class="injury-card-grid">${transfers.map(transferDecisionCard).join('')}</div>` : injuryEmpty('No active transfer alert', 'No curated transfer evidence currently changes a lineup, waiver or early-pickup decision.')}
     </section>
     <div class="injury-note">${esc(dashboard.note || '')}</div>
   </section>`;

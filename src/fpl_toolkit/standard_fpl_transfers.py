@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
+from .intelligence import is_hard_inactive
 from .optimizer import player_start_score
 from .standard_fpl_rules import (
     RULES_2026_27,
@@ -129,6 +130,7 @@ def rank_single_transfers(
         row
         for row in players
         if row.get("player_id") not in owned_ids and not row.get("is_owned")
+        and not is_hard_inactive(row)
     ]
     rejected: Counter[str] = Counter()
     evaluated_pairs = 0

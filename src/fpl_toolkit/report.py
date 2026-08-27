@@ -40,7 +40,12 @@ def build_report(entry_id: str, league_id: str, league_details: dict[str, Any], 
             if manager.get(key) is not None:
                 own_ids.add(str(manager[key]))
     my_squad = [row for row in ownership if (row.get("owner_entry_id") is not None and str(row.get("owner_entry_id")) in own_ids) or (row.get("owner_raw") is not None and str(row.get("owner_raw")) in own_ids)]
-    available = [row for row in ownership if str(row.get("status", "")).lower() == "a"]
+    available = [
+        row
+        for row in ownership
+        if str(row.get("status", "")).lower() == "a"
+        and not is_hard_inactive(row)
+    ]
     injured_or_doubtful = [
         row for row in ownership
         if row.get("chance_next_round") is not None

@@ -23,7 +23,11 @@ def _number(value: Any, default: float = 0.0) -> float:
 
 
 def _players(report: dict[str, Any]) -> dict[int, dict[str, Any]]:
-    rows = [*(report.get("my_squad") or []), *(report.get("available_players") or [])]
+    rows = [
+        *(report.get("my_squad") or []),
+        *(report.get("available_players") or []),
+        *((report.get("h2h_matchup") or {}).get("opponent_squad") or []),
+    ]
     return {
         int(row["player_id"]): row
         for row in rows
@@ -70,6 +74,7 @@ def _player_state(
 ) -> dict[str, Any]:
     intel = player.get("intelligence") or {}
     replacement = player.get("replacement") or {}
+    transfer = player.get("transfer_intel") or {}
     return {
         "player_id": int(player.get("player_id") or 0),
         "player": player.get("player"),
@@ -91,6 +96,12 @@ def _player_state(
         "waiver_delta": replacement.get("combined_delta"),
         "lineup_role": lineup_role,
         "fixture_phase": _fixture_phase(player, gameweek),
+        "transfer_record_id": transfer.get("record_id"),
+        "transfer_status": transfer.get("status"),
+        "transfer_action": transfer.get("action"),
+        "transfer_destination": (transfer.get("destination") or {}).get("club"),
+        "transfer_summary": transfer.get("summary"),
+        "transfer_blocks_acquisition": transfer.get("blocks_acquisition"),
     }
 
 
@@ -154,6 +165,7 @@ def _event_stream(event: dict[str, Any]) -> str:
         "minutes_change": "role",
         "waiver_change": "waiver",
         "recommendation_change": "waiver",
+        "transfer_update": "transfer",
         "opponent_drop": "free_pool",
         "opponent_add": "free_pool",
     }.get(kind, kind)
@@ -294,6 +306,23 @@ def _player_changes(
         str(current.get("fixture_phase") or ""),
     }
 
+    old_transfer = previous.get("transfer_record_id")
+    new_transfer = current.get("transfer_record_id")
+    old_transfer_state = (previous.get("transfer_status"), previous.get("transfer_action"))
+    new_transfer_state = (current.get("transfer_status"), current.get("transfer_action"))
+    if new_transfer and (old_transfer != new_transfer or old_transfer_state != new_transfer_state):
+        action = str(current.get("transfer_action") or "TRANSFER WATCH")
+        priority = "critical" if current.get("transfer_blocks_acquisition") else (
+            "important" if current.get("transfer_status") in {"deal_agreed", "confirmed"} else "watch"
+        )
+        destination = current.get("transfer_destination")
+        destination_text = f" Destination: {destination}." if destination else ""
+        events.append(_item(
+            "transfer_update", priority, f"{name}: {action}",
+            f"{current.get('transfer_summary') or 'Transfer evidence changed.'}{destination_text}",
+            player=current, badge="TRANSFER",
+        ))
+
     old_role = previous.get("lineup_role")
     new_role = current.get("lineup_role")
     if not transient_match_data and old_role and new_role and old_role != new_role:
@@ -420,6 +449,8 @@ def build_change_feed(
                     current,
                     suppress_model_changes=live_model_data,
                 ))
+            elif current.get("transfer_record_id"):
+                events.extend(_player_changes({}, current, suppress_model_changes=live_model_data))
 
     previous_outcome = (previous_state.get("outcome_diagnostics") or {}).get("current") or {}
     current_outcome = (report.get("outcome_diagnostics") or {}).get("current") or {}

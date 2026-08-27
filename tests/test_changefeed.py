@@ -80,6 +80,27 @@ def test_change_feed_surfaces_material_role_availability_and_lineup_changes():
     assert 1 in feed["changed_player_ids"]
 
 
+def test_change_feed_persists_new_transfer_evidence():
+    previous = capture_decision_state(_report())
+    moved = _player()
+    moved["transfer_intel"] = {
+        "record_id": "player-exit",
+        "status": "deal_agreed",
+        "action": "EXIT AGREED",
+        "destination": {"club": "Al-Hilal"},
+        "summary": "A reliable source reports an agreed exit.",
+        "blocks_acquisition": True,
+    }
+    current = _report(moved)
+
+    feed = build_change_feed(previous, current)
+    transfer = next(item for item in feed["items"] if item["kind"] == "transfer_update")
+
+    assert transfer["priority"] == "critical"
+    assert transfer["badge"] == "TRANSFER"
+    assert "Al-Hilal" in transfer["detail"]
+
+
 def test_change_feed_surfaces_waiver_upgrade_and_opponent_drop_without_manager_identity():
     old_free = _player(
         2,
