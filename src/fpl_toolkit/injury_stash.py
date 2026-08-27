@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import Any
 
 from .intelligence import is_hard_inactive
+from .transfer_intel import transfer_action_rank
 
 
-INJURY_STASH_MODEL = "v1.0"
+INJURY_STASH_MODEL = "v1.1"
 
 
 def _number(value: Any, default: float = 0.0) -> float:
@@ -71,7 +72,31 @@ def _card(player: dict[str, Any], dashboard_action: str) -> dict[str, Any]:
         "drop_player": replacement.get("drop_player"),
         "combined_delta": replacement.get("combined_delta"),
         "confidence": replacement.get("confidence"),
+        "transfer_intel": player.get("transfer_intel"),
     }
+
+
+def _transfer_card(player: dict[str, Any], context: str) -> dict[str, Any]:
+    intel = player.get("transfer_intel") or {}
+    card = _card(player, str(intel.get("action") or "MOVE WATCH"))
+    card.update({
+        "context": context,
+        "transfer_status": intel.get("status"),
+        "move_kind": intel.get("move_kind"),
+        "source_tier": intel.get("source_tier"),
+        "destination": intel.get("destination"),
+        "destination_fixture_score": intel.get("destination_fixture_score"),
+        "current_fixture_score": intel.get("current_fixture_score"),
+        "fixture_delta": intel.get("fixture_delta"),
+        "role_outlook": intel.get("role_outlook"),
+        "feed_synced": intel.get("feed_synced"),
+        "blocks_selection": intel.get("blocks_selection"),
+        "blocks_acquisition": intel.get("blocks_acquisition"),
+        "transfer_summary": intel.get("summary"),
+        "sources": intel.get("sources") or [],
+        "expires_at": intel.get("expires_at"),
+    })
+    return card
 
 
 def _candidate_action(player: dict[str, Any]) -> str | None:
@@ -102,6 +127,8 @@ def _candidate_action(player: dict[str, Any]) -> str | None:
 def build_injury_stash_dashboard(
     my_squad: list[dict[str, Any]],
     available_players: list[dict[str, Any]],
+    *,
+    tracked_players: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     squad_health = [
         _card(player, str((player.get("intelligence") or {}).get("recommendation") or "HOLD"))
@@ -156,6 +183,33 @@ def build_injury_stash_dashboard(
         for row in candidates
         if row.get("dashboard_action") in {"SWAP NOW", "STASH SWAP", "STASH"}
     )
+    my_ids = {str(player.get("player_id")) for player in my_squad}
+    available_ids = {str(player.get("player_id")) for player in available_players}
+    tracked = tracked_players if tracked_players is not None else [*my_squad, *available_players]
+    transfer_rows = []
+    seen_transfer_ids = set()
+    for player in tracked:
+        player_id = str(player.get("player_id"))
+        if not player.get("transfer_intel") or player_id in seen_transfer_ids:
+            continue
+        seen_transfer_ids.add(player_id)
+        if player_id in my_ids:
+            context = "YOUR SQUAD"
+        elif player_id in available_ids:
+            context = "FREE AGENT"
+        else:
+            context = "OWNED ELSEWHERE"
+        transfer_rows.append(_transfer_card(player, context))
+    transfer_rows.sort(key=lambda row: (
+        -transfer_action_rank({"transfer_intel": row.get("transfer_intel")}),
+        -_number(row.get("destination_fixture_score"), -1.0),
+        str(row.get("player") or ""),
+    ))
+    transfer_rows = transfer_rows[:8]
+    early_pickups = [
+        row for row in transfer_rows
+        if row.get("context") == "FREE AGENT" and row.get("dashboard_action") == "EARLY PICKUP"
+    ]
     return {
         "model": INJURY_STASH_MODEL,
         "available": True,
@@ -166,9 +220,13 @@ def build_injury_stash_dashboard(
             "dated_returns": len(return_rows),
             "decision_count": len(squad_health) + len(candidates),
             "active_watch_count": active_watch_count,
+            "transfer_alerts": len(transfer_rows),
+            "early_pickups": len(early_pickups),
         },
         "squad_health": squad_health,
         "stash_candidates": candidates,
         "return_calendar": return_rows,
-        "note": "Only decision-relevant squad concerns, stash candidates and return windows are shown. This is not a browser for every injured Premier League player.",
+        "transfer_watch": transfer_rows,
+        "early_pickups": early_pickups,
+        "note": "Only decision-relevant health and transfer cases are shown. Transfer reports expire automatically, and talks never change a score without stronger evidence.",
     }

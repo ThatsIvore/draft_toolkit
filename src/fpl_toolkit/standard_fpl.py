@@ -27,6 +27,7 @@ from .standard_fpl_transfers import (
     rank_single_transfers,
     unavailable_single_transfer_ranking,
 )
+from .transfer_intel import attach_transfer_intel
 
 
 class StandardFplDataError(RuntimeError):
@@ -285,6 +286,7 @@ def collect_standard_fpl(
         gameweeks=planning_gws,
     )
     players = attach_fixture_matrix(players, fixture_matrix)
+    players = attach_transfer_intel(players, fixture_matrix)
     baseline_path = Path(settings.performance_baseline_path)
     baseline_rows = read_json(baseline_path) if baseline_path.exists() else []
     recent_payloads, recent_status = fetch_completed_event_live(client, bootstrap)

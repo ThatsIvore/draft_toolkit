@@ -244,7 +244,14 @@ function renderPlanner() {
   return `<div class="planner-grid">${gws.map(gw => `<section class="gw-panel"><div class="gw-head">GW${gw}</div><div class="gw-body">${squad.map(p => `<div class="gw-team"><span>${esc(p.player)}</span><strong>${esc(fixtureLabel(p,gw))}</strong></div>`).join('')}</div></section>`).join('')}</div>`;
 }
 
-function allPlayers() { return [...(DATA.my_squad || []), ...(DATA.available_players || [])]; }
+function allPlayers() {
+  const rows = [
+    ...(DATA.my_squad || []),
+    ...(DATA.available_players || []),
+    ...(DATA.h2h_matchup?.opponent_squad || []),
+  ];
+  return [...new Map(rows.map(player => [String(player.player_id), player])).values()];
+}
 function openPlayer(id) {
   const p = allPlayers().find(x => String(x.player_id) === String(id));
   if (!p) return;
@@ -271,7 +278,7 @@ function render() {
       : `Live GW${esc(scoringGw)} · Plan GW${esc(decisionGw)}`;
   document.getElementById('hero').innerHTML = `<div class="hero-top"><div><div class="eyebrow">${esc(DATA.league_name || 'Draft league')}</div><h2>Your Gameweek decision centre</h2><p>Advice starts with GW${esc(decisionGw || 1)}, the first round your next lineup and waiver decisions can still affect.</p></div><div class="gw-pill">${gwLabel}</div></div>
     <div id="freshness-warning-slot">${snapshotWarningMarkup(DATA)}</div>
-    <div class="stats"><div class="stat"><small>My squad</small><strong>${esc(s.my_squad_count)}</strong></div><div class="stat"><small>Available</small><strong>${esc(s.available_count)}</strong></div><div class="stat"><small>Changes</small><strong>${esc(s.ownership_changes)}</strong></div><button class="stat stat-button" data-view-link="injury"><small>Health decisions</small><strong>${esc(DATA.injury_stash?.summary?.decision_count ?? s.injured_or_doubtful_count)}</strong><span>Open dashboard →</span></button></div>`;
+    <div class="stats"><div class="stat"><small>My squad</small><strong>${esc(s.my_squad_count)}</strong></div><div class="stat"><small>Available</small><strong>${esc(s.available_count)}</strong></div><div class="stat"><small>Changes</small><strong>${esc(s.ownership_changes)}</strong></div><button class="stat stat-button" data-view-link="injury"><small>Availability decisions</small><strong>${esc((DATA.injury_stash?.summary?.decision_count ?? s.injured_or_doubtful_count) + (DATA.injury_stash?.summary?.transfer_alerts || 0))}</strong><span>Open dashboard →</span></button></div>`;
   refreshSnapshotHealth();
   document.getElementById('controls').innerHTML = controls();
   document.querySelectorAll('.primary-link').forEach(btn => btn.classList.toggle('active', btn.dataset.view === VIEW));

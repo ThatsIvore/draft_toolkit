@@ -133,6 +133,8 @@ def _normalized_baselines(
 
 
 def availability_score(player: dict[str, Any]) -> float:
+    if bool((player.get("transfer_intel") or {}).get("blocks_selection")):
+        return 0.0
     chance = player.get("chance_next_round")
     if chance is None:
         return 100.0
@@ -140,6 +142,8 @@ def availability_score(player: dict[str, Any]) -> float:
 
 
 def is_hard_inactive(player: dict[str, Any]) -> bool:
+    if bool((player.get("transfer_intel") or {}).get("blocks_acquisition")):
+        return True
     news = str(player.get("news") or "").lower()
     hard_inactive_phrases = ("joined ", "permanently", "on loan for the rest of the season", "out for the season", "season-ending")
     return any(phrase in news for phrase in hard_inactive_phrases)
