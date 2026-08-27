@@ -31,7 +31,7 @@ def _event_points_total(payload: Any) -> float | None:
 
 def normalize_lineup(payload: Any, squad: list[dict[str, Any]], gameweek: int) -> dict[str, Any] | None:
     rows = _pick_rows(payload)
-    if not rows:
+    if len(rows) != 15:
         return None
     by_id = {int(row["player_id"]): row for row in squad if row.get("player_id") is not None}
     picks: list[dict[str, Any]] = []
@@ -48,12 +48,12 @@ def normalize_lineup(payload: Any, squad: list[dict[str, Any]], gameweek: int) -
             position = index
         player = by_id.get(player_id)
         if not player:
-            continue
+            return None
         enriched = dict(player)
         enriched["pick_position"] = position
         enriched["is_starter"] = position <= 11
         picks.append(enriched)
-    if len(picks) < 11:
+    if len(picks) != len(rows):
         return None
     picks.sort(key=lambda row: int(row.get("pick_position", 99)))
     return {

@@ -94,7 +94,7 @@ function renderInjuryStash() {
   const transfers = dashboard.transfer_watch || [];
   return `<section class="injury-dashboard">
     <header class="injury-hero">
-      <div><div class="eyebrow">Availability &amp; Transfers · ${esc(dashboard.model || 'v1.1')}</div><h3>Turn player availability into a decision</h3><p>Health updates and transfer evidence are surfaced only when they can affect a lineup, roster move or early pickup.</p></div>
+      <div><div class="eyebrow">Health &amp; Transfers · ${esc(dashboard.model || 'v1.1')}</div><h3>Turn player availability into a decision</h3><p>Health updates and transfer evidence are surfaced only when they can affect a lineup, roster move or early pickup.</p></div>
       <span class="injury-hero-pill">${esc(summary.decision_count || 0)} decision${Number(summary.decision_count) === 1 ? '' : 's'}</span>
     </header>
     <div class="injury-summary">

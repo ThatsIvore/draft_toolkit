@@ -322,6 +322,13 @@ def test_normalizes_exact_draft_lineup_and_bench_order():
     assert [row["player_id"] for row in lineup["bench"]] == [12, 13, 14, 15]
 
 
+def test_exact_lineup_rejects_an_unresolved_post_waiver_player():
+    current_squad = [{"player_id": player_id, "player": f"P{player_id}"} for player_id in range(1, 15)]
+    payload = {"picks": [{"element": player_id, "position": player_id} for player_id in range(1, 16)]}
+
+    assert normalize_lineup(payload, current_squad, 1) is None
+
+
 def test_incomplete_lineup_uses_non_authoritative_fallback():
     squad = [{"player_id": player_id} for player_id in range(1, 16)]
     assert normalize_lineup({"picks": [{"element": 1, "position": 1}]}, squad, 1) is None

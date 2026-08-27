@@ -138,7 +138,7 @@ function overviewAlertCard(item) {
 }
 
 function overviewPanel(title, eyebrow, body, view, tone = '') {
-  return `<button class="overview-panel ${tone}" data-view-link="${esc(view)}"><span class="eyebrow">${esc(eyebrow)}</span><span class="overview-panel-title">${esc(title)}</span>${body}<b>Open ${esc(view === 'squad' ? 'My Team' : view === 'injury' ? 'Availability & Transfers' : view === 'h2h' ? 'H2H' : view === 'available' ? 'Available' : 'view')} →</b></button>`;
+  return `<button class="overview-panel ${tone}" data-view-link="${esc(view)}"><span class="eyebrow">${esc(eyebrow)}</span><span class="overview-panel-title">${esc(title)}</span>${body}<b>Open ${esc(view === 'squad' ? 'My Team' : view === 'injury' ? 'Health & Transfers' : view === 'h2h' ? 'H2H' : view === 'available' ? 'Available' : 'view')} →</b></button>`;
 }
 
 function renderOverview(data) {
@@ -172,7 +172,7 @@ function renderOverview(data) {
     ${overviewPanel('Recommended XI', 'My Team', lineupBody, 'squad')}
     ${overviewPanel('Next opponent', 'H2H', h2hBody, 'h2h')}
     ${overviewPanel('Best supported move', 'Waivers', waiverBody, 'available')}
-    ${overviewPanel('Availability check', 'Health & transfers', healthBody, 'injury')}
+    ${overviewPanel('Health & transfer alerts', 'Player status', healthBody, 'injury')}
     ${overviewPanel('Four-Gameweek shape', 'Outlook', outlookBody, 'h2h')}
   </div></section></div>`;
 }
