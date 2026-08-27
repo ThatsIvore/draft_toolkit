@@ -1,9 +1,32 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-27T17:19:07.691230+00:00",
+  "updated_at": "2026-08-27T22:17:59.691256+00:00",
   "managers": {
     "307364": {
-      "transactions": [],
+      "transactions": [
+        {
+          "fingerprint": "2:556:542",
+          "captured_at": "2026-08-27T22:17:59.691256+00:00",
+          "gameweek": 2,
+          "adds": [
+            {
+              "player_id": 556,
+              "player": "M.Sangaré",
+              "position": "MID",
+              "roster_score": 69.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 542,
+              "player": "E.Le Fée",
+              "position": "MID",
+              "roster_score": 79.9
+            }
+          ],
+          "value_delta": -10.7
+        }
+      ],
       "lineups": {
         "1": {
           "gameweek": 1,
@@ -29,7 +52,42 @@
       "team_name": "Vængir Júpíters"
     },
     "334397": {
-      "transactions": [],
+      "transactions": [
+        {
+          "fingerprint": "2:115,464:527,533",
+          "captured_at": "2026-08-27T22:17:59.691256+00:00",
+          "gameweek": 2,
+          "adds": [
+            {
+              "player_id": 115,
+              "player": "De Cuyper",
+              "position": "DEF",
+              "roster_score": 82.3
+            },
+            {
+              "player_id": 464,
+              "player": "Wissa",
+              "position": "FWD",
+              "roster_score": 67.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 527,
+              "player": "Richarlison",
+              "position": "FWD",
+              "roster_score": 83.3
+            },
+            {
+              "player_id": 533,
+              "player": "Mukiele",
+              "position": "DEF",
+              "roster_score": 84.7
+            }
+          ],
+          "value_delta": -18.5
+        }
+      ],
       "lineups": {
         "1": {
           "gameweek": 1,
@@ -55,7 +113,30 @@
       "team_name": "My own Wirtz enemy"
     },
     "336654": {
-      "transactions": [],
+      "transactions": [
+        {
+          "fingerprint": "2:335:452",
+          "captured_at": "2026-08-27T22:17:59.691256+00:00",
+          "gameweek": 2,
+          "adds": [
+            {
+              "player_id": 335,
+              "player": "Stach",
+              "position": "MID",
+              "roster_score": 86.6
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 452,
+              "player": "Bruno G.",
+              "position": "MID",
+              "roster_score": 74.9
+            }
+          ],
+          "value_delta": 11.7
+        }
+      ],
       "lineups": {
         "1": {
           "gameweek": 1,
@@ -133,7 +214,54 @@
       "team_name": "Weapon X"
     },
     "339421": {
-      "transactions": [],
+      "transactions": [
+        {
+          "fingerprint": "2:10,123,569:156,392,55",
+          "captured_at": "2026-08-27T22:17:59.691256+00:00",
+          "gameweek": 2,
+          "adds": [
+            {
+              "player_id": 10,
+              "player": "White",
+              "position": "DEF",
+              "roster_score": 73.0
+            },
+            {
+              "player_id": 123,
+              "player": "Hinshelwood",
+              "position": "MID",
+              "roster_score": 83.0
+            },
+            {
+              "player_id": 569,
+              "player": "Gonzalo",
+              "position": "FWD",
+              "roster_score": 67.6
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 55,
+              "player": "Watkins",
+              "position": "FWD",
+              "roster_score": 1.8
+            },
+            {
+              "player_id": 156,
+              "player": "Neto",
+              "position": "MID",
+              "roster_score": 79.8
+            },
+            {
+              "player_id": 392,
+              "player": "Aït-Nouri",
+              "position": "DEF",
+              "roster_score": 79.5
+            }
+          ],
+          "value_delta": 62.5
+        }
+      ],
       "lineups": {
         "1": {
           "gameweek": 1,
