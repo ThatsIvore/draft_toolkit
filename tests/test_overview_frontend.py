@@ -9,7 +9,7 @@ def test_overview_is_the_default_and_has_a_dedicated_navigation_route():
     assert "let VIEW = 'overview'" in app
     assert 'data-view="overview">Overview' in index
     assert "overview-v1.css?v=20260827.1" in index
-    assert "overview-v1.js?v=20260827.1" in index
+    assert "overview-v1.js?v=20260827.2" in index
     assert "['overview','squad'" in interaction
 
 
@@ -26,6 +26,7 @@ def test_overview_uses_existing_guarded_decisions_for_urgency():
     assert "row.dashboard_action === 'EARLY PICKUP'" in source
     assert "const deduplicated = new Map()" in source
     assert "No urgent action clears the guardrails" in source
+    assert "Open ${esc(view === 'squad' ? 'My Team' : view === 'injury' ? 'Health & Transfers'" in source
 
 
 def test_specialist_views_no_longer_repeat_the_global_hero():

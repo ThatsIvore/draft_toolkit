@@ -210,7 +210,10 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     try:
         lineup_payload = client.entry_event(settings.draft_entry_id, scoring_gw)
         write_json(raw_dir / f"lineup-gw{scoring_gw}-{stamp}.json", lineup_payload)
-        lineup = normalize_lineup(lineup_payload, report.get("my_squad", []), scoring_gw)
+        # A locked scoring-Gameweek lineup may contain a player who has since
+        # left the current squad through waivers. Resolve those historical picks
+        # against the complete player pool rather than today's ownership only.
+        lineup = normalize_lineup(lineup_payload, ownership, scoring_gw)
     except FPLApiError:
         lineup = None
     report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), scoring_gw)
