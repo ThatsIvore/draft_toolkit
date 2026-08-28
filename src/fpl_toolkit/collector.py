@@ -8,6 +8,7 @@ from .baseline import baseline_lookup, capture_performance_baseline
 from .changefeed import build_change_feed, capture_decision_state
 from .config import Settings
 from .diff import diff_ownership
+from .external_match_evidence import build_api_football_shadow, public_shadow_summary
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
 from .h2h import build_h2h_matchup, build_h2h_outlook
 from .injury_stash import build_injury_stash_dashboard
@@ -21,6 +22,7 @@ from .planner import build_schedule_planner
 from .report import build_report, current_gameweek
 from .recent_match_evidence import (
     build_recent_match_evidence,
+    completed_gameweeks,
     fetch_completed_event_live,
     player_id_map_by_code,
 )
@@ -67,6 +69,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     state_path = root / "state" / "ownership.json"
     decision_state_path = root / "state" / "decision.json"
     manager_history_path = root / "state" / "manager-decisions.json"
+    external_shadow_path = root / "state" / "external-match-evidence.json"
     public_report_path = Path("public/data/latest.json")
     baseline_path = root / "state" / "performance-baseline.json"
     draft_path = root / "draft" / "league-draft.json"
@@ -123,7 +126,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     try:
         fantasy_bootstrap = fantasy_client.bootstrap_static()
     except FPLApiError:
-        fantasy_bootstrap = {"events": [], "elements": []}
+        fantasy_bootstrap = {"events": [], "elements": [], "teams": []}
         recent_payloads, recent_status = [], "bootstrap_unavailable"
     else:
         recent_payloads, recent_status = fetch_completed_event_live(fantasy_client, fantasy_bootstrap)
@@ -132,6 +135,32 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         recent_payloads,
         event_player_id_map=player_id_map_by_code(fantasy_bootstrap, bootstrap),
     )
+
+    draft_id_by_code = {
+        int(element["code"]): int(element["id"])
+        for element in bootstrap.get("elements") or []
+        if isinstance(element, dict)
+        and element.get("code") is not None
+        and element.get("id") is not None
+    }
+    official_scores_by_code: dict[int, float] = {}
+    for code, draft_player_id in draft_id_by_code.items():
+        evidence = recent_evidence.get(draft_player_id)
+        if not isinstance(evidence, dict) or evidence.get("grade") is None:
+            continue
+        try:
+            official_scores_by_code[code] = float(evidence["score"])
+        except (KeyError, TypeError, ValueError):
+            continue
+    external_shadow = build_api_football_shadow(
+        provider=settings.external_stats_provider,
+        api_key=settings.api_football_key,
+        bootstrap=fantasy_bootstrap,
+        fixtures=fixtures,
+        completed_gameweeks=completed_gameweeks(fantasy_bootstrap),
+        official_scores_by_code=official_scores_by_code,
+    )
+    write_json(external_shadow_path, external_shadow)
 
     if baseline_path.exists():
         performance_baseline_rows = read_json(baseline_path)
@@ -189,6 +218,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
             "status": recent_status,
             "completed_gameweeks": [gameweek for gameweek, _ in recent_payloads],
         },
+        "external_match_evidence": public_shadow_summary(external_shadow),
     }
 
     scoring_phase = gameweek_phase(fixtures, scoring_gw)
@@ -224,9 +254,6 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     try:
         lineup_payload = client.entry_event(settings.draft_entry_id, scoring_gw)
         write_json(raw_dir / f"lineup-gw{scoring_gw}-{stamp}.json", lineup_payload)
-        # A locked scoring-Gameweek lineup may contain a player who has since
-        # left the current squad through waivers. Resolve those historical picks
-        # against the complete player pool rather than today's ownership only.
         lineup = normalize_lineup(lineup_payload, ownership, scoring_gw)
     except FPLApiError:
         lineup = None
