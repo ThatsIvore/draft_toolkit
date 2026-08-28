@@ -10,14 +10,15 @@ This project turns public FPL and FPL Draft data into an in-season decision tool
 6. attach a four-Gameweek fixture matrix;
 7. score roster value, floor, upside, role evidence and return-aligned stash value;
 8. grade recent finalized performances from the official Standard FPL event feed, retaining xG/xA and using official defensive contribution as a small outfield tie-break when present, while mapping safely to Draft players through the shared stable player code;
-9. apply expiring, source-linked transfer evidence to availability, destination fixtures, acquisition advice and H2H eligibility;
-10. compare same-position waiver replacements and recommend a legal starting XI;
-11. project and audit H2H matchups across a four-Gameweek window;
-12. retain aggregate opponent transfer and completed-lineup decisions;
-13. use a verified 90-pick draft history as a small, decaying opponent prior;
-14. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant health/transfer cases;
-15. summarize urgent user-relevant signals on a decision-first Overview; and
-16. produce a redacted machine-readable report for a GitHub Pages dashboard.
+9. optionally collect finalized API-Football process evidence into a provider-neutral shadow state without changing recommendations;
+10. apply expiring, source-linked transfer evidence to availability, destination fixtures, acquisition advice and H2H eligibility;
+11. compare same-position waiver replacements and recommend a legal starting XI;
+12. project and audit H2H matchups across a four-Gameweek window;
+13. retain aggregate opponent transfer and completed-lineup decisions;
+14. use a verified 90-pick draft history as a small, decaying opponent prior;
+15. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant health/transfer cases;
+16. summarize urgent user-relevant signals on a decision-first Overview; and
+17. produce a redacted machine-readable report for a GitHub Pages dashboard.
 
 ## Identifier
 
@@ -84,19 +85,29 @@ The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as se
 
 Recent Match Evidence v1 remains outcome-led and uses only finalized official FPL Gameweeks. Points, BPS, expected goal involvement and minutes retain the dominant share. The collector also retains official xG and xA for diagnosis and, for outfield position groups where the feed contains real defensive-contribution values, reallocates only 10 percentage points of the match grade to position-relative defensive contribution. If that signal is absent, the exact legacy weights are used; goalkeeper scoring is unchanged. Recency weighting, sample-confidence shrinkage and the existing ±5 intelligence adjustment cap are preserved.
 
+## External Match Evidence shadow mode
+
+API-Football is the first optional external provider. Set `FPL_EXTERNAL_STATS_PROVIDER=api_football` and provide `API_FOOTBALL_KEY` as a GitHub Actions secret. Missing credentials, provider failures, unmatched fixtures and ambiguous player mappings fail neutral and do not block the normal FPL collector.
+
+External Match Evidence v1 currently uses only finalized Premier League process activity that adds information beyond the official outcome-led grade: shots, shots on target, key passes and successful dribbles. It does not use API-Football's match rating in the model, and it deliberately excludes external tackle/interception activity from this first process score to avoid double-counting official FPL defensive contribution. Goalkeepers receive no external process score.
+
+Provider players are mapped to the official FPL stable player `code` through an exact team-scoped identity check. Ambiguous or unmatched players are excluded rather than fuzzy-joined, with an explicit override hook available for verified edge cases. The derived shadow state is saved at `data/state/external-match-evidence.json`; raw provider payloads, provider player/fixture IDs, credentials and raw per-match statistics are not persisted. The public report exposes only aggregate provider status and mapping counts.
+
+Shadow scores are recency weighted and confidence shrunk. A diagnostic combined score allows at most a 20% external share at full confidence; after one 90-minute appearance the effective external weight is only about 2.2%. Crucially, the shadow score is not passed into `attach_intelligence`, so Available, Recommended XI, H2H, Planner and every current recommendation remain unchanged while the evidence is evaluated over several Gameweeks.
+
 ## GitHub Actions
 
-The workflow runs every four hours at minute 17 and can also be run manually. `FPL_DRAFT_ENTRY_ID` is configured as `336654` in the workflow. `FPL_DRAFT_LEAGUE_ID` is optional unless live API validation shows it is needed.
+The workflow runs every four hours at minute 17 and can also be run manually. `FPL_DRAFT_ENTRY_ID` is configured as `336654` in the workflow. `FPL_DRAFT_LEAGUE_ID` is optional unless live API validation shows it is needed. API-Football shadow collection requires `FPL_EXTERNAL_STATS_PROVIDER=api_football` and an `API_FOOTBALL_KEY` repository Actions secret to be exposed to the collector environment.
 
 The notification email address is deliberately not committed. When email alerts are implemented, the address and provider API key should be GitHub Actions secrets.
 
 ## Privacy
 
-League payloads can contain manager names. Raw API responses and full historical snapshots are gitignored. Minimal ownership and aggregate manager-decision states persist only what is needed for change detection and opponent profiling. The public report strips real manager names and entry IDs, but keeps each manager's chosen league team name as the H2H label.
+League payloads can contain manager names. Raw API responses and full historical snapshots are gitignored. Minimal ownership and aggregate manager-decision states persist only what is needed for change detection and opponent profiling. External shadow state contains derived scores keyed by the public official FPL player code, not raw API-Football records or provider identifiers. The public report strips real manager names and entry IDs, but keeps each manager's chosen league team name as the H2H label.
 
 ## Current boundary
 
-The toolkit now includes projections, recent finalized-match evidence, recommendation scoring, injury-return timing, transfer-aware selection eligibility, stash/roster value, opponent-drop monitoring, personalised add/drop comparisons, Recommended XI, a decision-first Overview, H2H scouting and evidence-weighted opponent decision profiles. Material Decision Updates persist through the current actionable Gameweek, while the previous two completed decision cycles remain available as a compact archive. Once a Gameweek locks, live scoring and outcome diagnostics remain attached to that round while every actionable recommendation advances to the next open Gameweek. The Available view supplies the primary season-value add/drop verdict; an H2H move is a secondary one-Gameweek simulation and can differ because it ranks projected XI gain. It remains decision support rather than an automated transaction system. Opponent profiles observe outcomes rather than intent: unsubmitted waiver requests are invisible, draft influence is deliberately small, and early samples are pulled toward neutral. Return dates come only from readable official FPL news, expected minutes and projected points remain transparent heuristics, and the model does not ingest press conferences or specialist medical reporting.
+The toolkit now includes projections, recent finalized-match evidence, recommendation scoring, injury-return timing, transfer-aware selection eligibility, stash/roster value, opponent-drop monitoring, personalised add/drop comparisons, Recommended XI, a decision-first Overview, H2H scouting and evidence-weighted opponent decision profiles. API-Football process evidence is currently a shadow experiment only and cannot change any recommendation. Material Decision Updates persist through the current actionable Gameweek, while the previous two completed decision cycles remain available as a compact archive. Once a Gameweek locks, live scoring and outcome diagnostics remain attached to that round while every actionable recommendation advances to the next open Gameweek. The Available view supplies the primary season-value add/drop verdict; an H2H move is a secondary one-Gameweek simulation and can differ because it ranks projected XI gain. It remains decision support rather than an automated transaction system. Opponent profiles observe outcomes rather than intent: unsubmitted waiver requests are invisible, draft influence is deliberately small, and early samples are pulled toward neutral. Return dates come only from readable official FPL news, expected minutes and projected points remain transparent heuristics, and the model does not ingest press conferences or specialist medical reporting.
 
 The Python package version in `pyproject.toml` is separate from feature/model versions shown in the dashboard. Do not use package version `0.1.0` as evidence that a particular intelligence, H2H or interface model is deployed.
 
