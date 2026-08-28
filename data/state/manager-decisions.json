@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-28T11:28:17.769290+00:00",
+  "updated_at": "2026-08-28T22:24:19.534610+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -135,6 +135,28 @@
             }
           ],
           "value_delta": 11.7
+        },
+        {
+          "fingerprint": "3:327:471",
+          "captured_at": "2026-08-28T22:24:19.534610+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 327,
+              "player": "Bijol",
+              "position": "DEF",
+              "roster_score": 84.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 471,
+              "player": "Milenković",
+              "position": "DEF",
+              "roster_score": 74.6
+            }
+          ],
+          "value_delta": 9.8
         }
       ],
       "lineups": {
@@ -162,7 +184,42 @@
       "team_name": "FC FC"
     },
     "338272": {
-      "transactions": [],
+      "transactions": [
+        {
+          "fingerprint": "3:237,249:208,526",
+          "captured_at": "2026-08-28T22:24:19.534610+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 237,
+              "player": "Ndiaye",
+              "position": "MID",
+              "roster_score": 81.3
+            },
+            {
+              "player_id": 249,
+              "player": "Barry",
+              "position": "FWD",
+              "roster_score": 78.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 208,
+              "player": "Sarr",
+              "position": "MID",
+              "roster_score": 46.2
+            },
+            {
+              "player_id": 526,
+              "player": "Solanke",
+              "position": "FWD",
+              "roster_score": 68.4
+            }
+          ],
+          "value_delta": 44.9
+        }
+      ],
       "lineups": {
         "1": {
           "gameweek": 1,
@@ -188,7 +245,30 @@
       "team_name": "No Salad"
     },
     "338553": {
-      "transactions": [],
+      "transactions": [
+        {
+          "fingerprint": "3:68:43",
+          "captured_at": "2026-08-28T22:24:19.534610+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 68,
+              "player": "Tavernier",
+              "position": "MID",
+              "roster_score": 81.9
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 43,
+              "player": "Tielemans",
+              "position": "MID",
+              "roster_score": 70.1
+            }
+          ],
+          "value_delta": 11.8
+        }
+      ],
       "lineups": {
         "1": {
           "gameweek": 1,

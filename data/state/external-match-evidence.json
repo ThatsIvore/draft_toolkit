@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "provider": "api_football",
+  "mode": "shadow",
+  "status": "missing_api_key",
+  "completed_gameweeks": [
+    1
+  ],
+  "mapped_appearances": 0,
+  "unmapped_appearances": 0,
+  "ambiguous_appearances": 0,
+  "players": {}
+}
