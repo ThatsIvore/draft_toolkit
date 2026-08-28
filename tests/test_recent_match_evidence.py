@@ -122,19 +122,36 @@ def test_expected_and_defensive_process_stats_are_retained_and_break_ties():
     assert evidence[1]["gameweeks"][0]["defensive_contribution"] == 16
 
 
-def test_goalkeepers_keep_previous_grade_weights_without_defensive_contribution():
-    players = [_player(1, "GKP"), _player(2, "GKP")]
+def test_missing_defensive_process_data_preserves_legacy_grade_weights():
+    players = [_player(1), _player(2)]
     event = _event(
         1,
         {
-            1: _stats(7, 34, 0.0, defensive_contribution=99),
-            2: _stats(2, 8, 0.0, defensive_contribution=0),
+            1: _stats(10, 40, 1.0),
+            2: _stats(2, 8, 0.0),
         },
     )
 
     evidence = build_recent_match_evidence(players, [event])
 
-    assert evidence[1]["score"] > evidence[2]["score"]
+    assert evidence[1]["gameweeks"][0]["grade_score"] == 97.5
+    assert evidence[2]["gameweeks"][0]["grade_score"] == 2.5
+
+
+def test_goalkeepers_ignore_defensive_contribution_when_other_stats_match():
+    players = [_player(1, "GKP"), _player(2, "GKP")]
+    event = _event(
+        1,
+        {
+            1: _stats(5, 20, 0.0, defensive_contribution=99),
+            2: _stats(5, 20, 0.0, defensive_contribution=0),
+        },
+    )
+
+    evidence = build_recent_match_evidence(players, [event])
+
+    assert evidence[1]["gameweeks"][0]["grade_score"] == evidence[2]["gameweeks"][0]["grade_score"]
+    assert evidence[1]["score"] == evidence[2]["score"]
 
 
 def test_non_appearance_is_not_given_a_grade_or_form_adjustment():
