@@ -17,6 +17,8 @@ class Settings:
     draft_league_id: str | None = None
     planning_horizon: int = 4
     output_dir: str = "data"
+    external_stats_provider: str | None = None
+    api_football_key: str | None = None
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -24,6 +26,8 @@ class Settings:
         league_id = os.getenv("FPL_DRAFT_LEAGUE_ID", "").strip() or None
         horizon_raw = os.getenv("FPL_PLANNING_HORIZON", "4").strip()
         output_dir = os.getenv("FPL_OUTPUT_DIR", "data").strip() or "data"
+        external_stats_provider = os.getenv("FPL_EXTERNAL_STATS_PROVIDER", "").strip().lower() or None
+        api_football_key = os.getenv("API_FOOTBALL_KEY", "").strip() or None
 
         if not entry_id:
             raise ConfigError("FPL_DRAFT_ENTRY_ID is required.")
@@ -35,6 +39,8 @@ class Settings:
             )
         if league_id is not None and not re.fullmatch(r"[0-9]+", league_id):
             raise ConfigError("FPL_DRAFT_LEAGUE_ID must be numeric when provided.")
+        if external_stats_provider not in {None, "api_football"}:
+            raise ConfigError("FPL_EXTERNAL_STATS_PROVIDER must be api_football when provided.")
         try:
             horizon = int(horizon_raw)
         except ValueError as exc:
@@ -47,6 +53,8 @@ class Settings:
             draft_league_id=league_id,
             planning_horizon=horizon,
             output_dir=output_dir,
+            external_stats_provider=external_stats_provider,
+            api_football_key=api_football_key,
         )
 
 
