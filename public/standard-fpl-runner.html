@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#735ff3">
+  <title>Standard FPL Private Runner</title>
+  <link rel="stylesheet" href="standard-fpl-viewer.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div>
+        <p class="eyebrow">FPL Toolkit · Self-hosted personal service</p>
+        <h1>Standard FPL Private Runner</h1>
+        <p class="lede">Generate your report in one browser flow without installing Python on this device.</p>
+      </div>
+      <span class="private-pill">Read-only · ephemeral</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="loader-card" class="card loader-card" aria-labelledby="loader-title">
+      <div>
+        <span class="tag">LAN-only POC</span>
+        <h2 id="loader-title">Generate a private report</h2>
+        <p>Paste your ordinary public FPL entry URL and choose the sanitized snapshot produced by the helper.</p>
+      </div>
+      <form id="snapshot-form" class="runner-form">
+        <label for="entry-url"><strong>Standard FPL entry URL</strong></label>
+        <input id="entry-url" name="entry_url" type="url" required autocomplete="off" spellcheck="false" placeholder="https://fantasy.premierleague.com/en/entry/123456/event/1">
+        <label class="drop-zone" for="snapshot-file">
+          <strong>Choose sanitized team snapshot</strong>
+          <span><code>standard-fpl-current-team.json</code> · maximum 256 KB</span>
+          <input id="snapshot-file" type="file" accept="application/json,.json" required>
+        </label>
+        <button id="generate-report" class="primary-button" type="submit">Generate private report</button>
+      </form>
+      <p id="loader-status" class="status" role="status">Waiting for your entry URL and sanitized snapshot.</p>
+      <details>
+        <summary>How do I create the snapshot?</summary>
+        <ol>
+          <li>Sign in to the official FPL site and open Pick Team.</li>
+          <li>Use the toolkit’s two-stage private snapshot helper.</li>
+          <li>Choose the downloaded <code>standard-fpl-current-team.json</code> here.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section class="card privacy-card" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Privacy boundary</h2>
+      <p>The snapshot is sent only to this self-hosted runner. It is validated, combined with public FPL data and returned to this tab without being written to disk, browser storage, GitHub or the Draft report.</p>
+      <p>This first version has no user accounts or remote-access protection. Keep it on your trusted LAN and do not add router port forwarding.</p>
+    </section>
+
+    <div id="dashboard" hidden>
+      <section class="hero card">
+        <div>
+          <p class="eyebrow dark">Private Standard FPL report</p>
+          <h2 id="team-name">Private team</h2>
+          <p id="report-meta"></p>
+        </div>
+        <div class="hero-actions">
+          <span id="gw-pill" class="gw-pill"></span>
+          <button id="clear-report" class="secondary-button" type="button">Clear private report</button>
+        </div>
+      </section>
+
+      <section id="summary-stats" class="stats" aria-label="Report summary"></section>
+
+      <section class="card decision-card" aria-labelledby="decision-title">
+        <div class="section-head"><div><p class="eyebrow dark">Transfer decision</p><h2 id="decision-title">Hold or transfer</h2></div><span id="decision-badge" class="decision-badge"></span></div>
+        <p id="decision-summary" class="decision-summary"></p>
+        <div id="decision-candidate"></div>
+        <ul id="decision-reasons" class="reason-list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="lineup-title">
+        <div class="section-head"><div><p class="eyebrow dark">Next actionable Gameweek</p><h2 id="lineup-title">Recommended XI</h2></div><span id="formation-pill" class="soft-pill"></span></div>
+        <div id="captaincy" class="captaincy"></div>
+        <div id="lineup-groups" class="lineup-groups"></div>
+        <div><h3>Bench order</h3><div id="bench-row" class="player-row"></div></div>
+      </section>
+
+      <section class="card" aria-labelledby="outlook-title">
+        <div class="section-head"><div><p class="eyebrow dark">Planning horizon</p><h2 id="outlook-title">Four-Gameweek squad outlook</h2></div></div>
+        <div id="outlook-grid" class="outlook-grid"></div>
+        <div id="usage-grid" class="usage-grid"></div>
+      </section>
+
+      <section class="card" aria-labelledby="candidates-title">
+        <div class="section-head"><div><p class="eyebrow dark">Legal shortlist</p><h2 id="candidates-title">Top single transfers</h2></div></div>
+        <div id="transfer-candidates" class="candidate-list"></div>
+      </section>
+
+      <section class="card" aria-labelledby="outcomes-title">
+        <div class="section-head"><div><p class="eyebrow dark">Frozen decisions</p><h2 id="outcomes-title">Outcome tracking</h2></div></div>
+        <div id="outcome-content"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>Independent read-only decision support. Not affiliated with the Premier League.</footer>
+  <script src="standard-fpl-viewer.js"></script>
+  <script src="standard-fpl-runner.js"></script>
+</body>
+</html>

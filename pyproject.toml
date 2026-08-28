@@ -16,6 +16,7 @@ dev = ["pytest>=8.3,<9"]
 
 [project.scripts]
 fpl-toolkit = "fpl_toolkit.cli:main"
+fpl-toolkit-runner = "fpl_toolkit.standard_fpl_runner:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

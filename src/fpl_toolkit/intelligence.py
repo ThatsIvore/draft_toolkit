@@ -8,6 +8,9 @@ from typing import Any
 from .transfer_intel import transfer_blocks_acquisition, transfer_blocks_selection
 
 
+MODEL_VERSION = "v0.6.0"
+
+
 def _clamp(value: float, low: float = 0.0, high: float = 100.0) -> float:
     return max(low, min(high, value))
 
@@ -395,7 +398,7 @@ def attach_intelligence(
         stash = (0.30 * baseline + 0.30 * stash_fixtures + 0.08 * availability + 0.12 * usage + 0.20 * upside) * active_factor
         action, reason = _recommendation(row, roster, stash, availability, return_signal, trend, my_entry_id)
         row["intelligence"] = {
-            "model": "v0.6.0", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
+            "model": MODEL_VERSION, "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1), "availability_score": round(_clamp(availability), 1),
             "post_return_fixture_score": None if post_return_fixtures is None else round(_clamp(post_return_fixtures), 1),
             "stash_fixture_score": round(_clamp(stash_fixtures), 1),

@@ -11,7 +11,7 @@ from .diff import diff_ownership
 from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning_gameweeks
 from .h2h import build_h2h_matchup, build_h2h_outlook
 from .injury_stash import build_injury_stash_dashboard
-from .intelligence import attach_intelligence
+from .intelligence import MODEL_VERSION, attach_intelligence
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
 from .opponent_profile import build_manager_profiles, lineup_decision, update_manager_history
@@ -167,7 +167,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.6.0",
+        "version": MODEL_VERSION,
         "description": "Early-season calibrated model with durable performance and role priors, capped position-relative grades from final official Gameweeks, live-match stabilization, floor/upside and conservative waiver guardrails.",
         "performance_baseline_players": len(performance_baseline_rows),
         "recent_match_evidence": {

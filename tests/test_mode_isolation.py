@@ -21,6 +21,7 @@ STANDARD_ONLY_MODULES = {
     "standard_fpl_lineup",
     "standard_fpl_outcomes",
     "standard_fpl_rules",
+    "standard_fpl_runner",
     "standard_fpl_snapshot",
     "standard_fpl_transfers",
 }

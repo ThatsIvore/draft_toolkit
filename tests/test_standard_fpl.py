@@ -439,6 +439,45 @@ def test_collect_standard_fpl_uses_valid_private_snapshot_for_current_state(tmp_
     assert "access_token" not in serialized
 
 
+def test_collect_standard_fpl_accepts_private_snapshot_in_memory_without_writing(tmp_path):
+    output_path = tmp_path / "must-not-exist.json"
+    settings = StandardFplSettings(
+        entry_id="123456",
+        planning_horizon=4,
+        output_path=str(output_path),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+    )
+
+    report = collect_standard_fpl(
+        settings,
+        client=_Client(),
+        previous_report={},
+        private_snapshot=_private_snapshot(),
+    )
+
+    assert report["squad_source"]["type"] == "private_current_team_snapshot"
+    assert report["financial_snapshot"]["free_transfers"] == 2
+    assert not output_path.exists()
+
+
+def test_collect_standard_fpl_rejects_stale_in_memory_snapshot(tmp_path):
+    snapshot = _private_snapshot()
+    snapshot["decision_gameweek"] = 3
+    settings = StandardFplSettings(
+        entry_id="123456",
+        output_path=str(tmp_path / "must-not-exist.json"),
+        performance_baseline_path=str(tmp_path / "missing-baseline.json"),
+    )
+
+    with pytest.raises(StandardFplDataError, match="Capture a fresh snapshot"):
+        collect_standard_fpl(
+            settings,
+            client=_Client(),
+            previous_report={},
+            private_snapshot=snapshot,
+        )
+
+
 def test_collect_standard_fpl_reuses_same_team_frozen_decision(tmp_path):
     snapshot_path = tmp_path / "current-team.json"
     snapshot_path.write_text(json.dumps(_private_snapshot()), encoding="utf-8")

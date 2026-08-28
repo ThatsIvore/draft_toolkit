@@ -1,4 +1,4 @@
-# Standard FPL Self-Hosted Runner Discovery
+# Standard FPL Self-Hosted Runner
 
 Last reviewed: 23 August 2026
 
@@ -8,18 +8,17 @@ A small single-user service on the manager's own Unraid server is the best next 
 
 This is feasible as a separate Standard FPL service. It is not a substitute for Premier League permission, registered authentication or tenant isolation in a commercial product, and it must not be connected to the public Draft/H2H report pipeline.
 
-## Current bottleneck
+## Implemented Slice 1
 
-The implemented flow still requires the manager to:
+The LAN-only contract POC now lets the manager:
 
 1. use the browser-local helper to download `standard-fpl-current-team.json`;
-2. move the file into the repository's gitignored private directory;
-3. install Python 3.11 and the toolkit;
-4. configure entry and snapshot environment variables;
-5. run `fpl-toolkit --mode standard-fpl`; and
-6. load the generated report into the browser-local viewer.
+2. open the private runner from any browser on the trusted LAN;
+3. paste the ordinary public Standard FPL entry URL;
+4. choose the sanitized snapshot; and
+5. receive and render the generated report in the same tab.
 
-The helper and viewer are browser-accessible, but the analysis step is not. That is a practical blocker on a managed laptop where software installation is unavailable.
+Python and the toolkit run only inside the container. The laptop no longer needs Python, repository access or a command line.
 
 ## Recommended personal architecture
 
@@ -33,9 +32,27 @@ flowchart TD
     B -->|"Render locally"| F["Standard FPL viewer"]
 ```
 
-The service should be delivered as a dedicated container with its own entrypoint and web UI. The browser selects the sanitized snapshot, the server validates it before analysis, fetches only public FPL data, runs `collect_standard_fpl`, and returns the private report to the same browser session.
+The service is delivered through `Dockerfile.standard-fpl-runner` with the dedicated `fpl-toolkit-runner` entrypoint and web UI. The browser selects the sanitized snapshot, the server validates it before analysis, fetches only public FPL data, runs `collect_standard_fpl`, and returns the private report to the same browser session.
 
-The first version should retain neither the uploaded snapshot nor generated report after the response completes. Frozen outcome history can be added later as an explicit opt-in persistent volume once its retention and deletion behaviour are defined.
+The first version retains neither the uploaded snapshot nor generated report after the response completes. It has no upload/report persistence, browser storage, analytics, user account or endpoint that changes an FPL team. Frozen outcome history can be added later as an explicit opt-in persistent volume once its retention and deletion behaviour are defined.
+
+## Build and run on the trusted LAN
+
+From a checkout of the repository on Unraid:
+
+```bash
+docker build -f Dockerfile.standard-fpl-runner -t fpl-standard-runner:local .
+docker run --rm --name fpl-standard-runner \
+  --read-only \
+  --cap-drop ALL \
+  --security-opt no-new-privileges \
+  -p <UNRAID_LAN_IP>:8787:8787 \
+  fpl-standard-runner:local
+```
+
+Replace `<UNRAID_LAN_IP>` with the server's private LAN address, then open `http://<UNRAID_LAN_IP>:8787`. Binding the published port to that private address reduces accidental exposure but is not authentication. Do not add router port forwarding or a public reverse-proxy route.
+
+The container has no volume and runs as an unprivileged user. `GET /health` reports the service/model version and `ephemeral` storage mode without private data. Stop the container to remove the running service. Rebuild the local image from a reviewed repository version to upgrade; a managed Unraid template belongs to Slice 2.
 
 ## Trust boundaries
 
@@ -49,7 +66,7 @@ The first version should retain neither the uploaded snapshot nor generated repo
 | FPL actions | Keep the runner read-only. It must never submit transfers, lineups, captaincy or chips. |
 | Draft/H2H | Use a separate route, container entrypoint and private report type. Do not import it from the Draft collector or publish to `public/data/latest.json`. |
 
-## Proposed private API
+## Private API
 
 The smallest useful service surface is:
 
@@ -59,7 +76,9 @@ The smallest useful service surface is:
 | `GET /` | Serve a private upload-and-report page derived from the current viewer. |
 | `POST /api/standard-fpl/report` | Accept one sanitized snapshot plus the ordinary public entry URL and return one validated private report. |
 
-The report endpoint should use `multipart/form-data`, enforce a small body limit, reject unexpected parts, set a short request timeout and return structured safe errors. It should not accept a raw entry ID alone as authorization; the identifier is merely public model context.
+The report endpoint uses `multipart/form-data`, enforces a 256 KB default body limit, rejects missing, duplicate and unexpected parts, applies short request/upstream timeouts and returns structured safe errors. It accepts only an ordinary `fantasy.premierleague.com` entry URL rather than a raw ID. The identifier is public model context and is not treated as authorization.
+
+Responses use `no-store`, same-origin-only browser requests, a restrictive Content Security Policy and no CORS permission. Credential-shaped snapshot fields, identity-shaped report fields and unsupported HTTP write methods fail closed. Request bodies, entry URLs and reports are omitted from service logs.
 
 ## Authentication and exposure
 
@@ -77,7 +96,7 @@ Plex-style login is not a direct fit for Standard FPL. Plex can prove identity a
 
 ## Implementation slices
 
-### Slice 1: local contract POC
+### Slice 1: local contract POC — implemented
 
 - add a Standard-only service module using the Python standard library or one narrowly justified web dependency;
 - accept the strict snapshot contract and public entry URL;
@@ -86,7 +105,7 @@ Plex-style login is not a direct fit for Standard FPL. Plex can prove identity a
 - add request-size, malformed-input, stale-Gameweek and forbidden-field tests; and
 - add a container health check.
 
-### Slice 2: Unraid usability
+### Slice 2: Unraid usability — next
 
 - publish an image and Unraid template;
 - provide a browser upload page based on the current private viewer;
@@ -101,18 +120,17 @@ Plex-style login is not a direct fit for Standard FPL. Plex can prove identity a
 - keep uploaded snapshots out of logs and long-term storage; and
 - test recovery across container upgrades.
 
-## Acceptance criteria for Slice 1
+## Slice 1 acceptance status
 
-- A laptop with only a browser can turn `standard-fpl-current-team.json` into a rendered report.
-- The snapshot and report never enter the public repository, Pages assets or Draft collector.
-- Invalid, stale, oversized and credential-shaped uploads fail closed with a useful message.
-- The service makes no authenticated request to FPL and exposes no endpoint that changes an FPL team.
-- Restarting the initial container removes all uploaded and generated private state.
-- The existing full Draft/H2H regression suite remains unchanged and passes.
+- **Implemented:** a laptop with only a browser can turn `standard-fpl-current-team.json` into a rendered report.
+- **Implemented:** the snapshot and report never enter the public repository, Pages report data or Draft collector.
+- **Implemented and tested:** invalid, stale, oversized and credential-shaped uploads fail closed with a useful message.
+- **Implemented:** the service makes no authenticated request to FPL and exposes no endpoint that changes an FPL team.
+- **Implemented:** the initial container has no persistent volume; restarting removes all uploaded and generated private state.
+- **Release gate:** the complete Draft/H2H regression suite must pass on every runner change.
 
 ## Feasibility and remaining choices
 
-The model path is low risk because `collect_standard_fpl` already accepts injected settings and uses only one external Python dependency (`requests`). The main work is the private HTTP boundary, container packaging and user-facing error handling, not rebuilding the calculations.
+The model path remains shared: `collect_standard_fpl` now accepts validated private state in memory as well as the existing private-file CLI route. The runner uses the Python standard library for its HTTP boundary and keeps `requests` as the only external runtime dependency.
 
-Before implementing remote access or persistence, the owner must choose whether the service is LAN-only, protected by the existing reverse proxy, or reachable through a private VPN. Slice 1 does not need that choice: it should default to local-network use and ephemeral state.
-
+Before implementing remote access or persistence, the owner must choose whether the service remains LAN-only, sits behind an authenticated access gateway or is reachable only through a private VPN. The implemented Slice 1 stays local-network-only and ephemeral.
