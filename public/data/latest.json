@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T22:17:59.691256+00:00",
+  "generated_at": "2026-08-28T01:11:07.509060+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 1,
@@ -8,7 +8,7 @@
     "my_squad_count": 15,
     "available_count": 473,
     "tracked_players": 616,
-    "ownership_changes": 14,
+    "ownership_changes": 0,
     "injured_or_doubtful_count": 81
   },
   "my_squad": [
@@ -67679,120 +67679,7 @@
       }
     }
   ],
-  "league_activity": [
-    {
-      "type": "add",
-      "player_id": 10,
-      "player": "White",
-      "club": "ARS",
-      "from_status": "a",
-      "to_status": "o"
-    },
-    {
-      "type": "drop",
-      "player_id": 55,
-      "player": "Watkins",
-      "club": "AVL",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "add",
-      "player_id": 115,
-      "player": "De Cuyper",
-      "club": "BHA",
-      "from_status": "a",
-      "to_status": "o"
-    },
-    {
-      "type": "add",
-      "player_id": 123,
-      "player": "Hinshelwood",
-      "club": "BHA",
-      "from_status": "a",
-      "to_status": "o"
-    },
-    {
-      "type": "drop",
-      "player_id": 156,
-      "player": "Neto",
-      "club": "CHE",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "add",
-      "player_id": 335,
-      "player": "Stach",
-      "club": "LEE",
-      "from_status": "a",
-      "to_status": "o"
-    },
-    {
-      "type": "drop",
-      "player_id": 392,
-      "player": "Aït-Nouri",
-      "club": "MCI",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "drop",
-      "player_id": 452,
-      "player": "Bruno G.",
-      "club": "ARS",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "add",
-      "player_id": 464,
-      "player": "Wissa",
-      "club": "NEW",
-      "from_status": "a",
-      "to_status": "o"
-    },
-    {
-      "type": "drop",
-      "player_id": 527,
-      "player": "Richarlison",
-      "club": "TOT",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "drop",
-      "player_id": 533,
-      "player": "Mukiele",
-      "club": "SUN",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "drop",
-      "player_id": 542,
-      "player": "E.Le Fée",
-      "club": "SUN",
-      "from_status": "o",
-      "to_status": "l"
-    },
-    {
-      "type": "add",
-      "player_id": 556,
-      "player": "M.Sangaré",
-      "club": "BRE",
-      "from_status": "a",
-      "to_status": "o"
-    },
-    {
-      "type": "add",
-      "player_id": 569,
-      "player": "Gonzalo",
-      "club": "FUL",
-      "from_status": "a",
-      "to_status": "o"
-    }
-  ],
+  "league_activity": [],
   "injury_watch": [
     {
       "player_id": 414,
@@ -90153,6 +90040,130 @@
         },
         "pick_position": 14,
         "is_starter": false
+      },
+      {
+        "player_id": 452,
+        "player": "Bruno G.",
+        "club": "ARS",
+        "team_id": 1,
+        "team_code": 3,
+        "position": "MID",
+        "status": "l",
+        "chance_next_round": 75,
+        "news": "Thigh injury - 75% chance of playing",
+        "news_added": "2026-08-20T17:00:08.846118Z",
+        "event_points": 0,
+        "total_points": 0,
+        "minutes": 0,
+        "starts": 0,
+        "goals_scored": 0,
+        "assists": 0,
+        "clean_sheets": 0,
+        "bonus": 0,
+        "expected_goal_involvements": "0.00",
+        "form": "0.0",
+        "points_per_game": "0.0",
+        "expected_points_next": null,
+        "fixtures": [
+          {
+            "gameweek": 2,
+            "matches": [
+              {
+                "opponent_id": 2,
+                "opponent": "AVL",
+                "venue": "A",
+                "difficulty": 4,
+                "kickoff_time": "2026-08-31T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 3,
+            "matches": [
+              {
+                "opponent_id": 6,
+                "opponent": "CHE",
+                "venue": "H",
+                "difficulty": 4,
+                "kickoff_time": "2026-09-06T15:30:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 4,
+            "matches": [
+              {
+                "opponent_id": 20,
+                "opponent": "SUN",
+                "venue": "A",
+                "difficulty": 3,
+                "kickoff_time": "2026-09-12T19:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          },
+          {
+            "gameweek": 5,
+            "matches": [
+              {
+                "opponent_id": 5,
+                "opponent": "BHA",
+                "venue": "A",
+                "difficulty": 3,
+                "kickoff_time": "2026-09-19T14:00:00Z",
+                "started": false,
+                "finished": false
+              }
+            ]
+          }
+        ],
+        "intelligence": {
+          "model": "v0.6.0",
+          "baseline_score": 92.0,
+          "fixture_score": 48.0,
+          "future_fixture_score": 52.0,
+          "availability_score": 75.0,
+          "post_return_fixture_score": null,
+          "stash_fixture_score": 33.8,
+          "start_probability": 75.0,
+          "expected_minutes": 67.5,
+          "usage_score": 75.0,
+          "sample_confidence": 100.0,
+          "role_evidence": "HIGH",
+          "floor_score": 85.3,
+          "upside_score": 71.4,
+          "points_per_90": 5.64,
+          "attack_returns_per_90": 0.52,
+          "historical_prior_active": true,
+          "recent_match_evidence": {
+            "version": "v1",
+            "status": "unavailable",
+            "score": 50.0,
+            "grade": null,
+            "adjustment": 0.0,
+            "confidence": 0.0,
+            "completed_gameweeks": 0,
+            "appearances": 0,
+            "minutes": 0,
+            "starts": 0,
+            "gameweeks": []
+          },
+          "injury_return_signal": "near-return",
+          "expected_return": null,
+          "expected_return_gameweek": null,
+          "health_trend": "stable",
+          "roster_score": 74.9,
+          "stash_score": 67.0,
+          "recommendation": "WATCH",
+          "recommendation_reason": "Interesting value, but not yet a clear claim signal."
+        },
+        "pick_position": 15,
+        "is_starter": false
       }
     ],
     "squad": []
@@ -92157,56 +92168,7 @@
       }
     ],
     "archive": [],
-    "new_item_ids": [
-      "b10feeff04a53bcb",
-      "51ec4bd69d790ce4",
-      "c6b0992f99d29c0d",
-      "21e2edf7bdeaef76",
-      "752e900200e449c3",
-      "68a1374ce3e475fb",
-      "7f5e58836c851be9",
-      "451134657790c51c",
-      "494e2a287a2cb35f",
-      "a50f44583d41673b",
-      "d51c39936640f7c2",
-      "e46c6eb65f43df28",
-      "7d3446e4f82844e8",
-      "fade26bcf9df7e99",
-      "fb71f75b199fe70b",
-      "31f0e4007481a8e7",
-      "cb966017ee0a1041",
-      "f5ce2a1623342dd8",
-      "0887087421919b72",
-      "97f4165db8e3bbcc",
-      "c8c40efe9b59185a",
-      "6593b3d3a4a4ca1c",
-      "93892ffd842dd1ae",
-      "e4da439be6044df1",
-      "3d92963bc6eaf345",
-      "a5caee102cc4a030",
-      "263a61b5717bfc6b",
-      "a1b351c74f623740",
-      "51815961ae10296e",
-      "69b968dfd5a02074",
-      "8d70bf99de66a2df",
-      "6ec1fc9d15175e9c",
-      "b3f3c564ee84c08c",
-      "9fb6453c8d7e15ac",
-      "06c3bf1df7cf0824",
-      "187cef4737a52938",
-      "ba41496dee3cfc97",
-      "ee33363b6fc059ac",
-      "51e0fb23eaa020e9",
-      "b109a789521774b1",
-      "d86d445bcb44aad3",
-      "3747c634db2b0956",
-      "86923d249cf0e50a",
-      "5e6757f0366014ff",
-      "155df53eca043b84",
-      "93dbe918a907c961",
-      "1e570d06e406064e",
-      "98b971b8af616518"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       17,
       18,
