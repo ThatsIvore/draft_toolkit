@@ -31,6 +31,32 @@ def completed_gameweeks(bootstrap: dict[str, Any], limit: int = 4) -> list[int]:
     return sorted(gameweeks)[-max(0, int(limit)):]
 
 
+def player_id_map_by_code(
+    source_bootstrap: dict[str, Any],
+    target_bootstrap: dict[str, Any],
+) -> dict[int, int]:
+    """Map source element IDs to target IDs through the shared stable player code.
+
+    Standard FPL and FPL Draft assign different element IDs to some players, while
+    the underlying ``code`` remains consistent across both public bootstrap feeds.
+    """
+    target_by_code = {
+        int(element["code"]): int(element["id"])
+        for element in target_bootstrap.get("elements") or []
+        if isinstance(element, dict)
+        and element.get("id") is not None
+        and element.get("code") is not None
+    }
+    return {
+        int(element["id"]): target_by_code[int(element["code"])]
+        for element in source_bootstrap.get("elements") or []
+        if isinstance(element, dict)
+        and element.get("id") is not None
+        and element.get("code") is not None
+        and int(element["code"]) in target_by_code
+    }
+
+
 def fetch_completed_event_live(
     client: FantasyApiClient,
     bootstrap: dict[str, Any],
@@ -93,6 +119,7 @@ def _grade(score: float) -> str:
 def build_recent_match_evidence(
     players: list[dict[str, Any]],
     event_payloads: list[tuple[int, dict[str, Any]]],
+    event_player_id_map: dict[int, int] | None = None,
 ) -> dict[int, dict[str, Any]]:
     """Create capped, position-relative grades from final official Gameweek statistics."""
     position_by_id = {
@@ -109,7 +136,14 @@ def build_recent_match_evidence(
         for element in payload.get("elements") or []:
             if not isinstance(element, dict) or element.get("id") is None:
                 continue
-            player_id = int(element["id"])
+            event_player_id = int(element["id"])
+            if event_player_id_map is not None:
+                mapped_player_id = event_player_id_map.get(event_player_id)
+                if mapped_player_id is None:
+                    continue
+                player_id = int(mapped_player_id)
+            else:
+                player_id = event_player_id
             if player_id not in position_by_id:
                 continue
             stats = element.get("stats") if isinstance(element.get("stats"), dict) else {}

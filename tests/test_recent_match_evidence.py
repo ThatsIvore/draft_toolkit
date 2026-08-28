@@ -3,6 +3,7 @@ from fpl_toolkit.recent_match_evidence import (
     build_recent_match_evidence,
     completed_gameweeks,
     fetch_completed_event_live,
+    player_id_map_by_code,
 )
 
 
@@ -100,6 +101,28 @@ def test_non_appearance_is_not_given_a_grade_or_form_adjustment():
     assert evidence["adjustment"] == 0
     assert evidence["confidence"] == 0
     assert evidence["gameweeks"][0]["grade"] is None
+
+
+def test_draft_player_ids_are_mapped_from_standard_event_ids_by_stable_code():
+    standard_bootstrap = {
+        "elements": [{"id": 565, "code": 513545, "web_name": "M.Sangaré"}]
+    }
+    draft_bootstrap = {
+        "elements": [{"id": 556, "code": 513545, "web_name": "M.Sangaré"}]
+    }
+    event_player_id_map = player_id_map_by_code(standard_bootstrap, draft_bootstrap)
+
+    evidence = build_recent_match_evidence(
+        [_player(556)],
+        [_event(1, {565: _stats(14, 41, 0.38, minutes=75)})],
+        event_player_id_map=event_player_id_map,
+    )
+
+    assert event_player_id_map == {565: 556}
+    assert evidence[556]["status"] == "available"
+    assert evidence[556]["appearances"] == 1
+    assert evidence[556]["minutes"] == 75
+    assert evidence[556]["gameweeks"][0]["points"] == 14
 
 
 def test_same_shared_evidence_adjusts_both_game_modes_identically():

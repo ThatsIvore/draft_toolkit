@@ -36,6 +36,9 @@ class DraftClient:
 
 
 class FantasyClient:
+    def bootstrap_static(self):
+        return {"events": [], "elements": []}
+
     def fixtures(self):
         return [
             {"event": 1, "started": True, "finished": False},
@@ -167,3 +170,99 @@ def test_collector_preserves_all_15_locked_picks_after_a_waiver(tmp_path, monkey
     assert len(report["lineup"]["bench"]) == 4
     assert report["lineup"]["bench"][-1]["player_id"] == 15
     assert report["lineup"]["bench"][-1]["player"] == "P15"
+
+
+class FinalisedDraftClient(DraftClient):
+    def bootstrap_static(self):
+        return {
+            "events": {
+                "current": 2,
+                "next": 3,
+                "data": [
+                    {"id": 1, "finished": True},
+                    {"id": 2, "finished": False},
+                    {"id": 3, "finished": False},
+                ],
+            },
+            "teams": [{"id": 4, "code": 94, "short_name": "BRE"}],
+            "element_types": [{"id": 3, "singular_name_short": "MID"}],
+            "elements": [
+                {
+                    "id": 556,
+                    "code": 513545,
+                    "web_name": "M.Sangaré",
+                    "team": 4,
+                    "element_type": 3,
+                    "status": "a",
+                    "minutes": 75,
+                    "starts": 1,
+                    "total_points": 14,
+                    "event_points": 14,
+                }
+            ],
+        }
+
+    def element_status(self, league_id):
+        return {"element_status": [{"element": 556, "status": "a", "owner": None}]}
+
+
+class FinalisedFantasyClient:
+    def bootstrap_static(self):
+        return {
+            "events": [{"id": 1, "finished": True, "data_checked": True}],
+            "elements": [{"id": 565, "code": 513545}],
+        }
+
+    def fixtures(self):
+        return [
+            {"event": 2, "started": True, "finished": False},
+            {"event": 3, "started": False, "finished": False},
+        ]
+
+    def event_live(self, gameweek):
+        assert gameweek == 1
+        return {
+            "elements": [
+                {
+                    "id": 565,
+                    "stats": {
+                        "minutes": 75,
+                        "starts": 1,
+                        "total_points": 14,
+                        "bonus": 3,
+                        "bps": 41,
+                        "expected_goal_involvements": "0.38",
+                        "played": True,
+                    },
+                }
+            ]
+        }
+
+
+def test_collector_attaches_standard_match_evidence_to_different_draft_player_id(
+    tmp_path, monkeypatch
+):
+    monkeypatch.chdir(tmp_path)
+
+    report = collect(
+        Settings(
+            draft_entry_id="1001",
+            draft_league_id="77",
+            planning_horizon=4,
+            output_dir=str(tmp_path / "data"),
+        ),
+        client=FinalisedDraftClient(),
+        fantasy_client=FinalisedFantasyClient(),
+    )
+
+    [sangare] = report["available_players"]
+    recent = sangare["intelligence"]["recent_match_evidence"]
+    assert sangare["player_id"] == 556
+    assert recent["status"] == "available"
+    assert recent["appearances"] == 1
+    assert recent["gameweeks"][0]["points"] == 14
+    assert report["intelligence_model"]["recent_match_evidence"] == {
+        "version": "v1",
+        "status": "available",
+        "completed_gameweeks": [1],
+    }

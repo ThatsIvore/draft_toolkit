@@ -19,7 +19,11 @@ from .outcomes import build_outcome_diagnostics, gameweek_phase
 from .optimizer import recommend_lineup
 from .planner import build_schedule_planner
 from .report import build_report, current_gameweek
-from .recent_match_evidence import build_recent_match_evidence, fetch_completed_event_live
+from .recent_match_evidence import (
+    build_recent_match_evidence,
+    fetch_completed_event_live,
+    player_id_map_by_code,
+)
 from .state import compact_ownership_state, decorate_change_manager_names
 from .storage import newest_snapshot, read_json, timestamp_slug, write_json
 from .transfer_intel import attach_transfer_intel
@@ -116,8 +120,18 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     ownership = attach_fixture_matrix(ownership, scoring_fixture_matrix, field="_scoring_fixtures")
 
-    recent_payloads, recent_status = fetch_completed_event_live(fantasy_client, bootstrap)
-    recent_evidence = build_recent_match_evidence(ownership, recent_payloads)
+    try:
+        fantasy_bootstrap = fantasy_client.bootstrap_static()
+    except FPLApiError:
+        fantasy_bootstrap = {"events": [], "elements": []}
+        recent_payloads, recent_status = [], "bootstrap_unavailable"
+    else:
+        recent_payloads, recent_status = fetch_completed_event_live(fantasy_client, fantasy_bootstrap)
+    recent_evidence = build_recent_match_evidence(
+        ownership,
+        recent_payloads,
+        event_player_id_map=player_id_map_by_code(fantasy_bootstrap, bootstrap),
+    )
 
     if baseline_path.exists():
         performance_baseline_rows = read_json(baseline_path)
