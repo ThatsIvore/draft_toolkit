@@ -123,10 +123,10 @@ def build_recent_match_evidence(
 ) -> dict[int, dict[str, Any]]:
     """Create capped, position-relative grades from final official Gameweek statistics.
 
-    The grade remains outcome-led, but now reserves a small 10% share for official
-    defensive-contribution activity. This adds a repeatable process signal for
-    defenders and hard-working midfielders/forwards without allowing one Gameweek
-    of defensive work to overwhelm points, BPS or expected attacking involvement.
+    The grade remains outcome-led, but can reserve a small 10% share for official
+    defensive-contribution activity when that signal is actually present for an
+    outfield position group. Missing/empty defensive data and goalkeepers retain
+    the legacy grade weights, so the enrichment fails closed.
     """
     position_by_id = {
         int(player["player_id"]): str(player.get("position") or "UNK")
@@ -176,11 +176,16 @@ def build_recent_match_evidence(
             bps = _percentiles({player_id: rows[player_id]["bps"] for player_id in played_ids})
             xgi = _percentiles({player_id: rows[player_id]["xgi"] for player_id in played_ids})
             minutes = _percentiles({player_id: rows[player_id]["minutes"] for player_id in played_ids})
-            defensive = _percentiles(
-                {player_id: rows[player_id]["defensive_contribution"] for player_id in played_ids}
+            defensive_values = {
+                player_id: rows[player_id]["defensive_contribution"]
+                for player_id in played_ids
+            }
+            has_defensive_evidence = position != "GKP" and any(
+                value > 0 for value in defensive_values.values()
             )
+            defensive = _percentiles(defensive_values) if has_defensive_evidence else {}
             for player_id in played_ids:
-                if position == "GKP":
+                if not has_defensive_evidence:
                     gameweek_scores[player_id] = (
                         0.55 * points[player_id]
                         + 0.25 * bps[player_id]
