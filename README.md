@@ -9,7 +9,7 @@ This project turns public FPL and FPL Draft data into an in-season decision tool
 5. infer opponent adds/drops by diffing state snapshots;
 6. attach a four-Gameweek fixture matrix;
 7. score roster value, floor, upside, role evidence and return-aligned stash value;
-8. grade recent finalized performances from the official Standard FPL event feed, mapping them safely to Draft players through the shared stable player code;
+8. grade recent finalized performances from the official Standard FPL event feed, retaining xG/xA and using official defensive contribution as a small outfield tie-break when present, while mapping safely to Draft players through the shared stable player code;
 9. apply expiring, source-linked transfer evidence to availability, destination fixtures, acquisition advice and H2H eligibility;
 10. compare same-position waiver replacements and recommend a legal starting XI;
 11. project and audit H2H matchups across a four-Gameweek window;
@@ -79,6 +79,10 @@ For hands-on visual testing, the [browser-local private report viewer](docs/STAN
 The [self-hosted runner discovery](docs/STANDARD_FPL_SELF_HOSTED_RUNNER.md) recommends a separate, ephemeral Standard FPL container on the manager's own Unraid server as the next personal-use step. It would remove the laptop Python requirement without publishing private state or entering the Draft/H2H pipeline; it is documented but not yet implemented.
 
 The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as separate modes in a shared shell. That selector is intentionally not exposed on the public Draft dashboard until secure private Standard report delivery exists; switching modes must never mix their report objects.
+
+## Recent Match Evidence
+
+Recent Match Evidence v1 remains outcome-led and uses only finalized official FPL Gameweeks. Points, BPS, expected goal involvement and minutes retain the dominant share. The collector also retains official xG and xA for diagnosis and, for outfield position groups where the feed contains real defensive-contribution values, reallocates only 10 percentage points of the match grade to position-relative defensive contribution. If that signal is absent, the exact legacy weights are used; goalkeeper scoring is unchanged. Recency weighting, sample-confidence shrinkage and the existing ±5 intelligence adjustment cap are preserved.
 
 ## GitHub Actions
 

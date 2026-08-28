@@ -121,7 +121,13 @@ def build_recent_match_evidence(
     event_payloads: list[tuple[int, dict[str, Any]]],
     event_player_id_map: dict[int, int] | None = None,
 ) -> dict[int, dict[str, Any]]:
-    """Create capped, position-relative grades from final official Gameweek statistics."""
+    """Create capped, position-relative grades from final official Gameweek statistics.
+
+    The grade remains outcome-led, but can reserve a small 10% share for official
+    defensive-contribution activity when that signal is actually present for an
+    outfield position group. Missing/empty defensive data and goalkeepers retain
+    the legacy grade weights, so the enrichment fails closed.
+    """
     position_by_id = {
         int(player["player_id"]): str(player.get("position") or "UNK")
         for player in players
@@ -154,26 +160,46 @@ def build_recent_match_evidence(
                 "points": int(_number(stats.get("total_points"))),
                 "bonus": int(_number(stats.get("bonus"))),
                 "bps": int(_number(stats.get("bps"))),
+                "xg": round(_number(stats.get("expected_goals")), 2),
+                "xa": round(_number(stats.get("expected_assists")), 2),
                 "xgi": round(_number(stats.get("expected_goal_involvements")), 2),
+                "defensive_contribution": int(_number(stats.get("defensive_contribution"))),
                 "played": stats.get("played") is True or _number(stats.get("minutes")) > 0,
             }
             rows[player_id] = row
             groups[position_by_id[player_id]].append(player_id)
 
         gameweek_scores: dict[int, float] = {}
-        for player_ids in groups.values():
+        for position, player_ids in groups.items():
             played_ids = [player_id for player_id in player_ids if rows[player_id]["played"]]
             points = _percentiles({player_id: rows[player_id]["points"] for player_id in played_ids})
             bps = _percentiles({player_id: rows[player_id]["bps"] for player_id in played_ids})
             xgi = _percentiles({player_id: rows[player_id]["xgi"] for player_id in played_ids})
             minutes = _percentiles({player_id: rows[player_id]["minutes"] for player_id in played_ids})
+            defensive_values = {
+                player_id: rows[player_id]["defensive_contribution"]
+                for player_id in played_ids
+            }
+            has_defensive_evidence = position != "GKP" and any(
+                value > 0 for value in defensive_values.values()
+            )
+            defensive = _percentiles(defensive_values) if has_defensive_evidence else {}
             for player_id in played_ids:
-                gameweek_scores[player_id] = (
-                    0.55 * points[player_id]
-                    + 0.25 * bps[player_id]
-                    + 0.15 * xgi[player_id]
-                    + 0.05 * minutes[player_id]
-                )
+                if not has_defensive_evidence:
+                    gameweek_scores[player_id] = (
+                        0.55 * points[player_id]
+                        + 0.25 * bps[player_id]
+                        + 0.15 * xgi[player_id]
+                        + 0.05 * minutes[player_id]
+                    )
+                else:
+                    gameweek_scores[player_id] = (
+                        0.50 * points[player_id]
+                        + 0.20 * bps[player_id]
+                        + 0.15 * xgi[player_id]
+                        + 0.10 * defensive[player_id]
+                        + 0.05 * minutes[player_id]
+                    )
         rows_by_gameweek[int(gameweek)] = rows
         scores_by_gameweek[int(gameweek)] = gameweek_scores
 

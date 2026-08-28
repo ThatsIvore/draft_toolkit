@@ -36,11 +36,24 @@ def _event(gameweek, stats_by_id):
     )
 
 
-def _stats(points, bps, xgi, minutes=90, starts=1, played=True):
+def _stats(
+    points,
+    bps,
+    xgi,
+    minutes=90,
+    starts=1,
+    played=True,
+    xg=0,
+    xa=0,
+    defensive_contribution=0,
+):
     return {
         "total_points": points,
         "bps": bps,
+        "expected_goals": str(xg),
+        "expected_assists": str(xa),
         "expected_goal_involvements": str(xgi),
+        "defensive_contribution": defensive_contribution,
         "minutes": minutes,
         "starts": starts,
         "bonus": max(0, points - 8),
@@ -89,6 +102,56 @@ def test_recent_grades_are_position_relative_recency_weighted_and_capped():
     assert 0 < evidence[1]["adjustment"] <= 5
     assert -5 <= evidence[2]["adjustment"] < 0
     assert [row["gameweek"] for row in evidence[1]["gameweeks"]] == [3, 2, 1]
+
+
+def test_expected_and_defensive_process_stats_are_retained_and_break_ties():
+    players = [_player(1), _player(2)]
+    event = _event(
+        1,
+        {
+            1: _stats(2, 10, 0.2, xg=0.12, xa=0.08, defensive_contribution=16),
+            2: _stats(2, 10, 0.2, xg=0.05, xa=0.15, defensive_contribution=2),
+        },
+    )
+
+    evidence = build_recent_match_evidence(players, [event])
+
+    assert evidence[1]["score"] > evidence[2]["score"]
+    assert evidence[1]["gameweeks"][0]["xg"] == 0.12
+    assert evidence[1]["gameweeks"][0]["xa"] == 0.08
+    assert evidence[1]["gameweeks"][0]["defensive_contribution"] == 16
+
+
+def test_missing_defensive_process_data_preserves_legacy_grade_weights():
+    players = [_player(1), _player(2)]
+    event = _event(
+        1,
+        {
+            1: _stats(10, 40, 1.0),
+            2: _stats(2, 8, 0.0),
+        },
+    )
+
+    evidence = build_recent_match_evidence(players, [event])
+
+    assert evidence[1]["gameweeks"][0]["grade_score"] == 97.5
+    assert evidence[2]["gameweeks"][0]["grade_score"] == 2.5
+
+
+def test_goalkeepers_ignore_defensive_contribution_when_other_stats_match():
+    players = [_player(1, "GKP"), _player(2, "GKP")]
+    event = _event(
+        1,
+        {
+            1: _stats(5, 20, 0.0, defensive_contribution=99),
+            2: _stats(5, 20, 0.0, defensive_contribution=0),
+        },
+    )
+
+    evidence = build_recent_match_evidence(players, [event])
+
+    assert evidence[1]["gameweeks"][0]["grade_score"] == evidence[2]["gameweeks"][0]["grade_score"]
+    assert evidence[1]["score"] == evidence[2]["score"]
 
 
 def test_non_appearance_is_not_given_a_grade_or_form_adjustment():
