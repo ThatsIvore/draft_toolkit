@@ -31,7 +31,7 @@ A double Gameweek is one aggregate Gameweek grade in v1. Fixture-level grades wo
 
 ## Shared-mode boundary
 
-The official Draft and Standard FPL bootstrap feeds currently use matching player IDs. The recent feed is joined by player ID and ignores unknown IDs. Both collectors pass the same evidence contract into `attach_intelligence`; mode-specific ownership, budgets, transfers, captaincy and H2H logic remain downstream and separate.
+The official Draft and Standard FPL bootstrap feeds can assign different element IDs to the same player. Draft collection therefore resolves the Standard event-feed ID to the Draft element ID through the stable player `code` shared by both official bootstrap feeds. Unmapped event rows are ignored. Standard FPL keeps its native element IDs. Both collectors then pass the same evidence contract into `attach_intelligence`; mode-specific ownership, budgets, transfers, captaincy and H2H logic remain downstream and separate.
 
 Every player intelligence object contains `recent_match_evidence` with the window score and grade, confidence, capped adjustment, minutes, starts, appearances, and compact per-Gameweek grades. Report-level metadata states whether the feed was available and which Gameweeks were used.
 

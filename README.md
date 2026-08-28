@@ -9,12 +9,15 @@ This project turns public FPL and FPL Draft data into an in-season decision tool
 5. infer opponent adds/drops by diffing state snapshots;
 6. attach a four-Gameweek fixture matrix;
 7. score roster value, floor, upside, role evidence and return-aligned stash value;
-8. compare same-position waiver replacements and recommend a legal starting XI;
-9. project and audit H2H matchups across a four-Gameweek window;
-10. retain aggregate opponent transfer and completed-lineup decisions;
-11. use a verified 90-pick draft history as a small, decaying opponent prior;
-12. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant injury/stash cases;
-13. produce a redacted machine-readable report for a GitHub Pages dashboard.
+8. grade recent finalized performances from the official Standard FPL event feed, mapping them safely to Draft players through the shared stable player code;
+9. apply expiring, source-linked transfer evidence to availability, destination fixtures, acquisition advice and H2H eligibility;
+10. compare same-position waiver replacements and recommend a legal starting XI;
+11. project and audit H2H matchups across a four-Gameweek window;
+12. retain aggregate opponent transfer and completed-lineup decisions;
+13. use a verified 90-pick draft history as a small, decaying opponent prior;
+14. retain material updates throughout each actionable Gameweek decision cycle and surface decision-relevant health/transfer cases;
+15. summarize urgent user-relevant signals on a decision-first Overview; and
+16. produce a redacted machine-readable report for a GitHub Pages dashboard.
 
 ## Identifier
 
@@ -37,6 +40,10 @@ fpl-toolkit --publish
 ```
 
 Open `public/index.html` through a local web server after collection.
+
+## Maintainer onboarding
+
+Agents and maintainers should begin with [Maintainer Onboarding](docs/MAINTAINER_ONBOARDING.md). It records the source-of-truth boundaries between current ownership, locked historical lineups, next-Gameweek advice, cross-feed player identity, transfer eligibility, Available recommendations and H2H tactical simulations. Root `AGENTS.md` contains the concise repository instructions.
 
 ## Private Standard FPL Phase 1 POC
 
@@ -85,7 +92,9 @@ League payloads can contain manager names. Raw API responses and full historical
 
 ## Current boundary
 
-The toolkit now includes projections, recommendation scoring, injury-return timing, stash/roster value, opponent-drop monitoring, personalised add/drop comparisons, Recommended XI, H2H scouting and evidence-weighted opponent decision profiles. Material Decision Updates persist through the current actionable Gameweek, while the previous two completed decision cycles remain available as a compact archive. Once a Gameweek locks, live scoring and outcome diagnostics remain attached to that round while every actionable recommendation advances to the next open Gameweek. It remains decision support rather than an automated transaction system. Opponent profiles observe outcomes rather than intent: unsubmitted waiver requests are invisible, draft influence is deliberately small, and early samples are pulled toward neutral. Return dates come only from readable official FPL news, expected minutes and projected points remain transparent heuristics, and the model does not ingest press conferences or specialist medical reporting.
+The toolkit now includes projections, recent finalized-match evidence, recommendation scoring, injury-return timing, transfer-aware selection eligibility, stash/roster value, opponent-drop monitoring, personalised add/drop comparisons, Recommended XI, a decision-first Overview, H2H scouting and evidence-weighted opponent decision profiles. Material Decision Updates persist through the current actionable Gameweek, while the previous two completed decision cycles remain available as a compact archive. Once a Gameweek locks, live scoring and outcome diagnostics remain attached to that round while every actionable recommendation advances to the next open Gameweek. The Available view supplies the primary season-value add/drop verdict; an H2H move is a secondary one-Gameweek simulation and can differ because it ranks projected XI gain. It remains decision support rather than an automated transaction system. Opponent profiles observe outcomes rather than intent: unsubmitted waiver requests are invisible, draft influence is deliberately small, and early samples are pulled toward neutral. Return dates come only from readable official FPL news, expected minutes and projected points remain transparent heuristics, and the model does not ingest press conferences or specialist medical reporting.
+
+The Python package version in `pyproject.toml` is separate from feature/model versions shown in the dashboard. Do not use package version `0.1.0` as evidence that a particular intelligence, H2H or interface model is deployed.
 
 ## Commercial-access concept
 
