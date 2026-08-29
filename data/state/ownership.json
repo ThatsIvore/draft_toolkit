@@ -346,9 +346,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Thigh injury - 75% chance of playing",
+    "news_added": "2026-08-29T15:00:08.569326Z"
   },
   {
     "player_id": 274,
@@ -1308,9 +1308,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-22T17:30:07.685683Z"
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-08-29T16:30:08.151841Z"
   },
   {
     "player_id": 89,
@@ -2582,8 +2582,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 50,
-    "news": "Ankle injury - 50% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-26T22:00:07.797766Z"
   },
   {
@@ -3414,8 +3414,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Thigh injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-07-23T12:01:23.848657Z"
   },
   {
@@ -4168,8 +4168,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Thigh injury - Unknown return date",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-15T20:00:06.878792Z"
   },
   {
@@ -4714,9 +4714,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Muscular injury - 75% chance of playing",
+    "news_added": "2026-08-29T16:30:08.380416Z"
   },
   {
     "player_id": 380,
@@ -5728,8 +5728,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Hamstring injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-15T16:30:07.021055Z"
   },
   {
