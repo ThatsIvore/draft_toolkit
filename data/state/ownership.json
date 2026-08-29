@@ -1399,9 +1399,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "has departed the club as a free agent.",
+    "news_added": "2026-08-29T00:33:08.556767Z"
   },
   {
     "player_id": 73,
@@ -1594,8 +1594,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Hip injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Has joined Internazionale permanently",
     "news_added": "2026-08-16T18:30:07.426408Z"
   },
   {
@@ -4890,8 +4890,8 @@
   {
     "player_id": 166,
     "player": "N.Jackson",
-    "club": "CHE",
-    "team_id": 6,
+    "club": "AVL",
+    "team_id": 2,
     "position": "FWD",
     "status": "a",
     "owner_raw": null,
@@ -4922,9 +4922,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Swansea City on loan for the rest of the season",
+    "news_added": "2026-08-29T00:34:52.425076Z"
   },
   {
     "player_id": 438,
@@ -5676,9 +5676,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Real Sociedad on loan for the rest of the season",
+    "news_added": "2026-08-29T00:34:23.077418Z"
   },
   {
     "player_id": 407,
@@ -5793,9 +5793,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Academico de Viseu on loan for the rest of the season",
+    "news_added": "2026-08-29T00:35:59.980316Z"
   },
   {
     "player_id": 545,
@@ -6287,9 +6287,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Oxford United on loan for the rest of the season",
+    "news_added": "2026-08-29T00:35:59.998520Z"
   },
   {
     "player_id": 272,
@@ -6895,6 +6895,19 @@
     "club": "MCI",
     "team_id": 15,
     "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 622,
+    "player": "Braithwaite",
+    "club": "MCI",
+    "team_id": 15,
+    "position": "DEF",
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
