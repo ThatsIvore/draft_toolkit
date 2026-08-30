@@ -6955,6 +6955,19 @@
     "news_added": null
   },
   {
+    "player_id": 626,
+    "player": "Cairns",
+    "club": "LEE",
+    "team_id": 13,
+    "position": "GKP",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
