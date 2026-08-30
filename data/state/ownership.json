@@ -1763,9 +1763,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 50,
+    "news": "Hamstring injury - 50% chance of playing",
+    "news_added": "2026-08-30T16:00:08.564382Z"
   },
   {
     "player_id": 364,
@@ -4038,9 +4038,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-24T18:30:07.431154Z"
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-08-30T16:00:08.393562Z"
   },
   {
     "player_id": 506,
@@ -4701,9 +4701,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Ankle injury - 75% chance of playing",
+    "news_added": "2026-08-30T18:00:07.935334Z"
   },
   {
     "player_id": 403,
@@ -5208,9 +5208,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-08-30T16:30:08.428960Z"
   },
   {
     "player_id": 434,
@@ -6929,6 +6929,32 @@
     "news_added": null
   },
   {
+    "player_id": 624,
+    "player": "Cozier-Duberry",
+    "club": "BHA",
+    "team_id": 5,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 625,
+    "player": "Zepa",
+    "club": "FUL",
+    "team_id": 10,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
@@ -6983,8 +7009,8 @@
   {
     "player_id": 28,
     "player": "Martinez",
-    "club": "AVL",
-    "team_id": 2,
+    "club": "CHE",
+    "team_id": 6,
     "position": "GKP",
     "status": "o",
     "owner_raw": 339421,
