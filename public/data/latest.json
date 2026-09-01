@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T00:22:13.418492+00:00",
+  "generated_at": "2026-09-01T05:14:52.772019+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 2,
@@ -14179,11 +14179,11 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 71.3,
         "stash_score": 67.1,
-        "recommendation": "STASH",
-        "recommendation_reason": "Health outlook improved while future value remains strong."
+        "recommendation": "WATCH",
+        "recommendation_reason": "Interesting value, but not yet a clear claim signal."
       },
       "replacement": {
         "model": "v0.5.1",
@@ -20224,7 +20224,7 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 86.5,
         "stash_score": 83.7,
         "recommendation": "CLAIM",
@@ -58257,7 +58257,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 56.3,
         "stash_score": 52.8,
         "recommendation": "PASS",
@@ -75275,7 +75275,7 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 50.1,
         "stash_score": 41.2,
         "recommendation": "PASS",
@@ -85935,7 +85935,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 56.3,
         "stash_score": 52.8,
         "recommendation": "PASS",
@@ -104966,12 +104966,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "2ef9f849062d3dc6",
-      "8132541bbd6d2056",
-      "8cf548298211d23a",
-      "8ace3f89f4c74781"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       21,
       24,
