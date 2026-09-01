@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T05:14:52.772019+00:00",
+  "updated_at": "2026-09-01T10:30:20.092133+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -44,6 +44,26 @@
             236,
             554,
             542,
+            106,
+            346
+          ]
+        },
+        "2": {
+          "gameweek": 2,
+          "submitted_points": 59.0,
+          "best_possible_points": 66.0,
+          "points_left_on_bench": 7.0,
+          "efficiency": 89.4,
+          "starter_ids": [
+            350,
+            31,
+            200,
+            391,
+            426,
+            480,
+            236,
+            554,
+            556,
             106,
             346
           ]
@@ -107,6 +127,26 @@
             411,
             26,
             527
+          ]
+        },
+        "2": {
+          "gameweek": 2,
+          "submitted_points": 51.0,
+          "best_possible_points": 51.0,
+          "points_left_on_bench": 0.0,
+          "efficiency": 100.0,
+          "starter_ids": [
+            1,
+            388,
+            61,
+            115,
+            366,
+            428,
+            338,
+            371,
+            464,
+            411,
+            26
           ]
         }
       },
@@ -179,6 +219,26 @@
             492,
             552
           ]
+        },
+        "2": {
+          "gameweek": 2,
+          "submitted_points": 44.0,
+          "best_possible_points": 45.0,
+          "points_left_on_bench": 1.0,
+          "efficiency": 97.8,
+          "starter_ids": [
+            529,
+            4,
+            356,
+            327,
+            84,
+            12,
+            40,
+            14,
+            67,
+            335,
+            552
+          ]
         }
       },
       "team_name": "FC FC"
@@ -240,6 +300,26 @@
             526,
             223
           ]
+        },
+        "2": {
+          "gameweek": 2,
+          "submitted_points": 55.0,
+          "best_possible_points": 55.0,
+          "points_left_on_bench": 0.0,
+          "efficiency": 100.0,
+          "starter_ids": [
+            412,
+            8,
+            393,
+            332,
+            481,
+            427,
+            367,
+            368,
+            237,
+            165,
+            249
+          ]
         }
       },
       "team_name": "No Salad"
@@ -287,6 +367,26 @@
             398,
             260,
             43,
+            79
+          ]
+        },
+        "2": {
+          "gameweek": 2,
+          "submitted_points": 41.0,
+          "best_possible_points": 42.0,
+          "points_left_on_bench": 1.0,
+          "efficiency": 97.6,
+          "starter_ids": [
+            384,
+            387,
+            11,
+            60,
+            397,
+            154,
+            398,
+            260,
+            68,
+            439,
             79
           ]
         }
@@ -361,6 +461,26 @@
             41,
             379,
             222
+          ]
+        },
+        "2": {
+          "gameweek": 2,
+          "submitted_points": 59.0,
+          "best_possible_points": 59.0,
+          "points_left_on_bench": 0.0,
+          "efficiency": 100.0,
+          "starter_ids": [
+            226,
+            229,
+            10,
+            142,
+            13,
+            15,
+            399,
+            41,
+            222,
+            379,
+            569
           ]
         }
       },
