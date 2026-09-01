@@ -284,13 +284,23 @@ def parse_expected_return(news: str, now: datetime | None = None) -> str | None:
     day = int(match.group(1)); month = _MONTHS.get(match.group(2).lower())
     if not month:
         return None
-    now = now or datetime.now(timezone.utc); year = int(match.group(3)) if match.group(3) else now.year
-    try:
-        candidate = datetime(year, month, day, tzinfo=timezone.utc)
-    except ValueError:
-        return None
-    if not match.group(3) and candidate < now.replace(hour=0, minute=0, second=0, microsecond=0):
-        candidate = candidate.replace(year=year + 1)
+    now = now or datetime.now(timezone.utc)
+    if match.group(3):
+        try:
+            candidate = datetime(int(match.group(3)), month, day, tzinfo=timezone.utc)
+        except ValueError:
+            return None
+    else:
+        today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        candidates = []
+        for year in (now.year - 1, now.year, now.year + 1):
+            try:
+                candidates.append(datetime(year, month, day, tzinfo=timezone.utc))
+            except ValueError:
+                continue
+        if not candidates:
+            return None
+        candidate = min(candidates, key=lambda value: (abs(value - today), value))
     return candidate.date().isoformat()
 
 

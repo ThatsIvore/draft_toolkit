@@ -188,6 +188,23 @@ def test_parses_explicit_return_date_and_maps_to_gameweek():
     assert enriched[0]["intelligence"]["expected_return_gameweek"] == 3
 
 
+def test_yearless_return_date_keeps_a_recently_passed_date_in_the_current_year():
+    now = datetime(2026, 8, 31, tzinfo=timezone.utc)
+
+    assert parse_expected_return("Expected back 30 Aug", now) == "2026-08-30"
+
+
+def test_yearless_return_date_uses_the_nearest_year_across_new_year():
+    assert parse_expected_return(
+        "Expected back 5 Jan",
+        datetime(2026, 12, 31, tzinfo=timezone.utc),
+    ) == "2027-01-05"
+    assert parse_expected_return(
+        "Expected back 30 Dec",
+        datetime(2027, 1, 5, tzinfo=timezone.utc),
+    ) == "2026-12-30"
+
+
 def test_free_injured_high_value_player_becomes_stash_candidate():
     player = {
         "player_id": 1,
@@ -206,7 +223,12 @@ def test_free_injured_high_value_player_becomes_stash_candidate():
         ],
     }
     previous = [{**player, "chance_next_round": 0, "news": "Expected back 30 Aug"}]
-    intel = attach_intelligence([player], previous=previous, my_entry_id="336654")[0]["intelligence"]
+    intel = attach_intelligence(
+        [player],
+        previous=previous,
+        my_entry_id="336654",
+        now=datetime(2026, 8, 22, tzinfo=timezone.utc),
+    )[0]["intelligence"]
     assert intel["health_trend"] == "improving"
     assert intel["recommendation"] == "STASH"
 
