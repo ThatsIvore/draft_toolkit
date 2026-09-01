@@ -6994,6 +6994,19 @@
     "news_added": null
   },
   {
+    "player_id": 629,
+    "player": "Allan",
+    "club": "MCI",
+    "team_id": 15,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
