@@ -7254,6 +7254,45 @@
     "news_added": null
   },
   {
+    "player_id": 649,
+    "player": "Fernandez-Pardo",
+    "club": "NEW",
+    "team_id": 17,
+    "position": "FWD",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 650,
+    "player": "Fofana",
+    "club": "SUN",
+    "team_id": 20,
+    "position": "MID",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 651,
+    "player": "J.Angulo",
+    "club": "SUN",
+    "team_id": 20,
+    "position": "FWD",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
