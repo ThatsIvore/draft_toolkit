@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T12:51:03.877234+00:00",
+  "updated_at": "2026-09-03T19:18:41.367459+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -25,6 +25,28 @@
             }
           ],
           "value_delta": -10.7
+        },
+        {
+          "fingerprint": "3:445:469",
+          "captured_at": "2026-09-03T19:18:41.367459+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 445,
+              "player": "Thiaw",
+              "position": "DEF",
+              "roster_score": 82.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 469,
+              "player": "N.Williams",
+              "position": "DEF",
+              "roster_score": 78.6
+            }
+          ],
+          "value_delta": 3.8
         }
       ],
       "lineups": {
@@ -106,6 +128,40 @@
             }
           ],
           "value_delta": -18.5
+        },
+        {
+          "fingerprint": "3:454,628:338,371",
+          "captured_at": "2026-09-03T19:18:41.367459+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 454,
+              "player": "Elanga",
+              "position": "MID",
+              "roster_score": 75.6
+            },
+            {
+              "player_id": 628,
+              "player": "Barcola",
+              "position": "MID",
+              "roster_score": 54.1
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 338,
+              "player": "Ampadu",
+              "position": "MID",
+              "roster_score": 76.5
+            },
+            {
+              "player_id": 371,
+              "player": "Gravenberch",
+              "position": "MID",
+              "roster_score": 83.5
+            }
+          ],
+          "value_delta": -30.3
         }
       ],
       "lineups": {
@@ -197,6 +253,40 @@
             }
           ],
           "value_delta": 9.8
+        },
+        {
+          "fingerprint": "3:124,166:25,67",
+          "captured_at": "2026-09-03T19:18:41.367459+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 124,
+              "player": "Groß",
+              "position": "MID",
+              "roster_score": 83.1
+            },
+            {
+              "player_id": 166,
+              "player": "N.Jackson",
+              "position": "FWD",
+              "roster_score": 57.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 25,
+              "player": "Gyökeres",
+              "position": "FWD",
+              "roster_score": 80.7
+            },
+            {
+              "player_id": 67,
+              "player": "Rayan",
+              "position": "MID",
+              "roster_score": 76.0
+            }
+          ],
+          "value_delta": -16.6
         }
       ],
       "lineups": {
@@ -440,6 +530,28 @@
             }
           ],
           "value_delta": 62.5
+        },
+        {
+          "fingerprint": "3:86:123",
+          "captured_at": "2026-09-03T19:18:41.367459+00:00",
+          "gameweek": 3,
+          "adds": [
+            {
+              "player_id": 86,
+              "player": "Lewis-Potter",
+              "position": "MID",
+              "roster_score": 85.8
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 123,
+              "player": "Hinshelwood",
+              "position": "MID",
+              "roster_score": 66.0
+            }
+          ],
+          "value_delta": 19.8
         }
       ],
       "lineups": {
