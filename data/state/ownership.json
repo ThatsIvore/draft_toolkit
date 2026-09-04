@@ -1724,9 +1724,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "not included in squad.",
+    "news_added": "2026-09-04T12:32:39.183614Z"
   },
   {
     "player_id": 296,
@@ -1789,9 +1789,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Olympiakos permanently",
+    "news_added": "2026-09-04T12:35:14.472260Z"
   },
   {
     "player_id": 572,
@@ -1984,9 +1984,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Stoke City on loan for the rest of the season",
+    "news_added": "2026-09-04T12:36:56.236331Z"
   },
   {
     "player_id": 317,
@@ -3024,9 +3024,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Al Hilal permanently",
+    "news_added": "2026-09-04T12:34:46.738449Z"
   },
   {
     "player_id": 59,
@@ -3596,9 +3596,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Knee injury - Unknown return date",
+    "news_added": "2026-09-04T09:30:08.612904Z"
   },
   {
     "player_id": 112,
@@ -4441,9 +4441,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined FC Köln on loan for the rest of the season",
+    "news_added": "2026-09-04T12:39:48.098158Z"
   },
   {
     "player_id": 524,
@@ -4962,7 +4962,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Ankle injury - Unknown return date",
+    "news": "Has joined Ajax on loan for the rest of the season",
     "news_added": "2026-08-20T14:00:08.416985Z"
   },
   {
@@ -5936,9 +5936,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Wolves on loan for the rest of the season",
+    "news_added": "2026-09-04T12:37:43.515176Z"
   },
   {
     "player_id": 362,
@@ -6638,9 +6638,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Oxford United on loan until January",
+    "news_added": "2026-09-04T12:35:39.820426Z"
   },
   {
     "player_id": 607,
@@ -7301,9 +7301,9 @@
     "status": "l",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Expected back 13 Sep",
+    "news_added": "2026-09-04T11:30:08.661589Z"
   },
   {
     "player_id": 229,
