@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-09-06T18:21:03.758341+00:00",
+  "captured_at": "2026-09-06T22:08:35.295055+00:00",
   "gameweek": 4,
   "scoring_gameweek": 3,
   "scoring_phase": "LIVE",
@@ -3629,7 +3629,7 @@
       "availability_score": 100.0,
       "expected_minutes": 90.0,
       "role_evidence": "HIGH",
-      "health_trend": "improving",
+      "health_trend": "stable",
       "recommendation": "CLAIM",
       "roster_score": 88.6,
       "stash_score": 84.5,
@@ -4917,7 +4917,7 @@
       "availability_score": 75.0,
       "expected_minutes": 67.4,
       "role_evidence": "HIGH",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 70.7,
       "stash_score": 60.3,
@@ -10604,7 +10604,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 74.9,
-      "stash_score": 68.8,
+      "stash_score": 68.9,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Collins",
       "waiver_delta": 29.4,
@@ -17019,10 +17019,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "19eae90fa3ed8a03",
-      "32d19aa7b57dc281"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       84,
       129,
