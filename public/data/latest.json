@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T14:16:51.650891+00:00",
+  "generated_at": "2026-09-07T19:59:08.429818+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 3,
@@ -88269,7 +88269,7 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "new-baseline",
+        "health_trend": "stable",
         "roster_score": 54.1,
         "stash_score": 50.1,
         "recommendation": "PASS",
@@ -100539,7 +100539,7 @@
       "position": "DEF",
       "status": "o",
       "chance_next_round": 75,
-      "news": "Unspecified injury - 75% chance of playing",
+      "news": "Muscular injury - 75% chance of playing",
       "news_added": "2026-09-04T14:00:08.080310Z",
       "event_points": 0,
       "total_points": 12,
@@ -100691,7 +100691,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 64.7,
         "stash_score": 54.7,
         "recommendation": "WATCH",
@@ -120390,9 +120390,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "6f68d96ca976e688"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       84,
       129,
