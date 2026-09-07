@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T19:59:08.429818+00:00",
+  "generated_at": "2026-09-07T22:51:39.867960+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 3,
@@ -100691,7 +100691,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 64.7,
         "stash_score": 54.7,
         "recommendation": "WATCH",
