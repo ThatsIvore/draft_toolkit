@@ -122,6 +122,42 @@ class PostWaiverDraftClient(DraftClient):
         }
 
 
+def test_collector_keeps_scoring_fixtures_and_captures_next_week_before_lock(tmp_path, monkeypatch):
+    from fpl_toolkit.privacy import sanitize_public_report
+
+    class ScheduledFantasy(FantasyClient):
+        def fixtures(self):
+            return [
+                {"event": week, "team_h": 1, "team_a": 2,
+                 "team_h_difficulty": 3, "team_a_difficulty": 3,
+                 "started": False, "finished": False}
+                for week in range(1, 7)
+            ]
+
+    monkeypatch.chdir(tmp_path)
+    report = collect(Settings(draft_entry_id="1001", draft_league_id="77", output_dir=str(tmp_path / "data")),
+                     client=PostWaiverDraftClient(), fantasy_client=ScheduledFantasy())
+    diagnostics = report["outcome_diagnostics"]
+    assert diagnostics["current"]["forecast"]["recommended"]["projected_total"] > 0
+    # A locked scoring week can be SCHEDULED between deadline and kickoff.
+    assert not diagnostics["current"]["forecast"]["calibration_eligible"]
+    assert diagnostics["pending_forecasts"]["2"]["recommended"]["projected_total"] > 0
+    assert diagnostics["pending_forecasts"]["2"]["calibration_eligible"]
+    assert report["my_squad"][0]["fixtures"][0]["gameweek"] == 2
+    public = sanitize_public_report(report)
+
+    def check(node):
+        if isinstance(node, dict):
+            assert not {"owner_entry_id", "owner_raw", "owner_name", "entry_id",
+                        "_completed_fixture_counts", "_scoring_fixtures"}.intersection(node)
+            for value in node.values():
+                check(value)
+        elif isinstance(node, list):
+            for value in node:
+                check(value)
+    check(public)
+
+
 def test_collector_keeps_live_scoring_on_gw1_and_moves_actions_to_gw2(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     draft_client = DraftClient()

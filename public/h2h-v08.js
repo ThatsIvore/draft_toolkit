@@ -1,4 +1,5 @@
 function h2hScore(value) {
+  if (value == null) return '-';
   const n = Number(value);
   return Number.isFinite(n) ? n.toFixed(1) : '-';
 }
@@ -94,7 +95,7 @@ function h2hOutcomePanel() {
   const liveOrFinal = ['LIVE','FINAL'].includes(current.phase);
   const estimatedScore = actual.h2h_score_source === 'estimated_lineups';
   const phaseLabel = current.phase === 'FINAL' ? (estimatedScore ? 'Final score pending' : 'Final result') : current.phase === 'LIVE' ? (estimatedScore ? 'Estimated live score' : 'Live score') : 'Forecast locked';
-  const eligibility = forecast.calibration_eligible ? 'Pre-GW calibration sample' : 'Mid-GW transparency sample';
+  const eligibility = evaluation.calibration_eligible ? 'Pre-GW calibration sample' : 'Excluded from calibration';
   const sourceLabel = estimatedScore ? 'official XI vs opponent likely XI' : 'Draft league score';
   const resultLine = liveOrFinal
     ? `<strong>${esc(h2hScore(actual.h2h_my_points))}–${esc(h2hScore(actual.h2h_opponent_points))}</strong><span>${esc(actual.h2h_result || '-')} · ${esc(sourceLabel)}</span>`

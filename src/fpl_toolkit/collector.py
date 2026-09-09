@@ -122,6 +122,15 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         gameweeks=[scoring_gw],
     )
     ownership = attach_fixture_matrix(ownership, scoring_fixture_matrix, field="_scoring_fixtures")
+    completed_fixture_counts: dict[str, dict[str, int]] = {}
+    for fixture in fixtures:
+        if not fixture.get("finished") or fixture.get("event") is None:
+            continue
+        for team in (fixture.get("team_h"), fixture.get("team_a")):
+            counts = completed_fixture_counts.setdefault(str(team), {})
+            week = str(fixture["event"])
+            counts[week] = counts.get(week, 0) + 1
+    ownership = [{**player, "_completed_fixture_counts": completed_fixture_counts.get(str(player.get("team_id")), {})} for player in ownership]
 
     try:
         fantasy_bootstrap = fantasy_client.bootstrap_static()
@@ -178,8 +187,12 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         current_gameweek=season_gw,
         recent_match_evidence=recent_evidence,
     )
+    scoring_ownership = [
+        {**{key: value for key, value in player.items() if not key.startswith("_")}, "fixtures": player.get("_scoring_fixtures", [])}
+        for player in ownership
+    ]
     ownership = [
-        {key: value for key, value in player.items() if key != "_scoring_fixtures"}
+        {key: value for key, value in player.items() if not key.startswith("_")}
         for player in ownership
     ]
 
@@ -210,8 +223,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     )
     report["snapshot"] = str(snapshot_path)
     report["intelligence_model"] = {
-        "version": "v0.6.0",
-        "description": "Early-season calibrated model with durable performance and role priors, capped position-relative grades from final official Gameweeks, live-match stabilization, floor/upside and conservative waiver guardrails.",
+        "version": "v0.6.1",
+        "description": "Heuristic model with tied percentile ranks, completed-match role opportunities and durable production priors, capped position-relative grades from final official Gameweeks, live-match stabilization, floor/upside and conservative waiver guardrails.",
         "performance_baseline_players": len(performance_baseline_rows),
         "recent_match_evidence": {
             "version": "v1",
@@ -260,15 +273,18 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
     report["lineup"] = lineup or fallback_lineup(report.get("my_squad", []), scoring_gw)
 
     outcome_report = dict(report)
+    outcome_report["_forecast_before_deadline"] = scoring_gw == decision_gw
     if scoring_gw != decision_gw:
-        scoring_recommendation = recommend_lineup(report.get("my_squad", []), scoring_gw)
+        own_ids = {player["player_id"] for player in report.get("my_squad", [])}
+        scoring_squad = [player for player in scoring_ownership if player["player_id"] in own_ids]
+        scoring_recommendation = recommend_lineup(scoring_squad, scoring_gw)
         outcome_report["recommended_lineup"] = scoring_recommendation
         outcome_report["h2h_matchup"] = build_h2h_matchup(
             league,
             settings.draft_entry_id,
-            report.get("my_squad", []),
-            ownership,
-            report.get("available_players", []),
+            scoring_squad,
+            scoring_ownership,
+            [],
             scoring_gw,
             my_lineup=scoring_recommendation,
             phase=scoring_phase,
@@ -279,6 +295,8 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         outcome_report,
         scoring_phase,
         scoring_gw,
+        scoring_players=scoring_ownership,
+        decision_report=report if decision_gw != scoring_gw else None,
     )
     report["h2h_outlook"] = build_h2h_outlook(
         league,

@@ -6,6 +6,7 @@ import re
 from typing import Any
 
 from .transfer_intel import transfer_blocks_acquisition, transfer_blocks_selection
+from .recent_match_evidence import _percentiles
 
 
 def _clamp(value: float, low: float = 0.0, high: float = 100.0) -> float:
@@ -28,12 +29,7 @@ def _percentile_scores(players: list[dict[str, Any]], value_fn) -> dict[int, flo
         groups[str(player.get("position") or "UNK")].append((int(player_id), float(value_fn(player))))
     scores: dict[int, float] = {}
     for rows in groups.values():
-        ordered = sorted(rows, key=lambda item: (item[1], item[0]))
-        if len(ordered) == 1:
-            scores[ordered[0][0]] = 100.0
-            continue
-        for rank, (player_id, _) in enumerate(ordered):
-            scores[player_id] = 100.0 * rank / (len(ordered) - 1)
+        scores.update(_percentiles(dict(rows)))
     return scores
 
 
@@ -231,6 +227,7 @@ def usage_scores(
     player: dict[str, Any],
     prior: dict[str, Any] | None = None,
     current_gameweek: int | None = None,
+    recent_match_evidence: dict[str, Any] | None = None,
 ) -> tuple[float, float]:
     availability = availability_score(player) / 100.0
     current_start, current_minutes = _raw_usage_scores(player)
@@ -245,6 +242,38 @@ def usage_scores(
         base_start, base_minutes = 70.0, 60.0
     else:
         base_start, base_minutes = current_start, current_minutes
+
+    if current_gameweek not in (None, 0):
+        # Learn role from opportunities, including zero-minute matches. Minutes
+        # per start alone cannot distinguish a regular from an occasional starter.
+        counts = player.get("_completed_fixture_counts") or {}
+        rows = (recent_match_evidence or {}).get("gameweeks") or []
+        opportunities = minutes = starts = 0.0
+        for row in rows:
+            count = counts.get(str(row.get("gameweek")))
+            if count is None:
+                continue  # Missing fixture evidence is not a missed appearance.
+            opportunities += count
+            minutes += _number(row.get("minutes"))
+            starts += _number(row.get("starts"))
+        if not opportunities and not _fixture_is_active(player, current_gameweek):
+            # Fallback for callers without finalized event evidence. Collector
+            # supplies exact team fixture counts; never infer exposure from minutes.
+            opportunities = sum(counts.values())
+            if opportunities:
+                minutes = _number(player.get("minutes"))
+                starts = _number(player.get("starts"))
+        if opportunities:
+            prior_start, prior_minutes = (
+                _raw_usage_scores(prior, shrink_small_sample=True)
+                if prior_has_usage else (70.0, 60.0)
+            )
+            # Two match-equivalents of prior evidence prevent a one-off start
+            # becoming certainty, while repeated absences reduce the estimate.
+            base_start = (2 * prior_start + 100 * min(starts, opportunities)) / (2 + opportunities)
+            base_minutes = (2 * prior_minutes + min(minutes, 90 * opportunities)) / (2 + opportunities)
+        elif not prior_has_usage and not _fixture_is_active(player, current_gameweek):
+            base_start, base_minutes = _raw_usage_scores(player, shrink_small_sample=True)
 
     return _clamp(base_start * availability), _clamp(base_minutes * availability, 0.0, 90.0)
 
@@ -385,7 +414,7 @@ def attach_intelligence(
         floor = _clamp(floor + 0.6 * recent_adjustment)
         upside = _clamp(upside + recent_adjustment)
         fixtures = fixture_score(row); future_fixtures = fixture_score(row, skip_first=True); availability = availability_score(row)
-        start_probability, expected_minutes = usage_scores(row, prior, current_gameweek); active_factor = _inactive_factor(row)
+        start_probability, expected_minutes = usage_scores(row, prior, current_gameweek, recent); active_factor = _inactive_factor(row)
         return_signal = injury_return_signal(row); expected_return = parse_expected_return(str(row.get("news") or ""), now)
         expected_return_gw = return_gameweek(row, expected_return); trend = health_trend(row, previous_by_id.get(player_id))
         post_return_fixtures = post_return_fixture_score(row, expected_return_gw)
@@ -405,7 +434,7 @@ def attach_intelligence(
         stash = (0.30 * baseline + 0.30 * stash_fixtures + 0.08 * availability + 0.12 * usage + 0.20 * upside) * active_factor
         action, reason = _recommendation(row, roster, stash, availability, return_signal, trend, my_entry_id)
         row["intelligence"] = {
-            "model": "v0.6.0", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
+            "model": "v0.6.1", "baseline_score": round(_clamp(baseline), 1), "fixture_score": round(_clamp(fixtures), 1),
             "future_fixture_score": round(_clamp(future_fixtures), 1), "availability_score": round(_clamp(availability), 1),
             "post_return_fixture_score": None if post_return_fixtures is None else round(_clamp(post_return_fixtures), 1),
             "stash_fixture_score": round(_clamp(stash_fixtures), 1),

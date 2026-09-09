@@ -116,3 +116,17 @@ The Python package version in `pyproject.toml` is separate from feature/model ve
 The current feasibility findings, agreed product directions, league-configuration research, model-generalization risks and paid-beta release gates are maintained in [Commercial Access Feasibility and Onboarding Concept](docs/COMMERCIAL_FEASIBILITY.md). It is the handover record for future work on selling access to the toolkit; it does not describe features that are already implemented unless explicitly marked as confirmed.
 
 The separate [Standard FPL Mode Analysis](docs/STANDARD_FPL_MODE_ANALYSIS.md) records the feasibility, reusable modules, new calculations, data risks and phased design for supporting the budget-and-transfer game at `fantasy.premierleague.com`. It deliberately distinguishes standard FPL from Classic scoring inside FPL Draft. The [current-team authentication discovery](docs/STANDARD_FPL_AUTH_DISCOVERY.md) documents why FPL's login client cannot be reused by the GitHub Pages app, the no-credentials boundary and the next bounded personal experiment. The [private snapshot contract](docs/STANDARD_FPL_PRIVATE_SNAPSHOT.md) defines the strict source-independent handoff into the current analysis pipeline, while [Standard FPL Squad and Single-Transfer Legality](docs/STANDARD_FPL_TRANSFER_LEGALITY.md) records the dated rules and evaluator boundary.
+
+
+## Scoring and outcome integrity (9 September 2026)
+
+Development tests require Node.js (CI uses Node 22) as well as the Python development dependencies, because the outcome renderer is exercised as JavaScript.
+
+- Equal statistics receive equal percentile ranks; player IDs do not break scoring ties.
+- Draft role estimates use completed fixture opportunities, including missed matches, with two match-equivalents of prior evidence. Finalized recent minutes and starts take precedence over live cumulative statistics. Blank weeks add no opportunities; doubles add both. Missing event evidence falls back to completed-season totals when no player fixture is active. Historical production and role remain distinct, heuristic inputs.
+- H2H projected points sum each fixture's contribution. Expected minutes in player components remain per match; `expected_gameweek_minutes` and `fixture_count` expose the aggregate. Blank weeks have zero projected points and zero range.
+- Outcome diagnostics v0.2 retain separate scoring-week fixtures and freeze the first valid next-actionable-week forecast before rollover. A first capture after the lineup deadline cannot become eligible merely because kickoff is still pending.
+- Forecast actuals resolve against the complete scoring player pool, independent of current ownership. Missing player points stay unknown and exclude the sample from calibration.
+- Legacy zero forecasts are preserved with an exclusion reason and removed from calibration, including retained history. Their original predictions are never reconstructed with hindsight. This migration runs on collection; deploying source alone does not update existing JSON.
+
+The scheduled collector reads the optional GitHub Actions repository secret `API_FOOTBALL_KEY`. If it is absent, external evidence remains `missing_api_key`; connecting the secret enables shadow collection only, not recommendation changes. Never put the key in repository files or public reports.
