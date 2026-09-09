@@ -1,4 +1,5 @@
 from pathlib import Path
+import subprocess
 
 
 def test_h2h_renderer_uses_the_defined_my_matchup_reference():
@@ -6,6 +7,25 @@ def test_h2h_renderer_uses_the_defined_my_matchup_reference():
 
     assert "esc(mine.formation" in source
     assert "esc(my.formation" not in source
+
+
+def test_outcome_renderer_keeps_missing_points_unknown_and_labels_exclusions():
+    subprocess.run(["node", "-e", r"""
+const fs = require('fs');
+const vm = require('vm');
+const assert = require('assert');
+const context = {controls: () => '', renderPlanner: () => '', allPlayers: () => [], esc: String,
+  DATA: {outcome_diagnostics: {current: {phase: 'FINAL', gameweek: 3,
+    forecast: {calibration_eligible: true, recommended: {projected_total: 6}},
+    actual: {recommended_points: null}, evaluation: {calibration_eligible: false}}}}};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync('public/h2h-v08.js', 'utf8'), context);
+assert.equal(context.h2hScore(null), '-');
+assert.equal(context.h2hScore(0), '0.0');
+const html = context.h2hOutcomePanel();
+assert(html.includes('Excluded from calibration'));
+assert(html.includes('Toolkit Recommended XI</small><strong>-</strong>'));
+"""], check=True)
 
 
 def test_h2h_renderer_exposes_four_gameweek_outlook():
@@ -19,7 +39,7 @@ def test_h2h_renderer_exposes_four_gameweek_outlook():
     assert "Current-roster projection" in source
     assert ".h2h-outlook-grid" in styles
     assert "h2h-outlook-v11.css?v=20260821.1" in index
-    assert "h2h-v08.js?v=20260822.3" in index
+    assert "h2h-v08.js?v=20260909.1" in index
 
 
 def test_h2h_visual_hierarchy_uses_progressive_disclosure_and_mobile_scrolling():

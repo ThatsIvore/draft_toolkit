@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Install
         run: pip install -e ".[dev]"
       - name: Test
@@ -34,6 +37,7 @@ jobs:
           FPL_DRAFT_LEAGUE_ID: ${{ vars.FPL_DRAFT_LEAGUE_ID }}
           FPL_PLANNING_HORIZON: "4"
           FPL_EXTERNAL_STATS_PROVIDER: "api_football"
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: fpl-toolkit --publish
       - name: Commit generated public report
         run: |

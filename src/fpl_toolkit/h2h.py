@@ -228,17 +228,23 @@ def player_projected_points(player: dict[str, Any], gameweek: int) -> dict[str, 
         }
     expected_minutes = _clamp(_number(score.get("expected_minutes")), 0.0, 90.0)
     availability = _clamp(_number(score.get("availability"), 100.0), 0.0, 100.0)
-    fixture_score = _clamp(_number(score.get("next_fixture"), 60.0), 0.0, 100.0)
     confidence = _clamp(_number(score.get("sample_confidence"), 0.0), 0.0, 100.0)
 
-    fixture_multiplier = _clamp(1.0 + (fixture_score - 60.0) / 250.0, 0.78, 1.16)
+    matches = [
+        match for week in player.get("fixtures") or []
+        if int(week.get("gameweek") or 0) == int(gameweek)
+        for match in week.get("matches") or [] if isinstance(match, dict)
+    ]
+    multipliers = [
+        _clamp(1.0 + ((6 - _clamp(_number(match.get("difficulty"), 3), 1, 5)) * 20 - 60) / 250, 0.78, 1.16)
+        for match in matches
+    ]
+    fixture_multiplier = _mean(multipliers) if multipliers else 1.0
     availability_factor = 0.25 + 0.75 * availability / 100.0
-    central = points_per_90 * expected_minutes / 90.0 * fixture_multiplier * availability_factor
-    if _fixture_label(player, gameweek) == "Blank":
-        central = 0.0
+    central = points_per_90 * expected_minutes / 90.0 * sum(multipliers) * availability_factor
 
     uncertainty = 0.32 + 0.38 * (1.0 - confidence / 100.0)
-    half_width = max(1.2, central * uncertainty)
+    half_width = max(1.2 * len(matches), central * uncertainty) if matches else 0.0
     low = max(0.0, central - half_width)
     high = central + half_width
     return {
@@ -247,6 +253,8 @@ def player_projected_points(player: dict[str, Any], gameweek: int) -> dict[str, 
         "range_high": round(high, 1),
         "points_per_90": round(points_per_90, 2),
         "expected_minutes": round(expected_minutes, 1),
+        "fixture_count": len(matches),
+        "expected_gameweek_minutes": round(expected_minutes * len(matches), 1),
         "fixture_multiplier": round(fixture_multiplier, 3),
         "availability": round(availability, 1),
         "sample_confidence": round(confidence, 1),

@@ -1,6 +1,6 @@
 # Maintainer onboarding
 
-Last reviewed: 28 August 2026
+Last reviewed: 9 September 2026
 
 This is the repository-owned handoff for agents and maintainers. The source and tests remain authoritative; update this document when a durable data boundary or recommendation meaning changes.
 
@@ -85,3 +85,12 @@ The H2H simulation currently considers positive waiver actions, including `CONSI
 ## Documentation status
 
 Feature documents should identify whether they describe **implemented**, **discovery**, **unsupported**, or **superseded** behavior and include a review date when rules or external interfaces can change. Keep `README.md` as the product and local-run overview, this file as the maintainer handoff, and `public/about.html` as the user-facing explanation.
+
+
+## Outcome and scoring corrections (implemented, 9 September 2026)
+
+Keep the scoring fixture matrix alive through outcome calculation while recommendations retain the actionable fixture window. Outcome diagnostics v0.2 store at most one `pending_forecasts` entry for the next decision Gameweek, promote it unchanged on rollover, and retain eight completed outcome records. Legacy zero forecasts are quarantined for calibration without overwriting original projection values.
+
+Resolve forecast actuals using the complete scoring player pool. An unknown actual is `null`, not zero, and cannot support calibration. Temporary role fixture counts and scoring fixtures must not reach public output. Player percentile ties use equal ranks. Role opportunities count completed matches independently of player minutes, and H2H points sum fixture contributions rather than treating a double as a small difficulty bonus.
+
+`tests/test_scoring_integrity.py` covers ID invariance, missed appearances, partial-live stability, double/blank projections, forecast promotion, legacy migration, and ownership-independent actuals. `tests/test_collector_horizon.py` verifies scoring fixtures, pre-deadline capture, and public field isolation through collection.

@@ -223,8 +223,12 @@ def test_free_injured_high_value_player_becomes_stash_candidate():
         ],
     }
     previous = [{**player, "chance_next_round": 0, "news": "Expected back 30 Aug"}]
+    # Relative value needs a comparison pool. A singleton is now neutral,
+    # rather than automatically receiving the top percentile in every metric.
+    comparison = {**player, "player_id": 2, "total_points": 10, "minutes": 900,
+                  "starts": 10, "chance_next_round": 100, "news": ""}
     intel = attach_intelligence(
-        [player],
+        [player, comparison],
         previous=previous,
         my_entry_id="336654",
         now=datetime(2026, 8, 22, tzinfo=timezone.utc),
