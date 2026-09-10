@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-09-09T22:35:19.430512+00:00",
+  "captured_at": "2026-09-10T04:48:18.270585+00:00",
   "gameweek": 4,
   "scoring_gameweek": 3,
   "scoring_phase": "FINAL",
@@ -6914,12 +6914,12 @@
       "waiver_delta": 7.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
-      "transfer_record_id": "delap-nottingham-forest-20260827",
-      "transfer_status": "confirmed",
-      "transfer_action": "MOVE CONFIRMED",
-      "transfer_destination": "Nottingham Forest",
-      "transfer_summary": "Nottingham Forest have confirmed Delap's signing; use Forest's fixture run while the FPL club assignment is still stale.",
-      "transfer_blocks_acquisition": false
+      "transfer_record_id": null,
+      "transfer_status": null,
+      "transfer_action": null,
+      "transfer_destination": null,
+      "transfer_summary": null,
+      "transfer_blocks_acquisition": null
     },
     "125": {
       "player_id": 125,
