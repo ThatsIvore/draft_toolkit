@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-09-10T12:46:08.866749+00:00",
+  "captured_at": "2026-09-10T12:56:40.727756+00:00",
   "gameweek": 4,
   "scoring_gameweek": 3,
   "scoring_phase": "FINAL",
@@ -2117,7 +2117,7 @@
       "availability_score": 100.0,
       "expected_minutes": 29.2,
       "role_evidence": "LOW",
-      "health_trend": "improving",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 43.6,
       "stash_score": 42.4,
@@ -18085,9 +18085,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "efddb986da59e42d"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       2,
       29,

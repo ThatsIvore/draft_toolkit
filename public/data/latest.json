@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T12:46:08.866749+00:00",
+  "generated_at": "2026-09-10T12:56:40.727756+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 3,
@@ -14418,7 +14418,7 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 43.6,
         "stash_score": 42.4,
         "recommendation": "PASS",
@@ -127121,9 +127121,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "efddb986da59e42d"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       2,
       29,
