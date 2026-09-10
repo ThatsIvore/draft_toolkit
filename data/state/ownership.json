@@ -3324,7 +3324,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Hamstring injury - Unknown return date",
+    "news": "Hamstring injury - Expected back 10 Oct",
     "news_added": "2026-07-24T18:30:10.661894Z"
   },
   {
@@ -7301,8 +7301,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Unspecified injury - Expected back 13 Sep",
+    "chance_next_round": 50,
+    "news": "Hamstring injury - 50% chance of playing",
     "news_added": "2026-09-04T11:30:08.661589Z"
   },
   {
