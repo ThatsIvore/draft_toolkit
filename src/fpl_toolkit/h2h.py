@@ -426,7 +426,7 @@ def _simulate_best_move(
     for candidate in available_players:
         replacement = candidate.get("replacement") or {}
         action = str(replacement.get("action") or "")
-        if action == "KEEP ROSTER" or not action:
+        if (replacement.get("model") == "v0.6.0" and action != "PRIORITY MOVE") or action in {"KEEP ROSTER", "HOLD / WATCH", "ALTERNATIVE"} or not action:
             continue
         score = player_start_score(candidate, gameweek)
         if str(score.get("role_evidence") or "LOW") == "LOW" or _number(score.get("availability")) < 75:

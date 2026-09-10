@@ -16,7 +16,7 @@ function overviewRelevantUpdates(data) {
   const squadIds = new Set((data.my_squad || []).map(player => String(player.player_id)));
   const opponentIds = new Set((data.h2h_matchup?.opponent_squad || []).map(player => String(player.player_id)));
   const available = new Map((data.available_players || []).map(player => [String(player.player_id), player]));
-  const supportedActions = new Set(['SWAP NOW', 'STASH SWAP', 'CONSIDER']);
+  const supportedActions = new Set(['PRIORITY MOVE']);
   const rows = (data.change_feed?.items || []).filter(item => {
     if ((item.status || 'active') !== 'active' || !['critical', 'important'].includes(item.priority)) return false;
     const playerId = String(item.player_id ?? '');
@@ -27,7 +27,8 @@ function overviewRelevantUpdates(data) {
   });
   const byPlayer = new Map();
   rows.forEach(item => {
-    const key = item.player_id == null ? String(item.stream || item.event_id) : `player:${item.player_id}`;
+    const candidate = available.get(String(item.player_id));
+    const key = candidate?.replacement ? `waiver:${candidate.replacement.drop_player_id}` : item.player_id == null ? String(item.stream || item.event_id) : `player:${item.player_id}`;
     const previous = byPlayer.get(key);
     if (!previous || overviewPriorityRank(item.priority) > overviewPriorityRank(previous.priority)) {
       byPlayer.set(key, {
@@ -87,6 +88,10 @@ function overviewH2HAction(data) {
 
 function overviewUrgentItems(data) {
   const items = [
+    ...(data.available_players || []).filter(p => p.replacement?.action === 'PRIORITY MOVE').map(p => ({
+      key: `waiver:${p.replacement.drop_player_id}`, priority: 'important', badge: 'PRIORITY MOVE',
+      title: `Add ${p.player} · Drop ${p.replacement.drop_player}`, detail: p.replacement.reason, view: 'available',
+    })),
     ...overviewRelevantUpdates(data),
     ...overviewAvailabilityActions(data),
     ...overviewH2HAction(data),
@@ -107,7 +112,7 @@ function overviewUrgentItems(data) {
 }
 
 function overviewBestWaiver(data) {
-  const priority = {'SWAP NOW': 4, 'STASH SWAP': 3, 'CONSIDER': 2, 'KEEP ROSTER': 1};
+  const priority = {'PRIORITY MOVE': 4, 'ALTERNATIVE': 3, 'CONSIDER': 2, 'HOLD / WATCH': 1};
   return [...(data.available_players || [])]
     .filter(player => player.replacement)
     .sort((a, b) => (priority[b.replacement.action] || 0) - (priority[a.replacement.action] || 0)

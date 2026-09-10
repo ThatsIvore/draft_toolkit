@@ -105,6 +105,8 @@ def _candidate_action(player: dict[str, Any]) -> str | None:
     waiver_action = str(replacement.get("action") or "")
     standalone_action = str(intel.get("recommendation") or "")
     true_stash = bool(replacement.get("true_stash_candidate"))
+    if replacement.get("model") == "v0.6.0":
+        return "MONITOR" if true_stash or standalone_action == "STASH" else None
     if true_stash and waiver_action in {"STASH SWAP", "SWAP NOW", "CONSIDER"}:
         return waiver_action
     if standalone_action == "STASH":
