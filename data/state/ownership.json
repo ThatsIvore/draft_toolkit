@@ -2985,9 +2985,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Expected back 12 Oct",
+    "news_added": "2026-09-10T18:30:08.877110Z"
   },
   {
     "player_id": 96,
@@ -5507,9 +5507,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 50,
+    "news": "Ankle injury - 50% chance of playing",
+    "news_added": "2026-09-10T16:00:09.127466Z"
   },
   {
     "player_id": 134,
@@ -5547,7 +5547,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Foot injury - Unknown return date",
+    "news": "Foot injury - Expected back 7 Nov",
     "news_added": "2026-07-29T17:30:09.796802Z"
   },
   {
@@ -6534,9 +6534,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Expected back 10 Oct",
+    "news_added": "2026-09-10T13:00:08.617941Z"
   },
   {
     "player_id": 593,
@@ -7325,6 +7325,19 @@
     "team_id": 9,
     "position": "MID",
     "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 655,
+    "player": "Gboho",
+    "club": "COV",
+    "team_id": 7,
+    "position": "MID",
+    "status": "l",
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": null,
