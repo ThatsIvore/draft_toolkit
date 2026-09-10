@@ -16,7 +16,7 @@ def test_frontend_exposes_snapshot_freshness_states_and_mobile_warning():
     assert 'role="status"' in app
     assert ".freshness-warning" in styles
     assert "app.js?v=20260827.2" in index
-    assert "styles.css?v=20260910.1" in index
+    assert "styles.css?v=20260910.2" in index
 
 
 def test_collection_workflow_prevents_overlap_and_has_timeouts():
