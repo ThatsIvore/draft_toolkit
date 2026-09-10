@@ -9,7 +9,7 @@ def test_overview_is_the_default_and_has_a_dedicated_navigation_route():
     assert "let VIEW = 'overview'" in app
     assert 'data-view="overview">Overview' in index
     assert "overview-v1.css?v=20260827.1" in index
-    assert "overview-v1.js?v=20260827.2" in index
+    assert "overview-v1.js?v=20260910.1" in index
     assert "['overview','squad'" in interaction
 
 

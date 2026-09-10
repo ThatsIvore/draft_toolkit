@@ -19,7 +19,7 @@ FPL Draft Classic scoring and odd-sized H2H average-team fixtures remain unsuppo
 | Recommended XI | Current squad and selection model | Decision Gameweek | This is toolkit advice, not a submitted lineup. Start Score is not projected FPL points. |
 | Recent Match Evidence | Finalized and data-checked Standard FPL event feed | Completed Gameweeks | Standard and Draft element IDs can differ. Map them through the official stable player `code`; never join cross-feed evidence by numeric element ID alone. |
 | Transfer eligibility | Official availability plus curated, expiring transfer evidence | Decision horizon | A reliable agreed or confirmed league exit is a hard selection/acquisition block. Every lineup, waiver, H2H, threat, outlook, and planner consumer must enforce it independently. |
-| Available recommendation | Same-position waiver comparison | Decision Gameweek and four-Gameweek value | `SWAP NOW`, `STASH SWAP`, `CONSIDER`, or `KEEP ROSTER` is the primary roster-action verdict. |
+| Available recommendation | Same-position waiver comparison | Decision Gameweek and four-Gameweek value | `PRIORITY MOVE`, `ALTERNATIVE`, `CONSIDER`, or `HOLD / WATCH` is the primary roster-action verdict. |
 | H2H tactical move | Simulation of a waiver-supported candidate in the likely XI | Next matchup | This is a secondary one-Gameweek countermeasure. It must be labelled as tactical and must not silently override a stronger season-value verdict on Available. When the surfaces differ, inspect both models and explain the criteria rather than presenting either as universally authoritative. |
 | Frozen outcome | First eligible pre-deadline forecast | Scoring Gameweek | Never rewrite a frozen forecast with later information. Exclude first-time mid-Gameweek baselines from calibration. |
 
@@ -40,7 +40,7 @@ The dashboard deliberately answers different questions:
 1. **Available:** Is this a sufficiently strong same-position roster upgrade after immediate value, floor, upside, future value, and evidence are considered?
 2. **H2H:** If a waiver-supported candidate were added, which legal swap produces the largest projected XI gain for the next matchup?
 
-The H2H simulation currently considers positive waiver actions, including `CONSIDER`, and sorts primarily by next-Gameweek projected gain. It can therefore show a different player from Available's best season-long `SWAP NOW`. Treat that disagreement as a close decision requiring explanation, not as permission for the H2H card to replace the primary waiver verdict.
+Available v0.6.0 selects at most one PRIORITY MOVE per outgoing player, grouping qualifying fallback targets as ALTERNATIVE. CONSIDER and HOLD / WATCH cannot be promoted by H2H. No priority is required. See README action-priority gates; keep evidence, immediate timing, and production-value protection separate from raw score differences. Historical action labels may remain in archived Decision Updates; new events and current urgency use the new verdict.
 
 ## Gameweek lifecycle
 

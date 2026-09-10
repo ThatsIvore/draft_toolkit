@@ -1,4 +1,4 @@
-const replacementPriority = {'SWAP NOW': 4, 'STASH SWAP': 3, 'CONSIDER': 2, 'KEEP ROSTER': 1};
+const replacementPriority = {'PRIORITY MOVE': 4, 'ALTERNATIVE': 3, 'CONSIDER': 2, 'HOLD / WATCH': 1};
 
 function signed(value) {
   const n = Number(value || 0);
@@ -31,15 +31,15 @@ function playerGrade(p) {
 }
 
 function replacementBadge(action) {
-  const mapped = action === 'SWAP NOW' ? 'CLAIM' : action === 'STASH SWAP' ? 'STASH' : action === 'CONSIDER' ? 'WATCH' : 'PASS';
-  return `<span class="recommendation ${recommendationClass(mapped)}">${esc(action || 'KEEP ROSTER')}</span>`;
+  const mapped = action === 'PRIORITY MOVE' ? 'CLAIM' : action === 'ALTERNATIVE' ? 'WATCH' : action === 'CONSIDER' ? 'WATCH' : 'PASS';
+  return `<span class="recommendation ${recommendationClass(mapped)}">${esc(action || 'HOLD / WATCH')}</span>`;
 }
 
 intelligenceStrip = function(p) {
   const intel = p.intelligence || {};
   if (intel.roster_score == null) return '<div class="placeholder-score">Intelligence pending next collection</div>';
   const primary = p.replacement
-    ? `<div class="decision-line">${replacementBadge(p.replacement.action)}<span class="decision-reason">${esc(`Best swap: ${p.player} for ${p.replacement.drop_player}`)}</span></div>${playerGrade(p)}`
+    ? `<div class="decision-line">${replacementBadge(p.replacement.action)}<span class="decision-reason">${esc(`Compare ${p.player} with ${p.replacement.drop_player}`)}</span></div>${playerGrade(p)}`
     : `<div class="decision-line">${recommendationBadge(intel)}<span class="decision-reason">${esc(intel.recommendation_reason || '')}</span></div>`;
   return `${primary}
     <div class="score-strip">
@@ -48,7 +48,7 @@ intelligenceStrip = function(p) {
       <span class="score ${scoreClass(intel.upside_score)}"><small>Upside</small><strong>${esc(intel.upside_score ?? '-')}</strong></span>
       <span class="score ${scoreClass(intel.fixture_score)}"><small>Fixtures</small><strong>${esc(intel.fixture_score)}</strong></span>
       ${intel.role_evidence == null ? '' : `<span class="score"><small>Role evidence</small><strong>${esc(intel.role_evidence)}</strong></span>`}
-    </div>${replacementSummary(p)}`;
+    </div>${replacementSummary(p)}<p class="decision-reason">${esc(p.replacement?.reason || "")}</p>`;
 };
 
 controls = function() {
@@ -73,7 +73,7 @@ controls = function() {
 renderAvailable = function() {
   let list = filtered(DATA.available_players || []);
   const score = (p,key) => Number(p.intelligence?.[key] || 0);
-  if (SORT === 'swap') list.sort((a,b) => Number(b.replacement?.combined_delta ?? -999) - Number(a.replacement?.combined_delta ?? -999));
+  if (SORT === 'swap') list.sort((a,b) => (replacementPriority[b.replacement?.action] || 0) - (replacementPriority[a.replacement?.action] || 0) || Number(b.replacement?.combined_delta ?? -999) - Number(a.replacement?.combined_delta ?? -999));
   if (SORT === 'action') list.sort((a,b) => {
     const actionDelta = (replacementPriority[b.replacement?.action] || 0) - (replacementPriority[a.replacement?.action] || 0);
     return actionDelta || Number(b.replacement?.combined_delta || 0) - Number(a.replacement?.combined_delta || 0) || score(b,'stash_score') - score(a,'stash_score');
@@ -86,8 +86,16 @@ renderAvailable = function() {
   if (SORT === 'points') list.sort((a,b) => (b.total_points || 0) - (a.total_points || 0));
   if (SORT === 'availability') list.sort((a,b) => (b.chance_next_round ?? 100) - (a.chance_next_round ?? 100));
   if (SORT === 'name') list.sort((a,b) => String(a.player).localeCompare(String(b.player)));
-  const shown = list.slice(0,100);
-  return shown.length ? `<div class="group-title"><h3>Available players</h3><span class="count">Showing ${shown.length} of ${list.length}</span></div><div class="player-list">${shown.map(p => playerCard(p,'AVAILABLE')).join('')}</div>` : '<div class="empty">No available players match these filters.</div>';
+  const leads = list.filter(p => p.replacement?.action === 'PRIORITY MOVE');
+  const groups = leads.map(p => {
+    const alternatives = list.filter(a => a.replacement?.action === 'ALTERNATIVE' && a.replacement?.lead_player_id === p.player_id);
+    return `<section class="priority-group"><h3>Replace ${esc(p.replacement.drop_player)}</h3>${playerCard(p,'AVAILABLE')}${alternatives.length ? `<details><summary>${alternatives.length} alternative targets · choose one move</summary><div class="player-list">${alternatives.map(a => playerCard(a,'AVAILABLE')).join('')}</div></details>` : ''}</section>`;
+  }).join('');
+  const grouped = new Set(leads.map(p => p.player_id));
+  const remaining = list.filter(p => !grouped.has(p.player_id) && !(p.replacement?.action === 'ALTERNATIVE' && grouped.has(p.replacement.lead_player_id)));
+  const shown = (SORT === 'swap' ? remaining : list).slice(0,100);
+  const intro = `<p>Priority moves meet strong improvement, evidence and timing checks. Alternatives replace the same player; they are fallback choices.</p>${SORT === 'swap' ? groups || '<p>No priority move clears the checks. Keeping your squad is a valid decision.</p>' : ''}`;
+  return (shown.length || leads.length) ? `${intro}<div class="group-title"><h3>Available players</h3><span class="count">Showing ${shown.length} of ${list.length}</span></div><div class="player-list">${shown.map(p => playerCard(p,'AVAILABLE')).join('')}</div>` : '<div class="empty">No available players match these filters.</div>';
 };
 
 const v3OpenPlayer = openPlayer;
@@ -111,7 +119,7 @@ openPlayer = function(id) {
   const drawerDecision = body.querySelector('.drawer-decision');
   if (drawerDecision) {
     const strength = standaloneStrength(p);
-    drawerDecision.innerHTML = `${replacementBadge(r.action)}<strong>${esc(`Best swap: ${p.player} for ${r.drop_player}`)}</strong><span class="decision-reason">Standalone strength: <strong>${esc(strength || 'Review')}</strong>${intel.recommendation_reason ? ` · ${esc(intel.recommendation_reason)}` : ''}</span>`;
+    drawerDecision.innerHTML = `${replacementBadge(r.action)}<strong>${esc(`Compare ${p.player} with ${r.drop_player}`)}</strong><span class="decision-reason">Standalone strength: <strong>${esc(strength || 'Review')}</strong>${intel.recommendation_reason ? ` · ${esc(intel.recommendation_reason)}` : ''}</span>`;
   }
 
   body.querySelectorAll('.decision-line').forEach(line => line.remove());

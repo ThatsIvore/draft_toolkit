@@ -6,7 +6,7 @@ from typing import Any
 
 
 ROLE_RANK = {"LOW": 1, "MEDIUM": 2, "HIGH": 3}
-WAIVER_RANK = {"KEEP ROSTER": 1, "CONSIDER": 2, "STASH SWAP": 3, "SWAP NOW": 4}
+WAIVER_RANK = {"HOLD / WATCH": 1, "ALTERNATIVE": 2, "PRIORITY MOVE": 4, "KEEP ROSTER": 1, "CONSIDER": 2, "STASH SWAP": 3, "SWAP NOW": 4}
 PRIORITY_RANK = {"critical": 4, "important": 3, "watch": 2, "info": 1}
 DECISION_STATE_VERSION = 4
 CHANGE_FEED_MODEL = "v1.0.0"
@@ -375,7 +375,7 @@ def _player_changes(
     new_action = current.get("waiver_action")
     if not transient_match_data and old_action and new_action and old_action != new_action:
         stronger = WAIVER_RANK.get(str(new_action), 0) > WAIVER_RANK.get(str(old_action), 0)
-        priority = "critical" if new_action == "SWAP NOW" else "important" if stronger else "watch"
+        priority = "critical" if new_action in {"SWAP NOW", "PRIORITY MOVE"} else "important" if stronger and new_action not in {"CONSIDER", "ALTERNATIVE", "HOLD / WATCH"} else "watch"
         drop = current.get("waiver_drop_player")
         delta = current.get("waiver_delta")
         extra = f" Best comparison: drop {drop}." if drop else ""
@@ -495,7 +495,7 @@ def build_change_feed(
         action = current.get("waiver_action")
         decision = f" Current waiver action: {action}." if action else ""
         events.append(_item(
-            "opponent_drop", "important" if action in {"SWAP NOW", "STASH SWAP", "CONSIDER"} else "watch",
+            "opponent_drop", "important" if action in {"SWAP NOW", "STASH SWAP", "PRIORITY MOVE"} else "watch",
             f"{current.get('player') or 'Player'} entered the free pool",
             f"A league roster released this player.{decision}", player=current, badge="NEW FREE AGENT",
         ))

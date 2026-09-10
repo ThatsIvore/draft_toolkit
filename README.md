@@ -130,3 +130,10 @@ Development tests require Node.js (CI uses Node 22) as well as the Python develo
 - Legacy zero forecasts are preserved with an exclusion reason and removed from calibration, including retained history. Their original predictions are never reconstructed with hindsight. This migration runs on collection; deploying source alone does not update existing JSON.
 
 The scheduled collector reads the optional GitHub Actions repository secret `API_FOOTBALL_KEY`. If it is absent, external evidence remains `missing_api_key`; connecting the secret enables shadow collection only, not recommendation changes. Never put the key in repository files or public reports.
+
+
+## Action priorities (10 September 2026)
+
+Available now groups one PRIORITY MOVE and qualifying ALTERNATIVE targets per outgoing player. Other comparisons are CONSIDER or HOLD / WATCH; no priority is forced. Priority requires combined improvement >=20, HIGH comparison evidence, full availability, >=65 expected minutes, a fixture in the decision week, non-negative floor/future deltas, and baseline production no more than five points below the outgoing player. It must address <=50 availability or a >=15-minute role improvement with >=15 immediate-value gain. These are conservative heuristic gates, not calibrated guarantees. Among qualifying targets, the highest combined score leads.
+
+Overview and H2H use that shared priority: H2H can simulate leading priority moves but cannot promote a marginal comparison or fallback. Stash comparisons remain monitoring decisions. Existing comparison numbers and the old classification remain diagnostic data (`comparison_action`); the public action is the new label. A collector run after merge is needed to update the report.

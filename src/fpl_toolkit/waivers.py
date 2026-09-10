@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
+from .transfer_intel import transfer_blocks_acquisition
 
 
 def _score(player: dict[str, Any], key: str) -> float:
@@ -45,8 +46,8 @@ def attach_replacement_analysis(
 ) -> list[dict[str, Any]]:
     """Compare each free agent with the best same-position roster replacement.
 
-    v0.5.1 reserves STASH SWAP for players with a real short-term availability
-    cost. Fit players with future-led value remain CONSIDER candidates instead.
+    Pairwise comparisons remain diagnostic. v0.6.0 then applies evidence,
+    timing and value guards and chooses one lead per outgoing player.
     """
     by_position: dict[str, list[dict[str, Any]]] = {}
     for player in my_squad:
@@ -105,4 +106,45 @@ def attach_replacement_analysis(
             "action": action,
         }
         output.append(row)
-    return output
+    return _prioritize_moves(output, my_squad, current_gameweek)
+
+
+def _prioritize_moves(players, squad, gameweek):
+    """One urgent lead per outgoing player; scores alone do not imply urgency."""
+    owned = {p.get("player_id"): p for p in squad}
+    groups = {}
+    for player in players:
+        r = player.get("replacement")
+        if not r:
+            continue
+        r["comparison_action"] = r["action"]
+        r["model"] = "v0.6.0"
+        r["action"] = "CONSIDER" if r["combined_delta"] >= (5 if gameweek in (None, 0) else 3) else "HOLD / WATCH"
+        r["reason"] = "Potential improvement, but no sufficiently strong, timely transfer clears the priority checks." if r["action"] == "CONSIDER" else "No compelling improvement over the current roster."
+        drop = owned[r["drop_player_id"]]
+        fixtures = [m for week in player.get("fixtures") or [] if week.get("gameweek") == gameweek for m in week.get("matches") or []]
+        # Preserve production value: an injury penalty alone must not justify
+        # sacrificing a substantially stronger long-term player.
+        production_ok = _score(player, "baseline_score") >= _score(drop, "baseline_score") - 5
+        usable = (_score(player, "availability_score") == 100 and _score(player, "expected_minutes") >= 65
+                  and bool(fixtures) and not transfer_blocks_acquisition(player))
+        timely = (_score(drop, "availability_score") <= 50 or
+                  (_score(player, "expected_minutes") - _score(drop, "expected_minutes") >= 15
+                   and r["immediate_delta"] >= 15))
+        qualifies = (gameweek not in (None, 0) and r["combined_delta"] >= 20 and r["confidence"] == "HIGH"
+                     and r["floor_delta"] >= 0 and r["future_delta"] >= 0 and production_ok and usable and timely)
+        if qualifies:
+            groups.setdefault(r["drop_player_id"], []).append(player)
+        if transfer_blocks_acquisition(player):
+            r["action"] = "HOLD / WATCH"
+            r["reason"] = "Player is blocked from acquisition."
+    for drop_id, candidates in groups.items():
+        candidates.sort(key=lambda p: (-p["replacement"]["combined_delta"], str(p.get("player")), p["player_id"]))
+        lead = candidates[0]
+        for rank, player in enumerate(candidates, 1):
+            r = player["replacement"]
+            r.update(group_rank=rank, lead_player_id=lead["player_id"], lead_player=lead["player"],
+                     action="PRIORITY MOVE" if rank == 1 else "ALTERNATIVE")
+            r["reason"] = ("Strong improvement with high evidence and usable minutes this week; addresses an availability or playing-time weakness."
+                           if rank == 1 else f"Fallback to {lead['player']} for the same outgoing player; choose one of these moves.")
+    return players
