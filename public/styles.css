@@ -34,3 +34,9 @@ main{max-width:1220px;margin:auto;padding:24px 16px 64px}.hero{background:#fff;b
 @media(max-width:620px){.masthead-inner{align-items:flex-start}.updated{display:none}.stats{grid-template-columns:repeat(2,1fr)}.hero-top{flex-direction:column}.pitch{min-height:620px}.shirt{width:42px;height:50px}.player-label{font-size:.64rem}.next-fixture{font-size:.62rem}.line{gap:3px}.line.def,.line.mid{left:1%;right:1%}.bench-row{grid-template-columns:repeat(2,1fr)}.search{min-width:100%}.planner-grid{grid-template-columns:1fr}}
 
 .priority-group{padding:18px;margin:16px 0 24px;border:1px solid #65c9a5;border-radius:16px;min-width:0}.priority-group h3{margin:0 0 12px}.priority-group details{margin-top:14px}.priority-group summary{cursor:pointer;padding:12px 0;overflow-wrap:anywhere}.priority-group .decision-reason{overflow-wrap:anywhere}
+
+/* Keep actionable explanations readable, including on narrow screens. */
+.player-card .transfer-reason{display:block;white-space:normal;overflow:visible;line-height:1.5;font-size:.8rem;margin:6px 0;overflow-wrap:anywhere}
+.priority-group>.player-card{grid-template-columns:minmax(160px,.8fr) minmax(240px,1fr) minmax(320px,1.5fr)}
+.priority-group .decision-reason{display:block;white-space:normal;overflow:visible;line-height:1.5}
+@media(max-width:900px){.priority-group>.player-card{grid-template-columns:minmax(0,1fr)}.priority-group{padding:12px}.player-card .intel{min-width:0}}

@@ -304,3 +304,16 @@ def test_change_feed_marks_a_claimed_free_agent_as_recent_and_resolves_the_drop(
     assert len(free_pool_events) == 2
     assert all(item["status"] == "resolved" for item in free_pool_events)
     assert any(item["kind"] == "opponent_add" for item in free_pool_events)
+
+
+def test_equal_rank_waiver_change_has_neutral_badge_and_repairs_retained_badge():
+    from fpl_toolkit.changefeed import _player_changes, _persist_change_feed
+    before = {"player_id": 2, "player": "Mitchell", "waiver_action": "SWAP NOW"}
+    after = dict(before, waiver_action="PRIORITY MOVE")
+    event = next(e for e in _player_changes(before, after) if e['kind'] == 'waiver_change')
+    assert event['badge'] == 'WAIVER UPDATE'
+    event.update(badge='WAIVER ↓', event_id='existing', status='active')
+    previous = {'change_feed': {'cycle_gameweek': 4, 'items': [event]}}
+    feed = _persist_change_feed(previous, {'gameweek': 4, 'captured_at': '2026-09-10T12:00:00+00:00'}, [], baseline=False, note='')
+    assert feed['items'][0]['badge'] == 'WAIVER UPDATE'
+    assert feed['items'][0]['event_id'] == 'existing'

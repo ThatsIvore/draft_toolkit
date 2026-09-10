@@ -117,3 +117,36 @@ def test_h2h_cannot_promote_alternative_or_consider_into_a_move():
     for action in ("ALTERNATIVE", "CONSIDER", "HOLD / WATCH"):
         candidate["replacement"] = {"model": "v0.6.0", "action": action, "drop_player_id": 1}
         assert _simulate_best_move([candidate], [player(1, "Owned", "MID", 30, 30)], 2, {"starters": []}) is None
+
+
+def test_recent_evidence_can_support_fallback_but_never_force_priority():
+    from copy import deepcopy
+    drop = player(1, "Owned", "DEF", 40, 40, minutes=20, availability=25, floor=40)
+    drop["intelligence"]["baseline_score"] = 73
+    lead = player(2, "Lead", "DEF", 85, 85, minutes=85, floor=85, upside=85, usage=90)
+    lead["intelligence"]["baseline_score"] = 75
+    improving = deepcopy(lead)
+    improving.update(player_id=3, player="Improving")
+    improving["intelligence"].update(baseline_score=64, roster_score=95, recent_match_evidence={
+        "status": "available", "confidence": 90, "completed_gameweeks": 3, "minutes": 269, "score": 79})
+    result = attach_replacement_analysis([improving, lead], [drop], 2)
+    assert result[0]["replacement"]["action"] == "ALTERNATIVE"
+    assert result[0]["replacement"]["lead_player_id"] == 2
+    assert "Production baseline 64.0 versus 73.0" in result[0]["replacement"]["reason"]
+    assert result[1]["replacement"]["action"] == "PRIORITY MOVE"
+    assert attach_replacement_analysis([improving], [drop], 2)[0]["replacement"]["action"] == "CONSIDER"
+    for key, value in [("completed_gameweeks", 2), ("minutes", 239), ("score", 69), ("confidence", 69), ("status", "unavailable")]:
+        weak = deepcopy(improving)
+        weak["intelligence"]["recent_match_evidence"][key] = value
+        assert attach_replacement_analysis([weak, lead], [drop], 2)[0]["replacement"]["action"] == "CONSIDER"
+    improving["intelligence"]["baseline_score"] = 62
+    assert attach_replacement_analysis([improving, lead], [drop], 2)[0]["replacement"]["action"] == "CONSIDER"
+
+
+def test_verdict_explains_specific_missing_evidence_and_fixture():
+    target = player(2, "Target", "DEF", 90, 85, minutes=85, floor=85, upside=85, confidence=25)
+    target["fixtures"] = []
+    drop = player(1, "Owned", "DEF", 40, 40, minutes=20, availability=25, floor=40)
+    verdict = attach_replacement_analysis([target], [drop], 2)[0]["replacement"]
+    assert "No fixture in the decision Gameweek." in verdict["reason"]
+    assert "Comparison evidence is not HIGH." in verdict["reason"]

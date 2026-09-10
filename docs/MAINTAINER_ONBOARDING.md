@@ -94,3 +94,5 @@ Keep the scoring fixture matrix alive through outcome calculation while recommen
 Resolve forecast actuals using the complete scoring player pool. An unknown actual is `null`, not zero, and cannot support calibration. Temporary role fixture counts and scoring fixtures must not reach public output. Player percentile ties use equal ranks. Role opportunities count completed matches independently of player minutes, and H2H points sum fixture contributions rather than treating a double as a small difficulty bonus.
 
 `tests/test_scoring_integrity.py` covers ID invariance, missed appearances, partial-live stability, double/blank projections, forecast promotion, legacy migration, and ownership-independent actuals. `tests/test_collector_horizon.py` verifies scoring fixtures, pre-deadline capture, and public field isolation through collection.
+
+Transfer refinement: bounded recent-evidence exceptions are fallback-only; see README for exact gates. Preserve the fully qualified lead even when a fallback has a higher combined score. Equal-rank label changes use neutral badges, including retained migration events.

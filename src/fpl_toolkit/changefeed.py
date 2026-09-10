@@ -225,6 +225,10 @@ def _persist_change_feed(
     archive = archive[-MAX_ARCHIVED_CYCLES:]
 
     items = [dict(event) for event in previous_feed.get("items") or [] if isinstance(event, dict)] if same_cycle else []
+    # Correct retained equal-rank label transitions without erasing their history.
+    for item in items:
+        if item.get("kind") == "waiver_change" and str(item.get("title", "")).endswith("SWAP NOW → PRIORITY MOVE"):
+            item["badge"] = "WAIVER UPDATE"
     cycle_started_at = (
         previous_feed.get("cycle_started_at") or previous_feed.get("since")
         if same_cycle
@@ -374,6 +378,7 @@ def _player_changes(
     old_action = previous.get("waiver_action")
     new_action = current.get("waiver_action")
     if not transient_match_data and old_action and new_action and old_action != new_action:
+        same_rank = WAIVER_RANK.get(str(new_action), 0) == WAIVER_RANK.get(str(old_action), 0)
         stronger = WAIVER_RANK.get(str(new_action), 0) > WAIVER_RANK.get(str(old_action), 0)
         priority = "critical" if new_action in {"SWAP NOW", "PRIORITY MOVE"} else "important" if stronger and new_action not in {"CONSIDER", "ALTERNATIVE", "HOLD / WATCH"} else "watch"
         drop = current.get("waiver_drop_player")
@@ -384,7 +389,7 @@ def _player_changes(
         events.append(_item(
             "waiver_change", priority, f"{name}: {old_action} → {new_action}",
             f"Waiver recommendation changed since the previous collection.{extra}",
-            player=current, badge="WAIVER ↑" if stronger else "WAIVER ↓",
+            player=current, badge="WAIVER UPDATE" if same_rank else "WAIVER ↑" if stronger else "WAIVER ↓",
         ))
 
     old_rec = previous.get("recommendation")
