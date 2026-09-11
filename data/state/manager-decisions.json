@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-11T04:45:44.685217+00:00",
+  "updated_at": "2026-09-11T12:51:02.809133+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -47,6 +47,40 @@
             }
           ],
           "value_delta": 3.8
+        },
+        {
+          "fingerprint": "4:401,69:491,556",
+          "captured_at": "2026-09-11T12:51:02.809133+00:00",
+          "gameweek": 4,
+          "adds": [
+            {
+              "player_id": 69,
+              "player": "Scott",
+              "position": "MID",
+              "roster_score": 82.8
+            },
+            {
+              "player_id": 401,
+              "player": "Marmoush",
+              "position": "FWD",
+              "roster_score": 73.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 491,
+              "player": "Igor Jesus",
+              "position": "FWD",
+              "roster_score": 71.5
+            },
+            {
+              "player_id": 556,
+              "player": "M.Sangaré",
+              "position": "MID",
+              "roster_score": 65.6
+            }
+          ],
+          "value_delta": 19.1
         }
       ],
       "lineups": {
@@ -182,6 +216,40 @@
             }
           ],
           "value_delta": -30.3
+        },
+        {
+          "fingerprint": "4:204,279:389,498",
+          "captured_at": "2026-09-11T12:51:02.809133+00:00",
+          "gameweek": 4,
+          "adds": [
+            {
+              "player_id": 204,
+              "player": "Mitchell",
+              "position": "DEF",
+              "roster_score": 83.1
+            },
+            {
+              "player_id": 279,
+              "player": "Ajayi",
+              "position": "DEF",
+              "roster_score": 68.8
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 389,
+              "player": "Matheus N.",
+              "position": "DEF",
+              "roster_score": 74.3
+            },
+            {
+              "player_id": 498,
+              "player": "Senesi",
+              "position": "DEF",
+              "roster_score": 77.1
+            }
+          ],
+          "value_delta": 0.5
         }
       ],
       "lineups": {
@@ -327,6 +395,28 @@
             }
           ],
           "value_delta": -16.6
+        },
+        {
+          "fingerprint": "4:449:84",
+          "captured_at": "2026-09-11T12:51:02.809133+00:00",
+          "gameweek": 4,
+          "adds": [
+            {
+              "player_id": 449,
+              "player": "Hall",
+              "position": "DEF",
+              "roster_score": 80.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 84,
+              "player": "Collins",
+              "position": "DEF",
+              "roster_score": 48.0
+            }
+          ],
+          "value_delta": 32.0
         }
       ],
       "lineups": {
@@ -652,6 +742,28 @@
             }
           ],
           "value_delta": 19.8
+        },
+        {
+          "fingerprint": "4:571:28",
+          "captured_at": "2026-09-11T12:51:02.809133+00:00",
+          "gameweek": 4,
+          "adds": [
+            {
+              "player_id": 571,
+              "player": "Tzolakis",
+              "position": "GKP",
+              "roster_score": 70.6
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 28,
+              "player": "Martinez",
+              "position": "GKP",
+              "roster_score": 82.6
+            }
+          ],
+          "value_delta": -12.0
         }
       ],
       "lineups": {
