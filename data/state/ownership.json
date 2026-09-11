@@ -73,8 +73,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Wrist injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Wrist injury - Unknown return date",
     "news_added": "2026-08-09T09:30:07.136250Z"
   },
   {
@@ -385,9 +385,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-09-11T13:00:09.030120Z"
   },
   {
     "player_id": 587,
@@ -1035,8 +1035,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Shoulder injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-25T14:30:07.623508Z"
   },
   {
@@ -1737,9 +1737,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Omonoia FC permanently",
+    "news_added": "2026-09-11T14:42:38.120231Z"
   },
   {
     "player_id": 329,
@@ -2426,8 +2426,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Muscular injury - Unknown return date",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-07-29T18:00:10.305484Z"
   },
   {
@@ -3596,9 +3596,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Ankle injury - Unknown return date",
+    "news_added": "2026-09-11T18:00:09.154412Z"
   },
   {
     "player_id": 130,
@@ -3843,8 +3843,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Ankle injury - Unknown return date",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-25T11:30:07.532993Z"
   },
   {
@@ -3986,8 +3986,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Calf injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Calf injury - Expected back 18 Sep",
     "news_added": "2026-08-30T16:00:08.393562Z"
   },
   {
@@ -3999,9 +3999,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-09-11T18:00:09.092110Z"
   },
   {
     "player_id": 139,
@@ -4054,19 +4054,6 @@
     "chance_next_round": 0,
     "news": "Has joined St Mirren on loan for the rest of the season",
     "news_added": "2026-08-26T14:05:26.748768Z"
-  },
-  {
-    "player_id": 109,
-    "player": "Verbruggen",
-    "club": "BHA",
-    "team_id": 5,
-    "position": "GKP",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
   },
   {
     "player_id": 215,
@@ -4558,8 +4545,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Hamstring injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Hamstring injury - Expected back 18 Sep",
     "news_added": "2026-09-09T15:00:09.063849Z"
   },
   {
@@ -5000,9 +4987,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Has joined Alverca on loan for the rest of the season",
+    "news_added": "2026-09-11T14:42:19.322912Z"
   },
   {
     "player_id": 128,
@@ -6105,8 +6092,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Knee injury - Expected back 12 Sep",
+    "chance_next_round": 50,
+    "news": "Knee injury - 50% chance of playing",
     "news_added": "2026-08-15T15:30:06.388335Z"
   },
   {
@@ -6170,8 +6157,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Expected back 18 Sep",
     "news_added": "2026-08-24T18:30:07.421239Z"
   },
   {
@@ -6677,9 +6664,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "has joined Arouca on loan for the rest of the seaon.",
+    "news_added": "2026-09-11T14:41:57.406766Z"
   },
   {
     "player_id": 610,
@@ -6690,8 +6677,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "has joined  Real Salt Lake on loan for the rest of the seaon.",
     "news_added": "2026-08-28T11:30:08.336405Z"
   },
   {
@@ -7267,6 +7254,19 @@
     "news_added": null
   },
   {
+    "player_id": 350,
+    "player": "A.Becker",
+    "club": "LIV",
+    "team_id": 14,
+    "position": "GKP",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 498,
     "player": "Senesi",
     "club": "TOT",
@@ -7288,8 +7288,8 @@
     "status": "l",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 25,
-    "news": "Calf injury - 25% chance of playing",
+    "chance_next_round": 0,
+    "news": "Calf injury - Unknown return date",
     "news_added": "2026-09-05T18:00:06.182495Z"
   },
   {
@@ -7337,6 +7337,19 @@
     "club": "COV",
     "team_id": 7,
     "position": "MID",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 656,
+    "player": "Mfuni",
+    "club": "COV",
+    "team_id": 7,
+    "position": "DEF",
     "status": "l",
     "owner_raw": null,
     "owner_entry_id": null,
@@ -7418,19 +7431,6 @@
     "status": "o",
     "owner_raw": 339421,
     "owner_entry_id": 339421,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 350,
-    "player": "A.Becker",
-    "club": "LIV",
-    "team_id": 14,
-    "position": "GKP",
-    "status": "o",
-    "owner_raw": 307364,
-    "owner_entry_id": 307364,
     "chance_next_round": null,
     "news": "",
     "news_added": null
@@ -8081,9 +8081,9 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-21T15:22:48.149081Z"
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-09-11T18:00:09.076279Z"
   },
   {
     "player_id": 552,
@@ -8354,6 +8354,19 @@
     "status": "o",
     "owner_raw": 336654,
     "owner_entry_id": 336654,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 109,
+    "player": "Verbruggen",
+    "club": "BHA",
+    "team_id": 5,
+    "position": "GKP",
+    "status": "o",
+    "owner_raw": 307364,
+    "owner_entry_id": 307364,
     "chance_next_round": null,
     "news": "",
     "news_added": null

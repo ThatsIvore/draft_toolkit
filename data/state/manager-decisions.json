@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-11T12:51:02.809133+00:00",
+  "updated_at": "2026-09-11T19:10:47.756873+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -81,6 +81,28 @@
             }
           ],
           "value_delta": 19.1
+        },
+        {
+          "fingerprint": "4:109:350",
+          "captured_at": "2026-09-11T19:10:47.756873+00:00",
+          "gameweek": 4,
+          "adds": [
+            {
+              "player_id": 109,
+              "player": "Verbruggen",
+              "position": "GKP",
+              "roster_score": 83.1
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 350,
+              "player": "A.Becker",
+              "position": "GKP",
+              "roster_score": 82.7
+            }
+          ],
+          "value_delta": 0.4
         }
       ],
       "lineups": {
