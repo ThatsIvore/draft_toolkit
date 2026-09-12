@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T04:40:19.089290+00:00",
+  "generated_at": "2026-09-12T12:12:25.084994+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 3,
@@ -77060,7 +77060,7 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Unspecified injury - Expected back 18 Sep",
+      "news": "Thigh injury - Expected back 18 Sep",
       "news_added": "2026-08-24T18:30:07.421239Z",
       "event_points": 0,
       "total_points": 0,
@@ -77212,7 +77212,7 @@
         "injury_return_signal": "out",
         "expected_return": "2026-09-18",
         "expected_return_gameweek": 5,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 18.9,
         "stash_score": 24.9,
         "recommendation": "PASS",
@@ -102276,7 +102276,7 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Unspecified injury - Expected back 18 Sep",
+      "news": "Thigh injury - Expected back 18 Sep",
       "news_added": "2026-08-24T18:30:07.421239Z",
       "event_points": 0,
       "total_points": 0,
@@ -102428,7 +102428,7 @@
         "injury_return_signal": "out",
         "expected_return": "2026-09-18",
         "expected_return_gameweek": 5,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 18.9,
         "stash_score": 24.9,
         "recommendation": "PASS",
@@ -122114,25 +122114,6 @@
       {
         "kind": "availability",
         "priority": "important",
-        "title": "Palestra: availability fell",
-        "detail": "Availability Score 75 → 0 (-75).",
-        "badge": "↓ FIT",
-        "player_id": 152,
-        "player": "Palestra",
-        "club": "CHE",
-        "team_code": 8,
-        "position": "DEF",
-        "event_id": "7cadeb73dfc03b92",
-        "stream": "availability:player:152",
-        "decision_gameweek": 4,
-        "first_seen": "2026-09-11T19:10:47.756873+00:00",
-        "last_seen": "2026-09-11T19:10:47.756873+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
-        "kind": "availability",
-        "priority": "important",
         "title": "Pedro Porro: availability fell",
         "detail": "Availability Score 100 → 75 (-25).",
         "badge": "↓ FIT",
@@ -122583,6 +122564,25 @@
         "decision_gameweek": 4,
         "first_seen": "2026-09-06T12:10:06.820760+00:00",
         "last_seen": "2026-09-06T12:10:06.820760+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "player_news",
+        "priority": "watch",
+        "title": "Palestra: player news changed",
+        "detail": "Thigh injury - Expected back 18 Sep",
+        "badge": "NEWS",
+        "player_id": 152,
+        "player": "Palestra",
+        "club": "CHE",
+        "team_code": 8,
+        "position": "DEF",
+        "event_id": "629a79dac14cbc37",
+        "stream": "availability:player:152",
+        "decision_gameweek": 4,
+        "first_seen": "2026-09-12T12:12:25.084994+00:00",
+        "last_seen": "2026-09-12T12:12:25.084994+00:00",
         "occurrences": 1,
         "status": "active"
       },
@@ -125408,7 +125408,9 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "629a79dac14cbc37"
+    ],
     "changed_player_ids": [
       32,
       46,
@@ -125459,14 +125461,14 @@
     ],
     "summary": {
       "critical": 1,
-      "important": 32,
-      "watch": 27,
+      "important": 31,
+      "watch": 28,
       "info": 0
     },
     "active_summary": {
       "critical": 1,
-      "important": 32,
-      "watch": 27,
+      "important": 31,
+      "watch": 28,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
