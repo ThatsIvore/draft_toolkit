@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-12T12:12:25.084994+00:00",
+  "updated_at": "2026-09-12T15:34:53.250103+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -629,6 +629,52 @@
             }
           ],
           "value_delta": 11.8
+        },
+        {
+          "fingerprint": "5:230,385,429:11,140,260",
+          "captured_at": "2026-09-12T15:34:53.250103+00:00",
+          "gameweek": 5,
+          "adds": [
+            {
+              "player_id": 230,
+              "player": "Branthwaite",
+              "position": "DEF",
+              "roster_score": 73.2
+            },
+            {
+              "player_id": 385,
+              "player": "Trafford",
+              "position": "GKP",
+              "roster_score": 71.2
+            },
+            {
+              "player_id": 429,
+              "player": "Rashford",
+              "position": "MID",
+              "roster_score": 55.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 11,
+              "player": "Mosquera",
+              "position": "DEF",
+              "roster_score": 53.2
+            },
+            {
+              "player_id": 140,
+              "player": "Sánchez",
+              "position": "GKP",
+              "roster_score": 1.8
+            },
+            {
+              "player_id": 260,
+              "player": "Wilson",
+              "position": "MID",
+              "roster_score": 74.4
+            }
+          ],
+          "value_delta": 70.2
         }
       ],
       "lineups": {

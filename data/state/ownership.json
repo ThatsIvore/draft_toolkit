@@ -312,6 +312,19 @@
     "news_added": null
   },
   {
+    "player_id": 28,
+    "player": "Martinez",
+    "club": "CHE",
+    "team_id": 6,
+    "position": "GKP",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 30,
     "player": "Digne",
     "club": "AVL",
@@ -546,6 +559,19 @@
     "news_added": null
   },
   {
+    "player_id": 350,
+    "player": "A.Becker",
+    "club": "LIV",
+    "team_id": 14,
+    "position": "GKP",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 446,
     "player": "Schär",
     "club": "NEW",
@@ -719,6 +745,19 @@
     "player": "Reed",
     "club": "FUL",
     "team_id": 10,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 260,
+    "player": "Wilson",
+    "club": "LEE",
+    "team_id": 13,
     "position": "MID",
     "status": "a",
     "owner_raw": null,
@@ -1090,19 +1129,6 @@
     "chance_next_round": 100,
     "news": "",
     "news_added": "2026-07-23T12:01:23.516350Z"
-  },
-  {
-    "player_id": 429,
-    "player": "Rashford",
-    "club": "MUN",
-    "team_id": 16,
-    "position": "MID",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
   },
   {
     "player_id": 193,
@@ -1555,9 +1581,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-09-12T14:00:09.427136Z"
   },
   {
     "player_id": 27,
@@ -1781,6 +1807,19 @@
     "news_added": null
   },
   {
+    "player_id": 140,
+    "player": "Sánchez",
+    "club": "CHE",
+    "team_id": 6,
+    "position": "GKP",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 0,
+    "news": "Has joined Como on loan for the rest of the season",
+    "news_added": "2026-09-02T16:20:41.841936Z"
+  },
+  {
     "player_id": 469,
     "player": "N.Williams",
     "club": "NFO",
@@ -1906,9 +1945,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Suspended until 25 Oct",
+    "news_added": "2026-09-12T15:30:09.445078Z"
   },
   {
     "player_id": 402,
@@ -1961,6 +2000,19 @@
     "chance_next_round": 0,
     "news": "Has joined New England Revolution permanently",
     "news_added": "2026-07-28T12:59:09.492431Z"
+  },
+  {
+    "player_id": 498,
+    "player": "Senesi",
+    "club": "TOT",
+    "team_id": 19,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
   },
   {
     "player_id": 500,
@@ -2166,9 +2218,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Hamstring injury - 75% chance of playing",
+    "news_added": "2026-09-12T14:00:09.705107Z"
   },
   {
     "player_id": 314,
@@ -2756,17 +2808,17 @@
     "news_added": null
   },
   {
-    "player_id": 385,
-    "player": "Trafford",
-    "club": "LEE",
-    "team_id": 13,
-    "position": "GKP",
+    "player_id": 84,
+    "player": "Collins",
+    "club": "BRE",
+    "team_id": 4,
+    "position": "DEF",
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Calf injury - Unknown return date",
+    "news_added": "2026-09-05T18:00:06.182495Z"
   },
   {
     "player_id": 354,
@@ -3536,6 +3588,19 @@
     "news_added": null
   },
   {
+    "player_id": 389,
+    "player": "Matheus N.",
+    "club": "MCI",
+    "team_id": 15,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-08-27T11:30:08.171622Z"
+  },
+  {
     "player_id": 177,
     "player": "Kesler-Hayden",
     "club": "COV",
@@ -3809,19 +3874,6 @@
     "news_added": null
   },
   {
-    "player_id": 230,
-    "player": "Branthwaite",
-    "club": "EVE",
-    "team_id": 9,
-    "position": "DEF",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
     "player_id": 183,
     "player": "Rudoni",
     "club": "COV",
@@ -3879,6 +3931,19 @@
     "club": "CHE",
     "team_id": 6,
     "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 491,
+    "player": "Igor Jesus",
+    "club": "NFO",
+    "team_id": 18,
+    "position": "FWD",
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
@@ -4446,6 +4511,19 @@
     "news_added": null
   },
   {
+    "player_id": 11,
+    "player": "Mosquera",
+    "club": "ARS",
+    "team_id": 1,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 50,
+    "news": "Muscular injury - 50% chance of playing",
+    "news_added": "2026-09-04T14:00:08.080310Z"
+  },
+  {
     "player_id": 382,
     "player": "Danns",
     "club": "LIV",
@@ -4710,6 +4788,19 @@
     "player": "Röhl",
     "club": "EVE",
     "team_id": 9,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 556,
+    "player": "M.Sangaré",
+    "club": "BRE",
+    "team_id": 4,
     "position": "MID",
     "status": "a",
     "owner_raw": null,
@@ -5624,9 +5715,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Hamstring injury - 75% chance of playing",
+    "news_added": "2026-09-12T14:00:09.724349Z"
   },
   {
     "player_id": 472,
@@ -6092,8 +6183,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 50,
-    "news": "Knee injury - 50% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-15T15:30:06.388335Z"
   },
   {
@@ -7241,103 +7332,12 @@
     "news_added": null
   },
   {
-    "player_id": 28,
-    "player": "Martinez",
-    "club": "CHE",
-    "team_id": 6,
-    "position": "GKP",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 350,
-    "player": "A.Becker",
-    "club": "LIV",
-    "team_id": 14,
-    "position": "GKP",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 498,
-    "player": "Senesi",
-    "club": "TOT",
-    "team_id": 19,
-    "position": "DEF",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 84,
-    "player": "Collins",
-    "club": "BRE",
-    "team_id": 4,
-    "position": "DEF",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Calf injury - Unknown return date",
-    "news_added": "2026-09-05T18:00:06.182495Z"
-  },
-  {
-    "player_id": 389,
-    "player": "Matheus N.",
-    "club": "MCI",
-    "team_id": 15,
-    "position": "DEF",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-27T11:30:08.171622Z"
-  },
-  {
-    "player_id": 491,
-    "player": "Igor Jesus",
-    "club": "NFO",
-    "team_id": 18,
-    "position": "FWD",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 556,
-    "player": "M.Sangaré",
-    "club": "BRE",
-    "team_id": 4,
-    "position": "MID",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
     "player_id": 655,
     "player": "Gboho",
     "club": "COV",
     "team_id": 7,
     "position": "MID",
-    "status": "l",
+    "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": null,
@@ -7350,7 +7350,7 @@
     "club": "COV",
     "team_id": 7,
     "position": "DEF",
-    "status": "l",
+    "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": null,
@@ -7462,19 +7462,6 @@
     "news_added": "2026-08-22T17:30:07.668197Z"
   },
   {
-    "player_id": 260,
-    "player": "Wilson",
-    "club": "LEE",
-    "team_id": 13,
-    "position": "MID",
-    "status": "o",
-    "owner_raw": 338553,
-    "owner_entry_id": 338553,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
     "player_id": 1,
     "player": "Raya",
     "club": "ARS",
@@ -7496,9 +7483,22 @@
     "status": "o",
     "owner_raw": 334397,
     "owner_entry_id": 334397,
-    "chance_next_round": 100,
+    "chance_next_round": 0,
+    "news": "Foot injury - Expected back 11 Oct",
+    "news_added": "2026-09-12T14:00:09.378740Z"
+  },
+  {
+    "player_id": 429,
+    "player": "Rashford",
+    "club": "MUN",
+    "team_id": 16,
+    "position": "MID",
+    "status": "o",
+    "owner_raw": 338553,
+    "owner_entry_id": 338553,
+    "chance_next_round": null,
     "news": "",
-    "news_added": "2026-08-20T14:00:08.018379Z"
+    "news_added": null
   },
   {
     "player_id": 346,
@@ -7655,19 +7655,6 @@
     "chance_next_round": null,
     "news": "",
     "news_added": null
-  },
-  {
-    "player_id": 140,
-    "player": "Sánchez",
-    "club": "CHE",
-    "team_id": 6,
-    "position": "GKP",
-    "status": "o",
-    "owner_raw": 338553,
-    "owner_entry_id": 338553,
-    "chance_next_round": 0,
-    "news": "Has joined Como on loan for the rest of the season",
-    "news_added": "2026-09-02T16:20:41.841936Z"
   },
   {
     "player_id": 481,
@@ -7886,8 +7873,8 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": 75,
-    "news": "Thigh injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-09-09T18:30:08.772955Z"
   },
   {
@@ -7990,6 +7977,19 @@
     "status": "o",
     "owner_raw": 334397,
     "owner_entry_id": 334397,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 385,
+    "player": "Trafford",
+    "club": "LEE",
+    "team_id": 13,
+    "position": "GKP",
+    "status": "o",
+    "owner_raw": 338553,
+    "owner_entry_id": 338553,
     "chance_next_round": null,
     "news": "",
     "news_added": null
@@ -8320,6 +8320,19 @@
     "news_added": null
   },
   {
+    "player_id": 230,
+    "player": "Branthwaite",
+    "club": "EVE",
+    "team_id": 9,
+    "position": "DEF",
+    "status": "o",
+    "owner_raw": 338553,
+    "owner_entry_id": 338553,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 496,
     "player": "Kinsky",
     "club": "TOT",
@@ -8409,19 +8422,6 @@
     "chance_next_round": null,
     "news": "",
     "news_added": null
-  },
-  {
-    "player_id": 11,
-    "player": "Mosquera",
-    "club": "ARS",
-    "team_id": 1,
-    "position": "DEF",
-    "status": "o",
-    "owner_raw": 338553,
-    "owner_entry_id": 338553,
-    "chance_next_round": 50,
-    "news": "Muscular injury - 50% chance of playing",
-    "news_added": "2026-09-04T14:00:08.080310Z"
   },
   {
     "player_id": 106,
