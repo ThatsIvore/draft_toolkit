@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T13:36:46.201895+00:00",
+  "generated_at": "2026-09-15T19:43:05.143340+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 4,
@@ -9,7 +9,7 @@
     "available_count": 467,
     "tracked_players": 659,
     "ownership_changes": 0,
-    "injured_or_doubtful_count": 92
+    "injured_or_doubtful_count": 93
   },
   "my_squad": [
     {
@@ -36224,7 +36224,7 @@
         "injury_return_signal": "return-watch",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 43.9,
         "stash_score": 42.0,
         "recommendation": "PASS",
@@ -41495,7 +41495,7 @@
         "injury_return_signal": "return-watch",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 42.7,
         "stash_score": 40.3,
         "recommendation": "PASS",
@@ -51420,7 +51420,7 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 65.2,
         "stash_score": 62.4,
         "recommendation": "WATCH",
@@ -105001,7 +105001,7 @@
         "injury_return_signal": "return-watch",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 43.9,
         "stash_score": 42.0,
         "recommendation": "PASS",
@@ -105550,7 +105550,7 @@
         "injury_return_signal": "return-watch",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 42.7,
         "stash_score": 40.3,
         "recommendation": "PASS",
@@ -115909,6 +115909,189 @@
         "health_trend": "stable",
         "roster_score": 42.8,
         "stash_score": 54.1,
+        "recommendation": "WATCH",
+        "recommendation_reason": "Owned by another manager; monitor for a future drop or status change."
+      }
+    },
+    {
+      "player_id": 10,
+      "player": "White",
+      "club": "ARS",
+      "team_id": 1,
+      "team_code": 3,
+      "position": "DEF",
+      "status": "o",
+      "chance_next_round": 75,
+      "news": "Muscular injury - 75% chance of playing",
+      "news_added": "2026-09-15T19:30:09.494382Z",
+      "event_points": 1,
+      "total_points": 21,
+      "minutes": 315,
+      "starts": 4,
+      "goals_scored": 0,
+      "assists": 1,
+      "clean_sheets": 2,
+      "bonus": 3,
+      "expected_goal_involvements": "0.47",
+      "form": "5.2",
+      "points_per_game": "5.2",
+      "expected_points_next": null,
+      "fixtures": [
+        {
+          "gameweek": 5,
+          "matches": [
+            {
+              "opponent_id": 5,
+              "opponent": "BHA",
+              "venue": "A",
+              "difficulty": 3,
+              "kickoff_time": "2026-09-19T14:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 6,
+          "matches": [
+            {
+              "opponent_id": 13,
+              "opponent": "LEE",
+              "venue": "H",
+              "difficulty": 2,
+              "kickoff_time": "2026-10-10T11:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 7,
+          "matches": [
+            {
+              "opponent_id": 18,
+              "opponent": "NFO",
+              "venue": "A",
+              "difficulty": 3,
+              "kickoff_time": "2026-10-18T15:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 8,
+          "matches": [
+            {
+              "opponent_id": 9,
+              "opponent": "EVE",
+              "venue": "H",
+              "difficulty": 3,
+              "kickoff_time": "2026-10-24T14:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        }
+      ],
+      "intelligence": {
+        "model": "v0.6.1",
+        "baseline_score": 66.2,
+        "fixture_score": 65.4,
+        "future_fixture_score": 68.0,
+        "availability_score": 75.0,
+        "post_return_fixture_score": null,
+        "stash_fixture_score": 44.2,
+        "start_probability": 70.0,
+        "expected_minutes": 58.3,
+        "usage_score": 67.7,
+        "sample_confidence": 39.2,
+        "role_evidence": "LOW",
+        "floor_score": 72.8,
+        "upside_score": 70.8,
+        "points_per_90": 5.84,
+        "attack_returns_per_90": 0.16,
+        "historical_prior_active": true,
+        "recent_match_evidence": {
+          "version": "v1",
+          "status": "available",
+          "score": 59.4,
+          "grade": "C",
+          "adjustment": 0.94,
+          "confidence": 100.0,
+          "completed_gameweeks": 4,
+          "appearances": 4,
+          "minutes": 315,
+          "starts": 4,
+          "gameweeks": [
+            {
+              "gameweek": 4,
+              "minutes": 45,
+              "starts": 1,
+              "points": 1,
+              "bonus": 0,
+              "bps": 4,
+              "xg": 0.0,
+              "xa": 0.0,
+              "xgi": 0.0,
+              "defensive_contribution": 3,
+              "played": true,
+              "grade_score": 27.9,
+              "grade": "D"
+            },
+            {
+              "gameweek": 3,
+              "minutes": 90,
+              "starts": 1,
+              "points": 2,
+              "bonus": 0,
+              "bps": 11,
+              "xg": 0.0,
+              "xa": 0.03,
+              "xgi": 0.03,
+              "defensive_contribution": 6,
+              "played": true,
+              "grade_score": 50.7,
+              "grade": "C"
+            },
+            {
+              "gameweek": 2,
+              "minutes": 90,
+              "starts": 1,
+              "points": 7,
+              "bonus": 1,
+              "bps": 26,
+              "xg": 0.0,
+              "xa": 0.05,
+              "xgi": 0.05,
+              "defensive_contribution": 4,
+              "played": true,
+              "grade_score": 81.7,
+              "grade": "A"
+            },
+            {
+              "gameweek": 1,
+              "minutes": 90,
+              "starts": 1,
+              "points": 11,
+              "bonus": 2,
+              "bps": 37,
+              "xg": 0.18,
+              "xa": 0.21,
+              "xgi": 0.39,
+              "defensive_contribution": 5,
+              "played": true,
+              "grade_score": 90.1,
+              "grade": "A+"
+            }
+          ]
+        },
+        "injury_return_signal": "near-return",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "health_trend": "worsening",
+        "roster_score": 68.7,
+        "stash_score": 61.4,
         "recommendation": "WATCH",
         "recommendation_reason": "Owned by another manager; monitor for a future drop or status change."
       }
@@ -135060,11 +135243,11 @@
         },
         "opponent_projection": {
           "formation": "3-5-2",
-          "total": 50.2,
-          "range_low": 28.8,
-          "range_high": 71.8,
+          "total": 48.4,
+          "range_low": 28.1,
+          "range_high": 68.8,
           "evidence": "HIGH",
-          "roster_total": 49.1,
+          "roster_total": 47.3,
           "decision_adjustment": 1.1
         },
         "opponent_profile": {
@@ -135103,7 +135286,7 @@
           }
         },
         "decision_adjustment": 1.1,
-        "projected_edge": -1.2,
+        "projected_edge": 0.6,
         "signal": "EVEN",
         "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
@@ -135125,12 +135308,12 @@
             "my_count": 5,
             "opponent_count": 3,
             "my_start_score": 82.2,
-            "opponent_start_score": 81.8,
-            "start_score_edge": 0.4,
+            "opponent_start_score": 80.1,
+            "start_score_edge": 2.1,
             "fixture_edge": 2.7,
-            "projected_points_edge": 6.6,
+            "projected_points_edge": 8.4,
             "my_projected_points": 20.3,
-            "opponent_projected_points": 13.7,
+            "opponent_projected_points": 11.9,
             "signal": "EVEN"
           },
           {
@@ -135178,12 +135361,12 @@
           "my_count": 5,
           "opponent_count": 3,
           "my_start_score": 82.2,
-          "opponent_start_score": 81.8,
-          "start_score_edge": 0.4,
+          "opponent_start_score": 80.1,
+          "start_score_edge": 2.1,
           "fixture_edge": 2.7,
-          "projected_points_edge": 6.6,
+          "projected_points_edge": 8.4,
           "my_projected_points": 20.3,
-          "opponent_projected_points": 13.7,
+          "opponent_projected_points": 11.9,
           "signal": "EVEN"
         },
         "key_threat": {
@@ -135363,8 +135546,8 @@
         "TRAIL": 1
       },
       "projected_for": 198.1,
-      "projected_against": 197.8,
-      "projected_net": 0.3,
+      "projected_against": 196.0,
+      "projected_net": 2.1,
       "toughest_matchup": {
         "gameweek": 6,
         "opponent": "My own Wirtz enemy",
@@ -138255,12 +138438,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "ad86b5d3820776ed",
-      "9cd44f145b65a4a0",
-      "2dfecb9ef9a2a7a2",
-      "1fd1559d0282fc7b"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       5,
       11,
