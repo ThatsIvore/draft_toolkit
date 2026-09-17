@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-17T13:31:33.292566+00:00",
+  "updated_at": "2026-09-17T19:44:37.410710+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -103,6 +103,52 @@
             }
           ],
           "value_delta": 0.4
+        },
+        {
+          "fingerprint": "5:453,469,5:445,499,554",
+          "captured_at": "2026-09-17T19:44:37.410710+00:00",
+          "gameweek": 5,
+          "adds": [
+            {
+              "player_id": 5,
+              "player": "J.Timber",
+              "position": "DEF",
+              "roster_score": 75.8
+            },
+            {
+              "player_id": 453,
+              "player": "Barnes",
+              "position": "MID",
+              "roster_score": 85.6
+            },
+            {
+              "player_id": 469,
+              "player": "N.Williams",
+              "position": "DEF",
+              "roster_score": 80.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 445,
+              "player": "Thiaw",
+              "position": "DEF",
+              "roster_score": 78.8
+            },
+            {
+              "player_id": 499,
+              "player": "Pedro Porro",
+              "position": "DEF",
+              "roster_score": 62.7
+            },
+            {
+              "player_id": 554,
+              "player": "Tzolis",
+              "position": "MID",
+              "roster_score": 65.9
+            }
+          ],
+          "value_delta": 34.0
         }
       ],
       "lineups": {
@@ -292,6 +338,52 @@
             }
           ],
           "value_delta": 0.5
+        },
+        {
+          "fingerprint": "5:330,350,94:198,454,61",
+          "captured_at": "2026-09-17T19:44:37.410710+00:00",
+          "gameweek": 5,
+          "adds": [
+            {
+              "player_id": 94,
+              "player": "Schade",
+              "position": "MID",
+              "roster_score": 80.3
+            },
+            {
+              "player_id": 330,
+              "player": "Bogle",
+              "position": "DEF",
+              "roster_score": 78.7
+            },
+            {
+              "player_id": 350,
+              "player": "A.Becker",
+              "position": "GKP",
+              "roster_score": 84.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 61,
+              "player": "Truffert",
+              "position": "DEF",
+              "roster_score": 75.9
+            },
+            {
+              "player_id": 198,
+              "player": "Henderson",
+              "position": "GKP",
+              "roster_score": 42.8
+            },
+            {
+              "player_id": 454,
+              "player": "Elanga",
+              "position": "MID",
+              "roster_score": 37.3
+            }
+          ],
+          "value_delta": 87.0
         }
       ],
       "lineups": {
@@ -479,6 +571,28 @@
             }
           ],
           "value_delta": 32.0
+        },
+        {
+          "fingerprint": "5:138:492",
+          "captured_at": "2026-09-17T19:44:37.410710+00:00",
+          "gameweek": 5,
+          "adds": [
+            {
+              "player_id": 138,
+              "player": "Kostoulas",
+              "position": "FWD",
+              "roster_score": 70.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 492,
+              "player": "Awoniyi",
+              "position": "FWD",
+              "roster_score": 39.8
+            }
+          ],
+          "value_delta": 30.4
         }
       ],
       "lineups": {
