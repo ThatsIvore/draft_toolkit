@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-18T04:48:47.704751+00:00",
+  "updated_at": "2026-09-18T12:59:21.028974+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -593,6 +593,28 @@
             }
           ],
           "value_delta": 30.4
+        },
+        {
+          "fingerprint": "5:390:327",
+          "captured_at": "2026-09-18T12:59:21.028974+00:00",
+          "gameweek": 5,
+          "adds": [
+            {
+              "player_id": 390,
+              "player": "Rúben",
+              "position": "DEF",
+              "roster_score": 82.8
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 327,
+              "player": "Bijol",
+              "position": "DEF",
+              "roster_score": 73.1
+            }
+          ],
+          "value_delta": 9.7
         }
       ],
       "lineups": {
@@ -869,6 +891,52 @@
             }
           ],
           "value_delta": 70.2
+        },
+        {
+          "fingerprint": "5:268,316,334:136,398,417",
+          "captured_at": "2026-09-18T12:59:21.028974+00:00",
+          "gameweek": 5,
+          "adds": [
+            {
+              "player_id": 268,
+              "player": "King",
+              "position": "MID",
+              "roster_score": 80.0
+            },
+            {
+              "player_id": 316,
+              "player": "Emersonn",
+              "position": "FWD",
+              "roster_score": 67.7
+            },
+            {
+              "player_id": 334,
+              "player": "Muharemović",
+              "position": "DEF",
+              "roster_score": 66.3
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 136,
+              "player": "Welbeck",
+              "position": "FWD",
+              "roster_score": 68.1
+            },
+            {
+              "player_id": 398,
+              "player": "Foden",
+              "position": "MID",
+              "roster_score": 46.5
+            },
+            {
+              "player_id": 417,
+              "player": "Dalot",
+              "position": "DEF",
+              "roster_score": 72.3
+            }
+          ],
+          "value_delta": 27.1
         }
       ],
       "lineups": {
