@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-18T12:59:21.028974+00:00",
+  "updated_at": "2026-09-18T19:03:19.229671+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -149,6 +149,28 @@
             }
           ],
           "value_delta": 34.0
+        },
+        {
+          "fingerprint": "6:167:401",
+          "captured_at": "2026-09-18T19:03:19.229671+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 167,
+              "player": "Delap",
+              "position": "FWD",
+              "roster_score": 65.3
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 401,
+              "player": "Marmoush",
+              "position": "FWD",
+              "roster_score": 72.5
+            }
+          ],
+          "value_delta": -7.2
         }
       ],
       "lineups": {
@@ -937,6 +959,28 @@
             }
           ],
           "value_delta": 27.1
+        },
+        {
+          "fingerprint": "6:305:387",
+          "captured_at": "2026-09-18T19:03:19.229671+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 305,
+              "player": "Davis",
+              "position": "DEF",
+              "roster_score": 70.1
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 387,
+              "player": "O'Reilly",
+              "position": "DEF",
+              "roster_score": 78.5
+            }
+          ],
+          "value_delta": -8.4
         }
       ],
       "lineups": {
