@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-09-18T22:36:59.022895+00:00",
+  "captured_at": "2026-09-19T04:41:44.077023+00:00",
   "gameweek": 6,
   "scoring_gameweek": 5,
   "scoring_phase": "LIVE",
@@ -8697,7 +8697,7 @@
       "availability_score": 0.0,
       "expected_minutes": 0.0,
       "role_evidence": "LOW",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 16.4,
       "stash_score": 23.6,
@@ -13513,7 +13513,7 @@
       "availability_score": 100.0,
       "expected_minutes": 60.0,
       "role_evidence": "LOW",
-      "health_trend": "new-baseline",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 48.2,
       "stash_score": 43.3,
@@ -13541,7 +13541,7 @@
       "availability_score": 100.0,
       "expected_minutes": 60.0,
       "role_evidence": "LOW",
-      "health_trend": "new-baseline",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 52.0,
       "stash_score": 48.2,
@@ -13569,7 +13569,7 @@
       "availability_score": 100.0,
       "expected_minutes": 60.0,
       "role_evidence": "LOW",
-      "health_trend": "new-baseline",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 53.2,
       "stash_score": 45.9,
@@ -17490,9 +17490,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "cddaae731273207a"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       170,
       387,
