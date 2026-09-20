@@ -905,8 +905,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Concussion - Expected back 10 Oct",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-09-18T12:30:09.546158Z"
   },
   {
@@ -5065,8 +5065,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 50,
-    "news": "Ankle injury - 50% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-06T16:00:10.997714Z"
   },
   {
@@ -7691,9 +7691,9 @@
     "status": "o",
     "owner_raw": 339421,
     "owner_entry_id": 339421,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-09-15T19:30:09.494382Z"
+    "chance_next_round": 75,
+    "news": "Groin injury - 75% chance of playing",
+    "news_added": "2026-09-20T19:30:08.247780Z"
   },
   {
     "player_id": 31,
@@ -8445,9 +8445,9 @@
     "status": "o",
     "owner_raw": 338553,
     "owner_entry_id": 338553,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-07-23T12:01:23.722029Z"
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-09-20T19:30:08.505755Z"
   },
   {
     "player_id": 449,
