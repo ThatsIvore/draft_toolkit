@@ -4,9 +4,10 @@ from copy import deepcopy
 from typing import Any
 
 from .h2h import player_projected_points
+from .selection_trial import points_challenger
 
 
-OUTCOME_MODEL = "v0.2"
+OUTCOME_MODEL = "v0.3"
 
 
 def _number(value: Any, default: float = 0.0) -> float:
@@ -146,6 +147,40 @@ def _evaluation(forecast: dict[str, Any], actual: dict[str, Any], phase: str) ->
     }
 
 
+def _deadline_pair(report: dict[str, Any], gameweek: int, phase: str) -> dict[str, Any] | None:
+    candidate = _capture_forecast(report, gameweek, phase)
+    squad = report.get("my_squad") or []
+    original = (report.get("recommended_lineup") or {}).get("starters") or []
+    shadow = points_challenger(squad, gameweek) if candidate["calibration_eligible"] else None
+    if shadow is None or len(original) != 11 or len({p.get("player_id") for p in original}) != 11:
+        return None
+    if not {p["player_id"] for p in original} <= {p["player_id"] for p in squad}:
+        return None
+    challenger = _capture_forecast({**report, "recommended_lineup": shadow}, gameweek, phase)
+    # This experiment compares selections, not alternate H2H outcomes.
+    challenger["h2h"] = {}
+    return {"baseline": candidate, "challenger": challenger, "challenger_model": "points-shadow-v1"}
+
+
+def _selection_comparison(pair: dict[str, Any] | None, report: dict[str, Any], phase: str,
+                          scoring_players: list[dict[str, Any]] | None) -> dict[str, Any] | None:
+    if not pair:
+        return None
+    output = {"captured_at": pair["baseline"]["captured_at"], "complete": False}
+    for name in ("baseline", "challenger"):
+        forecast = pair[name]
+        actual = _actuals(report, forecast, phase, scoring_players)
+        total = actual["recommended_points"] if phase == "FINAL" else None
+        expected = forecast["recommended"]["projected_total"]
+        output[name] = {"projected_points": expected, "actual_points": total,
+                        "absolute_error": round(abs(total - expected), 1) if total is not None else None}
+    left, right = output["baseline"]["actual_points"], output["challenger"]["actual_points"]
+    output["complete"] = left is not None and right is not None
+    output["challenger_gain"] = round(right - left, 1) if output["complete"] else None
+    output["note"] = "Raw XI player points, without simulated autosubs; experimental selection only."
+    return output
+
+
 def build_outcome_diagnostics(
     previous_state: dict[str, Any] | None,
     report: dict[str, Any],
@@ -173,6 +208,17 @@ def build_outcome_diagnostics(
         "actual": actual,
         "evaluation": _evaluation(forecast, actual, phase),
     }
+    pair = None
+    if int(previous_current.get("gameweek") or -1) == gameweek:
+        pair = deepcopy(previous_current.get("deadline_selection"))
+    else:
+        pair = deepcopy((previous.get("pending_deadline_selections") or {}).get(str(gameweek)))
+    if phase == "SCHEDULED" and report.get("_forecast_before_deadline", False):
+        candidate = _deadline_pair(report, gameweek, phase)
+        if candidate and (not pair or str(candidate["baseline"]["captured_at"]) > str(pair["baseline"]["captured_at"])):
+            pair = candidate
+    current["deadline_selection"] = pair
+    current["selection_comparison"] = _selection_comparison(pair, report, phase, scoring_players)
     history = deepcopy([row for row in previous.get("history") or [] if isinstance(row, dict)])
     if previous_current and int(previous_current.get("gameweek") or -1) != gameweek and previous_current.get("phase") == "FINAL":
         history = [row for row in history if int(row.get("gameweek") or -1) != int(previous_current.get("gameweek") or -1)]
@@ -181,10 +227,19 @@ def build_outcome_diagnostics(
         if _exclude_legacy_zero_forecast(row.get("forecast") or {}):
             row.setdefault("evaluation", {})["calibration_eligible"] = False
     pending = {}
+    pending_deadline = {}
     if decision_report is not None:
         decision_gw = int(decision_report.get("decision_gameweek") or 0)
         if decision_gw > gameweek:
             key = str(decision_gw)
+            old_pair = deepcopy((previous.get("pending_deadline_selections") or {}).get(key))
+            new_pair = None
+            if decision_report.get("decision_gameweek_phase") == "SCHEDULED":
+                new_pair = _deadline_pair({**decision_report, "_forecast_before_deadline": True}, decision_gw, "SCHEDULED")
+            if new_pair and (not old_pair or str(new_pair["baseline"]["captured_at"]) > str(old_pair["baseline"]["captured_at"])):
+                old_pair = new_pair
+            if old_pair:
+                pending_deadline[key] = old_pair
             if key in (previous.get("pending_forecasts") or {}):
                 pending[key] = deepcopy(previous["pending_forecasts"][key])
             elif decision_report.get("decision_gameweek_phase") == "SCHEDULED":
@@ -196,6 +251,7 @@ def build_outcome_diagnostics(
         "current": current,
         "history": history[-8:],
         "pending_forecasts": pending,
+        "pending_deadline_selections": pending_deadline,
         "note": (
             "This forecast was captured before the Gameweek started and is eligible for calibration."
             if current["evaluation"].get("calibration_eligible")

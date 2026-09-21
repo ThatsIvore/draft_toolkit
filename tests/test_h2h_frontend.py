@@ -24,7 +24,7 @@ assert.equal(context.h2hScore(null), '-');
 assert.equal(context.h2hScore(0), '0.0');
 const html = context.h2hOutcomePanel();
 assert(html.includes('Excluded from calibration'));
-assert(html.includes('Toolkit Recommended XI</small><strong>-</strong>'));
+assert(html.includes('Original planning XI</small><strong>-</strong>'));
 """], check=True)
 
 
@@ -39,7 +39,7 @@ def test_h2h_renderer_exposes_four_gameweek_outlook():
     assert "Current-roster projection" in source
     assert ".h2h-outlook-grid" in styles
     assert "h2h-outlook-v11.css?v=20260821.1" in index
-    assert "h2h-v08.js?v=20260921.1" in index
+    assert "h2h-v08.js?v=20260921.3" in index
 
 
 def test_h2h_visual_hierarchy_uses_progressive_disclosure_and_mobile_scrolling():
@@ -72,3 +72,25 @@ def test_h2h_surfaces_team_name_and_opponent_decision_profile_without_overloadin
     assert "Lineup efficiency" in source
     assert ".h2h-manager-profile" in styles
     assert "chosen team name" in about
+
+
+def test_outcome_panel_labels_the_experiment_and_keeps_incomplete_comparisons_pending():
+    subprocess.run(["node", "-e", r"""
+const fs = require('fs'), vm = require('vm'), assert = require('assert');
+const current = {phase:'FINAL', gameweek:6, forecast:{}, actual:{}, evaluation:{},
+ selection_comparison:{captured_at:'2026-09-21', complete:false, challenger_gain:null,
+ baseline:{projected_points:50,actual_points:null}, challenger:{projected_points:55,actual_points:null}}};
+const context = {controls:()=>'', renderPlanner:()=>'', allPlayers:()=>[], esc:String,
+ DATA:{outcome_diagnostics:{current}}};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync('public/h2h-v08.js','utf8'),context);
+let html=context.h2hOutcomePanel();
+assert(html.includes('Last collected pre-deadline XI'));
+assert(html.includes('Final comparison pending'));
+assert(!html.includes('Experiment gain:'));
+current.selection_comparison.complete=true;
+current.selection_comparison.challenger_gain=4;
+html=context.h2hOutcomePanel();
+assert(html.includes('Experiment gain: +4.0'));
+assert(html.includes('Experiment does not control recommendations'));
+"""], check=True)

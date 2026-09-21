@@ -9,7 +9,7 @@ from typing import Any
 from .league_activity import evaluate_transfers, freeze_transfer, retain_activity
 
 
-PROFILE_MODEL = "v0.2"
+PROFILE_MODEL = "v0.3"
 HISTORY_SCHEMA_VERSION = 1
 
 
@@ -331,26 +331,34 @@ def _management_profile(manager: dict[str, Any]) -> dict[str, Any]:
     lineups = [row for row in (manager.get("lineups") or {}).values() if isinstance(row, dict)]
     eligible = [row for row in transactions if row.get("evaluation_version") == 1 and row.get("eligible")]
     deltas = [_number(row.get("value_delta")) for row in eligible if row.get("value_delta") is not None]
-    outcomes = [row["outcome"] for row in eligible if (row.get("outcome") or {}).get("status") == "complete"]
-    residuals = [row["excess_points_per_player_week"] for row in outcomes]
+    outcomes = [row["outcome"] for row in eligible
+                if (row.get("outcome") or {}).get("status") in {"complete", "pending", "stopped"}
+                and (row.get("outcome") or {}).get("observed_gameweeks", 0) > 0
+                and (row.get("outcome") or {}).get("excess_points_per_player_week") is not None]
+    observed_weeks = sum(min(4, row["observed_gameweeks"]) for row in outcomes)
+    effective_windows = observed_weeks / 4.0
+    residual = (sum(row["excess_points_per_player_week"] * min(4, row["observed_gameweeks"]) for row in outcomes)
+                / observed_weeks) if observed_weeks else 0.0
     efficiencies = [_number(row.get("efficiency")) for row in lineups if row.get("efficiency") is not None]
     # Outcome residuals replace the transfer heuristic within its existing budget.
-    transfer_score = _clamp(50.0 + _mean(residuals) * 5.0, 25.0, 75.0) if residuals else 50.0
+    transfer_score = _clamp(50.0 + residual * 5.0, 25.0, 75.0) if outcomes else 50.0
     lineup_score = _clamp(50.0 + (_mean(efficiencies) - 85.0) * 1.5, 25.0, 75.0) if efficiencies else 50.0
-    transfer_weight = min(1.0, len(outcomes) / 5.0)
+    transfer_weight = min(1.0, effective_windows / 5.0)
     lineup_weight = min(1.0, len(efficiencies) / 4.0)
     adjustment = (
         (transfer_score - 50.0) / 25.0 * 0.8 * transfer_weight
         + (lineup_score - 50.0) / 25.0 * 0.8 * lineup_weight
     )
-    samples = len(outcomes) + len(efficiencies)
-    evidence = "HIGH" if len(outcomes) >= 5 and len(efficiencies) >= 3 else "MEDIUM" if samples >= 3 else "LOW"
+    samples = effective_windows + len(efficiencies)
+    evidence = "HIGH" if effective_windows >= 5 and len(efficiencies) >= 3 else "MEDIUM" if samples >= 3 else "LOW"
     return {
         "transaction_windows": len(transactions),
         "evaluated_transfers": len(outcomes),
+        "transfer_review_gameweeks": observed_weeks,
+        "effective_transfer_windows": round(effective_windows, 2),
         "pending_transfers": sum((row.get("outcome") or {}).get("status") == "pending" for row in eligible),
         "average_transfer_points_gain": round(_mean([row["points_gain"] for row in outcomes]), 1) if outcomes else None,
-        "average_transfer_excess": round(_mean(residuals), 2) if residuals else None,
+        "average_transfer_excess": round(residual, 2) if outcomes else None,
         "transfer_points_adjustment": round((transfer_score - 50.0) / 25.0 * 0.8 * transfer_weight, 2),
         "adds": sum(len(row.get("adds") or []) for row in transactions),
         "drops": sum(len(row.get("drops") or []) for row in transactions),

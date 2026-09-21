@@ -35,7 +35,7 @@ function h2hDecisionProfile(profile, compact = false) {
     <div><small>Draft prior</small><strong>${draft.score == null ? 'Unmapped' : h2hScore(draft.score)}</strong><span>${draft.resolved_picks == null ? 'No draft data' : `${esc(draft.resolved_picks)}/${esc(draft.total_picks)} picks resolved`}</span></div>
     <div><small>Transfer excess / player / GW</small><strong>${esc(transferValue)}</strong><span>${esc(management.evaluated_transfers || 0)} evaluated · ${esc(management.pending_transfers || 0)} pending</span></div>
     <div><small>Lineup efficiency</small><strong>${esc(lineupEfficiency)}</strong><span>${esc(management.lineup_gameweeks || 0)} completed Gameweeks</span></div>
-    <p>Future-GW adjustment ${esc(h2hSigned(threat.projected_points_adjustment || 0))} pts. Transfer excess is start-weighted performance above the frozen forecast, capped at ±0.8 future points. Missing outcomes stay neutral; draft influence fades over ten observed rounds.</p>
+    <p>Future-GW adjustment ${esc(h2hSigned(threat.projected_points_adjustment || 0))} pts. Transfer excess measures acquisition performance above the frozen forecast; early sales retain observed results. Short reviews carry less weight, within a ±0.8 future-point cap. Missing outcomes stay neutral; draft influence fades over ten observed rounds.</p>
   </section>`;
 }
 
@@ -103,10 +103,13 @@ function h2hOutcomePanel() {
   const error = current.phase === 'FINAL' && evaluation.recommended_absolute_error != null
     ? `<span>Absolute error ${esc(h2hScore(evaluation.recommended_absolute_error))}${evaluation.calibration_eligible ? '' : ' · excluded from calibration'}</span>`
     : `<span>${esc(eligibility)}</span>`;
+  const comparison = current.selection_comparison;
+  const trial = comparison ? `<div><small>Last collected pre-deadline XI</small><strong>${esc(h2hScore(liveOrFinal ? comparison.baseline.actual_points : comparison.baseline.projected_points))}</strong><span>${esc(h2hScore(comparison.baseline.projected_points))} projected · ${esc(comparison.captured_at)}</span><span>Points-only experiment: ${esc(h2hScore(comparison.challenger.projected_points))} projected · ${esc(h2hScore(comparison.challenger.actual_points))} final</span><span>${comparison.complete ? `Experiment gain: ${esc(h2hSigned(comparison.challenger_gain))}` : 'Final comparison pending'} · raw XI points, no simulated autosubs. Experiment does not control recommendations.</span></div>` : '<div><small>Deadline comparison</small><span>No paired pre-deadline record for this round.</span></div>';
   return `<section class="h2h-outcome">
     <div><small>${esc(phaseLabel)} · GW${esc(current.gameweek)}</small>${resultLine}</div>
-    <div><small>Toolkit Recommended XI</small><strong>${liveOrFinal ? esc(h2hScore(actual.recommended_points)) : esc(h2hScore(recommended.projected_total))}</strong><span>${esc(h2hScore(recommended.projected_total))} forecast · ${esc(h2hScore(recommended.range_low))}–${esc(h2hScore(recommended.range_high))} band</span>${error}</div>
+    <div><small>Original planning XI</small><strong>${liveOrFinal ? esc(h2hScore(actual.recommended_points)) : esc(h2hScore(recommended.projected_total))}</strong><span>${esc(h2hScore(recommended.projected_total))} forecast · ${esc(h2hScore(recommended.range_low))}–${esc(h2hScore(recommended.range_high))} band</span>${error}</div>
     <div><small>Official submitted XI</small><strong>${liveOrFinal && actual.official_points != null ? esc(h2hScore(actual.official_points)) : 'Pending'}</strong><span>${liveOrFinal ? 'current FPL Draft points' : 'available after the deadline'}</span></div>
+    ${trial}
   </section>`;
 }
 

@@ -15,7 +15,7 @@ def test_frontend_exposes_snapshot_freshness_states_and_mobile_warning():
     assert "setInterval(loadReport, REPORT_POLL_MS)" in app
     assert 'role="status"' in app
     assert ".freshness-warning" in styles
-    assert "app.js?v=20260921.2" in index
+    assert "app.js?v=20260921.3" in index
     assert "styles.css?v=20260910.2" in index
 
 
