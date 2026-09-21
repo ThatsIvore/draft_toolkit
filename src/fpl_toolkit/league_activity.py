@@ -117,7 +117,7 @@ def evaluate_transfers(manager: dict[str, Any], completed_points: dict[int, dict
             gain = sum(points[pid] for pid in adds) - sum(points[pid] for pid in drops)
             observations[str(gw)] = {
                 "points_gain": gain, "expected_gain": expected,
-                "excess_points": (gain - expected) * len(adds & starters) / len(adds),
+                "excess_points": gain - expected,
                 "incoming_started_points": sum(points[pid] for pid in adds & starters),
                 "incoming_starts": len(adds & starters),
             }
@@ -129,7 +129,7 @@ def evaluate_transfers(manager: dict[str, Any], completed_points: dict[int, dict
             "points_gain": round(sum(row["points_gain"] for row in rows), 1) if rows else None,
             "incoming_started_points": round(sum(row["incoming_started_points"] for row in rows), 1) if rows else None,
             "incoming_starts": sum(row["incoming_starts"] for row in rows),
-            "excess_points_per_player_week": round(sum(row["excess_points"] for row in rows) / (len(rows) * len(adds)), 2) if rows else None,
+            "excess_points_per_player_week": round(sum(row["points_gain"] - row["expected_gain"] for row in rows) / (len(rows) * len(adds)), 2) if rows else None,
         }
 
 

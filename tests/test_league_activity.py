@@ -62,8 +62,9 @@ def test_four_final_rounds_compare_points_and_shrink_rating_with_one_sample():
     state, manager, points = completed_manager()
     evaluate_transfers(manager, {5: points[5]})
     profile = build_manager_profiles(LEAGUE, PLAYERS, None, state)["111"]["management"]
-    assert profile["evaluated_transfers"] == 0
-    assert profile["transfer_points_adjustment"] == 0
+    assert profile["evaluated_transfers"] == 1
+    assert profile["effective_transfer_windows"] == .25
+    assert profile["transfer_points_adjustment"] == .04
     evaluate_transfers(manager, points)
     outcome = manager["transactions"][0]["outcome"]
     assert outcome["status"] == "complete"
@@ -78,14 +79,16 @@ def test_four_final_rounds_compare_points_and_shrink_rating_with_one_sample():
     assert manager == before
 
 
-def test_bench_only_success_and_forecast_expected_improvement_do_not_add_threat():
+def test_acquisition_and_lineup_use_are_separate_and_expected_gain_is_not_rewarded_twice():
     for started in [True, False]:
         state, manager, points = completed_manager(started)
         if started:
             manager["transactions"][0]["expected_gains"] = {str(gw): 6 for gw in range(5, 9)}
         evaluate_transfers(manager, points)
         profile = build_manager_profiles(LEAGUE, PLAYERS, None, state)["111"]["management"]
-        assert profile["transfer_points_adjustment"] == 0
+        assert profile["transfer_points_adjustment"] == (0 if started else .16)
+        if not started:
+            assert manager["transactions"][0]["outcome"]["incoming_started_points"] == 0
 
 
 def test_missing_points_unknown_lineups_and_resold_players_do_not_become_failures():
@@ -97,7 +100,7 @@ def test_missing_points_unknown_lineups_and_resold_players_do_not_become_failure
     manager["lineups"]["6"]["squad_ids"] = [3, 4]
     evaluate_transfers(manager, points)
     assert manager["transactions"][0]["outcome"]["status"] == "stopped"
-    assert build_manager_profiles(LEAGUE, PLAYERS, None, state)["111"]["management"]["transfer_points_adjustment"] == 0
+    assert build_manager_profiles(LEAGUE, PLAYERS, None, state)["111"]["management"]["transfer_points_adjustment"] == .04
 
 
 def test_unbalanced_batch_and_legacy_records_do_not_affect_transfer_rating():
@@ -145,3 +148,19 @@ def test_observed_reversal_stops_old_review_even_if_player_is_reacquired_before_
     assert manager["transactions"][0]["outcome"]["status"] == "stopped"
     assert manager["transactions"][1]["outcome"]["status"] == "stopped"
     assert manager["transactions"][2]["outcome"]["status"] == "pending"
+
+
+def test_early_failures_lower_rating_and_short_observations_have_less_weight():
+    from fpl_toolkit.opponent_profile import _management_profile
+    success = {"evaluation_version": 1, "eligible": True, "outcome": {
+        "status": "complete", "observed_gameweeks": 4,
+        "excess_points_per_player_week": 3, "points_gain": 12}}
+    failure = {"evaluation_version": 1, "eligible": True, "outcome": {
+        "status": "stopped", "observed_gameweeks": 1,
+        "excess_points_per_player_week": -9, "points_gain": -9}}
+    positive = _management_profile({"transactions": [success]})
+    mixed = _management_profile({"transactions": [success] + [failure] * 4})
+    assert positive["transfer_points_adjustment"] > 0
+    assert mixed["transfer_points_adjustment"] < 0
+    assert mixed["effective_transfer_windows"] == 2
+    assert mixed["evidence"] == "LOW"

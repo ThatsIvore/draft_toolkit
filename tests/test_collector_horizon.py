@@ -336,3 +336,18 @@ def test_collector_retains_activity_without_repeating_transactions(tmp_path, mon
     public = sanitize_public_report(repeated)
     assert {row["from_team"] for row in public["league_activity"]} == {"My Team", "Free pool"}
     assert all("from_owner" not in row and "to_owner" not in row for row in public["league_activity"])
+
+
+def test_collector_captures_experimental_pair_for_actionable_round_only(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    report = collect(Settings(draft_entry_id="1001", draft_league_id="77", output_dir=str(tmp_path / "data")),
+                     client=PostWaiverDraftClient(), fantasy_client=FantasyClient())
+    diagnostics = report["outcome_diagnostics"]
+    assert diagnostics["current"]["deadline_selection"] is None
+    pair = diagnostics["pending_deadline_selections"]["2"]
+    assert pair["baseline"]["captured_at"] == report["generated_at"]
+    assert pair["challenger"]["captured_at"] == pair["baseline"]["captured_at"]
+    assert {p["player_id"] for p in pair["baseline"]["recommended"]["starters"]} == {
+        p["player_id"] for p in report["recommended_lineup"]["starters"]}
+    assert report["recommended_lineup"]["model"] == "v0.6.3"
+    assert pair["challenger_model"] == "points-shadow-v1"
