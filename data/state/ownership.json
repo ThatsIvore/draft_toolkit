@@ -7639,9 +7639,9 @@
     "status": "o",
     "owner_raw": 338553,
     "owner_entry_id": 338553,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-09-21T10:30:09.221479Z"
   },
   {
     "player_id": 346,
@@ -8446,7 +8446,7 @@
     "owner_raw": 338553,
     "owner_entry_id": 338553,
     "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "news": "Shin injury - 75% chance of playing",
     "news_added": "2026-09-20T19:30:08.505755Z"
   },
   {
