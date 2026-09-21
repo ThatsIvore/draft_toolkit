@@ -3,6 +3,8 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any
 
+from .league_activity import PUBLIC_ACTIVITY_FIELDS
+
 OWNER_FIELDS = {"owner_raw", "owner_entry_id", "owner_name"}
 H2H_IDENTITY_FIELDS = {
     "entry_id",
@@ -63,9 +65,7 @@ def sanitize_public_report(report: dict[str, Any]) -> dict[str, Any]:
     for change in public.get("league_activity", []) or []:
         if not isinstance(change, dict):
             continue
-        item = dict(change)
-        for key in ("from_owner", "to_owner", "from_owner_name", "to_owner_name"):
-            item.pop(key, None)
+        item = {key: value for key, value in change.items() if key in PUBLIC_ACTIVITY_FIELDS}
         activity.append(item)
     public["league_activity"] = activity
 

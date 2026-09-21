@@ -13,6 +13,7 @@ from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning
 from .h2h import build_h2h_matchup, build_h2h_outlook
 from .injury_stash import build_injury_stash_dashboard
 from .intelligence import attach_intelligence
+from .league_activity import completed_player_points, public_transfer_reviews
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
 from .opponent_profile import build_manager_profiles, lineup_decision, update_manager_history
@@ -245,7 +246,11 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         captured_at=report.get("generated_at"),
         gameweek=decision_gw,
         lineup_decisions=lineup_decisions,
+        completed_points=completed_player_points(recent_payloads, player_id_map_by_code(fantasy_bootstrap, bootstrap)),
     )
+    report["league_activity"] = list(reversed(manager_history.get("activity", [])))
+    report["league_activity_summary"] = {"retained": len(report["league_activity"]), "new_this_collection": len(changes), "limit": 500}
+    report["transfer_reviews"] = public_transfer_reviews(manager_history)
     write_json(manager_history_path, manager_history)
     manager_profiles = build_manager_profiles(league, ownership, draft, manager_history)
     report["gameweek_phase"] = scoring_phase

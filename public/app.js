@@ -234,8 +234,15 @@ function renderAvailable() {
 
 function renderActivity() {
   const items = DATA.league_activity || [];
-  if (!items.length) return '<div class="empty">No ownership changes have been detected since monitoring started. This panel will become the opponent-drop radar.</div>';
-  return items.map(x => `<div class="activity-card"><strong>${esc(String(x.type || '').toUpperCase())}: ${esc(x.player)}</strong><div class="meta">${esc(x.from_owner_name || x.from_owner || 'Free pool')} → ${esc(x.to_owner_name || x.to_owner || 'Free pool')}</div></div>`).join('');
+  const reviews = DATA.transfer_reviews || [];
+  const summary = DATA.league_activity_summary;
+  const intro = `<div class="empty">${summary ? `${esc(summary.retained)} retained changes · ${esc(summary.new_this_collection)} new this collection. ` : ''}Observed between snapshots; collection time is not the exact transfer time. Up to 500 changes retained.</div>`;
+  const history = items.length ? items.map(x => `<div class="activity-card"><strong>${esc(String(x.type || '').toUpperCase())}: ${esc(x.player)}</strong><div class="meta">${esc(x.from_team || 'Unknown previous owner')} → ${esc(x.to_team || 'Unknown next owner')}</div><div class="meta">First actionable GW${esc(x.gameweek ?? '?')} · ${esc(x.captured_at || 'Date unavailable')} · ${esc(x.source || 'Ownership snapshot')}</div></div>`).join('') : '<div class="empty">No retained ownership changes yet. Future changes will stay visible after unchanged collections.</div>';
+  const outcomes = reviews.length ? `<details class="activity-card"><summary>Transfer reviews (${esc(reviews.length)})</summary><div class="empty">Four completed Gameweeks compare incoming and outgoing player points. Started points show use in the submitted XI, not total team gain. Ratings use start-weighted performance above the original forecast, with a ±0.8 point cap and small-sample shrinkage. Unrated records lack an original forecast or a balanced same-position batch; stopped reviews ended before four rounds.</div>${reviews.map(x => {
+    const o = x.outcome || {};
+    return `<div class="activity-card"><strong>${esc(x.team_name)} · GW${esc(x.gameweek ?? '?')}</strong><div class="meta">Added: ${esc((x.adds || []).join(', ') || 'None')} · Dropped: ${esc((x.drops || []).join(', ') || 'None')}</div><div class="meta">${esc(String(o.status || 'unrated').toUpperCase())} · ${esc(o.observed_gameweeks || 0)}/4 completed rounds · Player points gain: ${esc(o.points_gain ?? 'Pending')} · Incoming started points: ${esc(o.incoming_started_points ?? 'Pending')}</div></div>`;
+  }).join('')}</details>` : '';
+  return intro + outcomes + '<div class="group-title"><h3>Ownership history</h3></div>' + history;
 }
 
 function renderPlanner() {
