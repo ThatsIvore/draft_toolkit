@@ -6,8 +6,10 @@ import re
 import unicodedata
 from typing import Any
 
+from .league_activity import evaluate_transfers, freeze_transfer, retain_activity
 
-PROFILE_MODEL = "v0.1"
+
+PROFILE_MODEL = "v0.2"
 HISTORY_SCHEMA_VERSION = 1
 
 
@@ -205,11 +207,13 @@ def update_manager_history(
     captured_at: str | None,
     gameweek: int | None,
     lineup_decisions: dict[str, dict[str, Any]] | None = None,
+    completed_points: dict[int, dict[str, float]] | None = None,
 ) -> dict[str, Any]:
     state = deepcopy(history) if isinstance(history, dict) else empty_manager_history()
     if state.get("schema_version") != HISTORY_SCHEMA_VERSION:
         state = empty_manager_history()
     managers = state.setdefault("managers", {})
+    retain_activity(state, changes, league_details, captured_at, gameweek)
     alias_to_key: dict[str, str] = {}
     for entry in _entries(league_details):
         key = _entry_key(entry)
@@ -241,11 +245,17 @@ def update_manager_history(
     for key, activity in grouped.items():
         adds = [_transaction_player(player_id, players_by_id) for player_id in activity["adds"]]
         drops = [_transaction_player(player_id, players_by_id) for player_id in activity["drops"]]
-        fingerprint = f"{gameweek}:{','.join(sorted(str(row['player_id']) for row in adds))}:{','.join(sorted(str(row['player_id']) for row in drops))}"
+        fingerprint = f"{captured_at}:{gameweek}:{','.join(sorted(str(row['player_id']) for row in adds))}:{','.join(sorted(str(row['player_id']) for row in drops))}"
         transactions = managers[key].setdefault("transactions", [])
         if any(row.get("fingerprint") == fingerprint for row in transactions):
             continue
+        for previous in transactions:
+            if ({str(row["player_id"]) for row in previous.get("adds", [])} & {str(row["player_id"]) for row in drops}
+                    or {str(row["player_id"]) for row in previous.get("drops", [])} & {str(row["player_id"]) for row in adds}):
+                previous.setdefault("ended_gameweek", gameweek)
+        frozen = freeze_transfer(adds, drops, players_by_id, gameweek)
         transactions.append({
+            **frozen,
             "fingerprint": fingerprint,
             "captured_at": captured_at,
             "gameweek": gameweek,
@@ -262,6 +272,10 @@ def update_manager_history(
         key = alias_to_key.get(str(alias), str(alias) if str(alias) in managers else None)
         if key and decision.get("gameweek") is not None:
             managers[key].setdefault("lineups", {})[str(decision["gameweek"])] = decision
+
+    for manager in managers.values():
+        evaluate_transfers(manager, completed_points or {})
+        manager["transactions"] = manager["transactions"][-200:]
 
     state["updated_at"] = captured_at or datetime.now(timezone.utc).isoformat()
     return state
@@ -308,26 +322,36 @@ def lineup_decision(lineup: dict[str, Any] | None) -> dict[str, Any] | None:
         "points_left_on_bench": round(max(0.0, best - submitted), 1),
         "efficiency": round(efficiency, 1),
         "starter_ids": [row.get("player_id") for row in starters],
+        "squad_ids": [row.get("player_id") for row in squad],
     }
 
 
 def _management_profile(manager: dict[str, Any]) -> dict[str, Any]:
     transactions = [row for row in manager.get("transactions") or [] if isinstance(row, dict)]
     lineups = [row for row in (manager.get("lineups") or {}).values() if isinstance(row, dict)]
-    deltas = [_number(row.get("value_delta")) for row in transactions]
+    eligible = [row for row in transactions if row.get("evaluation_version") == 1 and row.get("eligible")]
+    deltas = [_number(row.get("value_delta")) for row in eligible if row.get("value_delta") is not None]
+    outcomes = [row["outcome"] for row in eligible if (row.get("outcome") or {}).get("status") == "complete"]
+    residuals = [row["excess_points_per_player_week"] for row in outcomes]
     efficiencies = [_number(row.get("efficiency")) for row in lineups if row.get("efficiency") is not None]
-    transfer_score = _clamp(50.0 + _mean(deltas) * 2.0, 25.0, 75.0) if deltas else 50.0
+    # Outcome residuals replace the transfer heuristic within its existing budget.
+    transfer_score = _clamp(50.0 + _mean(residuals) * 5.0, 25.0, 75.0) if residuals else 50.0
     lineup_score = _clamp(50.0 + (_mean(efficiencies) - 85.0) * 1.5, 25.0, 75.0) if efficiencies else 50.0
-    transfer_weight = min(1.0, len(transactions) / 5.0)
+    transfer_weight = min(1.0, len(outcomes) / 5.0)
     lineup_weight = min(1.0, len(efficiencies) / 4.0)
     adjustment = (
         (transfer_score - 50.0) / 25.0 * 0.8 * transfer_weight
         + (lineup_score - 50.0) / 25.0 * 0.8 * lineup_weight
     )
-    samples = len(transactions) + len(efficiencies)
-    evidence = "HIGH" if len(transactions) >= 5 and len(efficiencies) >= 3 else "MEDIUM" if samples >= 3 else "LOW"
+    samples = len(outcomes) + len(efficiencies)
+    evidence = "HIGH" if len(outcomes) >= 5 and len(efficiencies) >= 3 else "MEDIUM" if samples >= 3 else "LOW"
     return {
         "transaction_windows": len(transactions),
+        "evaluated_transfers": len(outcomes),
+        "pending_transfers": sum((row.get("outcome") or {}).get("status") == "pending" for row in eligible),
+        "average_transfer_points_gain": round(_mean([row["points_gain"] for row in outcomes]), 1) if outcomes else None,
+        "average_transfer_excess": round(_mean(residuals), 2) if residuals else None,
+        "transfer_points_adjustment": round((transfer_score - 50.0) / 25.0 * 0.8 * transfer_weight, 2),
         "adds": sum(len(row.get("adds") or []) for row in transactions),
         "drops": sum(len(row.get("drops") or []) for row in transactions),
         "average_transfer_value": round(_mean(deltas), 1) if deltas else None,
@@ -360,7 +384,7 @@ def build_manager_profiles(
         draft_team = draft_by_name.get(_normalise(team_name)) or draft_codes.get(_manager_initials(entry))
         draft_profile = draft_by_code.get(str((draft_team or {}).get("draft_code")))
         management = _management_profile(history_managers.get(key) or {})
-        draft_adjustment = _number((draft_profile or {}).get("projected_points_adjustment"))
+        draft_adjustment = _number((draft_profile or {}).get("projected_points_adjustment")) * max(0.0, 1.0 - management["lineup_gameweeks"] / 10.0)
         adjustment = _clamp(draft_adjustment + _number(management.get("projected_points_adjustment")), -2.0, 2.0)
         score = _clamp(50.0 + adjustment * 12.5, 25.0, 75.0)
         level = "HIGH" if score >= 57.0 else "LOW" if score <= 43.0 else "MEDIUM"

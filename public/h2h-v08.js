@@ -28,14 +28,14 @@ function h2hDecisionProfile(profile, compact = false) {
   if (compact) {
     return `<span class="h2h-decision-chip threat-${pressureClass(threat.level)}">${esc(threat.level)} decision threat · ${esc(threat.evidence || 'LOW')} evidence</span>`;
   }
-  const transferValue = management.average_transfer_value == null ? 'Pending' : h2hSigned(management.average_transfer_value);
+  const transferValue = management.average_transfer_excess == null ? 'Pending' : h2hSigned(management.average_transfer_excess);
   const lineupEfficiency = management.average_lineup_efficiency == null ? 'Pending' : `${h2hScore(management.average_lineup_efficiency)}%`;
   return `<section class="h2h-manager-profile threat-${pressureClass(threat.level)}">
     <div><small>Opponent decision profile</small><strong>${esc(threat.level)} threat</strong><span>${esc(threat.evidence || 'LOW')} live-decision evidence</span></div>
     <div><small>Draft prior</small><strong>${draft.score == null ? 'Unmapped' : h2hScore(draft.score)}</strong><span>${draft.resolved_picks == null ? 'No draft data' : `${esc(draft.resolved_picks)}/${esc(draft.total_picks)} picks resolved`}</span></div>
-    <div><small>Transfer value</small><strong>${esc(transferValue)}</strong><span>${esc(management.transaction_windows || 0)} observed decision windows</span></div>
+    <div><small>Transfer excess / player / GW</small><strong>${esc(transferValue)}</strong><span>${esc(management.evaluated_transfers || 0)} evaluated · ${esc(management.pending_transfers || 0)} pending</span></div>
     <div><small>Lineup efficiency</small><strong>${esc(lineupEfficiency)}</strong><span>${esc(management.lineup_gameweeks || 0)} completed Gameweeks</span></div>
-    <p>Future-GW adjustment ${esc(h2hSigned(threat.projected_points_adjustment || 0))} pts. Draft quality is a small early prior; actual transfers and submitted lineups gradually replace it.</p>
+    <p>Future-GW adjustment ${esc(h2hSigned(threat.projected_points_adjustment || 0))} pts. Transfer excess is start-weighted performance above the frozen forecast, capped at ±0.8 future points. Missing outcomes stay neutral; draft influence fades over ten observed rounds.</p>
   </section>`;
 }
 

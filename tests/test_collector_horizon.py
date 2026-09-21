@@ -302,3 +302,37 @@ def test_collector_attaches_standard_match_evidence_to_different_draft_player_id
         "status": "available",
         "completed_gameweeks": [1],
     }
+
+
+def test_collector_retains_activity_without_repeating_transactions(tmp_path, monkeypatch):
+    from fpl_toolkit.storage import read_json
+    from fpl_toolkit.privacy import sanitize_public_report
+
+    class ChangingDraft(PostWaiverDraftClient):
+        swapped = False
+
+        def element_status(self, league_id):
+            payload = super().element_status(league_id)
+            if not self.swapped:
+                for row in payload["element_status"]:
+                    if row["element"] in (15, 16):
+                        row["owner"] = 501 if row["element"] == 15 else None
+                        row["status"] = "o" if row["element"] == 15 else "l"
+            return payload
+
+    monkeypatch.chdir(tmp_path)
+    client = ChangingDraft()
+    settings = Settings(draft_entry_id="1001", draft_league_id="77", output_dir=str(tmp_path / "data"))
+    collect(settings, client=client, fantasy_client=FantasyClient())
+    client.swapped = True
+    changed = collect(settings, client=client, fantasy_client=FantasyClient())
+    repeated = collect(settings, client=client, fantasy_client=FantasyClient())
+    assert changed["league_activity_summary"]["new_this_collection"] == 2
+    assert repeated["league_activity_summary"] == {"retained": 2, "new_this_collection": 0, "limit": 500}
+    assert repeated["league_activity"] == changed["league_activity"]
+    state = read_json(tmp_path / "data/state/manager-decisions.json")
+    assert len(state["managers"]["1001"]["transactions"]) == 1
+    assert len(repeated["transfer_reviews"]) == 1
+    public = sanitize_public_report(repeated)
+    assert {row["from_team"] for row in public["league_activity"]} == {"My Team", "Free pool"}
+    assert all("from_owner" not in row and "to_owner" not in row for row in public["league_activity"])
