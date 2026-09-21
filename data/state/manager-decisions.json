@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-21T05:01:35.168003+00:00",
+  "updated_at": "2026-09-21T10:21:37.722989+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -253,6 +253,43 @@
             106,
             346
           ]
+        },
+        "5": {
+          "gameweek": 5,
+          "submitted_points": 33.0,
+          "best_possible_points": 40.0,
+          "points_left_on_bench": 7.0,
+          "efficiency": 82.5,
+          "starter_ids": [
+            467,
+            469,
+            31,
+            391,
+            236,
+            426,
+            480,
+            453,
+            167,
+            106,
+            346
+          ],
+          "squad_ids": [
+            467,
+            469,
+            31,
+            391,
+            236,
+            426,
+            480,
+            453,
+            167,
+            106,
+            346,
+            109,
+            200,
+            69,
+            5
+          ]
         }
       },
       "team_name": "Vængir Júpíters"
@@ -488,6 +525,43 @@
             411,
             26
           ]
+        },
+        "5": {
+          "gameweek": 5,
+          "submitted_points": 51.0,
+          "best_possible_points": 71.0,
+          "points_left_on_bench": 20.0,
+          "efficiency": 71.8,
+          "starter_ids": [
+            1,
+            388,
+            279,
+            330,
+            366,
+            428,
+            155,
+            94,
+            464,
+            411,
+            26
+          ],
+          "squad_ids": [
+            1,
+            388,
+            279,
+            330,
+            366,
+            428,
+            155,
+            94,
+            464,
+            411,
+            26,
+            350,
+            628,
+            115,
+            204
+          ]
         }
       },
       "team_name": "My own Wirtz enemy"
@@ -719,6 +793,43 @@
             166,
             492
           ]
+        },
+        "5": {
+          "gameweek": 5,
+          "submitted_points": 68.0,
+          "best_possible_points": 89.0,
+          "points_left_on_bench": 21.0,
+          "efficiency": 76.4,
+          "starter_ids": [
+            82,
+            356,
+            449,
+            4,
+            390,
+            12,
+            40,
+            124,
+            335,
+            138,
+            166
+          ],
+          "squad_ids": [
+            82,
+            356,
+            449,
+            4,
+            390,
+            12,
+            40,
+            124,
+            335,
+            138,
+            166,
+            529,
+            358,
+            14,
+            552
+          ]
         }
       },
       "team_name": "FC FC"
@@ -839,6 +950,43 @@
             237,
             165,
             249
+          ]
+        },
+        "5": {
+          "gameweek": 5,
+          "submitted_points": 45.0,
+          "best_possible_points": 45.0,
+          "points_left_on_bench": 0.0,
+          "efficiency": 100.0,
+          "starter_ids": [
+            412,
+            8,
+            580,
+            332,
+            113,
+            427,
+            368,
+            481,
+            237,
+            367,
+            249
+          ],
+          "squad_ids": [
+            412,
+            8,
+            580,
+            332,
+            113,
+            427,
+            368,
+            481,
+            237,
+            367,
+            249,
+            496,
+            165,
+            393,
+            223
           ]
         }
       },
@@ -1063,6 +1211,43 @@
             439,
             79
           ]
+        },
+        "5": {
+          "gameweek": 5,
+          "submitted_points": 47.0,
+          "best_possible_points": 57.0,
+          "points_left_on_bench": 10.0,
+          "efficiency": 82.5,
+          "starter_ids": [
+            384,
+            305,
+            230,
+            334,
+            201,
+            68,
+            397,
+            154,
+            429,
+            268,
+            316
+          ],
+          "squad_ids": [
+            384,
+            305,
+            230,
+            334,
+            201,
+            68,
+            397,
+            154,
+            429,
+            268,
+            316,
+            385,
+            79,
+            439,
+            60
+          ]
         }
       },
       "team_name": "Weapon X"
@@ -1240,9 +1425,848 @@
             379,
             569
           ]
+        },
+        "5": {
+          "gameweek": 5,
+          "submitted_points": 58.0,
+          "best_possible_points": 59.0,
+          "points_left_on_bench": 1.0,
+          "efficiency": 98.3,
+          "starter_ids": [
+            226,
+            229,
+            9,
+            10,
+            86,
+            13,
+            15,
+            399,
+            41,
+            379,
+            569
+          ],
+          "squad_ids": [
+            226,
+            229,
+            9,
+            10,
+            86,
+            13,
+            15,
+            399,
+            41,
+            379,
+            569,
+            571,
+            222,
+            142,
+            357
+          ]
         }
       },
       "team_name": "Gooseboys"
     }
-  }
+  },
+  "activity": [
+    {
+      "type": "add",
+      "player_id": 556,
+      "player": "M.Sangaré",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 542,
+      "player": "E.Le Fée",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 115,
+      "player": "De Cuyper",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 464,
+      "player": "Wissa",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 527,
+      "player": "Richarlison",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 533,
+      "player": "Mukiele",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 335,
+      "player": "Stach",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 452,
+      "player": "Bruno G.",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 10,
+      "player": "White",
+      "from_team": "Unknown previous owner",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 123,
+      "player": "Hinshelwood",
+      "from_team": "Unknown previous owner",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 569,
+      "player": "Gonzalo",
+      "from_team": "Unknown previous owner",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 55,
+      "player": "Watkins",
+      "from_team": "Gooseboys",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 156,
+      "player": "Neto",
+      "from_team": "Gooseboys",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 392,
+      "player": "Aït-Nouri",
+      "from_team": "Gooseboys",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-27T22:17:59.691256+00:00",
+      "gameweek": 2,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 327,
+      "player": "Bijol",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 471,
+      "player": "Milenković",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 237,
+      "player": "Ndiaye",
+      "from_team": "Unknown previous owner",
+      "to_team": "No Salad",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 249,
+      "player": "Barry",
+      "from_team": "Unknown previous owner",
+      "to_team": "No Salad",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 208,
+      "player": "Sarr",
+      "from_team": "No Salad",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 526,
+      "player": "Solanke",
+      "from_team": "No Salad",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 68,
+      "player": "Tavernier",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 43,
+      "player": "Tielemans",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-08-28T22:24:19.534610+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 445,
+      "player": "Thiaw",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 469,
+      "player": "N.Williams",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 454,
+      "player": "Elanga",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 628,
+      "player": "Barcola",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 338,
+      "player": "Ampadu",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 371,
+      "player": "Gravenberch",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 124,
+      "player": "Groß",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 166,
+      "player": "N.Jackson",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 25,
+      "player": "Gyökeres",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 67,
+      "player": "Rayan",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 86,
+      "player": "Lewis-Potter",
+      "from_team": "Unknown previous owner",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 123,
+      "player": "Hinshelwood",
+      "from_team": "Gooseboys",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-03T19:18:41.367459+00:00",
+      "gameweek": 3,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 69,
+      "player": "Scott",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 401,
+      "player": "Marmoush",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 491,
+      "player": "Igor Jesus",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 556,
+      "player": "M.Sangaré",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 204,
+      "player": "Mitchell",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 279,
+      "player": "Ajayi",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 389,
+      "player": "Matheus N.",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 498,
+      "player": "Senesi",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 449,
+      "player": "Hall",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 84,
+      "player": "Collins",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 571,
+      "player": "Tzolakis",
+      "from_team": "Unknown previous owner",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 28,
+      "player": "Martinez",
+      "from_team": "Gooseboys",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T12:51:02.809133+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 109,
+      "player": "Verbruggen",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-11T19:10:47.756873+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 350,
+      "player": "A.Becker",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-11T19:10:47.756873+00:00",
+      "gameweek": 4,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 230,
+      "player": "Branthwaite",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-12T15:34:53.250103+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 385,
+      "player": "Trafford",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-12T15:34:53.250103+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 429,
+      "player": "Rashford",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-12T15:34:53.250103+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 11,
+      "player": "Mosquera",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-12T15:34:53.250103+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 140,
+      "player": "Sánchez",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-12T15:34:53.250103+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 260,
+      "player": "Wilson",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-12T15:34:53.250103+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 5,
+      "player": "J.Timber",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 453,
+      "player": "Barnes",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 469,
+      "player": "N.Williams",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 445,
+      "player": "Thiaw",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 499,
+      "player": "Pedro Porro",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 554,
+      "player": "Tzolis",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 94,
+      "player": "Schade",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 330,
+      "player": "Bogle",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 350,
+      "player": "A.Becker",
+      "from_team": "Unknown previous owner",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 61,
+      "player": "Truffert",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 198,
+      "player": "Henderson",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 454,
+      "player": "Elanga",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 138,
+      "player": "Kostoulas",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 492,
+      "player": "Awoniyi",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-17T19:44:37.410710+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 390,
+      "player": "Rúben",
+      "from_team": "Unknown previous owner",
+      "to_team": "FC FC",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 327,
+      "player": "Bijol",
+      "from_team": "FC FC",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 268,
+      "player": "King",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 316,
+      "player": "Emersonn",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 334,
+      "player": "Muharemović",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 136,
+      "player": "Welbeck",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 398,
+      "player": "Foden",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 417,
+      "player": "Dalot",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-18T12:59:21.028974+00:00",
+      "gameweek": 5,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 167,
+      "player": "Delap",
+      "from_team": "Unknown previous owner",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-09-18T19:03:19.229671+00:00",
+      "gameweek": 6,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 401,
+      "player": "Marmoush",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-18T19:03:19.229671+00:00",
+      "gameweek": 6,
+      "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 305,
+      "player": "Davis",
+      "from_team": "Unknown previous owner",
+      "to_team": "Weapon X",
+      "captured_at": "2026-09-18T19:03:19.229671+00:00",
+      "gameweek": 6,
+      "source": "retained manager record"
+    },
+    {
+      "type": "drop",
+      "player_id": 387,
+      "player": "O'Reilly",
+      "from_team": "Weapon X",
+      "to_team": "Unknown next owner",
+      "captured_at": "2026-09-18T19:03:19.229671+00:00",
+      "gameweek": 6,
+      "source": "retained manager record"
+    }
+  ]
 }
