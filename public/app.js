@@ -232,12 +232,20 @@ function renderAvailable() {
   return shown.length ? `<div class="group-title"><h3>Available players</h3><span class="count">Showing ${shown.length} of ${list.length}</span></div><div class="player-list">${shown.map(p => playerCard(p,'AVAILABLE')).join('')}</div>` : '<div class="empty">No available players match these filters.</div>';
 }
 
+function activityMovement(x) {
+  const known = value => value && !['Unknown previous owner', 'Unknown next owner'].includes(value);
+  const label = value => value === 'Free pool' ? 'Free agents' : value;
+  if (x.type === 'drop' && !known(x.to_team)) return `Released by ${esc(label(x.from_team) || 'a league team')}`;
+  if (x.type === 'add' && !known(x.from_team)) return `Signed by ${esc(label(x.to_team) || 'a league team')}`;
+  return `${esc(known(x.from_team) ? label(x.from_team) : 'Previous team not recorded')} → ${esc(known(x.to_team) ? label(x.to_team) : 'Destination not recorded')}`;
+}
+
 function renderActivity() {
   const items = DATA.league_activity || [];
   const reviews = DATA.transfer_reviews || [];
   const summary = DATA.league_activity_summary;
   const intro = `<div class="empty">${summary ? `${esc(summary.retained)} retained changes · ${esc(summary.new_this_collection)} new this collection. ` : ''}Observed between snapshots; collection time is not the exact transfer time. Up to 500 changes retained.</div>`;
-  const history = items.length ? items.map(x => `<div class="activity-card"><strong>${esc(String(x.type || '').toUpperCase())}: ${esc(x.player)}</strong><div class="meta">${esc(x.from_team || 'Unknown previous owner')} → ${esc(x.to_team || 'Unknown next owner')}</div><div class="meta">First actionable GW${esc(x.gameweek ?? '?')} · ${esc(x.captured_at || 'Date unavailable')} · ${esc(x.source || 'Ownership snapshot')}</div></div>`).join('') : '<div class="empty">No retained ownership changes yet. Future changes will stay visible after unchanged collections.</div>';
+  const history = items.length ? items.map(x => `<div class="activity-card"><strong>${esc(String(x.type || '').toUpperCase())}: ${esc(x.player)}</strong><div class="meta">${activityMovement(x)}</div><div class="meta">First actionable GW${esc(x.gameweek ?? '?')} · ${esc(x.captured_at || 'Date unavailable')} · ${esc(x.source || 'Ownership snapshot')}</div></div>`).join('') : '<div class="empty">No retained ownership changes yet. Future changes will stay visible after unchanged collections.</div>';
   const outcomes = reviews.length ? `<details class="activity-card"><summary>Transfer reviews (${esc(reviews.length)})</summary><div class="empty">Four completed Gameweeks compare incoming and outgoing player points. Started points show use in the submitted XI, not total team gain. Ratings use start-weighted performance above the original forecast, with a ±0.8 point cap and small-sample shrinkage. Unrated records lack an original forecast or a balanced same-position batch; stopped reviews ended before four rounds.</div>${reviews.map(x => {
     const o = x.outcome || {};
     return `<div class="activity-card"><strong>${esc(x.team_name)} · GW${esc(x.gameweek ?? '?')}</strong><div class="meta">Added: ${esc((x.adds || []).join(', ') || 'None')} · Dropped: ${esc((x.drops || []).join(', ') || 'None')}</div><div class="meta">${esc(String(o.status || 'unrated').toUpperCase())} · ${esc(o.observed_gameweeks || 0)}/4 completed rounds · Player points gain: ${esc(o.points_gain ?? 'Pending')} · Incoming started points: ${esc(o.incoming_started_points ?? 'Pending')}</div></div>`;

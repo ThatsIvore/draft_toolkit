@@ -146,7 +146,7 @@ Cards explain the specific failed priority checks, including the baseline compar
 
 ### League Activity and transfer outcomes (21 September 2026)
 
-League Activity retains the latest 500 observed ownership changes across unchanged collections, with collection timestamps, first actionable Gameweeks and chosen team names. Existing manager add/drop records are migrated with unknown counterparties explicitly labelled; missing historical changes cannot be reconstructed. Only new snapshot changes feed Decision Updates and manager transaction capture.
+League Activity retains the latest 500 observed ownership changes across unchanged collections, with collection timestamps, first actionable Gameweeks and chosen team names. Existing manager add/drop records are migrated using “Released by” and “Signed by” when counterparties were not recorded; missing historical changes cannot be reconstructed. Only new snapshot changes feed Decision Updates and manager transaction capture.
 
 Transfer reviews compare balanced, same-position add/drop batches across four completed Gameweeks, without guessing individual pairings. Original roster-value differences remain descriptive. New batches freeze projected incoming-minus-outgoing points for each round; final official points are joined from Standard to Draft through stable player codes. Missing final points or exact historical squads remain pending; missing original forecasts are unrated. A subsequent sale or re-acquisition of a dropped player stops the review; legacy and unbalanced batches are unrated. Incoming started points describe submitted-XI usage, not autosub-adjusted team gain.
 
