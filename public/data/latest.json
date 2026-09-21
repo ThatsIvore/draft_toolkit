@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T22:29:02.317784+00:00",
+  "generated_at": "2026-09-21T05:01:35.168003+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -16642,11 +16642,11 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 68.7,
         "stash_score": 67.3,
-        "recommendation": "STASH",
-        "recommendation_reason": "Health outlook improved while future value remains strong."
+        "recommendation": "WATCH",
+        "recommendation_reason": "Interesting value, but not yet a clear claim signal."
       },
       "replacement": {
         "model": "v0.6.0",
@@ -70248,7 +70248,7 @@
         "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "improving",
+        "health_trend": "stable",
         "roster_score": 55.7,
         "stash_score": 51.9,
         "recommendation": "PASS",
@@ -117000,7 +117000,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 68.2,
         "stash_score": 58.2,
         "recommendation": "WATCH",
@@ -117732,7 +117732,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 62.2,
         "stash_score": 56.3,
         "recommendation": "WATCH",
@@ -139186,10 +139186,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "16e5665783e4650e",
-      "24ca1b4a8b86aa40"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       52,
       70,
