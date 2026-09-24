@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T04:56:58.926685+00:00",
+  "generated_at": "2026-09-24T13:35:00.030193+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -9,7 +9,7 @@
     "available_count": 475,
     "tracked_players": 667,
     "ownership_changes": 0,
-    "injured_or_doubtful_count": 99
+    "injured_or_doubtful_count": 100
   },
   "my_squad": [
     {
@@ -120701,6 +120701,189 @@
       }
     },
     {
+      "player_id": 397,
+      "player": "Semenyo",
+      "club": "MCI",
+      "team_id": 15,
+      "team_code": 43,
+      "position": "MID",
+      "status": "o",
+      "chance_next_round": 75,
+      "news": "Ankle injury - 75% chance of playing",
+      "news_added": "2026-09-24T12:00:09.848000Z",
+      "event_points": 17,
+      "total_points": 33,
+      "minutes": 450,
+      "starts": 5,
+      "goals_scored": 2,
+      "assists": 3,
+      "clean_sheets": 2,
+      "bonus": 2,
+      "expected_goal_involvements": "1.49",
+      "form": "7.8",
+      "points_per_game": "6.6",
+      "expected_points_next": null,
+      "fixtures": [
+        {
+          "gameweek": 6,
+          "matches": [
+            {
+              "opponent_id": 14,
+              "opponent": "LIV",
+              "venue": "A",
+              "difficulty": 4,
+              "kickoff_time": "2026-10-11T15:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 7,
+          "matches": [
+            {
+              "opponent_id": 12,
+              "opponent": "IPS",
+              "venue": "H",
+              "difficulty": 2,
+              "kickoff_time": "2026-10-17T14:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 8,
+          "matches": [
+            {
+              "opponent_id": 2,
+              "opponent": "AVL",
+              "venue": "A",
+              "difficulty": 4,
+              "kickoff_time": "2026-10-24T11:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 9,
+          "matches": [
+            {
+              "opponent_id": 5,
+              "opponent": "BHA",
+              "venue": "H",
+              "difficulty": 2,
+              "kickoff_time": "2026-10-31T15:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        }
+      ],
+      "intelligence": {
+        "model": "v0.6.1",
+        "baseline_score": 89.3,
+        "fixture_score": 58.0,
+        "future_fixture_score": 66.8,
+        "availability_score": 75.0,
+        "post_return_fixture_score": null,
+        "stash_fixture_score": 43.4,
+        "start_probability": 73.6,
+        "expected_minutes": 66.6,
+        "usage_score": 73.8,
+        "sample_confidence": 75.0,
+        "role_evidence": "HIGH",
+        "floor_score": 84.3,
+        "upside_score": 76.0,
+        "points_per_90": 5.99,
+        "attack_returns_per_90": 0.62,
+        "historical_prior_active": true,
+        "recent_match_evidence": {
+          "version": "v1",
+          "status": "available",
+          "score": 82.9,
+          "grade": "A",
+          "adjustment": 3.29,
+          "confidence": 100.0,
+          "completed_gameweeks": 4,
+          "appearances": 4,
+          "minutes": 360,
+          "starts": 4,
+          "gameweeks": [
+            {
+              "gameweek": 5,
+              "minutes": 90,
+              "starts": 1,
+              "points": 17,
+              "bonus": 2,
+              "bps": 65,
+              "xg": 0.16,
+              "xa": 0.17,
+              "xgi": 0.33,
+              "defensive_contribution": 7,
+              "played": true,
+              "grade_score": 93.1,
+              "grade": "A+"
+            },
+            {
+              "gameweek": 4,
+              "minutes": 90,
+              "starts": 1,
+              "points": 3,
+              "bonus": 0,
+              "bps": 7,
+              "xg": 0.0,
+              "xa": 0.06,
+              "xgi": 0.06,
+              "defensive_contribution": 3,
+              "played": true,
+              "grade_score": 57.7,
+              "grade": "C"
+            },
+            {
+              "gameweek": 3,
+              "minutes": 90,
+              "starts": 1,
+              "points": 6,
+              "bonus": 0,
+              "bps": 26,
+              "xg": 0.05,
+              "xa": 0.34,
+              "xgi": 0.39,
+              "defensive_contribution": 4,
+              "played": true,
+              "grade_score": 85.0,
+              "grade": "A"
+            },
+            {
+              "gameweek": 2,
+              "minutes": 90,
+              "starts": 1,
+              "points": 5,
+              "bonus": 0,
+              "bps": 33,
+              "xg": 0.06,
+              "xa": 0.57,
+              "xgi": 0.63,
+              "defensive_contribution": 3,
+              "played": true,
+              "grade_score": 81.9,
+              "grade": "A"
+            }
+          ]
+        },
+        "injury_return_signal": "near-return",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "health_trend": "news-changed",
+        "roster_score": 76.2,
+        "stash_score": 69.9,
+        "recommendation": "WATCH",
+        "recommendation_reason": "Owned by another manager; monitor for a future drop or status change."
+      }
+    },
+    {
       "player_id": 165,
       "player": "João Pedro",
       "club": "CHE",
@@ -139534,7 +139717,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-24T04:56:58.926685+00:00",
+          "captured_at": "2026-09-24T13:35:00.030193+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -139643,7 +139826,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-24T04:56:58.926685+00:00",
+          "captured_at": "2026-09-24T13:35:00.030193+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
