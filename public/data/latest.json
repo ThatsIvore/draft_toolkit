@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T13:52:01.439207+00:00",
+  "generated_at": "2026-09-25T20:02:31.900688+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -140071,7 +140071,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-25T13:52:01.439207+00:00",
+          "captured_at": "2026-09-25T20:02:31.900688+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -140180,7 +140180,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-25T13:52:01.439207+00:00",
+          "captured_at": "2026-09-25T20:02:31.900688+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144432,30 +144432,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "3dab3452db582add",
-      "56d1ce82c5bfaa2b",
-      "0352d4ed189da69e",
-      "603843996ba0d9c0",
-      "ddbd6415632739ff",
-      "3e38e8a626f968e1",
-      "03a22ef6a23bebfd",
-      "7ec5cd42d2dbc823",
-      "f7e97dbb2d762ea1",
-      "a440d089e7dce30e",
-      "ccdea1d1bcf541a6",
-      "15c319f345e8f0a2",
-      "3ffd6202f318be22",
-      "3ffb27ac231e1e27",
-      "854ede77cc3ea38e",
-      "2bd2267e747c0bb0",
-      "16eb7350af6d6ded",
-      "aa3b9d9e7e2e69b4",
-      "73c79e1c42d1f1e4",
-      "372544ba86386aae",
-      "597aa6639f42cd3d",
-      "a1c669502e78ea00"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
