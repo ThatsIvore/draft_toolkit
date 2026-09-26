@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T23:19:29.735089+00:00",
+  "generated_at": "2026-09-26T05:04:18.309144+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -33092,7 +33092,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 71.1,
         "stash_score": 61.7,
         "recommendation": "WATCH",
@@ -108093,7 +108093,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 71.1,
         "stash_score": 61.7,
         "recommendation": "WATCH",
@@ -121836,7 +121836,7 @@
         "news": "Hamstring injury - 75% chance of playing",
         "dashboard_action": "MONITOR",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -140256,7 +140256,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-25T23:19:29.735089+00:00",
+          "captured_at": "2026-09-26T05:04:18.309144+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -140365,7 +140365,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-25T23:19:29.735089+00:00",
+          "captured_at": "2026-09-26T05:04:18.309144+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144617,11 +144617,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "fe24fac9e5bd7d53",
-      "3231ac624cbfe57c",
-      "db8a40b9eb3d0135"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
