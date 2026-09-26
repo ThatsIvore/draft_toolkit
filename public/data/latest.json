@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T13:08:48.252635+00:00",
+  "generated_at": "2026-09-26T19:14:22.335532+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -52285,7 +52285,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 52.9,
         "stash_score": 48.3,
         "recommendation": "PASS",
@@ -112120,7 +112120,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 52.9,
         "stash_score": 48.3,
         "recommendation": "PASS",
@@ -140440,7 +140440,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-26T13:08:48.252635+00:00",
+          "captured_at": "2026-09-26T19:14:22.335532+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -140549,7 +140549,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-26T13:08:48.252635+00:00",
+          "captured_at": "2026-09-26T19:14:22.335532+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144801,9 +144801,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "34b7ccc161f601a7"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
