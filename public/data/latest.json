@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T23:05:21.077842+00:00",
+  "generated_at": "2026-09-28T05:29:08.877235+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -80822,7 +80822,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 67.3,
         "stash_score": 59.2,
         "recommendation": "WATCH",
@@ -117796,7 +117796,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 67.3,
         "stash_score": 59.2,
         "recommendation": "WATCH",
@@ -120862,7 +120862,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 63.2,
         "stash_score": 55.7,
         "recommendation": "WATCH",
@@ -121594,7 +121594,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 69.4,
         "stash_score": 62.8,
         "recommendation": "WATCH",
@@ -122647,7 +122647,7 @@
         "news": "Hamstring injury - 75% chance of playing",
         "dashboard_action": "MONITOR",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -140992,7 +140992,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-27T23:05:21.077842+00:00",
+          "captured_at": "2026-09-28T05:29:08.877235+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -141101,7 +141101,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-27T23:05:21.077842+00:00",
+          "captured_at": "2026-09-28T05:29:08.877235+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -145353,11 +145353,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "c4053a894e4fe307",
-      "aeda7b23a58bab60",
-      "887603aee45ded1b"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,

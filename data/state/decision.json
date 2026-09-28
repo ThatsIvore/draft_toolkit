@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-09-27T23:05:21.077842+00:00",
+  "captured_at": "2026-09-28T05:29:08.877235+00:00",
   "gameweek": 6,
   "scoring_gameweek": 5,
   "scoring_phase": "FINAL",
@@ -10769,7 +10769,7 @@
       "availability_score": 75.0,
       "expected_minutes": 38.2,
       "role_evidence": "HIGH",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 67.3,
       "stash_score": 59.2,
@@ -15205,7 +15205,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-27T23:05:21.077842+00:00",
+          "captured_at": "2026-09-28T05:29:08.877235+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -15314,7 +15314,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-27T23:05:21.077842+00:00",
+          "captured_at": "2026-09-28T05:29:08.877235+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18877,11 +18877,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "c4053a894e4fe307",
-      "aeda7b23a58bab60",
-      "887603aee45ded1b"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
