@@ -3726,9 +3726,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Foot injury - 75% chance of playing",
+    "news_added": "2026-09-30T16:00:09.552205Z"
   },
   {
     "player_id": 49,
