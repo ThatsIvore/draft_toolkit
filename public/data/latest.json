@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T20:50:19.747793+00:00",
+  "generated_at": "2026-10-01T06:01:17.848315+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -54399,7 +54399,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 72.1,
         "stash_score": 65.0,
         "recommendation": "WATCH",
@@ -113040,7 +113040,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 72.1,
         "stash_score": 65.0,
         "recommendation": "WATCH",
@@ -122757,7 +122757,7 @@
         "news": "Foot injury - 75% chance of playing",
         "dashboard_action": "MONITOR",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -141177,7 +141177,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-09-30T20:50:19.747793+00:00",
+          "captured_at": "2026-10-01T06:01:17.848315+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -141286,7 +141286,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-09-30T20:50:19.747793+00:00",
+          "captured_at": "2026-10-01T06:01:17.848315+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -145538,10 +145538,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "99873ac930acdde4",
-      "56a13cdab7c71a4c"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
