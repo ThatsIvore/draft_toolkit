@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-10-01T21:03:15.184026+00:00",
+  "captured_at": "2026-10-02T05:44:04.854371+00:00",
   "gameweek": 6,
   "scoring_gameweek": 5,
   "scoring_phase": "FINAL",
@@ -4497,7 +4497,7 @@
       "availability_score": 75.0,
       "expected_minutes": 67.4,
       "role_evidence": "HIGH",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 64.8,
       "stash_score": 50.7,
@@ -7493,7 +7493,7 @@
       "availability_score": 75.0,
       "expected_minutes": 35.1,
       "role_evidence": "HIGH",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 68.6,
       "stash_score": 65.0,
@@ -9649,7 +9649,7 @@
       "availability_score": 75.0,
       "expected_minutes": 62.6,
       "role_evidence": "MEDIUM",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 65.4,
       "stash_score": 53.3,
@@ -15205,7 +15205,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-01T21:03:15.184026+00:00",
+          "captured_at": "2026-10-02T05:44:04.854371+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -15314,7 +15314,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-01T21:03:15.184026+00:00",
+          "captured_at": "2026-10-02T05:44:04.854371+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18877,17 +18877,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "84082d8746305cac",
-      "3c00bd5e67f74586",
-      "d3a5120469a5e796",
-      "4e33a89bc3a0da8e",
-      "b325969eb84112da",
-      "042df9b04df919ad",
-      "12084f66fd55afa5",
-      "067a228e1f4cb1b9",
-      "dc27f0cbcf2ac316"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
