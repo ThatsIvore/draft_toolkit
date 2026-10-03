@@ -3050,9 +3050,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-10-03T19:30:08.141728Z"
   },
   {
     "player_id": 499,
