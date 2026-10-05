@@ -7704,9 +7704,9 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-10-05T09:30:09.853316Z"
   },
   {
     "player_id": 82,
@@ -8523,9 +8523,9 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 50,
+    "news": "Thigh injury - 50% chance of playing",
+    "news_added": "2026-10-05T09:30:09.910752Z"
   },
   {
     "player_id": 94,
