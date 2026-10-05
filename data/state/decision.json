@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-10-04T23:13:48.320506+00:00",
+  "captured_at": "2026-10-05T05:47:07.256646+00:00",
   "gameweek": 6,
   "scoring_gameweek": 5,
   "scoring_phase": "FINAL",
@@ -4637,7 +4637,7 @@
       "availability_score": 75.0,
       "expected_minutes": 24.5,
       "role_evidence": "MEDIUM",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 58.7,
       "stash_score": 50.0,
@@ -10321,7 +10321,7 @@
       "availability_score": 75.0,
       "expected_minutes": 58.0,
       "role_evidence": "LOW",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 56.9,
       "stash_score": 49.7,
@@ -15205,7 +15205,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-04T23:13:48.320506+00:00",
+          "captured_at": "2026-10-05T05:47:07.256646+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -15314,7 +15314,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-04T23:13:48.320506+00:00",
+          "captured_at": "2026-10-05T05:47:07.256646+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18877,11 +18877,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "dc380968857023f8",
-      "4c8cccd0aec09bac",
-      "458f32405cc8e501"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,

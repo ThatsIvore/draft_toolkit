@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T23:13:48.320506+00:00",
+  "generated_at": "2026-10-05T05:47:07.256646+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 5,
@@ -34566,7 +34566,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 58.7,
         "stash_score": 50.0,
         "recommendation": "PASS",
@@ -77459,7 +77459,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 56.9,
         "stash_score": 49.7,
         "recommendation": "PASS",
@@ -108667,7 +108667,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 58.7,
         "stash_score": 50.0,
         "recommendation": "PASS",
@@ -118732,7 +118732,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 56.9,
         "stash_score": 49.7,
         "recommendation": "PASS",
@@ -142477,7 +142477,7 @@
       "6": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-04T23:13:48.320506+00:00",
+          "captured_at": "2026-10-05T05:47:07.256646+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142586,7 +142586,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-04T23:13:48.320506+00:00",
+          "captured_at": "2026-10-05T05:47:07.256646+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -146838,11 +146838,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "dc380968857023f8",
-      "4c8cccd0aec09bac",
-      "458f32405cc8e501"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       26,
