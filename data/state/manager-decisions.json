@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-09T06:14:21.002862+00:00",
+  "updated_at": "2026-10-09T15:20:03.093560+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -80,7 +80,8 @@
               "roster_score": 65.6
             }
           ],
-          "value_delta": 19.1
+          "value_delta": 19.1,
+          "ended_gameweek": 6
         },
         {
           "fingerprint": "4:109:350",
@@ -170,7 +171,60 @@
               "roster_score": 72.5
             }
           ],
-          "value_delta": -7.2
+          "value_delta": -7.2,
+          "ended_gameweek": 6
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "6": 3.1,
+            "7": 3.6,
+            "8": 2.5,
+            "9": 2.2
+          },
+          "observations": {},
+          "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:127,25:167,69",
+          "captured_at": "2026-10-09T15:20:03.093560+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 25,
+              "player": "Gyökeres",
+              "position": "FWD",
+              "roster_score": 68.1
+            },
+            {
+              "player_id": 127,
+              "player": "Gomez",
+              "position": "MID",
+              "roster_score": 77.5
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 69,
+              "player": "Scott",
+              "position": "MID",
+              "roster_score": 41.4
+            },
+            {
+              "player_id": 167,
+              "player": "Delap",
+              "position": "FWD",
+              "roster_score": 68.2
+            }
+          ],
+          "value_delta": 36.0,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -711,6 +765,46 @@
             }
           ],
           "value_delta": 9.7
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "6": 3.1,
+            "7": 3.4,
+            "8": 2.4,
+            "9": 2.2
+          },
+          "observations": {},
+          "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:504:358",
+          "captured_at": "2026-10-09T15:20:03.093560+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 504,
+              "player": "Vuskovic",
+              "position": "DEF",
+              "roster_score": 69.7
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 358,
+              "player": "Kerkez",
+              "position": "DEF",
+              "roster_score": 66.4
+            }
+          ],
+          "value_delta": 3.3,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -869,6 +963,46 @@
             }
           ],
           "value_delta": 44.9
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "6": 3.2,
+            "7": 3.2,
+            "8": 3.2,
+            "9": 3.5
+          },
+          "observations": {},
+          "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:553:223",
+          "captured_at": "2026-10-09T15:20:03.093560+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 553,
+              "player": "Isidor",
+              "position": "FWD",
+              "roster_score": 69.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 223,
+              "player": "Mateta",
+              "position": "FWD",
+              "roster_score": 39.0
+            }
+          ],
+          "value_delta": 30.4,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -1320,7 +1454,8 @@
               "roster_score": 66.0
             }
           ],
-          "value_delta": 19.8
+          "value_delta": 19.8,
+          "ended_gameweek": 6
         },
         {
           "fingerprint": "4:571:28",
@@ -1343,6 +1478,58 @@
             }
           ],
           "value_delta": -12.0
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "6": 1.2,
+            "7": 1.0,
+            "8": 0.0,
+            "9": 1.4
+          },
+          "observations": {},
+          "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:233,286:357,86",
+          "captured_at": "2026-10-09T15:20:03.093560+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 233,
+              "player": "Mykolenko",
+              "position": "DEF",
+              "roster_score": 64.8
+            },
+            {
+              "player_id": 286,
+              "player": "Belloumi",
+              "position": "MID",
+              "roster_score": 71.3
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 86,
+              "player": "Lewis-Potter",
+              "position": "MID",
+              "roster_score": 82.4
+            },
+            {
+              "player_id": 357,
+              "player": "Frimpong",
+              "position": "DEF",
+              "roster_score": 65.9
+            }
+          ],
+          "value_delta": -12.2,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -2267,6 +2454,138 @@
       "captured_at": "2026-09-18T19:03:19.229671+00:00",
       "gameweek": 6,
       "source": "retained manager record"
+    },
+    {
+      "type": "add",
+      "player_id": 25,
+      "player": "Gyökeres",
+      "club": "ARS",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 69,
+      "player": "Scott",
+      "club": "BOU",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 86,
+      "player": "Lewis-Potter",
+      "club": "BRE",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 127,
+      "player": "Gomez",
+      "club": "BHA",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 167,
+      "player": "Delap",
+      "club": "NFO",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 223,
+      "player": "Mateta",
+      "club": "CRY",
+      "from_team": "No Salad",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 233,
+      "player": "Mykolenko",
+      "club": "EVE",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 286,
+      "player": "Belloumi",
+      "club": "HUL",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 357,
+      "player": "Frimpong",
+      "club": "LIV",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 358,
+      "player": "Kerkez",
+      "club": "LIV",
+      "from_team": "FC FC",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 504,
+      "player": "Vuskovic",
+      "club": "BHA",
+      "from_team": "Free pool",
+      "to_team": "FC FC",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 553,
+      "player": "Isidor",
+      "club": "SUN",
+      "from_team": "Free pool",
+      "to_team": "No Salad",
+      "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
     }
   ]
 }
