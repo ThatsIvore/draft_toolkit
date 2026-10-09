@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-09T15:20:03.093560+00:00",
+  "updated_at": "2026-10-09T20:57:14.617928+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -149,7 +149,8 @@
               "roster_score": 65.9
             }
           ],
-          "value_delta": 34.0
+          "value_delta": 34.0,
+          "ended_gameweek": 6
         },
         {
           "fingerprint": "6:167:401",
@@ -216,6 +217,46 @@
             }
           ],
           "value_delta": 36.0,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "6": 3.1,
+            "7": 2.9,
+            "8": 2.7,
+            "9": 2.8
+          },
+          "observations": {},
+          "fingerprint": "2026-10-09T20:57:14.617928+00:00:6:447:469",
+          "captured_at": "2026-10-09T20:57:14.617928+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 447,
+              "player": "Botman",
+              "position": "DEF",
+              "roster_score": 78.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 469,
+              "player": "N.Williams",
+              "position": "DEF",
+              "roster_score": 57.6
+            }
+          ],
+          "value_delta": 20.4,
           "outcome": {
             "status": "pending",
             "observed_gameweeks": 0,
@@ -1194,7 +1235,8 @@
               "roster_score": 74.4
             }
           ],
-          "value_delta": 70.2
+          "value_delta": 70.2,
+          "ended_gameweek": 6
         },
         {
           "fingerprint": "5:268,316,334:136,398,417",
@@ -1240,7 +1282,8 @@
               "roster_score": 72.3
             }
           ],
-          "value_delta": 27.1
+          "value_delta": 27.1,
+          "ended_gameweek": 6
         },
         {
           "fingerprint": "6:305:387",
@@ -1263,6 +1306,58 @@
             }
           ],
           "value_delta": -8.4
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "6": 2.2,
+            "7": 1.7,
+            "8": 1.7,
+            "9": 3.2
+          },
+          "observations": {},
+          "fingerprint": "2026-10-09T20:57:14.617928+00:00:6:53,591:268,429",
+          "captured_at": "2026-10-09T20:57:14.617928+00:00",
+          "gameweek": 6,
+          "adds": [
+            {
+              "player_id": 53,
+              "player": "Manzambi",
+              "position": "MID",
+              "roster_score": 60.3
+            },
+            {
+              "player_id": 591,
+              "player": "Enciso",
+              "position": "MID",
+              "roster_score": 60.6
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 268,
+              "player": "King",
+              "position": "MID",
+              "roster_score": 81.3
+            },
+            {
+              "player_id": 429,
+              "player": "Rashford",
+              "position": "MID",
+              "roster_score": 50.4
+            }
+          ],
+          "value_delta": -10.8,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -2584,6 +2679,72 @@
       "from_team": "Free pool",
       "to_team": "No Salad",
       "captured_at": "2026-10-09T15:20:03.093560+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 53,
+      "player": "Manzambi",
+      "club": "AVL",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-09T20:57:14.617928+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 268,
+      "player": "King",
+      "club": "FUL",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T20:57:14.617928+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 429,
+      "player": "Rashford",
+      "club": "MUN",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T20:57:14.617928+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 447,
+      "player": "Botman",
+      "club": "NEW",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-09T20:57:14.617928+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 469,
+      "player": "N.Williams",
+      "club": "NFO",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-09T20:57:14.617928+00:00",
+      "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 591,
+      "player": "Enciso",
+      "club": "IPS",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-09T20:57:14.617928+00:00",
       "gameweek": 6,
       "source": "ownership snapshot"
     }
