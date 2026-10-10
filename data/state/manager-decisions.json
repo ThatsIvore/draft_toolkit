@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-10T05:57:30.660511+00:00",
+  "updated_at": "2026-10-10T14:29:36.067269+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -2746,6 +2746,105 @@
       "to_team": "Weapon X",
       "captured_at": "2026-10-09T20:57:14.617928+00:00",
       "gameweek": 6,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 69,
+      "player": "Scott",
+      "club": "BOU",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 86,
+      "player": "Lewis-Potter",
+      "club": "BRE",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 167,
+      "player": "Delap",
+      "club": "NFO",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 223,
+      "player": "Mateta",
+      "club": "CRY",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 268,
+      "player": "King",
+      "club": "FUL",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 357,
+      "player": "Frimpong",
+      "club": "LIV",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 358,
+      "player": "Kerkez",
+      "club": "LIV",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 429,
+      "player": "Rashford",
+      "club": "MUN",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 469,
+      "player": "N.Williams",
+      "club": "NFO",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
       "source": "ownership snapshot"
     }
   ]
