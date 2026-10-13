@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-13T11:51:24.532625+00:00",
+  "updated_at": "2026-10-13T19:19:32.108320+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -184,7 +184,15 @@
             "8": 2.5,
             "9": 2.2
           },
-          "observations": {},
+          "observations": {
+            "6": {
+              "points_gain": 4.0,
+              "expected_gain": 3.1,
+              "excess_points": 0.8999999999999999,
+              "incoming_started_points": 1.0,
+              "incoming_starts": 1
+            }
+          },
           "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:127,25:167,69",
           "captured_at": "2026-10-09T15:20:03.093560+00:00",
           "gameweek": 6,
@@ -219,12 +227,12 @@
           "value_delta": 36.0,
           "outcome": {
             "status": "pending",
-            "observed_gameweeks": 0,
+            "observed_gameweeks": 1,
             "target_gameweeks": 4,
-            "points_gain": null,
-            "incoming_started_points": null,
-            "incoming_starts": 0,
-            "excess_points_per_player_week": null
+            "points_gain": 4.0,
+            "incoming_started_points": 1.0,
+            "incoming_starts": 1,
+            "excess_points_per_player_week": 0.45
           }
         },
         {
@@ -236,7 +244,15 @@
             "8": 2.7,
             "9": 2.8
           },
-          "observations": {},
+          "observations": {
+            "6": {
+              "points_gain": 7.0,
+              "expected_gain": 3.1,
+              "excess_points": 3.9,
+              "incoming_started_points": 8.0,
+              "incoming_starts": 1
+            }
+          },
           "fingerprint": "2026-10-09T20:57:14.617928+00:00:6:447:469",
           "captured_at": "2026-10-09T20:57:14.617928+00:00",
           "gameweek": 6,
@@ -259,12 +275,12 @@
           "value_delta": 20.4,
           "outcome": {
             "status": "pending",
-            "observed_gameweeks": 0,
+            "observed_gameweeks": 1,
             "target_gameweeks": 4,
-            "points_gain": null,
-            "incoming_started_points": null,
-            "incoming_starts": 0,
-            "excess_points_per_player_week": null
+            "points_gain": 7.0,
+            "incoming_started_points": 8.0,
+            "incoming_starts": 1,
+            "excess_points_per_player_week": 3.9
           }
         }
       ],
@@ -890,7 +906,15 @@
             "8": 2.4,
             "9": 2.2
           },
-          "observations": {},
+          "observations": {
+            "6": {
+              "points_gain": 7.0,
+              "expected_gain": 3.1,
+              "excess_points": 3.9,
+              "incoming_started_points": 8.0,
+              "incoming_starts": 1
+            }
+          },
           "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:504:358",
           "captured_at": "2026-10-09T15:20:03.093560+00:00",
           "gameweek": 6,
@@ -913,12 +937,12 @@
           "value_delta": 3.3,
           "outcome": {
             "status": "pending",
-            "observed_gameweeks": 0,
+            "observed_gameweeks": 1,
             "target_gameweeks": 4,
-            "points_gain": null,
-            "incoming_started_points": null,
-            "incoming_starts": 0,
-            "excess_points_per_player_week": null
+            "points_gain": 7.0,
+            "incoming_started_points": 8.0,
+            "incoming_starts": 1,
+            "excess_points_per_player_week": 3.9
           }
         }
       ],
@@ -1125,7 +1149,15 @@
             "8": 3.2,
             "9": 3.5
           },
-          "observations": {},
+          "observations": {
+            "6": {
+              "points_gain": 2.0,
+              "expected_gain": 3.2,
+              "excess_points": -1.2000000000000002,
+              "incoming_started_points": 2.0,
+              "incoming_starts": 1
+            }
+          },
           "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:553:223",
           "captured_at": "2026-10-09T15:20:03.093560+00:00",
           "gameweek": 6,
@@ -1148,12 +1180,12 @@
           "value_delta": 30.4,
           "outcome": {
             "status": "pending",
-            "observed_gameweeks": 0,
+            "observed_gameweeks": 1,
             "target_gameweeks": 4,
-            "points_gain": null,
-            "incoming_started_points": null,
-            "incoming_starts": 0,
-            "excess_points_per_player_week": null
+            "points_gain": 2.0,
+            "incoming_started_points": 2.0,
+            "incoming_starts": 1,
+            "excess_points_per_player_week": -1.2
           }
         }
       ],
@@ -1464,7 +1496,15 @@
             "8": 1.7,
             "9": 3.2
           },
-          "observations": {},
+          "observations": {
+            "6": {
+              "points_gain": 4.0,
+              "expected_gain": 2.2,
+              "excess_points": 1.7999999999999998,
+              "incoming_started_points": 7.0,
+              "incoming_starts": 2
+            }
+          },
           "fingerprint": "2026-10-09T20:57:14.617928+00:00:6:53,591:268,429",
           "captured_at": "2026-10-09T20:57:14.617928+00:00",
           "gameweek": 6,
@@ -1499,12 +1539,12 @@
           "value_delta": -10.8,
           "outcome": {
             "status": "pending",
-            "observed_gameweeks": 0,
+            "observed_gameweeks": 1,
             "target_gameweeks": 4,
-            "points_gain": null,
-            "incoming_started_points": null,
-            "incoming_starts": 0,
-            "excess_points_per_player_week": null
+            "points_gain": 4.0,
+            "incoming_started_points": 7.0,
+            "incoming_starts": 2,
+            "excess_points_per_player_week": 0.9
           }
         }
       ],
@@ -1768,7 +1808,15 @@
             "8": 0.0,
             "9": 1.4
           },
-          "observations": {},
+          "observations": {
+            "6": {
+              "points_gain": 3.0,
+              "expected_gain": 1.2,
+              "excess_points": 1.8,
+              "incoming_started_points": 6.0,
+              "incoming_starts": 1
+            }
+          },
           "fingerprint": "2026-10-09T15:20:03.093560+00:00:6:233,286:357,86",
           "captured_at": "2026-10-09T15:20:03.093560+00:00",
           "gameweek": 6,
@@ -1803,12 +1851,12 @@
           "value_delta": -12.2,
           "outcome": {
             "status": "pending",
-            "observed_gameweeks": 0,
+            "observed_gameweeks": 1,
             "target_gameweeks": 4,
-            "points_gain": null,
-            "incoming_started_points": null,
-            "incoming_starts": 0,
-            "excess_points_per_player_week": null
+            "points_gain": 3.0,
+            "incoming_started_points": 6.0,
+            "incoming_starts": 1,
+            "excess_points_per_player_week": 0.9
           }
         }
       ],
