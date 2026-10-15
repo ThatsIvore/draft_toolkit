@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T23:17:02.028099+00:00",
+  "generated_at": "2026-10-15T04:46:03.566370+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 6,
@@ -139766,7 +139766,7 @@
       "7": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-14T23:17:02.028099+00:00",
+          "captured_at": "2026-10-15T04:46:03.566370+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -139875,7 +139875,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-14T23:17:02.028099+00:00",
+          "captured_at": "2026-10-15T04:46:03.566370+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
