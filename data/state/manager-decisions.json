@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-16T13:17:33.317433+00:00",
+  "updated_at": "2026-10-16T19:34:35.644391+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -1051,6 +1051,46 @@
             "incoming_started_points": 8.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": 3.9
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "7": 2.3,
+            "8": 1.9,
+            "9": 2.8,
+            "10": 1.8
+          },
+          "observations": {},
+          "fingerprint": "2026-10-16T19:34:35.644391+00:00:7:45:14",
+          "captured_at": "2026-10-16T19:34:35.644391+00:00",
+          "gameweek": 7,
+          "adds": [
+            {
+              "player_id": 45,
+              "player": "McGinn",
+              "position": "MID",
+              "roster_score": 78.3
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 14,
+              "player": "Eze",
+              "position": "MID",
+              "roster_score": 70.8
+            }
+          ],
+          "value_delta": 7.5,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -3406,6 +3446,28 @@
       "from_team": "Free pool",
       "to_team": "Gooseboys",
       "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 14,
+      "player": "Eze",
+      "club": "ARS",
+      "from_team": "FC FC",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T19:34:35.644391+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 45,
+      "player": "McGinn",
+      "club": "AVL",
+      "from_team": "Free pool",
+      "to_team": "FC FC",
+      "captured_at": "2026-10-16T19:34:35.644391+00:00",
       "gameweek": 7,
       "source": "ownership snapshot"
     }
