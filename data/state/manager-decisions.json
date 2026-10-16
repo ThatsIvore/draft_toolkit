@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-16T04:36:58.908796+00:00",
+  "updated_at": "2026-10-16T13:17:33.317433+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -226,14 +226,15 @@
           ],
           "value_delta": 36.0,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 4.0,
             "incoming_started_points": 1.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": 0.45
-          }
+          },
+          "ended_gameweek": 7
         },
         {
           "evaluation_version": 1,
@@ -274,13 +275,66 @@
           ],
           "value_delta": 20.4,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 7.0,
             "incoming_started_points": 8.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": 3.9
+          },
+          "ended_gameweek": 7
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "7": 1.4,
+            "8": 1.2,
+            "9": 1.9,
+            "10": 0.9
+          },
+          "observations": {},
+          "fingerprint": "2026-10-16T13:17:33.317433+00:00:7:112,167:25,447",
+          "captured_at": "2026-10-16T13:17:33.317433+00:00",
+          "gameweek": 7,
+          "adds": [
+            {
+              "player_id": 112,
+              "player": "Van Hecke",
+              "position": "DEF",
+              "roster_score": 83.0
+            },
+            {
+              "player_id": 167,
+              "player": "Delap",
+              "position": "FWD",
+              "roster_score": 68.8
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 25,
+              "player": "Gyökeres",
+              "position": "FWD",
+              "roster_score": 67.8
+            },
+            {
+              "player_id": 447,
+              "player": "Botman",
+              "position": "DEF",
+              "roster_score": 78.2
+            }
+          ],
+          "value_delta": 5.8,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -544,7 +598,8 @@
               "roster_score": 77.1
             }
           ],
-          "value_delta": 0.5
+          "value_delta": 0.5,
+          "ended_gameweek": 7
         },
         {
           "fingerprint": "5:330,350,94:198,454,61",
@@ -590,7 +645,60 @@
               "roster_score": 37.3
             }
           ],
-          "value_delta": 87.0
+          "value_delta": 87.0,
+          "ended_gameweek": 7
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "7": 1.7,
+            "8": 1.9,
+            "9": 1.1,
+            "10": 2.4
+          },
+          "observations": {},
+          "fingerprint": "2026-10-16T13:17:33.317433+00:00:7:362,98:279,94",
+          "captured_at": "2026-10-16T13:17:33.317433+00:00",
+          "gameweek": 7,
+          "adds": [
+            {
+              "player_id": 98,
+              "player": "Janelt",
+              "position": "MID",
+              "roster_score": 78.5
+            },
+            {
+              "player_id": 362,
+              "player": "Jacquet",
+              "position": "DEF",
+              "roster_score": 68.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 94,
+              "player": "Schade",
+              "position": "MID",
+              "roster_score": 72.1
+            },
+            {
+              "player_id": 279,
+              "player": "Ajayi",
+              "position": "DEF",
+              "roster_score": 68.3
+            }
+          ],
+          "value_delta": 6.3,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -1858,6 +1966,58 @@
             "incoming_starts": 1,
             "excess_points_per_player_week": 0.9
           }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "7": 2.0,
+            "8": 1.5,
+            "9": 1.4,
+            "10": 1.6
+          },
+          "observations": {},
+          "fingerprint": "2026-10-16T13:17:33.317433+00:00:7:116,586:142,9",
+          "captured_at": "2026-10-16T13:17:33.317433+00:00",
+          "gameweek": 7,
+          "adds": [
+            {
+              "player_id": 116,
+              "player": "Dunk",
+              "position": "DEF",
+              "roster_score": 68.9
+            },
+            {
+              "player_id": 586,
+              "player": "Mendy",
+              "position": "DEF",
+              "roster_score": 33.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 9,
+              "player": "Hincapie",
+              "position": "DEF",
+              "roster_score": 61.1
+            },
+            {
+              "player_id": 142,
+              "player": "James",
+              "position": "DEF",
+              "roster_score": 42.2
+            }
+          ],
+          "value_delta": -1.2,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -3114,6 +3274,138 @@
       "from_team": "Free pool",
       "to_team": "Free pool",
       "captured_at": "2026-10-10T14:29:36.067269+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 9,
+      "player": "Hincapie",
+      "club": "ARS",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 25,
+      "player": "Gyökeres",
+      "club": "ARS",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 94,
+      "player": "Schade",
+      "club": "BRE",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 98,
+      "player": "Janelt",
+      "club": "BRE",
+      "from_team": "Free pool",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 112,
+      "player": "Van Hecke",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 116,
+      "player": "Dunk",
+      "club": "BHA",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 142,
+      "player": "James",
+      "club": "CHE",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 167,
+      "player": "Delap",
+      "club": "NFO",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 279,
+      "player": "Ajayi",
+      "club": "HUL",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 362,
+      "player": "Jacquet",
+      "club": "LIV",
+      "from_team": "Free pool",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 447,
+      "player": "Botman",
+      "club": "NEW",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
+      "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 586,
+      "player": "Mendy",
+      "club": "HUL",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-10-16T13:17:33.317433+00:00",
       "gameweek": 7,
       "source": "ownership snapshot"
     }
