@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-10-16T22:52:59.097781+00:00",
+  "captured_at": "2026-10-17T04:33:13.682377+00:00",
   "gameweek": 7,
   "scoring_gameweek": 6,
   "scoring_phase": "FINAL",
@@ -15429,7 +15429,7 @@
       "7": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-16T22:52:59.097781+00:00",
+          "captured_at": "2026-10-17T04:33:13.682377+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -15538,7 +15538,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-16T22:52:59.097781+00:00",
+          "captured_at": "2026-10-17T04:33:13.682377+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
