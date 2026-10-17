@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-17T04:33:13.682377+00:00",
+  "updated_at": "2026-10-17T12:13:23.249403+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -1693,6 +1693,46 @@
             "incoming_started_points": 7.0,
             "incoming_starts": 2,
             "excess_points_per_player_week": 0.9
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": 2.6,
+            "9": 3.1,
+            "10": 2.9,
+            "11": 3.1
+          },
+          "observations": {},
+          "fingerprint": "2026-10-17T12:13:23.249403+00:00:8:526:439",
+          "captured_at": "2026-10-17T12:13:23.249403+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 526,
+              "player": "Solanke",
+              "position": "FWD",
+              "roster_score": 66.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 439,
+              "player": "Šeško",
+              "position": "FWD",
+              "roster_score": 39.8
+            }
+          ],
+          "value_delta": 26.6,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -3469,6 +3509,105 @@
       "to_team": "FC FC",
       "captured_at": "2026-10-16T19:34:35.644391+00:00",
       "gameweek": 7,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 9,
+      "player": "Hincapie",
+      "club": "ARS",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 14,
+      "player": "Eze",
+      "club": "ARS",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 25,
+      "player": "Gyökeres",
+      "club": "ARS",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 94,
+      "player": "Schade",
+      "club": "BRE",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 142,
+      "player": "James",
+      "club": "CHE",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 279,
+      "player": "Ajayi",
+      "club": "HUL",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 439,
+      "player": "Šeško",
+      "club": "MUN",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 447,
+      "player": "Botman",
+      "club": "NEW",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 526,
+      "player": "Solanke",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
       "source": "ownership snapshot"
     }
   ]
