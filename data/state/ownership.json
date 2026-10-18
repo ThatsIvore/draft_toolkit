@@ -320,8 +320,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 25,
-    "news": "Head injury - 25% chance of playing",
+    "chance_next_round": 0,
+    "news": "Head injury - Unknown return date",
     "news_added": "2026-10-17T13:30:08.724000Z"
   },
   {
@@ -1257,7 +1257,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Suspended until 7 Nov",
+    "news": "Suspended until 21 Nov",
     "news_added": "2026-10-17T16:30:09.374216Z"
   },
   {
@@ -4780,7 +4780,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Suspended until 8 Nov",
+    "news": "Suspended until 23 Nov",
     "news_added": "2026-10-17T15:00:07.992801Z"
   },
   {
