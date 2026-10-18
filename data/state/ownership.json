@@ -632,9 +632,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Suspended until 31 Oct",
+    "news_added": "2026-10-18T13:30:09.387826Z"
   },
   {
     "player_id": 228,
@@ -1958,8 +1958,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Suspended until 25 Oct",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-09-12T15:30:09.445078Z"
   },
   {
@@ -2049,9 +2049,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-07-24T20:00:10.337107Z"
+    "chance_next_round": 75,
+    "news": "Thigh injury - 75% chance of playing",
+    "news_added": "2026-10-18T16:30:09.955038Z"
   },
   {
     "player_id": 307,
@@ -2218,8 +2218,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Knee injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-09-12T14:00:09.705107Z"
   },
   {
@@ -3090,7 +3090,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Hamstring injury - Unknown return date",
+    "news": "Hamstring injury - Expected back 24 Oct",
     "news_added": "2026-09-19T12:00:08.823872Z"
   },
   {
@@ -3271,8 +3271,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Knee injury - Unknown return date",
+    "chance_next_round": 75,
+    "news": "Knee injury - 75% chance of playing",
     "news_added": "2026-07-23T12:01:23.895175Z"
   },
   {
@@ -3428,7 +3428,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Hamstring injury - Expected back 18 Oct",
+    "news": "Hamstring injury - Expected back 31 Oct",
     "news_added": "2026-07-24T18:30:10.661894Z"
   },
   {
@@ -3973,8 +3973,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-10-12T15:00:07.563478Z"
   },
   {
@@ -4156,7 +4156,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Ankle injury - Expected back 18 Oct",
+    "news": "Ankle injury - Unknown return date",
     "news_added": "2026-07-23T12:01:23.448357Z"
   },
   {
@@ -4818,9 +4818,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-29T16:30:08.380416Z"
+    "chance_next_round": 0,
+    "news": "Muscular injury - Expected back 7 Nov",
+    "news_added": "2026-10-18T13:00:09.266321Z"
   },
   {
     "player_id": 380,
@@ -5702,9 +5702,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Knee injury - Expected back 7 Nov",
+    "news_added": "2026-10-18T13:00:09.356060Z"
   },
   {
     "player_id": 588,
@@ -6535,7 +6535,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Unspecified injury - Expected back 18 Oct",
+    "news": "Unspecified injury - Expected back 31 Oct",
     "news_added": "2026-09-10T13:00:08.617941Z"
   },
   {
@@ -7302,7 +7302,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Hamstring injury - Expected back 18 Oct",
+    "news": "Hamstring injury - Expected back 31 Oct",
     "news_added": "2026-09-04T11:30:08.661589Z"
   },
   {
