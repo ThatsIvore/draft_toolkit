@@ -84,6 +84,25 @@ def test_missing_actuals_are_not_zero_or_an_experimental_win():
     assert comparison['challenger']['absolute_error'] is None
 
 
+def test_selection_inputs_capture_bench_and_freeze_without_backfilling_legacy_pairs():
+    p = report()
+    initial = build_outcome_diagnostics(None, p, 'SCHEDULED')
+    pair = initial['current']['deadline_selection']
+    inputs = pair['selection_inputs']
+    assert len(inputs) == 15
+    assert sum(row['baseline_selected'] for row in inputs) == 11
+    assert sum(row['challenger_selected'] for row in inputs) == 11
+    assert inputs[0]['start_components'] == p['recommended_lineup']['player_scores']['1']
+    assert all('projected_points' in row for row in inputs)
+    p['_forecast_before_deadline'] = False
+    p['my_squad'][0]['intelligence']['expected_minutes'] = 0
+    locked = build_outcome_diagnostics({'outcome_diagnostics': initial}, p, 'FINAL')
+    assert locked['current']['deadline_selection'] == pair
+    del pair['selection_inputs']
+    legacy = build_outcome_diagnostics({'outcome_diagnostics': initial}, p, 'FINAL')
+    assert 'selection_inputs' not in legacy['current']['deadline_selection']
+
+
 def test_shadow_excludes_blocked_players_and_keeps_public_identity_boundary():
     from fpl_toolkit.privacy import sanitize_public_report
     p = report()

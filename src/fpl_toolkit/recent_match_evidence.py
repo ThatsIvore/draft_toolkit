@@ -31,6 +31,36 @@ def completed_gameweeks(bootstrap: dict[str, Any], limit: int = 4) -> list[int]:
     return sorted(gameweeks)[-max(0, int(limit)):]
 
 
+def evidence_freshness(
+    bootstrap: dict[str, Any], payloads: list[tuple[int, dict[str, Any]]],
+    scoring_gameweek: int, status: str,
+) -> dict[str, Any]:
+    """Explain feed lag without relaxing the finished-and-checked gate."""
+    events = {int(e["id"]): e for e in bootstrap.get("events") or []
+              if isinstance(e, dict) and e.get("id") is not None}
+    event = events.get(scoring_gameweek)
+    included = sorted(gw for gw, _ in payloads)
+    if scoring_gameweek in included:
+        reason = "included"
+    elif event is None:
+        reason = "event_unavailable"
+    elif event.get("finished") is not True:
+        reason = "awaiting_event_finish"
+    elif event.get("data_checked") is not True:
+        reason = "awaiting_data_check"
+    elif status != "available":
+        reason = status
+    else:
+        reason = "checked_event_not_collected"
+    return {
+        "scoring_gameweek": scoring_gameweek,
+        "latest_included_gameweek": max(included, default=None),
+        "scoring_event_finished": event.get("finished") if event else None,
+        "scoring_event_data_checked": event.get("data_checked") if event else None,
+        "reason": reason,
+    }
+
+
 def player_id_map_by_code(
     source_bootstrap: dict[str, Any],
     target_bootstrap: dict[str, Any],

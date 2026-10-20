@@ -301,6 +301,11 @@ def test_collector_attaches_standard_match_evidence_to_different_draft_player_id
         "version": "v1",
         "status": "available",
         "completed_gameweeks": [1],
+        "freshness": {
+            "scoring_gameweek": 2, "latest_included_gameweek": 1,
+            "scoring_event_finished": None, "scoring_event_data_checked": None,
+            "reason": "event_unavailable",
+        },
     }
 
 
