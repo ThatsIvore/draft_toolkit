@@ -5,6 +5,7 @@ from typing import Any
 
 from .h2h import player_projected_points
 from .selection_trial import points_challenger
+from .optimizer import player_start_score
 
 
 OUTCOME_MODEL = "v0.3"
@@ -159,7 +160,19 @@ def _deadline_pair(report: dict[str, Any], gameweek: int, phase: str) -> dict[st
     challenger = _capture_forecast({**report, "recommended_lineup": shadow}, gameweek, phase)
     # This experiment compares selections, not alternate H2H outcomes.
     challenger["h2h"] = {}
-    return {"baseline": candidate, "challenger": challenger, "challenger_model": "points-shadow-v1"}
+    baseline_ids = {p["player_id"] for p in original}
+    challenger_ids = {p["player_id"] for p in shadow["starters"]}
+    # Capture all alternatives prospectively; never backfill a locked pair.
+    selection_inputs = [{
+        "player_id": p["player_id"], "player": p.get("player"),
+        "position": p.get("position"),
+        "baseline_selected": p["player_id"] in baseline_ids,
+        "challenger_selected": p["player_id"] in challenger_ids,
+        "start_components": player_start_score(p, gameweek),
+        "projected_points": player_projected_points(p, gameweek)["projected_points"],
+    } for p in squad]
+    return {"baseline": candidate, "challenger": challenger, "challenger_model": "points-shadow-v1",
+            "selection_inputs": selection_inputs}
 
 
 def _selection_comparison(pair: dict[str, Any] | None, report: dict[str, Any], phase: str,

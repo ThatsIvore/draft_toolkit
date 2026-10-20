@@ -83,6 +83,10 @@ The future toolkit page is planned to offer `Draft H2H` and `Standard FPL` as se
 
 ## Recent Match Evidence
 
+The report's `intelligence_model.recent_match_evidence.freshness` records whether the scoring round is included, still awaiting Standard FPL's finish/data-check flags, or missing from collection. Draft results can be final before this separate evidence feed is ready. Transfer reviews consume the same checked feed and can therefore lag the official result. A fresh report timestamp alone does not mean every evidence section includes that round.
+
+New pre-deadline evaluation pairs retain all 15 players' Start Score components, projected points and baseline/challenger selection flags in `selection_inputs`. These inputs freeze with the pair; older pairs are never backfilled. Use them to investigate disagreements prospectively without changing selection weights after a single result.
+
 Recent Match Evidence v1 remains outcome-led and uses only finalized official FPL Gameweeks. Points, BPS, expected goal involvement and minutes retain the dominant share. The collector also retains official xG and xA for diagnosis and, for outfield position groups where the feed contains real defensive-contribution values, reallocates only 10 percentage points of the match grade to position-relative defensive contribution. If that signal is absent, the exact legacy weights are used; goalkeeper scoring is unchanged. Recency weighting, sample-confidence shrinkage and the existing ±5 intelligence adjustment cap are preserved.
 
 ## External Match Evidence shadow mode

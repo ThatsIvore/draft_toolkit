@@ -24,6 +24,7 @@ from .report import build_report, current_gameweek
 from .recent_match_evidence import (
     build_recent_match_evidence,
     completed_gameweeks,
+    evidence_freshness,
     fetch_completed_event_live,
     player_id_map_by_code,
 )
@@ -231,6 +232,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
             "version": "v1",
             "status": recent_status,
             "completed_gameweeks": [gameweek for gameweek, _ in recent_payloads],
+            "freshness": evidence_freshness(fantasy_bootstrap, recent_payloads, scoring_gw, recent_status),
         },
         "external_match_evidence": public_shadow_summary(external_shadow),
     }

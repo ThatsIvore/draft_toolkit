@@ -2,6 +2,7 @@ from fpl_toolkit.intelligence import attach_intelligence
 from fpl_toolkit.recent_match_evidence import (
     build_recent_match_evidence,
     completed_gameweeks,
+    evidence_freshness,
     fetch_completed_event_live,
     player_id_map_by_code,
 )
@@ -84,6 +85,21 @@ def test_fetch_fails_closed_when_feed_is_unavailable():
     bootstrap = {"events": [{"id": 1, "finished": True, "data_checked": True}]}
 
     assert fetch_completed_event_live(Client(), bootstrap) == ([], "client_unavailable")
+
+
+def test_freshness_explains_final_but_unchecked_and_failed_collection():
+    event = {"id": 7, "finished": True, "data_checked": False}
+    bootstrap = {"events": [event]}
+    old = [(6, {"elements": []})]
+    assert completed_gameweeks(bootstrap) == []
+    info = evidence_freshness(bootstrap, old, 7, "available")
+    assert info["reason"] == "awaiting_data_check"
+    assert info["latest_included_gameweek"] == 6
+    event["data_checked"] = True
+    assert evidence_freshness(bootstrap, [], 7, "feed_unavailable")["reason"] == "feed_unavailable"
+    assert evidence_freshness(bootstrap, old, 7, "available")["reason"] == "checked_event_not_collected"
+    assert evidence_freshness(bootstrap, old + [(7, {})], 7, "available")["reason"] == "included"
+    assert evidence_freshness({}, [], 7, "bootstrap_unavailable")["reason"] == "event_unavailable"
 
 
 def test_recent_grades_are_position_relative_recency_weighted_and_capped():
