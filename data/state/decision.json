@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-10-20T04:56:04.183151+00:00",
+  "captured_at": "2026-10-20T13:35:11.374627+00:00",
   "gameweek": 8,
   "scoring_gameweek": 7,
-  "scoring_phase": "LIVE",
+  "scoring_phase": "FINAL",
   "players": {
     "124": {
       "player_id": 124,
@@ -1361,7 +1361,7 @@
       "availability_score": 75.0,
       "expected_minutes": 21.6,
       "role_evidence": "MEDIUM",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 52.1,
       "stash_score": 47.6,
@@ -1669,7 +1669,7 @@
       "availability_score": 75.0,
       "expected_minutes": 48.6,
       "role_evidence": "MEDIUM",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 62.9,
       "stash_score": 58.5,
@@ -5981,7 +5981,7 @@
       "availability_score": 75.0,
       "expected_minutes": 54.4,
       "role_evidence": "LOW",
-      "health_trend": "news-changed",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 64.0,
       "stash_score": 57.8,
@@ -7941,7 +7941,7 @@
       "availability_score": 75.0,
       "expected_minutes": 39.1,
       "role_evidence": "MEDIUM",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 51.5,
       "stash_score": 45.2,
@@ -11885,17 +11885,17 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Hamstring injury - Unknown return date",
+      "news": "Hamstring injury - Expected back 2 Jan",
       "availability_score": 0.0,
       "expected_minutes": 0.0,
       "role_evidence": "LOW",
-      "health_trend": "stable",
+      "health_trend": "news-changed",
       "recommendation": "PASS",
       "roster_score": 22.8,
-      "stash_score": 25.8,
+      "stash_score": 11.4,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Vuskovic",
-      "waiver_delta": -50.7,
+      "waiver_delta": -54.5,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -13735,15 +13735,15 @@
       "chance_next_round": null,
       "news": "",
       "availability_score": 100.0,
-      "expected_minutes": 60.0,
+      "expected_minutes": 19.8,
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "PASS",
-      "roster_score": 54.0,
-      "stash_score": 48.0,
+      "roster_score": 45.2,
+      "stash_score": 42.7,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "McGinn",
-      "waiver_delta": -24.7,
+      "waiver_delta": -34.6,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -14182,7 +14182,7 @@
     "model": "v0.3",
     "current": {
       "gameweek": 7,
-      "phase": "LIVE",
+      "phase": "FINAL",
       "forecast": {
         "model": "v0.3",
         "captured_at": "2026-10-10T14:29:36.067269+00:00",
@@ -14354,14 +14354,18 @@
         ],
         "official_points": 51.0,
         "h2h_my_points": 51.0,
-        "h2h_opponent_points": 34.0,
-        "h2h_edge": 17.0,
+        "h2h_opponent_points": 45.0,
+        "h2h_edge": 6.0,
         "h2h_result": "WIN",
         "h2h_score_source": "league_details"
       },
       "evaluation": {
-        "complete": false,
-        "calibration_eligible": true
+        "complete": true,
+        "calibration_eligible": true,
+        "recommended_absolute_error": 5.0,
+        "h2h_edge_error": 6.2,
+        "predicted_h2h_result": "WIN",
+        "h2h_result_correct": true
       },
       "deadline_selection": {
         "baseline": {
@@ -14581,18 +14585,18 @@
       },
       "selection_comparison": {
         "captured_at": "2026-10-17T04:33:13.682377+00:00",
-        "complete": false,
+        "complete": true,
         "baseline": {
           "projected_points": 52.5,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 32.0,
+          "absolute_error": 20.5
         },
         "challenger": {
           "projected_points": 58.7,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 51.0,
+          "absolute_error": 7.7
         },
-        "challenger_gain": null,
+        "challenger_gain": 19.0,
         "note": "Raw XI player points, without simulated autosubs; experimental selection only."
       }
     },
@@ -16069,7 +16073,7 @@
       "8": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-20T04:56:04.183151+00:00",
+          "captured_at": "2026-10-20T13:35:11.374627+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -16178,7 +16182,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-20T04:56:04.183151+00:00",
+          "captured_at": "2026-10-20T13:35:11.374627+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -16631,6 +16635,25 @@
         "decision_gameweek": 8,
         "first_seen": "2026-10-17T18:31:56.847109+00:00",
         "last_seen": "2026-10-17T18:31:56.847109+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "player_news",
+        "priority": "watch",
+        "title": "Ruggeri: player news changed",
+        "detail": "Hamstring injury - Expected back 2 Jan",
+        "badge": "NEWS",
+        "player_id": 596,
+        "player": "Ruggeri",
+        "club": "AVL",
+        "team_code": 7,
+        "position": "DEF",
+        "event_id": "cbbd5b3e1fcfa6ff",
+        "stream": "availability:player:596",
+        "decision_gameweek": 8,
+        "first_seen": "2026-10-20T13:35:11.374627+00:00",
+        "last_seen": "2026-10-20T13:35:11.374627+00:00",
         "occurrences": 1,
         "status": "active"
       },
@@ -17364,6 +17387,26 @@
         "occurrences": 1,
         "status": "resolved",
         "resolved_at": "2026-10-17T18:31:56.847109+00:00"
+      },
+      {
+        "kind": "gameweek_result",
+        "priority": "info",
+        "title": "GW7 result captured",
+        "detail": "Official XI: 51 points. Toolkit XI: 54 actual versus 59.0 projected. H2H: 51–45.",
+        "badge": "GW FINAL",
+        "player_id": null,
+        "player": null,
+        "club": null,
+        "team_code": null,
+        "position": null,
+        "event_id": "21852cc685d413df",
+        "stream": "gameweek_result:GW7 result captured",
+        "decision_gameweek": 8,
+        "first_seen": "2026-10-20T13:35:11.374627+00:00",
+        "last_seen": "2026-10-20T13:35:11.374627+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-10-20T13:35:11.374627+00:00"
       },
       {
         "kind": "opponent_add",
@@ -19715,10 +19758,8 @@
       }
     ],
     "new_item_ids": [
-      "1fe9d6fb34d6471b",
-      "e5a7a76ddf621c56",
-      "9b7c1f664c165f3c",
-      "18e6a7ae7eb00de2"
+      "cbbd5b3e1fcfa6ff",
+      "21852cc685d413df"
     ],
     "changed_player_ids": [
       19,
@@ -19764,6 +19805,7 @@
       552,
       575,
       582,
+      596,
       611,
       642,
       652
@@ -19771,13 +19813,13 @@
     "summary": {
       "critical": 0,
       "important": 23,
-      "watch": 33,
-      "info": 2
+      "watch": 34,
+      "info": 3
     },
     "active_summary": {
       "critical": 0,
       "important": 18,
-      "watch": 29,
+      "watch": 30,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."

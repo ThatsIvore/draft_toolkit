@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T04:56:04.183151+00:00",
+  "generated_at": "2026-10-20T13:35:11.374627+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 7,
@@ -215,7 +215,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "0.41",
-      "form": "4.0",
+      "form": "2.0",
       "points_per_game": "4.1",
       "expected_points_next": null,
       "fixtures": [
@@ -581,7 +581,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "1.35",
-      "form": "2.7",
+      "form": "3.5",
       "points_per_game": "3.4",
       "expected_points_next": null,
       "fixtures": [
@@ -1496,7 +1496,7 @@
       "clean_sheets": 1,
       "bonus": 3,
       "expected_goal_involvements": "3.05",
-      "form": "5.7",
+      "form": "0.0",
       "points_per_game": "4.8",
       "expected_points_next": null,
       "fixtures": [
@@ -1679,7 +1679,7 @@
       "clean_sheets": 3,
       "bonus": 3,
       "expected_goal_involvements": "1.89",
-      "form": "3.0",
+      "form": "2.0",
       "points_per_game": "4.4",
       "expected_points_next": null,
       "fixtures": [
@@ -2045,7 +2045,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.02",
-      "form": "1.0",
+      "form": "1.5",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -3837,7 +3837,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.98",
-      "form": "2.7",
+      "form": "3.0",
       "points_per_game": "1.4",
       "expected_points_next": null,
       "fixtures": [
@@ -7008,7 +7008,7 @@
       "clean_sheets": 0,
       "bonus": 1,
       "expected_goal_involvements": "0.19",
-      "form": "1.7",
+      "form": "2.5",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -7221,7 +7221,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.07",
-      "form": "1.3",
+      "form": "0.5",
       "points_per_game": "2.5",
       "expected_points_next": null,
       "fixtures": [
@@ -9125,7 +9125,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.04",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -9915,7 +9915,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 52.1,
         "stash_score": 47.6,
         "recommendation": "PASS",
@@ -10396,7 +10396,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.08",
-      "form": "0.7",
+      "form": "0.5",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -11664,7 +11664,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "3.3",
+      "form": "2.0",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -12243,7 +12243,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 62.9,
         "stash_score": 58.5,
         "recommendation": "PASS",
@@ -12511,7 +12511,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.50",
-      "form": "-0.7",
+      "form": "-1.0",
       "points_per_game": "0.2",
       "expected_points_next": null,
       "fixtures": [
@@ -13569,7 +13569,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.95",
-      "form": "3.0",
+      "form": "4.5",
       "points_per_game": "2.5",
       "expected_points_next": null,
       "fixtures": [
@@ -14202,7 +14202,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.10",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.2",
       "expected_points_next": null,
       "fixtures": [
@@ -14413,7 +14413,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "0.42",
-      "form": "1.3",
+      "form": "1.5",
       "points_per_game": "1.6",
       "expected_points_next": null,
       "fixtures": [
@@ -14837,7 +14837,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.57",
-      "form": "2.3",
+      "form": "2.5",
       "points_per_game": "1.7",
       "expected_points_next": null,
       "fixtures": [
@@ -16316,7 +16316,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.02",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -18009,7 +18009,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -20123,7 +20123,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -22659,7 +22659,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "0.45",
-      "form": "2.3",
+      "form": "1.0",
       "points_per_game": "3.3",
       "expected_points_next": null,
       "fixtures": [
@@ -23292,7 +23292,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.36",
-      "form": "0.3",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -23718,7 +23718,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.26",
-      "form": "2.7",
+      "form": "2.0",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -23929,7 +23929,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "1.14",
-      "form": "2.0",
+      "form": "3.0",
       "points_per_game": "3.2",
       "expected_points_next": null,
       "fixtures": [
@@ -24137,7 +24137,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "-0.3",
+      "form": "-0.5",
       "points_per_game": "0.0",
       "expected_points_next": null,
       "fixtures": [
@@ -26878,7 +26878,7 @@
       "clean_sheets": 0,
       "bonus": 3,
       "expected_goal_involvements": "3.65",
-      "form": "3.0",
+      "form": "4.5",
       "points_per_game": "3.6",
       "expected_points_next": null,
       "fixtures": [
@@ -27511,7 +27511,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "1.24",
-      "form": "4.0",
+      "form": "4.5",
       "points_per_game": "4.3",
       "expected_points_next": null,
       "fixtures": [
@@ -29831,7 +29831,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.25",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -32154,7 +32154,7 @@
       "clean_sheets": 2,
       "bonus": 1,
       "expected_goal_involvements": "1.37",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "3.2",
       "expected_points_next": null,
       "fixtures": [
@@ -32578,7 +32578,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -32790,7 +32790,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.03",
-      "form": "0.3",
+      "form": "0.0",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -33003,7 +33003,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.47",
-      "form": "0.7",
+      "form": "0.0",
       "points_per_game": "2.8",
       "expected_points_next": null,
       "fixtures": [
@@ -35116,7 +35116,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "1.19",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.5",
       "expected_points_next": null,
       "fixtures": [
@@ -35751,7 +35751,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.7",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -38288,7 +38288,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -38711,7 +38711,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "1.43",
-      "form": "2.7",
+      "form": "1.5",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -39132,7 +39132,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "0.32",
-      "form": "3.7",
+      "form": "2.5",
       "points_per_game": "3.8",
       "expected_points_next": null,
       "fixtures": [
@@ -40611,7 +40611,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "0.92",
-      "form": "1.7",
+      "form": "1.5",
       "points_per_game": "2.8",
       "expected_points_next": null,
       "fixtures": [
@@ -41033,7 +41033,7 @@
       "clean_sheets": 0,
       "bonus": 4,
       "expected_goal_involvements": "1.18",
-      "form": "6.3",
+      "form": "9.0",
       "points_per_game": "6.3",
       "expected_points_next": null,
       "fixtures": [
@@ -41662,7 +41662,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.24",
-      "form": "4.7",
+      "form": "3.0",
       "points_per_game": "2.9",
       "expected_points_next": null,
       "fixtures": [
@@ -41870,7 +41870,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.03",
-      "form": "0.7",
+      "form": "0.5",
       "points_per_game": "1.3",
       "expected_points_next": null,
       "fixtures": [
@@ -43350,7 +43350,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.28",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "1.2",
       "expected_points_next": null,
       "fixtures": [
@@ -43562,7 +43562,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.33",
-      "form": "1.0",
+      "form": "1.5",
       "points_per_game": "1.7",
       "expected_points_next": null,
       "fixtures": [
@@ -43773,7 +43773,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "0.11",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "3.2",
       "expected_points_next": null,
       "fixtures": [
@@ -43983,7 +43983,7 @@
       "clean_sheets": 3,
       "bonus": 1,
       "expected_goal_involvements": "0.54",
-      "form": "2.3",
+      "form": "2.0",
       "points_per_game": "3.1",
       "expected_points_next": null,
       "fixtures": [
@@ -44772,7 +44772,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 64.0,
         "stash_score": 57.8,
         "recommendation": "PASS",
@@ -46100,7 +46100,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.27",
-      "form": "0.0",
+      "form": "-0.5",
       "points_per_game": "1.3",
       "expected_points_next": null,
       "fixtures": [
@@ -50544,7 +50544,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "2.7",
+      "form": "3.0",
       "points_per_game": "2.1",
       "expected_points_next": null,
       "fixtures": [
@@ -53295,7 +53295,7 @@
       "clean_sheets": 2,
       "bonus": 1,
       "expected_goal_involvements": "0.10",
-      "form": "3.0",
+      "form": "4.0",
       "points_per_game": "3.8",
       "expected_points_next": null,
       "fixtures": [
@@ -56473,7 +56473,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.56",
-      "form": "2.7",
+      "form": "3.5",
       "points_per_game": "2.2",
       "expected_points_next": null,
       "fixtures": [
@@ -58165,7 +58165,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "1.65",
-      "form": "3.7",
+      "form": "4.0",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -58376,7 +58376,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "3.69",
-      "form": "3.7",
+      "form": "3.0",
       "points_per_game": "3.4",
       "expected_points_next": null,
       "fixtures": [
@@ -59587,7 +59587,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 51.5,
         "stash_score": 45.2,
         "recommendation": "PASS",
@@ -59857,7 +59857,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.49",
-      "form": "1.7",
+      "form": "2.0",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -60069,7 +60069,7 @@
       "clean_sheets": 1,
       "bonus": 3,
       "expected_goal_involvements": "1.64",
-      "form": "4.3",
+      "form": "5.5",
       "points_per_game": "3.6",
       "expected_points_next": null,
       "fixtures": [
@@ -60280,7 +60280,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.18",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -61968,7 +61968,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "0.81",
-      "form": "2.3",
+      "form": "2.5",
       "points_per_game": "2.1",
       "expected_points_next": null,
       "fixtures": [
@@ -62176,7 +62176,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -62600,7 +62600,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "1.31",
-      "form": "3.7",
+      "form": "4.5",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -63448,7 +63448,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "2.12",
-      "form": "2.3",
+      "form": "2.5",
       "points_per_game": "2.1",
       "expected_points_next": null,
       "fixtures": [
@@ -65781,7 +65781,7 @@
       "clean_sheets": 1,
       "bonus": 5,
       "expected_goal_involvements": "1.06",
-      "form": "0.7",
+      "form": "0.0",
       "points_per_game": "6.0",
       "expected_points_next": null,
       "fixtures": [
@@ -68528,7 +68528,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.44",
-      "form": "1.3",
+      "form": "1.5",
       "points_per_game": "1.2",
       "expected_points_next": null,
       "fixtures": [
@@ -71068,7 +71068,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.73",
-      "form": "2.0",
+      "form": "1.0",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -72126,7 +72126,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "0.18",
-      "form": "3.0",
+      "form": "1.5",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -72337,7 +72337,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.19",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -74877,7 +74877,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "1.10",
-      "form": "4.0",
+      "form": "5.5",
       "points_per_game": "3.7",
       "expected_points_next": null,
       "fixtures": [
@@ -75513,7 +75513,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -76785,7 +76785,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.05",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -78059,7 +78059,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.79",
-      "form": "2.7",
+      "form": "1.0",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -79114,7 +79114,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -80174,7 +80174,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "0.74",
-      "form": "2.3",
+      "form": "2.5",
       "points_per_game": "2.1",
       "expected_points_next": null,
       "fixtures": [
@@ -83560,7 +83560,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.30",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "1.2",
       "expected_points_next": null,
       "fixtures": [
@@ -83772,7 +83772,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -86528,7 +86528,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.20",
-      "form": "3.3",
+      "form": "1.0",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -88222,7 +88222,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.03",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -89272,7 +89272,7 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Hamstring injury - Unknown return date",
+      "news": "Hamstring injury - Expected back 2 Jan",
       "news_added": "2026-10-10T18:00:10.750593Z",
       "event_points": 0,
       "total_points": 6,
@@ -89351,14 +89351,14 @@
         "future_fixture_score": 61.4,
         "availability_score": 0.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 39.9,
+        "stash_fixture_score": 0.0,
         "start_probability": 0.0,
         "expected_minutes": 0.0,
         "usage_score": 0.0,
         "sample_confidence": 1.2,
         "role_evidence": "LOW",
         "floor_score": 17.0,
-        "upside_score": 31.6,
+        "upside_score": 19.6,
         "points_per_90": 3.42,
         "attack_returns_per_90": 0.01,
         "historical_prior_active": true,
@@ -89437,11 +89437,11 @@
           ]
         },
         "injury_return_signal": "out",
-        "expected_return": null,
+        "expected_return": "2027-01-02",
         "expected_return_gameweek": null,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 22.8,
-        "stash_score": 25.8,
+        "stash_score": 11.4,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       },
@@ -89453,10 +89453,10 @@
         "position": "DEF",
         "roster_delta": -46.4,
         "immediate_delta": -58.9,
-        "future_delta": -40.4,
+        "future_delta": -54.8,
         "floor_delta": -60.1,
-        "upside_delta": -48.4,
-        "combined_delta": -50.7,
+        "upside_delta": -60.4,
+        "combined_delta": -54.5,
         "confidence": "LOW",
         "preseason_guardrail": false,
         "true_stash_candidate": true,
@@ -89918,7 +89918,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.84",
-      "form": "3.0",
+      "form": "1.5",
       "points_per_game": "2.7",
       "expected_points_next": null,
       "fixtures": [
@@ -91189,7 +91189,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.10",
-      "form": "0.3",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -91826,7 +91826,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.04",
-      "form": "0.0",
+      "form": "0.5",
       "points_per_game": "0.0",
       "expected_points_next": null,
       "fixtures": [
@@ -92250,7 +92250,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -92674,7 +92674,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.19",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -95006,7 +95006,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -96279,7 +96279,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.52",
-      "form": "3.7",
+      "form": "4.0",
       "points_per_game": "3.4",
       "expected_points_next": null,
       "fixtures": [
@@ -99031,7 +99031,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.7",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -99455,7 +99455,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.44",
-      "form": "0.7",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -99667,7 +99667,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.3",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -103024,12 +103024,12 @@
         "availability_score": 100.0,
         "post_return_fixture_score": null,
         "stash_fixture_score": 61.4,
-        "start_probability": 70.0,
-        "expected_minutes": 60.0,
-        "usage_score": 68.5,
+        "start_probability": 26.7,
+        "expected_minutes": 19.8,
+        "usage_score": 24.6,
         "sample_confidence": 5.0,
         "role_evidence": "LOW",
-        "floor_score": 48.6,
+        "floor_score": 37.7,
         "upside_score": 41.9,
         "points_per_90": 1.0,
         "attack_returns_per_90": 0.0,
@@ -103051,8 +103051,8 @@
         "expected_return": null,
         "expected_return_gameweek": null,
         "health_trend": "stable",
-        "roster_score": 54.0,
-        "stash_score": 48.0,
+        "roster_score": 45.2,
+        "stash_score": 42.7,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       },
@@ -103062,12 +103062,12 @@
         "drop_player": "McGinn",
         "drop_club": "AVL",
         "position": "MID",
-        "roster_delta": -23.0,
-        "immediate_delta": -16.1,
-        "future_delta": -25.4,
-        "floor_delta": -36.1,
+        "roster_delta": -31.8,
+        "immediate_delta": -34.1,
+        "future_delta": -30.7,
+        "floor_delta": -47.0,
         "upside_delta": -32.9,
-        "combined_delta": -24.7,
+        "combined_delta": -34.6,
         "confidence": "LOW",
         "preseason_guardrail": false,
         "true_stash_candidate": false,
@@ -104643,7 +104643,7 @@
       "clean_sheets": 0,
       "bonus": 1,
       "expected_goal_involvements": "0.19",
-      "form": "1.7",
+      "form": "2.5",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -104826,7 +104826,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.07",
-      "form": "1.3",
+      "form": "0.5",
       "points_per_game": "2.5",
       "expected_points_next": null,
       "fixtures": [
@@ -105714,7 +105714,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 52.1,
         "stash_score": 47.6,
         "recommendation": "PASS",
@@ -105897,7 +105897,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 62.9,
         "stash_score": 58.5,
         "recommendation": "PASS",
@@ -105924,7 +105924,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.50",
-      "form": "-0.7",
+      "form": "-1.0",
       "points_per_game": "0.2",
       "expected_points_next": null,
       "fixtures": [
@@ -107022,7 +107022,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.36",
-      "form": "0.3",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -108120,7 +108120,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.25",
-      "form": "0.7",
+      "form": "1.0",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -108852,7 +108852,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.03",
-      "form": "0.3",
+      "form": "0.0",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -109035,7 +109035,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.47",
-      "form": "0.7",
+      "form": "0.0",
       "points_per_game": "2.8",
       "expected_points_next": null,
       "fixtures": [
@@ -110289,7 +110289,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 64.0,
         "stash_score": 57.8,
         "recommendation": "PASS",
@@ -112512,7 +112512,7 @@
       "clean_sheets": 2,
       "bonus": 1,
       "expected_goal_involvements": "0.10",
-      "form": "3.0",
+      "form": "4.0",
       "points_per_game": "3.8",
       "expected_points_next": null,
       "fixtures": [
@@ -113610,7 +113610,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.56",
-      "form": "2.7",
+      "form": "3.5",
       "points_per_game": "2.2",
       "expected_points_next": null,
       "fixtures": [
@@ -114498,7 +114498,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 51.5,
         "stash_score": 45.2,
         "recommendation": "PASS",
@@ -115806,7 +115806,7 @@
       "clean_sheets": 1,
       "bonus": 5,
       "expected_goal_involvements": "1.06",
-      "form": "0.7",
+      "form": "0.0",
       "points_per_game": "6.0",
       "expected_points_next": null,
       "fixtures": [
@@ -120004,7 +120004,7 @@
       "position": "DEF",
       "status": "a",
       "chance_next_round": 0,
-      "news": "Hamstring injury - Unknown return date",
+      "news": "Hamstring injury - Expected back 2 Jan",
       "news_added": "2026-10-10T18:00:10.750593Z",
       "event_points": 0,
       "total_points": 6,
@@ -120083,14 +120083,14 @@
         "future_fixture_score": 61.4,
         "availability_score": 0.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 39.9,
+        "stash_fixture_score": 0.0,
         "start_probability": 0.0,
         "expected_minutes": 0.0,
         "usage_score": 0.0,
         "sample_confidence": 1.2,
         "role_evidence": "LOW",
         "floor_score": 17.0,
-        "upside_score": 31.6,
+        "upside_score": 19.6,
         "points_per_90": 3.42,
         "attack_returns_per_90": 0.01,
         "historical_prior_active": true,
@@ -120169,11 +120169,11 @@
           ]
         },
         "injury_return_signal": "out",
-        "expected_return": null,
+        "expected_return": "2027-01-02",
         "expected_return_gameweek": null,
-        "health_trend": "stable",
+        "health_trend": "news-changed",
         "roster_score": 22.8,
-        "stash_score": 25.8,
+        "stash_score": 11.4,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       }
@@ -121845,7 +121845,7 @@
       "clean_sheets": 3,
       "bonus": 12,
       "expected_goal_involvements": "6.46",
-      "form": "8.3",
+      "form": "9.5",
       "points_per_game": "8.3",
       "expected_points_next": null,
       "fixtures": [
@@ -122028,7 +122028,7 @@
       "clean_sheets": 3,
       "bonus": 1,
       "expected_goal_involvements": "2.58",
-      "form": "1.0",
+      "form": "0.5",
       "points_per_game": "3.5",
       "expected_points_next": null,
       "fixtures": [
@@ -122394,7 +122394,7 @@
       "clean_sheets": 3,
       "bonus": 2,
       "expected_goal_involvements": "1.81",
-      "form": "7.0",
+      "form": "2.0",
       "points_per_game": "5.3",
       "expected_points_next": null,
       "fixtures": [
@@ -122577,7 +122577,7 @@
       "clean_sheets": 1,
       "bonus": 3,
       "expected_goal_involvements": "3.05",
-      "form": "5.7",
+      "form": "0.0",
       "points_per_game": "4.8",
       "expected_points_next": null,
       "fixtures": [
@@ -123162,7 +123162,7 @@
         "news": "Calf injury - 75% chance of playing",
         "dashboard_action": "MONITOR",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -123237,7 +123237,7 @@
         "news": "Foot injury - 75% chance of playing",
         "dashboard_action": "MONITOR",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -125199,7 +125199,7 @@
       }
     }
   ],
-  "gameweek_phase": "LIVE",
+  "gameweek_phase": "FINAL",
   "decision_gameweek_phase": "SCHEDULED",
   "recommended_lineup": {
     "model": "v0.6.3",
@@ -125620,7 +125620,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "0.41",
-        "form": "4.0",
+        "form": "2.0",
         "points_per_game": "4.1",
         "expected_points_next": null,
         "fixtures": [
@@ -125816,7 +125816,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "1.35",
-        "form": "2.7",
+        "form": "3.5",
         "points_per_game": "3.4",
         "expected_points_next": null,
         "fixtures": [
@@ -126600,7 +126600,7 @@
         "clean_sheets": 3,
         "bonus": 3,
         "expected_goal_involvements": "1.89",
-        "form": "3.0",
+        "form": "2.0",
         "points_per_game": "4.4",
         "expected_points_next": null,
         "fixtures": [
@@ -127780,7 +127780,7 @@
         "clean_sheets": 1,
         "bonus": 3,
         "expected_goal_involvements": "3.05",
-        "form": "5.7",
+        "form": "0.0",
         "points_per_game": "4.8",
         "expected_points_next": null,
         "fixtures": [
@@ -127978,7 +127978,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.02",
-      "form": "1.0",
+      "form": "1.5",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -128350,7 +128350,7 @@
       "display_name": "No Salad",
       "rank": 1,
       "h2h_points": 15,
-      "points_for": 317
+      "points_for": 354
     },
     "opponent_profile": {
       "model": "v0.3",
@@ -128379,25 +128379,25 @@
         "adds": 3,
         "drops": 3,
         "average_transfer_value": 30.4,
-        "lineup_gameweeks": 6,
-        "average_lineup_efficiency": 96.1,
+        "lineup_gameweeks": 7,
+        "average_lineup_efficiency": 96.7,
         "transfer_score": 44.0,
-        "lineup_score": 66.7,
-        "projected_points_adjustment": 0.5,
+        "lineup_score": 67.5,
+        "projected_points_adjustment": 0.6,
         "evidence": "MEDIUM"
       },
       "decision_threat": {
         "level": "MEDIUM",
-        "score": 53.2,
-        "projected_points_adjustment": 0.3,
+        "score": 55.2,
+        "projected_points_adjustment": 0.4,
         "evidence": "MEDIUM",
         "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
       }
     },
     "my_standing": {
       "rank": 5,
-      "h2h_points": 6,
-      "points_for": 272
+      "h2h_points": 9,
+      "points_for": 323
     },
     "result": {
       "status": "SCHEDULED",
@@ -129335,7 +129335,7 @@
           "clean_sheets": 3,
           "bonus": 0,
           "expected_goal_involvements": "0.41",
-          "form": "4.0",
+          "form": "2.0",
           "points_per_game": "4.1",
           "expected_points_next": null,
           "fixtures": [
@@ -129531,7 +129531,7 @@
           "clean_sheets": 3,
           "bonus": 0,
           "expected_goal_involvements": "1.35",
-          "form": "2.7",
+          "form": "3.5",
           "points_per_game": "3.4",
           "expected_points_next": null,
           "fixtures": [
@@ -130315,7 +130315,7 @@
           "clean_sheets": 3,
           "bonus": 3,
           "expected_goal_involvements": "1.89",
-          "form": "3.0",
+          "form": "2.0",
           "points_per_game": "4.4",
           "expected_points_next": null,
           "fixtures": [
@@ -131495,7 +131495,7 @@
           "clean_sheets": 1,
           "bonus": 3,
           "expected_goal_involvements": "3.05",
-          "form": "5.7",
+          "form": "0.0",
           "points_per_game": "4.8",
           "expected_points_next": null,
           "fixtures": [
@@ -131693,7 +131693,7 @@
         "clean_sheets": 1,
         "bonus": 0,
         "expected_goal_involvements": "0.02",
-        "form": "1.0",
+        "form": "1.5",
         "points_per_game": "2.0",
         "expected_points_next": null,
         "fixtures": [
@@ -132280,7 +132280,7 @@
           "clean_sheets": 2,
           "bonus": 4,
           "expected_goal_involvements": "0.92",
-          "form": "5.3",
+          "form": "4.0",
           "points_per_game": "4.9",
           "expected_points_next": null,
           "fixtures": [
@@ -132868,7 +132868,7 @@
           "clean_sheets": 3,
           "bonus": 1,
           "expected_goal_involvements": "0.07",
-          "form": "2.7",
+          "form": "0.5",
           "points_per_game": "3.3",
           "expected_points_next": null,
           "fixtures": [
@@ -133260,7 +133260,7 @@
           "clean_sheets": 3,
           "bonus": 0,
           "expected_goal_involvements": "0.95",
-          "form": "3.0",
+          "form": "3.5",
           "points_per_game": "3.1",
           "expected_points_next": null,
           "fixtures": [
@@ -133456,7 +133456,7 @@
           "clean_sheets": 2,
           "bonus": 1,
           "expected_goal_involvements": "1.92",
-          "form": "3.7",
+          "form": "3.0",
           "points_per_game": "4.0",
           "expected_points_next": null,
           "fixtures": [
@@ -133652,7 +133652,7 @@
           "clean_sheets": 2,
           "bonus": 5,
           "expected_goal_involvements": "2.35",
-          "form": "1.0",
+          "form": "0.0",
           "points_per_game": "6.4",
           "expected_points_next": null,
           "fixtures": [
@@ -134242,7 +134242,7 @@
           "clean_sheets": 1,
           "bonus": 0,
           "expected_goal_involvements": "0.06",
-          "form": "0.3",
+          "form": "0.5",
           "points_per_game": "2.5",
           "expected_points_next": null,
           "fixtures": [
@@ -134636,7 +134636,7 @@
           "clean_sheets": 3,
           "bonus": 1,
           "expected_goal_involvements": "2.58",
-          "form": "1.0",
+          "form": "0.5",
           "points_per_game": "3.5",
           "expected_points_next": null,
           "fixtures": [
@@ -135219,7 +135219,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "0.95",
-        "form": "3.0",
+        "form": "3.5",
         "points_per_game": "3.1",
         "expected_points_next": null,
         "fixtures": [
@@ -135402,7 +135402,7 @@
         "clean_sheets": 2,
         "bonus": 4,
         "expected_goal_involvements": "0.92",
-        "form": "5.3",
+        "form": "4.0",
         "points_per_game": "4.9",
         "expected_points_next": null,
         "fixtures": [
@@ -135768,7 +135768,7 @@
         "clean_sheets": 2,
         "bonus": 5,
         "expected_goal_involvements": "2.35",
-        "form": "1.0",
+        "form": "0.0",
         "points_per_game": "6.4",
         "expected_points_next": null,
         "fixtures": [
@@ -135951,7 +135951,7 @@
         "clean_sheets": 3,
         "bonus": 1,
         "expected_goal_involvements": "2.58",
-        "form": "1.0",
+        "form": "0.5",
         "points_per_game": "3.5",
         "expected_points_next": null,
         "fixtures": [
@@ -136317,7 +136317,7 @@
         "clean_sheets": 2,
         "bonus": 1,
         "expected_goal_involvements": "1.92",
-        "form": "3.7",
+        "form": "3.0",
         "points_per_game": "4.0",
         "expected_points_next": null,
         "fixtures": [
@@ -136500,7 +136500,7 @@
         "clean_sheets": 3,
         "bonus": 1,
         "expected_goal_involvements": "0.07",
-        "form": "2.7",
+        "form": "0.5",
         "points_per_game": "3.3",
         "expected_points_next": null,
         "fixtures": [
@@ -137598,7 +137598,7 @@
         "clean_sheets": 1,
         "bonus": 0,
         "expected_goal_involvements": "0.06",
-        "form": "0.3",
+        "form": "0.5",
         "points_per_game": "2.5",
         "expected_points_next": null,
         "fixtures": [
@@ -138242,7 +138242,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "0.41",
-        "form": "4.0",
+        "form": "2.0",
         "points_per_game": "4.1",
         "expected_points_next": null,
         "fixtures": [
@@ -138427,7 +138427,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "1.35",
-        "form": "2.7",
+        "form": "3.5",
         "points_per_game": "3.4",
         "expected_points_next": null,
         "fixtures": [
@@ -140094,7 +140094,7 @@
         "clean_sheets": 1,
         "bonus": 0,
         "expected_goal_involvements": "0.02",
-        "form": "1.0",
+        "form": "1.5",
         "points_per_game": "2.0",
         "expected_points_next": null,
         "fixtures": [
@@ -140279,7 +140279,7 @@
         "clean_sheets": 1,
         "bonus": 3,
         "expected_goal_involvements": "3.05",
-        "form": "5.7",
+        "form": "0.0",
         "points_per_game": "4.8",
         "expected_points_next": null,
         "fixtures": [
@@ -140464,7 +140464,7 @@
         "clean_sheets": 3,
         "bonus": 3,
         "expected_goal_involvements": "1.89",
-        "form": "3.0",
+        "form": "2.0",
         "points_per_game": "4.4",
         "expected_points_next": null,
         "fixtures": [
@@ -140821,7 +140821,7 @@
     "model": "v0.3",
     "current": {
       "gameweek": 7,
-      "phase": "LIVE",
+      "phase": "FINAL",
       "forecast": {
         "model": "v0.3",
         "captured_at": "2026-10-10T14:29:36.067269+00:00",
@@ -140993,14 +140993,18 @@
         ],
         "official_points": 51.0,
         "h2h_my_points": 51.0,
-        "h2h_opponent_points": 34.0,
-        "h2h_edge": 17.0,
+        "h2h_opponent_points": 45.0,
+        "h2h_edge": 6.0,
         "h2h_result": "WIN",
         "h2h_score_source": "league_details"
       },
       "evaluation": {
-        "complete": false,
-        "calibration_eligible": true
+        "complete": true,
+        "calibration_eligible": true,
+        "recommended_absolute_error": 5.0,
+        "h2h_edge_error": 6.2,
+        "predicted_h2h_result": "WIN",
+        "h2h_result_correct": true
       },
       "deadline_selection": {
         "baseline": {
@@ -141220,18 +141224,18 @@
       },
       "selection_comparison": {
         "captured_at": "2026-10-17T04:33:13.682377+00:00",
-        "complete": false,
+        "complete": true,
         "baseline": {
           "projected_points": 52.5,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 32.0,
+          "absolute_error": 20.5
         },
         "challenger": {
           "projected_points": 58.7,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 51.0,
+          "absolute_error": 7.7
         },
-        "challenger_gain": null,
+        "challenger_gain": 19.0,
         "note": "Raw XI player points, without simulated autosubs; experimental selection only."
       }
     },
@@ -142708,7 +142712,7 @@
       "8": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-20T04:56:04.183151+00:00",
+          "captured_at": "2026-10-20T13:35:11.374627+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142817,7 +142821,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-20T04:56:04.183151+00:00",
+          "captured_at": "2026-10-20T13:35:11.374627+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142935,7 +142939,7 @@
           "display_name": "No Salad",
           "rank": 1,
           "h2h_points": 15,
-          "points_for": 317
+          "points_for": 354
         },
         "my": {
           "formation": "4-5-1",
@@ -142946,12 +142950,12 @@
         },
         "opponent_projection": {
           "formation": "4-4-2",
-          "total": 47.5,
-          "range_low": 26.3,
-          "range_high": 68.6,
+          "total": 47.6,
+          "range_low": 26.4,
+          "range_high": 68.7,
           "evidence": "MEDIUM",
           "roster_total": 47.2,
-          "decision_adjustment": 0.3
+          "decision_adjustment": 0.4
         },
         "opponent_profile": {
           "model": "v0.3",
@@ -142980,23 +142984,23 @@
             "adds": 3,
             "drops": 3,
             "average_transfer_value": 30.4,
-            "lineup_gameweeks": 6,
-            "average_lineup_efficiency": 96.1,
+            "lineup_gameweeks": 7,
+            "average_lineup_efficiency": 96.7,
             "transfer_score": 44.0,
-            "lineup_score": 66.7,
-            "projected_points_adjustment": 0.5,
+            "lineup_score": 67.5,
+            "projected_points_adjustment": 0.6,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
             "level": "MEDIUM",
-            "score": 53.2,
-            "projected_points_adjustment": 0.3,
+            "score": 55.2,
+            "projected_points_adjustment": 0.4,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
           }
         },
-        "decision_adjustment": 0.3,
-        "projected_edge": 7.1,
+        "decision_adjustment": 0.4,
+        "projected_edge": 7.0,
         "signal": "EDGE",
         "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
@@ -143097,9 +143101,9 @@
         "available": true,
         "opponent": {
           "display_name": "Vængir Júpíters",
-          "rank": 4,
-          "h2h_points": 9,
-          "points_for": 260
+          "rank": 3,
+          "h2h_points": 12,
+          "points_for": 306
         },
         "my": {
           "formation": "4-5-1",
@@ -143142,16 +143146,16 @@
             "adds": 14,
             "drops": 14,
             "average_transfer_value": 20.7,
-            "lineup_gameweeks": 6,
-            "average_lineup_efficiency": 84.3,
+            "lineup_gameweeks": 7,
+            "average_lineup_efficiency": 84.6,
             "transfer_score": 60.9,
-            "lineup_score": 48.9,
-            "projected_points_adjustment": -0.0,
+            "lineup_score": 49.4,
+            "projected_points_adjustment": 0.0,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
             "level": "MEDIUM",
-            "score": 49.5,
+            "score": 49.6,
             "projected_points_adjustment": -0.0,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
@@ -143260,8 +143264,8 @@
         "opponent": {
           "display_name": "Weapon X",
           "rank": 6,
-          "h2h_points": 3,
-          "points_for": 239
+          "h2h_points": 6,
+          "points_for": 295
         },
         "my": {
           "formation": "4-5-1",
@@ -143306,16 +143310,16 @@
             "adds": 11,
             "drops": 11,
             "average_transfer_value": 7.9,
-            "lineup_gameweeks": 6,
-            "average_lineup_efficiency": 92.8,
+            "lineup_gameweeks": 7,
+            "average_lineup_efficiency": 93.1,
             "transfer_score": 54.5,
-            "lineup_score": 61.6,
+            "lineup_score": 62.1,
             "projected_points_adjustment": 0.4,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
             "level": "HIGH",
-            "score": 58.0,
+            "score": 57.2,
             "projected_points_adjustment": 0.6,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
@@ -143425,7 +143429,7 @@
           "display_name": "My own Wirtz enemy",
           "rank": 2,
           "h2h_points": 12,
-          "points_for": 288
+          "points_for": 330
         },
         "my": {
           "formation": "4-5-1",
@@ -143470,16 +143474,16 @@
             "adds": 11,
             "drops": 11,
             "average_transfer_value": 6.3,
-            "lineup_gameweeks": 6,
-            "average_lineup_efficiency": 91.4,
+            "lineup_gameweeks": 7,
+            "average_lineup_efficiency": 91.1,
             "transfer_score": 50.0,
-            "lineup_score": 59.6,
+            "lineup_score": 59.1,
             "projected_points_adjustment": 0.3,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
             "level": "MEDIUM",
-            "score": 52.8,
+            "score": 53.0,
             "projected_points_adjustment": 0.2,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
@@ -143591,8 +143595,8 @@
         "TRAIL": 0
       },
       "projected_for": 214.9,
-      "projected_against": 190.2,
-      "projected_net": 24.7,
+      "projected_against": 190.3,
+      "projected_net": 24.6,
       "toughest_matchup": {
         "gameweek": 9,
         "opponent": "Vængir Júpíters",
@@ -143957,6 +143961,25 @@
         "decision_gameweek": 8,
         "first_seen": "2026-10-17T18:31:56.847109+00:00",
         "last_seen": "2026-10-17T18:31:56.847109+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "player_news",
+        "priority": "watch",
+        "title": "Ruggeri: player news changed",
+        "detail": "Hamstring injury - Expected back 2 Jan",
+        "badge": "NEWS",
+        "player_id": 596,
+        "player": "Ruggeri",
+        "club": "AVL",
+        "team_code": 7,
+        "position": "DEF",
+        "event_id": "cbbd5b3e1fcfa6ff",
+        "stream": "availability:player:596",
+        "decision_gameweek": 8,
+        "first_seen": "2026-10-20T13:35:11.374627+00:00",
+        "last_seen": "2026-10-20T13:35:11.374627+00:00",
         "occurrences": 1,
         "status": "active"
       },
@@ -144690,6 +144713,26 @@
         "occurrences": 1,
         "status": "resolved",
         "resolved_at": "2026-10-17T18:31:56.847109+00:00"
+      },
+      {
+        "kind": "gameweek_result",
+        "priority": "info",
+        "title": "GW7 result captured",
+        "detail": "Official XI: 51 points. Toolkit XI: 54 actual versus 59.0 projected. H2H: 51–45.",
+        "badge": "GW FINAL",
+        "player_id": null,
+        "player": null,
+        "club": null,
+        "team_code": null,
+        "position": null,
+        "event_id": "21852cc685d413df",
+        "stream": "gameweek_result:GW7 result captured",
+        "decision_gameweek": 8,
+        "first_seen": "2026-10-20T13:35:11.374627+00:00",
+        "last_seen": "2026-10-20T13:35:11.374627+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-10-20T13:35:11.374627+00:00"
       },
       {
         "kind": "opponent_add",
@@ -147041,10 +147084,8 @@
       }
     ],
     "new_item_ids": [
-      "1fe9d6fb34d6471b",
-      "e5a7a76ddf621c56",
-      "9b7c1f664c165f3c",
-      "18e6a7ae7eb00de2"
+      "cbbd5b3e1fcfa6ff",
+      "21852cc685d413df"
     ],
     "changed_player_ids": [
       19,
@@ -147090,6 +147131,7 @@
       552,
       575,
       582,
+      596,
       611,
       642,
       652
@@ -147097,13 +147139,13 @@
     "summary": {
       "critical": 0,
       "important": 23,
-      "watch": 33,
-      "info": 2
+      "watch": 34,
+      "info": 3
     },
     "active_summary": {
       "critical": 0,
       "important": 18,
-      "watch": 29,
+      "watch": 30,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
