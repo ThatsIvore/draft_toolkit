@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-22T13:49:52.739535+00:00",
+  "updated_at": "2026-10-22T20:10:35.166807+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -1189,13 +1189,54 @@
           ],
           "value_delta": 7.5,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 0.0,
             "incoming_started_points": 1.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -2.3
+          },
+          "ended_gameweek": 8
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": -1.1,
+            "9": -1.8,
+            "10": -0.9,
+            "11": -1.4
+          },
+          "observations": {},
+          "fingerprint": "2026-10-22T20:10:35.166807+00:00:8:14:45",
+          "captured_at": "2026-10-22T20:10:35.166807+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 14,
+              "player": "Eze",
+              "position": "MID",
+              "roster_score": 73.1
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 45,
+              "player": "McGinn",
+              "position": "MID",
+              "roster_score": 73.9
+            }
+          ],
+          "value_delta": -0.8,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -1927,6 +1968,46 @@
             "incoming_starts": 0,
             "excess_points_per_player_week": null
           }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": 2.9,
+            "9": 2.9,
+            "10": 2.9,
+            "11": 3.1
+          },
+          "observations": {},
+          "fingerprint": "2026-10-22T20:10:35.166807+00:00:8:398:397",
+          "captured_at": "2026-10-22T20:10:35.166807+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 398,
+              "player": "Foden",
+              "position": "MID",
+              "roster_score": 78.1
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 397,
+              "player": "Semenyo",
+              "position": "MID",
+              "roster_score": 46.9
+            }
+          ],
+          "value_delta": 31.2,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -2170,7 +2251,8 @@
               "roster_score": 79.5
             }
           ],
-          "value_delta": 62.5
+          "value_delta": 62.5,
+          "ended_gameweek": 8
         },
         {
           "fingerprint": "3:86:123",
@@ -2342,6 +2424,46 @@
             "incoming_started_points": 6.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": 2.0
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": 1.2,
+            "9": -0.2,
+            "10": 0.9,
+            "11": 0.6
+          },
+          "observations": {},
+          "fingerprint": "2026-10-22T20:10:35.166807+00:00:8:156:41",
+          "captured_at": "2026-10-22T20:10:35.166807+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 156,
+              "player": "Neto",
+              "position": "MID",
+              "roster_score": 82.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 41,
+              "player": "Buendía",
+              "position": "MID",
+              "roster_score": 79.1
+            }
+          ],
+          "value_delta": 3.3,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -3889,6 +4011,72 @@
       "from_team": "Free pool",
       "to_team": "Weapon X",
       "captured_at": "2026-10-17T12:13:23.249403+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 14,
+      "player": "Eze",
+      "club": "ARS",
+      "from_team": "Free pool",
+      "to_team": "FC FC",
+      "captured_at": "2026-10-22T20:10:35.166807+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 41,
+      "player": "Buendía",
+      "club": "AVL",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-22T20:10:35.166807+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 45,
+      "player": "McGinn",
+      "club": "AVL",
+      "from_team": "FC FC",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-22T20:10:35.166807+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 156,
+      "player": "Neto",
+      "club": "CHE",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-10-22T20:10:35.166807+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 397,
+      "player": "Semenyo",
+      "club": "MCI",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-22T20:10:35.166807+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 398,
+      "player": "Foden",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-22T20:10:35.166807+00:00",
       "gameweek": 8,
       "source": "ownership snapshot"
     }
