@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T20:10:35.166807+00:00",
+  "generated_at": "2026-10-22T23:26:01.638671+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 7,
@@ -8,7 +8,7 @@
     "my_squad_count": 15,
     "available_count": 473,
     "tracked_players": 668,
-    "ownership_changes": 6,
+    "ownership_changes": 0,
     "injured_or_doubtful_count": 102
   },
   "my_squad": [
@@ -28021,7 +28021,7 @@
         "injury_return_signal": "out",
         "expected_return": "2026-10-23",
         "expected_return_gameweek": 8,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 32.8,
         "stash_score": 42.1,
         "recommendation": "PASS",
@@ -107085,7 +107085,7 @@
         "injury_return_signal": "out",
         "expected_return": "2026-10-23",
         "expected_return_gameweek": 8,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 32.8,
         "stash_score": 42.1,
         "recommendation": "PASS",
@@ -123920,7 +123920,7 @@
   },
   "league_activity_summary": {
     "retained": 136,
-    "new_this_collection": 6,
+    "new_this_collection": 0,
     "limit": 500
   },
   "transfer_reviews": [
@@ -142136,7 +142136,7 @@
       "8": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-22T20:10:35.166807+00:00",
+          "captured_at": "2026-10-22T23:26:01.638671+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142245,7 +142245,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-22T20:10:35.166807+00:00",
+          "captured_at": "2026-10-22T23:26:01.638671+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -146797,17 +146797,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "ce9890b977577848",
-      "30523032bf562b52",
-      "f00add6f91c9a388",
-      "b715e2e0910d8e78",
-      "4feba0bb8c430250",
-      "f4f556b480cdb3fa",
-      "eead68e0ee81e341",
-      "300e24a24b493007",
-      "4fa4a29681fda389"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       12,
       14,
