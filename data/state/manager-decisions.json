@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-23T04:57:01.073857+00:00",
+  "updated_at": "2026-10-23T13:29:35.217149+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -744,13 +744,54 @@
           ],
           "value_delta": 6.3,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 0.0,
             "incoming_started_points": 3.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -0.85
+          },
+          "ended_gameweek": 8
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": 2.9,
+            "9": 3.4,
+            "10": 3.1,
+            "11": 3.4
+          },
+          "observations": {},
+          "fingerprint": "2026-10-23T13:29:35.217149+00:00:8:455:98",
+          "captured_at": "2026-10-23T13:29:35.217149+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 455,
+              "player": "Tonali",
+              "position": "MID",
+              "roster_score": 72.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 98,
+              "player": "Janelt",
+              "position": "MID",
+              "roster_score": 38.9
+            }
+          ],
+          "value_delta": 33.1,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -1524,6 +1565,46 @@
             "incoming_started_points": 2.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -2.7
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": 2.9,
+            "9": 2.6,
+            "10": 2.6,
+            "11": 2.7
+          },
+          "observations": {},
+          "fingerprint": "2026-10-23T13:29:35.217149+00:00:8:173:393",
+          "captured_at": "2026-10-23T13:29:35.217149+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 173,
+              "player": "Thomas",
+              "position": "DEF",
+              "roster_score": 71.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 393,
+              "player": "Khusanov",
+              "position": "DEF",
+              "roster_score": 64.3
+            }
+          ],
+          "value_delta": 6.9,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -4140,6 +4221,50 @@
       "from_team": "Weapon X",
       "to_team": "Free pool",
       "captured_at": "2026-10-23T04:57:01.073857+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 98,
+      "player": "Janelt",
+      "club": "BRE",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T13:29:35.217149+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 173,
+      "player": "Thomas",
+      "club": "COV",
+      "from_team": "Free pool",
+      "to_team": "No Salad",
+      "captured_at": "2026-10-23T13:29:35.217149+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 393,
+      "player": "Khusanov",
+      "club": "MCI",
+      "from_team": "No Salad",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T13:29:35.217149+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 455,
+      "player": "Tonali",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-10-23T13:29:35.217149+00:00",
       "gameweek": 8,
       "source": "ownership snapshot"
     }
