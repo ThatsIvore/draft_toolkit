@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-23T13:29:35.217149+00:00",
+  "updated_at": "2026-10-23T19:58:05.573692+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -4266,6 +4266,72 @@
       "to_team": "My own Wirtz enemy",
       "captured_at": "2026-10-23T13:29:35.217149+00:00",
       "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 41,
+      "player": "Buendía",
+      "club": "AVL",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 45,
+      "player": "McGinn",
+      "club": "AVL",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 98,
+      "player": "Janelt",
+      "club": "BRE",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 393,
+      "player": "Khusanov",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 397,
+      "player": "Semenyo",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 591,
+      "player": "Enciso",
+      "club": "IPS",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
       "source": "ownership snapshot"
     }
   ]
