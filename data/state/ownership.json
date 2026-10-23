@@ -3900,19 +3900,6 @@
     "news_added": null
   },
   {
-    "player_id": 183,
-    "player": "Rudoni",
-    "club": "COV",
-    "team_id": 7,
-    "position": "MID",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-07-23T12:01:23.481435Z"
-  },
-  {
     "player_id": 318,
     "player": "Philogene",
     "club": "IPS",
@@ -7514,6 +7501,19 @@
     "news_added": "2026-10-17T17:30:09.977110Z"
   },
   {
+    "player_id": 591,
+    "player": "Enciso",
+    "club": "IPS",
+    "team_id": 12,
+    "position": "MID",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-08-22T18:00:07.551930Z"
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
@@ -8372,19 +8372,6 @@
     "news_added": null
   },
   {
-    "player_id": 591,
-    "player": "Enciso",
-    "club": "IPS",
-    "team_id": 12,
-    "position": "MID",
-    "status": "o",
-    "owner_raw": 338553,
-    "owner_entry_id": 338553,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-22T18:00:07.551930Z"
-  },
-  {
     "player_id": 165,
     "player": "João Pedro",
     "club": "CHE",
@@ -8422,6 +8409,19 @@
     "chance_next_round": 100,
     "news": "",
     "news_added": "2026-10-16T17:00:07.929499Z"
+  },
+  {
+    "player_id": 183,
+    "player": "Rudoni",
+    "club": "COV",
+    "team_id": 7,
+    "position": "MID",
+    "status": "o",
+    "owner_raw": 338553,
+    "owner_entry_id": 338553,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-07-23T12:01:23.481435Z"
   },
   {
     "player_id": 496,

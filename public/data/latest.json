@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-22T23:26:01.638671+00:00",
+  "generated_at": "2026-10-23T04:57:01.073857+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 7,
   "planning_horizon": 4,
   "summary": {
     "my_squad_count": 15,
-    "available_count": 473,
+    "available_count": 472,
     "tracked_players": 668,
-    "ownership_changes": 0,
+    "ownership_changes": 2,
     "injured_or_doubtful_count": 102
   },
   "my_squad": [
@@ -56305,215 +56305,6 @@
       }
     },
     {
-      "player_id": 183,
-      "player": "Rudoni",
-      "club": "COV",
-      "team_id": 7,
-      "team_code": 9,
-      "position": "MID",
-      "status": "a",
-      "chance_next_round": 100,
-      "news": "",
-      "news_added": "2026-07-23T12:01:23.481435Z",
-      "event_points": 6,
-      "total_points": 26,
-      "minutes": 465,
-      "starts": 6,
-      "goals_scored": 2,
-      "assists": 0,
-      "clean_sheets": 2,
-      "bonus": 0,
-      "expected_goal_involvements": "3.01",
-      "form": "6.5",
-      "points_per_game": "3.7",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 8,
-          "matches": [
-            {
-              "opponent_id": 10,
-              "opponent": "FUL",
-              "venue": "H",
-              "difficulty": 2,
-              "kickoff_time": "2026-10-24T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 9,
-          "matches": [
-            {
-              "opponent_id": 20,
-              "opponent": "SUN",
-              "venue": "H",
-              "difficulty": 3,
-              "kickoff_time": "2026-10-31T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 10,
-          "matches": [
-            {
-              "opponent_id": 9,
-              "opponent": "EVE",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-06T20:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 8,
-              "opponent": "CRY",
-              "venue": "H",
-              "difficulty": 2,
-              "kickoff_time": "2026-11-21T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 44.8,
-        "fixture_score": 70.2,
-        "future_fixture_score": 65.4,
-        "availability_score": 100.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 65.4,
-        "start_probability": 90.0,
-        "expected_minutes": 72.2,
-        "usage_score": 85.6,
-        "sample_confidence": 10.3,
-        "role_evidence": "LOW",
-        "floor_score": 70.0,
-        "upside_score": 77.5,
-        "points_per_90": 5.03,
-        "attack_returns_per_90": 0.46,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 78.4,
-          "grade": "A",
-          "adjustment": 2.84,
-          "confidence": 100.0,
-          "completed_gameweeks": 4,
-          "appearances": 4,
-          "minutes": 313,
-          "starts": 4,
-          "gameweeks": [
-            {
-              "gameweek": 7,
-              "minutes": 86,
-              "starts": 1,
-              "points": 6,
-              "bonus": 0,
-              "bps": 23,
-              "xg": 0.14,
-              "xa": 0.01,
-              "xgi": 0.15,
-              "defensive_contribution": 4,
-              "played": true,
-              "grade_score": 78.9,
-              "grade": "A"
-            },
-            {
-              "gameweek": 6,
-              "minutes": 82,
-              "starts": 1,
-              "points": 7,
-              "bonus": 0,
-              "bps": 24,
-              "xg": 0.79,
-              "xa": 0.04,
-              "xgi": 0.83,
-              "defensive_contribution": 2,
-              "played": true,
-              "grade_score": 80.7,
-              "grade": "A"
-            },
-            {
-              "gameweek": 5,
-              "minutes": 73,
-              "starts": 1,
-              "points": 5,
-              "bonus": 0,
-              "bps": 16,
-              "xg": 0.09,
-              "xa": 0.2,
-              "xgi": 0.29,
-              "defensive_contribution": 13,
-              "played": true,
-              "grade_score": 78.9,
-              "grade": "A"
-            },
-            {
-              "gameweek": 4,
-              "minutes": 72,
-              "starts": 1,
-              "points": 2,
-              "bonus": 0,
-              "bps": 11,
-              "xg": 0.33,
-              "xa": 0.73,
-              "xgi": 1.06,
-              "defensive_contribution": 5,
-              "played": true,
-              "grade_score": 61.8,
-              "grade": "B"
-            }
-          ]
-        },
-        "injury_return_signal": "fit",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 70.3,
-        "stash_score": 66.8,
-        "recommendation": "WATCH",
-        "recommendation_reason": "Interesting value, but not yet a clear claim signal."
-      },
-      "replacement": {
-        "model": "v0.6.0",
-        "drop_player_id": 12,
-        "drop_player": "Saka",
-        "drop_club": "ARS",
-        "position": "MID",
-        "roster_delta": 4.5,
-        "immediate_delta": 22.5,
-        "future_delta": 5.6,
-        "floor_delta": -2.2,
-        "upside_delta": 7.8,
-        "combined_delta": 8.5,
-        "confidence": "LOW",
-        "preseason_guardrail": false,
-        "true_stash_candidate": false,
-        "action": "CONSIDER",
-        "comparison_action": "CONSIDER",
-        "policy_revision": "20260910.2",
-        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. Production baseline 44.8 versus 86.5: more than 5 points lower.",
-        "priority_checks_failed": [
-          "Overall improvement is below the priority threshold of 20 heuristic points.",
-          "Comparison evidence is not HIGH.",
-          "The move reduces the projected floor.",
-          "Production baseline 44.8 versus 86.5: more than 5 points lower."
-        ]
-      }
-    },
-    {
       "player_id": 318,
       "player": "Philogene",
       "club": "IPS",
@@ -102381,6 +102172,28 @@
   ],
   "league_activity": [
     {
+      "type": "drop",
+      "player_id": 591,
+      "player": "Enciso",
+      "club": "IPS",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T04:57:01.073857+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 183,
+      "player": "Rudoni",
+      "club": "COV",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-23T04:57:01.073857+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
       "type": "add",
       "player_id": 398,
       "player": "Foden",
@@ -123919,11 +123732,32 @@
     }
   },
   "league_activity_summary": {
-    "retained": 136,
-    "new_this_collection": 0,
+    "retained": 138,
+    "new_this_collection": 2,
     "limit": 500
   },
   "transfer_reviews": [
+    {
+      "team_name": "Weapon X",
+      "captured_at": "2026-10-23T04:57:01.073857+00:00",
+      "gameweek": 8,
+      "adds": [
+        "Rudoni"
+      ],
+      "drops": [
+        "Enciso"
+      ],
+      "decision_value": 9.8,
+      "outcome": {
+        "status": "pending",
+        "observed_gameweeks": 0,
+        "target_gameweeks": 4,
+        "points_gain": null,
+        "incoming_started_points": null,
+        "incoming_starts": 0,
+        "excess_points_per_player_week": null
+      }
+    },
     {
       "team_name": "FC FC",
       "captured_at": "2026-10-22T20:10:35.166807+00:00",
@@ -124133,7 +123967,7 @@
       ],
       "decision_value": -10.8,
       "outcome": {
-        "status": "pending",
+        "status": "stopped",
         "observed_gameweeks": 2,
         "target_gameweeks": 4,
         "points_gain": 15.0,
@@ -142136,7 +141970,7 @@
       "8": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-22T23:26:01.638671+00:00",
+          "captured_at": "2026-10-23T04:57:01.073857+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142245,7 +142079,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-22T23:26:01.638671+00:00",
+          "captured_at": "2026-10-23T04:57:01.073857+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -143025,7 +142859,7 @@
             "evidence": "LOW"
           },
           "management": {
-            "transaction_windows": 7,
+            "transaction_windows": 8,
             "evaluated_transfers": 1,
             "transfer_review_gameweeks": 2,
             "effective_transfer_windows": 0.5,
@@ -143033,9 +142867,9 @@
             "average_transfer_points_gain": 15.0,
             "average_transfer_excess": 2.78,
             "transfer_points_adjustment": 0.04,
-            "adds": 12,
-            "drops": 12,
-            "average_transfer_value": 15.7,
+            "adds": 13,
+            "drops": 13,
+            "average_transfer_value": 14.2,
             "lineup_gameweeks": 7,
             "average_lineup_efficiency": 93.1,
             "transfer_score": 63.9,
@@ -143824,6 +143658,25 @@
         "status": "active"
       },
       {
+        "kind": "opponent_drop",
+        "priority": "watch",
+        "title": "Enciso entered the free pool",
+        "detail": "A league roster released this player.",
+        "badge": "NEW FREE AGENT",
+        "player_id": 591,
+        "player": "Enciso",
+        "club": "IPS",
+        "team_code": null,
+        "position": null,
+        "event_id": "070577dded74c45f",
+        "stream": "free_pool:player:591",
+        "decision_gameweek": 8,
+        "first_seen": "2026-10-23T04:57:01.073857+00:00",
+        "last_seen": "2026-10-23T04:57:01.073857+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
         "kind": "recommendation_change",
         "priority": "watch",
         "title": "Eze: WATCH → HOLD",
@@ -144463,25 +144316,6 @@
         "position": "MID",
         "event_id": "e26131b19e143c2d",
         "stream": "waiver:player:105",
-        "decision_gameweek": 8,
-        "first_seen": "2026-10-21T23:24:30.130396+00:00",
-        "last_seen": "2026-10-21T23:24:30.130396+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
-        "kind": "waiver_change",
-        "priority": "watch",
-        "title": "Gomes: HOLD / WATCH → CONSIDER",
-        "detail": "Waiver recommendation changed since the previous collection. Best comparison: drop Saka. Combined delta +4.7.",
-        "badge": "WAIVER ↑",
-        "player_id": 54,
-        "player": "Gomes",
-        "club": "AVL",
-        "team_code": 7,
-        "position": "MID",
-        "event_id": "8ac4f87dae2faeaf",
-        "stream": "waiver:player:54",
         "decision_gameweek": 8,
         "first_seen": "2026-10-21T23:24:30.130396+00:00",
         "last_seen": "2026-10-21T23:24:30.130396+00:00",
@@ -146797,7 +146631,10 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "070577dded74c45f",
+      "8db5fafdb1b8a96d"
+    ],
     "changed_player_ids": [
       12,
       14,
@@ -146808,7 +146645,6 @@
       43,
       45,
       47,
-      54,
       73,
       75,
       96,
@@ -146854,6 +146690,7 @@
       544,
       552,
       575,
+      591,
       611,
       635
     ],

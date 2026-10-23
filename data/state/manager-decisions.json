@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-22T23:26:01.638671+00:00",
+  "updated_at": "2026-10-23T04:57:01.073857+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -1920,14 +1920,15 @@
           ],
           "value_delta": -10.8,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 2,
             "target_gameweeks": 4,
             "points_gain": 15.0,
             "incoming_started_points": 18.0,
             "incoming_starts": 3,
             "excess_points_per_player_week": 2.78
-          }
+          },
+          "ended_gameweek": 8
         },
         {
           "evaluation_version": 1,
@@ -1999,6 +2000,46 @@
             }
           ],
           "value_delta": 31.2,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "8": 2.0,
+            "9": 1.4,
+            "10": 1.6,
+            "11": 2.0
+          },
+          "observations": {},
+          "fingerprint": "2026-10-23T04:57:01.073857+00:00:8:183:591",
+          "captured_at": "2026-10-23T04:57:01.073857+00:00",
+          "gameweek": 8,
+          "adds": [
+            {
+              "player_id": 183,
+              "player": "Rudoni",
+              "position": "MID",
+              "roster_score": 70.3
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 591,
+              "player": "Enciso",
+              "position": "MID",
+              "roster_score": 60.5
+            }
+          ],
+          "value_delta": 9.8,
           "outcome": {
             "status": "pending",
             "observed_gameweeks": 0,
@@ -4077,6 +4118,28 @@
       "from_team": "Free pool",
       "to_team": "Weapon X",
       "captured_at": "2026-10-22T20:10:35.166807+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 183,
+      "player": "Rudoni",
+      "club": "COV",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-23T04:57:01.073857+00:00",
+      "gameweek": 8,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 591,
+      "player": "Enciso",
+      "club": "IPS",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-23T04:57:01.073857+00:00",
       "gameweek": 8,
       "source": "ownership snapshot"
     }
