@@ -541,9 +541,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-07-29T10:00:10.492904Z"
+    "chance_next_round": 75,
+    "news": "Illness - 75% chance of playing",
+    "news_added": "2026-10-24T14:30:09.610430Z"
   },
   {
     "player_id": 508,
@@ -1061,8 +1061,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-10-23T14:30:10.270986Z"
   },
   {
@@ -2764,9 +2764,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Muscular injury - 75% chance of playing",
+    "news_added": "2026-10-24T13:00:08.751863Z"
   },
   {
     "player_id": 202,
@@ -3297,8 +3297,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Ankle injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-10-12T15:00:07.550884Z"
   },
   {
@@ -8263,9 +8263,9 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-10-24T17:00:09.115906Z"
   },
   {
     "player_id": 167,
@@ -8341,9 +8341,9 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Hip injury - 75% chance of playing",
+    "news_added": "2026-10-24T18:30:08.735545Z"
   },
   {
     "player_id": 335,
@@ -8393,9 +8393,9 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-09-16T19:00:09.919929Z"
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-10-24T16:30:09.687729Z"
   },
   {
     "player_id": 391,
