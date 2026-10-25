@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-10-24T22:31:40.166752+00:00",
+  "captured_at": "2026-10-25T04:47:52.392420+00:00",
   "gameweek": 9,
   "scoring_gameweek": 8,
   "scoring_phase": "LIVE",
@@ -47,8 +47,8 @@
       "role_evidence": "MEDIUM",
       "health_trend": "stable",
       "recommendation": "HOLD",
-      "roster_score": 79.5,
-      "stash_score": 73.0,
+      "roster_score": 79.6,
+      "stash_score": 73.1,
       "waiver_action": null,
       "waiver_drop_player": null,
       "waiver_delta": null,
@@ -159,8 +159,8 @@
       "role_evidence": "MEDIUM",
       "health_trend": "stable",
       "recommendation": "HOLD",
-      "roster_score": 85.6,
-      "stash_score": 82.4,
+      "roster_score": 85.7,
+      "stash_score": 82.5,
       "waiver_action": null,
       "waiver_drop_player": null,
       "waiver_delta": null,
@@ -2537,7 +2537,7 @@
       "availability_score": 75.0,
       "expected_minutes": 30.1,
       "role_evidence": "LOW",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 45.7,
       "stash_score": 37.9,
@@ -5371,7 +5371,7 @@
       "stash_score": 59.1,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Saka",
-      "waiver_delta": 14.6,
+      "waiver_delta": 14.7,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -7299,8 +7299,8 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "PASS",
-      "roster_score": 46.5,
-      "stash_score": 50.7,
+      "roster_score": 46.6,
+      "stash_score": 50.8,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Vuskovic",
       "waiver_delta": -29.4,
@@ -9007,11 +9007,11 @@
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "PASS",
-      "roster_score": 55.9,
-      "stash_score": 49.6,
+      "roster_score": 55.8,
+      "stash_score": 49.5,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Vuskovic",
-      "waiver_delta": -18.3,
+      "waiver_delta": -18.4,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -9736,7 +9736,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 68.9,
-      "stash_score": 59.3,
+      "stash_score": 59.2,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Saka",
       "waiver_delta": 25.8,
@@ -9848,7 +9848,7 @@
       "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 59.4,
-      "stash_score": 57.6,
+      "stash_score": 57.7,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Saka",
       "waiver_delta": 16.0,
@@ -10631,7 +10631,7 @@
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 65.7,
+      "roster_score": 65.8,
       "stash_score": 64.0,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Vuskovic",
@@ -13765,7 +13765,7 @@
       "availability_score": 100.0,
       "expected_minutes": 60.0,
       "role_evidence": "LOW",
-      "health_trend": "new-baseline",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 52.1,
       "stash_score": 48.6,
@@ -13879,8 +13879,8 @@
       "role_evidence": "HIGH",
       "health_trend": "stable",
       "recommendation": "WATCH",
-      "roster_score": 79.9,
-      "stash_score": 75.4,
+      "roster_score": 79.4,
+      "stash_score": 74.8,
       "waiver_action": null,
       "waiver_drop_player": null,
       "waiver_delta": null,
@@ -13936,7 +13936,7 @@
       "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 82.6,
-      "stash_score": 77.4,
+      "stash_score": 77.3,
       "waiver_action": null,
       "waiver_drop_player": null,
       "waiver_delta": null,
@@ -14321,7 +14321,7 @@
         }
       },
       "actual": {
-        "recommended_points": 24.0,
+        "recommended_points": 25.0,
         "recommended_actuals_complete": true,
         "recommended_players": [
           {
@@ -14332,7 +14332,7 @@
           {
             "player_id": 4,
             "player": "Gabriel",
-            "event_points": 16.0
+            "event_points": 17.0
           },
           {
             "player_id": 356,
@@ -14380,7 +14380,7 @@
             "event_points": 0.0
           }
         ],
-        "official_points": 21.0,
+        "official_points": 22.0,
         "h2h_my_points": 21.0,
         "h2h_opponent_points": 8.0,
         "h2h_edge": 13.0,
@@ -16819,7 +16819,7 @@
       "9": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-24T22:31:40.166752+00:00",
+          "captured_at": "2026-10-25T04:47:52.392420+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -16827,7 +16827,7 @@
             "formation": "5-3-2",
             "projected_total": 48.7,
             "range_low": 23.9,
-            "range_high": 73.5,
+            "range_high": 73.6,
             "starters": [
               {
                 "player_id": 529,
@@ -16851,7 +16851,7 @@
                 "position": "DEF",
                 "projected_points": 6.1,
                 "range_low": 3.4,
-                "range_high": 8.7
+                "range_high": 8.8
               },
               {
                 "player_id": 390,
@@ -16921,14 +16921,14 @@
           },
           "h2h": {
             "projected_my_total": 48.7,
-            "projected_opponent_total": 46.1,
-            "projected_edge": 2.6,
+            "projected_opponent_total": 46.0,
+            "projected_edge": 2.7,
             "signal": "TRAIL"
           }
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-24T22:31:40.166752+00:00",
+          "captured_at": "2026-10-25T04:47:52.392420+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -16936,7 +16936,7 @@
             "formation": "5-3-2",
             "projected_total": 49.1,
             "range_low": 24.2,
-            "range_high": 74.1,
+            "range_high": 74.2,
             "starters": [
               {
                 "player_id": 4,
@@ -16944,7 +16944,7 @@
                 "position": "DEF",
                 "projected_points": 6.1,
                 "range_low": 3.4,
-                "range_high": 8.7
+                "range_high": 8.8
               },
               {
                 "player_id": 14,
@@ -17059,12 +17059,12 @@
             "baseline_selected": true,
             "challenger_selected": true,
             "start_components": {
-              "start_score": 81.0,
+              "start_score": 81.1,
               "availability": 100.0,
               "expected_minutes": 90.0,
               "next_fixture": 40.0,
-              "floor": 90.0,
-              "upside": 70.7,
+              "floor": 90.1,
+              "upside": 70.8,
               "sample_confidence": 69.7,
               "role_evidence": "MEDIUM",
               "evidence_factor": 0.97,
@@ -17143,8 +17143,8 @@
               "availability": 100.0,
               "expected_minutes": 90.0,
               "next_fixture": 40.0,
-              "floor": 96.3,
-              "upside": 84.2,
+              "floor": 96.4,
+              "upside": 84.3,
               "sample_confidence": 68.0,
               "role_evidence": "MEDIUM",
               "evidence_factor": 0.968,
@@ -19826,9 +19826,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "d5a747f5da488849"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       9,
       238,
