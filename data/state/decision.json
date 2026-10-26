@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-10-26T04:53:17.498397+00:00",
+  "captured_at": "2026-10-26T15:14:16.962605+00:00",
   "gameweek": 9,
   "scoring_gameweek": 8,
-  "scoring_phase": "LIVE",
+  "scoring_phase": "FINAL",
   "players": {
     "124": {
       "player_id": 124,
@@ -13763,15 +13763,15 @@
       "chance_next_round": null,
       "news": "",
       "availability_score": 100.0,
-      "expected_minutes": 60.0,
+      "expected_minutes": 12.0,
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "PASS",
-      "roster_score": 52.1,
-      "stash_score": 48.5,
+      "roster_score": 41.2,
+      "stash_score": 42.0,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Kelleher",
-      "waiver_delta": -28.0,
+      "waiver_delta": -40.4,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -14210,7 +14210,7 @@
     "model": "v0.3",
     "current": {
       "gameweek": 8,
-      "phase": "LIVE",
+      "phase": "FINAL",
       "forecast": {
         "model": "v0.3",
         "captured_at": "2026-10-17T12:13:23.249403+00:00",
@@ -14381,15 +14381,19 @@
           }
         ],
         "official_points": 42.0,
-        "h2h_my_points": 21.0,
-        "h2h_opponent_points": 8.0,
-        "h2h_edge": 13.0,
+        "h2h_my_points": 42.0,
+        "h2h_opponent_points": 33.0,
+        "h2h_edge": 9.0,
         "h2h_result": "WIN",
         "h2h_score_source": "league_details"
       },
       "evaluation": {
-        "complete": false,
-        "calibration_eligible": true
+        "complete": true,
+        "calibration_eligible": true,
+        "recommended_absolute_error": 8.5,
+        "h2h_edge_error": 2.3,
+        "predicted_h2h_result": "WIN",
+        "h2h_result_correct": true
       },
       "deadline_selection": {
         "baseline": {
@@ -14911,18 +14915,18 @@
       },
       "selection_comparison": {
         "captured_at": "2026-10-23T13:29:35.217149+00:00",
-        "complete": false,
+        "complete": true,
         "baseline": {
           "projected_points": 50.9,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 54.0,
+          "absolute_error": 3.1
         },
         "challenger": {
           "projected_points": 50.9,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 54.0,
+          "absolute_error": 3.1
         },
-        "challenger_gain": null,
+        "challenger_gain": 0.0,
         "note": "Raw XI player points, without simulated autosubs; experimental selection only."
       }
     },
@@ -16819,7 +16823,7 @@
       "9": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-26T04:53:17.498397+00:00",
+          "captured_at": "2026-10-26T15:14:16.962605+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -16928,7 +16932,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-26T04:53:17.498397+00:00",
+          "captured_at": "2026-10-26T15:14:16.962605+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -17801,6 +17805,26 @@
         "occurrences": 1,
         "status": "resolved",
         "resolved_at": "2026-10-24T22:31:40.166752+00:00"
+      },
+      {
+        "kind": "gameweek_result",
+        "priority": "info",
+        "title": "GW8 result captured",
+        "detail": "Official XI: 42 points. Toolkit XI: 44 actual versus 52.5 projected. H2H: 42–33.",
+        "badge": "GW FINAL",
+        "player_id": null,
+        "player": null,
+        "club": null,
+        "team_code": null,
+        "position": null,
+        "event_id": "2806e569a2bcd8f1",
+        "stream": "gameweek_result:GW8 result captured",
+        "decision_gameweek": 9,
+        "first_seen": "2026-10-26T15:14:16.962605+00:00",
+        "last_seen": "2026-10-26T15:14:16.962605+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-10-26T15:14:16.962605+00:00"
       },
       {
         "kind": "gameweek_rollover",
@@ -20131,7 +20155,9 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "2806e569a2bcd8f1"
+    ],
     "changed_player_ids": [
       9,
       78,
@@ -20160,7 +20186,7 @@
       "critical": 0,
       "important": 6,
       "watch": 18,
-      "info": 1
+      "info": 2
     },
     "active_summary": {
       "critical": 0,

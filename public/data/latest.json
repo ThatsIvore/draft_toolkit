@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T04:53:17.498397+00:00",
+  "generated_at": "2026-10-26T15:14:16.962605+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 8,
@@ -102854,12 +102854,12 @@
         "availability_score": 100.0,
         "post_return_fixture_score": null,
         "stash_fixture_score": 60.0,
-        "start_probability": 70.0,
-        "expected_minutes": 60.0,
-        "usage_score": 68.5,
+        "start_probability": 14.0,
+        "expected_minutes": 12.0,
+        "usage_score": 13.7,
         "sample_confidence": 0.0,
         "role_evidence": "LOW",
-        "floor_score": 48.3,
+        "floor_score": 34.6,
         "upside_score": 46.9,
         "points_per_90": 0.0,
         "attack_returns_per_90": 0.0,
@@ -102881,8 +102881,8 @@
         "expected_return": null,
         "expected_return_gameweek": null,
         "health_trend": "stable",
-        "roster_score": 52.1,
-        "stash_score": 48.5,
+        "roster_score": 41.2,
+        "stash_score": 42.0,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       },
@@ -102892,12 +102892,12 @@
         "drop_player": "Kelleher",
         "drop_club": "BRE",
         "position": "GKP",
-        "roster_delta": -28.7,
-        "immediate_delta": -21.2,
-        "future_delta": -23.9,
-        "floor_delta": -42.9,
+        "roster_delta": -39.6,
+        "immediate_delta": -43.8,
+        "future_delta": -30.4,
+        "floor_delta": -56.6,
         "upside_delta": -27.9,
-        "combined_delta": -28.0,
+        "combined_delta": -40.4,
         "confidence": "LOW",
         "preseason_guardrail": false,
         "true_stash_candidate": false,
@@ -123384,9 +123384,9 @@
       "freshness": {
         "scoring_gameweek": 8,
         "latest_included_gameweek": 7,
-        "scoring_event_finished": false,
+        "scoring_event_finished": true,
         "scoring_event_data_checked": false,
-        "reason": "awaiting_event_finish"
+        "reason": "awaiting_data_check"
       }
     },
     "external_match_evidence": {
@@ -124175,7 +124175,7 @@
       }
     }
   ],
-  "gameweek_phase": "LIVE",
+  "gameweek_phase": "FINAL",
   "decision_gameweek_phase": "SCHEDULED",
   "recommended_lineup": {
     "model": "v0.6.3",
@@ -127324,9 +127324,9 @@
     "gameweek": 9,
     "opponent": {
       "display_name": "Vængir Júpíters",
-      "rank": 3,
-      "h2h_points": 12,
-      "points_for": 306
+      "rank": 2,
+      "h2h_points": 15,
+      "points_for": 349
     },
     "opponent_profile": {
       "model": "v0.3",
@@ -127355,25 +127355,25 @@
         "adds": 14,
         "drops": 14,
         "average_transfer_value": 20.7,
-        "lineup_gameweeks": 7,
-        "average_lineup_efficiency": 84.6,
+        "lineup_gameweeks": 8,
+        "average_lineup_efficiency": 85.0,
         "transfer_score": 57.8,
-        "lineup_score": 49.4,
+        "lineup_score": 50.0,
         "projected_points_adjustment": 0.0,
         "evidence": "MEDIUM"
       },
       "decision_threat": {
         "level": "MEDIUM",
-        "score": 49.2,
-        "projected_points_adjustment": -0.1,
+        "score": 49.5,
+        "projected_points_adjustment": -0.0,
         "evidence": "MEDIUM",
         "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
       }
     },
     "my_standing": {
-      "rank": 5,
-      "h2h_points": 9,
-      "points_for": 323
+      "rank": 4,
+      "h2h_points": 12,
+      "points_for": 365
     },
     "result": {
       "status": "SCHEDULED",
@@ -139803,7 +139803,7 @@
     "model": "v0.3",
     "current": {
       "gameweek": 8,
-      "phase": "LIVE",
+      "phase": "FINAL",
       "forecast": {
         "model": "v0.3",
         "captured_at": "2026-10-17T12:13:23.249403+00:00",
@@ -139974,15 +139974,19 @@
           }
         ],
         "official_points": 42.0,
-        "h2h_my_points": 21.0,
-        "h2h_opponent_points": 8.0,
-        "h2h_edge": 13.0,
+        "h2h_my_points": 42.0,
+        "h2h_opponent_points": 33.0,
+        "h2h_edge": 9.0,
         "h2h_result": "WIN",
         "h2h_score_source": "league_details"
       },
       "evaluation": {
-        "complete": false,
-        "calibration_eligible": true
+        "complete": true,
+        "calibration_eligible": true,
+        "recommended_absolute_error": 8.5,
+        "h2h_edge_error": 2.3,
+        "predicted_h2h_result": "WIN",
+        "h2h_result_correct": true
       },
       "deadline_selection": {
         "baseline": {
@@ -140504,18 +140508,18 @@
       },
       "selection_comparison": {
         "captured_at": "2026-10-23T13:29:35.217149+00:00",
-        "complete": false,
+        "complete": true,
         "baseline": {
           "projected_points": 50.9,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 54.0,
+          "absolute_error": 3.1
         },
         "challenger": {
           "projected_points": 50.9,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 54.0,
+          "absolute_error": 3.1
         },
-        "challenger_gain": null,
+        "challenger_gain": 0.0,
         "note": "Raw XI player points, without simulated autosubs; experimental selection only."
       }
     },
@@ -142412,7 +142416,7 @@
       "9": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-26T04:53:17.498397+00:00",
+          "captured_at": "2026-10-26T15:14:16.962605+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142521,7 +142525,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-26T04:53:17.498397+00:00",
+          "captured_at": "2026-10-26T15:14:16.962605+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -142939,9 +142943,9 @@
         "available": true,
         "opponent": {
           "display_name": "Vængir Júpíters",
-          "rank": 3,
-          "h2h_points": 12,
-          "points_for": 306
+          "rank": 2,
+          "h2h_points": 15,
+          "points_for": 349
         },
         "my": {
           "formation": "5-3-2",
@@ -142952,12 +142956,10 @@
         },
         "opponent_projection": {
           "formation": "3-4-3",
-          "total": 47.0,
-          "range_low": 26.1,
-          "range_high": 68.0,
-          "evidence": "MEDIUM",
-          "roster_total": 47.1,
-          "decision_adjustment": -0.1
+          "total": 47.1,
+          "range_low": 26.2,
+          "range_high": 68.1,
+          "evidence": "MEDIUM"
         },
         "opponent_profile": {
           "model": "v0.3",
@@ -142986,25 +142988,25 @@
             "adds": 14,
             "drops": 14,
             "average_transfer_value": 20.7,
-            "lineup_gameweeks": 7,
-            "average_lineup_efficiency": 84.6,
+            "lineup_gameweeks": 8,
+            "average_lineup_efficiency": 85.0,
             "transfer_score": 57.8,
-            "lineup_score": 49.4,
+            "lineup_score": 50.0,
             "projected_points_adjustment": 0.0,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
             "level": "MEDIUM",
-            "score": 49.2,
-            "projected_points_adjustment": -0.1,
+            "score": 49.5,
+            "projected_points_adjustment": -0.0,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
           }
         },
-        "decision_adjustment": -0.1,
-        "projected_edge": 1.9,
+        "decision_adjustment": 0.0,
+        "projected_edge": 1.8,
         "signal": "EVEN",
-        "projection_source": "current_roster_plus_decision_profile",
+        "projection_source": "current_rosters",
         "position_edges": [
           {
             "position": "GKP",
@@ -143104,8 +143106,8 @@
         "opponent": {
           "display_name": "Weapon X",
           "rank": 6,
-          "h2h_points": 6,
-          "points_for": 295
+          "h2h_points": 9,
+          "points_for": 343
         },
         "my": {
           "formation": "5-4-1",
@@ -143116,12 +143118,12 @@
         },
         "opponent_projection": {
           "formation": "5-3-2",
-          "total": 47.2,
-          "range_low": 24.6,
-          "range_high": 69.9,
+          "total": 47.1,
+          "range_low": 24.5,
+          "range_high": 69.8,
           "evidence": "MEDIUM",
           "roster_total": 46.6,
-          "decision_adjustment": 0.6
+          "decision_adjustment": 0.5
         },
         "opponent_profile": {
           "model": "v0.3",
@@ -143150,23 +143152,23 @@
             "adds": 13,
             "drops": 13,
             "average_transfer_value": 14.2,
-            "lineup_gameweeks": 7,
-            "average_lineup_efficiency": 93.1,
+            "lineup_gameweeks": 8,
+            "average_lineup_efficiency": 91.4,
             "transfer_score": 63.9,
-            "lineup_score": 62.1,
+            "lineup_score": 59.6,
             "projected_points_adjustment": 0.4,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
-            "level": "HIGH",
-            "score": 57.2,
-            "projected_points_adjustment": 0.6,
+            "level": "MEDIUM",
+            "score": 56.5,
+            "projected_points_adjustment": 0.5,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
           }
         },
-        "decision_adjustment": 0.6,
-        "projected_edge": 6.2,
+        "decision_adjustment": 0.5,
+        "projected_edge": 6.3,
         "signal": "EDGE",
         "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
@@ -143267,9 +143269,9 @@
         "available": true,
         "opponent": {
           "display_name": "My own Wirtz enemy",
-          "rank": 2,
+          "rank": 3,
           "h2h_points": 12,
-          "points_for": 330
+          "points_for": 375
         },
         "my": {
           "formation": "5-3-2",
@@ -143314,16 +143316,16 @@
             "adds": 12,
             "drops": 12,
             "average_transfer_value": 19.7,
-            "lineup_gameweeks": 7,
-            "average_lineup_efficiency": 91.1,
+            "lineup_gameweeks": 8,
+            "average_lineup_efficiency": 91.0,
             "transfer_score": 45.8,
-            "lineup_score": 59.1,
+            "lineup_score": 58.9,
             "projected_points_adjustment": 0.3,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
             "level": "MEDIUM",
-            "score": 52.6,
+            "score": 53.0,
             "projected_points_adjustment": 0.2,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
@@ -143431,9 +143433,9 @@
         "available": true,
         "opponent": {
           "display_name": "Gooseboys",
-          "rank": 4,
+          "rank": 5,
           "h2h_points": 9,
-          "points_for": 328
+          "points_for": 368
         },
         "my": {
           "formation": "4-3-3",
@@ -143444,12 +143446,12 @@
         },
         "opponent_projection": {
           "formation": "3-5-2",
-          "total": 45.1,
-          "range_low": 23.3,
-          "range_high": 66.9,
+          "total": 45.2,
+          "range_low": 23.4,
+          "range_high": 67.0,
           "evidence": "MEDIUM",
           "roster_total": 44.6,
-          "decision_adjustment": 0.5
+          "decision_adjustment": 0.6
         },
         "opponent_profile": {
           "model": "v0.3",
@@ -143478,23 +143480,23 @@
             "adds": 10,
             "drops": 10,
             "average_transfer_value": -3.4,
-            "lineup_gameweeks": 7,
-            "average_lineup_efficiency": 96.3,
+            "lineup_gameweeks": 8,
+            "average_lineup_efficiency": 96.8,
             "transfer_score": 48.2,
-            "lineup_score": 67.0,
-            "projected_points_adjustment": 0.5,
+            "lineup_score": 67.7,
+            "projected_points_adjustment": 0.6,
             "evidence": "MEDIUM"
           },
           "decision_threat": {
-            "level": "MEDIUM",
-            "score": 56.6,
-            "projected_points_adjustment": 0.5,
+            "level": "HIGH",
+            "score": 57.8,
+            "projected_points_adjustment": 0.6,
             "evidence": "MEDIUM",
             "basis": "Draft quality is a small early-season prior; observed transfer and lineup decisions gradually replace it."
           }
         },
-        "decision_adjustment": 0.5,
-        "projected_edge": 8.8,
+        "decision_adjustment": 0.6,
+        "projected_edge": 8.7,
         "signal": "EDGE",
         "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
@@ -143599,8 +143601,8 @@
         "TRAIL": 0
       },
       "projected_for": 210.1,
-      "projected_against": 193.2,
-      "projected_net": 16.9,
+      "projected_against": 193.3,
+      "projected_net": 16.8,
       "toughest_matchup": {
         "gameweek": 11,
         "opponent": "My own Wirtz enemy",
@@ -143609,7 +143611,7 @@
       "best_opportunity": {
         "gameweek": 12,
         "opponent": "Gooseboys",
-        "projected_edge": 8.8
+        "projected_edge": 8.7
       },
       "recurring_weakness": {
         "position": "MID",
@@ -144083,6 +144085,26 @@
         "occurrences": 1,
         "status": "resolved",
         "resolved_at": "2026-10-24T22:31:40.166752+00:00"
+      },
+      {
+        "kind": "gameweek_result",
+        "priority": "info",
+        "title": "GW8 result captured",
+        "detail": "Official XI: 42 points. Toolkit XI: 44 actual versus 52.5 projected. H2H: 42–33.",
+        "badge": "GW FINAL",
+        "player_id": null,
+        "player": null,
+        "club": null,
+        "team_code": null,
+        "position": null,
+        "event_id": "2806e569a2bcd8f1",
+        "stream": "gameweek_result:GW8 result captured",
+        "decision_gameweek": 9,
+        "first_seen": "2026-10-26T15:14:16.962605+00:00",
+        "last_seen": "2026-10-26T15:14:16.962605+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-10-26T15:14:16.962605+00:00"
       },
       {
         "kind": "gameweek_rollover",
@@ -146413,7 +146435,9 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "2806e569a2bcd8f1"
+    ],
     "changed_player_ids": [
       9,
       78,
@@ -146442,7 +146466,7 @@
       "critical": 0,
       "important": 6,
       "watch": 18,
-      "info": 1
+      "info": 2
     },
     "active_summary": {
       "critical": 0,
