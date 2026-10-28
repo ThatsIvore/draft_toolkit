@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T15:09:22.708108+00:00",
+  "generated_at": "2026-10-28T21:08:47.590649+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 8,
@@ -9,7 +9,7 @@
     "available_count": 477,
     "tracked_players": 669,
     "ownership_changes": 0,
-    "injured_or_doubtful_count": 101
+    "injured_or_doubtful_count": 96
   },
   "my_squad": [
     {
@@ -7188,8 +7188,8 @@
       "team_code": 56,
       "position": "DEF",
       "status": "a",
-      "chance_next_round": 75,
-      "news": "Groin injury - 75% chance of playing",
+      "chance_next_round": 100,
+      "news": "",
       "news_added": "2026-10-10T16:30:09.200467Z",
       "event_points": 0,
       "total_points": 15,
@@ -7266,16 +7266,16 @@
         "baseline_score": 22.8,
         "fixture_score": 64.8,
         "future_fixture_score": 57.3,
-        "availability_score": 75.0,
+        "availability_score": 100.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 37.3,
-        "start_probability": 42.5,
-        "expected_minutes": 28.9,
-        "usage_score": 37.8,
+        "stash_fixture_score": 57.3,
+        "start_probability": 56.7,
+        "expected_minutes": 38.5,
+        "usage_score": 50.4,
         "sample_confidence": 9.5,
         "role_evidence": "LOW",
-        "floor_score": 40.1,
-        "upside_score": 52.7,
+        "floor_score": 48.3,
+        "upside_score": 62.4,
         "points_per_90": 3.15,
         "attack_returns_per_90": 0.21,
         "historical_prior_active": true,
@@ -7353,12 +7353,12 @@
             }
           ]
         },
-        "injury_return_signal": "near-return",
+        "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 46.4,
-        "stash_score": 39.1,
+        "health_trend": "improving",
+        "roster_score": 53.7,
+        "stash_score": 50.6,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       },
@@ -7368,26 +7368,25 @@
         "drop_player": "Vuskovic",
         "drop_club": "BHA",
         "position": "DEF",
-        "roster_delta": -24.0,
-        "immediate_delta": -27.7,
-        "future_delta": -32.9,
-        "floor_delta": -37.0,
-        "upside_delta": -31.0,
-        "combined_delta": -29.2,
+        "roster_delta": -16.7,
+        "immediate_delta": -17.5,
+        "future_delta": -21.4,
+        "floor_delta": -28.8,
+        "upside_delta": -21.3,
+        "combined_delta": -20.0,
         "confidence": "LOW",
         "preseason_guardrail": false,
-        "true_stash_candidate": true,
+        "true_stash_candidate": false,
         "action": "HOLD / WATCH",
         "comparison_action": "KEEP ROSTER",
         "policy_revision": "20260910.2",
-        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. The move reduces four-Gameweek roster value. Production baseline 22.8 versus 55.1: more than 5 points lower. Incoming player is not fully available. Expected minutes are below 65. No urgent availability or playing-time weakness to address.",
+        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. The move reduces four-Gameweek roster value. Production baseline 22.8 versus 55.1: more than 5 points lower. Expected minutes are below 65. No urgent availability or playing-time weakness to address.",
         "priority_checks_failed": [
           "Overall improvement is below the priority threshold of 20 heuristic points.",
           "Comparison evidence is not HIGH.",
           "The move reduces the projected floor.",
           "The move reduces four-Gameweek roster value.",
           "Production baseline 22.8 versus 55.1: more than 5 points lower.",
-          "Incoming player is not fully available.",
           "Expected minutes are below 65.",
           "No urgent availability or playing-time weakness to address."
         ]
@@ -18337,8 +18336,8 @@
       "team_code": 31,
       "position": "GKP",
       "status": "a",
-      "chance_next_round": 75,
-      "news": "Foot injury - 75% chance of playing",
+      "chance_next_round": 100,
+      "news": "",
       "news_added": "2026-09-12T14:00:09.378740Z",
       "event_points": 0,
       "total_points": 5,
@@ -18415,16 +18414,16 @@
         "baseline_score": 75.0,
         "fixture_score": 62.6,
         "future_fixture_score": 63.9,
-        "availability_score": 75.0,
+        "availability_score": 100.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 41.6,
-        "start_probability": 25.0,
-        "expected_minutes": 22.5,
-        "usage_score": 25.0,
+        "stash_fixture_score": 63.9,
+        "start_probability": 33.3,
+        "expected_minutes": 30.0,
+        "usage_score": 33.3,
         "sample_confidence": 83.0,
         "role_evidence": "HIGH",
-        "floor_score": 65.6,
-        "upside_score": 66.3,
+        "floor_score": 72.6,
+        "upside_score": 76.8,
         "points_per_90": 3.17,
         "attack_returns_per_90": 0.0,
         "historical_prior_active": true,
@@ -18502,14 +18501,14 @@
             }
           ]
         },
-        "injury_return_signal": "near-return",
+        "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 62.5,
-        "stash_score": 57.2,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
+        "health_trend": "improving",
+        "roster_score": 69.0,
+        "stash_score": 69.0,
+        "recommendation": "STASH",
+        "recommendation_reason": "Health outlook improved while future value remains strong."
       },
       "replacement": {
         "model": "v0.6.0",
@@ -18517,25 +18516,24 @@
         "drop_player": "Kelleher",
         "drop_club": "BRE",
         "position": "GKP",
-        "roster_delta": -18.1,
-        "immediate_delta": -33.5,
-        "future_delta": -15.0,
-        "floor_delta": -25.5,
-        "upside_delta": -8.2,
-        "combined_delta": -21.5,
+        "roster_delta": -11.6,
+        "immediate_delta": -25.1,
+        "future_delta": -3.2,
+        "floor_delta": -18.5,
+        "upside_delta": 2.3,
+        "combined_delta": -13.1,
         "confidence": "MEDIUM",
         "preseason_guardrail": false,
-        "true_stash_candidate": true,
+        "true_stash_candidate": false,
         "action": "HOLD / WATCH",
         "comparison_action": "KEEP ROSTER",
         "policy_revision": "20260910.2",
-        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. The move reduces four-Gameweek roster value. Incoming player is not fully available. Expected minutes are below 65. No urgent availability or playing-time weakness to address.",
+        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. The move reduces four-Gameweek roster value. Expected minutes are below 65. No urgent availability or playing-time weakness to address.",
         "priority_checks_failed": [
           "Overall improvement is below the priority threshold of 20 heuristic points.",
           "Comparison evidence is not HIGH.",
           "The move reduces the projected floor.",
           "The move reduces four-Gameweek roster value.",
-          "Incoming player is not fully available.",
           "Expected minutes are below 65.",
           "No urgent availability or playing-time weakness to address."
         ]
@@ -54280,8 +54278,8 @@
       "team_code": 36,
       "position": "DEF",
       "status": "a",
-      "chance_next_round": 75,
-      "news": "Knee injury - 75% chance of playing",
+      "chance_next_round": 100,
+      "news": "",
       "news_added": "2026-09-04T09:30:08.612904Z",
       "event_points": 0,
       "total_points": 7,
@@ -54358,16 +54356,16 @@
         "baseline_score": 74.6,
         "fixture_score": 51.2,
         "future_fixture_score": 66.6,
-        "availability_score": 75.0,
+        "availability_score": 100.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 43.3,
-        "start_probability": 22.2,
-        "expected_minutes": 20.7,
-        "usage_score": 22.5,
+        "stash_fixture_score": 66.6,
+        "start_probability": 29.6,
+        "expected_minutes": 27.6,
+        "usage_score": 30.0,
         "sample_confidence": 89.6,
         "role_evidence": "HIGH",
-        "floor_score": 64.6,
-        "upside_score": 69.7,
+        "floor_score": 71.4,
+        "upside_score": 80.4,
         "points_per_90": 4.4,
         "attack_returns_per_90": 0.22,
         "historical_prior_active": true,
@@ -54445,14 +54443,14 @@
             }
           ]
         },
-        "injury_return_signal": "near-return",
+        "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 59.1,
-        "stash_score": 58.0,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
+        "health_trend": "improving",
+        "roster_score": 65.4,
+        "stash_score": 70.1,
+        "recommendation": "STASH",
+        "recommendation_reason": "Health outlook improved while future value remains strong."
       },
       "replacement": {
         "model": "v0.6.0",
@@ -54460,25 +54458,24 @@
         "drop_player": "Vuskovic",
         "drop_club": "BHA",
         "position": "DEF",
-        "roster_delta": -11.3,
-        "immediate_delta": -30.3,
-        "future_delta": -14.0,
-        "floor_delta": -12.5,
-        "upside_delta": -14.0,
-        "combined_delta": -17.0,
+        "roster_delta": -5.0,
+        "immediate_delta": -22.3,
+        "future_delta": -1.9,
+        "floor_delta": -5.7,
+        "upside_delta": -3.3,
+        "combined_delta": -8.7,
         "confidence": "LOW",
         "preseason_guardrail": false,
-        "true_stash_candidate": true,
+        "true_stash_candidate": false,
         "action": "HOLD / WATCH",
         "comparison_action": "KEEP ROSTER",
         "policy_revision": "20260910.2",
-        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. The move reduces four-Gameweek roster value. Incoming player is not fully available. Expected minutes are below 65. No urgent availability or playing-time weakness to address.",
+        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Comparison evidence is not HIGH. The move reduces the projected floor. The move reduces four-Gameweek roster value. Expected minutes are below 65. No urgent availability or playing-time weakness to address.",
         "priority_checks_failed": [
           "Overall improvement is below the priority threshold of 20 heuristic points.",
           "Comparison evidence is not HIGH.",
           "The move reduces the projected floor.",
           "The move reduces four-Gameweek roster value.",
-          "Incoming player is not fully available.",
           "Expected minutes are below 65.",
           "No urgent availability or playing-time weakness to address."
         ]
@@ -80768,8 +80765,8 @@
       "team_code": 36,
       "position": "MID",
       "status": "a",
-      "chance_next_round": 75,
-      "news": "Leg injury - 75% chance of playing",
+      "chance_next_round": 100,
+      "news": "",
       "news_added": "2026-08-14T18:00:06.418033Z",
       "event_points": 0,
       "total_points": 0,
@@ -80846,16 +80843,16 @@
         "baseline_score": 74.9,
         "fixture_score": 51.2,
         "future_fixture_score": 66.6,
-        "availability_score": 75.0,
+        "availability_score": 100.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 43.3,
-        "start_probability": 25.0,
-        "expected_minutes": 22.5,
-        "usage_score": 25.0,
+        "stash_fixture_score": 66.6,
+        "start_probability": 33.3,
+        "expected_minutes": 30.0,
+        "usage_score": 33.3,
         "sample_confidence": 100.0,
         "role_evidence": "HIGH",
-        "floor_score": 65.3,
-        "upside_score": 65.3,
+        "floor_score": 72.4,
+        "upside_score": 76.0,
         "points_per_90": 4.41,
         "attack_returns_per_90": 0.39,
         "historical_prior_active": true,
@@ -80933,14 +80930,14 @@
             }
           ]
         },
-        "injury_return_signal": "near-return",
+        "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 59.7,
-        "stash_score": 57.5,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
+        "health_trend": "improving",
+        "roster_score": 66.2,
+        "stash_score": 69.7,
+        "recommendation": "STASH",
+        "recommendation_reason": "Health outlook improved while future value remains strong."
       },
       "replacement": {
         "model": "v0.6.0",
@@ -80948,23 +80945,21 @@
         "drop_player": "Saka",
         "drop_club": "ARS",
         "position": "MID",
-        "roster_delta": 14.7,
-        "immediate_delta": 23.0,
-        "future_delta": 7.2,
-        "floor_delta": 15.9,
-        "upside_delta": 2.8,
-        "combined_delta": 14.4,
+        "roster_delta": 21.2,
+        "immediate_delta": 31.4,
+        "future_delta": 19.4,
+        "floor_delta": 23.0,
+        "upside_delta": 13.5,
+        "combined_delta": 22.9,
         "confidence": "HIGH",
         "preseason_guardrail": false,
-        "true_stash_candidate": true,
+        "true_stash_candidate": false,
         "action": "CONSIDER",
         "comparison_action": "SWAP NOW",
         "policy_revision": "20260910.2",
-        "reason": "Overall improvement is below the priority threshold of 20 heuristic points. Production baseline 74.9 versus 85.3: more than 5 points lower. Incoming player is not fully available. Expected minutes are below 65.",
+        "reason": "Production baseline 74.9 versus 85.3: more than 5 points lower. Expected minutes are below 65.",
         "priority_checks_failed": [
-          "Overall improvement is below the priority threshold of 20 heuristic points.",
           "Production baseline 74.9 versus 85.3: more than 5 points lower.",
-          "Incoming player is not fully available.",
           "Expected minutes are below 65."
         ]
       }
@@ -104624,189 +104619,6 @@
   ],
   "injury_watch": [
     {
-      "player_id": 541,
-      "player": "Meunier",
-      "club": "SUN",
-      "team_id": 20,
-      "team_code": 56,
-      "position": "DEF",
-      "status": "a",
-      "chance_next_round": 75,
-      "news": "Groin injury - 75% chance of playing",
-      "news_added": "2026-10-10T16:30:09.200467Z",
-      "event_points": 0,
-      "total_points": 15,
-      "minutes": 429,
-      "starts": 6,
-      "goals_scored": 0,
-      "assists": 1,
-      "clean_sheets": 1,
-      "bonus": 0,
-      "expected_goal_involvements": "1.07",
-      "form": "0.3",
-      "points_per_game": "2.5",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 9,
-          "matches": [
-            {
-              "opponent_id": 7,
-              "opponent": "COV",
-              "venue": "A",
-              "difficulty": 2,
-              "kickoff_time": "2026-10-31T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 10,
-          "matches": [
-            {
-              "opponent_id": 6,
-              "opponent": "CHE",
-              "venue": "H",
-              "difficulty": 4,
-              "kickoff_time": "2026-11-08T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 2,
-              "opponent": "AVL",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-21T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 12,
-          "matches": [
-            {
-              "opponent_id": 19,
-              "opponent": "TOT",
-              "venue": "H",
-              "difficulty": 2,
-              "kickoff_time": "2026-11-29T14:05:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 22.8,
-        "fixture_score": 64.8,
-        "future_fixture_score": 57.3,
-        "availability_score": 75.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 37.3,
-        "start_probability": 42.5,
-        "expected_minutes": 28.9,
-        "usage_score": 37.8,
-        "sample_confidence": 9.5,
-        "role_evidence": "LOW",
-        "floor_score": 40.1,
-        "upside_score": 52.7,
-        "points_per_90": 3.15,
-        "attack_returns_per_90": 0.21,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 38.5,
-          "grade": "D",
-          "adjustment": -0.31,
-          "confidence": 27.4,
-          "completed_gameweeks": 4,
-          "appearances": 2,
-          "minutes": 111,
-          "starts": 2,
-          "gameweeks": [
-            {
-              "gameweek": 8,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 7,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 6,
-              "minutes": 33,
-              "starts": 1,
-              "points": 1,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.15,
-              "xa": 0.0,
-              "xgi": 0.15,
-              "defensive_contribution": 0,
-              "played": true,
-              "grade_score": 30.6,
-              "grade": "D"
-            },
-            {
-              "gameweek": 5,
-              "minutes": 78,
-              "starts": 1,
-              "points": 3,
-              "bonus": 0,
-              "bps": 5,
-              "xg": 0.0,
-              "xa": 0.45,
-              "xgi": 0.45,
-              "defensive_contribution": 4,
-              "played": true,
-              "grade_score": 52.7,
-              "grade": "C"
-            }
-          ]
-        },
-        "injury_return_signal": "near-return",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 46.4,
-        "stash_score": 39.1,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
-      }
-    },
-    {
       "player_id": 28,
       "player": "Martinez",
       "club": "CHE",
@@ -105717,189 +105529,6 @@
         "health_trend": "stable",
         "roster_score": 18.1,
         "stash_score": 15.5,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
-      }
-    },
-    {
-      "player_id": 198,
-      "player": "Henderson",
-      "club": "CRY",
-      "team_id": 8,
-      "team_code": 31,
-      "position": "GKP",
-      "status": "a",
-      "chance_next_round": 75,
-      "news": "Foot injury - 75% chance of playing",
-      "news_added": "2026-09-12T14:00:09.378740Z",
-      "event_points": 0,
-      "total_points": 5,
-      "minutes": 270,
-      "starts": 3,
-      "goals_scored": 0,
-      "assists": 0,
-      "clean_sheets": 0,
-      "bonus": 0,
-      "expected_goal_involvements": "0.00",
-      "form": "0.0",
-      "points_per_game": "1.7",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 9,
-          "matches": [
-            {
-              "opponent_id": 19,
-              "opponent": "TOT",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-10-31T17:30:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 10,
-          "matches": [
-            {
-              "opponent_id": 14,
-              "opponent": "LIV",
-              "venue": "H",
-              "difficulty": 4,
-              "kickoff_time": "2026-11-08T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 7,
-              "opponent": "COV",
-              "venue": "A",
-              "difficulty": 2,
-              "kickoff_time": "2026-11-21T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 12,
-          "matches": [
-            {
-              "opponent_id": 11,
-              "opponent": "HUL",
-              "venue": "H",
-              "difficulty": 2,
-              "kickoff_time": "2026-11-29T14:05:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 75.0,
-        "fixture_score": 62.6,
-        "future_fixture_score": 63.9,
-        "availability_score": 75.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 41.6,
-        "start_probability": 25.0,
-        "expected_minutes": 22.5,
-        "usage_score": 25.0,
-        "sample_confidence": 83.0,
-        "role_evidence": "HIGH",
-        "floor_score": 65.6,
-        "upside_score": 66.3,
-        "points_per_90": 3.17,
-        "attack_returns_per_90": 0.0,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 50.0,
-          "grade": null,
-          "adjustment": 0.0,
-          "confidence": 0.0,
-          "completed_gameweeks": 4,
-          "appearances": 0,
-          "minutes": 0,
-          "starts": 0,
-          "gameweeks": [
-            {
-              "gameweek": 8,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 7,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 6,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 5,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            }
-          ]
-        },
-        "injury_return_signal": "near-return",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 62.5,
-        "stash_score": 57.2,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       }
@@ -112676,189 +112305,6 @@
       }
     },
     {
-      "player_id": 130,
-      "player": "Wieffer",
-      "club": "BHA",
-      "team_id": 5,
-      "team_code": 36,
-      "position": "DEF",
-      "status": "a",
-      "chance_next_round": 75,
-      "news": "Knee injury - 75% chance of playing",
-      "news_added": "2026-09-04T09:30:08.612904Z",
-      "event_points": 0,
-      "total_points": 7,
-      "minutes": 156,
-      "starts": 2,
-      "goals_scored": 0,
-      "assists": 0,
-      "clean_sheets": 1,
-      "bonus": 1,
-      "expected_goal_involvements": "0.25",
-      "form": "0.0",
-      "points_per_game": "3.5",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 9,
-          "matches": [
-            {
-              "opponent_id": 15,
-              "opponent": "MCI",
-              "venue": "A",
-              "difficulty": 5,
-              "kickoff_time": "2026-10-31T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 10,
-          "matches": [
-            {
-              "opponent_id": 4,
-              "opponent": "BRE",
-              "venue": "H",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-08T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 11,
-              "opponent": "HUL",
-              "venue": "A",
-              "difficulty": 2,
-              "kickoff_time": "2026-11-22T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 12,
-          "matches": [
-            {
-              "opponent_id": 17,
-              "opponent": "NEW",
-              "venue": "H",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-29T14:05:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 74.6,
-        "fixture_score": 51.2,
-        "future_fixture_score": 66.6,
-        "availability_score": 75.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 43.3,
-        "start_probability": 22.2,
-        "expected_minutes": 20.7,
-        "usage_score": 22.5,
-        "sample_confidence": 89.6,
-        "role_evidence": "HIGH",
-        "floor_score": 64.6,
-        "upside_score": 69.7,
-        "points_per_90": 4.4,
-        "attack_returns_per_90": 0.22,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 50.0,
-          "grade": null,
-          "adjustment": 0.0,
-          "confidence": 0.0,
-          "completed_gameweeks": 4,
-          "appearances": 0,
-          "minutes": 0,
-          "starts": 0,
-          "gameweeks": [
-            {
-              "gameweek": 8,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 7,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 6,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 5,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            }
-          ]
-        },
-        "injury_return_signal": "near-return",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 59.1,
-        "stash_score": 58.0,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
-      }
-    },
-    {
       "player_id": 589,
       "player": "Gourna-Douath",
       "club": "HUL",
@@ -117612,189 +117058,6 @@
         "health_trend": "stable",
         "roster_score": 38.6,
         "stash_score": 49.8,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot."
-      }
-    },
-    {
-      "player_id": 122,
-      "player": "Minteh",
-      "club": "BHA",
-      "team_id": 5,
-      "team_code": 36,
-      "position": "MID",
-      "status": "a",
-      "chance_next_round": 75,
-      "news": "Leg injury - 75% chance of playing",
-      "news_added": "2026-08-14T18:00:06.418033Z",
-      "event_points": 0,
-      "total_points": 0,
-      "minutes": 0,
-      "starts": 0,
-      "goals_scored": 0,
-      "assists": 0,
-      "clean_sheets": 0,
-      "bonus": 0,
-      "expected_goal_involvements": "0.00",
-      "form": "0.0",
-      "points_per_game": "0.0",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 9,
-          "matches": [
-            {
-              "opponent_id": 15,
-              "opponent": "MCI",
-              "venue": "A",
-              "difficulty": 5,
-              "kickoff_time": "2026-10-31T15:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 10,
-          "matches": [
-            {
-              "opponent_id": 4,
-              "opponent": "BRE",
-              "venue": "H",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-08T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 11,
-              "opponent": "HUL",
-              "venue": "A",
-              "difficulty": 2,
-              "kickoff_time": "2026-11-22T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 12,
-          "matches": [
-            {
-              "opponent_id": 17,
-              "opponent": "NEW",
-              "venue": "H",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-29T14:05:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 74.9,
-        "fixture_score": 51.2,
-        "future_fixture_score": 66.6,
-        "availability_score": 75.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 43.3,
-        "start_probability": 25.0,
-        "expected_minutes": 22.5,
-        "usage_score": 25.0,
-        "sample_confidence": 100.0,
-        "role_evidence": "HIGH",
-        "floor_score": 65.3,
-        "upside_score": 65.3,
-        "points_per_90": 4.41,
-        "attack_returns_per_90": 0.39,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 50.0,
-          "grade": null,
-          "adjustment": 0.0,
-          "confidence": 0.0,
-          "completed_gameweeks": 4,
-          "appearances": 0,
-          "minutes": 0,
-          "starts": 0,
-          "gameweeks": [
-            {
-              "gameweek": 8,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 7,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 6,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            },
-            {
-              "gameweek": 5,
-              "minutes": 0,
-              "starts": 0,
-              "points": 0,
-              "bonus": 0,
-              "bps": 0,
-              "xg": 0.0,
-              "xa": 0.0,
-              "xgi": 0.0,
-              "defensive_contribution": 0,
-              "played": false,
-              "grade_score": null,
-              "grade": null
-            }
-          ]
-        },
-        "injury_return_signal": "near-return",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 59.7,
-        "stash_score": 57.5,
         "recommendation": "PASS",
         "recommendation_reason": "Current value does not justify using a roster spot."
       }
@@ -122741,189 +122004,6 @@
       }
     },
     {
-      "player_id": 366,
-      "player": "Wirtz",
-      "club": "LIV",
-      "team_id": 14,
-      "team_code": 14,
-      "position": "MID",
-      "status": "o",
-      "chance_next_round": 75,
-      "news": "Ankle injury - 75% chance of playing",
-      "news_added": "2026-10-25T17:00:09.888666Z",
-      "event_points": 6,
-      "total_points": 31,
-      "minutes": 621,
-      "starts": 8,
-      "goals_scored": 0,
-      "assists": 4,
-      "clean_sheets": 4,
-      "bonus": 0,
-      "expected_goal_involvements": "2.26",
-      "form": "4.3",
-      "points_per_game": "3.9",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 9,
-          "matches": [
-            {
-              "opponent_id": 1,
-              "opponent": "ARS",
-              "venue": "H",
-              "difficulty": 4,
-              "kickoff_time": "2026-11-01T16:30:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 10,
-          "matches": [
-            {
-              "opponent_id": 8,
-              "opponent": "CRY",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-08T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 16,
-              "opponent": "MUN",
-              "venue": "H",
-              "difficulty": 4,
-              "kickoff_time": "2026-11-22T16:30:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 12,
-          "matches": [
-            {
-              "opponent_id": 9,
-              "opponent": "EVE",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-29T12:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 73.9,
-        "fixture_score": 49.0,
-        "future_fixture_score": 53.4,
-        "availability_score": 75.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 34.7,
-        "start_probability": 74.2,
-        "expected_minutes": 58.1,
-        "usage_score": 69.9,
-        "sample_confidence": 72.4,
-        "role_evidence": "HIGH",
-        "floor_score": 76.1,
-        "upside_score": 65.7,
-        "points_per_90": 4.63,
-        "attack_returns_per_90": 0.43,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 76.7,
-          "grade": "A",
-          "adjustment": 2.67,
-          "confidence": 100.0,
-          "completed_gameweeks": 4,
-          "appearances": 4,
-          "minutes": 289,
-          "starts": 4,
-          "gameweeks": [
-            {
-              "gameweek": 8,
-              "minutes": 64,
-              "starts": 1,
-              "points": 6,
-              "bonus": 0,
-              "bps": 23,
-              "xg": 0.07,
-              "xa": 0.24,
-              "xgi": 0.31,
-              "defensive_contribution": 9,
-              "played": true,
-              "grade_score": 86.5,
-              "grade": "A"
-            },
-            {
-              "gameweek": 7,
-              "minutes": 90,
-              "starts": 1,
-              "points": 5,
-              "bonus": 0,
-              "bps": 25,
-              "xg": 0.01,
-              "xa": 0.19,
-              "xgi": 0.2,
-              "defensive_contribution": 1,
-              "played": true,
-              "grade_score": 76.6,
-              "grade": "A"
-            },
-            {
-              "gameweek": 6,
-              "minutes": 65,
-              "starts": 1,
-              "points": 2,
-              "bonus": 0,
-              "bps": 7,
-              "xg": 0.15,
-              "xa": 0.2,
-              "xgi": 0.35,
-              "defensive_contribution": 4,
-              "played": true,
-              "grade_score": 51.5,
-              "grade": "C"
-            },
-            {
-              "gameweek": 5,
-              "minutes": 70,
-              "starts": 1,
-              "points": 6,
-              "bonus": 0,
-              "bps": 25,
-              "xg": 0.22,
-              "xa": 0.05,
-              "xgi": 0.27,
-              "defensive_contribution": 8,
-              "played": true,
-              "grade_score": 82.6,
-              "grade": "A"
-            }
-          ]
-        },
-        "injury_return_signal": "near-return",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 67.8,
-        "stash_score": 60.1,
-        "recommendation": "WATCH",
-        "recommendation_reason": "Owned by another manager; monitor for a future drop or status change."
-      }
-    },
-    {
       "player_id": 586,
       "player": "Mendy",
       "club": "HUL",
@@ -123120,7 +122200,7 @@
       "monitor": 4,
       "dated_returns": 2,
       "decision_count": 5,
-      "active_watch_count": 90,
+      "active_watch_count": 86,
       "transfer_alerts": 0,
       "early_pickups": 0
     },
@@ -143512,7 +142592,7 @@
       "9": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-28T15:09:22.708108+00:00",
+          "captured_at": "2026-10-28T21:08:47.590649+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -143621,7 +142701,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-28T15:09:22.708108+00:00",
+          "captured_at": "2026-10-28T21:08:47.590649+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144377,12 +143457,12 @@
           "evidence": "MEDIUM"
         },
         "opponent_projection": {
-          "formation": "5-3-2",
-          "total": 52.7,
-          "range_low": 28.5,
-          "range_high": 76.8,
+          "formation": "4-4-2",
+          "total": 52.3,
+          "range_low": 29.1,
+          "range_high": 75.4,
           "evidence": "MEDIUM",
-          "roster_total": 52.5,
+          "roster_total": 52.1,
           "decision_adjustment": 0.2
         },
         "opponent_profile": {
@@ -144428,7 +143508,7 @@
           }
         },
         "decision_adjustment": 0.2,
-        "projected_edge": 1.0,
+        "projected_edge": 1.4,
         "signal": "EVEN",
         "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
@@ -144448,27 +143528,27 @@
           {
             "position": "DEF",
             "my_count": 5,
-            "opponent_count": 5,
+            "opponent_count": 4,
             "my_start_score": 83.4,
-            "opponent_start_score": 83.4,
-            "start_score_edge": -0.0,
-            "fixture_edge": -4.0,
-            "projected_points_edge": 1.3,
+            "opponent_start_score": 86.3,
+            "start_score_edge": -2.9,
+            "fixture_edge": -10.0,
+            "projected_points_edge": 5.4,
             "my_projected_points": 25.5,
-            "opponent_projected_points": 24.2,
+            "opponent_projected_points": 20.1,
             "signal": "EVEN"
           },
           {
             "position": "MID",
             "my_count": 4,
-            "opponent_count": 3,
+            "opponent_count": 4,
             "my_start_score": 81.7,
-            "opponent_start_score": 81.6,
-            "start_score_edge": 0.0,
-            "fixture_edge": -6.7,
-            "projected_points_edge": 6.5,
+            "opponent_start_score": 80.7,
+            "start_score_edge": 1.0,
+            "fixture_edge": 0.0,
+            "projected_points_edge": 2.8,
             "my_projected_points": 17.8,
-            "opponent_projected_points": 11.3,
+            "opponent_projected_points": 15.0,
             "signal": "EVEN"
           },
           {
@@ -144499,16 +143579,16 @@
           "signal": "EVEN"
         },
         "strongest_position": {
-          "position": "MID",
-          "my_count": 4,
-          "opponent_count": 3,
-          "my_start_score": 81.7,
-          "opponent_start_score": 81.6,
-          "start_score_edge": 0.0,
-          "fixture_edge": -6.7,
-          "projected_points_edge": 6.5,
-          "my_projected_points": 17.8,
-          "opponent_projected_points": 11.3,
+          "position": "DEF",
+          "my_count": 5,
+          "opponent_count": 4,
+          "my_start_score": 83.4,
+          "opponent_start_score": 86.3,
+          "start_score_edge": -2.9,
+          "fixture_edge": -10.0,
+          "projected_points_edge": 5.4,
+          "my_projected_points": 25.5,
+          "opponent_projected_points": 20.1,
           "signal": "EVEN"
         },
         "key_threat": {
@@ -144697,12 +143777,12 @@
         "TRAIL": 0
       },
       "projected_for": 207.7,
-      "projected_against": 188.0,
-      "projected_net": 19.7,
+      "projected_against": 187.6,
+      "projected_net": 20.1,
       "toughest_matchup": {
-        "gameweek": 11,
-        "opponent": "My own Wirtz enemy",
-        "projected_edge": 1.0
+        "gameweek": 9,
+        "opponent": "Vængir Júpíters",
+        "projected_edge": 1.2
       },
       "best_opportunity": {
         "gameweek": 12,
@@ -144953,6 +144033,82 @@
         "status": "active"
       },
       {
+        "kind": "availability",
+        "priority": "watch",
+        "title": "Meunier: availability improved",
+        "detail": "Availability Score 75 → 100 (+25).",
+        "badge": "↑ FIT",
+        "player_id": 541,
+        "player": "Meunier",
+        "club": "SUN",
+        "team_code": 56,
+        "position": "DEF",
+        "event_id": "c157c6a6b7ddf688",
+        "stream": "availability:player:541",
+        "decision_gameweek": 9,
+        "first_seen": "2026-10-28T21:08:47.590649+00:00",
+        "last_seen": "2026-10-28T21:08:47.590649+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "availability",
+        "priority": "watch",
+        "title": "Henderson: availability improved",
+        "detail": "Availability Score 75 → 100 (+25).",
+        "badge": "↑ FIT",
+        "player_id": 198,
+        "player": "Henderson",
+        "club": "CRY",
+        "team_code": 31,
+        "position": "GKP",
+        "event_id": "36ea39471f0f961b",
+        "stream": "availability:player:198",
+        "decision_gameweek": 9,
+        "first_seen": "2026-10-28T21:08:47.590649+00:00",
+        "last_seen": "2026-10-28T21:08:47.590649+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "availability",
+        "priority": "watch",
+        "title": "Wieffer: availability improved",
+        "detail": "Availability Score 75 → 100 (+25).",
+        "badge": "↑ FIT",
+        "player_id": 130,
+        "player": "Wieffer",
+        "club": "BHA",
+        "team_code": 36,
+        "position": "DEF",
+        "event_id": "51f2d68b9ada35b0",
+        "stream": "availability:player:130",
+        "decision_gameweek": 9,
+        "first_seen": "2026-10-28T21:08:47.590649+00:00",
+        "last_seen": "2026-10-28T21:08:47.590649+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "availability",
+        "priority": "watch",
+        "title": "Minteh: availability improved",
+        "detail": "Availability Score 75 → 100 (+25).",
+        "badge": "↑ FIT",
+        "player_id": 122,
+        "player": "Minteh",
+        "club": "BHA",
+        "team_code": 36,
+        "position": "MID",
+        "event_id": "e51ba16a4f3abab4",
+        "stream": "availability:player:122",
+        "decision_gameweek": 9,
+        "first_seen": "2026-10-28T21:08:47.590649+00:00",
+        "last_seen": "2026-10-28T21:08:47.590649+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
         "kind": "minutes_change",
         "priority": "watch",
         "title": "Madueke: expected minutes fell",
@@ -145010,25 +144166,6 @@
         "status": "active"
       },
       {
-        "kind": "availability",
-        "priority": "watch",
-        "title": "Henderson: availability improved",
-        "detail": "Availability Score 50 → 75 (+25).",
-        "badge": "↑ FIT",
-        "player_id": 198,
-        "player": "Henderson",
-        "club": "CRY",
-        "team_code": 31,
-        "position": "GKP",
-        "event_id": "38b7cc18f7b3c491",
-        "stream": "availability:player:198",
-        "decision_gameweek": 9,
-        "first_seen": "2026-10-27T20:44:02.394077+00:00",
-        "last_seen": "2026-10-27T20:44:02.394077+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
         "kind": "minutes_change",
         "priority": "watch",
         "title": "Henry: expected minutes fell",
@@ -145060,25 +144197,6 @@
         "position": "DEF",
         "event_id": "b81b4f9d89a89912",
         "stream": "role:player:328",
-        "decision_gameweek": 9,
-        "first_seen": "2026-10-27T20:44:02.394077+00:00",
-        "last_seen": "2026-10-27T20:44:02.394077+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
-        "kind": "availability",
-        "priority": "watch",
-        "title": "Wieffer: availability improved",
-        "detail": "Availability Score 25 → 75 (+50).",
-        "badge": "↑ FIT",
-        "player_id": 130,
-        "player": "Wieffer",
-        "club": "BHA",
-        "team_code": 36,
-        "position": "DEF",
-        "event_id": "dfb0c8e5389bb993",
-        "stream": "availability:player:130",
         "decision_gameweek": 9,
         "first_seen": "2026-10-27T20:44:02.394077+00:00",
         "last_seen": "2026-10-27T20:44:02.394077+00:00",
@@ -145155,25 +144273,6 @@
         "position": "MID",
         "event_id": "5a2b157f1e2054b1",
         "stream": "role:player:459",
-        "decision_gameweek": 9,
-        "first_seen": "2026-10-27T20:44:02.394077+00:00",
-        "last_seen": "2026-10-27T20:44:02.394077+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
-        "kind": "availability",
-        "priority": "watch",
-        "title": "Minteh: availability improved",
-        "detail": "Availability Score 50 → 75 (+25).",
-        "badge": "↑ FIT",
-        "player_id": 122,
-        "player": "Minteh",
-        "club": "BHA",
-        "team_code": 36,
-        "position": "MID",
-        "event_id": "aff544371c96e5b8",
-        "stream": "availability:player:122",
         "decision_gameweek": 9,
         "first_seen": "2026-10-27T20:44:02.394077+00:00",
         "last_seen": "2026-10-27T20:44:02.394077+00:00",
@@ -145839,25 +144938,6 @@
         "position": "DEF",
         "event_id": "aed31fe2694264d1",
         "stream": "role:player:145",
-        "decision_gameweek": 9,
-        "first_seen": "2026-10-26T21:02:31.900381+00:00",
-        "last_seen": "2026-10-26T21:02:31.900381+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
-        "kind": "minutes_change",
-        "priority": "watch",
-        "title": "Van den Berg: expected minutes rose",
-        "detail": "Expected-minutes heuristic 42 → 57.",
-        "badge": "↑ MIN",
-        "player_id": 85,
-        "player": "Van den Berg",
-        "club": "BRE",
-        "team_code": 94,
-        "position": "DEF",
-        "event_id": "31394c8c5a6e808f",
-        "stream": "role:player:85",
         "decision_gameweek": 9,
         "first_seen": "2026-10-26T21:02:31.900381+00:00",
         "last_seen": "2026-10-26T21:02:31.900381+00:00",
@@ -148173,7 +147253,12 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "c157c6a6b7ddf688",
+      "36ea39471f0f961b",
+      "51f2d68b9ada35b0",
+      "e51ba16a4f3abab4"
+    ],
     "changed_player_ids": [
       14,
       16,
@@ -148184,7 +147269,6 @@
       33,
       34,
       71,
-      85,
       89,
       97,
       98,
@@ -148221,6 +147305,7 @@
       501,
       504,
       539,
+      541,
       564,
       572,
       599,
