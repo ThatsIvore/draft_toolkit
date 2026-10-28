@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T05:47:59.785793+00:00",
+  "generated_at": "2026-10-28T15:09:22.708108+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 8,
@@ -40782,7 +40782,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 64.4,
         "stash_score": 58.9,
         "recommendation": "PASS",
@@ -83671,7 +83671,7 @@
         "injury_return_signal": "out",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 35.0,
         "stash_score": 41.5,
         "recommendation": "PASS",
@@ -109923,7 +109923,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 64.4,
         "stash_score": 58.9,
         "recommendation": "PASS",
@@ -118707,7 +118707,7 @@
         "injury_return_signal": "out",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 35.0,
         "stash_score": 41.5,
         "recommendation": "PASS",
@@ -121086,7 +121086,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 73.5,
         "stash_score": 66.1,
         "recommendation": "WATCH",
@@ -123162,7 +123162,7 @@
         "news": "Ankle injury - 75% chance of playing",
         "dashboard_action": "MONITOR",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -143512,7 +143512,7 @@
       "9": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-10-28T05:47:59.785793+00:00",
+          "captured_at": "2026-10-28T15:09:22.708108+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -143621,7 +143621,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-10-28T05:47:59.785793+00:00",
+          "captured_at": "2026-10-28T15:09:22.708108+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -148173,13 +148173,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "dead6bf0be85073e",
-      "61054eeaa7e9afe2",
-      "9e81206566c92527",
-      "ad1358facd6e2e55",
-      "b91a883984409571"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       14,
       16,
