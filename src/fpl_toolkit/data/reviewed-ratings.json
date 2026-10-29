@@ -1,0 +1,41 @@
+[
+  {
+    "code": 499604,
+    "provider": "fotmob",
+    "source_url": "https://www.fotmob.com/players/1478295/rayan",
+    "observed_at": "2026-10-29T14:00:00Z",
+    "season": 2026,
+    "competition": "Premier League",
+    "through_gameweek": 8,
+    "rating": 6.9,
+    "appearances": 8,
+    "starts": 8,
+    "minutes": 707
+  },
+  {
+    "code": 466525,
+    "provider": "fotmob",
+    "source_url": "https://www.fotmob.com/en-GB/players/881735",
+    "observed_at": "2026-10-29T14:00:00Z",
+    "season": 2026,
+    "competition": "Premier League",
+    "through_gameweek": 8,
+    "rating": 7.21,
+    "appearances": 8,
+    "starts": 7,
+    "minutes": 652
+  },
+  {
+    "code": 248875,
+    "provider": "fotmob",
+    "source_url": "https://www.fotmob.com/players/942368/jeremy-doku",
+    "observed_at": "2026-10-29T14:00:00Z",
+    "season": 2026,
+    "competition": "Premier League",
+    "through_gameweek": 8,
+    "rating": 7.4,
+    "appearances": 4,
+    "starts": 2,
+    "minutes": 216
+  }
+]

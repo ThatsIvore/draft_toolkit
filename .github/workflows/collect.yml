@@ -36,6 +36,7 @@ jobs:
           FPL_DRAFT_ENTRY_ID: "336654"
           FPL_DRAFT_LEAGUE_ID: ${{ vars.FPL_DRAFT_LEAGUE_ID }}
           FPL_PLANNING_HORIZON: "4"
+          FPL_FOTMOB_RATINGS: "true"
           FPL_EXTERNAL_STATS_PROVIDER: "api_football"
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: fpl-toolkit --publish

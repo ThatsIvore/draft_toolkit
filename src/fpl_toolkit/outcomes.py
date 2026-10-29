@@ -4,7 +4,7 @@ from copy import deepcopy
 from typing import Any
 
 from .h2h import player_projected_points
-from .selection_trial import points_challenger
+from .selection_trial import points_challenger, ratings_challenger
 from .optimizer import player_start_score
 
 
@@ -171,8 +171,16 @@ def _deadline_pair(report: dict[str, Any], gameweek: int, phase: str) -> dict[st
         "start_components": player_start_score(p, gameweek),
         "projected_points": player_projected_points(p, gameweek)["projected_points"],
     } for p in squad]
-    return {"baseline": candidate, "challenger": challenger, "challenger_model": "points-shadow-v1",
+    pair = {"baseline": candidate, "challenger": challenger, "challenger_model": "points-shadow-v1",
             "selection_inputs": selection_inputs}
+    ratings_xi = ratings_challenger(squad, gameweek)
+    pair["ratings_trial_status"] = "available" if ratings_xi else "insufficient_same_provider_coverage"
+    if ratings_xi:
+        rating_forecast = _capture_forecast({**report, "recommended_lineup": ratings_xi}, gameweek, phase)
+        rating_forecast["h2h"] = {}
+        pair["ratings_challenger"] = rating_forecast
+        pair["ratings_inputs"] = ratings_xi["rating_inputs"]
+    return pair
 
 
 def _selection_comparison(pair: dict[str, Any] | None, report: dict[str, Any], phase: str,
@@ -180,7 +188,7 @@ def _selection_comparison(pair: dict[str, Any] | None, report: dict[str, Any], p
     if not pair:
         return None
     output = {"captured_at": pair["baseline"]["captured_at"], "complete": False}
-    for name in ("baseline", "challenger"):
+    for name in ("baseline", "challenger") + (("ratings_challenger",) if pair.get("ratings_challenger") else ()):
         forecast = pair[name]
         actual = _actuals(report, forecast, phase, scoring_players)
         total = actual["recommended_points"] if phase == "FINAL" else None
@@ -190,6 +198,9 @@ def _selection_comparison(pair: dict[str, Any] | None, report: dict[str, Any], p
     left, right = output["baseline"]["actual_points"], output["challenger"]["actual_points"]
     output["complete"] = left is not None and right is not None
     output["challenger_gain"] = round(right - left, 1) if output["complete"] else None
+    if "ratings_challenger" in output:
+        rated = output["ratings_challenger"]["actual_points"]
+        output["ratings_gain_vs_points"] = round(rated - right, 1) if rated is not None and right is not None else None
     output["note"] = "Raw XI player points, without simulated autosubs; experimental selection only."
     return output
 

@@ -13,6 +13,8 @@ from .fixtures import attach_fixture_matrix, build_team_fixture_matrix, planning
 from .h2h import build_h2h_matchup, build_h2h_outlook
 from .injury_stash import build_injury_stash_dashboard
 from .intelligence import attach_intelligence
+from .reviewed_ratings import reviewed_ratings
+from .fotmob_ratings import collect_fotmob
 from .league_activity import completed_player_points, public_transfer_reviews
 from .lineup import fallback_lineup, normalize_lineup
 from .normalize import choose_league_id, normalize_ownership
@@ -189,6 +191,14 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
         current_gameweek=season_gw,
         recent_match_evidence=recent_evidence,
     )
+    rating_rows = None
+    rating_collection = {"status": "disabled"}
+    if settings.fotmob_ratings_enabled:
+        rating_rows, rating_collection = collect_fotmob(bootstrap, fixtures, completed_gameweeks(fantasy_bootstrap))
+    ratings, ratings_summary = reviewed_ratings(bootstrap, completed_gameweeks(fantasy_bootstrap), rows=rating_rows)
+    ratings_summary["collection"] = rating_collection
+    for player in ownership:
+        player["intelligence"]["external_ratings"] = ratings.get(player["player_id"], [])
     scoring_ownership = [
         {**{key: value for key, value in player.items() if not key.startswith("_")}, "fixtures": player.get("_scoring_fixtures", [])}
         for player in ownership
@@ -235,6 +245,7 @@ def collect(settings: Settings, client: DraftApiClient | None = None, fantasy_cl
             "freshness": evidence_freshness(fantasy_bootstrap, recent_payloads, scoring_gw, recent_status),
         },
         "external_match_evidence": public_shadow_summary(external_shadow),
+        "reviewed_external_ratings": ratings_summary,
     }
 
     scoring_phase = gameweek_phase(fixtures, scoring_gw)
