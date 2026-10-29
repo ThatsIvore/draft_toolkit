@@ -19,6 +19,7 @@ class Settings:
     output_dir: str = "data"
     external_stats_provider: str | None = None
     api_football_key: str | None = None
+    fotmob_ratings_enabled: bool = False
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -55,6 +56,7 @@ class Settings:
             output_dir=output_dir,
             external_stats_provider=external_stats_provider,
             api_football_key=api_football_key,
+            fotmob_ratings_enabled=os.getenv("FPL_FOTMOB_RATINGS", "").lower() == "true",
         )
 
 
