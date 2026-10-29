@@ -116,3 +116,23 @@ def test_shadow_excludes_blocked_players_and_keeps_public_identity_boundary():
     public = sanitize_public_report({'outcome_diagnostics': result})
     assert 'private-entry' not in str(public)
     assert 'Private Manager' not in str(public)
+
+
+def test_ratings_trial_requires_full_coverage_and_freezes_prospectively():
+    from fpl_toolkit.selection_trial import ratings_challenger
+    p = report()
+    assert ratings_challenger(p['my_squad'],1) is None
+    for player in p['my_squad']:
+        player['intelligence']['external_ratings'] = [dict(provider='fotmob',rating=8,appearances=8,minutes=700,season=2026,through_gameweek=0)]
+    before = deepcopy(p)
+    shadow = ratings_challenger(p['my_squad'],1)
+    assert p == before
+    assert all(r['experimental_multiplier']==1.05 for r in shadow['rating_inputs'].values())
+    initial = build_outcome_diagnostics(None,p,'SCHEDULED')
+    pair = initial['current']['deadline_selection']
+    assert 'ratings_challenger' in pair
+    p['_forecast_before_deadline']=False
+    p['my_squad'][0]['intelligence']['external_ratings']=[]
+    final = build_outcome_diagnostics({'outcome_diagnostics':initial},p,'FINAL')
+    assert final['current']['deadline_selection']==pair
+    assert final['current']['selection_comparison']['ratings_gain_vs_points']==0
