@@ -61,7 +61,7 @@ def parse_rating(html, mapping, bootstrap, fixtures, completed, now):
     return dict(code=mapping['code'], provider='fotmob', source_url=mapping['source_url'],
                 observed_at=now.isoformat(), season=season, competition='Premier League',
                 through_gameweek=max(completed), rating=stats['rating'], appearances=stats['matches_uppercase'],
-                starts=stats['started'], minutes=stats['minutes_played'])
+                starts=stats.get('started'), minutes=stats['minutes_played'])
 
 
 def collect_fotmob(bootstrap, fixtures, completed, *, mappings=None, now=None, fetch=None):
