@@ -8,7 +8,7 @@ def test_injury_stash_dashboard_is_wired_into_navigation_and_hash_routing():
 
     assert 'data-view="injury"' in index
     assert "app.js?v=20260921.3" in index
-    assert "intelligence-v3.js?v=20260827.1" in index
+    assert "intelligence-v3.js?v=20261029.1" in index
     assert "injury-stash-v10.css?v=20260827.1" in index
     assert "injury-stash-v10.js?v=20260827.2" in index
     assert 'data-view="injury">Health &amp; Transfers' in index
