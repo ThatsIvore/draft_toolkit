@@ -22,3 +22,9 @@ def test_public_page_collection_maps_and_validates():
 def test_stale_wrong_identity_and_unavailable_fail_closed(html):
     rows, summary=collect_fotmob(BOOT,FIX,[8],mappings=MAPPING,now=NOW,fetch=lambda u:html)
     assert rows==[] and summary['failed_or_ineligible']==1
+
+def test_goalkeeper_without_starts_preserves_unknown():
+    league={'leagueId':47,'season':'2026/2027','stats':[{'localizedTitleId':k,'value':v} for k,v in dict(rating=7.1,matches_uppercase=8,minutes_played=720).items()]}
+    rows,summary=collect_fotmob(BOOT,FIX,[8],mappings=MAPPING,now=NOW,fetch=lambda u:page(mainLeague=league))
+    assert summary['accepted']==1
+    assert rows[0]['starts'] is None
