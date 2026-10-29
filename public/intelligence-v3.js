@@ -68,6 +68,16 @@ function renderAvailable() {
   return shown.length ? `<div class="group-title"><h3>Available players</h3><span class="count">Showing ${shown.length} of ${list.length}</span></div><div class="player-list">${shown.map(p => playerCard(p,'AVAILABLE')).join('')}</div>` : '<div class="empty">No available players match these filters.</div>';
 }
 
+function externalRatingsPanel(p) {
+  const hosts = {fotmob: 'www.fotmob.com', sofascore: 'www.sofascore.com', flashscore: 'www.flashscore.com'};
+  const rows = (p.intelligence?.external_ratings || []).filter(r => {
+    try { const u = new URL(r.source_url); return u.protocol === 'https:' && u.host === hosts[r.provider] && !u.username && !u.password; }
+    catch { return false; }
+  });
+  const content = rows.length ? rows.map(r => `<div class="model-grid"><span>Season rating <b>${esc(r.rating)}/10</b></span><span>Appearances <b>${esc(r.appearances)}</b></span><span>Starts <b>${esc(r.starts ?? 'Unavailable')}</b></span><span>Minutes <b>${esc(r.minutes)}</b></span></div><div class="model-note"><a href="${esc(r.source_url)}" target="_blank" rel="noopener noreferrer">${esc(r.provider)}</a> · ${esc(r.season)}/${esc(Number(r.season) + 1)} Premier League · through GW${esc(r.through_gameweek)}<br>Collected ${esc(r.observed_at)}${r.small_sample ? '<br>Small sample: interpret cautiously.' : ''}</div>`).join('') : '<div class="model-note">No current, validated external rating available.</div>';
+  return `<div class="drawer-section"><strong>External performance ratings</strong>${content}<div class="model-note">Descriptive season averages, not predicted FPL points. Production recommendations are unchanged. A separate prospective XI experiment requires validated coverage for all 15 squad players.</div></div>`;
+}
+
 function openPlayer(id) {
   const p = allPlayers().find(x => String(x.player_id) === String(id));
   if (!p) return;
@@ -91,6 +101,7 @@ function openPlayer(id) {
     <div class="drawer-fixtures">${(p.fixtures || []).map(g => `<div class="drawer-fixture fdr-${gwDifficulty(g) || 3}"><strong>GW${g.gameweek}</strong><div>${esc(fixtureLabel(p,g.gameweek))}</div><small>Difficulty ${esc(gwDifficulty(g) || 3)}/5</small></div>`).join('')}</div>
     <div class="drawer-section"><strong>Latest status</strong><div class="news">${esc(p.news || 'No current player news')}</div></div>
     ${transferPanel}
+    ${externalRatingsPanel(p)}
     <div class="drawer-section"><strong>Recent completed-Gameweek evidence</strong><div class="model-grid"><span>Grade <b>${esc(recent.grade || '-')}</b></span><span>Score <b>${recent.status === 'available' ? esc(recent.score) : '-'}</b></span><span>Confidence <b>${recent.status === 'available' ? `${esc(recent.confidence)}%` : '-'}</b></span><span>Model adjustment <b>${recent.status === 'available' ? esc(recent.adjustment) : '0'}</b></span>${recentGameweeks}</div><div class="model-note">Only final, officially checked Gameweeks count. Grades compare players with their own position; double Gameweeks are aggregated. Influence is capped at ±5 model points.</div></div>
     <div class="drawer-section"><strong>How v0.6.0 decides</strong><div class="model-grid"><span>Roster value <b>${esc(intel.roster_score ?? '-')}</b></span><span>Stash value <b>${esc(intel.stash_score ?? '-')}</b></span><span>Post-return fixtures <b>${esc(intel.post_return_fixture_score ?? '-')}</b></span><span>Availability <b>${esc(intel.availability_score ?? '-')}</b></span></div><div class="model-note">The stash case uses fixtures from the estimated return Gameweek onward when official FPL news provides a readable date. Fixtures before that return are not credited, and the toolkit never invents a recovery date.</div></div></div>`;
   backdrop.hidden = false; drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false');
