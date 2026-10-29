@@ -26,12 +26,13 @@ def reviewed_ratings(bootstrap, completed, *, rows=None, now=None):
             age = (now - observed).total_seconds()
             rating = float(row["rating"])
             code = int(row["code"])
-            apps, starts, minutes = (int(row[k]) for k in ("appearances", "starts", "minutes"))
+            apps, minutes = (int(row[k]) for k in ("appearances", "minutes"))
+            starts = None if row.get("starts") is None else int(row["starts"])
             valid = (url.scheme == "https" and url.netloc == HOSTS[provider]
                      and str(row["season"]) == season and row["competition"] == "Premier League"
                      and completed and row["through_gameweek"] == max(completed)
                      and 0 <= age <= 48 * 3600 and math.isfinite(rating) and 0 <= rating <= 10
-                     and 0 <= starts <= apps and apps > 0 and 0 < minutes <= apps * 130
+                     and (starts is None or 0 <= starts <= apps) and apps > 0 and 0 < minutes <= apps * 130
                      and code in ids)
             if not valid:
                 raise ValueError("Ineligible evidence")
