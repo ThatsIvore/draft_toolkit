@@ -1711,8 +1711,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Groin injury - Unknown return date",
+    "chance_next_round": 75,
+    "news": "Groin injury - 75% chance of playing",
     "news_added": "2026-10-19T15:30:08.949503Z"
   },
   {
@@ -3934,8 +3934,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-10-29T22:00:09.886054Z"
   },
   {
@@ -6222,9 +6222,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-23T19:00:08.536705Z"
+    "chance_next_round": 0,
+    "news": "Unspecified injury - Unknown return date",
+    "news_added": "2026-10-30T16:00:10.210670Z"
   },
   {
     "player_id": 157,
@@ -6531,19 +6531,6 @@
     "club": "AVL",
     "team_id": 2,
     "position": "GKP",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 598,
-    "player": "Cherif",
-    "club": "COV",
-    "team_id": 7,
-    "position": "FWD",
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
@@ -7501,6 +7488,19 @@
     "news_added": "2026-10-25T17:30:09.883815Z"
   },
   {
+    "player_id": 222,
+    "player": "Strand Larsen",
+    "club": "CRY",
+    "team_id": 8,
+    "position": "FWD",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 75,
+    "news": "Ankle injury - 75% chance of playing",
+    "news_added": "2026-10-23T17:00:09.672494Z"
+  },
+  {
     "player_id": 173,
     "player": "Thomas",
     "club": "COV",
@@ -8060,19 +8060,6 @@
     "news_added": null
   },
   {
-    "player_id": 222,
-    "player": "Strand Larsen",
-    "club": "CRY",
-    "team_id": 8,
-    "position": "FWD",
-    "status": "o",
-    "owner_raw": 339421,
-    "owner_entry_id": 339421,
-    "chance_next_round": 75,
-    "news": "Ankle injury - 75% chance of playing",
-    "news_added": "2026-10-23T17:00:09.672494Z"
-  },
-  {
     "player_id": 156,
     "player": "Neto",
     "club": "CHE",
@@ -8419,9 +8406,9 @@
     "status": "o",
     "owner_raw": 338553,
     "owner_entry_id": 338553,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-16T17:00:07.929499Z"
+    "chance_next_round": 75,
+    "news": "Concussion - 75% chance of playing",
+    "news_added": "2026-10-30T15:30:09.601963Z"
   },
   {
     "player_id": 183,
@@ -8679,6 +8666,19 @@
     "status": "o",
     "owner_raw": 336654,
     "owner_entry_id": 336654,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 598,
+    "player": "Cherif",
+    "club": "COV",
+    "team_id": 7,
+    "position": "FWD",
+    "status": "o",
+    "owner_raw": 339421,
+    "owner_entry_id": 339421,
     "chance_next_round": null,
     "news": "",
     "news_added": null

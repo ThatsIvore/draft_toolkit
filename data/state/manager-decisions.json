@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T15:04:59.911867+00:00",
+  "updated_at": "2026-10-30T20:50:16.490658+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -3012,6 +3012,46 @@
             "incoming_starts": 1,
             "excess_points_per_player_week": 1.8
           }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "9": 2.2,
+            "10": 2.3,
+            "11": 2.4,
+            "12": 2.1
+          },
+          "observations": {},
+          "fingerprint": "2026-10-30T20:50:16.490658+00:00:9:598:222",
+          "captured_at": "2026-10-30T20:50:16.490658+00:00",
+          "gameweek": 9,
+          "adds": [
+            {
+              "player_id": 598,
+              "player": "Cherif",
+              "position": "FWD",
+              "roster_score": 63.7
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 222,
+              "player": "Strand Larsen",
+              "position": "FWD",
+              "roster_score": 60.0
+            }
+          ],
+          "value_delta": 3.7,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -4903,6 +4943,28 @@
       "from_team": "Weapon X",
       "to_team": "Free pool",
       "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 222,
+      "player": "Strand Larsen",
+      "club": "CRY",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-30T20:50:16.490658+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 598,
+      "player": "Cherif",
+      "club": "COV",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-10-30T20:50:16.490658+00:00",
       "gameweek": 9,
       "source": "ownership snapshot"
     }
