@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T05:54:47.362214+00:00",
+  "updated_at": "2026-10-30T15:04:59.911867+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -1101,7 +1101,8 @@
               "roster_score": 74.9
             }
           ],
-          "value_delta": 11.7
+          "value_delta": 11.7,
+          "ended_gameweek": 9
         },
         {
           "fingerprint": "3:327:471",
@@ -1157,7 +1158,8 @@
               "roster_score": 76.0
             }
           ],
-          "value_delta": -16.6
+          "value_delta": -16.6,
+          "ended_gameweek": 9
         },
         {
           "fingerprint": "4:449:84",
@@ -1382,6 +1384,46 @@
             "incoming_started_points": 3.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -1.9
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "9": 2.9,
+            "10": 3.1,
+            "11": 3.0,
+            "12": 2.8
+          },
+          "observations": {},
+          "fingerprint": "2026-10-30T15:04:59.911867+00:00:9:67:335",
+          "captured_at": "2026-10-30T15:04:59.911867+00:00",
+          "gameweek": 9,
+          "adds": [
+            {
+              "player_id": 67,
+              "player": "Rayan",
+              "position": "MID",
+              "roster_score": 76.7
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 335,
+              "player": "Stach",
+              "position": "MID",
+              "roster_score": 61.0
+            }
+          ],
+          "value_delta": 15.7,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -1754,13 +1796,66 @@
           ],
           "value_delta": 6.9,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": -2.0,
             "incoming_started_points": 1.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -4.9
+          },
+          "ended_gameweek": 9
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "9": 5.3,
+            "10": 3.8,
+            "11": 4.4,
+            "12": 4.4
+          },
+          "observations": {},
+          "fingerprint": "2026-10-30T15:04:59.911867+00:00:9:279,87:113,173",
+          "captured_at": "2026-10-30T15:04:59.911867+00:00",
+          "gameweek": 9,
+          "adds": [
+            {
+              "player_id": 87,
+              "player": "Ajer",
+              "position": "DEF",
+              "roster_score": 74.3
+            },
+            {
+              "player_id": 279,
+              "player": "Ajayi",
+              "position": "DEF",
+              "roster_score": 67.3
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 113,
+              "player": "F.Kadıoğlu",
+              "position": "DEF",
+              "roster_score": 66.2
+            },
+            {
+              "player_id": 173,
+              "player": "Thomas",
+              "position": "DEF",
+              "roster_score": 49.5
+            }
+          ],
+          "value_delta": 25.9,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -2243,14 +2338,15 @@
           ],
           "value_delta": 26.6,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 1.0,
             "incoming_started_points": 1.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -1.6
-          }
+          },
+          "ended_gameweek": 9
         },
         {
           "evaluation_version": 1,
@@ -2291,14 +2387,15 @@
           ],
           "value_delta": 31.2,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 1.0,
             "incoming_started_points": 1.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -1.9
-          }
+          },
+          "ended_gameweek": 9
         },
         {
           "evaluation_version": 1,
@@ -2346,6 +2443,58 @@
             "incoming_started_points": 2.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -10.0
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "9": 1.1,
+            "10": 0.8,
+            "11": 1.0,
+            "12": 0.9
+          },
+          "observations": {},
+          "fingerprint": "2026-10-30T15:04:59.911867+00:00:9:295,400:398,526",
+          "captured_at": "2026-10-30T15:04:59.911867+00:00",
+          "gameweek": 9,
+          "adds": [
+            {
+              "player_id": 295,
+              "player": "McBurnie",
+              "position": "FWD",
+              "roster_score": 60.0
+            },
+            {
+              "player_id": 400,
+              "player": "Doku",
+              "position": "MID",
+              "roster_score": 80.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 398,
+              "player": "Foden",
+              "position": "MID",
+              "roster_score": 74.2
+            },
+            {
+              "player_id": 526,
+              "player": "Solanke",
+              "position": "FWD",
+              "roster_score": 69.3
+            }
+          ],
+          "value_delta": -3.5,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -4644,6 +4793,116 @@
       "from_team": "Free pool",
       "to_team": "Free pool",
       "captured_at": "2026-10-23T19:58:05.573692+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 67,
+      "player": "Rayan",
+      "club": "BOU",
+      "from_team": "Free pool",
+      "to_team": "FC FC",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 87,
+      "player": "Ajer",
+      "club": "BRE",
+      "from_team": "Free pool",
+      "to_team": "No Salad",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 113,
+      "player": "F.Kadıoğlu",
+      "club": "BHA",
+      "from_team": "No Salad",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 173,
+      "player": "Thomas",
+      "club": "COV",
+      "from_team": "No Salad",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 279,
+      "player": "Ajayi",
+      "club": "HUL",
+      "from_team": "Free pool",
+      "to_team": "No Salad",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 295,
+      "player": "McBurnie",
+      "club": "HUL",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 335,
+      "player": "Stach",
+      "club": "LEE",
+      "from_team": "FC FC",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 398,
+      "player": "Foden",
+      "club": "MCI",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 400,
+      "player": "Doku",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 526,
+      "player": "Solanke",
+      "club": "TOT",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-30T15:04:59.911867+00:00",
       "gameweek": 9,
       "source": "ownership snapshot"
     }
