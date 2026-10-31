@@ -1269,8 +1269,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Suspended until 7 Nov",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-10-17T16:30:09.374216Z"
   },
   {
@@ -1373,9 +1373,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-09-09T14:30:08.192142Z"
+    "chance_next_round": 0,
+    "news": "Suspended until 21 Nov",
+    "news_added": "2026-10-31T22:00:07.593621Z"
   },
   {
     "player_id": 460,
@@ -2946,9 +2946,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-23T13:00:09.421868Z"
+    "chance_next_round": 75,
+    "news": "Thigh injury - 75% chance of playing",
+    "news_added": "2026-10-31T20:00:10.014132Z"
   },
   {
     "player_id": 174,
