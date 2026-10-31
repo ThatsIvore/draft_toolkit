@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T20:50:16.490658+00:00",
+  "updated_at": "2026-10-31T05:50:22.609984+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -350,6 +350,46 @@
             "incoming_started_points": 6.0,
             "incoming_starts": 2,
             "excess_points_per_player_week": 0.85
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "9": 3.2,
+            "10": 3.5,
+            "11": 3.2,
+            "12": 3.2
+          },
+          "observations": {},
+          "fingerprint": "2026-10-31T05:50:22.609984+00:00:9:555:200",
+          "captured_at": "2026-10-31T05:50:22.609984+00:00",
+          "gameweek": 9,
+          "adds": [
+            {
+              "player_id": 555,
+              "player": "Silva",
+              "position": "DEF",
+              "roster_score": 65.9
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 200,
+              "player": "Lacroix",
+              "position": "DEF",
+              "roster_score": 38.5
+            }
+          ],
+          "value_delta": 27.4,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -4965,6 +5005,28 @@
       "from_team": "Free pool",
       "to_team": "Gooseboys",
       "captured_at": "2026-10-30T20:50:16.490658+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 200,
+      "player": "Lacroix",
+      "club": "CHE",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T05:50:22.609984+00:00",
+      "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 555,
+      "player": "Silva",
+      "club": "BOU",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-31T05:50:22.609984+00:00",
       "gameweek": 9,
       "source": "ownership snapshot"
     }
