@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T05:50:22.609984+00:00",
+  "updated_at": "2026-10-31T14:34:07.481295+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -343,14 +343,15 @@
           ],
           "value_delta": 5.8,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 2,
             "target_gameweeks": 4,
             "points_gain": 6.0,
             "incoming_started_points": 6.0,
             "incoming_starts": 2,
             "excess_points_per_player_week": 0.85
-          }
+          },
+          "ended_gameweek": 10
         },
         {
           "evaluation_version": 1,
@@ -382,6 +383,58 @@
             }
           ],
           "value_delta": 27.4,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": 2.5,
+            "11": 2.7,
+            "12": 3.1,
+            "13": 2.2
+          },
+          "observations": {},
+          "fingerprint": "2026-10-31T14:34:07.481295+00:00:10:401,597:167,467",
+          "captured_at": "2026-10-31T14:34:07.481295+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 401,
+              "player": "Marmoush",
+              "position": "FWD",
+              "roster_score": 73.6
+            },
+            {
+              "player_id": 597,
+              "player": "Suzuki",
+              "position": "GKP",
+              "roster_score": 71.5
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 167,
+              "player": "Delap",
+              "position": "FWD",
+              "roster_score": 67.8
+            },
+            {
+              "player_id": 467,
+              "player": "Sels",
+              "position": "GKP",
+              "roster_score": 76.2
+            }
+          ],
+          "value_delta": 1.1,
           "outcome": {
             "status": "pending",
             "observed_gameweeks": 0,
@@ -5028,6 +5081,127 @@
       "to_team": "Vængir Júpíters",
       "captured_at": "2026-10-31T05:50:22.609984+00:00",
       "gameweek": 9,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 113,
+      "player": "F.Kadıoğlu",
+      "club": "BHA",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 167,
+      "player": "Delap",
+      "club": "NFO",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 173,
+      "player": "Thomas",
+      "club": "COV",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 200,
+      "player": "Lacroix",
+      "club": "CHE",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 222,
+      "player": "Strand Larsen",
+      "club": "CRY",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 335,
+      "player": "Stach",
+      "club": "LEE",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 398,
+      "player": "Foden",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 401,
+      "player": "Marmoush",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 467,
+      "player": "Sels",
+      "club": "NFO",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 526,
+      "player": "Solanke",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 597,
+      "player": "Suzuki",
+      "club": "AVL",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
       "source": "ownership snapshot"
     }
   ]
