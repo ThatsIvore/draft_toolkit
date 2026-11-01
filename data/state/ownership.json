@@ -7527,6 +7527,19 @@
     "news_added": null
   },
   {
+    "player_id": 670,
+    "player": "Subuloye",
+    "club": "CHE",
+    "team_id": 6,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
