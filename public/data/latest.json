@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T06:14:46.284231+00:00",
+  "generated_at": "2026-11-02T18:26:25.549314+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 9,
@@ -1853,7 +1853,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197655",
-            "observed_at": "2026-11-02T06:14:40.157739+00:00",
+            "observed_at": "2026-11-02T18:26:17.327254+00:00",
             "through_gameweek": 8,
             "season": 2026,
             "competition": "Premier League",
@@ -26893,7 +26893,7 @@
       "assists": 0,
       "clean_sheets": 2,
       "bonus": 4,
-      "expected_goal_involvements": "0.55",
+      "expected_goal_involvements": "0.56",
       "form": "4.0",
       "points_per_game": "3.6",
       "expected_points_next": null,
@@ -125346,7 +125346,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-02T06:14:40.157739+00:00",
+              "observed_at": "2026-11-02T18:26:17.327254+00:00",
               "through_gameweek": 8,
               "season": 2026,
               "competition": "Premier League",
@@ -129091,7 +129091,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197655",
-                "observed_at": "2026-11-02T06:14:40.157739+00:00",
+                "observed_at": "2026-11-02T18:26:17.327254+00:00",
                 "through_gameweek": 8,
                 "season": 2026,
                 "competition": "Premier League",
@@ -138418,7 +138418,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-02T06:14:40.157739+00:00",
+              "observed_at": "2026-11-02T18:26:17.327254+00:00",
               "through_gameweek": 8,
               "season": 2026,
               "competition": "Premier League",
@@ -143635,7 +143635,7 @@
       "10": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-02T06:14:46.284231+00:00",
+          "captured_at": "2026-11-02T18:26:25.549314+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -143744,7 +143744,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-02T06:14:46.284231+00:00",
+          "captured_at": "2026-11-02T18:26:25.549314+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
