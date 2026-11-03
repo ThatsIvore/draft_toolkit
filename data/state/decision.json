@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-11-03T02:23:30.829313+00:00",
+  "captured_at": "2026-11-03T11:58:40.828012+00:00",
   "gameweek": 10,
   "scoring_gameweek": 9,
-  "scoring_phase": "LIVE",
+  "scoring_phase": "FINAL",
   "players": {
     "124": {
       "player_id": 124,
@@ -4973,7 +4973,7 @@
       "availability_score": 0.0,
       "expected_minutes": 0.0,
       "role_evidence": "HIGH",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 31.5,
       "stash_score": 31.9,
@@ -9565,7 +9565,7 @@
       "availability_score": 100.0,
       "expected_minutes": 48.3,
       "role_evidence": "LOW",
-      "health_trend": "improving",
+      "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 66.8,
       "stash_score": 61.9,
@@ -13791,15 +13791,15 @@
       "chance_next_round": null,
       "news": "",
       "availability_score": 100.0,
-      "expected_minutes": 60.0,
+      "expected_minutes": 10.9,
       "role_evidence": "LOW",
       "health_trend": "stable",
       "recommendation": "PASS",
-      "roster_score": 50.7,
-      "stash_score": 45.5,
+      "roster_score": 39.4,
+      "stash_score": 38.8,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Rúben",
-      "waiver_delta": -24.3,
+      "waiver_delta": -37.0,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -14101,7 +14101,7 @@
       "availability_score": 100.0,
       "expected_minutes": 72.0,
       "role_evidence": "LOW",
-      "health_trend": "improving",
+      "health_trend": "stable",
       "recommendation": "WATCH",
       "roster_score": 72.8,
       "stash_score": 65.8,
@@ -14238,7 +14238,7 @@
     "model": "v0.3",
     "current": {
       "gameweek": 9,
-      "phase": "LIVE",
+      "phase": "FINAL",
       "forecast": {
         "model": "v0.3",
         "captured_at": "2026-10-23T19:58:05.573692+00:00",
@@ -14408,16 +14408,20 @@
             "event_points": 2.0
           }
         ],
-        "official_points": 37.0,
-        "h2h_my_points": 37.0,
-        "h2h_opponent_points": 56.0,
-        "h2h_edge": -19.0,
+        "official_points": 39.0,
+        "h2h_my_points": 39.0,
+        "h2h_opponent_points": 57.0,
+        "h2h_edge": -18.0,
         "h2h_result": "LOSS",
         "h2h_score_source": "league_details"
       },
       "evaluation": {
-        "complete": false,
-        "calibration_eligible": true
+        "complete": true,
+        "calibration_eligible": true,
+        "recommended_absolute_error": 7.3,
+        "h2h_edge_error": 20.3,
+        "predicted_h2h_result": "WIN",
+        "h2h_result_correct": false
       },
       "deadline_selection": {
         "baseline": {
@@ -14940,18 +14944,18 @@
       },
       "selection_comparison": {
         "captured_at": "2026-10-31T05:50:22.609984+00:00",
-        "complete": false,
+        "complete": true,
         "baseline": {
           "projected_points": 46.5,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 37.0,
+          "absolute_error": 9.5
         },
         "challenger": {
           "projected_points": 51.0,
-          "actual_points": null,
-          "absolute_error": null
+          "actual_points": 43.0,
+          "absolute_error": 8.0
         },
-        "challenger_gain": null,
+        "challenger_gain": 6.0,
         "note": "Raw XI player points, without simulated autosubs; experimental selection only."
       }
     },
@@ -17570,7 +17574,7 @@
       "10": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-03T02:23:30.829313+00:00",
+          "captured_at": "2026-11-03T11:58:40.828012+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -17679,7 +17683,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-03T02:23:30.829313+00:00",
+          "captured_at": "2026-11-03T11:58:40.828012+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18513,6 +18517,26 @@
         "last_seen": "2026-10-31T14:34:07.481295+00:00",
         "occurrences": 1,
         "status": "active"
+      },
+      {
+        "kind": "gameweek_result",
+        "priority": "info",
+        "title": "GW9 result captured",
+        "detail": "Official XI: 39 points. Toolkit XI: 40 actual versus 47.3 projected. H2H: 39–57.",
+        "badge": "GW FINAL",
+        "player_id": null,
+        "player": null,
+        "club": null,
+        "team_code": null,
+        "position": null,
+        "event_id": "04b4bb5ba5b293bc",
+        "stream": "gameweek_result:GW9 result captured",
+        "decision_gameweek": 10,
+        "first_seen": "2026-11-03T11:58:40.828012+00:00",
+        "last_seen": "2026-11-03T11:58:40.828012+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-11-03T11:58:40.828012+00:00"
       },
       {
         "kind": "opponent_add",
@@ -20884,9 +20908,7 @@
       }
     ],
     "new_item_ids": [
-      "9609d645fb88155b",
-      "455cce5dafa78fa7",
-      "a9a2c62e0105fbcf"
+      "04b4bb5ba5b293bc"
     ],
     "changed_player_ids": [
       16,
@@ -20916,7 +20938,7 @@
       "critical": 0,
       "important": 8,
       "watch": 14,
-      "info": 3
+      "info": 4
     },
     "active_summary": {
       "critical": 0,
