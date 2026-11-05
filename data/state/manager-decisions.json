@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T12:25:37.521579+00:00",
+  "updated_at": "2026-11-05T22:02:22.355203+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -757,7 +757,8 @@
               "roster_score": 84.7
             }
           ],
-          "value_delta": -18.5
+          "value_delta": -18.5,
+          "ended_gameweek": 10
         },
         {
           "fingerprint": "3:454,628:338,371",
@@ -989,6 +990,46 @@
             "incoming_started_points": 3.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -1.65
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": -2.4,
+            "11": -2.3,
+            "12": -2.3,
+            "13": -2.4
+          },
+          "observations": {},
+          "fingerprint": "2026-11-05T22:02:22.355203+00:00:10:380:464",
+          "captured_at": "2026-11-05T22:02:22.355203+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 380,
+              "player": "Ekitiké",
+              "position": "FWD",
+              "roster_score": 48.0
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 464,
+              "player": "Wissa",
+              "position": "FWD",
+              "roster_score": 57.6
+            }
+          ],
+          "value_delta": -9.6,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -1573,14 +1614,15 @@
           ],
           "value_delta": -0.8,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 2,
             "target_gameweeks": 4,
             "points_gain": -3.0,
             "incoming_started_points": 3.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -0.05
-          }
+          },
+          "ended_gameweek": 10
         },
         {
           "evaluation_version": 1,
@@ -1628,6 +1670,46 @@
             "incoming_started_points": 3.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -0.9
+          }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": 1.2,
+            "11": 1.8,
+            "12": 1.6,
+            "13": 2.0
+          },
+          "observations": {},
+          "fingerprint": "2026-11-05T22:02:22.355203+00:00:10:512:14",
+          "captured_at": "2026-11-05T22:02:22.355203+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 512,
+              "player": "Kudus",
+              "position": "MID",
+              "roster_score": 80.4
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 14,
+              "player": "Eze",
+              "position": "MID",
+              "roster_score": 74.7
+            }
+          ],
+          "value_delta": 5.7,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -2804,6 +2886,46 @@
             "incoming_starts": 2,
             "excess_points_per_player_week": 4.95
           }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": 0.5,
+            "11": 0.8,
+            "12": 0.5,
+            "13": -0.4
+          },
+          "observations": {},
+          "fingerprint": "2026-11-05T22:02:22.355203+00:00:10:114:201",
+          "captured_at": "2026-11-05T22:02:22.355203+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 114,
+              "player": "Boscagli",
+              "position": "DEF",
+              "roster_score": 75.7
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 201,
+              "player": "Muñoz",
+              "position": "DEF",
+              "roster_score": 72.0
+            }
+          ],
+          "value_delta": 3.7,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -3418,13 +3540,54 @@
           ],
           "value_delta": 3.7,
           "outcome": {
-            "status": "pending",
+            "status": "stopped",
             "observed_gameweeks": 1,
             "target_gameweeks": 4,
             "points_gain": 1.0,
             "incoming_started_points": 1.0,
             "incoming_starts": 1,
             "excess_points_per_player_week": -1.2
+          },
+          "ended_gameweek": 10
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": -0.7,
+            "11": -0.8,
+            "12": -0.7,
+            "13": -0.8
+          },
+          "observations": {},
+          "fingerprint": "2026-11-05T22:02:22.355203+00:00:10:526:598",
+          "captured_at": "2026-11-05T22:02:22.355203+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 526,
+              "player": "Solanke",
+              "position": "FWD",
+              "roster_score": 68.6
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 598,
+              "player": "Cherif",
+              "position": "FWD",
+              "roster_score": 64.9
+            }
+          ],
+          "value_delta": 3.7,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
           }
         }
       ],
@@ -5519,6 +5682,94 @@
       "from_team": "Free pool",
       "to_team": "Vængir Júpíters",
       "captured_at": "2026-10-31T14:34:07.481295+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 14,
+      "player": "Eze",
+      "club": "ARS",
+      "from_team": "FC FC",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 114,
+      "player": "Boscagli",
+      "club": "BHA",
+      "from_team": "Free pool",
+      "to_team": "Weapon X",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 201,
+      "player": "Muñoz",
+      "club": "NFO",
+      "from_team": "Weapon X",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 380,
+      "player": "Ekitiké",
+      "club": "LIV",
+      "from_team": "Free pool",
+      "to_team": "My own Wirtz enemy",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 464,
+      "player": "Wissa",
+      "club": "NEW",
+      "from_team": "My own Wirtz enemy",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 512,
+      "player": "Kudus",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "FC FC",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 526,
+      "player": "Solanke",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 598,
+      "player": "Cherif",
+      "club": "COV",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-05T22:02:22.355203+00:00",
       "gameweek": 10,
       "source": "ownership snapshot"
     }
