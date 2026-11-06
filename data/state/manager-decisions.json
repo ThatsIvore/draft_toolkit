@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T15:57:27.338451+00:00",
+  "updated_at": "2026-11-06T21:32:28.488077+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -5896,6 +5896,72 @@
       "to_team": "Free pool",
       "captured_at": "2026-11-06T15:57:27.338451+00:00",
       "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 14,
+      "player": "Eze",
+      "club": "ARS",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T21:32:28.488077+00:00",
+      "gameweek": 11,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 201,
+      "player": "Muñoz",
+      "club": "NFO",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T21:32:28.488077+00:00",
+      "gameweek": 11,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 399,
+      "player": "Cherki",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T21:32:28.488077+00:00",
+      "gameweek": 11,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 464,
+      "player": "Wissa",
+      "club": "NEW",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T21:32:28.488077+00:00",
+      "gameweek": 11,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 597,
+      "player": "Suzuki",
+      "club": "AVL",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T21:32:28.488077+00:00",
+      "gameweek": 11,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 598,
+      "player": "Cherif",
+      "club": "COV",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T21:32:28.488077+00:00",
+      "gameweek": 11,
       "source": "ownership snapshot"
     }
   ]
