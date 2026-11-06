@@ -164,9 +164,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-14T18:00:06.460944Z"
+    "chance_next_round": 0,
+    "news": "Knee injury - Expected back 21 Nov",
+    "news_added": "2026-11-06T10:30:09.529201Z"
   },
   {
     "player_id": 448,
@@ -333,8 +333,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Head injury - Unknown return date",
+    "chance_next_round": 75,
+    "news": "Head injury - 75% chance of playing",
     "news_added": "2026-10-17T13:30:08.724000Z"
   },
   {
@@ -476,8 +476,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Calf injury - Unknown return date",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-10-29T17:00:09.335810Z"
   },
   {
@@ -1113,8 +1113,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Hip injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Hip injury - Unknown return date",
     "news_added": "2026-10-20T20:00:09.925594Z"
   },
   {
@@ -3458,19 +3458,6 @@
     "news_added": "2026-10-29T15:00:10.057610Z"
   },
   {
-    "player_id": 57,
-    "player": "Petrović",
-    "club": "BOU",
-    "team_id": 3,
-    "position": "GKP",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
     "player_id": 440,
     "player": "Zirkzee",
     "club": "MUN",
@@ -4116,9 +4103,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-29T22:00:09.933708Z"
+    "chance_next_round": 75,
+    "news": "Calf injury - 75% chance of playing",
+    "news_added": "2026-11-06T15:30:09.180442Z"
   },
   {
     "player_id": 506,
@@ -4701,8 +4688,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Thigh injury - Expected back 21 Nov",
+    "chance_next_round": 75,
+    "news": "Thigh injury - 75% chance of playing",
     "news_added": "2026-10-05T09:30:09.910752Z"
   },
   {
@@ -4834,19 +4821,6 @@
     "chance_next_round": 100,
     "news": "",
     "news_added": "2026-10-10T18:00:10.423378Z"
-  },
-  {
-    "player_id": 94,
-    "player": "Schade",
-    "club": "BRE",
-    "team_id": 4,
-    "position": "MID",
-    "status": "a",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-10T16:30:08.848962Z"
   },
   {
     "player_id": 246,
@@ -5065,8 +5039,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 50,
-    "news": "Hamstring injury - 50% chance of playing",
+    "chance_next_round": 0,
+    "news": "Hamstring injury - Unknown return date",
     "news_added": "2026-11-03T22:00:07.995956Z"
   },
   {
@@ -6014,8 +5988,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Hamstring injury - Unknown return date",
+    "chance_next_round": 75,
+    "news": "Hamstring injury - 75% chance of playing",
     "news_added": "2026-09-27T21:30:07.831640Z"
   },
   {
@@ -6729,8 +6703,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Hamstring injury - Expected back 21 Nov",
+    "chance_next_round": 50,
+    "news": "Hamstring injury - 50% chance of playing",
     "news_added": "2026-10-17T19:30:10.120990Z"
   },
   {
@@ -7527,6 +7501,32 @@
     "news_added": null
   },
   {
+    "player_id": 399,
+    "player": "Cherki",
+    "club": "MCI",
+    "team_id": 15,
+    "position": "MID",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
+    "player_id": 597,
+    "player": "Suzuki",
+    "club": "AVL",
+    "team_id": 2,
+    "position": "GKP",
+    "status": "l",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 598,
     "player": "Cherif",
     "club": "COV",
@@ -7756,8 +7756,8 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
-    "chance_next_round": 75,
-    "news": "Knee injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-11-05T20:30:09.025008Z"
   },
   {
@@ -8255,6 +8255,19 @@
     "news_added": null
   },
   {
+    "player_id": 57,
+    "player": "Petrović",
+    "club": "BOU",
+    "team_id": 3,
+    "position": "GKP",
+    "status": "o",
+    "owner_raw": 307364,
+    "owner_entry_id": 307364,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 512,
     "player": "Kudus",
     "club": "TOT",
@@ -8302,19 +8315,6 @@
     "status": "o",
     "owner_raw": 334397,
     "owner_entry_id": 334397,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 399,
-    "player": "Cherki",
-    "club": "MCI",
-    "team_id": 15,
-    "position": "MID",
-    "status": "o",
-    "owner_raw": 339421,
-    "owner_entry_id": 339421,
     "chance_next_round": null,
     "news": "",
     "news_added": null
@@ -8528,6 +8528,19 @@
     "news_added": "2026-07-23T12:01:23.643771Z"
   },
   {
+    "player_id": 94,
+    "player": "Schade",
+    "club": "BRE",
+    "team_id": 4,
+    "position": "MID",
+    "status": "o",
+    "owner_raw": 339421,
+    "owner_entry_id": 339421,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-10-10T16:30:08.848962Z"
+  },
+  {
     "player_id": 127,
     "player": "Gomez",
     "club": "BHA",
@@ -8679,19 +8692,6 @@
     "status": "o",
     "owner_raw": 336654,
     "owner_entry_id": 336654,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 597,
-    "player": "Suzuki",
-    "club": "AVL",
-    "team_id": 2,
-    "position": "GKP",
-    "status": "o",
-    "owner_raw": 307364,
-    "owner_entry_id": 307364,
     "chance_next_round": null,
     "news": "",
     "news_added": null

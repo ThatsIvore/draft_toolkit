@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T06:54:12.366039+00:00",
+  "updated_at": "2026-11-06T15:57:27.338451+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -443,6 +443,47 @@
             }
           ],
           "value_delta": 1.1,
+          "outcome": {
+            "status": "stopped",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          },
+          "ended_gameweek": 10
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": 0.0,
+            "11": -0.5,
+            "12": -0.5,
+            "13": -0.5
+          },
+          "observations": {},
+          "fingerprint": "2026-11-06T15:57:27.338451+00:00:10:57:597",
+          "captured_at": "2026-11-06T15:57:27.338451+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 57,
+              "player": "Petrović",
+              "position": "GKP",
+              "roster_score": 81.2
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 597,
+              "player": "Suzuki",
+              "position": "GKP",
+              "roster_score": 74.0
+            }
+          ],
+          "value_delta": 7.2,
           "outcome": {
             "status": "pending",
             "observed_gameweeks": 0,
@@ -3589,6 +3630,46 @@
             "incoming_starts": 0,
             "excess_points_per_player_week": null
           }
+        },
+        {
+          "evaluation_version": 1,
+          "eligible": true,
+          "expected_gains": {
+            "10": -1.7,
+            "11": -1.4,
+            "12": -0.3,
+            "13": -1.3
+          },
+          "observations": {},
+          "fingerprint": "2026-11-06T15:57:27.338451+00:00:10:94:399",
+          "captured_at": "2026-11-06T15:57:27.338451+00:00",
+          "gameweek": 10,
+          "adds": [
+            {
+              "player_id": 94,
+              "player": "Schade",
+              "position": "MID",
+              "roster_score": 74.6
+            }
+          ],
+          "drops": [
+            {
+              "player_id": 399,
+              "player": "Cherki",
+              "position": "MID",
+              "roster_score": 79.8
+            }
+          ],
+          "value_delta": -5.2,
+          "outcome": {
+            "status": "pending",
+            "observed_gameweeks": 0,
+            "target_gameweeks": 4,
+            "points_gain": null,
+            "incoming_started_points": null,
+            "incoming_starts": 0,
+            "excess_points_per_player_week": null
+          }
         }
       ],
       "lineups": {
@@ -5770,6 +5851,50 @@
       "from_team": "Gooseboys",
       "to_team": "Free pool",
       "captured_at": "2026-11-05T22:02:22.355203+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 57,
+      "player": "Petrović",
+      "club": "BOU",
+      "from_team": "Free pool",
+      "to_team": "Vængir Júpíters",
+      "captured_at": "2026-11-06T15:57:27.338451+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "add",
+      "player_id": 94,
+      "player": "Schade",
+      "club": "BRE",
+      "from_team": "Free pool",
+      "to_team": "Gooseboys",
+      "captured_at": "2026-11-06T15:57:27.338451+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 399,
+      "player": "Cherki",
+      "club": "MCI",
+      "from_team": "Gooseboys",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T15:57:27.338451+00:00",
+      "gameweek": 10,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "drop",
+      "player_id": 597,
+      "player": "Suzuki",
+      "club": "AVL",
+      "from_team": "Vængir Júpíters",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-06T15:57:27.338451+00:00",
       "gameweek": 10,
       "source": "ownership snapshot"
     }
