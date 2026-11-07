@@ -7540,6 +7540,19 @@
     "news_added": null
   },
   {
+    "player_id": 671,
+    "player": "Gunter",
+    "club": "TOT",
+    "team_id": 19,
+    "position": "GKP",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
+  },
+  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
@@ -7847,9 +7860,9 @@
     "status": "o",
     "owner_raw": 334397,
     "owner_entry_id": 334397,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-11-07T21:30:08.741792Z"
   },
   {
     "player_id": 481,
@@ -8380,9 +8393,9 @@
     "status": "o",
     "owner_raw": 307364,
     "owner_entry_id": 307364,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Unspecified injury - 75% chance of playing",
+    "news_added": "2026-11-07T21:30:08.752464Z"
   },
   {
     "player_id": 230,
