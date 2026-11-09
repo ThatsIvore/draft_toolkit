@@ -4,10 +4,10 @@
   "mode": "shadow",
   "status": "missing_api_key",
   "completed_gameweeks": [
-    6,
     7,
     8,
-    9
+    9,
+    10
   ],
   "mapped_appearances": 0,
   "unmapped_appearances": 0,
