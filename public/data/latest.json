@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T12:42:22.872712+00:00",
+  "generated_at": "2026-11-10T21:49:25.399910+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 10,
@@ -9,7 +9,7 @@
     "available_count": 480,
     "tracked_players": 672,
     "ownership_changes": 0,
-    "injured_or_doubtful_count": 82
+    "injured_or_doubtful_count": 83
   },
   "my_squad": [
     {
@@ -197,7 +197,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/167008",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -231,7 +231,7 @@
       "clean_sheets": 4,
       "bonus": 1,
       "expected_goal_involvements": "0.74",
-      "form": "3.6",
+      "form": "4.5",
       "points_per_game": "4.3",
       "expected_points_next": null,
       "fixtures": [
@@ -396,7 +396,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -430,7 +430,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "1.41",
-      "form": "2.2",
+      "form": "1.2",
       "points_per_game": "2.8",
       "expected_points_next": null,
       "fixtures": [
@@ -595,7 +595,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/614006",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -794,7 +794,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/776689",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1177,7 +1177,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/795179",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1376,7 +1376,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/883080",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1566,7 +1566,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 61.4,
         "stash_score": 51.7,
         "recommendation": "HOLD",
@@ -1575,7 +1575,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1958,7 +1958,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197655",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2157,7 +2157,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2356,7 +2356,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1478295",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2555,7 +2555,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197347",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2754,7 +2754,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1413996",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2953,7 +2953,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1561249",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -7434,7 +7434,7 @@
       "clean_sheets": 0,
       "bonus": 1,
       "expected_goal_involvements": "0.19",
-      "form": "1.0",
+      "form": "1.2",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -8493,7 +8493,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.14",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -8918,7 +8918,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.02",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -9556,7 +9556,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.04",
-      "form": "0.4",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -9765,7 +9765,7 @@
       "clean_sheets": 3,
       "bonus": 1,
       "expected_goal_involvements": "0.48",
-      "form": "2.4",
+      "form": "2.8",
       "points_per_game": "3.8",
       "expected_points_next": null,
       "fixtures": [
@@ -11458,7 +11458,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.92",
-      "form": "0.8",
+      "form": "0.5",
       "points_per_game": "1.7",
       "expected_points_next": null,
       "fixtures": [
@@ -12090,7 +12090,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "1.0",
+      "form": "0.5",
       "points_per_game": "2.6",
       "expected_points_next": null,
       "fixtures": [
@@ -13994,7 +13994,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "1.04",
-      "form": "2.6",
+      "form": "1.2",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -18208,7 +18208,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -18420,7 +18420,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "1.0",
+      "form": "1.2",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -21807,7 +21807,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "0.33",
-      "form": "2.2",
+      "form": "2.5",
       "points_per_game": "2.5",
       "expected_points_next": null,
       "fixtures": [
@@ -24751,7 +24751,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.78",
-      "form": "3.6",
+      "form": "4.0",
       "points_per_game": "3.1",
       "expected_points_next": null,
       "fixtures": [
@@ -25594,7 +25594,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.31",
-      "form": "0.6",
+      "form": "0.8",
       "points_per_game": "1.5",
       "expected_points_next": null,
       "fixtures": [
@@ -25804,7 +25804,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "2.78",
-      "form": "1.8",
+      "form": "2.0",
       "points_per_game": "1.9",
       "expected_points_next": null,
       "fixtures": [
@@ -26851,7 +26851,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.19",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -27059,7 +27059,7 @@
       "clean_sheets": 0,
       "bonus": 3,
       "expected_goal_involvements": "3.94",
-      "form": "2.4",
+      "form": "3.0",
       "points_per_game": "2.6",
       "expected_points_next": null,
       "fixtures": [
@@ -27688,7 +27688,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "1.95",
-      "form": "3.0",
+      "form": "1.8",
       "points_per_game": "3.6",
       "expected_points_next": null,
       "fixtures": [
@@ -28106,7 +28106,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.13",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.2",
       "expected_points_next": null,
       "fixtures": [
@@ -28949,7 +28949,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.12",
-      "form": "0.4",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -29375,7 +29375,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "2.12",
-      "form": "3.0",
+      "form": "3.5",
       "points_per_game": "3.4",
       "expected_points_next": null,
       "fixtures": [
@@ -30004,7 +30004,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.25",
-      "form": "0.4",
+      "form": "0.2",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -31487,7 +31487,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.38",
-      "form": "1.8",
+      "form": "2.2",
       "points_per_game": "1.7",
       "expected_points_next": null,
       "fixtures": [
@@ -32972,7 +32972,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.00",
-      "form": "0.2",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -34449,7 +34449,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.32",
-      "form": "0.4",
+      "form": "0.5",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -36358,7 +36358,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.2",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -36569,7 +36569,7 @@
       "clean_sheets": 3,
       "bonus": 2,
       "expected_goal_involvements": "0.52",
-      "form": "1.4",
+      "form": "1.2",
       "points_per_game": "3.1",
       "expected_points_next": null,
       "fixtures": [
@@ -36947,7 +36947,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/818975",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -37846,7 +37846,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "1.21",
-      "form": "2.8",
+      "form": "2.5",
       "points_per_game": "2.5",
       "expected_points_next": null,
       "fixtures": [
@@ -39115,7 +39115,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "1.46",
-      "form": "1.2",
+      "form": "1.0",
       "points_per_game": "1.5",
       "expected_points_next": null,
       "fixtures": [
@@ -39324,7 +39324,7 @@
       "clean_sheets": 3,
       "bonus": 1,
       "expected_goal_involvements": "2.02",
-      "form": "3.2",
+      "form": "3.5",
       "points_per_game": "2.7",
       "expected_points_next": null,
       "fixtures": [
@@ -41014,7 +41014,7 @@
       "clean_sheets": 0,
       "bonus": 2,
       "expected_goal_involvements": "1.78",
-      "form": "2.4",
+      "form": "2.8",
       "points_per_game": "1.9",
       "expected_points_next": null,
       "fixtures": [
@@ -41224,7 +41224,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "2.01",
-      "form": "1.8",
+      "form": "1.0",
       "points_per_game": "2.9",
       "expected_points_next": null,
       "fixtures": [
@@ -42058,7 +42058,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.6",
+      "form": "0.8",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -42270,7 +42270,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.33",
-      "form": "2.6",
+      "form": "2.2",
       "points_per_game": "2.7",
       "expected_points_next": null,
       "fixtures": [
@@ -43115,7 +43115,7 @@
       "clean_sheets": 2,
       "bonus": 1,
       "expected_goal_involvements": "2.51",
-      "form": "3.0",
+      "form": "2.8",
       "points_per_game": "2.7",
       "expected_points_next": null,
       "fixtures": [
@@ -43750,7 +43750,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.48",
-      "form": "1.4",
+      "form": "1.5",
       "points_per_game": "1.4",
       "expected_points_next": null,
       "fixtures": [
@@ -45229,7 +45229,7 @@
       "clean_sheets": 3,
       "bonus": 2,
       "expected_goal_involvements": "1.81",
-      "form": "0.8",
+      "form": "0.2",
       "points_per_game": "5.3",
       "expected_points_next": null,
       "fixtures": [
@@ -46709,7 +46709,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.34",
-      "form": "0.4",
+      "form": "0.8",
       "points_per_game": "1.6",
       "expected_points_next": null,
       "fixtures": [
@@ -50938,7 +50938,7 @@
       "clean_sheets": 2,
       "bonus": 2,
       "expected_goal_involvements": "3.69",
-      "form": "2.8",
+      "form": "1.8",
       "points_per_game": "2.9",
       "expected_points_next": null,
       "fixtures": [
@@ -52419,7 +52419,7 @@
       "clean_sheets": 0,
       "bonus": 1,
       "expected_goal_involvements": "1.32",
-      "form": "2.4",
+      "form": "1.0",
       "points_per_game": "2.2",
       "expected_points_next": null,
       "fixtures": [
@@ -52629,7 +52629,7 @@
       "clean_sheets": 1,
       "bonus": 3,
       "expected_goal_involvements": "3.46",
-      "form": "4.2",
+      "form": "4.8",
       "points_per_game": "3.3",
       "expected_points_next": null,
       "fixtures": [
@@ -53683,7 +53683,7 @@
       "clean_sheets": 2,
       "bonus": 1,
       "expected_goal_involvements": "0.73",
-      "form": "2.2",
+      "form": "1.2",
       "points_per_game": "3.1",
       "expected_points_next": null,
       "fixtures": [
@@ -54532,7 +54532,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.03",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -55166,7 +55166,7 @@
       "clean_sheets": 2,
       "bonus": 9,
       "expected_goal_involvements": "3.78",
-      "form": "4.0",
+      "form": "2.5",
       "points_per_game": "6.0",
       "expected_points_next": null,
       "fixtures": [
@@ -57283,7 +57283,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "2.06",
-      "form": "1.8",
+      "form": "1.0",
       "points_per_game": "1.9",
       "expected_points_next": null,
       "fixtures": [
@@ -60861,7 +60861,7 @@
       "clean_sheets": 1,
       "bonus": 3,
       "expected_goal_involvements": "2.77",
-      "form": "2.8",
+      "form": "1.2",
       "points_per_game": "2.8",
       "expected_points_next": null,
       "fixtures": [
@@ -61277,7 +61277,7 @@
       "clean_sheets": 0,
       "bonus": 3,
       "expected_goal_involvements": "0.68",
-      "form": "4.2",
+      "form": "5.0",
       "points_per_game": "2.9",
       "expected_points_next": null,
       "fixtures": [
@@ -63384,7 +63384,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "1.79",
-      "form": "3.4",
+      "form": "2.5",
       "points_per_game": "2.9",
       "expected_points_next": null,
       "fixtures": [
@@ -65923,7 +65923,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.15",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -67606,7 +67606,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.29",
-      "form": "2.2",
+      "form": "2.5",
       "points_per_game": "2.2",
       "expected_points_next": null,
       "fixtures": [
@@ -68031,7 +68031,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "0.43",
-      "form": "1.8",
+      "form": "2.2",
       "points_per_game": "2.1",
       "expected_points_next": null,
       "fixtures": [
@@ -68658,7 +68658,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.44",
-      "form": "1.2",
+      "form": "1.0",
       "points_per_game": "1.1",
       "expected_points_next": null,
       "fixtures": [
@@ -72241,7 +72241,7 @@
       "clean_sheets": 3,
       "bonus": 0,
       "expected_goal_involvements": "0.52",
-      "form": "2.4",
+      "form": "2.8",
       "points_per_game": "2.5",
       "expected_points_next": null,
       "fixtures": [
@@ -73927,7 +73927,7 @@
       "clean_sheets": 3,
       "bonus": 3,
       "expected_goal_involvements": "1.76",
-      "form": "2.2",
+      "form": "2.5",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -74980,7 +74980,7 @@
       "clean_sheets": 1,
       "bonus": 2,
       "expected_goal_involvements": "1.20",
-      "form": "2.4",
+      "form": "2.5",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -77519,7 +77519,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.25",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -78158,7 +78158,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.89",
-      "form": "0.8",
+      "form": "0.5",
       "points_per_game": "2.3",
       "expected_points_next": null,
       "fixtures": [
@@ -78792,7 +78792,7 @@
       "clean_sheets": 1,
       "bonus": 1,
       "expected_goal_involvements": "0.74",
-      "form": "2.8",
+      "form": "3.5",
       "points_per_game": "3.1",
       "expected_points_next": null,
       "fixtures": [
@@ -79004,7 +79004,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "1.91",
-      "form": "2.4",
+      "form": "2.5",
       "points_per_game": "3.5",
       "expected_points_next": null,
       "fixtures": [
@@ -80906,7 +80906,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.41",
-      "form": "1.8",
+      "form": "2.2",
       "points_per_game": "2.6",
       "expected_points_next": null,
       "fixtures": [
@@ -82168,7 +82168,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.07",
-      "form": "1.0",
+      "form": "1.2",
       "points_per_game": "1.2",
       "expected_points_next": null,
       "fixtures": [
@@ -83017,7 +83017,7 @@
       "clean_sheets": 2,
       "bonus": 0,
       "expected_goal_involvements": "0.25",
-      "form": "1.8",
+      "form": "1.2",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -83227,7 +83227,7 @@
       "clean_sheets": 4,
       "bonus": 0,
       "expected_goal_involvements": "1.63",
-      "form": "2.4",
+      "form": "2.5",
       "points_per_game": "2.8",
       "expected_points_next": null,
       "fixtures": [
@@ -86615,7 +86615,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.22",
-      "form": "1.0",
+      "form": "0.2",
       "points_per_game": "1.9",
       "expected_points_next": null,
       "fixtures": [
@@ -92767,7 +92767,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.20",
-      "form": "0.6",
+      "form": "0.8",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -93188,7 +93188,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "1.73",
-      "form": "0.6",
+      "form": "0.8",
       "points_per_game": "1.7",
       "expected_points_next": null,
       "fixtures": [
@@ -95094,7 +95094,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.05",
-      "form": "0.4",
+      "form": "0.2",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -95937,7 +95937,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.0",
+      "form": "-0.2",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -96363,7 +96363,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.65",
-      "form": "1.8",
+      "form": "0.5",
       "points_per_game": "3.0",
       "expected_points_next": null,
       "fixtures": [
@@ -96573,7 +96573,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.55",
-      "form": "1.2",
+      "form": "1.5",
       "points_per_game": "1.8",
       "expected_points_next": null,
       "fixtures": [
@@ -96784,7 +96784,7 @@
       "clean_sheets": 2,
       "bonus": 2,
       "expected_goal_involvements": "0.80",
-      "form": "1.0",
+      "form": "0.2",
       "points_per_game": "5.2",
       "expected_points_next": null,
       "fixtures": [
@@ -97843,7 +97843,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.6",
+      "form": "0.5",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -98056,7 +98056,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.10",
-      "form": "0.8",
+      "form": "1.0",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -98269,7 +98269,7 @@
       "clean_sheets": 0,
       "bonus": 2,
       "expected_goal_involvements": "0.86",
-      "form": "1.8",
+      "form": "0.5",
       "points_per_game": "2.6",
       "expected_points_next": null,
       "fixtures": [
@@ -108522,7 +108522,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.25",
-      "form": "0.4",
+      "form": "0.2",
       "points_per_game": "0.8",
       "expected_points_next": null,
       "fixtures": [
@@ -109994,7 +109994,7 @@
       "clean_sheets": 0,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.2",
+      "form": "0.0",
       "points_per_game": "1.0",
       "expected_points_next": null,
       "fixtures": [
@@ -110546,7 +110546,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.01",
-      "form": "0.6",
+      "form": "0.8",
       "points_per_game": "2.0",
       "expected_points_next": null,
       "fixtures": [
@@ -111466,7 +111466,7 @@
       "clean_sheets": 3,
       "bonus": 2,
       "expected_goal_involvements": "1.81",
-      "form": "0.8",
+      "form": "0.2",
       "points_per_game": "5.3",
       "expected_points_next": null,
       "fixtures": [
@@ -111834,7 +111834,7 @@
       "clean_sheets": 1,
       "bonus": 0,
       "expected_goal_involvements": "0.34",
-      "form": "0.4",
+      "form": "0.8",
       "points_per_game": "1.6",
       "expected_points_next": null,
       "fixtures": [
@@ -119930,7 +119930,7 @@
       "clean_sheets": 4,
       "bonus": 1,
       "expected_goal_involvements": "0.74",
-      "form": "3.6",
+      "form": "4.5",
       "points_per_game": "4.3",
       "expected_points_next": null,
       "fixtures": [
@@ -120095,7 +120095,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -120129,7 +120129,7 @@
       "clean_sheets": 3,
       "bonus": 4,
       "expected_goal_involvements": "1.81",
-      "form": "1.4",
+      "form": "0.2",
       "points_per_game": "4.1",
       "expected_points_next": null,
       "fixtures": [
@@ -120653,7 +120653,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "roster_score": 61.4,
         "stash_score": 51.7,
         "recommendation": "HOLD",
@@ -120662,7 +120662,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -120880,7 +120880,7 @@
       "clean_sheets": 2,
       "bonus": 6,
       "expected_goal_involvements": "1.79",
-      "form": "1.4",
+      "form": "0.8",
       "points_per_game": "4.4",
       "expected_points_next": null,
       "fixtures": [
@@ -121411,6 +121411,190 @@
         "recommendation_reason": "Owned by another manager; monitor for a future drop or status change.",
         "external_ratings": []
       }
+    },
+    {
+      "player_id": 286,
+      "player": "Belloumi",
+      "club": "HUL",
+      "team_id": 11,
+      "team_code": 88,
+      "position": "MID",
+      "status": "o",
+      "chance_next_round": 75,
+      "news": "Hamstring injury - 75% chance of playing",
+      "news_added": "2026-11-10T19:00:09.431074Z",
+      "event_points": 0,
+      "total_points": 48,
+      "minutes": 685,
+      "starts": 8,
+      "goals_scored": 3,
+      "assists": 3,
+      "clean_sheets": 3,
+      "bonus": 2,
+      "expected_goal_involvements": "2.19",
+      "form": "2.8",
+      "points_per_game": "5.3",
+      "expected_points_next": null,
+      "fixtures": [
+        {
+          "gameweek": 11,
+          "matches": [
+            {
+              "opponent_id": 5,
+              "opponent": "BHA",
+              "venue": "H",
+              "difficulty": 4,
+              "kickoff_time": "2026-11-22T14:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 12,
+          "matches": [
+            {
+              "opponent_id": 8,
+              "opponent": "CRY",
+              "venue": "A",
+              "difficulty": 2,
+              "kickoff_time": "2026-11-29T14:05:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 13,
+          "matches": [
+            {
+              "opponent_id": 18,
+              "opponent": "NFO",
+              "venue": "H",
+              "difficulty": 3,
+              "kickoff_time": "2026-12-02T19:30:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        },
+        {
+          "gameweek": 14,
+          "matches": [
+            {
+              "opponent_id": 3,
+              "opponent": "BOU",
+              "venue": "A",
+              "difficulty": 4,
+              "kickoff_time": "2026-12-05T15:00:00Z",
+              "started": false,
+              "finished": false
+            }
+          ]
+        }
+      ],
+      "intelligence": {
+        "model": "v0.6.1",
+        "baseline_score": 53.1,
+        "fixture_score": 55.2,
+        "future_fixture_score": 62.7,
+        "availability_score": 75.0,
+        "post_return_fixture_score": null,
+        "stash_fixture_score": 40.7,
+        "start_probability": 55.0,
+        "expected_minutes": 48.1,
+        "usage_score": 54.3,
+        "sample_confidence": 20.3,
+        "role_evidence": "LOW",
+        "floor_score": 62.0,
+        "upside_score": 72.3,
+        "points_per_90": 6.31,
+        "attack_returns_per_90": 0.61,
+        "historical_prior_active": true,
+        "recent_match_evidence": {
+          "version": "v1",
+          "status": "available",
+          "score": 77.4,
+          "grade": "A",
+          "adjustment": 2.68,
+          "confidence": 98.1,
+          "completed_gameweeks": 4,
+          "appearances": 3,
+          "minutes": 265,
+          "starts": 3,
+          "gameweeks": [
+            {
+              "gameweek": 10,
+              "minutes": 0,
+              "starts": 0,
+              "points": 0,
+              "bonus": 0,
+              "bps": 0,
+              "xg": 0.0,
+              "xa": 0.0,
+              "xgi": 0.0,
+              "defensive_contribution": 0,
+              "played": false,
+              "grade_score": null,
+              "grade": null
+            },
+            {
+              "gameweek": 9,
+              "minutes": 90,
+              "starts": 1,
+              "points": 5,
+              "bonus": 0,
+              "bps": 21,
+              "xg": 0.07,
+              "xa": 0.06,
+              "xgi": 0.13,
+              "defensive_contribution": 5,
+              "played": true,
+              "grade_score": 79.2,
+              "grade": "A"
+            },
+            {
+              "gameweek": 8,
+              "minutes": 85,
+              "starts": 1,
+              "points": 4,
+              "bonus": 0,
+              "bps": 21,
+              "xg": 0.26,
+              "xa": 0.23,
+              "xgi": 0.49,
+              "defensive_contribution": 14,
+              "played": true,
+              "grade_score": 85.7,
+              "grade": "A"
+            },
+            {
+              "gameweek": 7,
+              "minutes": 90,
+              "starts": 1,
+              "points": 2,
+              "bonus": 0,
+              "bps": 16,
+              "xg": 0.07,
+              "xa": 0.14,
+              "xgi": 0.21,
+              "defensive_contribution": 6,
+              "played": true,
+              "grade_score": 65.1,
+              "grade": "B"
+            }
+          ]
+        },
+        "injury_return_signal": "near-return",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "health_trend": "news-changed",
+        "roster_score": 58.7,
+        "stash_score": 55.1,
+        "recommendation": "WATCH",
+        "recommendation_reason": "Owned by another manager; monitor for a future drop or status change.",
+        "external_ratings": []
+      }
     }
   ],
   "notes": [
@@ -121491,7 +121675,7 @@
         "news": "Muscular injury - 75% chance of playing",
         "dashboard_action": "HOLD",
         "health_signal": "near-return",
-        "health_trend": "worsening",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -124037,7 +124221,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124249,7 +124433,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124296,7 +124480,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "1.41",
-        "form": "2.2",
+        "form": "1.2",
         "points_per_game": "2.8",
         "expected_points_next": null,
         "fixtures": [
@@ -124461,7 +124645,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124673,7 +124857,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124885,7 +125069,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125097,7 +125281,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125506,7 +125690,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125718,7 +125902,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125930,7 +126114,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126142,7 +126326,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126191,7 +126375,7 @@
         "clean_sheets": 4,
         "bonus": 1,
         "expected_goal_involvements": "0.74",
-        "form": "3.6",
+        "form": "4.5",
         "points_per_game": "4.3",
         "expected_points_next": null,
         "fixtures": [
@@ -126356,7 +126540,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126560,7 +126744,7 @@
           "injury_return_signal": "near-return",
           "expected_return": null,
           "expected_return_gameweek": null,
-          "health_trend": "worsening",
+          "health_trend": "stable",
           "roster_score": 61.4,
           "stash_score": 51.7,
           "recommendation": "HOLD",
@@ -126569,7 +126753,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126981,7 +127165,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-10T12:42:16.235349+00:00",
+            "observed_at": "2026-11-10T21:49:20.257380+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -127975,7 +128159,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/776689",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128187,7 +128371,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/795179",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128234,7 +128418,7 @@
           "clean_sheets": 3,
           "bonus": 0,
           "expected_goal_involvements": "1.41",
-          "form": "2.2",
+          "form": "1.2",
           "points_per_game": "2.8",
           "expected_points_next": null,
           "fixtures": [
@@ -128399,7 +128583,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/614006",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128611,7 +128795,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1413996",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128823,7 +129007,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197655",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129035,7 +129219,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/167008",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129444,7 +129628,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/883080",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129656,7 +129840,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1478295",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129868,7 +130052,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1561249",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130080,7 +130264,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197347",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130129,7 +130313,7 @@
           "clean_sheets": 4,
           "bonus": 1,
           "expected_goal_involvements": "0.74",
-          "form": "3.6",
+          "form": "4.5",
           "points_per_game": "4.3",
           "expected_points_next": null,
           "fixtures": [
@@ -130294,7 +130478,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/209405",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130498,7 +130682,7 @@
             "injury_return_signal": "near-return",
             "expected_return": null,
             "expected_return_gameweek": null,
-            "health_trend": "worsening",
+            "health_trend": "stable",
             "roster_score": 61.4,
             "stash_score": 51.7,
             "recommendation": "HOLD",
@@ -130507,7 +130691,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/940446",
-                "observed_at": "2026-11-10T12:42:16.235349+00:00",
+                "observed_at": "2026-11-10T21:49:20.257380+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130919,7 +131103,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -131555,7 +131739,7 @@
           "clean_sheets": 1,
           "bonus": 3,
           "expected_goal_involvements": "1.73",
-          "form": "1.8",
+          "form": "1.2",
           "points_per_game": "3.3",
           "expected_points_next": null,
           "fixtures": [
@@ -131949,7 +132133,7 @@
           "clean_sheets": 4,
           "bonus": 3,
           "expected_goal_involvements": "0.78",
-          "form": "4.0",
+          "form": "4.2",
           "points_per_game": "4.4",
           "expected_points_next": null,
           "fixtures": [
@@ -132343,7 +132527,7 @@
           "clean_sheets": 4,
           "bonus": 3,
           "expected_goal_involvements": "3.06",
-          "form": "5.6",
+          "form": "6.5",
           "points_per_game": "4.6",
           "expected_points_next": null,
           "fixtures": [
@@ -132540,7 +132724,7 @@
           "clean_sheets": 3,
           "bonus": 0,
           "expected_goal_involvements": "2.99",
-          "form": "2.0",
+          "form": "1.8",
           "points_per_game": "2.6",
           "expected_points_next": null,
           "fixtures": [
@@ -132737,7 +132921,7 @@
           "clean_sheets": 4,
           "bonus": 0,
           "expected_goal_involvements": "2.32",
-          "form": "3.6",
+          "form": "4.0",
           "points_per_game": "3.1",
           "expected_points_next": null,
           "fixtures": [
@@ -133528,7 +133712,7 @@
           "clean_sheets": 3,
           "bonus": 4,
           "expected_goal_involvements": "1.81",
-          "form": "1.4",
+          "form": "0.2",
           "points_per_game": "4.1",
           "expected_points_next": null,
           "fixtures": [
@@ -133925,7 +134109,7 @@
         "clean_sheets": 4,
         "bonus": 5,
         "expected_goal_involvements": "0.01",
-        "form": "3.0",
+        "form": "3.5",
         "points_per_game": "4.2",
         "expected_points_next": null,
         "fixtures": [
@@ -134311,7 +134495,7 @@
         "clean_sheets": 4,
         "bonus": 5,
         "expected_goal_involvements": "0.01",
-        "form": "3.0",
+        "form": "3.5",
         "points_per_game": "4.2",
         "expected_points_next": null,
         "fixtures": [
@@ -134679,7 +134863,7 @@
         "clean_sheets": 3,
         "bonus": 4,
         "expected_goal_involvements": "1.81",
-        "form": "1.4",
+        "form": "0.2",
         "points_per_game": "4.1",
         "expected_points_next": null,
         "fixtures": [
@@ -135415,7 +135599,7 @@
         "clean_sheets": 1,
         "bonus": 3,
         "expected_goal_involvements": "1.73",
-        "form": "1.8",
+        "form": "1.2",
         "points_per_game": "3.3",
         "expected_points_next": null,
         "fixtures": [
@@ -135967,7 +136151,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "2.99",
-        "form": "2.0",
+        "form": "1.8",
         "points_per_game": "2.6",
         "expected_points_next": null,
         "fixtures": [
@@ -136335,7 +136519,7 @@
         "clean_sheets": 4,
         "bonus": 3,
         "expected_goal_involvements": "3.06",
-        "form": "5.6",
+        "form": "6.5",
         "points_per_game": "4.6",
         "expected_points_next": null,
         "fixtures": [
@@ -136703,7 +136887,7 @@
         "clean_sheets": 4,
         "bonus": 3,
         "expected_goal_involvements": "0.78",
-        "form": "4.0",
+        "form": "4.2",
         "points_per_game": "4.4",
         "expected_points_next": null,
         "fixtures": [
@@ -136887,7 +137071,7 @@
         "clean_sheets": 4,
         "bonus": 0,
         "expected_goal_involvements": "2.32",
-        "form": "3.6",
+        "form": "4.0",
         "points_per_game": "3.1",
         "expected_points_next": null,
         "fixtures": [
@@ -137348,7 +137532,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137384,7 +137568,7 @@
         "clean_sheets": 4,
         "bonus": 1,
         "expected_goal_involvements": "0.74",
-        "form": "3.6",
+        "form": "4.5",
         "points_per_game": "4.3",
         "expected_points_next": null,
         "fixtures": [
@@ -137549,7 +137733,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137585,7 +137769,7 @@
         "clean_sheets": 3,
         "bonus": 0,
         "expected_goal_involvements": "1.41",
-        "form": "2.2",
+        "form": "1.2",
         "points_per_game": "2.8",
         "expected_points_next": null,
         "fixtures": [
@@ -137750,7 +137934,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137951,7 +138135,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138152,7 +138336,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138353,7 +138537,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138554,7 +138738,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138755,7 +138939,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138956,7 +139140,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139343,7 +139527,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139546,7 +139730,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139747,7 +139931,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139939,7 +140123,7 @@
           "injury_return_signal": "near-return",
           "expected_return": null,
           "expected_return_gameweek": null,
-          "health_trend": "worsening",
+          "health_trend": "stable",
           "roster_score": 61.4,
           "stash_score": 51.7,
           "recommendation": "HOLD",
@@ -139948,7 +140132,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-10T12:42:16.235349+00:00",
+              "observed_at": "2026-11-10T21:49:20.257380+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -144031,7 +144215,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-10T12:42:22.872712+00:00",
+          "captured_at": "2026-11-10T21:49:25.399910+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144140,7 +144324,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-10T12:42:22.872712+00:00",
+          "captured_at": "2026-11-10T21:49:25.399910+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144735,12 +144919,12 @@
           "evidence": "MEDIUM"
         },
         "opponent_projection": {
-          "formation": "3-5-2",
-          "total": 48.1,
-          "range_low": 25.1,
-          "range_high": 70.9,
+          "formation": "4-4-2",
+          "total": 46.7,
+          "range_low": 24.5,
+          "range_high": 68.8,
           "evidence": "MEDIUM",
-          "roster_total": 47.6,
+          "roster_total": 46.2,
           "decision_adjustment": 0.5
         },
         "opponent_profile": {
@@ -144786,7 +144970,7 @@
           }
         },
         "decision_adjustment": 0.5,
-        "projected_edge": 6.3,
+        "projected_edge": 7.7,
         "signal": "EDGE",
         "projection_source": "current_roster_plus_decision_profile",
         "position_edges": [
@@ -144806,28 +144990,28 @@
           {
             "position": "DEF",
             "my_count": 4,
-            "opponent_count": 3,
+            "opponent_count": 4,
             "my_start_score": 78.8,
-            "opponent_start_score": 81.7,
-            "start_score_edge": -2.8,
-            "fixture_edge": -6.7,
-            "projected_points_edge": 6.6,
+            "opponent_start_score": 79.0,
+            "start_score_edge": -0.2,
+            "fixture_edge": -15.0,
+            "projected_points_edge": 3.1,
             "my_projected_points": 19.1,
-            "opponent_projected_points": 12.5,
+            "opponent_projected_points": 16.0,
             "signal": "EVEN"
           },
           {
             "position": "MID",
             "my_count": 4,
-            "opponent_count": 5,
+            "opponent_count": 4,
             "my_start_score": 84.5,
-            "opponent_start_score": 80.6,
-            "start_score_edge": 3.9,
-            "fixture_edge": 5.0,
-            "projected_points_edge": -3.5,
+            "opponent_start_score": 81.7,
+            "start_score_edge": 2.8,
+            "fixture_edge": 10.0,
+            "projected_points_edge": 1.4,
             "my_projected_points": 19.4,
-            "opponent_projected_points": 22.9,
-            "signal": "EDGE"
+            "opponent_projected_points": 18.0,
+            "signal": "EVEN"
           },
           {
             "position": "FWD",
@@ -144844,29 +145028,29 @@
           }
         ],
         "weakest_position": {
-          "position": "MID",
-          "my_count": 4,
-          "opponent_count": 5,
-          "my_start_score": 84.5,
-          "opponent_start_score": 80.6,
-          "start_score_edge": 3.9,
-          "fixture_edge": 5.0,
-          "projected_points_edge": -3.5,
-          "my_projected_points": 19.4,
-          "opponent_projected_points": 22.9,
+          "position": "GKP",
+          "my_count": 1,
+          "opponent_count": 1,
+          "my_start_score": 85.6,
+          "opponent_start_score": 82.3,
+          "start_score_edge": 3.3,
+          "fixture_edge": 20.0,
+          "projected_points_edge": 0.1,
+          "my_projected_points": 3.6,
+          "opponent_projected_points": 3.5,
           "signal": "EDGE"
         },
         "strongest_position": {
-          "position": "DEF",
-          "my_count": 4,
-          "opponent_count": 3,
-          "my_start_score": 78.8,
-          "opponent_start_score": 81.7,
-          "start_score_edge": -2.8,
-          "fixture_edge": -6.7,
-          "projected_points_edge": 6.6,
-          "my_projected_points": 19.1,
-          "opponent_projected_points": 12.5,
+          "position": "FWD",
+          "my_count": 2,
+          "opponent_count": 2,
+          "my_start_score": 79.0,
+          "opponent_start_score": 76.2,
+          "start_score_edge": 2.8,
+          "fixture_edge": 10.0,
+          "projected_points_edge": 3.6,
+          "my_projected_points": 12.3,
+          "opponent_projected_points": 8.7,
           "signal": "EVEN"
         },
         "key_threat": {
@@ -145219,22 +145403,22 @@
         "TRAIL": 0
       },
       "projected_for": 221.4,
-      "projected_against": 196.3,
-      "projected_net": 25.1,
+      "projected_against": 194.9,
+      "projected_net": 26.5,
       "toughest_matchup": {
         "gameweek": 14,
         "opponent": "Vængir Júpíters",
         "projected_edge": 5.4
       },
       "best_opportunity": {
-        "gameweek": 13,
-        "opponent": "No Salad",
-        "projected_edge": 7.5
+        "gameweek": 12,
+        "opponent": "Gooseboys",
+        "projected_edge": 7.7
       },
       "recurring_weakness": {
-        "position": "MID",
-        "average_projected_edge": -1.7,
-        "trailing_gameweeks": 2
+        "position": "GKP",
+        "average_projected_edge": -1.0,
+        "trailing_gameweeks": 3
       }
     },
     "note": "The outlook begins with the next actionable Gameweek. Future matchups use current rosters plus an explicitly labelled, capped opponent-decision adjustment. The model cannot see unsubmitted waivers or future lineups; the locked scoring Gameweek remains in outcome diagnostics."
@@ -148357,20 +148541,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "4b70b0badc8af6db",
-      "49de4d7059dcdd38",
-      "d6bcb2425c5dd71d",
-      "0d32e9710f87e3ce",
-      "ef14567388fb5529",
-      "d4689d1e1d090e23",
-      "0175407ab5250a1e",
-      "4e34f13cc27d58da",
-      "d88cfcc09438f9bc",
-      "969aace12a732a9f",
-      "153585926e46201a",
-      "d3918c641c2cb847"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       25,
       32,
