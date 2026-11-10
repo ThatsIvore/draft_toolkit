@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T18:51:09.003781+00:00",
+  "generated_at": "2026-11-10T02:45:35.094687+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 10,
@@ -9,7 +9,7 @@
     "available_count": 480,
     "tracked_players": 672,
     "ownership_changes": 0,
-    "injured_or_doubtful_count": 82
+    "injured_or_doubtful_count": 81
   },
   "my_squad": [
     {
@@ -197,7 +197,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/167008",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -387,7 +387,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 72.5,
         "stash_score": 62.1,
         "recommendation": "HOLD",
@@ -396,7 +396,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -595,7 +595,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/614006",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -794,7 +794,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/776689",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1177,7 +1177,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/795179",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1376,7 +1376,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/883080",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1575,7 +1575,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1958,7 +1958,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197655",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2157,7 +2157,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2356,7 +2356,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1478295",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2555,7 +2555,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197347",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2754,7 +2754,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1413996",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2953,7 +2953,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1561249",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -36958,7 +36958,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/818975",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -80494,8 +80494,8 @@
       "team_code": 54,
       "position": "MID",
       "status": "a",
-      "chance_next_round": 75,
-      "news": "Groin injury - 75% chance of playing",
+      "chance_next_round": 100,
+      "news": "",
       "news_added": "2026-11-07T20:00:09.169385Z",
       "event_points": 3,
       "total_points": 39,
@@ -80572,16 +80572,16 @@
         "baseline_score": 59.2,
         "fixture_score": 46.8,
         "future_fixture_score": 60.0,
-        "availability_score": 75.0,
+        "availability_score": 100.0,
         "post_return_fixture_score": null,
-        "stash_fixture_score": 39.0,
-        "start_probability": 73.5,
-        "expected_minutes": 59.8,
-        "usage_score": 70.3,
+        "stash_fixture_score": 60.0,
+        "start_probability": 97.9,
+        "expected_minutes": 79.7,
+        "usage_score": 93.7,
         "sample_confidence": 60.1,
         "role_evidence": "MEDIUM",
-        "floor_score": 69.2,
-        "upside_score": 59.9,
+        "floor_score": 80.0,
+        "upside_score": 69.9,
         "points_per_90": 4.37,
         "attack_returns_per_90": 0.31,
         "historical_prior_active": true,
@@ -80659,14 +80659,14 @@
             }
           ]
         },
-        "injury_return_signal": "near-return",
+        "injury_return_signal": "fit",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 62.1,
-        "stash_score": 55.9,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot.",
+        "health_trend": "improving",
+        "roster_score": 71.6,
+        "stash_score": 69.0,
+        "recommendation": "STASH",
+        "recommendation_reason": "Health outlook improved while future value remains strong.",
         "external_ratings": []
       },
       "replacement": {
@@ -80675,24 +80675,22 @@
         "drop_player": "Saka",
         "drop_club": "ARS",
         "position": "MID",
-        "roster_delta": 18.9,
-        "immediate_delta": 40.1,
-        "future_delta": 10.4,
-        "floor_delta": 20.5,
-        "upside_delta": 1.7,
-        "combined_delta": 21.2,
+        "roster_delta": 28.4,
+        "immediate_delta": 54.8,
+        "future_delta": 23.5,
+        "floor_delta": 31.3,
+        "upside_delta": 11.7,
+        "combined_delta": 32.9,
         "confidence": "MEDIUM",
         "preseason_guardrail": false,
-        "true_stash_candidate": true,
+        "true_stash_candidate": false,
         "action": "CONSIDER",
         "comparison_action": "SWAP NOW",
         "policy_revision": "20260910.2",
-        "reason": "Comparison evidence is not HIGH. Production baseline 59.2 versus 83.6: more than 5 points lower. Incoming player is not fully available. Expected minutes are below 65.",
+        "reason": "Comparison evidence is not HIGH. Production baseline 59.2 versus 83.6: more than 5 points lower.",
         "priority_checks_failed": [
           "Comparison evidence is not HIGH.",
-          "Production baseline 59.2 versus 83.6: more than 5 points lower.",
-          "Incoming player is not fully available.",
-          "Expected minutes are below 65."
+          "Production baseline 59.2 versus 83.6: more than 5 points lower."
         ]
       }
     },
@@ -117727,190 +117725,6 @@
       }
     },
     {
-      "player_id": 268,
-      "player": "King",
-      "club": "FUL",
-      "team_id": 10,
-      "team_code": 54,
-      "position": "MID",
-      "status": "a",
-      "chance_next_round": 75,
-      "news": "Groin injury - 75% chance of playing",
-      "news_added": "2026-11-07T20:00:09.169385Z",
-      "event_points": 3,
-      "total_points": 39,
-      "minutes": 806,
-      "starts": 10,
-      "goals_scored": 2,
-      "assists": 1,
-      "clean_sheets": 6,
-      "bonus": 3,
-      "expected_goal_involvements": "3.37",
-      "form": "3.2",
-      "points_per_game": "3.9",
-      "expected_points_next": null,
-      "fixtures": [
-        {
-          "gameweek": 11,
-          "matches": [
-            {
-              "opponent_id": 15,
-              "opponent": "MCI",
-              "venue": "A",
-              "difficulty": 5,
-              "kickoff_time": "2026-11-21T12:30:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 12,
-          "matches": [
-            {
-              "opponent_id": 3,
-              "opponent": "BOU",
-              "venue": "H",
-              "difficulty": 3,
-              "kickoff_time": "2026-11-29T14:05:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 13,
-          "matches": [
-            {
-              "opponent_id": 19,
-              "opponent": "TOT",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-12-03T20:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        },
-        {
-          "gameweek": 14,
-          "matches": [
-            {
-              "opponent_id": 9,
-              "opponent": "EVE",
-              "venue": "A",
-              "difficulty": 3,
-              "kickoff_time": "2026-12-06T14:00:00Z",
-              "started": false,
-              "finished": false
-            }
-          ]
-        }
-      ],
-      "intelligence": {
-        "model": "v0.6.1",
-        "baseline_score": 59.2,
-        "fixture_score": 46.8,
-        "future_fixture_score": 60.0,
-        "availability_score": 75.0,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 39.0,
-        "start_probability": 73.5,
-        "expected_minutes": 59.8,
-        "usage_score": 70.3,
-        "sample_confidence": 60.1,
-        "role_evidence": "MEDIUM",
-        "floor_score": 69.2,
-        "upside_score": 59.9,
-        "points_per_90": 4.37,
-        "attack_returns_per_90": 0.31,
-        "historical_prior_active": true,
-        "recent_match_evidence": {
-          "version": "v1",
-          "status": "available",
-          "score": 66.4,
-          "grade": "B",
-          "adjustment": 1.64,
-          "confidence": 100.0,
-          "completed_gameweeks": 4,
-          "appearances": 4,
-          "minutes": 306,
-          "starts": 4,
-          "gameweeks": [
-            {
-              "gameweek": 10,
-              "minutes": 71,
-              "starts": 1,
-              "points": 3,
-              "bonus": 0,
-              "bps": 9,
-              "xg": 0.15,
-              "xa": 0.02,
-              "xgi": 0.17,
-              "defensive_contribution": 1,
-              "played": true,
-              "grade_score": 57.5,
-              "grade": "C"
-            },
-            {
-              "gameweek": 9,
-              "minutes": 78,
-              "starts": 1,
-              "points": 2,
-              "bonus": 0,
-              "bps": 9,
-              "xg": 0.0,
-              "xa": 0.2,
-              "xgi": 0.2,
-              "defensive_contribution": 6,
-              "played": true,
-              "grade_score": 56.0,
-              "grade": "C"
-            },
-            {
-              "gameweek": 8,
-              "minutes": 80,
-              "starts": 1,
-              "points": 6,
-              "bonus": 0,
-              "bps": 24,
-              "xg": 0.13,
-              "xa": 0.08,
-              "xgi": 0.21,
-              "defensive_contribution": 3,
-              "played": true,
-              "grade_score": 81.3,
-              "grade": "A"
-            },
-            {
-              "gameweek": 7,
-              "minutes": 77,
-              "starts": 1,
-              "points": 2,
-              "bonus": 0,
-              "bps": 19,
-              "xg": 0.19,
-              "xa": 0.32,
-              "xgi": 0.51,
-              "defensive_contribution": 4,
-              "played": true,
-              "grade_score": 65.7,
-              "grade": "B"
-            }
-          ]
-        },
-        "injury_return_signal": "near-return",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "health_trend": "stable",
-        "roster_score": 62.1,
-        "stash_score": 55.9,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot.",
-        "external_ratings": []
-      }
-    },
-    {
       "player_id": 107,
       "player": "Furo",
       "club": "BRE",
@@ -120294,7 +120108,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 72.5,
         "stash_score": 62.1,
         "recommendation": "HOLD",
@@ -120303,7 +120117,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -121435,7 +121249,7 @@
       "monitor": 4,
       "dated_returns": 1,
       "decision_count": 6,
-      "active_watch_count": 77,
+      "active_watch_count": 76,
       "transfer_alerts": 0,
       "early_pickups": 0
     },
@@ -121475,7 +121289,7 @@
         "news": "Unspecified injury - 75% chance of playing",
         "dashboard_action": "HOLD",
         "health_signal": "near-return",
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "expected_return": null,
         "expected_return_gameweek": null,
         "return_fixture": null,
@@ -121514,31 +121328,6 @@
         "waiver_action": "CONSIDER",
         "drop_player": "Saka",
         "combined_delta": 24.6,
-        "confidence": "MEDIUM",
-        "transfer_intel": null
-      },
-      {
-        "player_id": 268,
-        "player": "King",
-        "club": "FUL",
-        "team_code": 54,
-        "position": "MID",
-        "chance_next_round": 75,
-        "news": "Groin injury - 75% chance of playing",
-        "dashboard_action": "MONITOR",
-        "health_signal": "near-return",
-        "health_trend": "stable",
-        "expected_return": null,
-        "expected_return_gameweek": null,
-        "return_fixture": null,
-        "post_return_fixture_score": null,
-        "stash_fixture_score": 39.0,
-        "stash_score": 55.9,
-        "recommendation": "PASS",
-        "recommendation_reason": "Current value does not justify using a roster spot.",
-        "waiver_action": "CONSIDER",
-        "drop_player": "Saka",
-        "combined_delta": 21.2,
         "confidence": "MEDIUM",
         "transfer_intel": null
       },
@@ -121590,6 +121379,31 @@
         "drop_player": "Saka",
         "combined_delta": 15.6,
         "confidence": "HIGH",
+        "transfer_intel": null
+      },
+      {
+        "player_id": 335,
+        "player": "Stach",
+        "club": "LEE",
+        "team_code": 2,
+        "position": "MID",
+        "chance_next_round": 50,
+        "news": "Foot injury - 50% chance of playing",
+        "dashboard_action": "MONITOR",
+        "health_signal": "return-watch",
+        "health_trend": "stable",
+        "expected_return": null,
+        "expected_return_gameweek": null,
+        "return_fixture": null,
+        "post_return_fixture_score": null,
+        "stash_fixture_score": 39.2,
+        "stash_score": 51.8,
+        "recommendation": "PASS",
+        "recommendation_reason": "Current value does not justify using a roster spot.",
+        "waiver_action": "CONSIDER",
+        "drop_player": "Saka",
+        "combined_delta": 11.3,
+        "confidence": "MEDIUM",
         "transfer_intel": null
       }
     ],
@@ -124021,7 +123835,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124233,7 +124047,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124445,7 +124259,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124657,7 +124471,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -124869,7 +124683,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125081,7 +124895,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125490,7 +125304,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125702,7 +125516,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125914,7 +125728,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126126,7 +125940,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126340,7 +126154,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126544,7 +126358,7 @@
           "injury_return_signal": "near-return",
           "expected_return": null,
           "expected_return_gameweek": null,
-          "health_trend": "news-changed",
+          "health_trend": "stable",
           "roster_score": 72.5,
           "stash_score": 62.1,
           "recommendation": "HOLD",
@@ -126553,7 +126367,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126965,7 +126779,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-09T18:51:03.158070+00:00",
+            "observed_at": "2026-11-10T02:45:30.003413+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -127959,7 +127773,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/776689",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128171,7 +127985,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/795179",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128383,7 +128197,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/614006",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128595,7 +128409,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1413996",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -128807,7 +128621,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197655",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129019,7 +128833,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/167008",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129428,7 +129242,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/883080",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129640,7 +129454,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1478295",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129852,7 +129666,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1561249",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130064,7 +129878,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197347",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130278,7 +130092,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/940446",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130482,7 +130296,7 @@
             "injury_return_signal": "near-return",
             "expected_return": null,
             "expected_return_gameweek": null,
-            "health_trend": "news-changed",
+            "health_trend": "stable",
             "roster_score": 72.5,
             "stash_score": 62.1,
             "recommendation": "HOLD",
@@ -130491,7 +130305,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/209405",
-                "observed_at": "2026-11-09T18:51:03.158070+00:00",
+                "observed_at": "2026-11-10T02:45:30.003413+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130903,7 +130717,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137332,7 +137146,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137524,7 +137338,7 @@
           "injury_return_signal": "near-return",
           "expected_return": null,
           "expected_return_gameweek": null,
-          "health_trend": "news-changed",
+          "health_trend": "stable",
           "roster_score": 72.5,
           "stash_score": 62.1,
           "recommendation": "HOLD",
@@ -137533,7 +137347,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137734,7 +137548,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -137935,7 +137749,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138136,7 +137950,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138337,7 +138151,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138538,7 +138352,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138739,7 +138553,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -138940,7 +138754,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139327,7 +139141,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139530,7 +139344,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139731,7 +139545,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139932,7 +139746,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-09T18:51:03.158070+00:00",
+              "observed_at": "2026-11-10T02:45:30.003413+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -144015,7 +143829,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-09T18:51:09.003781+00:00",
+          "captured_at": "2026-11-10T02:45:35.094687+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -144124,7 +143938,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-09T18:51:09.003781+00:00",
+          "captured_at": "2026-11-10T02:45:35.094687+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -145327,20 +145141,39 @@
       },
       {
         "kind": "availability",
-        "priority": "important",
-        "title": "King: availability fell",
-        "detail": "Availability Score 100 → 75 (-25).",
-        "badge": "↓ FIT",
+        "priority": "watch",
+        "title": "King: availability improved",
+        "detail": "Availability Score 75 → 100 (+25).",
+        "badge": "↑ FIT",
         "player_id": 268,
         "player": "King",
         "club": "FUL",
         "team_code": 54,
         "position": "MID",
-        "event_id": "2c0fa8cc8c389268",
+        "event_id": "98e900f9c8865db7",
         "stream": "availability:player:268",
         "decision_gameweek": 11,
-        "first_seen": "2026-11-07T20:15:34.802687+00:00",
-        "last_seen": "2026-11-07T20:15:34.802687+00:00",
+        "first_seen": "2026-11-10T02:45:35.094687+00:00",
+        "last_seen": "2026-11-10T02:45:35.094687+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "minutes_change",
+        "priority": "watch",
+        "title": "King: expected minutes rose",
+        "detail": "Expected-minutes heuristic 60 → 80.",
+        "badge": "↑ MIN",
+        "player_id": 268,
+        "player": "King",
+        "club": "FUL",
+        "team_code": 54,
+        "position": "MID",
+        "event_id": "c7de037970bd992b",
+        "stream": "role:player:268",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-10T02:45:35.094687+00:00",
+        "last_seen": "2026-11-10T02:45:35.094687+00:00",
         "occurrences": 1,
         "status": "active"
       },
@@ -145724,6 +145557,26 @@
         "occurrences": 1,
         "status": "resolved",
         "resolved_at": "2026-11-09T06:42:14.546158+00:00"
+      },
+      {
+        "kind": "availability",
+        "priority": "important",
+        "title": "King: availability fell",
+        "detail": "Availability Score 100 → 75 (-25).",
+        "badge": "↓ FIT",
+        "player_id": 268,
+        "player": "King",
+        "club": "FUL",
+        "team_code": 54,
+        "position": "MID",
+        "event_id": "2c0fa8cc8c389268",
+        "stream": "availability:player:268",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-07T20:15:34.802687+00:00",
+        "last_seen": "2026-11-07T20:15:34.802687+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-11-10T02:45:35.094687+00:00"
       },
       {
         "kind": "gameweek_result",
@@ -148075,8 +147928,8 @@
       }
     ],
     "new_item_ids": [
-      "6cb6b7195375af0a",
-      "ca29035a91a0b4a8"
+      "98e900f9c8865db7",
+      "c7de037970bd992b"
     ],
     "changed_player_ids": [
       32,
@@ -148108,13 +147961,13 @@
     "summary": {
       "critical": 0,
       "important": 7,
-      "watch": 19,
+      "watch": 21,
       "info": 2
     },
     "active_summary": {
       "critical": 0,
-      "important": 6,
-      "watch": 19,
+      "important": 5,
+      "watch": 21,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
