@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-11-10T21:49:25.399910+00:00",
+  "captured_at": "2026-11-11T06:32:39.213382+00:00",
   "gameweek": 11,
   "scoring_gameweek": 10,
   "scoring_phase": "FINAL",
@@ -1076,18 +1076,18 @@
       "team_code": 1,
       "position": "DEF",
       "status": "a",
-      "chance_next_round": null,
-      "news": "",
-      "availability_score": 100.0,
-      "expected_minutes": 81.4,
+      "chance_next_round": 75,
+      "news": "Back injury - 75% chance of playing",
+      "availability_score": 75.0,
+      "expected_minutes": 61.1,
       "role_evidence": "MEDIUM",
-      "health_trend": "stable",
-      "recommendation": "WATCH",
-      "roster_score": 68.0,
-      "stash_score": 64.0,
+      "health_trend": "news-changed",
+      "recommendation": "PASS",
+      "roster_score": 58.4,
+      "stash_score": 50.2,
       "waiver_action": "HOLD / WATCH",
       "waiver_drop_player": "Virgil",
-      "waiver_delta": 0.1,
+      "waiver_delta": -11.9,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -18168,7 +18168,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-10T21:49:25.399910+00:00",
+          "captured_at": "2026-11-11T06:32:39.213382+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18277,7 +18277,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-10T21:49:25.399910+00:00",
+          "captured_at": "2026-11-11T06:32:39.213382+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18697,6 +18697,25 @@
       {
         "kind": "availability",
         "priority": "important",
+        "title": "Maguire: availability fell",
+        "detail": "Availability Score 100 → 75 (-25).",
+        "badge": "↓ FIT",
+        "player_id": 418,
+        "player": "Maguire",
+        "club": "MUN",
+        "team_code": 1,
+        "position": "DEF",
+        "event_id": "b7ed7d4201a38b9d",
+        "stream": "availability:player:418",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-11T06:32:39.213382+00:00",
+        "last_seen": "2026-11-11T06:32:39.213382+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "availability",
+        "priority": "important",
         "title": "Brobbey: availability fell",
         "detail": "Availability Score 100 → 75 (-25).",
         "badge": "↓ FIT",
@@ -18805,6 +18824,25 @@
         "decision_gameweek": 11,
         "first_seen": "2026-11-07T20:15:34.802687+00:00",
         "last_seen": "2026-11-07T20:15:34.802687+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "minutes_change",
+        "priority": "watch",
+        "title": "Maguire: expected minutes fell",
+        "detail": "Expected-minutes heuristic 81 → 61.",
+        "badge": "↓ MIN",
+        "player_id": 418,
+        "player": "Maguire",
+        "club": "MUN",
+        "team_code": 1,
+        "position": "DEF",
+        "event_id": "c3ab8978c333c9e6",
+        "stream": "role:player:418",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-11T06:32:39.213382+00:00",
+        "last_seen": "2026-11-11T06:32:39.213382+00:00",
         "occurrences": 1,
         "status": "active"
       },
@@ -21805,7 +21843,10 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "b7ed7d4201a38b9d",
+      "c3ab8978c333c9e6"
+    ],
     "changed_player_ids": [
       25,
       32,
@@ -21827,6 +21868,7 @@
       356,
       388,
       415,
+      418,
       419,
       450,
       456,
@@ -21846,14 +21888,14 @@
     ],
     "summary": {
       "critical": 0,
-      "important": 8,
-      "watch": 32,
+      "important": 9,
+      "watch": 33,
       "info": 2
     },
     "active_summary": {
       "critical": 0,
-      "important": 6,
-      "watch": 32,
+      "important": 7,
+      "watch": 33,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
