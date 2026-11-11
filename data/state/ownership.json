@@ -2738,9 +2738,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-23T17:00:09.672494Z"
+    "chance_next_round": 75,
+    "news": "Ankle injury - 75% chance of playing",
+    "news_added": "2026-11-11T13:00:09.556609Z"
   },
   {
     "player_id": 345,
