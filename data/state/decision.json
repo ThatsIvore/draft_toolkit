@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-11-14T00:54:04.024018+00:00",
+  "captured_at": "2026-11-14T11:32:59.365065+00:00",
   "gameweek": 11,
   "scoring_gameweek": 10,
   "scoring_phase": "FINAL",
@@ -10904,18 +10904,18 @@
       "team_code": 1,
       "position": "MID",
       "status": "a",
-      "chance_next_round": 100,
-      "news": "",
-      "availability_score": 100.0,
-      "expected_minutes": 34.0,
+      "chance_next_round": 75,
+      "news": "Hamstring injury - 75% chance of playing",
+      "availability_score": 75.0,
+      "expected_minutes": 25.5,
       "role_evidence": "HIGH",
-      "health_trend": "stable",
-      "recommendation": "WATCH",
-      "roster_score": 70.3,
-      "stash_score": 73.0,
+      "health_trend": "worsening",
+      "recommendation": "PASS",
+      "roster_score": 63.7,
+      "stash_score": 61.0,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Saka",
-      "waiver_delta": 29.3,
+      "waiver_delta": 20.8,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -18168,7 +18168,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-14T00:54:04.024018+00:00",
+          "captured_at": "2026-11-14T11:32:59.365065+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18277,7 +18277,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-14T00:54:04.024018+00:00",
+          "captured_at": "2026-11-14T11:32:59.365065+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18694,6 +18694,25 @@
     "cycle_started_at": "2026-11-06T21:32:28.488077+00:00",
     "since": "2026-11-06T21:32:28.488077+00:00",
     "items": [
+      {
+        "kind": "availability",
+        "priority": "important",
+        "title": "Dorgu: availability fell",
+        "detail": "Availability Score 100 → 75 (-25).",
+        "badge": "↓ FIT",
+        "player_id": 415,
+        "player": "Dorgu",
+        "club": "MUN",
+        "team_code": 1,
+        "position": "MID",
+        "event_id": "67ad36e19b714d33",
+        "stream": "availability:player:415",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-14T11:32:59.365065+00:00",
+        "last_seen": "2026-11-14T11:32:59.365065+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
       {
         "kind": "availability",
         "priority": "important",
@@ -19210,25 +19229,6 @@
       {
         "kind": "availability",
         "priority": "watch",
-        "title": "Dorgu: availability improved",
-        "detail": "Availability Score 75 → 100 (+25).",
-        "badge": "↑ FIT",
-        "player_id": 415,
-        "player": "Dorgu",
-        "club": "MUN",
-        "team_code": 1,
-        "position": "MID",
-        "event_id": "a5169c73a83839c7",
-        "stream": "availability:player:415",
-        "decision_gameweek": 11,
-        "first_seen": "2026-11-08T20:30:33.475675+00:00",
-        "last_seen": "2026-11-08T20:30:33.475675+00:00",
-        "occurrences": 1,
-        "status": "active"
-      },
-      {
-        "kind": "availability",
-        "priority": "watch",
         "title": "Henderson: availability improved",
         "detail": "Availability Score 75 → 100 (+25).",
         "badge": "↑ FIT",
@@ -19551,6 +19551,26 @@
         "occurrences": 1,
         "status": "resolved",
         "resolved_at": "2026-11-11T16:13:52.816759+00:00"
+      },
+      {
+        "kind": "availability",
+        "priority": "watch",
+        "title": "Dorgu: availability improved",
+        "detail": "Availability Score 75 → 100 (+25).",
+        "badge": "↑ FIT",
+        "player_id": 415,
+        "player": "Dorgu",
+        "club": "MUN",
+        "team_code": 1,
+        "position": "MID",
+        "event_id": "a5169c73a83839c7",
+        "stream": "availability:player:415",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-08T20:30:33.475675+00:00",
+        "last_seen": "2026-11-08T20:30:33.475675+00:00",
+        "occurrences": 1,
+        "status": "resolved",
+        "resolved_at": "2026-11-14T11:32:59.365065+00:00"
       },
       {
         "kind": "gameweek_result",
@@ -21901,7 +21921,9 @@
         ]
       }
     ],
-    "new_item_ids": [],
+    "new_item_ids": [
+      "67ad36e19b714d33"
+    ],
     "changed_player_ids": [
       25,
       32,
@@ -21943,14 +21965,14 @@
     ],
     "summary": {
       "critical": 0,
-      "important": 10,
+      "important": 11,
       "watch": 35,
       "info": 2
     },
     "active_summary": {
       "critical": 0,
-      "important": 8,
-      "watch": 34,
+      "important": 9,
+      "watch": 33,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
