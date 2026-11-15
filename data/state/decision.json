@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "captured_at": "2026-11-15T15:41:14.437309+00:00",
+  "captured_at": "2026-11-15T21:03:52.004074+00:00",
   "gameweek": 11,
   "scoring_gameweek": 10,
   "scoring_phase": "FINAL",
@@ -3097,7 +3097,7 @@
       "availability_score": 75.0,
       "expected_minutes": 55.9,
       "role_evidence": "MEDIUM",
-      "health_trend": "worsening",
+      "health_trend": "stable",
       "recommendation": "PASS",
       "roster_score": 64.0,
       "stash_score": 53.6,
@@ -3316,18 +3316,18 @@
       "team_code": 17,
       "position": "MID",
       "status": "a",
-      "chance_next_round": null,
-      "news": "",
-      "availability_score": 100.0,
-      "expected_minutes": 72.5,
+      "chance_next_round": 75,
+      "news": "Thigh injury - 75% chance of playing",
+      "availability_score": 75.0,
+      "expected_minutes": 54.4,
       "role_evidence": "LOW",
-      "health_trend": "stable",
+      "health_trend": "news-changed",
       "recommendation": "PASS",
-      "roster_score": 59.0,
-      "stash_score": 53.4,
+      "roster_score": 49.9,
+      "stash_score": 41.4,
       "waiver_action": "CONSIDER",
       "waiver_drop_player": "Saka",
-      "waiver_delta": 19.7,
+      "waiver_delta": 8.7,
       "lineup_role": null,
       "fixture_phase": "SCHEDULED",
       "transfer_record_id": null,
@@ -18168,7 +18168,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-15T15:41:14.437309+00:00",
+          "captured_at": "2026-11-15T21:03:52.004074+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18277,7 +18277,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-15T15:41:14.437309+00:00",
+          "captured_at": "2026-11-15T21:03:52.004074+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -18697,6 +18697,25 @@
       {
         "kind": "availability",
         "priority": "important",
+        "title": "Schlager: availability fell",
+        "detail": "Availability Score 100 → 75 (-25).",
+        "badge": "↓ FIT",
+        "player_id": 567,
+        "player": "Schlager",
+        "club": "NFO",
+        "team_code": 17,
+        "position": "MID",
+        "event_id": "035879ebcf688c7c",
+        "stream": "availability:player:567",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-15T21:03:52.004074+00:00",
+        "last_seen": "2026-11-15T21:03:52.004074+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "availability",
+        "priority": "important",
         "title": "Cash: availability fell",
         "detail": "Availability Score 100 → 75 (-25).",
         "badge": "↓ FIT",
@@ -18919,6 +18938,25 @@
         "decision_gameweek": 11,
         "first_seen": "2026-11-07T20:15:34.802687+00:00",
         "last_seen": "2026-11-07T20:15:34.802687+00:00",
+        "occurrences": 1,
+        "status": "active"
+      },
+      {
+        "kind": "minutes_change",
+        "priority": "watch",
+        "title": "Schlager: expected minutes fell",
+        "detail": "Expected-minutes heuristic 72 → 54.",
+        "badge": "↓ MIN",
+        "player_id": 567,
+        "player": "Schlager",
+        "club": "NFO",
+        "team_code": 17,
+        "position": "MID",
+        "event_id": "fb23ee4dab608a6a",
+        "stream": "role:player:567",
+        "decision_gameweek": 11,
+        "first_seen": "2026-11-15T21:03:52.004074+00:00",
+        "last_seen": "2026-11-15T21:03:52.004074+00:00",
         "occurrences": 1,
         "status": "active"
       },
@@ -22018,8 +22056,8 @@
       }
     ],
     "new_item_ids": [
-      "a9aaf356ceaba818",
-      "2ac9bfa9943aa0bd"
+      "035879ebcf688c7c",
+      "fb23ee4dab608a6a"
     ],
     "changed_player_ids": [
       25,
@@ -22055,6 +22093,7 @@
       544,
       552,
       558,
+      567,
       589,
       598,
       613,
@@ -22064,14 +22103,14 @@
     ],
     "summary": {
       "critical": 0,
-      "important": 14,
-      "watch": 37,
+      "important": 15,
+      "watch": 38,
       "info": 2
     },
     "active_summary": {
       "critical": 0,
-      "important": 12,
-      "watch": 34,
+      "important": 13,
+      "watch": 35,
       "info": 0
     },
     "note": "Updates persist for the current decision Gameweek; small score noise remains intentionally suppressed."
