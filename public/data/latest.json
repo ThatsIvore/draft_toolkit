@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T21:03:52.004074+00:00",
+  "generated_at": "2026-11-16T06:37:23.980048+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 10,
@@ -197,7 +197,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/167008",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -396,7 +396,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -595,7 +595,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/614006",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -794,7 +794,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/776689",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1177,7 +1177,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/795179",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1376,7 +1376,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/883080",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1575,7 +1575,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -1958,7 +1958,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197655",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2157,7 +2157,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2356,7 +2356,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1478295",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2555,7 +2555,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1197347",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2754,7 +2754,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1413996",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -2953,7 +2953,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1561249",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -24913,7 +24913,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 49.9,
         "stash_score": 41.4,
         "recommendation": "PASS",
@@ -36956,7 +36956,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/818975",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -108878,7 +108878,7 @@
         "injury_return_signal": "near-return",
         "expected_return": null,
         "expected_return_gameweek": null,
-        "health_trend": "news-changed",
+        "health_trend": "stable",
         "roster_score": 49.9,
         "stash_score": 41.4,
         "recommendation": "PASS",
@@ -121399,7 +121399,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -121966,7 +121966,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -125709,7 +125709,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -125921,7 +125921,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126133,7 +126133,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126345,7 +126345,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126557,7 +126557,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -126769,7 +126769,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -127178,7 +127178,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -127390,7 +127390,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -127602,7 +127602,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -127814,7 +127814,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -128028,7 +128028,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -128241,7 +128241,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -128653,7 +128653,7 @@
           {
             "provider": "fotmob",
             "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-15T21:03:46.466076+00:00",
+            "observed_at": "2026-11-16T06:37:17.012463+00:00",
             "through_gameweek": 10,
             "season": 2026,
             "competition": "Premier League",
@@ -129647,7 +129647,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/776689",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -129859,7 +129859,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/795179",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130071,7 +130071,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/614006",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130283,7 +130283,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1413996",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130495,7 +130495,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197655",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -130707,7 +130707,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/167008",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -131116,7 +131116,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/883080",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -131328,7 +131328,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1478295",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -131540,7 +131540,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1561249",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -131752,7 +131752,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/1197347",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -131966,7 +131966,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/209405",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -132179,7 +132179,7 @@
               {
                 "provider": "fotmob",
                 "source_url": "https://www.fotmob.com/players/940446",
-                "observed_at": "2026-11-15T21:03:46.466076+00:00",
+                "observed_at": "2026-11-16T06:37:17.012463+00:00",
                 "through_gameweek": 10,
                 "season": 2026,
                 "competition": "Premier League",
@@ -132591,7 +132591,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139020,7 +139020,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139221,7 +139221,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139422,7 +139422,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139623,7 +139623,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -139824,7 +139824,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -140025,7 +140025,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -140226,7 +140226,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -140427,7 +140427,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -140628,7 +140628,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -141015,7 +141015,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -141218,7 +141218,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -141419,7 +141419,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -141620,7 +141620,7 @@
             {
               "provider": "fotmob",
               "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-15T21:03:46.466076+00:00",
+              "observed_at": "2026-11-16T06:37:17.012463+00:00",
               "through_gameweek": 10,
               "season": 2026,
               "competition": "Premier League",
@@ -145703,7 +145703,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-15T21:03:52.004074+00:00",
+          "captured_at": "2026-11-16T06:37:23.980048+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -145812,7 +145812,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-15T21:03:52.004074+00:00",
+          "captured_at": "2026-11-16T06:37:23.980048+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -150279,10 +150279,7 @@
         ]
       }
     ],
-    "new_item_ids": [
-      "035879ebcf688c7c",
-      "fb23ee4dab608a6a"
-    ],
+    "new_item_ids": [],
     "changed_player_ids": [
       25,
       32,
