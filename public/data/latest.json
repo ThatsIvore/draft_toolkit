@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T01:53:46.378291+00:00",
+  "generated_at": "2026-11-19T13:17:41.556854+00:00",
   "league_id": "58312",
   "league_name": "SD13 Þeir síðustu urðu fyrstir",
   "current_gameweek": 10,
@@ -193,22 +193,7 @@
         "stash_score": 77.5,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/167008",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.48,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 881,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -392,22 +377,7 @@
         "stash_score": 62.1,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.44,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -591,22 +561,7 @@
         "stash_score": 58.4,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/614006",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.9,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -790,22 +745,7 @@
         "stash_score": 74.0,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/776689",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.1,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -1173,22 +1113,7 @@
         "stash_score": 76.7,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/795179",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.4,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -1372,22 +1297,7 @@
         "stash_score": 80.9,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/883080",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.58,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 883,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -1571,22 +1481,7 @@
         "stash_score": 51.7,
         "recommendation": "HOLD",
         "recommendation_reason": "No strong drop signal from the current model.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.82,
-            "appearances": 8,
-            "starts": null,
-            "minutes": 623,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -1954,22 +1849,7 @@
         "stash_score": 71.6,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1197655",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.39,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 899,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -2153,22 +2033,7 @@
         "stash_score": 74.3,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.45,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -2352,22 +2217,7 @@
         "stash_score": 65.4,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1478295",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.95,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 880,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -2551,22 +2401,7 @@
         "stash_score": 73.0,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1197347",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.48,
-            "appearances": 9,
-            "starts": null,
-            "minutes": 727,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -2750,22 +2585,7 @@
         "stash_score": 70.9,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1413996",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.37,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 888,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -2949,22 +2769,7 @@
         "stash_score": 71.8,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1561249",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.12,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 731,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     }
   ],
@@ -36955,22 +36760,7 @@
         "stash_score": 66.8,
         "recommendation": "WATCH",
         "recommendation_reason": "Interesting value, but not yet a clear claim signal.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/818975",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.34,
-            "appearances": 7,
-            "starts": null,
-            "minutes": 231,
-            "small_sample": true,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       },
       "replacement": {
         "model": "v0.6.0",
@@ -122138,22 +121928,7 @@
         "stash_score": 62.1,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/209405",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 7.44,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -122705,22 +122480,7 @@
         "stash_score": 51.7,
         "recommendation": "HOLD",
         "recommendation_reason": "No strong drop signal from the current model.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/940446",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.82,
-            "appearances": 8,
-            "starts": null,
-            "minutes": 623,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       }
     },
     {
@@ -125404,15 +125164,15 @@
     },
     "reviewed_external_ratings": {
       "mode": "reviewed_shadow",
-      "status": "available",
-      "players": 15,
+      "status": "unavailable",
+      "players": 0,
       "rejected_records": 0,
       "recommendations_affected": false,
       "collection": {
-        "status": "available",
+        "status": "unavailable",
         "requested": 17,
-        "accepted": 15,
-        "failed_or_ineligible": 2
+        "accepted": 0,
+        "failed_or_ineligible": 17
       }
     }
   },
@@ -126632,22 +126392,7 @@
           "stash_score": 74.0,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.1,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -126844,22 +126589,7 @@
           "stash_score": 76.7,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.4,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -127056,22 +126786,7 @@
           "stash_score": 58.4,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.9,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -127268,22 +126983,7 @@
           "stash_score": 70.9,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.37,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 888,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -127480,22 +127180,7 @@
           "stash_score": 71.6,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.39,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 899,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -127692,22 +127377,7 @@
           "stash_score": 77.5,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.48,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 881,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -128101,22 +127771,7 @@
           "stash_score": 80.9,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.58,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 883,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -128313,22 +127968,7 @@
           "stash_score": 65.4,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.95,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 880,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -128525,22 +128165,7 @@
           "stash_score": 71.8,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.12,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 731,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -128737,22 +128362,7 @@
           "stash_score": 73.0,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.48,
-              "appearances": 9,
-              "starts": null,
-              "minutes": 727,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "START",
@@ -128951,22 +128561,7 @@
           "stash_score": 62.1,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.44,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "BENCH",
@@ -129164,22 +128759,7 @@
           "stash_score": 51.7,
           "recommendation": "HOLD",
           "recommendation_reason": "No strong drop signal from the current model.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.82,
-              "appearances": 8,
-              "starts": null,
-              "minutes": 623,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "BENCH",
@@ -129576,22 +129156,7 @@
         "stash_score": 74.3,
         "recommendation": "HOLD",
         "recommendation_reason": "Strong medium-term value relative to the current pool.",
-        "external_ratings": [
-          {
-            "provider": "fotmob",
-            "source_url": "https://www.fotmob.com/players/1125720",
-            "observed_at": "2026-11-19T01:53:41.856947+00:00",
-            "through_gameweek": 10,
-            "season": 2026,
-            "competition": "Premier League",
-            "rating": 6.45,
-            "appearances": 10,
-            "starts": null,
-            "minutes": 900,
-            "small_sample": false,
-            "recommendations_affected": false
-          }
-        ]
+        "external_ratings": []
       },
       "selection": {
         "role": "RESERVE GKP",
@@ -130570,22 +130135,7 @@
             "stash_score": 74.0,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/776689",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.1,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 900,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -130782,22 +130332,7 @@
             "stash_score": 76.7,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/795179",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.4,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 900,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -130994,22 +130529,7 @@
             "stash_score": 58.4,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/614006",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 6.9,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 900,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -131206,22 +130726,7 @@
             "stash_score": 70.9,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/1413996",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.37,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 888,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -131418,22 +130923,7 @@
             "stash_score": 71.6,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/1197655",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.39,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 899,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -131630,22 +131120,7 @@
             "stash_score": 77.5,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/167008",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.48,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 881,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -132039,22 +131514,7 @@
             "stash_score": 80.9,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/883080",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.58,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 883,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -132251,22 +131711,7 @@
             "stash_score": 65.4,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/1478295",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 6.95,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 880,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -132463,22 +131908,7 @@
             "stash_score": 71.8,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/1561249",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.12,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 731,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -132675,22 +132105,7 @@
             "stash_score": 73.0,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/1197347",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.48,
-                "appearances": 9,
-                "starts": null,
-                "minutes": 727,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "START",
@@ -132889,22 +132304,7 @@
             "stash_score": 62.1,
             "recommendation": "HOLD",
             "recommendation_reason": "Strong medium-term value relative to the current pool.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/209405",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 7.44,
-                "appearances": 10,
-                "starts": null,
-                "minutes": 900,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "BENCH",
@@ -133102,22 +132502,7 @@
             "stash_score": 51.7,
             "recommendation": "HOLD",
             "recommendation_reason": "No strong drop signal from the current model.",
-            "external_ratings": [
-              {
-                "provider": "fotmob",
-                "source_url": "https://www.fotmob.com/players/940446",
-                "observed_at": "2026-11-19T01:53:41.856947+00:00",
-                "through_gameweek": 10,
-                "season": 2026,
-                "competition": "Premier League",
-                "rating": 6.82,
-                "appearances": 8,
-                "starts": null,
-                "minutes": 623,
-                "small_sample": false,
-                "recommendations_affected": false
-              }
-            ]
+            "external_ratings": []
           },
           "selection": {
             "role": "BENCH",
@@ -133514,22 +132899,7 @@
           "stash_score": 74.3,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.45,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "selection": {
           "role": "RESERVE GKP",
@@ -139943,22 +139313,7 @@
           "stash_score": 74.0,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/776689",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.1,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 1,
         "is_starter": true
@@ -140144,22 +139499,7 @@
           "stash_score": 62.1,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/209405",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.44,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 2,
         "is_starter": true
@@ -140345,22 +139685,7 @@
           "stash_score": 58.4,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/614006",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.9,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 3,
         "is_starter": true
@@ -140546,22 +139871,7 @@
           "stash_score": 76.7,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/795179",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.4,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 4,
         "is_starter": true
@@ -140747,22 +140057,7 @@
           "stash_score": 71.6,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1197655",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.39,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 899,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 5,
         "is_starter": true
@@ -140948,22 +140243,7 @@
           "stash_score": 70.9,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1413996",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.37,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 888,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 6,
         "is_starter": true
@@ -141149,22 +140429,7 @@
           "stash_score": 80.9,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/883080",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.58,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 883,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 7,
         "is_starter": true
@@ -141350,22 +140615,7 @@
           "stash_score": 77.5,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/167008",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.48,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 881,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 8,
         "is_starter": true
@@ -141551,22 +140801,7 @@
           "stash_score": 65.4,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1478295",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.95,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 880,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 9,
         "is_starter": true
@@ -141938,22 +141173,7 @@
           "stash_score": 71.8,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1561249",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.12,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 731,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 11,
         "is_starter": true
@@ -142141,22 +141361,7 @@
           "stash_score": 74.3,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1125720",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.45,
-              "appearances": 10,
-              "starts": null,
-              "minutes": 900,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 12,
         "is_starter": false
@@ -142342,22 +141547,7 @@
           "stash_score": 73.0,
           "recommendation": "HOLD",
           "recommendation_reason": "Strong medium-term value relative to the current pool.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/1197347",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 7.48,
-              "appearances": 9,
-              "starts": null,
-              "minutes": 727,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 13,
         "is_starter": false
@@ -142543,22 +141733,7 @@
           "stash_score": 51.7,
           "recommendation": "HOLD",
           "recommendation_reason": "No strong drop signal from the current model.",
-          "external_ratings": [
-            {
-              "provider": "fotmob",
-              "source_url": "https://www.fotmob.com/players/940446",
-              "observed_at": "2026-11-19T01:53:41.856947+00:00",
-              "through_gameweek": 10,
-              "season": 2026,
-              "competition": "Premier League",
-              "rating": 6.82,
-              "appearances": 8,
-              "starts": null,
-              "minutes": 623,
-              "small_sample": false,
-              "recommendations_affected": false
-            }
-          ]
+          "external_ratings": []
         },
         "pick_position": 14,
         "is_starter": false
@@ -146630,7 +145805,7 @@
       "11": {
         "baseline": {
           "model": "v0.3",
-          "captured_at": "2026-11-19T01:53:46.378291+00:00",
+          "captured_at": "2026-11-19T13:17:41.556854+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
@@ -146739,7 +145914,7 @@
         },
         "challenger": {
           "model": "v0.3",
-          "captured_at": "2026-11-19T01:53:46.378291+00:00",
+          "captured_at": "2026-11-19T13:17:41.556854+00:00",
           "captured_phase": "SCHEDULED",
           "calibration_eligible": true,
           "exclusion_reason": null,
