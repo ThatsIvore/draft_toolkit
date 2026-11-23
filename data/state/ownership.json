@@ -5455,9 +5455,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 0,
+    "news": "Suspended until 2 Dec",
+    "news_added": "2026-11-22T17:00:05.657366Z"
   },
   {
     "player_id": 148,
@@ -8042,9 +8042,9 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-09-27T21:30:07.786183Z"
+    "chance_next_round": 75,
+    "news": "Calf injury - 75% chance of playing",
+    "news_added": "2026-11-22T16:30:05.520808Z"
   },
   {
     "player_id": 204,
