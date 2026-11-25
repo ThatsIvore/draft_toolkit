@@ -3180,8 +3180,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Foot injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Foot injury - Unknown return date",
     "news_added": "2026-11-03T17:00:09.626695Z"
   },
   {
@@ -8042,8 +8042,8 @@
     "status": "o",
     "owner_raw": 338272,
     "owner_entry_id": 338272,
-    "chance_next_round": 75,
-    "news": "Calf injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Calf injury - Expected back 2 Dec",
     "news_added": "2026-11-22T16:30:05.520808Z"
   },
   {
