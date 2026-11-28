@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T13:56:01.794760+00:00",
+  "updated_at": "2026-11-28T00:04:18.767210+00:00",
   "managers": {
     "307364": {
       "transactions": [
@@ -7238,6 +7238,61 @@
       "to_team": "Free pool",
       "captured_at": "2026-11-27T00:37:27.182273+00:00",
       "gameweek": 12,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 155,
+      "player": "Enzo",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-28T00:04:18.767210+00:00",
+      "gameweek": 13,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 316,
+      "player": "Emersonn",
+      "club": "IPS",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-28T00:04:18.767210+00:00",
+      "gameweek": 13,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 388,
+      "player": "Guéhi",
+      "club": "MCI",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-28T00:04:18.767210+00:00",
+      "gameweek": 13,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 401,
+      "player": "Marmoush",
+      "club": "TOT",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-28T00:04:18.767210+00:00",
+      "gameweek": 13,
+      "source": "ownership snapshot"
+    },
+    {
+      "type": "status_change",
+      "player_id": 552,
+      "player": "Brobbey",
+      "club": "SUN",
+      "from_team": "Free pool",
+      "to_team": "Free pool",
+      "captured_at": "2026-11-28T00:04:18.767210+00:00",
+      "gameweek": 13,
       "source": "ownership snapshot"
     }
   ]

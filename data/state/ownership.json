@@ -476,8 +476,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Calf injury - Expected back 29 Nov",
+    "chance_next_round": 75,
+    "news": "Calf injury - 75% chance of playing",
     "news_added": "2026-11-20T15:30:06.265590Z"
   },
   {
@@ -1347,8 +1347,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Concussion - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-11-15T10:30:05.648897Z"
   },
   {
@@ -1451,8 +1451,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Unspecified injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-11-27T09:30:06.176281Z"
   },
   {
@@ -1623,6 +1623,19 @@
     "chance_next_round": 100,
     "news": "",
     "news_added": "2026-09-04T14:00:08.328779Z"
+  },
+  {
+    "player_id": 388,
+    "player": "Guéhi",
+    "club": "MCI",
+    "team_id": 15,
+    "position": "DEF",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-11-07T21:30:08.741792Z"
   },
   {
     "player_id": 482,
@@ -1932,9 +1945,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Ankle injury - 75% chance of playing",
+    "news_added": "2026-11-27T16:00:05.751888Z"
   },
   {
     "player_id": 259,
@@ -3025,7 +3038,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Knee injury - Unknown return date",
+    "news": "Knee injury - Expected back 2 Dec",
     "news_added": "2026-10-17T17:30:09.977110Z"
   },
   {
@@ -3053,6 +3066,19 @@
     "chance_next_round": 0,
     "news": "Has joined Hamburger SV permanently",
     "news_added": "2026-09-02T16:00:28.446370Z"
+  },
+  {
+    "player_id": 401,
+    "player": "Marmoush",
+    "club": "TOT",
+    "team_id": 19,
+    "position": "FWD",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-10-19T22:30:08.721497Z"
   },
   {
     "player_id": 218,
@@ -3133,6 +3159,19 @@
     "news_added": "2026-09-19T14:00:09.046677Z"
   },
   {
+    "player_id": 552,
+    "player": "Brobbey",
+    "club": "SUN",
+    "team_id": 20,
+    "position": "FWD",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 0,
+    "news": "Muscular injury - Unknown return date",
+    "news_added": "2026-11-10T11:30:10.818854Z"
+  },
+  {
     "player_id": 371,
     "player": "Gravenberch",
     "club": "LIV",
@@ -3141,8 +3180,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Foot injury - Unknown return date",
+    "chance_next_round": 25,
+    "news": "Foot injury - 25% chance of playing",
     "news_added": "2026-11-03T17:00:09.626695Z"
   },
   {
@@ -3287,6 +3326,19 @@
     "chance_next_round": 100,
     "news": "",
     "news_added": "2026-07-23T12:01:23.895175Z"
+  },
+  {
+    "player_id": 155,
+    "player": "Enzo",
+    "club": "MCI",
+    "team_id": 15,
+    "position": "MID",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": null,
+    "news": "",
+    "news_added": null
   },
   {
     "player_id": 54,
@@ -3479,8 +3531,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Calf injury - 75% chance of playing",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-11-21T17:00:05.582448Z"
   },
   {
@@ -4454,9 +4506,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
+    "chance_next_round": 75,
+    "news": "Illness - 75% chance of playing",
+    "news_added": "2026-11-27T15:30:06.231137Z"
   },
   {
     "player_id": 210,
@@ -4675,8 +4727,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Groin injury - Unknown return date",
+    "chance_next_round": 50,
+    "news": "Groin injury - 50% chance of playing",
     "news_added": "2026-08-02T09:00:11.030017Z"
   },
   {
@@ -4792,8 +4844,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 75,
-    "news": "Hamstring injury - 75% chance of playing",
+    "chance_next_round": 0,
+    "news": "Hamstring injury - Unknown return date",
     "news_added": "2026-11-21T17:30:05.822258Z"
   },
   {
@@ -5053,7 +5105,7 @@
     "owner_raw": null,
     "owner_entry_id": null,
     "chance_next_round": 0,
-    "news": "Hamstring injury - Unknown return date",
+    "news": "Hamstring injury - Expected back 1 Feb",
     "news_added": "2026-11-03T22:00:07.995956Z"
   },
   {
@@ -5185,6 +5237,19 @@
     "chance_next_round": 0,
     "news": "Lack of match fitness - Expected back 5 Dec",
     "news_added": "2026-07-23T12:01:23.384798Z"
+  },
+  {
+    "player_id": 316,
+    "player": "Emersonn",
+    "club": "IPS",
+    "team_id": 12,
+    "position": "FWD",
+    "status": "a",
+    "owner_raw": null,
+    "owner_entry_id": null,
+    "chance_next_round": 100,
+    "news": "",
+    "news_added": "2026-08-31T09:30:08.306145Z"
   },
   {
     "player_id": 451,
@@ -5637,9 +5702,9 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-18T13:00:09.356060Z"
+    "chance_next_round": 75,
+    "news": "Illness - 75% chance of playing",
+    "news_added": "2026-11-27T15:30:06.712878Z"
   },
   {
     "player_id": 588,
@@ -6209,8 +6274,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Thigh injury - Unknown return date",
+    "chance_next_round": 100,
+    "news": "",
     "news_added": "2026-08-06T10:00:10.456051Z"
   },
   {
@@ -7093,8 +7158,8 @@
     "status": "a",
     "owner_raw": null,
     "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Back injury - Unknown return date",
+    "chance_next_round": 50,
+    "news": "Back injury - 50% chance of playing",
     "news_added": "2026-09-09T10:00:08.919489Z"
   },
   {
@@ -7527,71 +7592,6 @@
     "news_added": null
   },
   {
-    "player_id": 388,
-    "player": "Guéhi",
-    "club": "MCI",
-    "team_id": 15,
-    "position": "DEF",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-11-07T21:30:08.741792Z"
-  },
-  {
-    "player_id": 401,
-    "player": "Marmoush",
-    "club": "TOT",
-    "team_id": 19,
-    "position": "FWD",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-10-19T22:30:08.721497Z"
-  },
-  {
-    "player_id": 552,
-    "player": "Brobbey",
-    "club": "SUN",
-    "team_id": 20,
-    "position": "FWD",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 0,
-    "news": "Muscular injury - Unknown return date",
-    "news_added": "2026-11-10T11:30:10.818854Z"
-  },
-  {
-    "player_id": 155,
-    "player": "Enzo",
-    "club": "MCI",
-    "team_id": 15,
-    "position": "MID",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": null,
-    "news": "",
-    "news_added": null
-  },
-  {
-    "player_id": 316,
-    "player": "Emersonn",
-    "club": "IPS",
-    "team_id": 12,
-    "position": "FWD",
-    "status": "l",
-    "owner_raw": null,
-    "owner_entry_id": null,
-    "chance_next_round": 100,
-    "news": "",
-    "news_added": "2026-08-31T09:30:08.306145Z"
-  },
-  {
     "player_id": 229,
     "player": "Tarkowski",
     "club": "EVE",
@@ -7717,8 +7717,8 @@
     "status": "o",
     "owner_raw": 334397,
     "owner_entry_id": 334397,
-    "chance_next_round": 50,
-    "news": "Shoulder injury - 50% chance of playing",
+    "chance_next_round": 75,
+    "news": "Shoulder injury - 75% chance of playing",
     "news_added": "2026-11-21T19:00:05.753960Z"
   },
   {
